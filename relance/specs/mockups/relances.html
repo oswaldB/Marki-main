@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Relances | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./components/sidebar-nav.js"></script>
+  <style>html { font-family: 'Inter', sans-serif; } body { margin: 0; background: #fafafa; }</style>
+</head><body>
+
+<!-- Sidebar -->
+<sidebar-nav page="relances"></sidebar-nav>
+
+<!-- Main Content -->
+<main style="margin-left: 260px; padding: 32px; min-height: 100vh;">
+  
+  <!-- Page Header -->
+  <div style="margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #e5e5e5;">
+    <h1 style="margin: 0 0 8px 0; font-size: 28px; font-weight: 600; color: #0f172a; letter-spacing: -0.5px;">Relances</h1>
+    <p style="margin: 0; color: #64748b; font-size: 15px;">Gestion des relances programmées</p>
+    <span style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 6px 12px; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 13px; font-family: monospace; color: #475569;">↗ /relances</span>
+  </div>
+
+  <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
+    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+      <h3 class="font-semibold text-slate-900">Relances à venir</h3>
+      <div class="flex items-center gap-3">
+        <a href="./relances-calendrier.html" class="text-sm text-sky-600 hover:text-sky-700 font-medium">Calendrier</a>
+        <a href="./relances-validation.html" class="text-sm text-amber-600 hover:text-amber-700 font-medium">Validation</a>
+        <button class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-xl text-sm font-medium transition-all flex items-center gap-2">
+          <i class="fas fa-plus"></i>
+          Nouvelle
+        </button>
+      </div>
+    </div>
+    
+    <div class="divide-y divide-slate-100">
+      <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/50 transition-colors">
+        <div class="flex items-center gap-4">
+          <div class="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center">
+            <i class="fas fa-envelope text-sky-500"></i>
+          </div>
+          <div>
+            <p class="font-medium text-slate-900">ACME Corp</p>
+            <p class="text-sm text-slate-500">FAC-2024-001 • 05/07/2024</p>
+          </div>
+        </div>
+        <span class="px-3 py-1 bg-amber-50 text-amber-700 text-xs font-medium rounded-full">Planifié</span>
+      </div>
+    </div>
+  </div>
+</main>
+
+</body></html>
