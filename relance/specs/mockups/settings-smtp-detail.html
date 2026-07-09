@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détail Profil SMTP | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body x-data="smtpDetailPage()" x-init="init()">
+
+<sidebar-nav-dual page="settings-smtp"></sidebar-nav-dual>
+
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <a href="./settings-smtp.html" class="text-slate-400 hover:text-slate-600">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+      <h1 class="text-base font-semibold text-slate-700" x-text="profil?.nom || 'Chargement...'"></h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500">Détail du profil SMTP</span>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <button @click="testerConnexion()" class="flex items-center gap-2 px-3 py-2 text-sky-600 hover:bg-sky-50 rounded-lg text-sm font-medium">
+        <i class="fas fa-vial"></i>
+        Tester la connexion
+      </button>
+      
+      <button @click="saveChanges()" class="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">
+        <i class="fas fa-save"></i>
+        Enregistrer
+      </button>
+    </div>
+  </header>
+
+  <main class="p-6 max-w-4xl mx-auto">
+    
+    <div x-show="loading" class="text-center py-12 text-slate-400">Chargement...</div>
+    
+    <template x-if="!loading && profil">
+      <div class="space-y-6">
+        
+        <!-- Status Banner -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 flex items-center justify-between">
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-lg bg-sky-50 flex items-center justify-center">
+              <i class="fas fa-envelope text-sky-500 text-xl"></i>
+            </div>
+            <div>
+              <p class="text-sm text-slate-500">Statut</p>
+              <div class="flex items-center gap-2">
+                <span 
+                  class="w-2.5 h-2.5 rounded-full"
+                  :class="profil.actif ? 'bg-sky-500' : 'bg-slate-400'"
+                ></span>
+                <span class="font-medium text-slate-900" x-text="profil.actif ? 'Actif' : 'Inactif'"></span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="text-right">
+            <p class="text-sm text-slate-500">Emails envoyés</p>
+            <p class="text-2xl font-bold text-slate-900" x-text="profil.emailsEnvoyes.toLocaleString('fr-FR')"></p>
+          </div>
+        </div>
+        
+        <!-- Configuration -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="px-6 py-4 border-b border-slate-100">
+            <h3 class="font-semibold text-slate-900">
+              <i class="fas fa-cog text-slate-400 mr-2"></i>Configuration
+            </h3>
+          </div>
+          
+          <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-2">Nom du profil *</label>
+              <input type="text" x-model="profil.nom" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-2">Email d'envoi *</label>
+              <input type="email" x-model="profil.email" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-2">Serveur SMTP *</label>
+              <input type="text" x-model="profil.serveur" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-2">Port *</label>
+              <input type="number" x-model="profil.port" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+            </div>
+            
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-2">Sécurité</label>
+              <select x-model="profil.securite" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+                <option value="tls">TLS</option>
+                <option value="ssl">SSL</option>
+                <option value="none">Aucune</option>
+              </select>
+            </div>
+            
+            <div class="flex items-center">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" x-model="profil.actif" class="rounded border-slate-300 text-sky-500 focus:ring-sky-500">
+                <span class="text-sm font-medium text-slate-700">Profil actif</span>
+              </label>
+            </div>
+            
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium text-slate-700 mb-2">Signature HTML</label>
+              <textarea x-model="profil.signature" rows="6" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm font-mono focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500" placeholder="<p>Cordialement,<br>Marki</p>"></textarea>
+              <p class="text-xs text-slate-500 mt-1">HTML autorisé. Sera ajouté à la fin de chaque email envoyé.</p>
+              
+              <!-- Prévisualisation -->
+              <div x-show="profil.signature" class="mt-3 border border-slate-200 rounded-lg p-4 bg-white">
+                <p class="text-xs text-slate-500 mb-2">Prévisualisation :</p>
+                <div class="prose prose-sm max-w-none" x-html="profil.signature"></div>
+              </div>
+            </div>
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium text-slate-700 mb-2">Nom d'utilisateur</label>
+              <input type="text" x-model="profil.username" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+            </div>
+            
+            <div class="md:col-span-2">
+              <label class="block text-sm font-medium text-slate-700 mb-2">Mot de passe</label>
+              <div class="relative">
+                <input :type="showPassword ? 'text' : 'password'" x-model="profil.password" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 pr-10">
+                <button @click="showPassword = !showPassword" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                  <i class="fas" :class="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Test Result -->
+        <div x-show="testResult" :class="testResult.success ? 'bg-sky-50 border-sky-200' : 'bg-sky-50 border-sky-200'" class="rounded-xl border p-4">
+          <div class="flex items-start gap-3">
+            <i :class="testResult.success ? 'fa-check-circle text-sky-500' : 'fa-exclamation-circle text-sky-500'" class="fas mt-0.5"></i>
+            <div>
+              <p :class="testResult.success ? 'text-sky-800' : 'text-sky-800'" class="font-medium text-sm" x-text="testResult.message"></p>
+              <p x-show="testResult.details" class="text-xs mt-1" :class="testResult.success ? 'text-sky-600' : 'text-sky-600'" x-text="testResult.details"></p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </template>
+  </main>
+</div>
+
+    <!-- Toast Notification -->
+    <div x-show="toast.show" x-transition class="fixed bottom-4 right-4 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50">
+      <i :class="toast.type === 'success' ? 'fa-check-circle text-green-400' : 'fa-exclamation-circle text-red-400'" class="fas"></i>
+      <div>
+        <p class="font-medium text-sm" x-text="toast.title"></p>
+        <p class="text-xs text-slate-300" x-text="toast.message"></p>
+      </div>
+    </div>
+
+<script>
+function smtpDetailPage() {
+  return {
+    loading: true,
+    showPassword: false,
+    profil: null,
+    testResult: null,
+    toast: { show: false, type: 'success', title: '', message: '' },
+    
+    init() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      
+      // Simulate loading profil data
+      setTimeout(() => {
+        this.profil = {
+          id: parseInt(id) || 1,
+          nom: 'SMTP Principal',
+          email: 'noreply@marki.fr',
+          serveur: 'smtp.marki.fr',
+          port: 587,
+          securite: 'tls',
+          username: 'noreply@marki.fr',
+          password: '••••••••',
+          signature: '<p>Cordialement,<br><strong>Marki</strong><br><a href="mailto:contact@marki.fr">contact@marki.fr</a></p>',
+          actif: true,
+          emailsEnvoyes: 12547
+        };
+        
+        this.loading = false;
+      }, 500);
+    },
+    
+    testerConnexion() {
+      // Simuler un test
+      setTimeout(() => {
+        const success = Math.random() > 0.3;
+        this.testResult = {
+          success: success,
+          message: success ? 'Connexion SMTP réussie' : 'Échec de la connexion',
+          details: success ? 'Délai de réponse: 124ms' : 'Impossible de se connecter au serveur SMTP. Vérifiez vos paramètres.'
+        };
+      }, 1000);
+    },
+    
+    saveChanges() {
+      this.showToast('Enregistré', 'Modifications enregistrées avec succès', 'success');
+    },
+    
+    showToast(title, message, type = 'success') {
+      this.toast = { show: true, title, message, type };
+      setTimeout(() => this.toast.show = false, 3000);
+    }
+  }
+}
+</script>
+
+</body>
+</html>

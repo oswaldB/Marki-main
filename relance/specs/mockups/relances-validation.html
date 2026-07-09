@@ -1,25 +1,561 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Relances validation | Marki</title>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validation Relances | Marki</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="./components/sidebar-nav.js"></script>
-  <style>html { font-family: 'Inter', sans-serif; } body { margin: 0; background: #fafafa; }</style>
-</head><body>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+    .email-preview { font-family: 'Georgia', serif; }
+  </style>
+</head>
+<body x-data="validationPage()" x-init="init()">
 
-<sidebar-nav page="relances-validation"></sidebar-nav>
+<sidebar-nav-dual page="relances-validation"></sidebar-nav-dual>
 
-<main style="margin-left: 260px; padding: 32px; min-height: 100vh;">
-  <div style="margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #e5e5e5;">
-    <h1 style="margin: 0 0 8px 0; font-size: 28px; font-weight: 600; color: #0f172a; letter-spacing: -0.5px;">Relances validation</h1>
-    <p style="margin: 0; color: #64748b; font-size: 15px;">Page relances-validation</p>
-    <span style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 6px 12px; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 13px; font-family: monospace; color: #475569;">↗ /relances-validation</span>
-  </div>
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <h1 class="text-base font-semibold text-slate-700">Validation</h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500">Relances à valider</span>
+    </div>
+  </header>
 
-  <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-    <p class="text-slate-600">Contenu de la page relances-validation...</p>
-  </div>
-</main>
+  <main class="p-6">
+    
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex" style="height: calc(100vh - 140px);">
+      
+      <!-- Left Column: List -->
+      <div class="w-1/3 border-r border-slate-200 flex flex-col">
+        
+        <!-- Filters -->
+        <div class="p-4 border-b border-slate-100 bg-slate-50">
+          <div class="relative">
+            <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+            <input 
+              type="text" 
+              x-model="searchQuery"
+              placeholder="Rechercher dans les relances..."
+              class="w-full pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+            >
+          </div>
+          
+          <div class="flex items-center gap-2 mt-3 flex-wrap">
+            <button 
+              @click="filterType = 'all'; filterToday = false"
+              :class="filterType === 'all' && !filterToday ? 'bg-sky-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100'"
+              class="px-3 py-1 rounded-full text-xs font-medium transition-all"
+            >
+              Toutes <span class="ml-1" x-text="relances.length"></span>
+            </button>
+            <button 
+              @click="filterType = 'email'; filterToday = false"
+              :class="filterType === 'email' && !filterToday ? 'bg-sky-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100'"
+              class="px-3 py-1 rounded-full text-xs font-medium transition-all"
+            >
+              Email
+            </button>
+            <button 
+              @click="filterType = 'courrier'; filterToday = false"
+              :class="filterType === 'courrier' && !filterToday ? 'bg-sky-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100'"
+              class="px-3 py-1 rounded-full text-xs font-medium transition-all"
+            >
+              Courrier
+            </button>
+            <button 
+              @click="filterToday = true"
+              :class="filterToday ? 'bg-sky-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100'"
+              class="px-3 py-1 rounded-full text-xs font-medium transition-all flex items-center gap-1"
+            >
+              <i class="fas fa-calendar-day"></i>
+              Aujourd'hui
+            </button>
+          </div>
+        </div>
+        
+        <!-- Relances List -->
+        <div class="flex-1 overflow-y-auto">
+          <template x-for="relance in filteredRelances" :key="relance.id">
+            <div 
+              @click="selectRelance(relance)"
+              class="px-4 py-3 border-b border-slate-100 cursor-pointer hover:bg-slate-50 transition-colors"
+              :class="{ 'bg-sky-50 border-l-4 border-l-sky-500': selectedRelance?.id === relance.id }"
+            >
+              <div class="flex items-start justify-between gap-2">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2 mb-1">
+                    <span 
+                      class="w-2 h-2 rounded-full"
+                      :class="{
+                        'bg-sky-500': relance.urgence === 'normal',
+                        'bg-sky-500': relance.urgence === 'important',
+                        'bg-sky-500': relance.urgence === 'urgent'
+                      }"
+                    ></span>
+                    <p class="font-medium text-slate-900 truncate" x-text="relance.payeur"></p>
+                  </div>
+                  <p class="text-sm text-slate-600 truncate" x-text="relance.objet"></p>
+                  <p class="text-xs text-slate-400 mt-1 flex items-center gap-2">
+                    <i class="fas" :class="relance.type === 'email' ? 'fa-envelope' : 'fa-envelope-open-text'"></i>
+                    <span x-text="relance.typeLabel"></span>
+                    <span>·</span>
+                    <span x-text="relance.dateProgrammee"></span>
+                  </p>
+                </div>
+                <div x-show="selectedRelance?.id === relance.id" class="text-sky-500">
+                  <i class="fas fa-chevron-right"></i>
+                </div>
+              </div>
+            </div>
+          </template>
+          
+          <div x-show="filteredRelances.length === 0" class="p-8 text-center text-slate-400">
+            <i class="fas fa-inbox text-4xl mb-3"></i>
+            <p>Aucune relance à valider</p>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Right Column: Detail -->
+      <div class="flex-1 flex flex-col">
+        <template x-if="!selectedRelance">
+          <div class="flex-1 flex items-center justify-center text-slate-400">
+            <div class="text-center">
+              <i class="fas fa-hand-pointer text-4xl mb-3"></i>
+              <p>Sélectionnez une relance pour la consulter</p>
+            </div>
+          </div>
+        </template>
+        
+        <template x-if="selectedRelance">
+          <div class="flex flex-col h-full">
+            
+            <!-- Header -->
+            <div class="px-6 py-4 border-b border-slate-100 bg-slate-50">
+              <div class="flex items-start justify-between">
+                <div>
+                  <div class="flex items-center gap-2 mb-1">
+                    <span 
+                      class="px-2 py-0.5 text-xs font-medium rounded-full"
+                      :class="{
+                        'bg-blue-100 text-blue-700': selectedRelance.type === 'email',
+                        'bg-sky-100 text-sky-700': selectedRelance.type === 'courrier'
+                      }"
+                      x-text="selectedRelance.typeLabel"
+                    ></span>
+                    <span x-show="selectedRelance.urgence === 'urgent'" class="px-2 py-0.5 text-xs font-medium rounded-full bg-sky-100 text-sky-700">
+                      <i class="fas fa-exclamation-circle mr-1"></i>Urgent
+                    </span>
+                  </div>
+                  <h2 class="text-lg font-semibold text-slate-900" x-text="selectedRelance.objet"></h2>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="flex items-center gap-2">
+                  <button 
+                    @click="validerRelance()"
+                    class="flex items-center gap-1.5 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium transition-all"
+                  >
+                    <i class="fas fa-check"></i>
+                    Valider
+                  </button>
+                  
+                  <button 
+                    @click="supprimerRelance()"
+                    class="flex items-center gap-1.5 px-3 py-2 text-slate-600 hover:text-sky-600 hover:bg-sky-50 rounded-lg text-sm font-medium transition-all"
+                    title="Supprimer"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </button>
+                  
+                  <button 
+                    @click="blacklisterRelance()"
+                    class="flex items-center gap-1.5 px-3 py-2 text-slate-600 hover:text-sky-600 hover:bg-sky-50 rounded-lg text-sm font-medium transition-all"
+                    title="Blacklister"
+                  >
+                    <i class="fas fa-ban"></i>
+                  </button>
+                  
+                  <button 
+                    @click="suspendreRelance()"
+                    class="flex items-center gap-1.5 px-3 py-2 text-slate-600 hover:text-sky-600 hover:bg-sky-50 rounded-lg text-sm font-medium transition-all"
+                    title="Suspendre"
+                  >
+                    <i class="fas fa-pause"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="flex-1 overflow-y-auto p-6">
+              
+              <!-- Editable Fields -->
+              <div class="mb-6 space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">Destinataire</label>
+                    <input 
+                      type="text" 
+                      x-model="editForm.destinataire"
+                      class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+                    >
+                  </div>
+                  <div>
+                    <label class="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">Date d'envoi</label>
+                    <input 
+                      type="date" 
+                      x-model="editForm.date"
+                      class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+                    >
+                  </div>
+                </div>
+                
+                <div>
+                  <label class="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">Objet</label>
+                  <input 
+                    type="text" 
+                    x-model="editForm.objet"
+                    class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+                  >
+                </div>
+              </div>
+              
+              <!-- Editable Email Preview with ToastUI -->
+              <div class="border border-slate-200 rounded-lg overflow-hidden">
+                <div class="bg-slate-50 px-4 py-2 border-b border-slate-200 flex items-center justify-between">
+                  <span class="text-xs text-slate-500">Aperçu du message (éditable)</span>
+                </div>
+                <div class="p-0">
+                  <div id="editor-corps" class="min-h-[250px]"></div>
+                </div>
+              </div>
+              
+              <!-- Factures liées -->
+              <div class="mt-6">
+                <h3 class="text-xs font-medium text-slate-500 uppercase tracking-wider mb-2">Factures concernées</h3>
+                <div class="space-y-2">
+                  <template x-for="facture in selectedRelance.factures" :key="facture.numero">
+                    <a :href="'./impayes-detail.html?id=' + facture.id" class="flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-sky-50 transition-colors">
+                      <div class="flex items-center gap-3">
+                        <i class="fas fa-file-invoice text-slate-400"></i>
+                        <span class="font-medium text-slate-700" x-text="facture.numero"></span>
+                      </div>
+                      <span class="text-slate-600" x-text="formatMoney(facture.montant)"></span>
+                    </a>
+                  </template>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Footer Actions -->
+            <div class="px-6 py-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
+              <button @click="selectedRelance = null" class="text-slate-600 hover:text-slate-900 text-sm">
+                <i class="fas fa-arrow-left mr-1"></i>Retour à la liste
+              </button>
+              
+              <div class="flex items-center gap-2">
+                <button @click="saveChanges()" class="px-4 py-2 bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 rounded-lg text-sm font-medium">
+                  <i class="fas fa-save mr-1"></i>Enregistrer
+                </button>
+                <button @click="validerRelance()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">
+                  <i class="fas fa-check mr-1"></i>Valider
+                </button>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+    
+    <!-- Modal Suspension (même style que impayes) -->
+    <div x-show="showSuspendModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showSuspendModal = false"></div>
+      <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+        <h3 class="text-lg font-semibold text-slate-900 mb-4">
+          <i class="fas fa-pause-circle text-sky-500 mr-2"></i>Suspendre la relance
+        </h3>
+        <p class="text-sm text-slate-600 mb-4">La suspension empêchera l'envoi de cette relance.</p>
+        
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Motif de suspension *</label>
+            <select x-model="suspendForm.motif" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+              <option value="">Choisir un motif...</option>
+              <option value="litige">Litige en cours</option>
+              <option value="arrangement">Arrangement avec le client</option>
+              <option value="procedure">Procédure judiciaire</option>
+              <option value="cessation">Cessation d'activité</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Détail (optionnel)</label>
+            <textarea x-model="suspendForm.detail" rows="3" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm" placeholder="Précisez si nécessaire..."></textarea>
+          </div>
+        </div>
+        
+        <div class="flex items-center justify-end gap-2 mt-6">
+          <button @click="showSuspendModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="confirmSuspend()" :disabled="!suspendForm.motif" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+            Confirmer la suspension
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Toast Container -->
+    <div class="fixed bottom-4 right-4 z-50 space-y-2" x-data="{ toasts: [] }" @toast.window="$event.detail.id = Date.now(); toasts.push($event.detail); setTimeout(() => toasts = toasts.filter(t => t.id !== $event.detail.id), 3000)">
+      <template x-for="toast in toasts" :key="toast.id">
+        <div x-show="toast" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="translate-y-full opacity-0" x-transition:enter-end="translate-y-0 opacity-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="translate-y-0 opacity-100" x-transition:leave-end="translate-y-full opacity-0" class="flex items-center gap-3 px-4 py-3 bg-slate-800 text-white rounded-lg shadow-lg">
+          <i class="fas" :class="toast.type === 'success' ? 'fa-check-circle text-green-400' : toast.type === 'error' ? 'fa-exclamation-circle text-red-400' : 'fa-info-circle text-blue-400'"></i>
+          <span class="text-sm" x-text="toast.message"></span>
+        </div>
+      </template>
+    </div>
+    
+  </main>
+</div>
 
-</body></html>
+<script>
+function validationPage() {
+  return {
+    searchQuery: '',
+    filterType: 'all',
+    filterToday: false,
+    selectedRelance: null,
+    showSuspendModal: false,
+    editForm: { destinataire: '', date: '', objet: '', corps: '' },
+    suspendForm: { motif: '', detail: '' },
+    
+    relances: [
+      {
+        id: 1,
+        payeur: 'ACME Corp',
+        type: 'email',
+        typeLabel: 'Email',
+        urgence: 'normal',
+        objet: 'Relance - Facture FAC-2024-001 impayée',
+        dateProgrammee: '15/03/2024',
+        destinataire: 'contact@acme.fr',
+        corps: `Madame, Monsieur,
+
+Nous vous rappelons que la facture n° FAC-2024-001 d'un montant de 12 500,00 € est toujours en attente de règlement.
+
+Date d'échéance : 15/02/2024
+Montant dû : 12 500,00 €
+
+Nous vous prions de bien vouloir régulariser cette situation dans les plus brefs délais.
+
+Cordialement,
+Le service comptable`,
+        factures: [
+          { id: 1, numero: 'FAC-2024-001', montant: 12500 }
+        ]
+      },
+      {
+        id: 2,
+        payeur: 'TechStart SARL',
+        type: 'courrier',
+        typeLabel: 'Courrier',
+        urgence: 'important',
+        objet: 'Mise en demeure - Factures impayées',
+        dateProgrammee: '18/03/2024',
+        destinataire: 'TechStart SARL\n123 Avenue de la République\n75011 Paris',
+        corps: `Objet : Mise en demeure - Factures impayées
+
+Madame, Monsieur,
+
+Par la présente, nous vous informons que les factures suivantes sont toujours impayées :
+
+- FAC-2024-002 : 8 750,00 € (échue le 10/02/2024)
+- FAC-2024-018 : 5 600,00 € (échue le 25/02/2024)
+
+Total dû : 14 350,00 €
+
+Nous vous demandons de régulariser votre situation dans un délai de 8 jours à compter de la réception de cette lettre.
+
+À défaut de paiement dans ce délai, nous nous verrons dans l'obligation d'engager des poursuites judiciaires.
+
+Cordialement,`,
+        factures: [
+          { id: 4, numero: 'FAC-2024-002', montant: 8750 },
+          { id: 5, numero: 'FAC-2024-018', montant: 5600 }
+        ]
+      },
+      {
+        id: 3,
+        payeur: 'Consulting Pro',
+        type: 'email',
+        typeLabel: 'Email',
+        urgence: 'urgent',
+        objet: 'Dernier rappel avant procédure',
+        dateProgrammee: '20/03/2024',
+        destinataire: 'boss@consulting.fr',
+        corps: `Madame, Monsieur,
+
+Malgré nos précédentes relances, nous constatons que vous n'avez pas procédé au règlement de la facture suivante :
+
+Facture : FAC-2024-005
+Montant : 12 000,00 €
+Échéance : 01/02/2024
+
+Ce dernier rappel est envoyé avant l'engagement de poursuites.
+
+Nous vous prions de régler sous 48 heures.
+
+Cordialement,`,
+        factures: [
+          { id: 5, numero: 'FAC-2024-005', montant: 12000 }
+        ]
+      },
+      {
+        id: 4,
+        payeur: 'Digital Agency',
+        type: 'email',
+        typeLabel: 'Email',
+        urgence: 'normal',
+        objet: 'Relance amicale - Facture FAC-2024-004',
+        dateProgrammee: '22/03/2024',
+        destinataire: 'admin@digital.fr',
+        corps: `Bonjour,
+
+Nous espérons que vous allez bien.
+
+Nous vous écrivons pour vous rappeler la facture FAC-2024-004 de 5 600,00 € en attente de règlement.
+
+Nous restons à votre disposition pour tout renseignement.
+
+Bien cordialement,`,
+        factures: [
+          { id: 4, numero: 'FAC-2024-004', montant: 5600 }
+        ]
+      }
+    ],
+    
+    get filteredRelances() {
+      const today = new Date().toLocaleDateString('fr-FR');
+      return this.relances.filter(r => {
+        const matchesSearch = !this.searchQuery || 
+          r.payeur.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          r.objet.toLowerCase().includes(this.searchQuery.toLowerCase());
+        const matchesType = this.filterType === 'all' || r.type === this.filterType;
+        const matchesToday = !this.filterToday || r.dateProgrammee === today;
+        return matchesSearch && matchesType && matchesToday;
+      });
+    },
+    
+    init() {
+      // Select first relance by default if any
+      if (this.relances.length > 0) {
+        this.selectRelance(this.relances[0]);
+      }
+    },
+    
+    selectRelance(relance) {
+      this.selectedRelance = relance;
+      this.editForm = {
+        destinataire: relance.destinataire,
+        date: relance.dateProgrammee.split('/').reverse().join('-'),
+        objet: relance.objet,
+        corps: relance.corps
+      };
+      this.$nextTick(() => {
+        if (document.getElementById('editor-corps')) {
+          const editor = new toastui.Editor({
+            el: document.querySelector('#editor-corps'),
+            initialEditType: 'wysiwyg',
+            previewStyle: 'tab',
+            height: '300px',
+            initialValue: this.editForm.corps
+          });
+        }
+      });
+    },
+    
+    insertTag(tag) {
+      const textarea = document.querySelector('textarea');
+      const start = textarea.selectionStart;
+      const end = textarea.selectionEnd;
+      const text = this.editForm.corps;
+      const before = text.substring(0, start);
+      const after = text.substring(end);
+      let insertion = '';
+      
+      switch(tag) {
+        case 'lien':
+          insertion = '[LIEN:Texte du lien|https://exemple.com]';
+          break;
+        case 'tableau':
+          insertion = '\n[TABLEAU]\nColonne 1 | Colonne 2 | Colonne 3\nValeur 1 | Valeur 2 | Valeur 3\n[/TABLEAU]\n';
+          break;
+        case 'gras':
+          insertion = '**Texte en gras**';
+          break;
+      }
+      
+      this.editForm.corps = before + insertion + after;
+    },
+    
+    validerRelance() {
+      if (confirm('Valider cette relance ? Elle sera envoyée selon la date programmée.')) {
+        this.relances = this.relances.filter(r => r.id !== this.selectedRelance.id);
+        this.selectedRelance = null;
+        window.dispatchEvent(new CustomEvent('toast', { detail: { type: 'success', message: 'Relance validée avec succès' } }));
+      }
+    },
+    
+    supprimerRelance() {
+      if (confirm('Supprimer définitivement cette relance ?')) {
+        this.relances = this.relances.filter(r => r.id !== this.selectedRelance.id);
+        this.selectedRelance = null;
+        window.dispatchEvent(new CustomEvent('toast', { detail: { type: 'success', message: 'Relance supprimée' } }));
+      }
+    },
+    
+    blacklisterRelance() {
+      if (confirm('Blacklister ce payeur ? Aucune relance ne lui sera plus envoyée.')) {
+        this.relances = this.relances.filter(r => r.payeur !== this.selectedRelance.payeur);
+        this.selectedRelance = null;
+        window.dispatchEvent(new CustomEvent('toast', { detail: { type: 'success', message: 'Payeur blacklisté' } }));
+      }
+    },
+    
+    suspendreRelance() {
+      this.suspendForm = { motif: '', detail: '' };
+      this.showSuspendModal = true;
+    },
+    
+    confirmSuspend() {
+      this.relances = this.relances.filter(r => r.id !== this.selectedRelance.id);
+      this.selectedRelance = null;
+      this.showSuspendModal = false;
+      window.dispatchEvent(new CustomEvent('toast', { detail: { type: 'success', message: 'Relance suspendue' } }));
+    },
+    
+    saveChanges() {
+      this.selectedRelance.destinataire = this.editForm.destinataire;
+      this.selectedRelance.dateProgrammee = this.editForm.date.split('-').reverse().join('/');
+      this.selectedRelance.objet = this.editForm.objet;
+      this.selectedRelance.corps = this.editForm.corps;
+      window.dispatchEvent(new CustomEvent('toast', { detail: { type: 'success', message: 'Modifications enregistrées' } }));
+    },
+    
+    formatMoney(amount) {
+      return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount);
+    }
+  }
+}
+</script>
+
+</body>
+</html>

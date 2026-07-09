@@ -1,54 +1,907 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contacts | Marki</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="./components/sidebar-nav.js"></script>
-  <style>html { font-family: 'Inter', sans-serif; } body { margin: 0; background: #fafafa; }</style>
-</head><body>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+    
+    /* Content area improvements */
+    .content-wrapper {
+      background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+      min-height: calc(100vh - 64px);
+    }
+    
+    /* Card hover effects */
+    .card-hover {
+      transition: all 0.2s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+    }
+    
+    /* Smooth scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body x-data="contactsPage()" x-init="init()">
 
 <!-- Sidebar -->
-<sidebar-nav page="contacts"></sidebar-nav>
+<sidebar-nav-dual page="contacts"></sidebar-nav-dual>
 
 <!-- Main Content -->
-<main style="margin-left: 260px; padding: 32px; min-height: 100vh;">
+<div class="md:ml-[284px] content-wrapper">
   
-  <!-- Page Header -->
-  <div style="margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #e5e5e5;">
-    <h1 style="margin: 0 0 8px 0; font-size: 28px; font-weight: 600; color: #0f172a; letter-spacing: -0.5px;">Contacts</h1>
-    <p style="margin: 0; color: #64748b; font-size: 15px;">Gestion des contacts clients</p>
-    <span style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 6px 12px; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 13px; font-family: monospace; color: #475569;">↗ /contacts</span>
-  </div>
-
-  <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-      <div class="relative">
-        <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 text-sm"></i>
-        <input type="text" placeholder="Rechercher un contact..." 
-               class="pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-xl text-sm w-72 focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
-      </div>
-      <button class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-xl text-sm font-medium transition-all flex items-center gap-2">
-        <i class="fas fa-plus"></i>
-        Ajouter
-      </button>
+  <!-- Header -->
+  <header class="h-16 bg-white/80 backdrop-blur-md border-b border-slate-200/80 flex items-center justify-between px-6 sticky top-0 z-40 shadow-sm">
+    <div class="flex items-center gap-3">
+      <h1 class="text-base font-semibold text-slate-700">Contacts</h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500">Gestion des contacts clients</span>
     </div>
+    
 
-    <div class="divide-y divide-slate-100">
-      <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/50 transition-colors">
-        <div class="flex items-center gap-4">
-          <div class="w-10 h-10 rounded-xl bg-sky-50 flex items-center justify-center">
-            <i class="fas fa-user text-sky-500"></i>
-          </div>
+  </header>
+
+  <!-- Content -->
+  <main class="p-6 max-w-[1400px]">
+    
+    <!-- Export Topbar Notification -->
+    <div x-show="exportNotification.show" x-cloak x-transition:enter="transition ease-out duration-300"
+         x-transition:enter-start="opacity-0 -translate-y-4" x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0"
+         x-transition:leave-end="opacity-0 -translate-y-4"
+         class="fixed top-20 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-md">
+      <div class="bg-slate-900 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <i class="fas fa-file-excel text-sky-400 text-xl"></i>
           <div>
-            <p class="font-medium text-slate-900">Jean Dupont</p>
-            <p class="text-sm text-slate-500">jean@acme.fr • ACME Corp</p>
+            <p class="font-medium">Export en cours...</p>
+            <p class="text-sm text-slate-300">Vous recevrez le fichier par email une fois prêt.</p>
           </div>
         </div>
-        <button class="text-sky-600 hover:text-sky-700 text-sm font-medium">Éditer</button>
+        <button @click="exportNotification.show = false" class="text-slate-400 hover:text-white">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
     </div>
-  </div>
-</main>
+    
+    <!-- Filters -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 mb-6 card-hover">
+      <div class="flex flex-wrap items-center gap-4">
+        
+        <div class="relative flex-1 min-w-[240px] max-w-md">
+          <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            x-model="searchQuery"
+            placeholder="Rechercher un contact..."
+            class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+          >
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <a href="./contacts.html" 
+             class="px-3 py-2 rounded-lg text-sm font-medium transition-all"
+             :class="filterType === 'all' ? 'bg-sky-500 text-white' : 'text-slate-600 hover:bg-slate-100'"
+             @click.prevent="filterType = 'all'"
+          >
+            Tous
+          </a>
+          <a href="./contacts-sans-email.html" 
+             class="px-3 py-2 rounded-lg text-sm font-medium transition-all"
+             :class="filterType === 'sans-email' ? 'bg-sky-500 text-white' : 'text-slate-600 hover:bg-slate-100'"
+             @click.prevent="filterType = 'sans-email'"
+          >
+            <i class="fas fa-exclamation-triangle mr-1.5"></i>Sans email
+          </a>
+          <a href="./contacts-blacklist.html" 
+             class="px-3 py-2 rounded-lg text-sm font-medium transition-all"
+             :class="filterType === 'blacklist' ? 'bg-sky-500 text-white' : 'text-slate-600 hover:bg-slate-100'"
+             @click.prevent="filterType = 'blacklist'"
+          >
+            <i class="fas fa-ban mr-1.5"></i>Blacklist
+          </a>
+        </div>
+        
+        <div class="flex-1"></div>
+        
+        <button 
+          @click="exportData()"
+          class="flex items-center gap-2 px-3 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg text-sm font-medium transition-all"
+        >
+          <i class="fas fa-file-excel"></i>
+          Exporter Excel
+        </button>
+      </div>
+    </div>
+    
+    <!-- Stats -->
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-lg bg-sky-50">
+            <i class="fas fa-users text-sky-500 text-lg"></i>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-slate-900" x-text="stats.total"></p>
+            <p class="text-xs text-slate-500">Contacts</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-lg bg-sky-50">
+            <i class="fas fa-file-invoice-dollar text-sky-500 text-lg"></i>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-slate-900" x-text="stats.avecImpayes"></p>
+            <p class="text-xs text-slate-500">Avec impayés en cours</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-lg bg-sky-50">
+            <i class="fas fa-exclamation-triangle text-sky-500 text-lg"></i>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-slate-900" x-text="stats.sansEmail"></p>
+            <p class="text-xs text-slate-500">Sans email</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-lg bg-sky-50">
+            <i class="fas fa-ban text-sky-500 text-lg"></i>
+          </div>
+          <div>
+            <p class="text-2xl font-bold text-slate-900" x-text="stats.blacklist"></p>
+            <p class="text-xs text-slate-500">Blacklist</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Loading -->
+    <template x-if="loading">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <div class="divide-y divide-slate-100">
+          <template x-for="i in 5" :key="i">
+            <div class="px-6 py-4 animate-pulse flex items-center gap-4">
+              <div class="w-10 h-10 bg-slate-200 rounded-full"></div>
+              <div class="flex-1">
+                <div class="h-4 bg-slate-200 rounded w-1/4 mb-2"></div>
+                <div class="h-3 bg-slate-200 rounded w-1/3"></div>
+              </div>
+              <div class="w-24 h-4 bg-slate-200 rounded"></div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </template>
+    
+    <!-- Empty -->
+    <template x-if="!loading && filteredContacts.length === 0">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm py-16">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-address-book text-slate-400 text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-medium text-slate-900 mb-1">Aucun contact trouvé</h3>
+          <p class="text-sm text-slate-500">Ajoutez un nouveau contact pour commencer</p>
+        </div>
+      </div>
+    </template>
+    
+    <!-- Table -->
+    <template x-if="!loading && filteredContacts.length > 0">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <table class="w-full text-sm text-left">
+          <thead class="bg-slate-50 text-slate-600 font-medium">
+            <tr>
+              <th class="px-6 py-3">Contact</th>
+              <th class="px-6 py-3">Entreprise</th>
+              <th class="px-6 py-3">Email</th>
+              <th class="px-6 py-3">Téléphone</th>
+              <th class="px-6 py-3 cursor-pointer hover:text-slate-900" @click="sortByImpayes()">
+                <div class="flex items-center gap-1">
+                  <span>Impayés actifs</span>
+                  <i class="fas fa-sort text-slate-400 text-xs"></i>
+                </div>
+              </th>
+              <th class="px-6 py-3 cursor-pointer hover:text-slate-900" @click="sortByDateImpaye()">
+                <div class="flex items-center gap-1">
+                  <span>Date impayé</span>
+                  <i class="fas" :class="sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down'" x-show="sortField === 'dateImpaye'"></i>
+                  <i class="fas fa-sort text-slate-400 text-xs" x-show="sortField !== 'dateImpaye'"></i>
+                </div>
+              </th>
+              <th class="px-6 py-3">Statut</th>
+              <th class="px-6 py-3 text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100">
+            <template x-for="contact in paginatedContacts" :key="contact.id">
+              <tr class="hover:bg-slate-50/50 transition-colors">
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-sm" x-text="contact.initials"></div>
+                    <div>
+                      <p class="font-medium text-slate-900" x-text="contact.nom"></p>
+                      <p class="text-xs text-slate-500" x-text="contact.fonction"></p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <p class="font-medium text-slate-900" x-text="contact.entreprise"></p>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <template x-if="contact.email">
+                      <a :href="'mailto:' + contact.email" class="text-slate-600 hover:text-sky-600" x-text="contact.email"></a>
+                    </template>
+                    <template x-if="!contact.email">
+                      <span class="px-2 py-1 bg-sky-100 text-sky-700 text-xs rounded-full">Manquant</span>
+                    </template>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <template x-if="contact.telephone">
+                    <span x-text="contact.telephone"></span>
+                  </template>
+                  <template x-if="!contact.telephone">
+                    <span class="text-slate-400">-</span>
+                  </template>
+                </td>
+                <td class="px-6 py-4">
+                  <div class="flex items-center gap-2">
+                    <span x-show="contact.impayesCount > 0" 
+                          class="px-2.5 py-1 text-sm font-semibold rounded-full"
+                          :class="{
+                            'bg-sky-100 text-sky-700': contact.impayesCount >= 3,
+                            'bg-sky-100 text-sky-700': contact.impayesCount === 2,
+                            'bg-sky-100 text-sky-700': contact.impayesCount === 1
+                          }"
+                          x-text="contact.impayesCount">
+                    </span>
+                    <button 
+                      x-show="contact.impayesCount > 0"
+                      @click="showImpayesDetail(contact)"
+                      class="text-sky-600 hover:text-sky-700 text-xs font-medium flex items-center gap-1"
+                    >
+                      <i class="fas fa-eye"></i> Détails
+                    </button>
+                    <span x-show="contact.impayesCount === 0" class="text-slate-400">-</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4">
+                  <template x-if="contact.dateDernierImpaye">
+                    <span class="text-sm text-slate-600" x-text="formatDate(contact.dateDernierImpaye)"></span>
+                  </template>
+                  <template x-if="!contact.dateDernierImpaye">
+                    <span class="text-slate-400">-</span>
+                  </template>
+                </td>
+                <td class="px-6 py-4">
+                  <span 
+                    class="px-2.5 py-1 text-xs font-medium rounded-full"
+                    :class="{
+                      'bg-sky-100 text-sky-700': contact.statut === 'actif',
+                      'bg-sky-100 text-sky-700': contact.statut === 'blacklist',
+                      'bg-slate-100 text-slate-600': contact.statut === 'inactif'
+                    }"
+                    x-text="getStatutLabel(contact.statut)"
+                  ></span>
+                </td>
+                <td class="px-6 py-4 text-right">
+                  <div class="flex items-center justify-end gap-2">
+                    <button @click="viewContact(contact)" class="p-1.5 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all" title="Voir">
+                      <i class="fas fa-eye"></i>
+                    </button>
+                    <div class="relative" x-data="{ open: false }">
+                      <button @click="open = !open" class="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg transition-all">
+                        <i class="fas fa-ellipsis-v"></i>
+                      </button>
+                      <div x-show="open" @click.outside="open = false" x-cloak
+                           class="absolute right-0 mt-1 w-48 bg-white border border-slate-200 rounded-lg shadow-lg py-1 z-50">
+                        <button @click="toggleBlacklist(contact); open = false" class="w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+                          <i class="fas" :class="contact.statut === 'blacklist' ? 'fa-check-circle' : 'fa-ban'"></i>
+                          <span x-text="contact.statut === 'blacklist' ? 'Retirer blacklist' : 'Blacklister'"></span>
+                        </button>
+                        <a :href="'./impayes.html?contact=' + contact.id" @click="open = false" class="w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+                          <i class="fas fa-file-invoice"></i>
+                          Voir les impayés
+                        </a>
+                        <button @click="openSetEmailForce(contact); open = false" class="w-full px-4 py-2 text-left text-sm text-slate-700 hover:bg-slate-50 flex items-center gap-2">
+                          <i class="fas fa-envelope text-sky-500"></i>
+                          Définir email forcé
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+        
+        <!-- Pagination -->
+        <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-between">
+          <p class="text-sm text-slate-500">
+            Affichage de <span x-text="(currentPage - 1) * itemsPerPage + 1"></span> à <span x-text="Math.min(currentPage * itemsPerPage, filteredContacts.length)"></span> sur <span x-text="filteredContacts.length"></span> contacts
+          </p>
+          <div class="flex items-center gap-2">
+            <button @click="currentPage--" :disabled="currentPage === 1" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50 transition-all">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <template x-for="page in visiblePages" :key="page">
+              <button @click="currentPage = page" class="px-3 py-1.5 rounded-lg text-sm font-medium transition-all" :class="currentPage === page ? 'bg-sky-500 text-white' : 'border border-slate-200 text-slate-600 hover:bg-slate-50'" x-text="page"></button>
+            </template>
+            <button @click="currentPage++" :disabled="currentPage === totalPages" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50 transition-all">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+    
+    <!-- New Contact Form (x-if template) -->
+    <template x-if="showNewContactForm">
+      <div class="mt-6 bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-user-plus text-sky-500"></i>
+            <h3 class="font-semibold text-slate-900">Nouveau contact</h3>
+          </div>
+          <button @click="showNewContactForm = false" class="text-slate-400 hover:text-slate-600">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Prénom *</label>
+            <input type="text" x-model="newContact.prenom" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Nom *</label>
+            <input type="text" x-model="newContact.nom" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Entreprise *</label>
+            <input type="text" x-model="newContact.entreprise" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
+            <input type="email" x-model="newContact.email" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5 flex items-center gap-2">
+              <i class="fas fa-envelope text-sky-500"></i>Email forcé
+              <i class="fas fa-info-circle text-slate-400 cursor-help" title="Cet email sera utilisé à la place de l'email principal lors des envois"></i>
+            </label>
+            <input type="email" x-model="newContact.emailForce" placeholder="Sera utilisé pour les relances..." class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+            <p class="text-xs text-slate-500 mt-1">Cet email se substituera à l'email principal lors de l'envoi des relances</p>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Téléphone</label>
+            <input type="tel" x-model="newContact.telephone" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Fonction</label>
+            <input type="text" x-model="newContact.fonction" placeholder="Ex: Directeur Financier" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+          </div>
+        </div>
+        
+        <div class="flex items-center justify-end gap-2 px-6 py-4 border-t border-slate-100 bg-slate-50">
+          <button @click="showNewContactForm = false" class="px-4 py-2 text-slate-700 hover:bg-slate-200 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="createContact()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">
+            <i class="fas fa-save mr-1.5"></i>Créer
+          </button>
+        </div>
+      </div>
+    </template>
+    
+    
+    <!-- Contact Detail Slideover -->
+    <div x-show="showDetailSlideover" x-cloak class="fixed inset-0 z-50 overflow-hidden" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showDetailSlideover = false"></div>
+      <div class="absolute inset-y-0 right-0 max-w-lg w-full bg-white shadow-xl flex flex-col" x-transition:enter="transform transition ease-in-out duration-300" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transform transition ease-in-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full">
+        
+        <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100">
+          <h3 class="text-lg font-semibold text-slate-900">Détail du contact</h3>
+          <button @click="showDetailSlideover = false" class="text-slate-400 hover:text-slate-600">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto px-6 py-6" x-show="selectedContact">
+          <template x-if="selectedContact">
+            <div class="space-y-6">
+              <div class="flex items-center gap-4">
+                <div class="w-16 h-16 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-xl" x-text="selectedContact.initials"></div>
+                <div>
+                  <h2 class="text-xl font-semibold text-slate-900" x-text="selectedContact.nomComplet"></h2>
+                  <p class="text-sm text-slate-500" x-text="selectedContact.fonction"></p>
+                  <span 
+                    class="inline-flex items-center gap-1 mt-1 px-2 py-0.5 text-xs font-medium rounded-full"
+                    :class="{
+                      'bg-sky-100 text-sky-700': selectedContact.statut === 'actif',
+                      'bg-sky-100 text-sky-700': selectedContact.statut === 'blacklist',
+                      'bg-slate-100 text-slate-600': selectedContact.statut === 'inactif'
+                    }"
+                  >
+                    <i x-show="selectedContact.statut === 'blacklist'" class="fas fa-ban"></i>
+                    <span x-text="getStatutLabel(selectedContact.statut)"></span>
+                  </span>
+                </div>
+              </div>
+              
+              <div class="space-y-4">
+                <div>
+                  <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">Entreprise</p>
+                  <p class="text-sm font-medium text-slate-900" x-text="selectedContact.entreprise"></p>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">Email</p>
+                  <a :href="'mailto:' + selectedContact.email" class="text-sm text-sky-600 hover:underline" x-text="selectedContact.email || 'Non renseigné'"></a>
+                </div>
+                <div x-show="selectedContact.emailForce">
+                  <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1 flex items-center gap-2">
+                    <i class="fas fa-envelope text-sky-500"></i>Email forcé
+                    <span class="px-2 py-0.5 bg-sky-100 text-sky-700 text-xs rounded-full">Actif</span>
+                  </p>
+                  <a :href="'mailto:' + selectedContact.emailForce" class="text-sm text-sky-600 hover:underline font-medium" x-text="selectedContact.emailForce"></a>
+                  <p class="text-xs text-slate-500 mt-1">Cet email est utilisé pour les relances</p>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">Téléphone</p>
+                  <p class="text-sm text-slate-900" x-text="selectedContact.telephone || 'Non renseigné'"></p>
+                </div>
+              </div>
+              
+              <div x-show="selectedContact.impayesCount > 0">
+                <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-2">Impayés (<span x-text="selectedContact.impayesCount"></span>)</p>
+                <div class="space-y-2">
+                  <template x-for="facture in selectedContact.factures" :key="facture.numero">
+                    <div class="flex items-center justify-between p-3 bg-slate-50 rounded-lg">
+                      <span class="text-sm font-medium text-slate-900" x-text="facture.numero"></span>
+                      <span class="text-sm text-slate-600" x-text="formatMoney(facture.montant)"></span>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+        
+        <div class="border-t border-slate-100 px-6 py-4 bg-slate-50 flex items-center justify-between">
+          <button @click="openSetEmailForce(selectedContact)" class="flex items-center gap-2 px-4 py-2 text-sky-600 hover:bg-sky-50 rounded-lg text-sm font-medium transition-colors">
+            <i class="fas fa-envelope"></i>
+            <span x-text="selectedContact?.emailForce ? 'Modifier email forcé' : 'Définir email forcé'"></span>
+          </button>
+          <button @click="showDetailSlideover = false" class="px-4 py-2 text-slate-700 hover:bg-slate-200 rounded-lg text-sm font-medium">Fermer</button>
+        </div>
+      </div>
+    </div>
+  <!-- Impayés Detail Modal -->
+    <div x-show="showImpayesModal" x-cloak class="fixed inset-0 z-50 overflow-hidden" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showImpayesModal = false"></div>
+      <div class="absolute inset-y-0 right-0 max-w-lg w-full bg-white shadow-xl flex flex-col" x-transition:enter="transform transition ease-in-out duration-300" x-transition:enter-start="translate-x-full" x-transition:enter-end="translate-x-0" x-transition:leave="transform transition ease-in-out duration-300" x-transition:leave-start="translate-x-0" x-transition:leave-end="translate-x-full">
+        
+        <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100">
+          <h3 class="text-lg font-semibold text-slate-900">
+            <i class="fas fa-file-invoice-dollar text-sky-500 mr-2"></i>
+            Impayés - <span x-text="selectedContactForImpayes?.nom"></span>
+          </h3>
+          <button @click="showImpayesModal = false" class="text-slate-400 hover:text-slate-600">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="flex-1 overflow-y-auto px-6 py-6" x-show="selectedContactForImpayes">
+          <template x-if="selectedContactForImpayes">
+            <div class="space-y-4">
+              <div class="bg-sky-50 rounded-lg p-4 border border-sky-100">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <p class="text-sm text-sky-600">Total impayés</p>
+                    <p class="text-2xl font-bold text-sky-700" x-text="formatMoney(selectedContactForImpayes.impayesTotal || selectedContactForImpayes.factures?.reduce((s, f) => s + f.montant, 0))"></p>
+                  </div>
+                  <div class="text-right">
+                    <p class="text-sm text-sky-600">Nombre</p>
+                    <p class="text-2xl font-bold text-sky-700" x-text="selectedContactForImpayes.impayesCount"></p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="space-y-3">
+                <p class="text-sm font-medium text-slate-700">Factures impayées</p>
+                <template x-for="facture in selectedContactForImpayes.factures" :key="facture.numero">
+                  <a :href="'./impayes-detail.html?id=' + facture.id" class="block p-4 border border-slate-200 rounded-lg hover:bg-sky-50 hover:border-sky-300 transition-colors">
+                    <div class="flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <i class="fas fa-file-invoice text-slate-400"></i>
+                        <span class="font-medium text-slate-700" x-text="facture.numero"></span>
+                      </div>
+                      <span class="font-semibold text-slate-900" x-text="formatMoney(facture.montant)"></span>
+                    </div>
+                  </a>
+                </template>
+              </div>
+            </div>
+          </template>
+        </div>
+        
+        <div class="border-t border-slate-100 px-6 py-4 bg-slate-50 flex items-center justify-end">
+          <button @click="showImpayesModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-200 rounded-lg text-sm font-medium">Fermer</button>
+        </div>
+      </div>
+    </div>
 
-</body></html>
+    <!-- Set Email Force Modal -->
+    <div x-show="showSetEmailForceModal" x-cloak class="fixed inset-0 z-50 overflow-hidden" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showSetEmailForceModal = false"></div>
+      <div class="absolute inset-0 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-xl max-w-md w-full" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95">
+          
+          <div class="flex items-center justify-between px-6 py-4 border-b border-slate-100">
+            <h3 class="text-lg font-semibold text-slate-900">
+              <i class="fas fa-envelope text-sky-500 mr-2"></i>
+              Définir l'email forcé
+            </h3>
+            <button @click="showSetEmailForceModal = false" class="text-slate-400 hover:text-slate-600">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          
+          <div class="p-6 space-y-6" x-show="selectedContactForEmailForce">
+            <div class="bg-sky-50 rounded-lg p-4 border border-sky-100">
+              <p class="text-sm text-slate-600 mb-1">Contact</p>
+              <p class="font-semibold text-slate-900" x-text="selectedContactForEmailForce?.nomComplet"></p>
+              <p class="text-sm text-slate-500" x-text="selectedContactForEmailForce?.entreprise"></p>
+            </div>
+            
+            <div class="space-y-4">
+              <!-- Option 1: Sélectionner parmi les contacts existants -->
+              <div>
+                <label class="flex items-center gap-3 p-4 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition-colors" :class="{ 'bg-sky-50 border-sky-300': emailForceMode === 'select' }">
+                  <input type="radio" x-model="emailForceMode" value="select" class="w-4 h-4 text-sky-500 focus:ring-sky-500">
+                  <div>
+                    <p class="font-medium text-slate-900">Choisir un contact existant</p>
+                    <p class="text-sm text-slate-500">Rechercher et sélectionner un contact</p>
+                  </div>
+                </label>
+                
+                <div x-show="emailForceMode === 'select'" x-transition class="mt-3 space-y-2">
+                  <!-- Champ de recherche -->
+                  <div class="relative">
+                    <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                    <input 
+                      type="text" 
+                      x-model="emailForceSearchQuery"
+                      @input="searchEmailForceContacts()"
+                      placeholder="Rechercher un contact..."
+                      class="w-full pl-10 pr-4 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+                    >
+                  </div>
+                  
+                  <!-- Résultats de recherche -->
+                  <div x-show="emailForceSearchResults.length > 0" class="max-h-48 overflow-y-auto border border-slate-200 rounded-lg divide-y divide-slate-100">
+                    <template x-for="c in emailForceSearchResults" :key="c.id">
+                      <button 
+                        @click="selectedContactEmail = c.email; emailForceSearchQuery = c.nomComplet + ' (' + c.email + ')'; emailForceSearchResults = []"
+                        class="w-full px-4 py-3 text-left hover:bg-sky-50 flex items-center gap-3"
+                        :class="{ 'bg-sky-50': selectedContactEmail === c.email }"
+                      >
+                        <div class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-xs" x-text="c.initials"></div>
+                        <div class="flex-1 min-w-0">
+                          <p class="font-medium text-slate-900 text-sm truncate" x-text="c.nomComplet"></p>
+                          <p class="text-xs text-slate-500 truncate" x-text="c.entreprise + ' — ' + c.email"></p>
+                        </div>
+                        <i x-show="selectedContactEmail === c.email" class="fas fa-check text-sky-500"></i>
+                      </button>
+                    </template>
+                  </div>
+                  
+                  <!-- Aucun résultat -->
+                  <div x-show="emailForceSearchQuery && emailForceSearchResults.length === 0" class="text-center py-4 text-sm text-slate-500">
+                    Aucun contact trouvé
+                  </div>
+                  
+                  <!-- Contact sélectionné -->
+                  <div x-show="selectedContactEmail && !emailForceSearchQuery" class="p-3 bg-sky-50 border border-sky-200 rounded-lg flex items-center gap-3">
+                    <i class="fas fa-check-circle text-sky-500"></i>
+                    <div class="flex-1">
+                      <p class="text-sm font-medium text-slate-900">Email sélectionné</p>
+                      <p class="text-xs text-sky-700" x-text="selectedContactEmail"></p>
+                    </div>
+                    <button @click="selectedContactEmail = ''; emailForceSearchQuery = ''" class="text-slate-400 hover:text-slate-600">
+                      <i class="fas fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Option 2: Renseigner un email manuellement -->
+              <div>
+                <label class="flex items-center gap-3 p-4 border border-slate-200 rounded-lg cursor-pointer hover:bg-slate-50 transition-colors" :class="{ 'bg-sky-50 border-sky-300': emailForceMode === 'manual' }">
+                  <input type="radio" x-model="emailForceMode" value="manual" class="w-4 h-4 text-sky-500 focus:ring-sky-500">
+                  <div>
+                    <p class="font-medium text-slate-900">Renseigner un email</p>
+                    <p class="text-sm text-slate-500">Saisir une adresse email personnalisée</p>
+                  </div>
+                </label>
+                
+                <div x-show="emailForceMode === 'manual'" x-transition class="mt-3">
+                  <input type="email" x-model="manualEmailForce" placeholder="email@exemple.com" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+                </div>
+              </div>
+              
+              <!-- Option 3: Supprimer l'email forcé -->
+              <div x-show="selectedContactForEmailForce?.emailForce">
+                <label class="flex items-center gap-3 p-4 border border-red-200 rounded-lg cursor-pointer hover:bg-red-50 transition-colors" :class="{ 'bg-red-50 border-red-300': emailForceMode === 'remove' }">
+                  <input type="radio" x-model="emailForceMode" value="remove" class="w-4 h-4 text-red-500 focus:ring-red-500">
+                  <div>
+                    <p class="font-medium text-red-700">Supprimer l'email forcé</p>
+                    <p class="text-sm text-red-500">Revenir à l'email principal du contact</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+          <div class="border-t border-slate-100 px-6 py-4 bg-slate-50 flex items-center justify-end gap-3">
+            <button @click="showSetEmailForceModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-200 rounded-lg text-sm font-medium">Annuler</button>
+            <button @click="saveEmailForce()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">
+              <i class="fas fa-save mr-1.5"></i>Enregistrer
+            </button>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+function contactsPage() {
+  return {
+    loading: false,
+    searchQuery: '',
+    filterType: 'all',
+    showNewContactForm: false,
+    showDetailSlideover: false,
+    showImpayesModal: false,
+    showSetEmailForceModal: false,
+    selectedContact: null,
+    selectedContactForImpayes: null,
+    selectedContactForEmailForce: null,
+    emailForceMode: 'select',
+    selectedContactEmail: '',
+    manualEmailForce: '',
+    emailForceSearchQuery: '',
+    emailForceSearchResults: [],
+    currentPage: 1,
+    itemsPerPage: 10,
+    sortField: 'dateImpaye',
+    sortDirection: 'desc',
+    newContact: { prenom: '', nom: '', entreprise: '', email: '', emailForce: '', telephone: '', fonction: '' },
+    
+    exportNotification: { show: false },
+    
+    stats: { total: 156, avecImpayes: 42, sansEmail: 5, blacklist: 3 },
+    
+    contacts: [
+      { id: 1, prenom: 'Jean', nom: 'Dupont', nomComplet: 'Jean Dupont', initials: 'JD', entreprise: 'ACME Corp', email: 'jean.dupont@acme.fr', emailForce: 'finance@acme.fr', telephone: '01 23 45 67 89', fonction: 'Directeur Financier', statut: 'actif', impayesCount: 3, dateDernierImpaye: '2024-01-15', factures: [{ numero: 'FAC-2024-001', montant: 12500 }, { numero: 'FAC-2024-015', montant: 8900 }, { numero: 'FAC-2024-023', montant: 12300 }] },
+      { id: 2, prenom: 'Marie', nom: 'Martin', nomComplet: 'Marie Martin', initials: 'MM', entreprise: 'TechStart SARL', email: 'marie.martin@techstart.fr', emailForce: '', telephone: '01 98 76 54 32', fonction: 'Responsable Comptable', statut: 'actif', impayesCount: 2, dateDernierImpaye: '2024-01-10', factures: [{ numero: 'FAC-2024-002', montant: 8750 }, { numero: 'FAC-2024-018', montant: 5600 }] },
+      { id: 3, prenom: 'Pierre', nom: 'Durand', nomComplet: 'Pierre Durand', initials: 'PD', entreprise: 'BuildPlus SA', email: 'pierre.durand@buildplus.fr', telephone: '', fonction: 'DG', statut: 'actif', impayesCount: 1, dateDernierImpaye: '2024-01-08', factures: [{ numero: 'FAC-2024-003', montant: 23400 }] },
+      { id: 4, prenom: 'Sophie', nom: 'Bernard', nomComplet: 'Sophie Bernard', initials: 'SB', entreprise: 'Digital Agency', email: '', telephone: '06 12 34 56 78', fonction: 'Comptable', statut: 'actif', impayesCount: 0, dateDernierImpaye: null, factures: [] },
+      { id: 5, prenom: 'Lucas', nom: 'Petit', nomComplet: 'Lucas Petit', initials: 'LP', entreprise: 'Consulting Pro', email: 'lucas@consultingpro.fr', telephone: '01 45 67 89 01', fonction: 'CEO', statut: 'blacklist', impayesCount: 1, dateDernierImpaye: '2023-12-20', factures: [{ numero: 'FAC-2023-089', montant: 12000 }] },
+      { id: 6, prenom: 'Emma', nom: 'Moreau', nomComplet: 'Emma Moreau', initials: 'EM', entreprise: 'Startup XYZ', email: 'emma@startupxyz.fr', telephone: '07 23 45 67 89', fonction: 'CFO', statut: 'actif', impayesCount: 0, dateDernierImpaye: null, factures: [] },
+      { id: 7, prenom: 'Thomas', nom: 'Robert', nomComplet: 'Thomas Robert', initials: 'TR', entreprise: 'Entreprise ABC', email: 'thomas@abc.fr', telephone: '01 34 56 78 90', fonction: 'Comptable', statut: 'actif', impayesCount: 0, dateDernierImpaye: null, factures: [] },
+      { id: 8, prenom: 'Julie', nom: 'Richard', nomComplet: 'Julie Richard', initials: 'JR', entreprise: 'Société DEF', email: 'julie@def.fr', telephone: '', fonction: 'DAF', statut: 'inactif', impayesCount: 0, dateDernierImpaye: null, factures: [] },
+      { id: 9, prenom: 'Nicolas', nom: 'Garcia', nomComplet: 'Nicolas Garcia', initials: 'NG', entreprise: 'Groupe GHI', email: 'nicolas@ghi.fr', telephone: '06 45 67 89 01', fonction: 'Trésorier', statut: 'actif', impayesCount: 0, dateDernierImpaye: null, factures: [] },
+      { id: 10, prenom: 'Camille', nom: 'Roux', nomComplet: 'Camille Roux', initials: 'CR', entreprise: 'Entreprise JKL', email: '', telephone: '01 56 78 90 12', fonction: 'Responsable Paie', statut: 'actif', impayesCount: 0, dateDernierImpaye: null, factures: [] }
+    ],
+    
+    get filteredContacts() {
+      let result = this.contacts.filter(c => {
+        const matchesSearch = !this.searchQuery || 
+          c.nom.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          c.prenom.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          c.entreprise.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          (c.email && c.email.toLowerCase().includes(this.searchQuery.toLowerCase()));
+        
+        const matchesFilter = this.filterType === 'all' ? true :
+          this.filterType === 'sans-email' ? !c.email || c.email === '' :
+          this.filterType === 'blacklist' ? c.statut === 'blacklist' : true;
+        
+        return matchesSearch && matchesFilter;
+      });
+      
+      if (this.sortField === 'dateImpaye') {
+        result.sort((a, b) => {
+          const dateA = a.dateDernierImpaye ? new Date(a.dateDernierImpaye) : new Date(0);
+          const dateB = b.dateDernierImpaye ? new Date(b.dateDernierImpaye) : new Date(0);
+          return this.sortDirection === 'asc' ? dateA - dateB : dateB - dateA;
+        });
+      } else if (this.sortField === 'impayesCount') {
+        result.sort((a, b) => {
+          return this.sortDirection === 'asc' ? a.impayesCount - b.impayesCount : b.impayesCount - a.impayesCount;
+        });
+      }
+      
+      return result;
+    },
+    
+    get paginatedContacts() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      return this.filteredContacts.slice(start, start + this.itemsPerPage);
+    },
+    
+    get totalPages() {
+      return Math.ceil(this.filteredContacts.length / this.itemsPerPage);
+    },
+    
+    get visiblePages() {
+      const pages = [];
+      const maxVisible = 5;
+      let start = Math.max(1, this.currentPage - Math.floor(maxVisible / 2));
+      let end = Math.min(this.totalPages, start + maxVisible - 1);
+      if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
+      for (let i = start; i <= end; i++) pages.push(i);
+      return pages;
+    },
+    
+    init() {
+      this.loadData();
+    },
+    
+    async loadData() {
+      this.loading = true;
+      await new Promise(r => setTimeout(r, 500));
+      this.loading = false;
+    },
+    
+    viewContact(contact) {
+      this.selectedContact = contact;
+      this.showDetailSlideover = true;
+    },
+    
+    showImpayesDetail(contact) {
+      this.selectedContactForImpayes = contact;
+      this.showImpayesModal = true;
+    },
+    
+    openSetEmailForce(contact) {
+      this.selectedContactForEmailForce = contact;
+      this.emailForceMode = contact.emailForce ? 'remove' : 'select';
+      this.selectedContactEmail = '';
+      this.manualEmailForce = '';
+      this.emailForceSearchQuery = '';
+      this.emailForceSearchResults = [];
+      this.showSetEmailForceModal = true;
+    },
+    
+    searchEmailForceContacts() {
+      const query = this.emailForceSearchQuery.toLowerCase().trim();
+      if (!query) {
+        this.emailForceSearchResults = [];
+        return;
+      }
+      
+      this.emailForceSearchResults = this.contacts
+        .filter(c => c.id !== this.selectedContactForEmailForce?.id && c.email)
+        .filter(c => 
+          c.nomComplet.toLowerCase().includes(query) ||
+          c.email.toLowerCase().includes(query) ||
+          c.entreprise.toLowerCase().includes(query)
+        )
+        .slice(0, 10);
+    },
+    
+    saveEmailForce() {
+      if (!this.selectedContactForEmailForce) return;
+      
+      if (this.emailForceMode === 'remove') {
+        this.selectedContactForEmailForce.emailForce = '';
+      } else if (this.emailForceMode === 'select' && this.selectedContactEmail) {
+        this.selectedContactForEmailForce.emailForce = this.selectedContactEmail;
+      } else if (this.emailForceMode === 'manual' && this.manualEmailForce) {
+        this.selectedContactForEmailForce.emailForce = this.manualEmailForce;
+      }
+      
+      // Mettre à jour le selectedContact si on est dans le détail
+      if (this.selectedContact && this.selectedContact.id === this.selectedContactForEmailForce.id) {
+        this.selectedContact = { ...this.selectedContactForEmailForce };
+      }
+      
+      this.showSetEmailForceModal = false;
+      this.selectedContactForEmailForce = null;
+    },
+    
+    sortByImpayes() {
+      this.sortField = 'impayesCount';
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    },
+    
+    sortByDateImpaye() {
+      this.sortField = 'dateImpaye';
+      this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+    },
+    
+    toggleBlacklist(contact) {
+      contact.statut = contact.statut === 'blacklist' ? 'actif' : 'blacklist';
+      this.stats.blacklist += contact.statut === 'blacklist' ? 1 : -1;
+    },
+    
+    createContact() {
+      const newId = Math.max(...this.contacts.map(c => c.id)) + 1;
+      const initials = (this.newContact.prenom[0] + this.newContact.nom[0]).toUpperCase();
+      const contact = {
+        ...this.newContact,
+        id: newId,
+        nomComplet: this.newContact.prenom + ' ' + this.newContact.nom,
+        initials: initials,
+        statut: 'actif',
+        impayesCount: 0,
+        dateDernierImpaye: null,
+        factures: []
+      };
+      this.contacts.unshift(contact);
+      this.stats.total++;
+      if (!contact.email) this.stats.sansEmail++;
+      this.newContact = { prenom: '', nom: '', entreprise: '', email: '', telephone: '', fonction: '' };
+      this.showNewContactForm = false;
+    },
+    
+    exportData() {
+      this.exportNotification.show = true;
+      setTimeout(() => {
+        this.exportNotification.show = false;
+      }, 5000);
+    },
+    
+    getStatutLabel(statut) {
+      const labels = { 'actif': 'Actif', 'inactif': 'Inactif', 'blacklist': 'Blacklist' };
+      return labels[statut] || statut;
+    },
+    
+    formatDate(dateStr) {
+      if (!dateStr) return '-';
+      const date = new Date(dateStr);
+      return new Intl.DateTimeFormat('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' }).format(date);
+    },
+    
+    formatMoney(amount) {
+      return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount);
+    }
+  }
+}
+</script>
+
+</body>
+</html>

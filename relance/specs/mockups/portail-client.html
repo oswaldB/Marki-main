@@ -1,42 +1,352 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portail Client | Marki</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="./components/sidebar-nav.js"></script>
-  <style>html { font-family: 'Inter', sans-serif; } body { margin: 0; background: #fafafa; }</style>
-</head><body>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body x-data="portailClientPage()" x-init="init()">
 
-<sidebar-nav page="portail-client"></sidebar-nav>
-
-<main style="margin-left: 260px; padding: 32px; min-height: 100vh;">
-  <div style="margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #e5e5e5;">
-    <h1 style="margin: 0 0 8px 0; font-size: 28px; font-weight: 600; color: #0f172a; letter-spacing: -0.5px;">Portail Client</h1>
-    <p style="margin: 0; color: #64748b; font-size: 15px;">Espace client</p>
-    <span style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 6px 12px; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 13px; font-family: monospace; color: #475569;">↗ /portail/client</span>
-  </div>
-
-  <div class="space-y-6">
-    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-      <p class="text-sm font-medium text-slate-500">Solde total</p>
-      <p class="text-3xl font-semibold text-slate-900 tracking-tight mt-2">12 500 €</p>
+<!-- Token Invalid View -->
+<template x-if="!tokenValid">
+  <div class="min-h-screen bg-slate-50 flex items-center justify-center">
+    <div class="text-center max-w-md px-6">
+      <div class="w-20 h-20 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-6">
+        <i class="fas fa-key text-sky-500 text-3xl"></i>
+      </div>
+      <h1 class="text-2xl font-bold text-slate-900 mb-2">Token invalide</h1>
+      <p class="text-slate-500 mb-6">Le lien d'accès a expiré ou n'est pas valide. Veuillez contacter votre fournisseur pour recevoir un nouveau lien.</p>
+      <a href="./login.html" class="inline-flex items-center gap-2 px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white rounded-lg font-medium">
+        <i class="fas fa-sign-in-alt"></i>
+        Se connecter
+      </a>
     </div>
+  </div>
+</template>
+
+<!-- Main Portail (when token valid) -->
+<template x-if="tokenValid">
+  <div class="min-h-screen bg-slate-50">
     
-    <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-      <h3 class="font-semibold text-slate-900 mb-4">Vos factures</h3>
-      <div class="flex items-center justify-between p-4 border border-slate-100 rounded-xl hover:bg-slate-50/50 transition-colors">
-        <div>
-          <p class="font-medium text-slate-900">FAC-2024-001</p>
-          <p class="text-sm text-slate-500">15/01/2024</p>
+    <!-- Header -->
+    <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+      <div class="flex items-center gap-3">
+        <img src="./marki-logo.png" alt="Marki" class="h-8">
+        <span class="text-slate-400">|</span>
+        <h1 class="text-base font-semibold text-slate-700" x-text="client?.nom"></h1>
+      </div>
+      
+      <div class="flex items-center gap-4">
+        <span class="text-sm text-slate-500" x-text="client?.email"></span>
+        <button @click="logout()" class="text-slate-400 hover:text-slate-600">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+    </header>
+
+    <main class="p-6 max-w-6xl mx-auto">
+      
+      <!-- Stats -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+          <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-sky-50">
+              <i class="fas fa-file-invoice text-sky-500"></i>
+            </div>
+            <div>
+              <p class="text-2xl font-bold text-slate-900" x-text="stats.totalFactures"></p>
+              <p class="text-xs text-slate-500">Factures</p>
+            </div>
+          </div>
         </div>
-        <div class="text-right">
-          <p class="font-medium text-slate-900">12 500 €</p>
-          <p class="text-sm text-amber-600">En attente</p>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+          <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-sky-50">
+              <i class="fas fa-clock text-sky-500"></i>
+            </div>
+            <div>
+              <p class="text-2xl font-bold text-slate-900" x-text="formatMoney(stats.totalImpayes)"></p>
+              <p class="text-xs text-slate-500">En attente</p>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+          <div class="flex items-center gap-3">
+            <div class="p-2 rounded-lg bg-sky-50">
+              <i class="fas fa-briefcase text-sky-500"></i>
+            </div>
+            <div>
+              <p class="text-2xl font-bold text-slate-900" x-text="stats.missions"></p>
+              <p class="text-xs text-slate-500">Missions</p>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+      
+      <!-- Tabs -->
+      <div class="border-b border-slate-200 mb-6">
+        <nav class="flex gap-6">
+          <button 
+            @click="activeTab = 'factures'"
+            :class="activeTab === 'factures' ? 'text-sky-600 border-b-2 border-sky-500' : 'text-slate-500 hover:text-slate-700'"
+            class="pb-3 text-sm font-medium transition-colors"
+          >
+            <i class="fas fa-file-invoice mr-1.5"></i>Mes factures
+          </button>
+          <button 
+            @click="activeTab = 'apporteur'"
+            :class="activeTab === 'apporteur' ? 'text-sky-600 border-b-2 border-sky-500' : 'text-slate-500 hover:text-slate-700'"
+            class="pb-3 text-sm font-medium transition-colors"
+          >
+            <i class="fas fa-handshake mr-1.5"></i>Apporteur d'affaires
+          </button>
+          <button 
+            @click="activeTab = 'missions'"
+            :class="activeTab === 'missions' ? 'text-sky-600 border-b-2 border-sky-500' : 'text-slate-500 hover:text-slate-700'"
+            class="pb-3 text-sm font-medium transition-colors"
+          >
+            <i class="fas fa-briefcase mr-1.5"></i>Missions
+          </button>
+        </nav>
+      </div>
+      
+      <!-- Factures Tab -->
+      <template x-if="activeTab === 'factures'">
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+          <table class="w-full text-sm text-left">
+            <thead class="bg-slate-50 text-slate-600 font-medium">
+              <tr>
+                <th class="px-4 py-3">N° Facture</th>
+                <th class="px-4 py-3">N° Dossier</th>
+                <th class="px-4 py-3">Missions</th>
+                <th class="px-4 py-3">Date</th>
+                <th class="px-4 py-3">Échéance</th>
+                <th class="px-4 py-3">Jours</th>
+                <th class="px-4 py-3">Bien</th>
+                <th class="px-4 py-3">Intervention</th>
+                <th class="px-4 py-3 text-right">Montant</th>
+                <th class="px-4 py-3">Statut</th>
+                <th class="px-4 py-3 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+              <template x-for="facture in clientFactures" :key="facture.id">
+                <tr class="hover:bg-slate-50/50">
+                  <td class="px-4 py-4 font-medium text-slate-900" x-text="facture.numero"></td>
+                  <td class="px-4 py-4 font-mono text-xs text-slate-600" x-text="facture.numeroDossier || '-'"></td>
+                  <td class="px-4 py-4">
+                    <div class="flex flex-wrap gap-1">
+                      <template x-for="mission in facture.missions" :key="mission">
+                        <span class="px-2 py-0.5 text-xs bg-slate-100 text-slate-600 rounded" x-text="mission"></span>
+                      </template>
+                    </div>
+                  </td>
+                  <td class="px-4 py-4 text-slate-600" x-text="facture.date"></td>
+                  <td class="px-4 py-4" x-text="facture.echeance"></td>
+                  <td class="px-4 py-4">
+                    <span :class="facture.joursRetard > 0 ? 'text-sky-600 font-medium' : 'text-slate-500'" x-text="facture.joursDepuisEcheance + 'j'"></span>
+                  </td>
+                  <td class="px-4 py-4 text-xs text-slate-600 max-w-[150px] truncate" x-text="facture.adresseBien || '-'"></td>
+                  <td class="px-4 py-4 text-xs text-slate-600" x-text="facture.dateIntervention || '-'"></td>
+                  <td class="px-4 py-4 text-right font-medium" x-text="formatMoney(facture.montant)"></td>
+                  <td class="px-4 py-4">
+                    <span class="px-2.5 py-1 text-xs font-medium rounded-full"
+                      :class="facture.statut === 'payee' ? 'bg-sky-100 text-sky-700' : 'bg-sky-100 text-sky-700'"
+                      x-text="facture.statut === 'payee' ? 'Payée' : 'En attente'"
+                    ></span>
+                  </td>
+                  <td class="px-4 py-4 text-right">
+                    <div class="flex items-center justify-end gap-2">
+                      <button @click="reglerFacture(facture)" x-show="facture.statut !== 'payee'" class="px-3 py-1.5 bg-sky-500 hover:bg-sky-600 text-white text-xs rounded-lg">
+                        Régler
+                      </button>
+                      <button @click="downloadFacture(facture)" class="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg" title="Télécharger">
+                        <i class="fas fa-download"></i>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+      </template>
+      
+      <!-- Apporteur Tab -->
+      <template x-if="activeTab === 'apporteur'">
+        <div>
+          <p class="text-slate-600 mb-4">Factures pour lesquelles vous êtes apporteur d'affaires :</p>
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <table class="w-full text-sm text-left">
+              <thead class="bg-slate-50 text-slate-600 font-medium">
+                <tr>
+                  <th class="px-6 py-3">Client final</th>
+                  <th class="px-6 py-3">N° Facture</th>
+                  <th class="px-6 py-3">Date</th>
+                  <th class="px-6 py-3 text-right">Montant</th>
+                  <th class="px-6 py-3">Statut</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <template x-for="facture in facturesApporteur" :key="facture.id">
+                  <tr class="hover:bg-slate-50/50">
+                    <td class="px-6 py-4 font-medium text-slate-900" x-text="facture.clientFinal"></td>
+                    <td class="px-6 py-4" x-text="facture.numero"></td>
+                    <td class="px-6 py-4" x-text="facture.date"></td>
+                    <td class="px-6 py-4 text-right" x-text="formatMoney(facture.montant)"></td>
+                    <td class="px-6 py-4">
+                      <span class="px-2.5 py-1 text-xs font-medium rounded-full"
+                        :class="facture.statut === 'payee' ? 'bg-sky-100 text-sky-700' : 'bg-sky-100 text-sky-700'"
+                        x-text="facture.statut === 'payee' ? 'Payée' : 'En attente'"
+                      ></span>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </template>
+      
+      <!-- Missions Tab -->
+      <template x-if="activeTab === 'missions'">
+        <div class="space-y-4">
+          <template x-for="mission in missions" :key="mission.id">
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+              <div class="flex items-start justify-between">
+                <div>
+                  <h3 class="font-semibold text-slate-900" x-text="mission.nom"></h3>
+                  <p class="text-sm text-slate-500 mt-1" x-text="mission.description"></p>
+                  <div class="flex items-center gap-4 mt-3 text-sm text-slate-600">
+                    <span><i class="fas fa-calendar mr-1"></i><span x-text="mission.dateDebut + ' - ' + mission.dateFin"></span></span>
+                    <span><i class="fas fa-euro-sign mr-1"></i><span x-text="formatMoney(mission.montant)"></span></span>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button @click="downloadRapport(mission)" class="flex items-center gap-2 px-3 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm">
+                    <i class="fas fa-file-alt"></i>Rapport
+                  </button>
+                  <button @click="downloadFactureMission(mission)" class="flex items-center gap-2 px-3 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm">
+                    <i class="fas fa-file-invoice"></i>Facture
+                  </button>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </template>
+      
+      <div class="bg-white border-t border-slate-200 py-6 mt-12">
+        <div class="max-w-6xl mx-auto px-6 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <img src="./marki-logo.png" alt="Marki" class="h-6">
+            <span class="text-sm text-slate-500">Propulsé par Marki</span>
+          </div>
+          <p class="text-xs text-slate-400">© 2024 Marki - Tous droits réservés</p>
+        </div>
+      </div>
+    </main>
   </div>
-</main>
+</template>
 
-</body></html>
+<script>
+function portailClientPage() {
+  return {
+    toast: { show: false, type: 'success', title: '', message: '' },
+    tokenValid: true,
+    activeTab: 'factures',
+    
+    client: {
+      id: 1,
+      nom: 'ACME Corp',
+      email: 'contact@acme.fr'
+    },
+    
+    stats: {
+      totalFactures: 12,
+      totalImpayes: 45230,
+      missions: 3
+    },
+    
+    clientFactures: [
+      { id: 1, numero: 'FAC-2024-001', numeroDossier: 'D-2024-045', missions: ['Diag amiante', 'DPE'], date: '15/01/2024', echeance: '15/02/2024', joursDepuisEcheance: 45, adresseBien: '12 Rue de la Paix, 75002 Paris', dateIntervention: '10/01/2024', montant: 12500, statut: 'impayee' },
+      { id: 2, numero: 'FAC-2024-015', numeroDossier: 'D-2024-078', missions: ['Audit énergétique'], date: '10/02/2024', echeance: '10/03/2024', joursDepuisEcheance: 15, adresseBien: '25 Avenue Victor Hugo, 75016 Paris', dateIntervention: '05/02/2024', montant: 8900, statut: 'impayee' },
+      { id: 3, numero: 'FAC-2024-023', numeroDossier: 'D-2024-089', missions: ['Termites', 'DPE'], date: '05/03/2024', echeance: '05/04/2024', joursDepuisEcheance: -15, adresseBien: '8 Boulevard Haussmann, 75009 Paris', dateIntervention: '01/03/2024', montant: 12300, statut: 'impayee' },
+      { id: 4, numero: 'FAC-2023-089', numeroDossier: 'D-2023-156', missions: ['Diagnostic complet'], date: '20/11/2023', echeance: '20/12/2023', joursDepuisEcheance: 120, adresseBien: '42 Rue de Rivoli, 75001 Paris', dateIntervention: '15/11/2023', montant: 9500, statut: 'payee' },
+    ],
+    
+    facturesApporteur: [
+      { id: 5, clientFinal: 'Startup XYZ', numero: 'FAC-2024-050', date: '01/03/2024', montant: 15000, statut: 'payee' },
+      { id: 6, clientFinal: 'BuildPlus SA', numero: 'FAC-2024-055', date: '10/03/2024', montant: 22000, statut: 'impayee' },
+    ],
+    
+    missions: [
+      { id: 1, nom: 'Audit comptable 2024', description: 'Mission d\'audit annuel des comptes', dateDebut: '01/01/2024', dateFin: '31/03/2024', montant: 15000 },
+      { id: 2, nom: 'Conseil fiscal', description: 'Optimisation fiscale Q1 2024', dateDebut: '15/01/2024', dateFin: '15/02/2024', montant: 5000 },
+    ],
+    
+    init() {
+      // Check token validity from URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const token = urlParams.get('token');
+      
+      // Simulate token check
+      if (window.location.search.includes('invalid=true') || !token) {
+        // For demo: check if explicitely set to invalid
+        if (window.location.search.includes('invalid=true')) {
+          this.tokenValid = false;
+        }
+      }
+    },
+    
+    logout() {
+      this.showToast('Info', 'Déconnexion...', 'success');
+      window.location.href = './login.html';
+    },
+    
+    reglerFacture(facture) {
+      this.showToast('Info', 'Redirection vers la page de paiement pour ' + facture.numero, 'success');
+    },
+    
+    downloadFacture(facture) {
+      this.showToast('Info', 'Téléchargement facture ' + facture.numero, 'success');
+    },
+    
+    downloadRapport(mission) {
+      this.showToast('Info', 'Téléchargement rapport mission ' + mission.nom, 'success');
+    },
+    
+    downloadFactureMission(mission) {
+      this.showToast('Info', 'Téléchargement facture mission ' + mission.nom, 'success');
+    },
+    
+    formatMoney(amount) {
+      return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount);
+    },
+    
+    showToast(title, message, type = 'success') {
+      this.toast = { show: true, title, message, type };
+      setTimeout(() => this.toast.show = false, 3000);
+    }
+  }
+}
+</script>
+
+
+    <!-- Toast Notification -->
+    <div x-show="toast.show" x-transition class="fixed bottom-4 right-4 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50">
+      <i :class="toast.type === 'success' ? 'fa-check-circle text-green-400' : 'fa-exclamation-circle text-red-400'" class="fas"></i>
+      <div>
+        <p class="font-medium text-sm" x-text="toast.title"></p>
+        <p class="text-xs text-slate-300" x-text="toast.message"></p>
+      </div>
+    </div>
+</body>
+</html>

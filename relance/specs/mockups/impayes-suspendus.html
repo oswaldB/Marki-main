@@ -1,25 +1,220 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Impayes suspendus | Marki</title>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impayés suspendus | Marki</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="./components/sidebar-nav.js"></script>
-  <style>html { font-family: 'Inter', sans-serif; } body { margin: 0; background: #fafafa; }</style>
-</head><body>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body x-data="impayesSuspendusPage()" x-init="init()">
 
-<sidebar-nav page="impayes-suspendus"></sidebar-nav>
+<sidebar-nav-dual page="impayes-suspendus"></sidebar-nav-dual>
 
-<main style="margin-left: 260px; padding: 32px; min-height: 100vh;">
-  <div style="margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #e5e5e5;">
-    <h1 style="margin: 0 0 8px 0; font-size: 28px; font-weight: 600; color: #0f172a; letter-spacing: -0.5px;">Impayes suspendus</h1>
-    <p style="margin: 0; color: #64748b; font-size: 15px;">Page impayes-suspendus</p>
-    <span style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 6px 12px; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 13px; font-family: monospace; color: #475569;">↗ /impayes-suspendus</span>
-  </div>
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <h1 class="text-base font-semibold text-slate-700">Impayés suspendus</h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500">Factures en blacklist</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-full" x-text="impayes.length + ' impayés'"></span>
+    </div>
+  </header>
 
-  <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
-    <p class="text-slate-600">Contenu de la page impayes-suspendus...</p>
-  </div>
-</main>
+  <main class="p-6">
+    
+    <!-- Filters -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 mb-6">
+      <div class="flex flex-wrap items-center gap-4">
+        <div class="relative flex-1 min-w-[240px] max-w-md">
+          <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            x-model="searchQuery"
+            placeholder="Rechercher une facture ou un payeur..."
+            class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+          >
+        </div>
+        
+        <select x-model="filterMotif" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          <option value="">Tous les motifs</option>
+          <option value="litige">Litige en cours</option>
+          <option value="erreur">Erreur de facturation</option>
+          <option value="demande">Demande client</option>
+          <option value="contentieux">Contentieux</option>
+        </select>
+        
+        <div class="flex-1"></div>
+      </div>
+    </div>
+    
+    <!-- Liste des impayés suspendus -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+      <!-- Header -->
+      <div class="bg-slate-50 border-b border-slate-200 px-6 py-4">
+        <div class="flex items-center gap-2">
+          <i class="fas fa-ban text-slate-400"></i>
+          <span class="text-sm font-semibold text-slate-700">Impayés suspendus par blacklist</span>
+        </div>
+        <p class="text-xs text-slate-500 mt-1">Ces factures sont en statut "suspendue" car le payeur est en blacklist. Les relances automatiques sont désactivées.</p>
+      </div>
+      
+      <!-- Empty state -->
+      <div x-show="filteredImpayes.length === 0" class="py-16 text-center">
+        <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-check-circle text-slate-400 text-2xl"></i>
+        </div>
+        <h3 class="text-sm font-medium text-slate-900">Aucun impayé suspendu</h3>
+        <p class="text-sm text-slate-500 mt-1">Toutes les factures sont actives ou en cours de relance.</p>
+      </div>
+      
+      <!-- Liste -->
+      <div x-show="filteredImpayes.length > 0" class="divide-y divide-slate-100">
+        <template x-for="impaye in filteredImpayes" :key="impaye.id">
+          <div class="px-6 py-4 hover:bg-slate-50/50 transition-colors">
+            <div class="flex items-start justify-between gap-4">
+              <!-- Gauche: Info impayé -->
+              <div class="flex items-start gap-4 flex-1">
+                <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 flex-shrink-0">
+                  <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <h3 class="text-sm font-medium text-slate-900 font-mono" x-text="impaye.numero"></h3>
+                    <span class="px-1.5 py-0.5 bg-sky-100 text-sky-700 text-[10px] font-medium rounded" x-text="impaye.statutLabel"></span>
+                  </div>
+                  <p class="text-sm text-slate-700 mt-0.5" x-text="impaye.payeur"></p>
+                  <p class="text-xs text-slate-500 mt-0.5" x-text="impaye.email"></p>
+                  <div class="flex items-center gap-4 mt-2 text-xs text-slate-400">
+                    <span><i class="far fa-calendar mr-1"></i>Échéance: <span x-text="impaye.echeance"></span></span>
+                    <span><i class="fas fa-euro-sign mr-1"></i><span x-text="impaye.montant"></span></span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Droite: Motif blacklist + Actions -->
+              <div class="flex items-center gap-4">
+                <div class="text-right">
+                  <span class="px-2 py-1 bg-slate-800 text-white text-xs font-medium rounded" x-text="impaye.blacklistMotif"></span>
+                  <p class="text-xs text-slate-500 mt-1" x-text="impaye.blacklistDate"></p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <button 
+                    @click="reactiverImpaye(impaye)"
+                    class="flex items-center gap-1.5 px-3 py-1.5 bg-sky-50 text-sky-700 hover:bg-sky-100 rounded-lg text-xs font-medium transition-colors"
+                    title="Réactiver l'impayé"
+                  >
+                    <i class="fas fa-undo"></i>
+                    Réactiver
+                  </button>
+                  <a :href="'./impayes-detail.html?id=' + impaye.id" class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg" title="Voir le détail">
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+    
+  </main>
+</div>
 
-</body></html>
+<script>
+function impayesSuspendusPage() {
+  return {
+    toast: { show: false, type: 'success', title: '', message: '' },
+    searchQuery: '',
+    filterMotif: '',
+    impayes: [],
+    
+    init() {
+      // Données de test
+      this.impayes = [
+        {
+          id: 'imp-001',
+          numero: 'FAC-2024-045',
+          statutLabel: 'Suspendue',
+          payeur: 'Consulting Pro',
+          email: 'boss@consulting.fr',
+          echeance: '15/06/2024',
+          montant: '12 500,00 €',
+          blacklistMotif: 'Litige en cours',
+          blacklistDate: 'Blacklisté le 10/06/2024'
+        },
+        {
+          id: 'imp-002',
+          numero: 'FAC-2024-032',
+          statutLabel: 'Suspendue',
+          payeur: 'Alpha Services',
+          email: 'contact@alphaservices.fr',
+          echeance: '20/05/2024',
+          montant: '8 750,00 €',
+          blacklistMotif: 'Erreur de facturation',
+          blacklistDate: 'Blacklisté le 05/05/2024'
+        },
+        {
+          id: 'imp-003',
+          numero: 'FAC-2024-028',
+          statutLabel: 'Suspendue',
+          payeur: 'Beta Corporation',
+          email: 'accounting@betacorp.com',
+          echeance: '18/05/2024',
+          montant: '23 400,00 €',
+          blacklistMotif: 'Demande client',
+          blacklistDate: 'Blacklisté le 12/05/2024'
+        }
+      ];
+    },
+    
+    get filteredImpayes() {
+      return this.impayes.filter(i => {
+        const matchesSearch = !this.searchQuery || 
+          i.numero.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          i.payeur.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          i.email.toLowerCase().includes(this.searchQuery.toLowerCase());
+        
+        const matchesMotif = !this.filterMotif || i.blacklistMotif.toLowerCase().includes(this.filterMotif);
+        
+        return matchesSearch && matchesMotif;
+      });
+    },
+    
+    reactiverImpaye(impaye) {
+      if (confirm('Voulez-vous réactiver cet impayé ? Le contact sera retiré de la blacklist.')) {
+        // Retirer de la liste locale
+        this.impayes = this.impayes.filter(i => i.id !== impaye.id);
+        // TODO: Appel API pour réactiver
+        this.showToast('Succès', 'Impayé réactivé avec succès', 'success');
+      }
+    },
+    
+    showToast(title, message, type = 'success') {
+      this.toast = { show: true, title, message, type };
+      setTimeout(() => this.toast.show = false, 3000);
+    }
+  };
+}
+</script>
+
+
+    <!-- Toast Notification -->
+    <div x-show="toast.show" x-transition class="fixed bottom-4 right-4 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50">
+      <i :class="toast.type === 'success' ? 'fa-check-circle text-green-400' : 'fa-exclamation-circle text-red-400'" class="fas"></i>
+      <div>
+        <p class="font-medium text-sm" x-text="toast.title"></p>
+        <p class="text-xs text-slate-300" x-text="toast.message"></p>
+      </div>
+    </div>
+</body>
+</html>

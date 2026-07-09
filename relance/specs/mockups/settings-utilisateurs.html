@@ -1,41 +1,278 @@
 <!DOCTYPE html>
-<html lang="fr"><head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Settings - Utilisateurs | Marki</title>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Utilisateurs | Marki</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="./components/sidebar-nav.js"></script>
-  <style>html { font-family: 'Inter', sans-serif; } body { margin: 0; background: #fafafa; }</style>
-</head><body>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body x-data="usersPage()" x-init="init()">
 
-<sidebar-nav page="settings-utilisateurs"></sidebar-nav>
+<sidebar-nav-dual page="settings-utilisateurs"></sidebar-nav-dual>
 
-<main style="margin-left: 260px; padding: 32px; min-height: 100vh;">
-  <div style="margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid #e5e5e5;">
-    <h1 style="margin: 0 0 8px 0; font-size: 28px; font-weight: 600; color: #0f172a; letter-spacing: -0.5px;">Utilisateurs</h1>
-    <p style="margin: 0; color: #64748b; font-size: 15px;">Gestion des accès</p>
-    <span style="display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 6px 12px; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 13px; font-family: monospace; color: #475569;">↗ /settings/utilisateurs</span>
-  </div>
-
-  <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-      <h3 class="font-semibold text-slate-900">Liste des utilisateurs</h3>
-      <button class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-xl text-sm font-medium flex items-center gap-2">
-        <i class="fas fa-plus"></i>
-        Ajouter
-      </button>
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <h1 class="text-base font-semibold text-slate-700">Utilisateurs</h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500">Gestion des accès</span>
     </div>
     
-    <div class="divide-y divide-slate-100">
-      <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/50 transition-colors">
-        <div>
-          <p class="font-medium text-slate-900">Admin Principal</p>
-          <p class="text-sm text-slate-500">admin@marki.fr</p>
-        </div>
-        <span class="px-3 py-1 bg-purple-50 text-purple-700 text-xs font-medium rounded-full">Admin</span>
+    <button 
+      @click="openAddUser()"
+      class="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium transition-all"
+    >
+      <i class="fas fa-plus"></i>
+      Ajouter
+    </button>
+  </header>
+
+  <main class="p-6">
+    
+    <!-- Non-admin message (au-dessus du tableau) -->
+    <div x-show="!isAdmin" x-cloak class="mb-6 bg-sky-50 border border-sky-200 rounded-xl p-4 flex items-start gap-3">
+      <i class="fas fa-lock text-sky-500 mt-0.5"></i>
+      <div>
+        <p class="font-medium text-sky-900">Accès limité</p>
+        <p class="text-sm text-sky-700">Vous devez être administrateur pour modifier les utilisateurs.</p>
       </div>
     </div>
-  </div>
-</main>
+    
+    <!-- Users Table -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+      <table class="w-full text-sm text-left">
+        <thead class="bg-slate-50 text-slate-600 font-medium">
+          <tr>
+            <th class="px-6 py-3">Utilisateur</th>
+            <th class="px-6 py-3">Email</th>
+            <th class="px-6 py-3">Rôle</th>
+            <th class="px-6 py-3">Statut</th>
+            <th class="px-6 py-3 text-right">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-100">
+          <template x-for="user in users" :key="user.id">
+            <tr class="hover:bg-slate-50/50 transition-colors">
+              <td class="px-6 py-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-sm" x-text="user.initials"></div>
+                  <div>
+                    <p class="font-medium text-slate-900" x-text="user.nom + ' ' + user.prenom"></p>
+                    <p class="text-xs text-slate-500" x-text="user.username"></p>
+                  </div>
+                </div>
+              </td>
+              <td class="px-6 py-4 text-slate-600" x-text="user.email"></td>
+              <td class="px-6 py-4">
+                <span 
+                  class="px-2.5 py-1 text-xs font-medium rounded-full"
+                  :class="user.role === 'admin' ? 'bg-sky-100 text-sky-700' : 'bg-slate-100 text-slate-700'"
+                  x-text="user.role === 'admin' ? 'Administrateur' : 'Utilisateur'"
+                ></span>
+              </td>
+              <td class="px-6 py-4">
+                <span 
+                  class="px-2.5 py-1 text-xs font-medium rounded-full"
+                  :class="user.actif ? 'bg-sky-100 text-sky-700' : 'bg-slate-100 text-slate-500'"
+                  x-text="user.actif ? 'Actif' : 'Inactif'"
+                ></span>
+              </td>
+              <td class="px-6 py-4 text-right">
+                <button 
+                  x-show="isAdmin"
+                  @click="editUser(user)" 
+                  class="p-2 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all"
+                >
+                  <i class="fas fa-pen"></i>
+                </button>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
+    
+    <!-- Add User Form (x-if) -->
+    <template x-if="showAddForm && isAdmin">
+      <div class="mt-6 bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-lg font-semibold text-slate-900">
+            <i class="fas fa-user-plus text-sky-500 mr-2"></i>Nouvel utilisateur
+          </h3>
+          <button @click="showAddForm = false" class="text-slate-400 hover:text-slate-600">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Prénom *</label>
+            <input type="text" x-model="newUser.prenom" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Nom *</label>
+            <input type="text" x-model="newUser.nom" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Nom d'utilisateur *</label>
+            <input type="text" x-model="newUser.username" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Email *</label>
+            <input type="email" x-model="newUser.email" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Mot de passe *</label>
+            <input type="password" x-model="newUser.password" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Rôle</label>
+            <select x-model="newUser.role" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+              <option value="user">Utilisateur</option>
+              <option value="admin">Administrateur</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="mt-6 flex items-center justify-end gap-2">
+          <button @click="showAddForm = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="createUser()" :disabled="!newUser.prenom || !newUser.nom || !newUser.username || !newUser.email || !newUser.password" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+            <i class="fas fa-save mr-1"></i>Créer
+          </button>
+        </div>
+      </div>
+    </template>
+    
+    <!-- Edit User Form (x-if) -->
+    <template x-if="showEditForm && isAdmin">
+      <div class="mt-6 bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-lg font-semibold text-slate-900">
+            <i class="fas fa-user-edit text-sky-500 mr-2"></i>Modifier utilisateur
+          </h3>
+          <button @click="showEditForm = false" class="text-slate-400 hover:text-slate-600">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Prénom</label>
+            <input type="text" x-model="editUserData.prenom" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Nom</label>
+            <input type="text" x-model="editUserData.nom" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Email</label>
+            <input type="email" x-model="editUserData.email" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Rôle</label>
+            <select x-model="editUserData.role" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+              <option value="user">Utilisateur</option>
+              <option value="admin">Administrateur</option>
+            </select>
+          </div>
+          <div class="flex items-center">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" x-model="editUserData.actif" class="rounded border-slate-300 text-sky-500">
+              <span class="text-sm text-slate-700">Compte actif</span>
+            </label>
+          </div>
+        </div>
+        
+        <div class="mt-6 flex items-center justify-end gap-2">
+          <button @click="showEditForm = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="updateUser()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">
+            <i class="fas fa-save mr-1"></i>Enregistrer
+          </button>
+        </div>
+      </div>
+    </template>
+  </main>
+</div>
 
-</body></html>
+    <!-- Toast Notification -->
+    <div x-show="toast.show" x-transition class="fixed bottom-4 right-4 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50">
+      <i :class="toast.type === 'success' ? 'fa-check-circle text-green-400' : 'fa-exclamation-circle text-red-400'" class="fas"></i>
+      <div>
+        <p class="font-medium text-sm" x-text="toast.title"></p>
+        <p class="text-xs text-slate-300" x-text="toast.message"></p>
+      </div>
+    </div>
+
+<script>
+function usersPage() {
+  return {
+    isAdmin: true,
+    showAddForm: false,
+    showEditForm: false,
+    newUser: { prenom: '', nom: '', username: '', email: '', password: '', role: 'user' },
+    editUserData: {},
+    toast: { show: false, type: 'success', title: '', message: '' },
+    
+    users: [
+      { id: 1, prenom: 'Jean', nom: 'Dupont', username: 'jdupont', email: 'jean.dupont@marki.fr', role: 'admin', actif: true, initials: 'JD' },
+      { id: 2, prenom: 'Marie', nom: 'Martin', username: 'mmartin', email: 'marie.martin@marki.fr', role: 'user', actif: true, initials: 'MM' },
+      { id: 3, prenom: 'Pierre', nom: 'Durand', username: 'pdurand', email: 'pierre.durand@marki.fr', role: 'user', actif: false, initials: 'PD' },
+    ],
+    
+    init() {},
+    
+    openAddUser() {
+      if (!this.isAdmin) {
+        this.showToast('Accès refusé', 'Vous devez être administrateur pour ajouter des utilisateurs.', 'error');
+        return;
+      }
+      this.newUser = { prenom: '', nom: '', username: '', email: '', password: '', role: 'user' };
+      this.showAddForm = true;
+    },
+    
+    createUser() {
+      const newId = Math.max(...this.users.map(u => u.id)) + 1;
+      const initials = (this.newUser.prenom[0] + this.newUser.nom[0]).toUpperCase();
+      this.users.push({
+        id: newId,
+        ...this.newUser,
+        actif: true,
+        initials: initials
+      });
+      this.showAddForm = false;
+      this.showToast('Créé', 'Utilisateur créé avec succès', 'success');
+    },
+    
+    editUser(user) {
+      if (!this.isAdmin) return;
+      this.editUserData = { ...user };
+      this.showEditForm = true;
+    },
+    
+    updateUser() {
+      const index = this.users.findIndex(u => u.id === this.editUserData.id);
+      if (index !== -1) {
+        this.users[index] = { ...this.editUserData };
+      }
+      this.showEditForm = false;
+      this.showToast('Enregistré', 'Utilisateur modifié avec succès', 'success');
+    },
+    
+    showToast(title, message, type = 'success') {
+      this.toast = { show: true, title, message, type };
+      setTimeout(() => this.toast.show = false, 3000);
+    }
+  }
+}
+</script>
+
+</body>
+</html>
