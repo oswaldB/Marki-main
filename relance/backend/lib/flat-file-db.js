@@ -56,6 +56,12 @@ class FlatFileDB {
       indices: ['id', 'user_id', 'expires_at'],
       unique: ['id']
     });
+
+    // Collection pour les suggestions Smart Marki (IA)
+    this.collections.smart_marki = this.db.addCollection('smart_marki', {
+      indices: ['id', 'type', 'status', 'created_at', 'read'],
+      unique: ['id']
+    });
   }
 
   _getPath(collection, id) {
