@@ -1,61 +1,75 @@
-# Routes Frontend
+# Routes Frontend (Static Pur)
+
+Structure HTML statique sans framework - chaque écran = dossier avec `index.html`.
+Les paramètres dynamiques (`:id`, `:token`) passent par query string ou hash.
+
+---
 
 ## Routes principales
 
-| Route | Description | Dossier |
-|-------|-------------|---------|
-| `/login` | Page de connexion | `login/` |
-| `/dashboard` | Tableau de bord | `dashboard/` |
+| URL | Fichier | Description |
+|-----|---------|-------------|
+| `/` ou `/login/` | `login/index.html` | Page de connexion |
+| `/dashboard/` | `dashboard/index.html` | Tableau de bord |
 
 ## Gestion des contacts
 
-| Route | Description | Dossier |
-|-------|-------------|---------|
-| `/contacts` | Liste des contacts | `contacts/` |
+| URL | Fichier | Description |
+|-----|---------|-------------|
+| `/contacts/` | `contacts/index.html` | Liste des contacts |
 
 ## Gestion des impayés
 
-| Route | Description | Dossier |
-|-------|-------------|---------|
-| `/impayes` | Liste des impayés | `impayes/` |
-| `/impayes/detail/:id` | Détail d'un impayé | `impayes-detail/` |
-| `/impayes/payeur/:id` | Impayés par payeur | `impayes-payeur/` |
-| `/impayes/suspendus` | Impayés suspendus | `impayes-suspendus/` |
+| URL | Fichier | Description |
+|-----|---------|-------------|
+| `/impayes/` | `impayes/index.html` | Liste des impayés |
+| `/impayes/detail/?id=xxx` | `impayes-detail/index.html` | Détail d'un impayé (param: `?id=`) |
+| `/impayes/payeur/?id=xxx` | `impayes-payeur/index.html` | Impayés par payeur (param: `?id=`) |
+| `/impayes/suspendus/` | `impayes-suspendus/index.html` | Impayés suspendus |
 
 ## Gestion des relances
 
-| Route | Description | Dossier |
-|-------|-------------|---------|
-| `/relances` | Liste des relances | `relances/` |
-| `/relances/calendrier` | Calendrier des relances | `relances-calendrier/` |
-| `/relances/validation` | Validation des relances | `relances-validation/` |
+| URL | Fichier | Description |
+|-----|---------|-------------|
+| `/relances/` | `relances/index.html` | Liste des relances |
+| `/relances/calendrier/` | `relances-calendrier/index.html` | Calendrier des relances |
+| `/relances/validation/` | `relances-validation/index.html` | Validation des relances |
 
 ## Gestion des séquences
 
-| Route | Description | Dossier |
-|-------|-------------|---------|
-| `/sequences` | Liste des séquences | `sequences/` |
-| `/sequences/relance/:id` | Détail séquence de relance | `sequences-relance-detail/` |
-| `/sequences/suivi/:id` | Détail séquence de suivi | `sequences-suivi-detail/` |
+| URL | Fichier | Description |
+|-----|---------|-------------|
+| `/sequences/` | `sequences/index.html` | Liste des séquences |
+| `/sequences/relance/?id=xxx` | `sequences-relance-detail/index.html` | Détail séquence relance (param: `?id=`) |
+| `/sequences/suivi/?id=xxx` | `sequences-suivi-detail/index.html` | Détail séquence suivi (param: `?id=`) |
 
 ## Paramètres
 
-| Route | Description | Dossier |
-|-------|-------------|---------|
-| `/settings/smtp` | Profils SMTP | `settings-smtp/` |
-| `/settings/smtp/:id` | Détail profil SMTP | `settings-smtp-detail/` |
-| `/settings/utilisateurs` | Gestion des utilisateurs | `settings-utilisateurs/` |
+| URL | Fichier | Description |
+|-----|---------|-------------|
+| `/settings/smtp/` | `settings-smtp/index.html` | Profils SMTP |
+| `/settings/smtp/detail/?id=xxx` | `settings-smtp-detail/index.html` | Détail profil SMTP (param: `?id=`) |
+| `/settings/utilisateurs/` | `settings-utilisateurs/index.html` | Gestion des utilisateurs |
 
 ## Événements et IA
 
-| Route | Description | Dossier |
-|-------|-------------|---------|
-| `/evenements` | Journal des événements | `evenements/` |
-| `/smart-marki` | Assistant IA Smart Marki | `smart-marki/` |
+| URL | Fichier | Description |
+|-----|---------|-------------|
+| `/evenements/` | `evenements/index.html` | Journal des événements |
+| `/smart-marki/` | `smart-marki/index.html` | Assistant IA Smart Marki |
 
-## Portails externes
+## Portails externes (accès public)
 
-| Route | Description | Dossier |
-|-------|-------------|---------|
-| `/portail/client/:token` | Portail client (accès factures) | `portail-client/` |
-| `/portail/mission/:token` | Portail mission (accès mission) | `portail-mission/` |
+| URL | Fichier | Description |
+|-----|---------|-------------|
+| `/portail/client/?token=xxx` | `portail-client/index.html` | Portail client (param: `?token=`) |
+| `/portail/mission/?token=xxx` | `portail-mission/index.html` | Portail mission (param: `?token=`) |
+
+---
+
+## Notes d'architecture
+
+- **Navigation** : liens HTML standard `<a href="/impayes/">`
+- **Paramètres** : query string `?id=123` lue via `new URLSearchParams(location.search)`
+- **State** : Alpine.js pour l'état local (pas de router)
+- **API** : appels fetch vers endpoints backend statiques
