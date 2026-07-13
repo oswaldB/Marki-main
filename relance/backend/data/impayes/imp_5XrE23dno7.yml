@@ -1,0 +1,49 @@
+adresse_bien: 7 avenue Raoul Dufy Le Dufy Bâtiment A2
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: PAIEMENT AGENCE LISTING
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:30:59.878Z'
+date_echeance: '2025-11-21'
+date_import: '2026-07-09T07:05:06.444Z'
+date_piece: '2025-11-14'
+donneur_ordre_id: null
+donneur_ordre_nom: INDIVISION MICHON
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_5XrE23dno7
+id_dossier: '40623'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49941
+numero_dossier: 54629
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: INDIVISION MICHON
+proprietaire_prenom: null
+ref_piece: FA251114 49941
+reference: '54629'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 183.33
+total_ttc: 220
+type: impaye
+updated_at: '2026-06-24T16:30:59.878Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251114_49941/standard/FA251114 49941
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

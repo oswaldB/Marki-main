@@ -1,0 +1,29 @@
+$loki: 6760
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-25T13:55:36.729Z'
+email: bschiaretti@outlook.it
+id: cont_Fk1JJWHqIm
+impaye_ids:
+  - imp_tRasA6cE6p
+is_blacklisted: false
+meta:
+  created: 1783580700736
+  revision: 0
+  version: 0
+nom: SCHIARETTI
+prenom: Bruno
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:36.383Z'

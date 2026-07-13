@@ -1,0 +1,49 @@
+adresse_bien: 32 avenue Auber
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_zV76Y7Fa1E
+created_at: '2026-06-24T16:31:52.948Z'
+date_echeance: '2023-09-01'
+date_import: '2026-07-09T07:05:11.478Z'
+date_piece: '2023-09-01'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_2iXgUlYeEh
+id_dossier: '30621'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45114
+numero_dossier: 48611
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BENNARROCH
+proprietaire_prenom: Michael
+ref_piece: FA230901 45114
+reference: '48611'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 81.25
+total_ttc: 97.5
+type: impaye
+updated_at: '2026-06-24T16:31:52.948Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230901_45114/standard/FA230901 45114
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

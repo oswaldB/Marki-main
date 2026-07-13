@@ -1,0 +1,49 @@
+adresse_bien: 7 rue de Roquebiliere  Seven Roch
+apporteur_id: cont_aFSXWA9ETI
+apporteur_nom: SAINT ROCH IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_aD3ZglfLat
+created_at: '2026-06-24T16:31:09.064Z'
+date_echeance: '2025-06-13'
+date_import: '2026-07-09T07:05:07.361Z'
+date_piece: '2025-06-13'
+donneur_ordre_id: null
+donneur_ordre_nom: LAUTRIDOU
+donneur_ordre_prenom: Danielle
+email_index: 0
+facture_soldee: true
+id: imp_qgRaC7R2NV
+id_dossier: '39627'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49052
+numero_dossier: 53633
+payer_id: cont_aFSXWA9ETI
+payeur_civilite: ''
+payeur_email: info@saintrochimmobilier.com
+payeur_nom: SAINT ROCH IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LAUTRIDOU
+proprietaire_prenom: Danielle
+ref_piece: FA250613 49052
+reference: '53633'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 170
+total_ttc: 204
+type: impaye
+updated_at: '2026-06-24T16:31:09.064Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250613_49052/standard/FA250613 49052 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

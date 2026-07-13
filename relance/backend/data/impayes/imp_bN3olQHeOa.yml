@@ -1,0 +1,49 @@
+adresse_bien: 11 rue Sevan
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:18.052Z'
+date_echeance: '2025-01-30'
+date_import: '2026-07-09T07:05:08.227Z'
+date_piece: '2025-01-30'
+donneur_ordre_id: null
+donneur_ordre_nom: ACOLANIAN
+donneur_ordre_prenom: Mikael
+email_index: 0
+facture_soldee: true
+id: imp_bN3olQHeOa
+id_dossier: '36041'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48211
+numero_dossier: 51045
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: ACOLANIAN
+proprietaire_prenom: Mikael
+ref_piece: FA250130 48211
+reference: '51045'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 338.33
+total_ttc: 406
+type: impaye
+updated_at: '2026-06-24T16:31:18.052Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250130_48211/standard/FA250130 48211
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

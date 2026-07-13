@@ -1,0 +1,49 @@
+adresse_bien: 4 avenue de Saint-Roman Villa Medicis
+apporteur_id: cont_6KB3jgW9oc
+apporteur_nom: PROGEDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_KipSPsu7Mu
+created_at: '2026-06-24T16:31:18.923Z'
+date_echeance: '2025-01-24'
+date_import: '2026-07-09T07:05:08.258Z'
+date_piece: '2025-01-24'
+donneur_ordre_id: null
+donneur_ordre_nom: PROGEDI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_86SBhZrqOI
+id_dossier: '38544'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48190
+numero_dossier: 52550
+payer_id: cont_6KB3jgW9oc
+payeur_civilite: ''
+payeur_email: accueil@progedi.com
+payeur_nom: PROGEDI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: GAUDRON
+proprietaire_prenom: 'Jacques '
+ref_piece: FA250124 48190
+reference: '52550'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 79.17
+total_ttc: 95
+type: impaye
+updated_at: '2026-06-24T16:31:18.923Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250124_48190/standard/FA250124 48190
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

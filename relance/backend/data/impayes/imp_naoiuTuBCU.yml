@@ -1,0 +1,49 @@
+adresse_bien: 135 avenue Guillaume 1er de Provence Le Cernuschi
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_gLdXdBSDwm
+created_at: '2026-06-24T16:30:56.962Z'
+date_echeance: '2025-12-31'
+date_import: '2026-07-09T07:05:06.194Z'
+date_piece: '2025-12-24'
+donneur_ordre_id: null
+donneur_ordre_nom: MARTIN
+donneur_ordre_prenom: Florian
+email_index: 0
+facture_soldee: true
+id: imp_naoiuTuBCU
+id_dossier: '40896'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50178
+numero_dossier: 54902
+payer_id: cont_gLdXdBSDwm
+payeur_civilite: ''
+payeur_email: martin.florian23@gmail.com
+payeur_nom: MARTIN
+payeur_prenom: Florian
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MARTIN
+proprietaire_prenom: Florian
+ref_piece: FA251224 50178
+reference: '54902'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:30:56.962Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251224_50178/standard/FA251224 50178
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

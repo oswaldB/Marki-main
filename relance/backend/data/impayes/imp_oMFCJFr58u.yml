@@ -1,0 +1,49 @@
+adresse_bien: allée des Miroitiers ZI Secteur A
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06700'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:31:00.034Z'
+date_echeance: '2025-11-07'
+date_import: '2026-07-09T07:05:06.509Z'
+date_piece: '2025-10-31'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI AMILTHE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_oMFCJFr58u
+id_dossier: '40489'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49876
+numero_dossier: 54495
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCI AMILTHE
+proprietaire_prenom: null
+ref_piece: FA251031 49876
+reference: '54495'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2592.4
+total_ttc: 3110.88
+type: impaye
+updated_at: '2026-06-24T16:31:00.034Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251031_49876/standard/FA251031 49876
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SAINT-LAURENT-DU-VAR

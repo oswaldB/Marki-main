@@ -1,0 +1,49 @@
+adresse_bien: 397 rue Antoine Péglion Le Verger
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "21/07 : message tél. prop\r\nfacture transmise au prop via l'agence ? Pas trouvé de mail d'envoi au prop => rapports et facture envoyés le 05/06 à DAT\r\n\r\n08/09 -> relance mail propriétaire "
+contact_relance_id: cont_ZcyN94Ehwi
+created_at: '2026-06-24T16:31:09.985Z'
+date_echeance: '2025-06-03'
+date_import: '2026-07-09T07:05:07.423Z'
+date_piece: '2025-06-03'
+donneur_ordre_id: null
+donneur_ordre_nom: CRESSY
+donneur_ordre_prenom: Gerard
+email_index: 0
+facture_soldee: true
+id: imp_nwKEHP5Wog
+id_dossier: '39532'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48985
+numero_dossier: 53538
+payer_id: cont_ZcyN94Ehwi
+payeur_civilite: ''
+payeur_email: cressy.gerard@orange.fr
+payeur_nom: CRESSY
+payeur_prenom: Gerard
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CRESSY
+proprietaire_prenom: Gerard
+ref_piece: FA250603 48985
+reference: '53538'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:09.985Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250603_48985/standard/FA250603 48985 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

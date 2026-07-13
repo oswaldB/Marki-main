@@ -1,0 +1,49 @@
+adresse_bien: 148 avenue de la Californie Le Parvis de la Mer
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:31:26.051Z'
+date_echeance: '2024-09-19'
+date_import: '2026-07-09T07:05:09.032Z'
+date_piece: '2024-09-19'
+donneur_ordre_id: null
+donneur_ordre_nom: NERON
+donneur_ordre_prenom: Alexia
+email_index: 0
+facture_soldee: true
+id: imp_8sIGxEl0Ib
+id_dossier: '37559'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47450
+numero_dossier: 51565
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: NERON
+proprietaire_prenom: Alexia
+ref_piece: FA240919 47450
+reference: '51565'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2052.5
+total_ttc: 2463
+type: impaye
+updated_at: '2026-06-24T16:31:26.051Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240919_47450/standard/FA240919 47450
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

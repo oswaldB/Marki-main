@@ -1,0 +1,49 @@
+adresse_bien: 240 chemin des Combes Domaine de Cyrena Bâtiment B
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: RUFFINI
+contact_relance_id: cont_KBHQRY8rwt
+created_at: '2026-06-24T16:31:42.093Z'
+date_echeance: '2024-01-30'
+date_import: '2026-07-09T07:05:10.519Z'
+date_piece: '2024-01-30'
+donneur_ordre_id: null
+donneur_ordre_nom: DEMAZEL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_1EtNzwTFUp
+id_dossier: '32772'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46012
+numero_dossier: 49769
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DEMAZEL
+proprietaire_prenom: null
+ref_piece: FA240130 46012
+reference: '49769'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 186
+total_ttc: 223.2
+type: impaye
+updated_at: '2026-06-24T16:31:42.093Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240130_46012/standard/FA240130 46012
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

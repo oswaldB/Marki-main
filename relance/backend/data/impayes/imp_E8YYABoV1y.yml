@@ -1,0 +1,49 @@
+adresse_bien: 20 rue de la Liberté
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_jO6Cep4oVa
+created_at: '2026-06-24T16:31:39.051Z'
+date_echeance: '2024-03-18'
+date_import: '2026-07-09T07:05:10.228Z'
+date_piece: '2024-03-18'
+donneur_ordre_id: null
+donneur_ordre_nom: COCHET
+donneur_ordre_prenom: Patrick
+email_index: 0
+facture_soldee: true
+id: imp_E8YYABoV1y
+id_dossier: '34158'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46323
+numero_dossier: 50157
+payer_id: cont_jO6Cep4oVa
+payeur_civilite: ''
+payeur_email: jugo@laforet.com
+payeur_nom: LAFORET NICE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: COCHET
+proprietaire_prenom: Patrick
+ref_piece: FA240318 46323
+reference: '50157'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-24T16:31:39.051Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240318_46323/standard/FA240318 46323 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

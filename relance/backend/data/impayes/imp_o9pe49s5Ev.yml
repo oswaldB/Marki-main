@@ -1,0 +1,49 @@
+adresse_bien: 262 avenue des Mimosas Residence du Midi
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "rdv annulé\r\nannuler la facture"
+contact_relance_id: cont_Ei6Jc0MBsr
+created_at: '2026-06-24T16:30:55.048Z'
+date_echeance: '2026-01-27'
+date_import: '2026-07-09T07:05:06.063Z'
+date_piece: '2026-01-20'
+donneur_ordre_id: null
+donneur_ordre_nom: SHIRYAEVA
+donneur_ordre_prenom: Tatiana
+email_index: 0
+facture_soldee: true
+id: imp_o9pe49s5Ev
+id_dossier: '29333'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50316
+numero_dossier: 48319
+payer_id: cont_Ei6Jc0MBsr
+payeur_civilite: ''
+payeur_email: tatiana.shityaeva06@gmail.com
+payeur_nom: SHIRYAEVA
+payeur_prenom: Tatiana
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SHIRYAEVA
+proprietaire_prenom: Tatiana
+ref_piece: FA260120 50316
+reference: '48319'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: -258.33
+total_ttc: -310
+type: impaye
+updated_at: '2026-06-24T16:30:55.048Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260120_50316/standard/FA260120 50316
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

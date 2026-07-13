@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Albert Voisin Résidence Melanie
+apporteur_id: cont_RIHSLFwvrN
+apporteur_nom: FONDATION DE NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_mE4XuEMEQa
+created_at: '2026-06-24T16:31:28.936Z'
+date_echeance: '2024-08-16'
+date_import: '2026-07-09T07:05:09.300Z'
+date_piece: '2024-08-16'
+donneur_ordre_id: null
+donneur_ordre_nom: LACRIMINI
+donneur_ordre_prenom: Gabrielle
+email_index: 0
+facture_soldee: true
+id: imp_pGqB7S6VqP
+id_dossier: '36355'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47233
+numero_dossier: 51359
+payer_id: cont_mE4XuEMEQa
+payeur_civilite: ''
+payeur_email: gaby.lacrimini@gmail.com
+payeur_nom: LACRIMINI
+payeur_prenom: Gabrielle
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LACRIMINI
+proprietaire_prenom: Gabrielle
+ref_piece: FA240816 47233
+reference: '51359'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:28.936Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240816_47233/standard/FA240816 47233 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

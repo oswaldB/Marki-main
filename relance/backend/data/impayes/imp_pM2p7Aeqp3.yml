@@ -1,0 +1,49 @@
+adresse_bien: 9 avenue de la Madone L'Imperial
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_I7kSB4rN9W
+created_at: '2026-06-30T22:00:29.906Z'
+date_echeance: '2026-07-07'
+date_import: '2026-07-09T07:05:12.241Z'
+date_piece: '2026-06-30'
+donneur_ordre_id: null
+donneur_ordre_nom: DOSIO - MIYAKAWA
+donneur_ordre_prenom: Carlotta - Antonio
+email_index: 0
+facture_soldee: false
+id: imp_pM2p7Aeqp3
+id_dossier: '41990'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51229
+numero_dossier: 55996
+payer_id: cont_I7kSB4rN9W
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: DOSIO - MIYAKAWA
+payeur_prenom: Carlotta - Antonio
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DOSIO - MIYAKAWA
+proprietaire_prenom: Carlotta - Antonio
+ref_piece: FA260630 51229
+reference: '55996'
+reste_a_payer: 500
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 416.67
+total_ttc: 500
+type: impaye
+updated_at: '2026-07-01T22:00:26.757Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260630_51229/standard/FA260630 51229 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

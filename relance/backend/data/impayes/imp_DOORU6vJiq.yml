@@ -1,0 +1,49 @@
+adresse_bien: ''
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: ''
+commentaire_piece: "Site :\r\nSNCF Voyageurs de Nice St-Roch \r\nDenis Sémeria – 06000 Nice\r\nDossier 5858"
+contact_relance_id: cont_uEe1kqasth
+created_at: '2026-06-24T16:30:58.940Z'
+date_echeance: '2025-12-02'
+date_import: '2026-07-09T07:05:06.380Z'
+date_piece: '2025-11-25'
+donneur_ordre_id: null
+donneur_ordre_nom: SAS EXIM EXPLOITATION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_DOORU6vJiq
+id_dossier: '40742'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50003
+numero_dossier: 54748
+payer_id: cont_sfpCiuiAJC
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SAS EXIM EXPLOITATION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SNCF
+proprietaire_prenom: null
+ref_piece: FA251125 50003
+reference: '54748'
+reste_a_payer: 387.49
+sequence_id: null
+statut: non_payee
+total_ht: 322.91
+total_ttc: 387.49
+type: impaye
+updated_at: '2026-06-24T16:30:58.940Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251125_50003/standard/FA251125 50003
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ''

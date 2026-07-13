@@ -1,0 +1,49 @@
+adresse_bien: 69 avenue de Sospel
+apporteur_id: cont_1oBO3iDNCv
+apporteur_nom: AGENCE DU COMMERCE
+apporteur_prenom: SAS AZUR RIVIERA COMMERCE
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_wne889sYOP
+created_at: '2026-06-24T16:31:29.901Z'
+date_echeance: '2024-07-25'
+date_import: '2026-07-09T07:05:09.409Z'
+date_piece: '2024-07-25'
+donneur_ordre_id: null
+donneur_ordre_nom: CHINTEMI
+donneur_ordre_prenom: Morgane
+email_index: 0
+facture_soldee: true
+id: imp_7cAyU19CAy
+id_dossier: '36217'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47125
+numero_dossier: 51221
+payer_id: cont_wne889sYOP
+payeur_civilite: ''
+payeur_email: morganechintemi22@gmail.com
+payeur_nom: CHINTEMI
+payeur_prenom: Morgane
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CHINTEMI
+proprietaire_prenom: Morgane
+ref_piece: FA240725 47125
+reference: '51221'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:29.901Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240725_47125/standard/FA240725 47125
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

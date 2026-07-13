@@ -1,0 +1,65 @@
+$loki: 503
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:38.730Z'
+email: null
+id: cont_D8fdlp33FD
+impaye_ids:
+  - imp_B9JtuVXQj8
+  - imp_Bt9UIPTnFu
+  - imp_tAEN4NUOtH
+  - imp_dc2qAFrUnN
+  - imp_HbWAgoB2Gq
+  - imp_c42uogLjfD
+  - imp_YAaLnbWIx0
+  - imp_CKR6Be468D
+  - imp_N7dJGjEtTB
+  - imp_w3B2g71klh
+  - imp_E2TCs11rBJ
+  - imp_4Jxg601pH1
+  - imp_kxR6P6QYZw
+  - imp_8dzFc8eI0c
+  - imp_XutpfbDiiE
+  - imp_WDwGhVGFOo
+  - imp_HTqPUPH1fw
+  - imp_GJOvkX4Uyd
+  - imp_LKm9smDg4W
+  - imp_V9vT4I0LfE
+  - imp_zxjkuQ2age
+  - imp_NdEj1zoBzS
+  - imp_Us6bKS2W6Z
+  - imp_HRPcCen7U4
+  - imp_jmJcsHnSZa
+  - imp_qHFLccydXg
+  - imp_hGbHjP2xNa
+  - imp_OkGZy4eDbC
+  - imp_ZtMxgfm9E9
+  - imp_0AOttXYqDB
+  - imp_2wEMNHrRrD
+  - imp_XKP9Tow0Dq
+  - imp_L7VHEUbELk
+  - imp_PnCxvRjPVu
+  - imp_SpaaJ9GtYo
+  - imp_kG0bf1FSib
+  - imp_XnpgjhLizq
+is_blacklisted: false
+meta:
+  created: 1783580698551
+  revision: 0
+  version: 0
+nom: RICHER
+prenom: Guillaume
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:38.376Z'

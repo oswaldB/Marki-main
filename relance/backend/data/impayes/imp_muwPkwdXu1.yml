@@ -1,0 +1,49 @@
+adresse_bien: 73 avenue Franklin Roosevelt Le Mercurey
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06110'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:12.076Z'
+date_echeance: '2025-04-22'
+date_import: '2026-07-09T07:05:07.648Z'
+date_piece: '2025-04-22'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_muwPkwdXu1
+id_dossier: '39222'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48748
+numero_dossier: 53228
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LEGENDRE
+proprietaire_prenom: Gérard
+ref_piece: FA250422 48748
+reference: '53228'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 62.5
+total_ttc: 75
+type: impaye
+updated_at: '2026-06-24T16:31:12.076Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250422_48748/standard/FA250422 48748
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: LE CANNET

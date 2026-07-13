@@ -1,0 +1,49 @@
+adresse_bien: 130 rue Claude Debussy  Cap Thalassa
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_AfPVqagm21
+created_at: '2026-06-24T16:31:24.932Z'
+date_echeance: '2024-10-14'
+date_import: '2026-07-09T07:05:08.862Z'
+date_piece: '2024-10-14'
+donneur_ordre_id: null
+donneur_ordre_nom: VASCONI
+donneur_ordre_prenom: Vittorio
+email_index: 0
+facture_soldee: true
+id: imp_XIHagKBVVR
+id_dossier: '37799'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47616
+numero_dossier: 51805
+payer_id: cont_AfPVqagm21
+payeur_civilite: ''
+payeur_email: 'c.vasconi@idral.it '
+payeur_nom: VASCONI
+payeur_prenom: Vittorio
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: VASCONI
+proprietaire_prenom: Vittorio
+ref_piece: FA241014 47616
+reference: '51805'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:24.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241014_47616/standard/FA241014 47616
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

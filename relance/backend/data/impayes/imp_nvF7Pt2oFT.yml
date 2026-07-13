@@ -1,0 +1,49 @@
+adresse_bien: 4 rue du Mont Agel
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_XB2mEDHHE4
+created_at: '2026-06-24T16:31:06.955Z'
+date_echeance: '2025-07-22'
+date_import: '2026-07-09T07:05:07.114Z'
+date_piece: '2025-07-22'
+donneur_ordre_id: null
+donneur_ordre_nom: MESCHI
+donneur_ordre_prenom: 'Eleonora '
+email_index: 0
+facture_soldee: true
+id: imp_nvF7Pt2oFT
+id_dossier: '39896'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49263
+numero_dossier: 53902
+payer_id: cont_XB2mEDHHE4
+payeur_civilite: ''
+payeur_email: meschie@hotmail.fr
+payeur_nom: MESCHI
+payeur_prenom: 'Eleonora '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MESCHI
+proprietaire_prenom: 'Eleonora '
+ref_piece: FA250722 49263
+reference: '53902'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-24T16:31:06.955Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250722_49263/standard/FA250722 49263
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

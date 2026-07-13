@@ -1,0 +1,49 @@
+adresse_bien: 14 avenue Gazan
+apporteur_id: cont_gszi3ULfaG
+apporteur_nom: AIA GROUPE ALLIANCE GESTION ANTIBES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: cont_hiBh7VBtpf
+created_at: '2026-06-24T16:31:34.969Z'
+date_echeance: '2024-05-16'
+date_import: '2026-07-09T07:05:09.878Z'
+date_piece: '2024-05-16'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC AMARYLLIS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_xu2URyYf4B
+id_dossier: '34672'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46689
+numero_dossier: 50671
+payer_id: cont_gszi3ULfaG
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: AIA GROUPE ALLIANCE GESTION ANTIBES
+payeur_prenom: ''
+payeur_telephone: '0614310039'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC AMARYLLIS
+proprietaire_prenom: null
+ref_piece: FA240516 46689
+reference: '50671'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1000
+total_ttc: 1200
+type: impaye
+updated_at: '2026-06-24T16:31:34.969Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240516_46689/standard/FA240516 46689 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

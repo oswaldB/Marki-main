@@ -1,0 +1,49 @@
+adresse_bien: 848 promenade  du Soleil  L'Admiral Plazza
+apporteur_id: cont_YzI0qNG9xQ
+apporteur_nom: ISOARDY
+apporteur_prenom: Bernadette
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_ZvkZkanB7G
+created_at: '2026-06-24T16:31:10.885Z'
+date_echeance: '2025-05-23'
+date_import: '2026-07-09T07:05:07.474Z'
+date_piece: '2025-05-23'
+donneur_ordre_id: null
+donneur_ordre_nom: RAVIER
+donneur_ordre_prenom: Jeannine
+email_index: 0
+facture_soldee: true
+id: imp_VuigapW9nA
+id_dossier: '39458'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48937
+numero_dossier: 53464
+payer_id: cont_ZvkZkanB7G
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: RAVIER
+payeur_prenom: Jeannine
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: RAVIER
+proprietaire_prenom: Jeannine
+ref_piece: FA250523 48937
+reference: '53464'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 206.25
+total_ttc: 247.5
+type: impaye
+updated_at: '2026-06-24T16:31:10.885Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250523_48937/standard/FA250523 48937 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

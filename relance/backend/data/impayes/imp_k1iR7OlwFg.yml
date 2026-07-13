@@ -1,0 +1,49 @@
+adresse_bien: 16 rue Frédéric Passy Riviera Passy
+apporteur_id: cont_FQprGTSYDH
+apporteur_nom: SERGIC
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "08/07 : appel BARBERIS, facture bien réceptionnée, attente des fonds\r\n\r\n23/06 : n'est plus syndic\r\nenvoi facture au Cabinet BARBERIS : gbnice@barberis.fr\r\n04.93.55.62.63\r\n\r\n18/06 : appel agence + envoi mail nouveau contact : agrami@sergic.com"
+contact_relance_id: cont_LXqOEMU2d2
+created_at: '2026-06-24T16:31:46.909Z'
+date_echeance: '2023-11-24'
+date_import: '2026-07-09T07:05:10.892Z'
+date_piece: '2023-11-24'
+donneur_ordre_id: null
+donneur_ordre_nom: COPROPRIETE LE RIVIERA PASSY
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_k1iR7OlwFg
+id_dossier: '32307'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45669
+numero_dossier: 49304
+payer_id: cont_LXqOEMU2d2
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: COPROPRIETE LE RIVIERA PASSY
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: COPROPRIETE LE RIVIERA PASSY
+proprietaire_prenom: null
+ref_piece: FA231124 45669
+reference: '49304'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 287.5
+total_ttc: 345
+type: impaye
+updated_at: '2026-06-24T16:31:46.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231124_45669/standard/FA231124 45669
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

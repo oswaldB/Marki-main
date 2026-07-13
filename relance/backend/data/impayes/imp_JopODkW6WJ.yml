@@ -1,0 +1,49 @@
+adresse_bien: 16 rue Chevaliers de Malte Le Rhodes
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_uBPOrCeaau
+created_at: '2026-06-24T16:31:00.878Z'
+date_echeance: '2025-11-07'
+date_import: '2026-07-09T07:05:06.523Z'
+date_piece: '2025-10-31'
+donneur_ordre_id: null
+donneur_ordre_nom: 'Moatti '
+donneur_ordre_prenom: Pierre Jean
+email_index: 0
+facture_soldee: true
+id: imp_JopODkW6WJ
+id_dossier: '40565'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49867
+numero_dossier: 54571
+payer_id: cont_uBPOrCeaau
+payeur_civilite: ''
+payeur_email: pierrejeanmoatti@me.com
+payeur_nom: 'Moatti '
+payeur_prenom: Pierre Jean
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'Moatti '
+proprietaire_prenom: Pierre Jean
+ref_piece: FA251031 49867
+reference: '54571'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 200
+total_ttc: 240
+type: impaye
+updated_at: '2026-06-24T16:31:00.878Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251031_49867/standard/FA251031 49867
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

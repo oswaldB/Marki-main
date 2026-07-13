@@ -1,0 +1,89 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_SqcSxvfZdG
+corps: >
+  <p>Bonjour,</p>
+
+  <p><br></p>
+
+  <p><strong>Par la présente, nous vous mettons en demeure</strong> de régler,
+  dans les plus brefs délais, votre facture <strong>n°51260</strong> relative à
+  une prestation réalisée au <strong>3 avenue Saint-Sébastien Le Saint
+  Sebastien, 06300 NICE - dossier 56100</strong>.</p>
+
+  <p><br></p>
+
+  <p>Cette facture, d'un montant total de <strong>120 €</strong>, était échue le
+  <strong>14/07/2026</strong>. Malgré nos précédentes relances, le règlement n'a
+  toujours pas été effectué.</p>
+
+  <p><br></p>
+
+  <p>Vous pouvez régler cette facture par les moyens suivants :</p>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=120&vads_order_id=51260&vads_cust_id=56100&vads_cust_last_name=GAIMARD&vads_cust_first_name=&vads_cust_email=mjgaimard@gmail.com&vads_cust_cell_phone=">Paiement
+  sécurisé en ligne en carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p><strong>Ce règlement devra intervenir sous 48 heures</strong> à compter de
+  la réception de ce courrier.</p>
+
+  <p>À défaut, nous serons contraints d'engager les procédures de recouvrement
+  prévues par la législation en vigueur.</p>
+
+  <p><br></p>
+
+  <p>La présente mise en demeure fait courir les intérêts légaux de retard ainsi
+  que l'indemnité forfaitaire pour frais de recouvrement.</p>
+
+  <p><br></p>
+
+  <p>Vous pouvez télécharger votre facture ici : <a
+  href="https://adti.markidiags.com/redirect-pdf/ngzBO5hXQl">Télécharger la
+  facture 51260</a></p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-07-07T22:03:38.026Z'
+date_envoi: '2026-08-01T00:00:00.000Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 6
+erreur_count: 0
+id: rel_HawwGR70Se
+impaye_ids:
+  - imp_ngzBO5hXQl
+manuelle: false
+message_id: null
+objet: >-
+  EX'IM - Dossier 56100 - Relance n°4 : Mise en demeure de payer – Facture 51260
+  impayée
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: pret pour envoi
+type: relance
+updated_at: '2026-07-07T22:03:38.026Z'
+valide: false

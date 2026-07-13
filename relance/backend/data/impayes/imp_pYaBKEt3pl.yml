@@ -1,0 +1,49 @@
+adresse_bien: 62 boulevard Gambetta Le Thiers Gambetta
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_GyXPeOoEUo
+created_at: '2026-06-24T16:31:24.001Z'
+date_echeance: '2024-10-22'
+date_import: '2026-07-09T07:05:08.804Z'
+date_piece: '2024-10-22'
+donneur_ordre_id: null
+donneur_ordre_nom: SYED AHMAD
+donneur_ordre_prenom: 'Sharifah Fadzilah '
+email_index: 0
+facture_soldee: true
+id: imp_pYaBKEt3pl
+id_dossier: '37850'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47669
+numero_dossier: 51856
+payer_id: cont_GyXPeOoEUo
+payeur_civilite: ''
+payeur_email: 'fadilah.ahmad0709@gmail.com '
+payeur_nom: SYED AHMAD
+payeur_prenom: 'Sharifah Fadzilah '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SYED AHMAD
+proprietaire_prenom: 'Sharifah Fadzilah '
+ref_piece: FA241022 47669
+reference: '51856'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:24.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241022_47669/standard/FA241022 47669
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

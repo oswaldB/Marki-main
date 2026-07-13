@@ -1,0 +1,49 @@
+adresse_bien: 47 bis avenue Giacobi
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_JVnfYPyJnX
+created_at: '2026-06-24T16:31:15.956Z'
+date_echeance: '2025-03-06'
+date_import: '2026-07-09T07:05:07.981Z'
+date_piece: '2025-03-06'
+donneur_ordre_id: null
+donneur_ordre_nom: JULLE
+donneur_ordre_prenom: Josiane
+email_index: 0
+facture_soldee: true
+id: imp_lDmTf4AERG
+id_dossier: '38871'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48469
+numero_dossier: 52877
+payer_id: cont_Nh1fOoyJMJ
+payeur_civilite: ''
+payeur_email: info@tissinie.com
+payeur_nom: GESTION IMMOBILIERE TISSINIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: JULLE
+proprietaire_prenom: Josiane
+ref_piece: FA250306 48469
+reference: '52877'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:15.956Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250306_48469/standard/FA250306 48469 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

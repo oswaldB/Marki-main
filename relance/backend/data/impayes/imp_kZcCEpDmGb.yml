@@ -1,0 +1,49 @@
+adresse_bien: 1077 avenue Bellevue Royal View
+apporteur_id: cont_F9a1C2QFwv
+apporteur_nom: Agence L&SO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_zdRvYcDPIo
+created_at: '2026-06-24T16:30:46.904Z'
+date_echeance: '2026-06-12'
+date_import: '2026-07-09T07:05:05.162Z'
+date_piece: '2026-06-05'
+donneur_ordre_id: null
+donneur_ordre_nom: KIRKLAND
+donneur_ordre_prenom: Jeremy
+email_index: 0
+facture_soldee: true
+id: imp_kZcCEpDmGb
+id_dossier: '41905'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51091
+numero_dossier: 55911
+payer_id: cont_zdRvYcDPIo
+payeur_civilite: ''
+payeur_email: jaykirkland@hotmail.com
+payeur_nom: KIRKLAND
+payeur_prenom: Jeremy
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: KIRKLAND
+proprietaire_prenom: Jeremy
+ref_piece: FA260605 51091
+reference: '55911'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 200
+total_ttc: 240
+type: impaye
+updated_at: '2026-06-24T16:30:46.904Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260605_51091/standard/FA260605 51091 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

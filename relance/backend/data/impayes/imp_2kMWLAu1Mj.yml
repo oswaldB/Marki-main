@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue du Domaine du Loup Domaine du loup L'Esteron
+apporteur_id: cont_iACFspdy3O
+apporteur_nom: 'PARNASSE IMMOBILIER CAGNES '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: ''
+contact_relance_id: cont_HXEe1xcRGf
+created_at: '2026-06-24T16:30:54.055Z'
+date_echeance: '2026-02-06'
+date_import: '2026-07-09T07:05:05.947Z'
+date_piece: '2026-01-30'
+donneur_ordre_id: null
+donneur_ordre_nom: 'MADDENS '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_2kMWLAu1Mj
+id_dossier: '40892'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50393
+numero_dossier: 54898
+payer_id: cont_HXEe1xcRGf
+payeur_civilite: ''
+payeur_email: 'ol06mad@gmail.com '
+payeur_nom: 'MADDENS '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'MADDENS '
+proprietaire_prenom: null
+ref_piece: FA260130 50393
+reference: '54898'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:30:54.055Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260130_50393/standard/FA260130 50393
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

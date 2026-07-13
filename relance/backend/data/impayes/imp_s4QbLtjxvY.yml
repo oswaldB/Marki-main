@@ -1,0 +1,49 @@
+adresse_bien: 23 avenue Jean Bares  Jardins de Cessole
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_idEK8oDPOA
+created_at: '2026-06-24T16:31:43.909Z'
+date_echeance: '2024-01-17'
+date_import: '2026-07-09T07:05:10.630Z'
+date_piece: '2024-01-17'
+donneur_ordre_id: null
+donneur_ordre_nom: 'SAPIRA '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_s4QbLtjxvY
+id_dossier: '32635'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45926
+numero_dossier: 49632
+payer_id: cont_idEK8oDPOA
+payeur_civilite: ''
+payeur_email: sapira.fr@gmail.fr
+payeur_nom: 'SAPIRA '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'SAPIRA '
+proprietaire_prenom: null
+ref_piece: FA240117 45926
+reference: '49632'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 220.42
+total_ttc: 264.5
+type: impaye
+updated_at: '2026-06-24T16:31:43.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240117_45926/standard/FA240117 45926
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

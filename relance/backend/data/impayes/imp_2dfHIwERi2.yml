@@ -1,0 +1,49 @@
+adresse_bien: 33-35 avenue Varavilla Résidence Apollon
+apporteur_id: cont_TWnVoCvWHW
+apporteur_nom: 'EASY MENTON SYNDIC '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_TWnVoCvWHW
+created_at: '2026-06-24T16:31:17.927Z'
+date_echeance: '2025-02-06'
+date_import: '2026-07-09T07:05:08.160Z'
+date_piece: '2025-02-06'
+donneur_ordre_id: null
+donneur_ordre_nom: RESIDENCE APOLLON
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_2dfHIwERi2
+id_dossier: '38632'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48274
+numero_dossier: 52638
+payer_id: cont_TWnVoCvWHW
+payeur_civilite: ''
+payeur_email: menton1@easy-menton.fr
+payeur_nom: 'EASY MENTON SYNDIC '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: RESIDENCE APOLLON
+proprietaire_prenom: null
+ref_piece: FA250206 48274
+reference: '52638'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:17.927Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250206_48274/standard/FA250206 48274
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

@@ -1,0 +1,42 @@
+$loki: 2991
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:02.524Z'
+email: allavenand@icloud.com
+id: cont_tZdI2FbeP0
+impaye_ids:
+  - imp_KFEUC4I8zv
+  - imp_Byta8hGbry
+  - imp_TDU6AepROH
+  - imp_l37g8pW65A
+  - imp_1oVbBzDLkl
+is_blacklisted: false
+meta:
+  created: 1783580699446
+  revision: 1
+  updated: 1783580712680
+  version: 0
+nom: INDIVISION FAHLEN-ALLAVENA-SVENSSON
+prenom: ''
+relance_ids:
+  - rel_IkyOFUIzOJ
+  - rel_V6WZXI5bMq
+  - rel_NKRPqC4yBC
+  - rel_h7XGPldG2C
+  - rel_AdCoMd44vD
+  - rel_4Tim9xCmK2
+  - rel_qhTA7ZJWLU
+  - rel_BsDETenz2z
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:01.333Z'

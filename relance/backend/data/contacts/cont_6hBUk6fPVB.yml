@@ -1,0 +1,36 @@
+$loki: 1684
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:49.655Z'
+email: jlevy-wolzok@progedi.com
+id: cont_6hBUk6fPVB
+impaye_ids:
+  - imp_KaRUn5WG4i
+  - imp_AH9mA89wC1
+  - imp_7QwocE2ouc
+  - imp_9BV1u2hD68
+  - imp_MOPCmQDRNT
+  - imp_k7iX7bqDcN
+  - imp_VvNE5XmLDX
+  - imp_K2RmzKx3Gq
+is_blacklisted: false
+meta:
+  created: 1783580699014
+  revision: 0
+  version: 0
+nom: LEVY - WOLZOK
+prenom: Jordan
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:49.326Z'

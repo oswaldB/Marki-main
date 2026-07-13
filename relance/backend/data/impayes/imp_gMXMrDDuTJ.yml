@@ -1,0 +1,49 @@
+adresse_bien: 13 route de Sospel Le Saint Charles
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:46.080Z'
+date_echeance: '2023-12-01'
+date_import: '2026-07-09T07:05:10.866Z'
+date_piece: '2023-12-01'
+donneur_ordre_id: null
+donneur_ordre_nom: MARTIN MARIE PIERRE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_gMXMrDDuTJ
+id_dossier: '32362'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45717
+numero_dossier: 49359
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MARTIN MARIE PIERRE
+proprietaire_prenom: null
+ref_piece: FA231201 45717
+reference: '49359'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 101.25
+total_ttc: 121.5
+type: impaye
+updated_at: '2026-06-24T16:31:46.080Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231201_45717/standard/FA231201 45717
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

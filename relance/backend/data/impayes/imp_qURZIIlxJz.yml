@@ -1,0 +1,49 @@
+adresse_bien: 6 rue Urbana Le Pavillon d'Angleterre
+apporteur_id: cont_mSwEw9rkRW
+apporteur_nom: 'EASY MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_jhZWnLTWqv
+created_at: '2026-06-24T16:30:58.051Z'
+date_echeance: '2025-12-08'
+date_import: '2026-07-09T07:05:06.323Z'
+date_piece: '2025-12-01'
+donneur_ordre_id: null
+donneur_ordre_nom: DE NADAI
+donneur_ordre_prenom: Giuseppine - Lucia
+email_index: 0
+facture_soldee: true
+id: imp_qURZIIlxJz
+id_dossier: '40755'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50058
+numero_dossier: 54761
+payer_id: cont_jhZWnLTWqv
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: DE NADAI
+payeur_prenom: Giuseppine - Lucia
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DE NADAI
+proprietaire_prenom: Giuseppine - Lucia
+ref_piece: FA251201 50058
+reference: '54761'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-24T16:30:58.051Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251201_50058/standard/FA251201 50058
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

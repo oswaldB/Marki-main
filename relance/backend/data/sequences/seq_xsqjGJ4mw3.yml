@@ -1,0 +1,65 @@
+actif: true
+created_at: '2026-03-16T21:22:37.954Z'
+emails:
+  - cc: ''
+    corps: ''
+    delai: 0
+    email_index: 1
+    objet: ''
+    scenarios:
+      - active: true
+        corps: >-
+          <p>Bonjour,</p><p>&nbsp;</p><p>Afin de vous permettre un meilleur
+          suivi, voici ci-dessous l’état d’avancement de vos dossiers par agence
+          en date du [[date du jour (new Date(),
+          DD/MM/YYYY]].</p><p><br></p><p><strong>Factures à payer par
+          l'agence</strong></p><p>[[ NE met dans ce tableau que les factures
+          dont le payeur est aussi l'apporteur
+          d'affaires]]</p><p><br></p><table><thead><tr><th><p>Dossiers</p></th><th><p>Référence</p></th><th><p>Date
+          pièce</p></th><th><p>Nom du
+          client</p></th><th><p>Adresse</p></th><th><p>Ancienneté</p></th><th><p>Total
+          TTC Net</p></th><th><p>Reste à
+          payer</p></th></tr></thead><tbody><tr><td><p>[[numero_dossier]]</p></td><td><p>[[nfacture]]</p></td><td><p>[[date_piece]]</p></td><td><p>[[proprietaire_prenom]]
+          [[proprietaire_nom]]</p></td><td><p>[[adresse_bien]] [[code_postal]]
+          [[ville]]</p></td><td><p>[[caclul la différence en jours entre
+          date_echeance et aujourd'hui new Date()., tu réponds au format suivant
+          : "4 jours", "130 jours"]]</p></td><td><p>[[montant_total
+          TTC]]</p></td><td><p>[[reste_a_payer]]</p></td></tr></tbody></table><p><br></p><p><strong>Factures
+          à payer par le propriétaire</strong></p><p>[[ NE met dans ce tableau
+          que les factures dont le payeur est le
+          propriétaire]]</p><p><br></p><table><thead><tr><th><p>Dossiers</p></th><th><p>Référence</p></th><th><p>Date
+          pièce</p></th><th><p>Nom du client</p></th><th><p>Contact
+          agence</p></th><th><p>Adresse</p></th><th><p>Ancienneté</p></th><th><p>Total
+          TTC Net</p></th><th><p>Reste à
+          payer</p></th></tr></thead><tbody><tr><td><p>[[numero_dossier]]</p></td><td><p>[[nfacture]]</p></td><td><p>[[date_piece]]</p></td><td><p>[[proprietaire_prenom]]
+          [[proprietaire_nom]]</p></td><td><p>[[apporteur_contact_prenom]]
+          [[apporteur_contact_nom]]</p></td><td><p>[[adresse_bien]]
+          [[code_postal]] [[ville]]</p></td><td><p>[[caclul la différence en
+          jours entre date_echeance et aujourd'hui, tu réponds au format suivant
+          : "4 jours", "130 jours"]]</p></td><td><p>[[montant_total
+          TTC]]</p></td><td><p>[[reste_a_payer]]</p></td></tr></tbody></table><p><br></p><p>Bien
+          cordialement,</p>
+        format: single
+        objet: Suivi de vos dossiers - Facture [[nfacture]] en attente de règlement
+        smtp_profile_id: smtp_YPsNANpWhC
+      - active: true
+        corps: <p>Bonjour</p>
+        format: multiple
+        objet: Suivi de vos dossiers - Plusieurs factures en attente de règlement
+        smtp_profile_id: null
+      - active: true
+        corps: <p>Bonjour</p>
+        format: both
+        objet: 'Suivi de vos dossiers - Plusieurs factures en attente de règlement '
+        smtp_profile_id: null
+      - active: true
+        corps: <p>Bonjour</p>
+        format: broker
+        objet: 'Suivi de vos dossiers '
+        smtp_profile_id: null
+id: seq_xsqjGJ4mw3
+nom: Suivi agences début de mois
+type: sequence
+type_sequence: suivi
+updated_at: '2026-07-02T14:46:35.697Z'
+validation_obligatoire: true

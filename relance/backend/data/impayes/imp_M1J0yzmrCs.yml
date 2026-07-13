@@ -1,0 +1,49 @@
+adresse_bien: 206 avenue Louis Pasteur Le Primavera
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_JAv7e2AVqI
+created_at: '2026-06-24T16:31:35.046Z'
+date_echeance: '2024-05-07'
+date_import: '2026-07-09T07:05:09.901Z'
+date_piece: '2024-05-07'
+donneur_ordre_id: null
+donneur_ordre_nom: OPTI GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_M1J0yzmrCs
+id_dossier: '34501'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46638
+numero_dossier: 50500
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'BOUCHITE '
+proprietaire_prenom: 'Jean Claude '
+ref_piece: FA240507 46638
+reference: '50500'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:35.046Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240507_46638/standard/FA240507 46638 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

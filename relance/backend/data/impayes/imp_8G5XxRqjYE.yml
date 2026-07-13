@@ -1,0 +1,49 @@
+adresse_bien: 387 avenue Georges Pompidou Le Bellavista
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06110'
+commentaire_piece: ''
+contact_relance_id: cont_SNNcBEbsEn
+created_at: '2026-06-24T16:31:02.917Z'
+date_echeance: '2025-10-10'
+date_import: '2026-07-09T07:05:06.710Z'
+date_piece: '2025-10-03'
+donneur_ordre_id: null
+donneur_ordre_nom: BERNADET
+donneur_ordre_prenom: Guylaine
+email_index: 0
+facture_soldee: true
+id: imp_8G5XxRqjYE
+id_dossier: '40316'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49634
+numero_dossier: 54322
+payer_id: cont_SNNcBEbsEn
+payeur_civilite: ''
+payeur_email: bernadetguylaine@yahoo.fr
+payeur_nom: BERNADET
+payeur_prenom: Guylaine
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BERNADET
+proprietaire_prenom: Guylaine
+ref_piece: FA251002 49634
+reference: '54322'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 304.17
+total_ttc: 365
+type: impaye
+updated_at: '2026-06-24T16:31:02.917Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251002_49634/standard/FA251002 49634
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: LE CANNET

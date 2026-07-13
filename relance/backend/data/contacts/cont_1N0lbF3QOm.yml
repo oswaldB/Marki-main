@@ -1,0 +1,29 @@
+$loki: 5816
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:28.553Z'
+email: schorrn.misc@googlemail.com
+id: cont_1N0lbF3QOm
+impaye_ids:
+  - imp_WdrV4udPQa
+is_blacklisted: false
+meta:
+  created: 1783580700448
+  revision: 0
+  version: 0
+nom: SCHORR
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:27.395Z'

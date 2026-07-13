@@ -1,0 +1,49 @@
+adresse_bien: 14 rue Georges Doublet
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_yrINylOdBF
+created_at: '2026-06-24T16:30:47.868Z'
+date_echeance: '2026-06-04'
+date_import: '2026-07-09T07:05:05.277Z'
+date_piece: '2026-05-28'
+donneur_ordre_id: null
+donneur_ordre_nom: SEASSAU
+donneur_ordre_prenom: René
+email_index: 0
+facture_soldee: true
+id: imp_ZqZJoy4qpf
+id_dossier: '41811'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51030
+numero_dossier: 55817
+payer_id: cont_yrINylOdBF
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SEASSAU
+payeur_prenom: René
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SEASSAU
+proprietaire_prenom: René
+ref_piece: FA260528 51030
+reference: '55817'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 206.25
+total_ttc: 247.5
+type: impaye
+updated_at: '2026-06-24T16:30:47.868Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260528_51030/standard/FA260528 51030 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

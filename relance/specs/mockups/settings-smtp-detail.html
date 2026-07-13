@@ -66,11 +66,6 @@
               </div>
             </div>
           </div>
-          
-          <div class="text-right">
-            <p class="text-sm text-slate-500">Emails envoyés</p>
-            <p class="text-2xl font-bold text-slate-900" x-text="profil.emailsEnvoyes.toLocaleString('fr-FR')"></p>
-          </div>
         </div>
         
         <!-- Configuration -->
@@ -196,8 +191,7 @@ function smtpDetailPage() {
           username: 'noreply@marki.fr',
           password: '••••••••',
           signature: '<p>Cordialement,<br><strong>Marki</strong><br><a href="mailto:contact@marki.fr">contact@marki.fr</a></p>',
-          actif: true,
-          emailsEnvoyes: 12547
+          actif: true
         };
         
         this.loading = false;

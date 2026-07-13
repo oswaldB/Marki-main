@@ -1,0 +1,31 @@
+$loki: 572
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:39.552Z'
+email: mguichard@citya.com
+id: cont_V2Lzv4shaf
+impaye_ids:
+  - imp_gGkNHMVXh2
+  - imp_RgLw8WriAM
+  - imp_s5pxlapHZl
+is_blacklisted: false
+meta:
+  created: 1783580698585
+  revision: 0
+  version: 0
+nom: GUICHARD
+prenom: Marie
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:38.561Z'

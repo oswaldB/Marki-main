@@ -1,0 +1,23 @@
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:27.545Z'
+email: contact@projetcap.fr
+id: cont_gJCf03FtDc
+impaye_ids: []
+is_blacklisted: false
+nom: PROJET CAP IMMOBILIER
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: 06 09 51 61 72
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:26.344Z'

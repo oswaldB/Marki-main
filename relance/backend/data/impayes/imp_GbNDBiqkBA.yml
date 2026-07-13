@@ -1,0 +1,49 @@
+adresse_bien: 5143 route de Saint-Jeannet
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06700'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:10.960Z'
+date_echeance: '2025-05-16'
+date_import: '2026-07-09T07:05:07.493Z'
+date_piece: '2025-05-16'
+donneur_ordre_id: null
+donneur_ordre_nom: 'V FUND IMMO '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_GbNDBiqkBA
+id_dossier: '39426'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48906
+numero_dossier: 53432
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: 'V FUND IMMO '
+proprietaire_prenom: null
+ref_piece: FA250516 48906
+reference: '53432'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:10.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250516_48906/standard/FA250516 48906 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: SAINT-LAURENT-DU-VAR

@@ -1,0 +1,49 @@
+adresse_bien: 778 Piste de la Giraude
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_yp1y3SgCLr
+created_at: '2026-06-24T16:31:14.886Z'
+date_echeance: '2025-03-19'
+date_import: '2026-07-09T07:05:07.838Z'
+date_piece: '2025-03-19'
+donneur_ordre_id: null
+donneur_ordre_nom: DELALLEAU / BOFFA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_O6ELBbE2Pm
+id_dossier: '38962'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48539
+numero_dossier: 52968
+payer_id: cont_yp1y3SgCLr
+payeur_civilite: ''
+payeur_email: nadine12gevi@outlook.fr
+payeur_nom: DELALLEAU / BOFFA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DELALLEAU / BOFFA
+proprietaire_prenom: null
+ref_piece: FA250319 48539
+reference: '52968'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:14.886Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250319_48539/standard/FA250319 48539 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

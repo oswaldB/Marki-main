@@ -1,0 +1,49 @@
+adresse_bien: 59 avenue du Logis de Bonneau REGENT PARK
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06270'
+commentaire_piece: ''
+contact_relance_id: cont_ORahYRQNot
+created_at: '2026-06-24T16:31:02.048Z'
+date_echeance: '2025-10-14'
+date_import: '2026-07-09T07:05:06.686Z'
+date_piece: '2025-10-07'
+donneur_ordre_id: null
+donneur_ordre_nom: BOCCHINI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_0rWhViDjHj
+id_dossier: '40386'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49686
+numero_dossier: 54392
+payer_id: cont_ORahYRQNot
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BOCCHINI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BOCCHINI
+proprietaire_prenom: null
+ref_piece: FA251007 49686
+reference: '54392'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 210
+total_ttc: 252
+type: impaye
+updated_at: '2026-06-24T16:31:02.048Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251007_49686/standard/FA251007 49686
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLENEUVE-LOUBET

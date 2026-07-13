@@ -1,0 +1,49 @@
+adresse_bien: 95 route du Val des Castagnins La Chataigneraie
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_vXyZAIRz5J
+created_at: '2026-06-24T16:31:15.050Z'
+date_echeance: '2025-03-13'
+date_import: '2026-07-09T07:05:07.920Z'
+date_piece: '2025-03-13'
+donneur_ordre_id: null
+donneur_ordre_nom: ROMANIELLO
+donneur_ordre_prenom: Laura
+email_index: 0
+facture_soldee: true
+id: imp_SIqKXQ1jbE
+id_dossier: '38907'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48496
+numero_dossier: 52913
+payer_id: cont_vXyZAIRz5J
+payeur_civilite: ''
+payeur_email: romalaura@hotmail.fr
+payeur_nom: ROMANIELLO
+payeur_prenom: Laura
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROMANIELLO
+proprietaire_prenom: Laura
+ref_piece: FA250313 48496
+reference: '52913'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:15.050Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250313_48496/standard/FA250313 48496 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

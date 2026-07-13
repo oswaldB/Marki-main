@@ -1,0 +1,49 @@
+adresse_bien: 28 rue Pietra Scritta MAISON DU ROCHER
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_md88QAmAS2
+created_at: '2026-06-24T16:31:25.057Z'
+date_echeance: '2024-10-01'
+date_import: '2026-07-09T07:05:08.932Z'
+date_piece: '2024-10-01'
+donneur_ordre_id: null
+donneur_ordre_nom: OPTI GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_oKgWSoqaYf
+id_dossier: '37677'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47518
+numero_dossier: 51683
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BERMOND
+proprietaire_prenom: 'Marysia et Michel '
+ref_piece: FA240926 47518
+reference: '51683'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 89.17
+total_ttc: 107
+type: impaye
+updated_at: '2026-06-24T16:31:25.057Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA240926_47518/standard/FA240926 47518
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 2 chemin de la Noix Princess Palace
+apporteur_id: cont_Q0jadWIlqE
+apporteur_nom: JLR IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_Q0jadWIlqE
+created_at: '2026-06-24T16:31:33.056Z'
+date_echeance: '2024-06-03'
+date_import: '2026-07-09T07:05:09.759Z'
+date_piece: '2024-06-03'
+donneur_ordre_id: null
+donneur_ordre_nom: AUDERO
+donneur_ordre_prenom: Alessandro
+email_index: 0
+facture_soldee: true
+id: imp_8B0Iix0LOj
+id_dossier: '35798'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46800
+numero_dossier: 50802
+payer_id: cont_Q0jadWIlqE
+payeur_civilite: ''
+payeur_email: agence@jlrimmo.com
+payeur_nom: JLR IMMO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: AUDERO
+proprietaire_prenom: Alessandro
+ref_piece: FA240603 46800
+reference: '50802'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.67
+total_ttc: 230
+type: impaye
+updated_at: '2026-06-24T16:31:33.056Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240603_46800/standard/FA240603 46800 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

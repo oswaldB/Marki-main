@@ -1,0 +1,49 @@
+adresse_bien: 129 boulevard Gambetta Bâtiment
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_ozesiVMiDn
+created_at: '2026-06-24T16:31:19.977Z'
+date_echeance: '2025-01-08'
+date_import: '2026-07-09T07:05:08.375Z'
+date_piece: '2025-01-08'
+donneur_ordre_id: null
+donneur_ordre_nom: Société GIMO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_ysC6GDwWWC
+id_dossier: '38389'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48061
+numero_dossier: 52395
+payer_id: cont_ozesiVMiDn
+payeur_civilite: ''
+payeur_email: franco.bucceri@notaires.fr
+payeur_nom: 'BUCCERI '
+payeur_prenom: Franco
+payeur_telephone: '0497033416'
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: Société GIMO
+proprietaire_prenom: null
+ref_piece: FA250108 48061
+reference: '52395'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 100
+total_ttc: 120
+type: impaye
+updated_at: '2026-06-24T16:31:19.977Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250108_48061/standard/FA250108 48061
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 11 rue du Louvre Résidence du Louvre
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:12.892Z'
+date_echeance: '2025-04-15'
+date_import: '2026-07-09T07:05:07.665Z'
+date_piece: '2025-04-15'
+donneur_ordre_id: null
+donneur_ordre_nom: JACQUIN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_t9aSmABt37
+id_dossier: '39189'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48720
+numero_dossier: 53195
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: JACQUIN
+proprietaire_prenom: null
+ref_piece: FA250415 48720
+reference: '53195'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:12.892Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250415_48720/standard/FA250415 48720
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

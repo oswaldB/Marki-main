@@ -1,0 +1,49 @@
+adresse_bien: 397 rue Antoine Péglion Le Verger
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_B3YVMf8qrz
+created_at: '2026-06-24T16:31:45.061Z'
+date_echeance: '2023-12-13'
+date_import: '2026-07-09T07:05:10.783Z'
+date_piece: '2023-12-13'
+donneur_ordre_id: null
+donneur_ordre_nom: LORENZI
+donneur_ordre_prenom: Florian
+email_index: 0
+facture_soldee: true
+id: imp_m6DqaEAGCg
+id_dossier: '32435'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45780
+numero_dossier: 49432
+payer_id: cont_B3YVMf8qrz
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: LORENZI
+payeur_prenom: Florian
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LORENZI
+proprietaire_prenom: Florian
+ref_piece: FA231213 45780
+reference: '49432'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 95.83
+total_ttc: 115
+type: impaye
+updated_at: '2026-06-24T16:31:45.061Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231213_45780/standard/FA231213 45780
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

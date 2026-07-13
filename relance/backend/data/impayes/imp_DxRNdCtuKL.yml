@@ -1,0 +1,49 @@
+adresse_bien: 8 place Adolphe Conil
+apporteur_id: cont_isHCgB9sfB
+apporteur_nom: GARRONE TECHTURA
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06260'
+commentaire_piece: "site : 8 Place Conil - 06260 Puget-Théniers\r\nNature travaux : Remplacement toiture env. 40m²"
+contact_relance_id: cont_isHCgB9sfB
+created_at: '2026-06-24T16:30:49.874Z'
+date_echeance: '2026-05-01'
+date_import: '2026-07-09T07:05:05.446Z'
+date_piece: '2026-04-24'
+donneur_ordre_id: null
+donneur_ordre_nom: GARRONE TECHTURA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_DxRNdCtuKL
+id_dossier: '41558'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50835
+numero_dossier: 55564
+payer_id: cont_isHCgB9sfB
+payeur_civilite: ''
+payeur_email: A.GARRONE@techtura.fr
+payeur_nom: GARRONE TECHTURA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'SDC 8 PLACE CONIL '
+proprietaire_prenom: null
+ref_piece: FA260424 50835
+reference: '55564'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 530.6
+total_ttc: 636.72
+type: impaye
+updated_at: '2026-06-24T16:30:49.874Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260424_50835/standard/FA260424 50835
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: PUGET-THÉNIERS

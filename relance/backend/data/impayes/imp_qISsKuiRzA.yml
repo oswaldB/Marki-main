@@ -1,0 +1,49 @@
+adresse_bien: 32 Corniche Frère Marc
+apporteur_id: cont_VhF9FsFsi1
+apporteur_nom: CABINET IMMOBILIS
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_ZncAyNrwPR
+created_at: '2026-06-24T16:31:35.937Z'
+date_echeance: '2024-05-02'
+date_import: '2026-07-09T07:05:09.932Z'
+date_piece: '2024-05-02'
+donneur_ordre_id: null
+donneur_ordre_nom: LOGIS DU FRERE MARC
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_qISsKuiRzA
+id_dossier: '34560'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46621
+numero_dossier: 50559
+payer_id: cont_VhF9FsFsi1
+payeur_civilite: ''
+payeur_email: syndic@cabinetimmobilis.fr
+payeur_nom: CABINET IMMOBILIS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LOGIS DU FRERE MARC
+proprietaire_prenom: null
+ref_piece: FA240502 46621
+reference: '50559'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 941.67
+total_ttc: 1130
+type: impaye
+updated_at: '2026-06-24T16:31:35.937Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240502_46621/standard/FA240502 46621 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

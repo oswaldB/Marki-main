@@ -1,0 +1,49 @@
+adresse_bien: 73 avenue de la Cote d'Azur
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: '23/02 relance mail '
+contact_relance_id: cont_9KYnhWvzAC
+created_at: '2026-06-24T16:30:53.958Z'
+date_echeance: '2026-02-17'
+date_import: '2026-07-09T07:05:05.896Z'
+date_piece: '2026-02-10'
+donneur_ordre_id: null
+donneur_ordre_nom: SUCCESSION GIOVANNINI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_HU6mkv4kNv
+id_dossier: '41210'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50457
+numero_dossier: 55216
+payer_id: cont_9KYnhWvzAC
+payeur_civilite: ''
+payeur_email: giovannini.nicolas@gmail.com
+payeur_nom: SUCCESSION GIOVANNINI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SUCCESSION GIOVANNINI
+proprietaire_prenom: null
+ref_piece: FA260210 50457
+reference: '55216'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 269.17
+total_ttc: 323
+type: impaye
+updated_at: '2026-06-24T16:30:53.958Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260210_50457/standard/FA260210 50457
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

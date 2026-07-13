@@ -1,0 +1,49 @@
+adresse_bien: 7 avenue Blasco Ibanez  Le Garavan Palace
+apporteur_id: cont_mSwEw9rkRW
+apporteur_nom: 'EASY MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_RA88h8TVQm
+created_at: '2026-06-24T16:31:17.057Z'
+date_echeance: '2025-02-13'
+date_import: '2026-07-09T07:05:08.110Z'
+date_piece: '2025-02-13'
+donneur_ordre_id: null
+donneur_ordre_nom: PILATE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_XVw1dqNuOK
+id_dossier: '38717'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48340
+numero_dossier: 52723
+payer_id: cont_RA88h8TVQm
+payeur_civilite: ''
+payeur_email: sopilate@yahoo.fr
+payeur_nom: PILATE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PILATE
+proprietaire_prenom: null
+ref_piece: FA250213 48340
+reference: '52723'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 60.42
+total_ttc: 72.5
+type: impaye
+updated_at: '2026-06-24T16:31:17.057Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250213_48340/standard/FA250213 48340
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,83 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_Yq0zrzMZf5
+corps: >
+  <p>Bonjour Monsieur Philippe DECOCK,</p>
+
+  <p><br></p>
+
+  <p>Malgré notre rappel du <strong>16/07/2026</strong>, votre facture
+  <strong>n°51265</strong> (lors de nos prestations au <strong>4 impasse des
+  Ecoles Pie, 06500 MENTON - dossier 56069</strong>) reste à ce jour
+  impayée.</p>
+
+  <p><br></p>
+
+  <p>Nous vous invitons à régulariser cette situation dans les meilleurs
+  délais.</p>
+
+  <p><br></p>
+
+  <p>Montant total : <strong>135,00 €</strong></p>
+
+  <p>Date d'échéance : <strong>15/07/2026</strong> (échéance dépassée)</p>
+
+  <p>Reste à payer : <strong>135,00 €</strong></p>
+
+  <p><br></p>
+
+  <p><a href="https://adti.markidiags.com/redirect-pdf/t97JDQVp9A">Télécharger
+  la facture</a></p>
+
+  <p><br></p>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=135&vads_order_id=51265&vads_cust_id=56069&vads_cust_last_name=DECOCK&vads_cust_first_name=Philippe&vads_cust_email=phildec2001@yahoo.fr">Paiement
+  sécurisé en ligne par carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p>Nous vous remercions de procéder au règlement sous <strong>5 jours</strong>
+  afin d'éviter l'application des pénalités légales de retard.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-07-08T22:03:01.118Z'
+date_envoi: '2026-07-20T00:00:00.000Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 3
+erreur_count: 0
+id: rel_2Y1xpdvg5T
+impaye_ids:
+  - imp_t97JDQVp9A
+manuelle: false
+message_id: null
+objet: 'EX''IM - Dossier 56069 - Relance n°1 : Facture 51265 impayée'
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: pret pour envoi
+type: relance
+updated_at: '2026-07-08T22:03:01.118Z'
+valide: false

@@ -1,0 +1,49 @@
+adresse_bien: 13 avenue de Verdun
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_QdzOmyJdTR
+created_at: '2026-06-24T16:31:17.957Z'
+date_echeance: '2025-02-05'
+date_import: '2026-07-09T07:05:08.181Z'
+date_piece: '2025-02-05'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI STEFANA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_QL23w1dnv5
+id_dossier: '38591'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48256
+numero_dossier: 52597
+payer_id: cont_QdzOmyJdTR
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SCI STEFANA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI STEFANA
+proprietaire_prenom: null
+ref_piece: FA250205 48256
+reference: '52597'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 335.83
+total_ttc: 403
+type: impaye
+updated_at: '2026-06-24T16:31:17.957Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250205_48256/standard/FA250205 48256
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

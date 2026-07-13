@@ -1,0 +1,49 @@
+adresse_bien: 2 ter rue Spitalieri Palais Jocelyn
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:43.047Z'
+date_echeance: '2024-01-24'
+date_import: '2026-07-09T07:05:10.588Z'
+date_piece: '2024-01-24'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_1n1QEBYZFw
+id_dossier: '32717'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45977
+numero_dossier: 49714
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: POTEAU
+proprietaire_prenom: Grégory
+ref_piece: FA240124 45977
+reference: '49714'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 43.75
+total_ttc: 52.5
+type: impaye
+updated_at: '2026-06-24T16:31:43.047Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240124_45977/standard/FA240124 45977
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 46 boulevard Carnot Le Porto Bello
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:01.983Z'
+date_echeance: '2025-10-20'
+date_import: '2026-07-09T07:05:06.654Z'
+date_piece: '2025-10-13'
+donneur_ordre_id: null
+donneur_ordre_nom: DILLY
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_C9fWEeJMQY
+id_dossier: '40414'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49728
+numero_dossier: 54420
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DILLY
+proprietaire_prenom: null
+ref_piece: FA251013 49728
+reference: '54420'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: -90
+total_ttc: -108
+type: impaye
+updated_at: '2026-06-24T16:31:01.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251013_49728/standard/FA251013 49728
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

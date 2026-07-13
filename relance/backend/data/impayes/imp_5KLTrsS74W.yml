@@ -1,0 +1,49 @@
+adresse_bien: 12 avenue de Villaine Le Panoramique
+apporteur_id: cont_Q0jadWIlqE
+apporteur_nom: JLR IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_dHLItmszAh
+created_at: '2026-06-24T16:31:29.901Z'
+date_echeance: '2024-08-01'
+date_import: '2026-07-09T07:05:09.414Z'
+date_piece: '2024-08-01'
+donneur_ordre_id: null
+donneur_ordre_nom: TRAPANI
+donneur_ordre_prenom: Ermanno
+email_index: 0
+facture_soldee: true
+id: imp_5KLTrsS74W
+id_dossier: '36284'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47180
+numero_dossier: 51288
+payer_id: cont_dHLItmszAh
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: TRAPANI
+payeur_prenom: Ermanno
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: TRAPANI
+proprietaire_prenom: Ermanno
+ref_piece: FA240801 47180
+reference: '51288'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:31:29.901Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240801_47180/standard/FA240801 47180 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

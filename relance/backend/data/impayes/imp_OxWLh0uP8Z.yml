@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Maccarani
+apporteur_id: cont_3Lj4PPMcI0
+apporteur_nom: GT CAPITAL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_3Lj4PPMcI0
+created_at: '2026-06-24T16:31:01.983Z'
+date_echeance: '2025-10-20'
+date_import: '2026-07-09T07:05:06.641Z'
+date_piece: '2025-10-13'
+donneur_ordre_id: null
+donneur_ordre_nom: GT CAPITAL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_OxWLh0uP8Z
+id_dossier: '40442'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49717
+numero_dossier: 54448
+payer_id: cont_3Lj4PPMcI0
+payeur_civilite: ''
+payeur_email: gtc.ns@gtcapital.fr
+payeur_nom: GT CAPITAL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GT CAPITAL
+proprietaire_prenom: null
+ref_piece: FA251013 49717
+reference: '54448'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 243.33
+total_ttc: 292
+type: impaye
+updated_at: '2026-06-24T16:31:01.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251013_49717/standard/FA251013 49717
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

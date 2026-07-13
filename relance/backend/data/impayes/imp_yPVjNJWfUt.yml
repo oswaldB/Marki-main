@@ -1,0 +1,49 @@
+adresse_bien: 2 rue de Bréa
+apporteur_id: cont_5keRx5VJny
+apporteur_nom: API AZUR PATRIMOINE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_yCbQ2UpC7O
+created_at: '2026-07-07T22:00:52.353Z'
+date_echeance: '2026-07-14'
+date_import: '2026-07-09T07:05:12.297Z'
+date_piece: '2026-07-07'
+donneur_ordre_id: null
+donneur_ordre_nom: BREZZO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_yPVjNJWfUt
+id_dossier: '42087'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51255
+numero_dossier: 56093
+payer_id: cont_yCbQ2UpC7O
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BREZZO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BREZZO
+proprietaire_prenom: null
+ref_piece: FA260707 51255
+reference: '56093'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-07-08T22:02:31.262Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juillet/FA260707_51255/standard/FA260707 51255
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

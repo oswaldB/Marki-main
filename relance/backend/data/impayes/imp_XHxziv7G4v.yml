@@ -1,0 +1,49 @@
+adresse_bien: 6 ter avenue Durante
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:31.077Z'
+date_echeance: '2024-07-03'
+date_import: '2026-07-09T07:05:09.585Z'
+date_piece: '2024-07-03'
+donneur_ordre_id: null
+donneur_ordre_nom: GESTION IMMOBILIERE TISSINIE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_XHxziv7G4v
+id_dossier: '36059'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46982
+numero_dossier: 51063
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: PEYRAT
+proprietaire_prenom: Alain
+ref_piece: FA240703 46982
+reference: '51063'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:31.077Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240703_46982/standard/FA240703 46982
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

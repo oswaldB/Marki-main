@@ -1,0 +1,49 @@
+adresse_bien: 4 rue Defly
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:29.991Z'
+date_echeance: '2024-07-18'
+date_import: '2026-07-09T07:05:09.480Z'
+date_piece: '2024-07-18'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL CIBO BISTROT
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_BRbK9Mk28B
+id_dossier: '36176'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47086
+numero_dossier: 51180
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SARL CIBO BISTROT
+proprietaire_prenom: null
+ref_piece: FA240718 47086
+reference: '51180'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:29.991Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240718_47086/standard/FA240718 47086
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

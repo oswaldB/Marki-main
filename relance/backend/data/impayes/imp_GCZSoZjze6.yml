@@ -1,0 +1,49 @@
+adresse_bien: 19 avenue Auber Le Dome
+apporteur_id: cont_cwSw0cxeig
+apporteur_nom: ORPI LIOR
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_WcopAdUFZa
+created_at: '2026-06-24T16:31:14.021Z'
+date_echeance: '2025-03-26'
+date_import: '2026-07-09T07:05:07.812Z'
+date_piece: '2025-03-26'
+donneur_ordre_id: null
+donneur_ordre_nom: HARNEY
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_GCZSoZjze6
+id_dossier: '39028'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48598
+numero_dossier: 53034
+payer_id: cont_WcopAdUFZa
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: HARNEY
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: HARNEY
+proprietaire_prenom: null
+ref_piece: FA250326 48598
+reference: '53034'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:14.021Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250326_48598/standard/FA250326 48598 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

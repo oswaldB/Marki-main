@@ -1,0 +1,23 @@
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:59.567Z'
+email: mt160764@gmail.com
+id: cont_aGswmpfzxE
+impaye_ids: []
+is_blacklisted: false
+nom: TONINI
+prenom: 'Marco '
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:58.411Z'

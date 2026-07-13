@@ -1,0 +1,49 @@
+adresse_bien: 40 boulevard Gambetta
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_dlNU4DPsDs
+created_at: '2026-06-24T16:31:01.007Z'
+date_echeance: '2025-10-30'
+date_import: '2026-07-09T07:05:06.571Z'
+date_piece: '2025-10-23'
+donneur_ordre_id: null
+donneur_ordre_nom: BONACORSI
+donneur_ordre_prenom: Denis
+email_index: 0
+facture_soldee: true
+id: imp_5wbwbcLE9z
+id_dossier: '40519'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49793
+numero_dossier: 54525
+payer_id: cont_dlNU4DPsDs
+payeur_civilite: ''
+payeur_email: denisdriver@gmail.com
+payeur_nom: BONACORSI
+payeur_prenom: Denis
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BONACORSI
+proprietaire_prenom: Denis
+ref_piece: FA251023 49793
+reference: '54525'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 86.25
+total_ttc: 103.5
+type: impaye
+updated_at: '2026-06-24T16:31:01.007Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251023_49793/standard/FA251023 49793
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

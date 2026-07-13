@@ -1,0 +1,49 @@
+adresse_bien: 23 rue Saint-michel
+apporteur_id: cont_LgArzyVnvd
+apporteur_nom: 'ACT''RIVIERA '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_kZ5oJPROqp
+created_at: '2026-06-24T16:31:22.026Z'
+date_echeance: '2024-11-26'
+date_import: '2026-07-09T07:05:08.609Z'
+date_piece: '2024-11-26'
+donneur_ordre_id: null
+donneur_ordre_nom: CALVIN
+donneur_ordre_prenom: 'Yves '
+email_index: 0
+facture_soldee: true
+id: imp_WByZVEwNXU
+id_dossier: '38096'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47859
+numero_dossier: 52102
+payer_id: cont_kZ5oJPROqp
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CALVIN
+payeur_prenom: 'Yves '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CALVIN
+proprietaire_prenom: 'Yves '
+ref_piece: FA241126 47859
+reference: '52102'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 258.33
+total_ttc: 310
+type: impaye
+updated_at: '2026-06-24T16:31:22.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241126_47859/standard/FA241126 47859
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

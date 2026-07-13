@@ -1,0 +1,49 @@
+adresse_bien: 19 avenue Saint-Barthélemy l'Edison
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_BEk9dlqLzw
+created_at: '2026-06-24T16:31:36.069Z'
+date_echeance: '2024-04-17'
+date_import: '2026-07-09T07:05:09.986Z'
+date_piece: '2024-04-17'
+donneur_ordre_id: null
+donneur_ordre_nom: MEYNIER
+donneur_ordre_prenom: Isabelle
+email_index: 0
+facture_soldee: true
+id: imp_FdOxvebdBh
+id_dossier: '34435'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46504
+numero_dossier: 50434
+payer_id: cont_BEk9dlqLzw
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: MEYNIER
+payeur_prenom: Isabelle
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MEYNIER
+proprietaire_prenom: Isabelle
+ref_piece: FA240417 46504
+reference: '50434'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 95.83
+total_ttc: 115
+type: impaye
+updated_at: '2026-06-24T16:31:36.069Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240417_46504/standard/FA240417 46504
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

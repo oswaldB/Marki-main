@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue Raquel Meller
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_e53R48o27k
+created_at: '2026-06-24T16:31:23.011Z'
+date_echeance: '2024-11-08'
+date_import: '2026-07-09T07:05:08.711Z'
+date_piece: '2024-11-08'
+donneur_ordre_id: null
+donneur_ordre_nom: CABINET CAPAN -  BORDES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_icP8gac019
+id_dossier: '37979'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47765
+numero_dossier: 51985
+payer_id: cont_e53R48o27k
+payeur_civilite: ''
+payeur_email: contact@capan-bordes.com
+payeur_nom: CABINET CAPAN -  BORDES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CABINET CAPAN -  BORDES
+proprietaire_prenom: null
+ref_piece: FA241108 47765
+reference: '51985'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:23.011Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241108_47765/standard/FA241108 47765
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

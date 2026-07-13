@@ -1,0 +1,49 @@
+adresse_bien: 18 avenue Saint-Sylvestre 2 avenue Valentiny
+apporteur_id: cont_yX11GgdqvV
+apporteur_nom: FEIGENSPAN
+apporteur_prenom: Jean Loup
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_yX11GgdqvV
+created_at: '2026-06-29T22:00:17.094Z'
+date_echeance: '2026-07-06'
+date_import: '2026-07-09T07:05:12.208Z'
+date_piece: '2026-06-29'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC 18 AV SAINT SYLVESTRE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_urkDGdYMBz
+id_dossier: '42064'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51204
+numero_dossier: 56070
+payer_id: cont_yX11GgdqvV
+payeur_civilite: ''
+payeur_email: jlf.eurofiance@gmail.com
+payeur_nom: FEIGENSPAN
+payeur_prenom: Jean Loup
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC 18 AV SAINT SYLVESTRE
+proprietaire_prenom: null
+ref_piece: FA260629 51204
+reference: '56070'
+reste_a_payer: 0
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-07-02T07:50:04.089Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260629_51204/standard/FA260629 51204 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

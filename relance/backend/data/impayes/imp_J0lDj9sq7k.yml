@@ -1,0 +1,49 @@
+adresse_bien: 33 rue de l'Hôtel des Postes
+apporteur_id: cont_e53R48o27k
+apporteur_nom: CABINET CAPAN -  BORDES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_N3YlXOLQvq
+created_at: '2026-06-24T16:30:47.944Z'
+date_echeance: '2026-05-29'
+date_import: '2026-07-09T07:05:05.291Z'
+date_piece: '2026-05-22'
+donneur_ordre_id: null
+donneur_ordre_nom: CABINET CAPAN -  BORDES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_J0lDj9sq7k
+id_dossier: '41810'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50991
+numero_dossier: 55816
+payer_id: cont_N3YlXOLQvq
+payeur_civilite: ''
+payeur_email: sb@capan-bordes.com
+payeur_nom: BORDES
+payeur_prenom: Sandrine
+payeur_telephone: '0603025812'
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: ABECASSIS
+proprietaire_prenom: Jerome
+ref_piece: FA260522 50991
+reference: '55816'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 150
+total_ttc: 180
+type: impaye
+updated_at: '2026-06-24T16:30:47.944Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260522_50991/standard/FA260522 50991 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

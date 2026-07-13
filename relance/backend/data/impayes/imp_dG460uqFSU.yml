@@ -1,0 +1,49 @@
+adresse_bien: 53 boulevard Maréchal Juin Résidence Austerlitz
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:40.037Z'
+date_echeance: '2024-03-01'
+date_import: '2026-07-09T07:05:10.318Z'
+date_piece: '2024-03-01'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_dG460uqFSU
+id_dossier: '32917'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46134
+numero_dossier: 49914
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BRUN
+proprietaire_prenom: Claude
+ref_piece: FA240215 46134
+reference: '49914'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 58.33
+total_ttc: 70
+type: impaye
+updated_at: '2026-06-24T16:31:40.037Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240215_46134/standard/FA240215 46134 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

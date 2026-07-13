@@ -1,0 +1,49 @@
+adresse_bien: 126 ter avenue de la Californie Les Roses Marines
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_jqjMNSimEZ
+created_at: '2026-06-24T16:31:01.911Z'
+date_echeance: '2025-10-22'
+date_import: '2026-07-09T07:05:06.611Z'
+date_piece: '2025-10-15'
+donneur_ordre_id: null
+donneur_ordre_nom: ZARIF PEYVANDI
+donneur_ordre_prenom: Pédram
+email_index: 0
+facture_soldee: true
+id: imp_Kxwcb0637X
+id_dossier: '40369'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49743
+numero_dossier: 54375
+payer_id: cont_jqjMNSimEZ
+payeur_civilite: ''
+payeur_email: zarifpedram87@gmail.com
+payeur_nom: ZARIF PEYVANDI
+payeur_prenom: Pédram
+payeur_telephone: '0662617773'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ZARIF PEYVANDI
+proprietaire_prenom: Pédram
+ref_piece: FA251015 49743
+reference: '54375'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:01.911Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251015_49743/standard/FA251015 49743
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

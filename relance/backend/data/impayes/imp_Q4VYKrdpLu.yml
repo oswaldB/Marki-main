@@ -1,0 +1,49 @@
+adresse_bien: 6 avenue de France Le Beach
+apporteur_id: cont_Q0jadWIlqE
+apporteur_nom: JLR IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_wZTDJMDyiq
+created_at: '2026-06-24T16:30:57.918Z'
+date_echeance: '2025-12-16'
+date_import: '2026-07-09T07:05:06.272Z'
+date_piece: '2025-12-09'
+donneur_ordre_id: null
+donneur_ordre_nom: JULIA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Q4VYKrdpLu
+id_dossier: '40836'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50099
+numero_dossier: 54842
+payer_id: cont_wZTDJMDyiq
+payeur_civilite: ''
+payeur_email: michael.piccioloni@bnc.fr
+payeur_nom: JULIA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: JULIA
+proprietaire_prenom: null
+ref_piece: FA251209 50099
+reference: '54842'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2729.17
+total_ttc: 3275
+type: impaye
+updated_at: '2026-06-24T16:30:57.918Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251209_50099/standard/FA251209 50099
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

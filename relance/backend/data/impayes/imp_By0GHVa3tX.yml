@@ -1,0 +1,49 @@
+adresse_bien: 113 Corniche Fleurie Terre d'Azur
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_zV76Y7Fa1E
+created_at: '2026-06-24T16:31:51.075Z'
+date_echeance: '2023-09-15'
+date_import: '2026-07-09T07:05:11.358Z'
+date_piece: '2023-09-15'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_By0GHVa3tX
+id_dossier: '30556'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45063
+numero_dossier: 48546
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PARANT
+proprietaire_prenom: null
+ref_piece: FA230825 45063
+reference: '48546'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 87.5
+total_ttc: 105
+type: impaye
+updated_at: '2026-06-24T16:31:51.075Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230825_45063/standard/FA230825 45063
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

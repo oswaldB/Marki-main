@@ -1,0 +1,49 @@
+adresse_bien: 6 boulevard de la République Les Glycines
+apporteur_id: cont_6KB3jgW9oc
+apporteur_nom: PROGEDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_6KB3jgW9oc
+created_at: '2026-06-24T16:31:42.092Z'
+date_echeance: '2024-02-01'
+date_import: '2026-07-09T07:05:10.501Z'
+date_piece: '2024-02-01'
+donneur_ordre_id: null
+donneur_ordre_nom: PROGEDI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_GXgv36e6l8
+id_dossier: '32793'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46036
+numero_dossier: 49790
+payer_id: cont_6KB3jgW9oc
+payeur_civilite: ''
+payeur_email: accueil@progedi.com
+payeur_nom: PROGEDI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: OCHOYBUR
+proprietaire_prenom: Dursun
+ref_piece: FA240201 46036
+reference: '49790'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:42.092Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240201_46036/standard/FA240201 46036
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

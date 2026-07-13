@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue Alfred Leroux L'Ecrin
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Rev2j7FvL3
+created_at: '2026-06-24T16:30:47.944Z'
+date_echeance: '2026-05-29'
+date_import: '2026-07-09T07:05:05.302Z'
+date_piece: '2026-05-22'
+donneur_ordre_id: null
+donneur_ordre_nom: 'DENNIEE '
+donneur_ordre_prenom: Alain
+email_index: 0
+facture_soldee: false
+id: imp_p25v3rjf3K
+id_dossier: '41791'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50988
+numero_dossier: 55797
+payer_id: cont_F47dfC6qeF
+payeur_civilite: ''
+payeur_email: sophiesalomon@sarl-adp.fr
+payeur_nom: AGENCE DU PORT
+payeur_prenom: 'Cabinet Salomon '
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'DENNIEE '
+proprietaire_prenom: Alain
+ref_piece: FA260522 50988
+reference: '55797'
+reste_a_payer: 108
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 90
+total_ttc: 108
+type: impaye
+updated_at: '2026-06-24T16:33:33.227Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260522_50988/standard/FA260522 50988 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

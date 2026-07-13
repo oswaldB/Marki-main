@@ -1,0 +1,29 @@
+$loki: 3876
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:10.533Z'
+email: c.stella@stellabtp.com
+id: cont_31Lxqa71Jb
+impaye_ids:
+  - imp_ZBKcZ1aB6g
+is_blacklisted: false
+meta:
+  created: 1783580699815
+  revision: 0
+  version: 0
+nom: STELLA
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:09.375Z'

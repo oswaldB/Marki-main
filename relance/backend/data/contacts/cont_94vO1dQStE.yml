@@ -1,0 +1,70 @@
+$loki: 1655
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:49.655Z'
+email: lgrazi@laforet.com
+id: cont_94vO1dQStE
+impaye_ids:
+  - imp_YBvvDc4qIR
+  - imp_tgWzbMjV4k
+  - imp_dKFHwM0Pav
+  - imp_T3alLLABmt
+  - imp_9gxxcW1AJ2
+  - imp_DCJ35dH31t
+  - imp_70svsJctHi
+  - imp_LBjWQ1jeDM
+  - imp_vEgpCgJQ2A
+  - imp_1h8HgToqQD
+  - imp_EKCNoiDUTv
+  - imp_kgqU4eEwQv
+  - imp_EAWgfdi6cJ
+  - imp_ABDgBtZU01
+  - imp_VunDHCU8DH
+  - imp_FTsEYmNrZ2
+  - imp_wg1sgUgO3X
+  - imp_Ew9qbkd2K5
+  - imp_zAotktWAsL
+  - imp_op1AXVOzhM
+  - imp_hWQeDhKMm0
+  - imp_yojpJNvOYs
+  - imp_CPPZECyyhU
+  - imp_xz9pxCRUDi
+  - imp_MTOra0sCdX
+  - imp_adaTXZGxqL
+  - imp_qD1PHlwuYC
+  - imp_hIEPX1czvr
+  - imp_SUxQ2Lh5nK
+  - imp_1n4nsI6nUw
+  - imp_RUa2l8AgSF
+  - imp_EpKRfh9RCK
+  - imp_P8DDFHaDpC
+  - imp_mBtqKzTLyB
+  - imp_gpUBdTN1tv
+  - imp_RxUsEJtPsN
+  - imp_B4B9ZAYhy1
+  - imp_7M8RtVXPXG
+  - imp_rfZvmRuBBl
+  - imp_6BvN3MoGxt
+  - imp_oB2CZfF5zi
+  - imp_RGDWVDQFMd
+is_blacklisted: false
+meta:
+  created: 1783580699001
+  revision: 0
+  version: 0
+nom: GRAZI
+prenom: Luana
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:49.326Z'

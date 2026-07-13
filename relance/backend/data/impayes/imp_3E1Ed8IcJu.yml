@@ -1,0 +1,49 @@
+adresse_bien: 50 avenue de Brancolar
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_ctUvfKTFEF
+created_at: '2026-06-24T16:31:02.877Z'
+date_echeance: '2025-10-13'
+date_import: '2026-07-09T07:05:06.706Z'
+date_piece: '2025-10-06'
+donneur_ordre_id: null
+donneur_ordre_nom: GRA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_3E1Ed8IcJu
+id_dossier: '40333'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49674
+numero_dossier: 54339
+payer_id: cont_ctUvfKTFEF
+payeur_civilite: ''
+payeur_email: jeangra307@gmail.com
+payeur_nom: GRA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GRA
+proprietaire_prenom: null
+ref_piece: FA251006 49674
+reference: '54339'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 316.67
+total_ttc: 380
+type: impaye
+updated_at: '2026-06-24T16:31:02.877Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251006_49674/standard/FA251006 49674
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

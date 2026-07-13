@@ -1,0 +1,49 @@
+adresse_bien: 23 avenue de la Republique
+apporteur_id: cont_9L5OJ8EZOM
+apporteur_nom: AGENCE DELOYE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_x2I3ickwkv
+created_at: '2026-06-24T16:31:10.916Z'
+date_echeance: '2025-05-19'
+date_import: '2026-07-09T07:05:07.477Z'
+date_piece: '2025-05-19'
+donneur_ordre_id: null
+donneur_ordre_nom: DUBOIS
+donneur_ordre_prenom: 'Mireille et Jean Marie '
+email_index: 0
+facture_soldee: true
+id: imp_0mrBXXNoqk
+id_dossier: '39438'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48918
+numero_dossier: 53444
+payer_id: cont_x2I3ickwkv
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: DUBOIS
+payeur_prenom: 'Mireille et Jean Marie '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DUBOIS
+proprietaire_prenom: 'Mireille et Jean Marie '
+ref_piece: FA250519 48918
+reference: '53444'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 206.67
+total_ttc: 248
+type: impaye
+updated_at: '2026-06-24T16:31:10.916Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250519_48918/standard/FA250519 48918 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

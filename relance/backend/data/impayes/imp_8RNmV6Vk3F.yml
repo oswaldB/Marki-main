@@ -1,0 +1,49 @@
+adresse_bien: 204 avenue Louis Pasteur L'Albert 1er
+apporteur_id: cont_vCAOy10UIf
+apporteur_nom: IMMOBILTREND
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_ELjDYKyXmi
+created_at: '2026-06-24T16:31:29.901Z'
+date_echeance: '2024-08-01'
+date_import: '2026-07-09T07:05:09.402Z'
+date_piece: '2024-08-01'
+donneur_ordre_id: null
+donneur_ordre_nom: BERTAMINO
+donneur_ordre_prenom: Lucia
+email_index: 0
+facture_soldee: true
+id: imp_8RNmV6Vk3F
+id_dossier: '36276'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47175
+numero_dossier: 51280
+payer_id: cont_ELjDYKyXmi
+payeur_civilite: ''
+payeur_email: v.espos@yahoo.it
+payeur_nom: BERTAMINO
+payeur_prenom: Lucia
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BERTAMINO
+proprietaire_prenom: Lucia
+ref_piece: FA240731 47175
+reference: '51280'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:29.901Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240731_47175/standard/FA240731 47175 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

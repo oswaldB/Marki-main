@@ -1,0 +1,49 @@
+adresse_bien: 10 avenue de Val en Sol
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: ''
+contact_relance_id: cont_LkmQ383NEO
+created_at: '2026-06-24T16:31:27.041Z'
+date_echeance: '2024-09-09'
+date_import: '2026-07-09T07:05:09.148Z'
+date_piece: '2024-09-09'
+donneur_ordre_id: null
+donneur_ordre_nom: HORNIG
+donneur_ordre_prenom: Yohan
+email_index: 0
+facture_soldee: true
+id: imp_tzNsXlaqbB
+id_dossier: '37533'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47376
+numero_dossier: 51539
+payer_id: cont_LkmQ383NEO
+payeur_civilite: ''
+payeur_email: hornigyohan@gmail.com
+payeur_nom: HORNIG
+payeur_prenom: Yohan
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: HORNIG
+proprietaire_prenom: Yohan
+ref_piece: FA240909 47376
+reference: '51539'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:27.041Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240909_47376/standard/FA240909 47376
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

@@ -1,0 +1,49 @@
+adresse_bien: 15 rue Acchiardi de Saint-Léger
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_kxlr0EFLNH
+created_at: '2026-06-24T16:31:01.039Z'
+date_echeance: '2025-10-27'
+date_import: '2026-07-09T07:05:06.588Z'
+date_piece: '2025-10-20'
+donneur_ordre_id: null
+donneur_ordre_nom: 'INDIVISION CALLAMAND '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_h7mGY9To38
+id_dossier: '40460'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49775
+numero_dossier: 54466
+payer_id: cont_kxlr0EFLNH
+payeur_civilite: ''
+payeur_email: philippecaruso@yahoo.fr
+payeur_nom: 'INDIVISION CALLAMAND '
+payeur_prenom: ''
+payeur_telephone: '0698171044'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'INDIVISION CALLAMAND '
+proprietaire_prenom: null
+ref_piece: FA251020 49775
+reference: '54466'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 123.33
+total_ttc: 148
+type: impaye
+updated_at: '2026-06-24T16:31:01.039Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251020_49775/standard/FA251020 49775
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

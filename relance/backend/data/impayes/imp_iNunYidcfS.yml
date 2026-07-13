@@ -1,0 +1,51 @@
+adresse_bien: 72 avenue des Alliès Les Amaranthes
+apporteur_id: cont_Kl8PBkhOa2
+apporteur_nom: LAFORET Menton Pieta
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: >-
+  benjamin va récupérer l'enveloppe avec l'espèce et la donnera a un tech qui
+  viendra a l'agence 
+contact_relance_id: cont_cuzkTHymHp
+created_at: '2026-06-24T16:30:49.874Z'
+date_echeance: '2026-05-01'
+date_import: '2026-07-09T07:05:05.448Z'
+date_piece: '2026-04-24'
+donneur_ordre_id: null
+donneur_ordre_nom: NOVIKOVA - LEYS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_iNunYidcfS
+id_dossier: '41609'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50843
+numero_dossier: 55615
+payer_id: cont_cuzkTHymHp
+payeur_civilite: ''
+payeur_email: jelena.novikova@yahoo.fr
+payeur_nom: NOVIKOVA - LEYS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: NOVIKOVA - LEYS
+proprietaire_prenom: null
+ref_piece: FA260424 50843
+reference: '55615'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:30:49.874Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260424_50843/standard/FA260424 50843
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

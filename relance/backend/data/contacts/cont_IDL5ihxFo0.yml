@@ -1,0 +1,29 @@
+$loki: 1993
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:52.565Z'
+email: michele.berio@sfr.fr
+id: cont_IDL5ihxFo0
+impaye_ids:
+  - imp_WB9LDqKENE
+is_blacklisted: false
+meta:
+  created: 1783580699124
+  revision: 0
+  version: 0
+nom: BERIO
+prenom: Michele
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:52.323Z'

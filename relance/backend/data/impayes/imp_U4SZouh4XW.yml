@@ -1,0 +1,49 @@
+adresse_bien: 33-35 avenue Varavilla Résidence Apollon
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_dUwjOXlAnh
+created_at: '2026-06-24T16:30:55.886Z'
+date_echeance: '2026-01-23'
+date_import: '2026-07-09T07:05:06.083Z'
+date_piece: '2026-01-16'
+donneur_ordre_id: null
+donneur_ordre_nom: IANKOVSKAIA
+donneur_ordre_prenom: Elena
+email_index: 0
+facture_soldee: true
+id: imp_U4SZouh4XW
+id_dossier: '41000'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50295
+numero_dossier: 55006
+payer_id: cont_dUwjOXlAnh
+payeur_civilite: ''
+payeur_email: elenaiankovskaia@gmail.com
+payeur_nom: IANKOVSKAIA
+payeur_prenom: Elena
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: IANKOVSKAIA
+proprietaire_prenom: Elena
+ref_piece: FA260116 50295
+reference: '55006'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:30:55.886Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260116_50295/standard/FA260116 50295
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

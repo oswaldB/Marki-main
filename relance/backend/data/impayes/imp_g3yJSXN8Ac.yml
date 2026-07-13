@@ -1,0 +1,49 @@
+adresse_bien: 185 avenue de la Paix
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_slMwznH4J5
+created_at: '2026-06-24T16:31:35.970Z'
+date_echeance: '2024-04-24'
+date_import: '2026-07-09T07:05:09.953Z'
+date_piece: '2024-04-24'
+donneur_ordre_id: null
+donneur_ordre_nom: JACK
+donneur_ordre_prenom: Remy
+email_index: 0
+facture_soldee: true
+id: imp_g3yJSXN8Ac
+id_dossier: '34495'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46551
+numero_dossier: 50494
+payer_id: cont_slMwznH4J5
+payeur_civilite: ''
+payeur_email: jackremy06@orange.fr
+payeur_nom: JACK
+payeur_prenom: Remy
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: JACK
+proprietaire_prenom: Remy
+ref_piece: FA240424 46551
+reference: '50494'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:35.970Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240424_46551/standard/FA240424 46551
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

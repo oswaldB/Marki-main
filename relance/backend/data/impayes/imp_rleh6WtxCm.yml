@@ -1,0 +1,49 @@
+adresse_bien: 8 avenue de Verdun Les Jardins d'Elisa
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:54.916Z'
+date_echeance: '2023-08-03'
+date_import: '2026-07-09T07:05:11.640Z'
+date_piece: '2023-08-03'
+donneur_ordre_id: null
+donneur_ordre_nom: NAG
+donneur_ordre_prenom: Denise et Karl
+email_index: 0
+facture_soldee: true
+id: imp_rleh6WtxCm
+id_dossier: '29413'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44925
+numero_dossier: 48399
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: NAG
+proprietaire_prenom: Denise et Karl
+ref_piece: FA230803 44925
+reference: '48399'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:54.916Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230803_44925/standard/FA230803 44925 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

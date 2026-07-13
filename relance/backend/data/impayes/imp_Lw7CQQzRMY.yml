@@ -1,0 +1,49 @@
+adresse_bien: 6 avenue Cochrane Palais Borrigo
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_S8Odx4mO97
+created_at: '2026-06-24T16:31:36.069Z'
+date_echeance: '2024-04-18'
+date_import: '2026-07-09T07:05:09.993Z'
+date_piece: '2024-04-18'
+donneur_ordre_id: null
+donneur_ordre_nom: GALLETTO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Lw7CQQzRMY
+id_dossier: '34458'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46525
+numero_dossier: 50457
+payer_id: cont_S8Odx4mO97
+payeur_civilite: ''
+payeur_email: gllgpp.galletto@alice.it
+payeur_nom: GALLETTO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GALLETTO
+proprietaire_prenom: null
+ref_piece: FA240418 46525
+reference: '50457'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:36.069Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240418_46525/standard/FA240418 46525
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

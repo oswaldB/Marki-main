@@ -1,0 +1,49 @@
+adresse_bien: 8 quai des Docks Le Neptune
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "LISTING \r\n\r\nl'agence relance"
+contact_relance_id: cont_Xwz1grQ7jU
+created_at: '2026-06-24T16:31:24.001Z'
+date_echeance: '2024-10-22'
+date_import: '2026-07-09T07:05:08.814Z'
+date_piece: '2024-10-22'
+donneur_ordre_id: null
+donneur_ordre_nom: BEZZINA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_3y6Utkvqbo
+id_dossier: '37849'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47668
+numero_dossier: 51855
+payer_id: cont_Xwz1grQ7jU
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BEZZINA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BEZZINA
+proprietaire_prenom: null
+ref_piece: FA241022 47668
+reference: '51855'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 210
+total_ttc: 252
+type: impaye
+updated_at: '2026-06-24T16:31:24.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241022_47668/standard/FA241022 47668
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

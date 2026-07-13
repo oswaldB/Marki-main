@@ -1,0 +1,49 @@
+adresse_bien: 53 boulevard du Fossan
+apporteur_id: cont_HGv0t07i8X
+apporteur_nom: AGENCE GIOTTO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_HGv0t07i8X
+created_at: '2026-06-24T16:31:40.005Z'
+date_echeance: '2024-03-05'
+date_import: '2026-07-09T07:05:10.302Z'
+date_piece: '2024-03-05'
+donneur_ordre_id: null
+donneur_ordre_nom: IEVA
+donneur_ordre_prenom: Christine
+email_index: 0
+facture_soldee: true
+id: imp_aS7DFpByHG
+id_dossier: '33056'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46245
+numero_dossier: 50053
+payer_id: cont_HGv0t07i8X
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: AGENCE GIOTTO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: IEVA
+proprietaire_prenom: Christine
+ref_piece: FA240305 46245
+reference: '50053'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 254.17
+total_ttc: 305
+type: impaye
+updated_at: '2026-06-24T16:31:40.005Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240305_46245/standard/FA240305 46245 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

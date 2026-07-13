@@ -1,0 +1,49 @@
+adresse_bien: 3 rue Paul Doumer Vaillant Fragonard
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_LCd95CjGCu
+created_at: '2026-06-24T16:31:24.001Z'
+date_echeance: '2024-10-23'
+date_import: '2026-07-09T07:05:08.794Z'
+date_piece: '2024-10-23'
+donneur_ordre_id: null
+donneur_ordre_nom: SYNDICAT DES COPROPRIETAIRES LE VAILLANT FRAGONARD
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Qi1Rd7Km6f
+id_dossier: '37858'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47676
+numero_dossier: 51864
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SYNDICAT DES COPROPRIETAIRES LE VAILLANT FRAGONARD
+proprietaire_prenom: null
+ref_piece: FA241023 47676
+reference: '51864'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 23.33
+total_ttc: 28
+type: impaye
+updated_at: '2026-06-24T16:31:24.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241023_47676/standard/FA241023 47676
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

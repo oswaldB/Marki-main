@@ -1,0 +1,23 @@
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:40.553Z'
+email: jean.tallone@sfr.fr
+id: cont_1SmjF9k2Y0
+impaye_ids: []
+is_blacklisted: false
+nom: SUCCESSION MURATORE
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: 'Mr Tallone 0613583907 '
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:39.519Z'

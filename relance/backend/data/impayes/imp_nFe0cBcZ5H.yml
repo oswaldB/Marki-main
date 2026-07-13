@@ -1,0 +1,49 @@
+adresse_bien: 19 bis boulevard Franck Pilatte Le Chambord
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Rev2j7FvL3
+created_at: '2026-06-24T16:30:46.050Z'
+date_echeance: '2026-06-24'
+date_import: '2026-07-09T07:05:05.110Z'
+date_piece: '2026-06-17'
+donneur_ordre_id: null
+donneur_ordre_nom: ROVERE SERALE
+donneur_ordre_prenom: Alba
+email_index: 0
+facture_soldee: false
+id: imp_nFe0cBcZ5H
+id_dossier: '41989'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51149
+numero_dossier: 55995
+payer_id: cont_F47dfC6qeF
+payeur_civilite: ''
+payeur_email: sophiesalomon@sarl-adp.fr
+payeur_nom: AGENCE DU PORT
+payeur_prenom: 'Cabinet Salomon '
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: ROVERE SERALE
+proprietaire_prenom: Alba
+ref_piece: FA260617 51149
+reference: '55995'
+reste_a_payer: 96
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 80
+total_ttc: 96
+type: impaye
+updated_at: '2026-06-24T16:33:32.539Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260617_51149/standard/FA260617 51149 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

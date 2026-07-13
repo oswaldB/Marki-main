@@ -1,0 +1,42 @@
+$loki: 2839
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:00.578Z'
+email: eric@parnasse-immobilier.com
+id: cont_5jPnBooyLW
+impaye_ids:
+  - imp_r7iseiph5S
+  - imp_gKl3PPkseL
+  - imp_rJPl28P7H7
+  - imp_RpLK6ArBbG
+  - imp_pW24B9bFya
+  - imp_VqnO6u7BOD
+  - imp_ocfkwfcQo1
+  - imp_dm4pUSh8xO
+  - imp_DRElgJjEGv
+  - imp_jLXAMpkwlp
+  - imp_LALfGrIRhW
+  - imp_fyPe9toRGX
+  - imp_S3kmhyLRWo
+  - imp_tRwlEFaeyG
+is_blacklisted: false
+meta:
+  created: 1783580699393
+  revision: 0
+  version: 0
+nom: VIARENGO
+prenom: Eric
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:59.394Z'

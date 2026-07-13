@@ -1,0 +1,30 @@
+$loki: 2150
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:54.525Z'
+email: laurentckh@gmail.com
+id: cont_ZollpD6tOh
+impaye_ids:
+  - imp_NcIgDjpuV5
+  - imp_zDEvmQwuC2
+is_blacklisted: false
+meta:
+  created: 1783580699175
+  revision: 0
+  version: 0
+nom: 'CHANE KAM HO '
+prenom: Laurent
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:53.340Z'

@@ -1,0 +1,49 @@
+adresse_bien: 2 bis boulevard de Montréal Cap Fabron  Diane
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_Kxpg4xDBXq
+created_at: '2026-06-24T16:30:49.061Z'
+date_echeance: '2026-05-04'
+date_import: '2026-07-09T07:05:05.430Z'
+date_piece: '2026-04-27'
+donneur_ordre_id: null
+donneur_ordre_nom: COSTA - DEVARS
+donneur_ordre_prenom: 'Caroline - Olivier '
+email_index: 0
+facture_soldee: true
+id: imp_eu5w2inbpd
+id_dossier: '41605'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50845
+numero_dossier: 55611
+payer_id: cont_Kxpg4xDBXq
+payeur_civilite: ''
+payeur_email: costacaro@hotmail.fr
+payeur_nom: COSTA - DEVARS
+payeur_prenom: 'Caroline - Olivier '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: COSTA - DEVARS
+proprietaire_prenom: 'Caroline - Olivier '
+ref_piece: FA260427 50845
+reference: '55611'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:30:49.061Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260427_50845/standard/FA260427 50845
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

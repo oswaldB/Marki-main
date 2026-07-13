@@ -1,0 +1,49 @@
+adresse_bien: 12 rue Miron
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_zWLan9R7kt
+created_at: '2026-06-24T16:31:17.090Z'
+date_echeance: '2025-02-12'
+date_import: '2026-07-09T07:05:08.127Z'
+date_piece: '2025-02-12'
+donneur_ordre_id: null
+donneur_ordre_nom: 'MARCHESE '
+donneur_ordre_prenom: Laura
+email_index: 0
+facture_soldee: true
+id: imp_yzBOooioLd
+id_dossier: '38693'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48324
+numero_dossier: 52699
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'MARCHESE '
+proprietaire_prenom: Laura
+ref_piece: FA250212 48324
+reference: '52699'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 258.33
+total_ttc: 310
+type: impaye
+updated_at: '2026-06-24T16:31:17.090Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250212_48324/standard/FA250212 48324
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

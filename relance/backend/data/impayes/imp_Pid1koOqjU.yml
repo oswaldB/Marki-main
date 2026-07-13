@@ -1,0 +1,49 @@
+adresse_bien: 35 rue Pasteur
+apporteur_id: cont_UCWy6DKwyS
+apporteur_nom: 'TALLIANCE AVOCATS '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_adUZgWaUTf
+created_at: '2026-06-24T16:31:52.947Z'
+date_echeance: '2023-09-01'
+date_import: '2026-07-09T07:05:11.486Z'
+date_piece: '2023-09-01'
+donneur_ordre_id: null
+donneur_ordre_nom: ORIZON GROUP
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Pid1koOqjU
+id_dossier: '30618'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45111
+numero_dossier: 48608
+payer_id: cont_adUZgWaUTf
+payeur_civilite: ''
+payeur_email: novellilorenzo@hotmail.fr
+payeur_nom: ORIZON GROUP
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ORIZON GROUP
+proprietaire_prenom: null
+ref_piece: FA230901 45111
+reference: '48608'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:52.947Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230901_45111/standard/FA230901 45111
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

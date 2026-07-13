@@ -1,0 +1,49 @@
+adresse_bien: 17 Promenade du Cap Résidence de la Plage
+apporteur_id: cont_ik7wYDqsCh
+apporteur_nom: 'ALEXANDRA CICCIONI REAL ESTATE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_HdAJjDrE9R
+created_at: '2026-06-24T16:31:22.906Z'
+date_echeance: '2024-11-14'
+date_import: '2026-07-09T07:05:08.664Z'
+date_piece: '2024-11-14'
+donneur_ordre_id: null
+donneur_ordre_nom: PERETTI
+donneur_ordre_prenom: Silvia et Daniele
+email_index: 0
+facture_soldee: true
+id: imp_A4YM64jUEP
+id_dossier: '38022'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47795
+numero_dossier: 52028
+payer_id: cont_HdAJjDrE9R
+payeur_civilite: ''
+payeur_email: silviaperetti84@gmail.com
+payeur_nom: PERETTI
+payeur_prenom: Silvia et Daniele
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PERETTI
+proprietaire_prenom: Silvia et Daniele
+ref_piece: FA241114 47795
+reference: '52028'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:22.906Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241114_47795/standard/FA241114 47795
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

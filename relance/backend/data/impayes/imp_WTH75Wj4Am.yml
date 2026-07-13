@@ -1,0 +1,49 @@
+adresse_bien: 87 route du Val des Castagnins Palais Ligure
+apporteur_id: cont_dQvwqJWlhE
+apporteur_nom: RACCOSTA IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_mJ5upYbv81
+created_at: '2026-06-25T13:55:38.430Z'
+date_echeance: '2026-07-02'
+date_import: '2026-07-09T07:05:12.192Z'
+date_piece: '2026-06-25'
+donneur_ordre_id: null
+donneur_ordre_nom: CONSORTS BIANCHINI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_WTH75Wj4Am
+id_dossier: '42029'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51195
+numero_dossier: 56035
+payer_id: cont_dQvwqJWlhE
+payeur_civilite: ''
+payeur_email: contact@gimseller.com
+payeur_nom: RACCOSTA IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CONSORTS BIANCHINI
+proprietaire_prenom: null
+ref_piece: FA260625 51195
+reference: '56035'
+reste_a_payer: 205
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 170.83
+total_ttc: 205
+type: impaye
+updated_at: '2026-06-26T22:00:25.397Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260625_51195/standard/FA260625 51195 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 26 boulevard stalingrad
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Rev2j7FvL3
+created_at: '2026-06-24T16:30:49.029Z'
+date_echeance: '2026-05-06'
+date_import: '2026-07-09T07:05:05.429Z'
+date_piece: '2026-04-29'
+donneur_ordre_id: null
+donneur_ordre_nom: PRON LACQUA
+donneur_ordre_prenom: Marie Antoinette
+email_index: 0
+facture_soldee: true
+id: imp_8ku5pTjuul
+id_dossier: '41645'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50866
+numero_dossier: 55651
+payer_id: cont_F47dfC6qeF
+payeur_civilite: ''
+payeur_email: sophiesalomon@sarl-adp.fr
+payeur_nom: AGENCE DU PORT
+payeur_prenom: 'Cabinet Salomon '
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PRON LACQUA
+proprietaire_prenom: Marie Antoinette
+ref_piece: FA260429 50866
+reference: '55651'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 243.33
+total_ttc: 292
+type: impaye
+updated_at: '2026-06-24T16:30:49.029Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260429_50866/standard/FA260429 50866
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

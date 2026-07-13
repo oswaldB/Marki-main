@@ -1,0 +1,47 @@
+$loki: 2
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:34.182Z'
+email: info@saintrochimmobilier.com
+id: cont_aFSXWA9ETI
+impaye_ids:
+  - imp_pTuqtKy4fY
+  - imp_FKUipIjK1C
+  - imp_cHozFOUBY9
+  - imp_DQTvlXNaXI
+  - imp_TAfZyPoqHJ
+  - imp_HQWj3URtfO
+  - imp_EuU6fFlAv5
+  - imp_QrgmSsz6gY
+  - imp_lg5D38PvFi
+  - imp_xMXEhHBJq4
+  - imp_sfGzt9T3Va
+  - imp_7pEmcVmjm7
+  - imp_BLfXYghDIC
+  - imp_KZ4RiqiCGo
+  - imp_FduQXfY4jN
+  - imp_J9zLEReVCM
+  - imp_93MMmlXyOR
+  - imp_lLb1hBj1Pe
+  - imp_Vn3QUcfFfm
+is_blacklisted: false
+meta:
+  created: 1783580698325
+  revision: 0
+  version: 0
+nom: SAINT ROCH IMMOBILIER
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:33.287Z'

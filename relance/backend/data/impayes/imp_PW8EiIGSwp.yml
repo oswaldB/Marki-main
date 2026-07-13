@@ -1,0 +1,49 @@
+adresse_bien: 23 Porte de France Le Rocamare
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:39.017Z'
+date_echeance: '2024-03-21'
+date_import: '2026-07-09T07:05:10.214Z'
+date_piece: '2024-03-21'
+donneur_ordre_id: null
+donneur_ordre_nom: BERTELLI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_PW8EiIGSwp
+id_dossier: '34210'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46344
+numero_dossier: 50209
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BERTELLI
+proprietaire_prenom: null
+ref_piece: FA240321 46344
+reference: '50209'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 86.25
+total_ttc: 103.5
+type: impaye
+updated_at: '2026-06-24T16:31:39.017Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240321_46344/standard/FA240321 46344 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

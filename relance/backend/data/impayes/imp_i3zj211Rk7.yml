@@ -1,0 +1,49 @@
+adresse_bien: 8 avenue Angelique Braquet  Parc Giordan
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_mLhiRMmLgj
+created_at: '2026-06-24T16:31:10.960Z'
+date_echeance: '2025-05-16'
+date_import: '2026-07-09T07:05:07.496Z'
+date_piece: '2025-05-16'
+donneur_ordre_id: null
+donneur_ordre_nom: BOTHEREL
+donneur_ordre_prenom: Franck
+email_index: 0
+facture_soldee: true
+id: imp_i3zj211Rk7
+id_dossier: '39428'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48908
+numero_dossier: 53434
+payer_id: cont_mLhiRMmLgj
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BOTHEREL
+payeur_prenom: Franck
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BOTHEREL
+proprietaire_prenom: Franck
+ref_piece: FA250516 48908
+reference: '53434'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 173.54
+total_ttc: 208.25
+type: impaye
+updated_at: '2026-06-24T16:31:10.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250516_48908/standard/FA250516 48908 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

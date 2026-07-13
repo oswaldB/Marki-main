@@ -1,0 +1,49 @@
+adresse_bien: 10 rue Laurent Giaume Les Portes du Mont Boron
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:16.068Z'
+date_echeance: '2025-02-26'
+date_import: '2026-07-09T07:05:08.015Z'
+date_piece: '2025-02-26'
+donneur_ordre_id: null
+donneur_ordre_nom: LAPORTE
+donneur_ordre_prenom: Pierre
+email_index: 0
+facture_soldee: true
+id: imp_m7thtXWs6E
+id_dossier: '38792'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48401
+numero_dossier: 52798
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LAPORTE
+proprietaire_prenom: Pierre
+ref_piece: FA250226 48401
+reference: '52798'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 206.25
+total_ttc: 247.5
+type: impaye
+updated_at: '2026-06-24T16:31:16.068Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250226_48401/standard/FA250226 48401
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

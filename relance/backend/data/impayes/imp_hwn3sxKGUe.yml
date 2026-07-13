@@ -1,0 +1,49 @@
+adresse_bien: 44 rampe Chanoine Gouget
+apporteur_id: cont_nGbYMncL3T
+apporteur_nom: CABINET TRABAUD ACQUARONE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_nGbYMncL3T
+created_at: '2026-06-24T16:31:44.938Z'
+date_echeance: '2023-12-21'
+date_import: '2026-07-09T07:05:10.732Z'
+date_piece: '2023-12-21'
+donneur_ordre_id: null
+donneur_ordre_nom: CABINET TRABAUD ACQUARONE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_hwn3sxKGUe
+id_dossier: '32495'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45831
+numero_dossier: 49492
+payer_id: cont_nGbYMncL3T
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET TRABAUD ACQUARONE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'SDC 44 RAMPE CHANOINE GOUGET '
+proprietaire_prenom: null
+ref_piece: FA231221 45831
+reference: '49492'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 525
+total_ttc: 630
+type: impaye
+updated_at: '2026-06-24T16:31:44.938Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231221_45831/standard/FA231221 45831
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

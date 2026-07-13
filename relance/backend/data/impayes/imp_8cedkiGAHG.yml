@@ -1,0 +1,49 @@
+adresse_bien: 61 place Nationale
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: "SCI DANIIL c/o Cabinet GRIMAZ\r\n\r\nM. Jean-François FERRANTE\r\n61 place Nationale\r\n06600 ANTIBES\r\n\r\nLocal commercial environ 300m2"
+contact_relance_id: cont_cxGPaidTTX
+created_at: '2026-06-24T16:31:10.916Z'
+date_echeance: '2025-05-20'
+date_import: '2026-07-09T07:05:07.485Z'
+date_piece: '2025-05-20'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI DANIIL
+donneur_ordre_prenom: ' c/o Cabinet Grimaz'
+email_index: 0
+facture_soldee: true
+id: imp_8cedkiGAHG
+id_dossier: '39443'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48923
+numero_dossier: 53449
+payer_id: cont_cxGPaidTTX
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SCI DANIIL
+payeur_prenom: ' c/o Cabinet Grimaz'
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI DANIIL
+proprietaire_prenom: ' c/o Cabinet Grimaz'
+ref_piece: FA250520 48923
+reference: '53449'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 570.83
+total_ttc: 685
+type: impaye
+updated_at: '2026-06-24T16:31:10.916Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250520_48923/standard/FA250520 48923 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

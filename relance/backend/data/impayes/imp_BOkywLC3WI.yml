@@ -1,0 +1,49 @@
+adresse_bien: 49 bis boulevard Guynemer L'Aurore
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_iCfN7NHYAX
+created_at: '2026-06-24T16:31:21.965Z'
+date_echeance: '2024-11-28'
+date_import: '2026-07-09T07:05:08.583Z'
+date_piece: '2024-11-28'
+donneur_ordre_id: null
+donneur_ordre_nom: LAFORET Beausoleil ARAMIS Immobilier
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_BOkywLC3WI
+id_dossier: '37463'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47864
+numero_dossier: 51469
+payer_id: cont_YXYNM2lJX6
+payeur_civilite: ''
+payeur_email: beausoleil@laforet.com
+payeur_nom: LAFORET Beausoleil ARAMIS Immobilier
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: ROUILLIER
+proprietaire_prenom: Danielle
+ref_piece: FA241128 47864
+reference: '51469'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 420.83
+total_ttc: 505
+type: impaye
+updated_at: '2026-06-24T16:31:21.965Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241128_47864/standard/FA241128 47864
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

@@ -1,0 +1,49 @@
+adresse_bien: 4061 route de Nice Clos de l'Aspre
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06790'
+commentaire_piece: ''
+contact_relance_id: cont_AqOW0FxqOB
+created_at: '2026-06-24T16:31:25.057Z'
+date_echeance: '2024-10-02'
+date_import: '2026-07-09T07:05:08.930Z'
+date_piece: '2024-10-02'
+donneur_ordre_id: null
+donneur_ordre_nom: FLINOIS
+donneur_ordre_prenom: Marina et Nicolas
+email_index: 0
+facture_soldee: true
+id: imp_81KjRaprQy
+id_dossier: '37729'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47561
+numero_dossier: 51735
+payer_id: cont_AqOW0FxqOB
+payeur_civilite: ''
+payeur_email: nicolas.flinois@wanadoo.fr
+payeur_nom: FLINOIS
+payeur_prenom: Marina et Nicolas
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FLINOIS
+proprietaire_prenom: Marina et Nicolas
+ref_piece: FA241002 47561
+reference: '51735'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 37.5
+total_ttc: 45
+type: impaye
+updated_at: '2026-06-24T16:31:25.057Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241002_47561/standard/FA241002 47561
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ASPREMONT

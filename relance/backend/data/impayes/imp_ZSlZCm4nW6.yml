@@ -1,0 +1,49 @@
+adresse_bien: 5 avenue Saint-Sylvestre Angkor
+apporteur_id: cont_4Yy8BHoZYR
+apporteur_nom: DS IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_KlQCPG03Jd
+created_at: '2026-06-24T16:31:48.040Z'
+date_echeance: '2023-11-07'
+date_import: '2026-07-09T07:05:11.048Z'
+date_piece: '2023-11-07'
+donneur_ordre_id: null
+donneur_ordre_nom: QUINCY
+donneur_ordre_prenom: Frédérique
+email_index: 0
+facture_soldee: true
+id: imp_ZSlZCm4nW6
+id_dossier: '32128'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45534
+numero_dossier: 49125
+payer_id: cont_4Yy8BHoZYR
+payeur_civilite: ''
+payeur_email: contact@dsimmo-nice.fr
+payeur_nom: DS IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: QUINCY
+proprietaire_prenom: Frédérique
+ref_piece: FA231107 45534
+reference: '49125'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 100
+total_ttc: 120
+type: impaye
+updated_at: '2026-06-24T16:31:48.040Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231107_45534/standard/FA231107 45534
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

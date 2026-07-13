@@ -1,0 +1,49 @@
+adresse_bien: 6 avenue Marèchal Foch Le SABRINA
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_aK2uOSel4M
+created_at: '2026-06-24T16:30:49.001Z'
+date_echeance: '2026-05-07'
+date_import: '2026-07-09T07:05:05.404Z'
+date_piece: '2026-04-30'
+donneur_ordre_id: null
+donneur_ordre_nom: GUZICKA
+donneur_ordre_prenom: Blazej
+email_index: 0
+facture_soldee: true
+id: imp_ZIJljca8SC
+id_dossier: '41644'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50880
+numero_dossier: 55650
+payer_id: cont_aK2uOSel4M
+payeur_civilite: ''
+payeur_email: ameliabarbaraguzicka@gmail.com
+payeur_nom: GUZICKA
+payeur_prenom: Blazej
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GUZICKA
+proprietaire_prenom: Blazej
+ref_piece: FA260430 50880
+reference: '55650'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-07-02T13:50:01.299Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260430_50880/standard/FA260430 50880
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

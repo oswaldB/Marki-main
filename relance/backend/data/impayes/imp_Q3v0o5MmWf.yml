@@ -1,0 +1,49 @@
+adresse_bien: 85 boulevard de Cessole L'Orée de Cessole
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:30:54.882Z'
+date_echeance: '2026-02-06'
+date_import: '2026-07-09T07:05:05.970Z'
+date_piece: '2026-01-30'
+donneur_ordre_id: null
+donneur_ordre_nom: YTOURNEL
+donneur_ordre_prenom: Edouard Bernard
+email_index: 0
+facture_soldee: true
+id: imp_Q3v0o5MmWf
+id_dossier: '41043'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50386
+numero_dossier: 55049
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: YTOURNEL
+proprietaire_prenom: Edouard Bernard
+ref_piece: FA260130 50386
+reference: '55049'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2562.6
+total_ttc: 3075.12
+type: impaye
+updated_at: '2026-06-24T16:30:54.882Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260130_50386/standard/FA260130 50386
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

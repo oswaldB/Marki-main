@@ -1,0 +1,49 @@
+adresse_bien: 22 avenue des Baumettes
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:52.915Z'
+date_echeance: '2023-09-04'
+date_import: '2026-07-09T07:05:11.466Z'
+date_piece: '2023-09-04'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI LES ASPHODELES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Z1ZgcjRpH2
+id_dossier: '30627'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45120
+numero_dossier: 48617
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SCI LES ASPHODELES
+proprietaire_prenom: null
+ref_piece: FA230904 45120
+reference: '48617'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:52.915Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230904_45120/standard/FA230904 45120
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

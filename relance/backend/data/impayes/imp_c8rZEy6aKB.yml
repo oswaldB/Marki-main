@@ -1,0 +1,49 @@
+adresse_bien: 9 rue Magenta Résidence Magali
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_cxRVjwySAc
+created_at: '2026-06-24T16:30:46.903Z'
+date_echeance: '2026-06-12'
+date_import: '2026-07-09T07:05:05.160Z'
+date_piece: '2026-06-05'
+donneur_ordre_id: null
+donneur_ordre_nom: TABURY
+donneur_ordre_prenom: Daniella
+email_index: 0
+facture_soldee: true
+id: imp_c8rZEy6aKB
+id_dossier: '41906'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51087
+numero_dossier: 55912
+payer_id: cont_cxRVjwySAc
+payeur_civilite: ''
+payeur_email: daniella.tabury@gmail.com
+payeur_nom: TABURY
+payeur_prenom: Daniella
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: TABURY
+proprietaire_prenom: Daniella
+ref_piece: FA260605 51087
+reference: '55912'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 200
+total_ttc: 240
+type: impaye
+updated_at: '2026-06-24T16:30:46.903Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260605_51087/standard/FA260605 51087 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

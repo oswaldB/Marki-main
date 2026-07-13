@@ -1,0 +1,49 @@
+adresse_bien: 5 avenue Carnot Le Regent
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_ilHHYCsr1E
+created_at: '2026-06-24T16:31:24.990Z'
+date_echeance: '2024-10-09'
+date_import: '2026-07-09T07:05:08.899Z'
+date_piece: '2024-10-09'
+donneur_ordre_id: null
+donneur_ordre_nom: JACQUET
+donneur_ordre_prenom: 'Rolland '
+email_index: 0
+facture_soldee: true
+id: imp_IwtAqksVOI
+id_dossier: '37771'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47591
+numero_dossier: 51777
+payer_id: cont_ilHHYCsr1E
+payeur_civilite: ''
+payeur_email: rolland.jacquet595@free.fr
+payeur_nom: JACQUET
+payeur_prenom: 'Rolland '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: JACQUET
+proprietaire_prenom: 'Rolland '
+ref_piece: FA241009 47591
+reference: '51777'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:31:24.990Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241009_47591/standard/FA241009 47591
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

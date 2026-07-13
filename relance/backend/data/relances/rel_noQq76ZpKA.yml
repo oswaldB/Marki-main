@@ -1,0 +1,86 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_0dwCjMhP3E
+corps: >
+  <p>Bonjour Madame Eve CAVALLI,</p>
+
+  <p><br></p>
+
+  <p><strong>Faute de règlement dans les délais impartis</strong>, les pénalités
+  légales de retard ainsi que l'indemnité forfaitaire pour frais de recouvrement
+  sont désormais applicables à votre dossier.</p>
+
+  <p>Le montant total dû est désormais majoré de <strong>40 €</strong> de
+  pénalités.</p>
+
+  <p><br></p>
+
+  <p>Votre facture n°51246 d'un montant initial de 340,00 €, arrivée à échéance
+  le 13/07/2026, reste impayée. Le montant total dû s'élève désormais à
+  <strong>380,00 €</strong> (340,00 € + 40 € de pénalités).</p>
+
+  <p><br></p>
+
+  <p>Vous pouvez consulter et télécharger votre facture ici : <a
+  href="https://adti.markidiags.com/redirect-pdf/TapOBgtq6X">Télécharger la
+  facture 51246</a></p>
+
+  <p><br></p>
+
+  <p>Pour régulariser votre situation sans délai, nous vous invitons à procéder
+  au paiement via l'un des moyens suivants :</p>
+
+  <p><br></p>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=380&vads_order_id=51246&vads_cust_id=56106&vads_cust_last_name=CAVALLI&vads_cust_first_name=Eve&vads_cust_email=evecava74@gmail.com">Paiement
+  sécurisé en ligne par carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p><strong>Pour éviter l'engagement d'une procédure de recouvrement</strong>,
+  veuillez procéder au paiement immédiat.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-07-06T22:02:50.396Z'
+date_envoi: '2026-08-06T00:00:00.000Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 7
+erreur_count: 0
+id: rel_noQq76ZpKA
+impaye_ids:
+  - imp_TapOBgtq6X
+manuelle: false
+message_id: null
+objet: >-
+  EX'IM - Dossier 56106 - Relance n°5 : Facture 51246 impayée – Application des
+  pénalités légales
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: pret pour envoi
+type: relance
+updated_at: '2026-07-06T22:02:50.396Z'
+valide: false

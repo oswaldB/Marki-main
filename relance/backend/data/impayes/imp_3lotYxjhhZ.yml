@@ -1,0 +1,49 @@
+adresse_bien: 1096 route de Nice
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06790'
+commentaire_piece: "Propriétaires : M. & Mme YEGHIKIAN\r\nSCI YEGHER\r\n196 route de Nice\r\n06790 ASPREMONT\r\n\r\nMaison + Annexes\r\n240m2"
+contact_relance_id: cont_hTEwU2zic5
+created_at: '2026-06-24T16:31:10.017Z'
+date_echeance: '2025-06-02'
+date_import: '2026-07-09T07:05:07.445Z'
+date_piece: '2025-06-02'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI YEGHER
+donneur_ordre_prenom: Mme et Mr YEGHIKIAN
+email_index: 0
+facture_soldee: true
+id: imp_3lotYxjhhZ
+id_dossier: '39501'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48965
+numero_dossier: 53507
+payer_id: cont_hTEwU2zic5
+payeur_civilite: ''
+payeur_email: alain.yeghikian@orange.fr
+payeur_nom: SCI YEGHER
+payeur_prenom: Mme et Mr YEGHIKIAN
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI YEGHER
+proprietaire_prenom: Mme et Mr YEGHIKIAN
+ref_piece: FA250530 48965
+reference: '53507'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 653.33
+total_ttc: 784
+type: impaye
+updated_at: '2026-06-24T16:31:10.017Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250530_48965/standard/FA250530 48965 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ASPREMONT

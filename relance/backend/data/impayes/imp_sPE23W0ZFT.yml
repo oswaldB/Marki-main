@@ -1,0 +1,49 @@
+adresse_bien: 71 avenue du Trois Septembre Le Petit Trianon
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_PnF6B5oecj
+created_at: '2026-06-24T16:31:03.942Z'
+date_echeance: '2025-09-24'
+date_import: '2026-07-09T07:05:06.837Z'
+date_piece: '2025-09-17'
+donneur_ordre_id: null
+donneur_ordre_nom: FONCIERE EPILOGUE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_sPE23W0ZFT
+id_dossier: '40216'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49539
+numero_dossier: 54222
+payer_id: cont_PnF6B5oecj
+payeur_civilite: ''
+payeur_email: service.gestion@fonciere-epilogue.fr
+payeur_nom: FONCIERE EPILOGUE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FONCIERE EPILOGUE
+proprietaire_prenom: null
+ref_piece: FA250917 49539
+reference: '54222'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:03.942Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250917_49539/standard/FA250917 49539
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

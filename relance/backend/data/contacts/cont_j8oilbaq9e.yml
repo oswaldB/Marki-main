@@ -1,0 +1,29 @@
+$loki: 5506
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:25.577Z'
+email: j.lacanal@live.fr
+id: cont_j8oilbaq9e
+impaye_ids:
+  - imp_96plhVIYuT
+is_blacklisted: false
+meta:
+  created: 1783580700324
+  revision: 0
+  version: 0
+nom: LACANAL
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:24.411Z'

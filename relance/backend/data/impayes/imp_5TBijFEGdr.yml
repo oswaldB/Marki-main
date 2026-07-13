@@ -1,0 +1,49 @@
+adresse_bien: 11 boulevard des Monéghetti Eden Résidence
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_2xH5t1m2Xz
+created_at: '2026-06-24T16:31:28.902Z'
+date_echeance: '2024-08-20'
+date_import: '2026-07-09T07:05:09.280Z'
+date_piece: '2024-08-20'
+donneur_ordre_id: null
+donneur_ordre_nom: CRITELLI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_5TBijFEGdr
+id_dossier: '36367'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47239
+numero_dossier: 51371
+payer_id: cont_2xH5t1m2Xz
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CRITELLI
+payeur_prenom: ''
+payeur_telephone: '0638485177'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CRITELLI
+proprietaire_prenom: null
+ref_piece: FA240820 47239
+reference: '51371'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:28.902Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240820_47239/standard/FA240820 47239 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

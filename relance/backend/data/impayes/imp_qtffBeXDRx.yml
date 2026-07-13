@@ -1,0 +1,49 @@
+adresse_bien: 2 rue de la Suisse
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_bFGxQ7x8SL
+created_at: '2026-06-24T16:31:23.011Z'
+date_echeance: '2024-11-07'
+date_import: '2026-07-09T07:05:08.702Z'
+date_piece: '2024-11-07'
+donneur_ordre_id: null
+donneur_ordre_nom: SC FINANCIERE ROSSO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_qtffBeXDRx
+id_dossier: '37971'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47760
+numero_dossier: 51977
+payer_id: cont_bFGxQ7x8SL
+payeur_civilite: ''
+payeur_email: bruno.rosso@me.com
+payeur_nom: SC FINANCIERE ROSSO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SC FINANCIERE ROSSO
+proprietaire_prenom: null
+ref_piece: FA241107 47760
+reference: '51977'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 150
+total_ttc: 180
+type: impaye
+updated_at: '2026-06-24T16:31:23.011Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241107_47760/standard/FA241107 47760
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,80 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_kGRv2JmIdU
+corps: >
+  <p>Bonjour,</p>
+
+  <p><br></p>
+
+  <p><strong>Faute de règlement dans les délais impartis</strong>, les pénalités
+  légales de retard ainsi que l'indemnité forfaitaire pour frais de recouvrement
+  sont désormais applicables à votre dossier.</p>
+
+  <p>Le montant total dû est désormais majoré de <strong>40 €</strong> de
+  pénalités.</p>
+
+  <p><br></p>
+
+  <p>Votre facture n°51263 d'un montant initial de 515,00 €, arrivée à échéance
+  le 14/07/2026, reste impayée. Le montant total dû s'élève désormais à
+  <strong>555,00 €</strong> (515,00 € + 40,00 € de pénalités).</p>
+
+  <p><br></p>
+
+  <p><a href="https://adti.markidiags.com/redirect-pdf/Fi9YGPvF7U">Télécharger
+  la facture n°51263</a></p>
+
+  <p><br></p>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=55500&amp;vads_order_id=51263&amp;vads_cust_id=56112&amp;vads_cust_last_name=ABECASSIS&amp;vads_cust_first_name=&amp;vads_cust_email=abecassis.f@gmail.com&amp;vads_cust_cell_phone=">Paiement
+  sécurisé en ligne en carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p><strong>Pour éviter l'engagement d'une procédure de recouvrement</strong>,
+  veuillez procéder au paiement immédiat.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-07-07T22:05:29.162Z'
+date_envoi: '2026-08-07T00:00:00.000Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 7
+erreur_count: 0
+id: rel_SAh4Htrgko
+impaye_ids:
+  - imp_Fi9YGPvF7U
+manuelle: false
+message_id: null
+objet: >-
+  EX'IM - Dossier 56112 - Relance n°5 : Facture 51263 impayée – Application des
+  pénalités légales
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: pret pour envoi
+type: relance
+updated_at: '2026-07-07T22:05:29.162Z'
+valide: false

@@ -1,0 +1,49 @@
+adresse_bien: avenue de Verdun
+apporteur_id: cont_i921U1OdIX
+apporteur_nom: MAIRIE DE ROQUEBRUNE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "Batiment Principal et Annexe\r\nAvenue de Verdun\r\n06190 Roquebrune Cap Martin "
+contact_relance_id: cont_i921U1OdIX
+created_at: '2026-06-24T16:31:25.975Z'
+date_echeance: '2024-09-24'
+date_import: '2026-07-09T07:05:08.990Z'
+date_piece: '2024-09-24'
+donneur_ordre_id: null
+donneur_ordre_nom: MAIRIE DE ROQUEBRUNE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_rRf9pGjF7u
+id_dossier: '37654'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47492
+numero_dossier: 51660
+payer_id: cont_i921U1OdIX
+payeur_civilite: ''
+payeur_email: conseil.patrimoine@roquebrune-cap-martin.fr
+payeur_nom: MAIRIE DE ROQUEBRUNE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MAIRIE DE ROQUEBRUNE
+proprietaire_prenom: null
+ref_piece: FA240924 47492
+reference: '51660'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1487.5
+total_ttc: 1785
+type: impaye
+updated_at: '2026-06-24T16:31:25.975Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240924_47492/standard/FA240924 47492
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

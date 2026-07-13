@@ -1,0 +1,49 @@
+adresse_bien: 28 avenue Prince Rainier III
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: "\r\n15/10 relane mail \r\n\r\n9/09 relannce honere et pallanca par mail\r\n\r\n21/07 : échange tél. avec M HONORE, doit se rapprocher de Mme PALLANCA\r\nrelance mail \r\n\r\n15/07 : appel agence => sce transaction doit nous recontacter\r\n\r\n01/07 : appel agence + renvoi mail à gpallanca@citya.com\r\n\r\n18/06 : relance sur Sogestim"
+contact_relance_id: cont_RZQWeuMqYQ
+created_at: '2026-06-24T16:31:01.007Z'
+date_echeance: '2025-10-30'
+date_import: '2026-07-09T07:05:06.574Z'
+date_piece: '2025-10-23'
+donneur_ordre_id: null
+donneur_ordre_nom: ATAMAN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_hLIek1AecB
+id_dossier: '26306'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49804
+numero_dossier: 46289
+payer_id: cont_RZQWeuMqYQ
+payeur_civilite: ''
+payeur_email: chalot.dominique@orange.fr
+payeur_nom: ATAMAN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ATAMAN
+proprietaire_prenom: null
+ref_piece: FA251023 49804
+reference: '46289'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: -50
+total_ttc: -60
+type: impaye
+updated_at: '2026-06-24T16:31:01.007Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251023_49804/standard/FA251023 49804
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

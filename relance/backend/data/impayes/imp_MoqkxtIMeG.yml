@@ -1,0 +1,49 @@
+adresse_bien: 17 rue Jean Goujon
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06400'
+commentaire_piece: ''
+contact_relance_id: cont_zWLan9R7kt
+created_at: '2026-06-24T16:31:14.886Z'
+date_echeance: '2025-03-20'
+date_import: '2026-07-09T07:05:07.839Z'
+date_piece: '2025-03-20'
+donneur_ordre_id: null
+donneur_ordre_nom: MULLER
+donneur_ordre_prenom: Nicolas
+email_index: 0
+facture_soldee: true
+id: imp_MoqkxtIMeG
+id_dossier: '38981'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48561
+numero_dossier: 52987
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MULLER
+proprietaire_prenom: Nicolas
+ref_piece: FA250320 48561
+reference: '52987'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:14.886Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250320_48561/standard/FA250320 48561 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CANNES

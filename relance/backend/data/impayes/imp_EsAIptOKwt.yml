@@ -1,0 +1,49 @@
+adresse_bien: 570 avenue de la Paix Le Cypris
+apporteur_id: cont_nGbYMncL3T
+apporteur_nom: CABINET TRABAUD ACQUARONE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: 'TRAVAUX REFECTION PARKING '
+contact_relance_id: cont_nGbYMncL3T
+created_at: '2026-06-24T16:31:04.033Z'
+date_echeance: '2025-09-17'
+date_import: '2026-07-09T07:05:06.870Z'
+date_piece: '2025-09-10'
+donneur_ordre_id: null
+donneur_ordre_nom: COPROPRIETE LE CYPRIS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_EsAIptOKwt
+id_dossier: '40021'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49491
+numero_dossier: 54027
+payer_id: cont_nGbYMncL3T
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET TRABAUD ACQUARONE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: COPROPRIETE LE CYPRIS
+proprietaire_prenom: null
+ref_piece: FA250910 49491
+reference: '54027'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 970.83
+total_ttc: 1165
+type: impaye
+updated_at: '2026-06-24T16:31:04.033Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250910_49491/standard/FA250910 49491
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

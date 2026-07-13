@@ -1,0 +1,49 @@
+adresse_bien: 39  avenue Monplaisir Le Benvenuto Bâtiment sur rue
+apporteur_id: cont_aFSXWA9ETI
+apporteur_nom: SAINT ROCH IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_Fnljbp8g9a
+created_at: '2026-06-24T16:31:20.006Z'
+date_echeance: '2025-01-06'
+date_import: '2026-07-09T07:05:08.389Z'
+date_piece: '2025-01-06'
+donneur_ordre_id: null
+donneur_ordre_nom: ROSITANO
+donneur_ordre_prenom: Domenico
+email_index: 0
+facture_soldee: true
+id: imp_5EuLNTt5C2
+id_dossier: '38357'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48045
+numero_dossier: 52363
+payer_id: cont_Fnljbp8g9a
+payeur_civilite: ''
+payeur_email: domenico031069@gmail.com
+payeur_nom: ROSITANO
+payeur_prenom: Domenico
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROSITANO
+proprietaire_prenom: Domenico
+ref_piece: FA250106 48045
+reference: '52363'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 275
+total_ttc: 330
+type: impaye
+updated_at: '2026-06-24T16:31:20.006Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250106_48045/standard/FA250106 48045
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

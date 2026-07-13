@@ -1,0 +1,49 @@
+adresse_bien: 214 avenue de Fabron
+apporteur_id: cont_gMC2R4RdeC
+apporteur_nom: API CALLIAN VAR
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_AvnG045vFh
+created_at: '2026-06-24T16:31:54.085Z'
+date_echeance: '2023-08-03'
+date_import: '2026-07-09T07:05:11.628Z'
+date_piece: '2023-08-03'
+donneur_ordre_id: null
+donneur_ordre_nom: BELATECHE et AUBERT
+donneur_ordre_prenom: Sandrine et Christophe
+email_index: 0
+facture_soldee: true
+id: imp_mOD9pxp3Jv
+id_dossier: '29330'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44846
+numero_dossier: 48316
+payer_id: cont_AvnG045vFh
+payeur_civilite: ''
+payeur_email: ladyb7@hotmail.com
+payeur_nom: BELATECHE et AUBERT
+payeur_prenom: Sandrine et Christophe
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BELATECHE et AUBERT
+proprietaire_prenom: Sandrine et Christophe
+ref_piece: FA230726 44846
+reference: '48316'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 226.67
+total_ttc: 272
+type: impaye
+updated_at: '2026-06-24T16:31:54.085Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230726_44846/standard/FA230726 44846 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

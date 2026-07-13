@@ -1,0 +1,49 @@
+adresse_bien: 15 avenue Villarem
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_4WwD0UwdyF
+created_at: '2026-06-24T16:31:44.060Z'
+date_echeance: '2024-01-05'
+date_import: '2026-07-09T07:05:10.694Z'
+date_piece: '2024-01-05'
+donneur_ordre_id: null
+donneur_ordre_nom: LE GALL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_mF1IHHY3C3
+id_dossier: '32547'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45867
+numero_dossier: 49544
+payer_id: cont_4WwD0UwdyF
+payeur_civilite: ''
+payeur_email: guillaume.legall@scsgroup.cn
+payeur_nom: LE GALL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LE GALL
+proprietaire_prenom: null
+ref_piece: FA240105 45867
+reference: '49544'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:44.060Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240105_45867/standard/FA240105 45867
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

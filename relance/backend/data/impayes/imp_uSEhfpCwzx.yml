@@ -1,0 +1,49 @@
+adresse_bien: 4 Montée Carabacel
+apporteur_id: cont_fOJ9xPCwRC
+apporteur_nom: CEGESTIM
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_ZIWth8jcvE
+created_at: '2026-06-24T16:31:29.901Z'
+date_echeance: '2024-07-25'
+date_import: '2026-07-09T07:05:09.399Z'
+date_piece: '2024-07-25'
+donneur_ordre_id: null
+donneur_ordre_nom: ATANASOVA
+donneur_ordre_prenom: Kristina
+email_index: 0
+facture_soldee: true
+id: imp_uSEhfpCwzx
+id_dossier: '36218'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47126
+numero_dossier: 51222
+payer_id: cont_ZIWth8jcvE
+payeur_civilite: ''
+payeur_email: katanasova5@gmail.com
+payeur_nom: ATANASOVA
+payeur_prenom: Kristina
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ATANASOVA
+proprietaire_prenom: Kristina
+ref_piece: FA240725 47126
+reference: '51222'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:31:29.901Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240725_47126/standard/FA240725 47126
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

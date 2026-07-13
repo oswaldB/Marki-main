@@ -1,0 +1,49 @@
+adresse_bien: 11 rue Loredan Larchey
+apporteur_id: cont_1oBO3iDNCv
+apporteur_nom: AGENCE DU COMMERCE
+apporteur_prenom: SAS AZUR RIVIERA COMMERCE
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_1oBO3iDNCv
+created_at: '2026-06-24T16:30:50.025Z'
+date_echeance: '2026-04-17'
+date_import: '2026-07-09T07:05:05.532Z'
+date_piece: '2026-04-10'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI 525 éme SAINTE PLUS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_2HN5dqiYeH
+id_dossier: '41554'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50765
+numero_dossier: 55560
+payer_id: cont_1oBO3iDNCv
+payeur_civilite: ''
+payeur_email: agenceducommerce@orange.fr
+payeur_nom: AGENCE DU COMMERCE
+payeur_prenom: SAS AZUR RIVIERA COMMERCE
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCI 525 éme SAINTE PLUS
+proprietaire_prenom: null
+ref_piece: FA260410 50765
+reference: '55560'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:30:50.025Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260410_50765/standard/FA260410 50765
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 4 chemin Romain Les Terrasses de Beausoleil Les Arbousiers
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:20.895Z'
+date_echeance: '2024-12-19'
+date_import: '2026-07-09T07:05:08.438Z'
+date_piece: '2024-12-19'
+donneur_ordre_id: null
+donneur_ordre_nom: TOLEDE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_PNUHGDNiUW
+id_dossier: '38276'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47994
+numero_dossier: 52282
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: TOLEDE
+proprietaire_prenom: null
+ref_piece: FA241219 47994
+reference: '52282'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 101.25
+total_ttc: 121.5
+type: impaye
+updated_at: '2026-06-24T16:31:20.895Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241219_47994/standard/FA241219 47994
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

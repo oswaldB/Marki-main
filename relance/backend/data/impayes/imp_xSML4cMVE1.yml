@@ -1,0 +1,49 @@
+adresse_bien: 42 rue d'Adhémar de Lantagnac Victoria Palace
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_IdULMOY5VV
+created_at: '2026-06-24T16:30:52.939Z'
+date_echeance: '2026-03-11'
+date_import: '2026-07-09T07:05:05.765Z'
+date_piece: '2026-03-04'
+donneur_ordre_id: null
+donneur_ordre_nom: CAIRELLA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_xSML4cMVE1
+id_dossier: '41340'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50543
+numero_dossier: 55346
+payer_id: cont_IdULMOY5VV
+payeur_civilite: ''
+payeur_email: maxi.cairella@tiscali.it
+payeur_nom: CAIRELLA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAIRELLA
+proprietaire_prenom: null
+ref_piece: FA260304 50543
+reference: '55346'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:30:52.939Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260304_50543/standard/FA260304 50543 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 49 ter avenue de la Lanterne  Les Ancolies
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:31:45.951Z'
+date_echeance: '2023-12-07'
+date_import: '2026-07-09T07:05:10.818Z'
+date_piece: '2023-12-07'
+donneur_ordre_id: null
+donneur_ordre_nom: HOSTACHE
+donneur_ordre_prenom: Irene
+email_index: 0
+facture_soldee: true
+id: imp_CjQpgefzYb
+id_dossier: '32232'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45746
+numero_dossier: 49229
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: HOSTACHE
+proprietaire_prenom: Irene
+ref_piece: FA231207 45746
+reference: '49229'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1975
+total_ttc: 2370
+type: impaye
+updated_at: '2026-06-24T16:31:45.951Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231207_45746/standard/FA231207 45746
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

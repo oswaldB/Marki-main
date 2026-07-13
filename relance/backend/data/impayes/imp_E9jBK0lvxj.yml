@@ -1,0 +1,49 @@
+adresse_bien: 13 chemin des Revoires Eden Cap
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_6G73s5VczP
+created_at: '2026-06-24T16:31:37.031Z'
+date_echeance: '2024-04-10'
+date_import: '2026-07-09T07:05:10.051Z'
+date_piece: '2024-04-10'
+donneur_ordre_id: null
+donneur_ordre_nom: 'CORNILLON '
+donneur_ordre_prenom: 'Christian '
+email_index: 0
+facture_soldee: true
+id: imp_E9jBK0lvxj
+id_dossier: '34373'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46450
+numero_dossier: 50372
+payer_id: cont_6G73s5VczP
+payeur_civilite: ''
+payeur_email: christian.cornillon@orange.fr
+payeur_nom: 'CORNILLON '
+payeur_prenom: 'Christian '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'CORNILLON '
+proprietaire_prenom: 'Christian '
+ref_piece: FA240410 46450
+reference: '50372'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:37.031Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240410_46450/standard/FA240410 46450
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

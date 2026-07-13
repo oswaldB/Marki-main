@@ -1,0 +1,30 @@
+$loki: 1014
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:43.714Z'
+email: marylenemorelli.larquet@gmail.com
+id: cont_3ji9wCUQnq
+impaye_ids:
+  - imp_KxjwaZXw88
+  - imp_C4v46K7Zr4
+is_blacklisted: false
+meta:
+  created: 1783580698748
+  revision: 0
+  version: 0
+nom: LARQUET
+prenom: Marylene
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0646336251'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:43.321Z'

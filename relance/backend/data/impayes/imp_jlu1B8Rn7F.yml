@@ -1,0 +1,49 @@
+adresse_bien: 21 rue d'Angleterre
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_qVbgUfs9GA
+created_at: '2026-06-24T16:31:19.977Z'
+date_echeance: '2025-01-06'
+date_import: '2026-07-09T07:05:08.376Z'
+date_piece: '2025-01-06'
+donneur_ordre_id: null
+donneur_ordre_nom: LISI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jlu1B8Rn7F
+id_dossier: '38349'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48040
+numero_dossier: 52355
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LISI
+proprietaire_prenom: null
+ref_piece: FA250106 48040
+reference: '52355'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 95.83
+total_ttc: 115
+type: impaye
+updated_at: '2026-06-24T16:31:19.977Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250106_48040/standard/FA250106 48040
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 1 place de la République
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06430'
+commentaire_piece: "10/06 : appel agence + mail pour news du renvoi de la facture\r\n\r\n28/05 : renvoi facture à AB IMMO suite à leur dde"
+contact_relance_id: cont_6iIeEadGkG
+created_at: '2026-06-24T16:31:28.003Z'
+date_echeance: '2024-08-28'
+date_import: '2026-07-09T07:05:09.237Z'
+date_piece: '2024-08-28'
+donneur_ordre_id: null
+donneur_ordre_nom: BOSIO
+donneur_ordre_prenom: Mario
+email_index: 0
+facture_soldee: true
+id: imp_5YDW5xbt6h
+id_dossier: '37447'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47302
+numero_dossier: 51453
+payer_id: cont_6iIeEadGkG
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BOSIO
+payeur_prenom: Mario
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BOSIO
+proprietaire_prenom: Mario
+ref_piece: FA240828 47302
+reference: '51453'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 343.33
+total_ttc: 412
+type: impaye
+updated_at: '2026-06-24T16:31:28.003Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240828_47302/standard/FA240828 47302 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: TENDE

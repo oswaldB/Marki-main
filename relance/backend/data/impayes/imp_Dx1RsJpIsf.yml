@@ -1,0 +1,49 @@
+adresse_bien: 4 avenue des Bosquets Les Bosquets Promenade
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_jO6Cep4oVa
+created_at: '2026-06-24T16:31:39.941Z'
+date_echeance: '2024-03-08'
+date_import: '2026-07-09T07:05:10.270Z'
+date_piece: '2024-03-08'
+donneur_ordre_id: null
+donneur_ordre_nom: FARDEL
+donneur_ordre_prenom: Louis Jean Baptiste
+email_index: 0
+facture_soldee: true
+id: imp_Dx1RsJpIsf
+id_dossier: '34090'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46275
+numero_dossier: 50089
+payer_id: cont_jO6Cep4oVa
+payeur_civilite: ''
+payeur_email: jugo@laforet.com
+payeur_nom: LAFORET NICE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FARDEL
+proprietaire_prenom: Louis Jean Baptiste
+ref_piece: FA240308 46275
+reference: '50089'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:39.941Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240308_46275/standard/FA240308 46275 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 119 avenue de Sospel Les Agrions
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_FRKx49u6sQ
+created_at: '2026-06-24T16:31:03.909Z'
+date_echeance: '2025-09-26'
+date_import: '2026-07-09T07:05:06.821Z'
+date_piece: '2025-09-19'
+donneur_ordre_id: null
+donneur_ordre_nom: CASELLA / FUSTER
+donneur_ordre_prenom: Isabelle et Yannick
+email_index: 0
+facture_soldee: true
+id: imp_N5h3SLXskv
+id_dossier: '40257'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49555
+numero_dossier: 54263
+payer_id: cont_FRKx49u6sQ
+payeur_civilite: ''
+payeur_email: fusteryannick06@gmail.com
+payeur_nom: CASELLA / FUSTER
+payeur_prenom: Isabelle et Yannick
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CASELLA / FUSTER
+proprietaire_prenom: Isabelle et Yannick
+ref_piece: FA250919 49555
+reference: '54263'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:03.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250919_49555/standard/FA250919 49555
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

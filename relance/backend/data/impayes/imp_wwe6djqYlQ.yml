@@ -1,0 +1,49 @@
+adresse_bien: 7 chemin des Myrtes Stella Maris Bâtiment E (box)
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_SabgBFW5fD
+created_at: '2026-06-24T16:31:06.023Z'
+date_echeance: '2025-08-04'
+date_import: '2026-07-09T07:05:07.025Z'
+date_piece: '2025-08-04'
+donneur_ordre_id: null
+donneur_ordre_nom: VERLET
+donneur_ordre_prenom: Maurice
+email_index: 0
+facture_soldee: true
+id: imp_wwe6djqYlQ
+id_dossier: '39993'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49341
+numero_dossier: 53999
+payer_id: cont_SabgBFW5fD
+payeur_civilite: ''
+payeur_email: ddt06@club-internet.fr
+payeur_nom: VERLET
+payeur_prenom: Maurice
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: VERLET
+proprietaire_prenom: Maurice
+ref_piece: FA250804 49341
+reference: '53999'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 62.5
+total_ttc: 75
+type: impaye
+updated_at: '2026-06-24T16:31:06.023Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250804_49341/standard/FA250804 49341 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

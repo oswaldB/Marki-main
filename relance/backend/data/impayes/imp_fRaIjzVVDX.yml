@@ -1,0 +1,49 @@
+adresse_bien: 23 rue Saint-michel
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_zlfKP1kXUp
+created_at: '2026-06-24T16:30:57.918Z'
+date_echeance: '2025-12-15'
+date_import: '2026-07-09T07:05:06.276Z'
+date_piece: '2025-12-08'
+donneur_ordre_id: null
+donneur_ordre_nom: NUCIARELLI
+donneur_ordre_prenom: Eric
+email_index: 0
+facture_soldee: true
+id: imp_fRaIjzVVDX
+id_dossier: '40793'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50090
+numero_dossier: 54799
+payer_id: cont_zlfKP1kXUp
+payeur_civilite: ''
+payeur_email: eric.nucciarelli@gmail.com
+payeur_nom: NUCIARELLI
+payeur_prenom: Eric
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: NUCIARELLI
+proprietaire_prenom: Eric
+ref_piece: FA251208 50090
+reference: '54799'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 123.75
+total_ttc: 148.5
+type: impaye
+updated_at: '2026-06-24T16:30:57.918Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251208_50090/standard/FA251208 50090
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

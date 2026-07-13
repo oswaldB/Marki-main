@@ -1,0 +1,49 @@
+adresse_bien: 44 boulevard Victor Hugo
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_bz3NNCdFFf
+created_at: '2026-06-24T16:31:23.900Z'
+date_echeance: '2024-10-28'
+date_import: '2026-07-09T07:05:08.753Z'
+date_piece: '2024-10-28'
+donneur_ordre_id: null
+donneur_ordre_nom: CUNY
+donneur_ordre_prenom: Hoirie
+email_index: 0
+facture_soldee: true
+id: imp_NydJ0NgOko
+id_dossier: '37904'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47710
+numero_dossier: 51910
+payer_id: cont_bz3NNCdFFf
+payeur_civilite: ''
+payeur_email: florence.cuny@educagri.fr
+payeur_nom: CUNY
+payeur_prenom: Hoirie
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CUNY
+proprietaire_prenom: Hoirie
+ref_piece: FA241028 47710
+reference: '51910'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 33.33
+total_ttc: 40
+type: impaye
+updated_at: '2026-06-24T16:31:23.900Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241028_47710/standard/FA241028 47710
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

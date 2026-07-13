@@ -1,0 +1,49 @@
+adresse_bien: 28 bis rue des Martyrs de la Resistance le Palatino
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_ANKfSUTHgb
+created_at: '2026-06-24T16:31:03.909Z'
+date_echeance: '2025-09-28'
+date_import: '2026-07-09T07:05:06.822Z'
+date_piece: '2025-09-21'
+donneur_ordre_id: null
+donneur_ordre_nom: JOAO DE CASTRO ABREU
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_CQ5OsTJcVT
+id_dossier: '40275'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49561
+numero_dossier: 54281
+payer_id: cont_ANKfSUTHgb
+payeur_civilite: ''
+payeur_email: lionelabreu@gmail.com
+payeur_nom: JOAO DE CASTRO ABREU
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: JOAO DE CASTRO ABREU
+proprietaire_prenom: null
+ref_piece: FA250921 49561
+reference: '54281'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 41.67
+total_ttc: 50
+type: impaye
+updated_at: '2026-06-24T16:31:03.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250921_49561/standard/FA250921 49561
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

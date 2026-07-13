@@ -1,0 +1,49 @@
+adresse_bien: 81 boulevard de Las Planas Le Plein Sud
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: "LE PLEIN SUD\r\n81 boulevard Las Planas\r\n06100 NICE\r\n\r\n2 bât. / 15 lots / 28 pkgs\r\n\r\n10/04 relance compta\r\n\r\n27/04 relance "
+contact_relance_id: cont_O0LiDAiYi9
+created_at: '2026-06-24T16:30:51.039Z'
+date_echeance: '2026-04-02'
+date_import: '2026-07-09T07:05:05.634Z'
+date_piece: '2026-03-26'
+donneur_ordre_id: null
+donneur_ordre_nom: GTS IMMOBILIER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_HIDb23q8Mj
+id_dossier: '41163'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50682
+numero_dossier: 55169
+payer_id: cont_M36gzuBS33
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: GTS IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SDC LE PLEIN SUD
+proprietaire_prenom: null
+ref_piece: FA260326 50682
+reference: '55169'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2408.33
+total_ttc: 2890
+type: impaye
+updated_at: '2026-06-24T16:30:51.039Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260326_50682/standard/FA260326 50682 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

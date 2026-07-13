@@ -1,0 +1,49 @@
+adresse_bien: 13 rue Jeansoulin Les Lucioles
+apporteur_id: cont_cFjIPWR9lP
+apporteur_nom: SUD FINANCES CONSEIL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_eOuocJEdtq
+created_at: '2026-06-24T16:31:24.990Z'
+date_echeance: '2024-10-07'
+date_import: '2026-07-09T07:05:08.892Z'
+date_piece: '2024-10-07'
+donneur_ordre_id: null
+donneur_ordre_nom: IRLES
+donneur_ordre_prenom: Bruno
+email_index: 0
+facture_soldee: true
+id: imp_4dhtnV4OKG
+id_dossier: '37754'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47578
+numero_dossier: 51760
+payer_id: cont_cFjIPWR9lP
+payeur_civilite: ''
+payeur_email: leanne.viciana@sfcmenton.com
+payeur_nom: SUD FINANCES CONSEIL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: IRLES
+proprietaire_prenom: Bruno
+ref_piece: FA241007 47578
+reference: '51760'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:24.990Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241007_47578/standard/FA241007 47578
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

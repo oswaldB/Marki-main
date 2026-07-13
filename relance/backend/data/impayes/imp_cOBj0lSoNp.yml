@@ -1,0 +1,49 @@
+adresse_bien: 30 rue Paul Bounin Le Saint Christophe
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: "09/09 relance mail + tel prop\r\n\r\n12/10 apporteur d'affaire WILSON retiré plus de mandat\r\nrelance prop ce jour\r\n\r\n\r\n03/02 message laissé au prop \r\n\r\n10/02 message laissé au prop pas de réponse + relance avec le conseil juridique en copie\r\n\r\nMATTHIAS"
+contact_relance_id: cont_qBkTNlseBC
+created_at: '2026-06-24T16:31:59.955Z'
+date_echeance: '2023-05-15'
+date_import: '2026-07-09T07:05:12.179Z'
+date_piece: '2023-05-15'
+donneur_ordre_id: null
+donneur_ordre_nom: AZARIO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_cOBj0lSoNp
+id_dossier: '28806'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44434
+numero_dossier: 47792
+payer_id: cont_qBkTNlseBC
+payeur_civilite: ''
+payeur_email: r_azario@hotmail.com
+payeur_nom: AZARIO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: AZARIO
+proprietaire_prenom: null
+ref_piece: FA230515 44434
+reference: '47792'
+reste_a_payer: 85
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:33:34.338Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/mai/FA230515_44434/standard/FA230515 44434 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 28 avenue Rivièra Riviera Palace
+apporteur_id: cont_dntkuJ727m
+apporteur_nom: 'WRETMAN MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_BKh8RAIzZp
+created_at: '2026-06-24T16:31:13.887Z'
+date_echeance: '2025-04-03'
+date_import: '2026-07-09T07:05:07.762Z'
+date_piece: '2025-04-03'
+donneur_ordre_id: null
+donneur_ordre_nom: LUCAS
+donneur_ordre_prenom: Anne et Alain
+email_index: 0
+facture_soldee: true
+id: imp_Wbs4BBtXFS
+id_dossier: '38989'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48647
+numero_dossier: 52995
+payer_id: cont_BKh8RAIzZp
+payeur_civilite: ''
+payeur_email: romainlucas@free.fr
+payeur_nom: LUCAS
+payeur_prenom: Anne et Alain
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LUCAS
+proprietaire_prenom: Anne et Alain
+ref_piece: FA250403 48647
+reference: '52995'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-24T16:31:13.887Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250403_48647/standard/FA250403 48647
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

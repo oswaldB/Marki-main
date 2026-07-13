@@ -1,0 +1,49 @@
+adresse_bien: 48 boulevard du Maréchal Leclerc
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_UBnItyC04D
+created_at: '2026-06-24T16:31:28.003Z'
+date_echeance: '2024-08-27'
+date_import: '2026-07-09T07:05:09.236Z'
+date_piece: '2024-08-27'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI ANTOINE
+donneur_ordre_prenom: 'Mme Gagnier '
+email_index: 0
+facture_soldee: true
+id: imp_v6EYKffoTc
+id_dossier: '37422'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47284
+numero_dossier: 51428
+payer_id: cont_UBnItyC04D
+payeur_civilite: ''
+payeur_email: denisegagnier1951@gmail.com
+payeur_nom: SCI ANTOINE
+payeur_prenom: 'Mme Gagnier '
+payeur_telephone: '0609842944'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI ANTOINE
+proprietaire_prenom: 'Mme Gagnier '
+ref_piece: FA240827 47284
+reference: '51428'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:31:28.003Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240827_47284/standard/FA240827 47284 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

@@ -1,0 +1,29 @@
+$loki: 5976
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:29.590Z'
+email: mda@monaco.mc
+id: cont_dzpPrxxZ8i
+impaye_ids:
+  - imp_Rutz4pZt1S
+is_blacklisted: false
+meta:
+  created: 1783580700501
+  revision: 0
+  version: 0
+nom: LOEGEL
+prenom: Franck
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:29.344Z'

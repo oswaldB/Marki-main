@@ -1,0 +1,29 @@
+$loki: 4575
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:16.578Z'
+email: hamadryade01@wanadoo.fr
+id: cont_k3K1rcEX0f
+impaye_ids:
+  - imp_0pVA7rNEDO
+is_blacklisted: false
+meta:
+  created: 1783580700035
+  revision: 0
+  version: 0
+nom: SUCCESSION DEPARIS
+prenom: André
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:16.339Z'

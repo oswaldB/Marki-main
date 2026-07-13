@@ -1,0 +1,49 @@
+adresse_bien: 69 boulevard Bischoffsheim EDEN ROC Bâtiment
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_fpUTnvr3lB
+created_at: '2026-06-24T16:31:33.902Z'
+date_echeance: '2024-05-31'
+date_import: '2026-07-09T07:05:09.777Z'
+date_piece: '2024-05-31'
+donneur_ordre_id: null
+donneur_ordre_nom: GAILLARD
+donneur_ordre_prenom: 'Caroline '
+email_index: 0
+facture_soldee: true
+id: imp_MzE6FhHHbD
+id_dossier: '23116'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46793
+numero_dossier: 43099
+payer_id: cont_fpUTnvr3lB
+payeur_civilite: ''
+payeur_email: gaillard-caroline@hotmail.fr
+payeur_nom: GAILLARD
+payeur_prenom: 'Caroline '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GAILLARD
+proprietaire_prenom: 'Caroline '
+ref_piece: FA240531 46793
+reference: '43099'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 87.5
+total_ttc: 105
+type: impaye
+updated_at: '2026-06-24T16:31:33.902Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240531_46793/standard/FA240531 46793 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

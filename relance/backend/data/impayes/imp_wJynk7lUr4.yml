@@ -1,0 +1,49 @@
+adresse_bien: 77 avenue Saint-Augustin
+apporteur_id: cont_RIHSLFwvrN
+apporteur_nom: FONDATION DE NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_DP84VuLJa0
+created_at: '2026-06-24T16:30:49.061Z'
+date_echeance: '2026-05-05'
+date_import: '2026-07-09T07:05:05.445Z'
+date_piece: '2026-04-28'
+donneur_ordre_id: null
+donneur_ordre_nom: FONDATION DE NICE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_wJynk7lUr4
+id_dossier: '41636'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50849
+numero_dossier: 55642
+payer_id: cont_RIHSLFwvrN
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: FONDATION DE NICE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FONDATION DE NICE
+proprietaire_prenom: null
+ref_piece: FA260428 50849
+reference: '55642'
+reste_a_payer: 90
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 75
+total_ttc: 90
+type: impaye
+updated_at: '2026-06-24T16:33:33.328Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260428_50849/standard/FA260428 50849
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

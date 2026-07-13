@@ -1,0 +1,49 @@
+adresse_bien: 31 route de Sospel Le Sainte Anne
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_026JE3T0HN
+created_at: '2026-06-24T16:31:31.902Z'
+date_echeance: '2024-07-01'
+date_import: '2026-07-09T07:05:09.600Z'
+date_piece: '2024-07-01'
+donneur_ordre_id: null
+donneur_ordre_nom: 'VINCENSINI  '
+donneur_ordre_prenom: Antoinette
+email_index: 0
+facture_soldee: true
+id: imp_uFatNvrBjn
+id_dossier: '35999'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46941
+numero_dossier: 51003
+payer_id: cont_026JE3T0HN
+payeur_civilite: ''
+payeur_email: tinkerbell22111980@gmail.com
+payeur_nom: 'VINCENSINI  '
+payeur_prenom: Antoinette
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'VINCENSINI  '
+proprietaire_prenom: Antoinette
+ref_piece: FA240626 46941
+reference: '51003'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:31.902Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240626_46941/standard/FA240626 46941
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

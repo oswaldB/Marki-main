@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Saint Martin 1 rue Penchienatti
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06390'
+commentaire_piece: ''
+contact_relance_id: cont_mZEJy4LFWe
+created_at: '2026-06-24T16:31:24.061Z'
+date_echeance: '2024-10-18'
+date_import: '2026-07-09T07:05:08.835Z'
+date_piece: '2024-10-18'
+donneur_ordre_id: null
+donneur_ordre_nom: ATRI'HOME
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_i3aBsTbNEo
+id_dossier: '36370'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47658
+numero_dossier: 51374
+payer_id: cont_mZEJy4LFWe
+payeur_civilite: ''
+payeur_email: cuevas.herve@gmail.com
+payeur_nom: ATRI'HOME
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ATRI'HOME
+proprietaire_prenom: null
+ref_piece: FA241018 47658
+reference: '51374'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 3537.92
+total_ttc: 4245.5
+type: impaye
+updated_at: '2026-06-24T16:31:24.061Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241018_47658/standard/FA241018 47658
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CONTES

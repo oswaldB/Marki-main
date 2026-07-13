@@ -1,0 +1,49 @@
+adresse_bien: 71 avenue Cernuschi Villa Farnese
+apporteur_id: cont_B5O5PwvrWy
+apporteur_nom: 'CICCIONI '
+apporteur_prenom: Alexandra
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_kgFC5scEv7
+created_at: '2026-06-24T16:31:08.997Z'
+date_echeance: '2025-06-24'
+date_import: '2026-07-09T07:05:07.324Z'
+date_piece: '2025-06-24'
+donneur_ordre_id: null
+donneur_ordre_nom: 'INDIVISION INFANTE '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_xlQx6iNXnH
+id_dossier: '39686'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49097
+numero_dossier: 53692
+payer_id: cont_kgFC5scEv7
+payeur_civilite: ''
+payeur_email: francesca.infante5@gmail.com
+payeur_nom: 'INDIVISION INFANTE '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'INDIVISION INFANTE '
+proprietaire_prenom: null
+ref_piece: FA250624 49097
+reference: '53692'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:08.997Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250624_49097/standard/FA250624 49097 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

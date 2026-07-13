@@ -1,0 +1,49 @@
+adresse_bien: 34 rue Vernier
+apporteur_id: cont_F9a1C2QFwv
+apporteur_nom: Agence L&SO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_T1EjCibOdV
+created_at: '2026-06-24T16:31:48.925Z'
+date_echeance: '2023-10-27'
+date_import: '2026-07-09T07:05:11.084Z'
+date_piece: '2023-10-27'
+donneur_ordre_id: null
+donneur_ordre_nom: BOUILLET
+donneur_ordre_prenom: Mireille
+email_index: 0
+facture_soldee: true
+id: imp_PvH5YTooKw
+id_dossier: '32055'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45488
+numero_dossier: 49052
+payer_id: cont_T1EjCibOdV
+payeur_civilite: ''
+payeur_email: Mi44.bouillet@laposte.net
+payeur_nom: BOUILLET
+payeur_prenom: Mireille
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BOUILLET
+proprietaire_prenom: Mireille
+ref_piece: FA231027 45488
+reference: '49052'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 275
+total_ttc: 330
+type: impaye
+updated_at: '2026-06-24T16:31:48.925Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231027_45488/standard/FA231027 45488
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

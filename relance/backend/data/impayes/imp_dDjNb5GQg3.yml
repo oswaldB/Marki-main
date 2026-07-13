@@ -1,0 +1,49 @@
+adresse_bien: 13 avenue des Acacias
+apporteur_id: cont_COZn7tNc1v
+apporteur_nom: SUD RIVAGES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_yHAig1K8Gr
+created_at: '2026-06-24T16:31:53.954Z'
+date_echeance: '2023-08-11'
+date_import: '2026-07-09T07:05:11.562Z'
+date_piece: '2023-08-11'
+donneur_ordre_id: null
+donneur_ordre_nom: THOMAS
+donneur_ordre_prenom: 'Patrice '
+email_index: 0
+facture_soldee: true
+id: imp_dDjNb5GQg3
+id_dossier: '30471'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44989
+numero_dossier: 48461
+payer_id: cont_yHAig1K8Gr
+payeur_civilite: ''
+payeur_email: paatthomas@icloud.com
+payeur_nom: THOMAS
+payeur_prenom: 'Patrice '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: THOMAS
+proprietaire_prenom: 'Patrice '
+ref_piece: FA230811 44989
+reference: '48461'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:53.954Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230811_44989/standard/FA230811 44989 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 60 boulevard Guynemer Résidence Eugenia
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_OegL2sbFMD
+created_at: '2026-06-24T16:31:28.964Z'
+date_echeance: '2024-08-09'
+date_import: '2026-07-09T07:05:09.310Z'
+date_piece: '2024-08-09'
+donneur_ordre_id: null
+donneur_ordre_nom: DONADONIBUS
+donneur_ordre_prenom: Giancarlo
+email_index: 0
+facture_soldee: true
+id: imp_2bh24bIbDh
+id_dossier: '36327'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47212
+numero_dossier: 51331
+payer_id: cont_OegL2sbFMD
+payeur_civilite: ''
+payeur_email: Carlo_mara@libero.it
+payeur_nom: DONADONIBUS
+payeur_prenom: Giancarlo
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DONADONIBUS
+proprietaire_prenom: Giancarlo
+ref_piece: FA240809 47212
+reference: '51331'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:31:28.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240809_47212/standard/FA240809 47212 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

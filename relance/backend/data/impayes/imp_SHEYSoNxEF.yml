@@ -1,0 +1,49 @@
+adresse_bien: 7 chemin des Myrtes Stella Maris
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_Q2xqjLRShQ
+created_at: '2026-06-24T16:31:39.909Z'
+date_echeance: '2024-03-13'
+date_import: '2026-07-09T07:05:10.251Z'
+date_piece: '2024-03-13'
+donneur_ordre_id: null
+donneur_ordre_nom: DE MATTEIS
+donneur_ordre_prenom: Muriel
+email_index: 0
+facture_soldee: true
+id: imp_SHEYSoNxEF
+id_dossier: '34115'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46297
+numero_dossier: 50114
+payer_id: cont_Q2xqjLRShQ
+payeur_civilite: ''
+payeur_email: murieldematteis@gmail.com
+payeur_nom: DE MATTEIS
+payeur_prenom: Muriel
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DE MATTEIS
+proprietaire_prenom: Muriel
+ref_piece: FA240313 46297
+reference: '50114'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 91.67
+total_ttc: 110
+type: impaye
+updated_at: '2026-06-24T16:31:39.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240313_46297/standard/FA240313 46297 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

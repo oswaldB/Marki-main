@@ -1,0 +1,49 @@
+adresse_bien: 1 avenue Carnot Le Medicis
+apporteur_id: cont_ujZx2ws8rx
+apporteur_nom: CABINET NARDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_6sjvJfe15Q
+created_at: '2026-06-24T16:31:02.949Z'
+date_echeance: '2025-10-07'
+date_import: '2026-07-09T07:05:06.729Z'
+date_piece: '2025-09-30'
+donneur_ordre_id: null
+donneur_ordre_nom: CABINET NARDI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_w4OIE58sVC
+id_dossier: '39227'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49616
+numero_dossier: 53233
+payer_id: cont_6sjvJfe15Q
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: COPROPRIETE LE MEDICIS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: COPROPRIETE LE MEDICIS
+proprietaire_prenom: null
+ref_piece: FA250930 49616
+reference: '53233'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2066.67
+total_ttc: 2480
+type: impaye
+updated_at: '2026-06-24T16:31:02.949Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250930_49616/standard/FA250930 49616
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

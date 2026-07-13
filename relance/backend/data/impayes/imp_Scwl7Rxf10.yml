@@ -1,0 +1,49 @@
+adresse_bien: 40-42 rue Smollett L'age D'or
+apporteur_id: cont_ozesiVMiDn
+apporteur_nom: 'BUCCERI '
+apporteur_prenom: Franco
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_jeWA7MH4a9
+created_at: '2026-06-24T16:30:57.989Z'
+date_echeance: '2025-12-09'
+date_import: '2026-07-09T07:05:06.301Z'
+date_piece: '2025-12-02'
+donneur_ordre_id: null
+donneur_ordre_nom: SENG
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Scwl7Rxf10
+id_dossier: '40745'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50064
+numero_dossier: 54751
+payer_id: cont_jeWA7MH4a9
+payeur_civilite: ''
+payeur_email: imkhoun.seng@gmail.com
+payeur_nom: SENG
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SENG
+proprietaire_prenom: null
+ref_piece: FA251202 50064
+reference: '54751'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 95.83
+total_ttc: 115
+type: impaye
+updated_at: '2026-06-24T16:30:57.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251202_50064/standard/FA251202 50064
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

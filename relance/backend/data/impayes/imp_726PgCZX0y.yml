@@ -1,0 +1,49 @@
+adresse_bien: 978 route de Saint Jean
+apporteur_id: cont_gszi3ULfaG
+apporteur_nom: AIA GROUPE ALLIANCE GESTION ANTIBES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: cont_hiBh7VBtpf
+created_at: '2026-06-24T16:30:56.010Z'
+date_echeance: '2026-01-19'
+date_import: '2026-07-09T07:05:06.125Z'
+date_piece: '2026-01-12'
+donneur_ordre_id: null
+donneur_ordre_nom: AIA GROUPE ALLIANCE GESTION ANTIBES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_726PgCZX0y
+id_dossier: '40992'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50250
+numero_dossier: 54998
+payer_id: cont_gszi3ULfaG
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: AIA GROUPE ALLIANCE GESTION ANTIBES
+payeur_prenom: ''
+payeur_telephone: '0614310039'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC OLIVERAIE DE SAINT JEAN
+proprietaire_prenom: null
+ref_piece: FA260112 50250
+reference: '54998'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 593.75
+total_ttc: 712.5
+type: impaye
+updated_at: '2026-06-24T16:30:56.010Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260112_50250/standard/FA260112 50250
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

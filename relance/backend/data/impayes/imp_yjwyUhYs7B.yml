@@ -1,0 +1,49 @@
+adresse_bien: 27 avenue Alfred Borriglione
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_rF6yBntL53
+created_at: '2026-06-24T16:31:30.901Z'
+date_echeance: '2024-07-12'
+date_import: '2026-07-09T07:05:09.508Z'
+date_piece: '2024-07-12'
+donneur_ordre_id: null
+donneur_ordre_nom: Denis CARLO C/O CABINET GRIMAZ
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_yjwyUhYs7B
+id_dossier: '36117'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47038
+numero_dossier: 51121
+payer_id: cont_0nPZpkqDTq
+payeur_civilite: ''
+payeur_email: contact@cabinet-grimaz.com
+payeur_nom: CABINET GRIMAZ
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: Denis CARLO C/O CABINET GRIMAZ
+proprietaire_prenom: null
+ref_piece: FA240712 47038
+reference: '51121'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:30.901Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240712_47038/standard/FA240712 47038
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

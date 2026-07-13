@@ -1,0 +1,49 @@
+adresse_bien: 20 avenue du Professeur Langevin La Sirène
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_LAFN8dUECJ
+created_at: '2026-06-24T16:31:20.006Z'
+date_echeance: '2025-01-03'
+date_import: '2026-07-09T07:05:08.387Z'
+date_piece: '2025-01-03'
+donneur_ordre_id: null
+donneur_ordre_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_s4Kui2JVCh
+id_dossier: '38347'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48039
+numero_dossier: 52353
+payer_id: cont_9KF7R3DCug
+payeur_civilite: ''
+payeur_email: info@republique-beausoleil.com
+payeur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BENEDETTO
+proprietaire_prenom: Joséphine
+ref_piece: FA250103 48039
+reference: '52353'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:20.006Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250103_48039/standard/FA250103 48039
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

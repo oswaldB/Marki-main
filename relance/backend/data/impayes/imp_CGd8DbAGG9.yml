@@ -1,0 +1,49 @@
+adresse_bien: 12 avenue du Carnier Les Caroubiers
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:50.087Z'
+date_echeance: '2023-10-04'
+date_import: '2026-07-09T07:05:11.255Z'
+date_piece: '2023-10-04'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI DBM & CO INVEST
+donneur_ordre_prenom: Meunier Beatrice
+email_index: 0
+facture_soldee: true
+id: imp_CGd8DbAGG9
+id_dossier: '30865'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45317
+numero_dossier: 48855
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SCI DBM & CO INVEST
+proprietaire_prenom: Meunier Beatrice
+ref_piece: FA231004 45317
+reference: '48855'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:50.087Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231004_45317/standard/FA231004 45317
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

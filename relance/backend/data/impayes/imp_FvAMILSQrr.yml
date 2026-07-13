@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Droite
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_amj6n653eC
+created_at: '2026-06-24T16:31:04.003Z'
+date_echeance: '2025-09-17'
+date_import: '2026-07-09T07:05:06.856Z'
+date_piece: '2025-09-10'
+donneur_ordre_id: null
+donneur_ordre_nom: MULLER
+donneur_ordre_prenom: Rolf
+email_index: 0
+facture_soldee: true
+id: imp_FvAMILSQrr
+id_dossier: '40168'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49493
+numero_dossier: 54174
+payer_id: cont_amj6n653eC
+payeur_civilite: ''
+payeur_email: stonero@live.fr
+payeur_nom: MULLER
+payeur_prenom: Rolf
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MULLER
+proprietaire_prenom: Rolf
+ref_piece: FA250910 49493
+reference: '54174'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 180.83
+total_ttc: 217
+type: impaye
+updated_at: '2026-06-24T16:31:04.003Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250910_49493/standard/FA250910 49493
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: LA TURBIE

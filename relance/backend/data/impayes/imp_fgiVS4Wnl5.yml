@@ -1,0 +1,49 @@
+adresse_bien: 71 avenue de la Lanterne Le Sonorat
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_LCd95CjGCu
+created_at: '2026-06-24T16:31:17.090Z'
+date_echeance: '2025-02-12'
+date_import: '2026-07-09T07:05:08.134Z'
+date_piece: '2025-02-12'
+donneur_ordre_id: null
+donneur_ordre_nom: SAVIO - BESSI - FERRARA
+donneur_ordre_prenom: Marguerite - Roger - Jean Noel
+email_index: 0
+facture_soldee: true
+id: imp_fgiVS4Wnl5
+id_dossier: '38701'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48325
+numero_dossier: 52707
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SAVIO - BESSI - FERRARA
+proprietaire_prenom: Marguerite - Roger - Jean Noel
+ref_piece: FA250212 48325
+reference: '52707'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 23.33
+total_ttc: 28
+type: impaye
+updated_at: '2026-06-24T16:31:17.090Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250212_48325/standard/FA250212 48325
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,104 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_vqP5w9ChQ6
+corps: >
+  <p>Bonjour Imad BEN MESSAOUD,</p>
+
+  <p><br></p>
+
+  <p><strong>Faute de règlement dans les délais impartis</strong>, les pénalités
+  légales de retard ainsi que l'indemnité forfaitaire pour frais de recouvrement
+  sont désormais applicables à votre dossier.</p>
+
+  <p>Le montant total dû est désormais majoré de <strong>40 €</strong> de
+  pénalités.</p>
+
+  <p><br></p>
+
+  <table style="border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;">Facture</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Échéance</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Montant total</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Reste à payer</th>
+        <th style="border: 1px solid #ccc; padding: 8px;">Lien règlement</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">47089</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">19/07/2024</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">592 €</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">592 €</td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><a href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=592&amp;vads_order_id=47089&amp;vads_cust_id=51183&amp;vads_cust_last_name=BEN MESSAOUD&amp;vads_cust_first_name=Imad&amp;vads_cust_email=imad.benmess83300@gmail.com&amp;vads_cust_cell_phone=">Paiement sécurisé en ligne en carte bleue</a></td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;">47089</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">19/07/2024</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">592 €</td>
+        <td style="border: 1px solid #ccc; padding: 8px;">592 €</td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><a href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=592&amp;vads_order_id=47089&amp;vads_cust_id=51182&amp;vads_cust_last_name=BEN MESSAOUD&amp;vads_cust_first_name=Imad&amp;vads_cust_email=imad.benmess83300@gmail.com&amp;vads_cust_cell_phone=">Paiement sécurisé en ligne en carte bleue</a></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><br></p>
+
+  <div contenteditable="false"><hr></div>
+
+  <p><strong>Pour voir vos factures :
+  https://adti.markidiags.com/redirect-espace/vqP5w9ChQ6</strong></p>
+
+  <p>Pour tout régler : <a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=1184&amp;vads_order_id=47089&amp;vads_cust_id=reg_glo&amp;vads_cust_last_name=BEN
+  MESSAOUD&amp;vads_cust_first_name=Imad&amp;vads_cust_email=imad.benmess83300@gmail.com&amp;vads_cust_cell_phone=&amp;vads_ext_info_Message+d%27accompagnement=47089">https://paiement.systempay.fr/vads-site/EXIM?vads_amount=1184&amp;vads_order_id=47089&amp;vads_cust_id=reg_glo&amp;vads_cust_last_name=BEN
+  MESSAOUD&amp;vads_cust_first_name=Imad&amp;vads_cust_email=imad.benmess83300@gmail.com&amp;vads_cust_cell_phone=&amp;vads_ext_info_Message+d%27accompagnement=47089</a></p>
+
+  <p><br></p>
+
+  <p><strong>Modalités de paiement :</strong></p>
+
+  <ul>
+    <li><p><strong>Par carte bleue</strong> : Utilisez les liens ci-dessus pour un paiement sécurisé en ligne.</p></li>
+    <li><p><strong>Par virement bancaire</strong> :<strong>IBAN</strong> : <code>FR76 1460 7003 5370 1217 0161 406</code><strong>BIC</strong> : <code>CCBPFRPPMAR</code><strong>Titulaire</strong> : <strong>ADTI - EX'IM AZUR</strong></p></li>
+    <li><p><strong>Par chèque</strong> : À l'ordre de <strong>ADTI - EX'IM AZUR</strong> – 40 avenue des Diables Bleus, 06300 Nice.</p></li>
+  </ul>
+
+  <p><br></p>
+
+  <p><strong>Pour éviter l'engagement d'une procédure de recouvrement</strong>,
+  veuillez procéder au paiement immédiat.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-06-25T16:50:23.249Z'
+date_envoi: '2026-07-20T16:50:02.277Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 7
+erreur_count: 0
+id: rel_s1N1jUdPeX
+impaye_ids:
+  - imp_6ntG608j4v
+  - imp_TwYrjlVJ0P
+manuelle: false
+message_id: null
+objet: >-
+  EX'IM - Dossiers 51183, 51182 - Relance n°5 : Plusieurs factures impayées –
+  Application des pénalités légales
+ouvert: false
+planifiee_le: null
+scenario: multiple
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: pret pour envoi
+type: relance
+updated_at: '2026-07-02T15:34:50.748Z'
+valide: false

@@ -1,0 +1,49 @@
+adresse_bien: 8 route de Sospel L'Apollo 1
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_OEO3JrHfX9
+created_at: '2026-06-24T16:30:46.932Z'
+date_echeance: '2026-06-12'
+date_import: '2026-07-09T07:05:05.186Z'
+date_piece: '2026-06-05'
+donneur_ordre_id: null
+donneur_ordre_nom: HERNANDEZ
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_RhEv1ENZeV
+id_dossier: '41913'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51079
+numero_dossier: 55919
+payer_id: cont_OEO3JrHfX9
+payeur_civilite: ''
+payeur_email: marchernandez06@gmail.com
+payeur_nom: HERNANDEZ
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: HERNANDEZ
+proprietaire_prenom: null
+ref_piece: FA260605 51079
+reference: '55919'
+reste_a_payer: 80
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 66.67
+total_ttc: 80
+type: impaye
+updated_at: '2026-06-24T16:33:32.604Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260605_51079/standard/FA260605 51079 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

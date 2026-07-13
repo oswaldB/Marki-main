@@ -1,0 +1,49 @@
+adresse_bien: 25 rue de Millo
+apporteur_id: cont_b4SB5B0bmP
+apporteur_nom: C.M.B MONACO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '98000'
+commentaire_piece: ''
+contact_relance_id: cont_p1WxbFXste
+created_at: '2026-06-24T16:30:57.035Z'
+date_echeance: '2025-12-25'
+date_import: '2026-07-09T07:05:06.223Z'
+date_piece: '2025-12-18'
+donneur_ordre_id: null
+donneur_ordre_nom: C.M.B MONACO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_XgoXxU45BG
+id_dossier: '40869'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50147
+numero_dossier: 54875
+payer_id: cont_b4SB5B0bmP
+payeur_civilite: ''
+payeur_email: creditmonitoringcontrol@cmb.mc
+payeur_nom: C.M.B MONACO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FERRE
+proprietaire_prenom: Alessandra
+ref_piece: FA251218 50147
+reference: '54875'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:30:57.035Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251218_50147/standard/FA251218 50147
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MONACO

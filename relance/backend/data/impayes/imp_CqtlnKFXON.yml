@@ -1,0 +1,49 @@
+adresse_bien: 739 avenue Jean Marchand Marine Baie des Anges
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06270'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:51.951Z'
+date_echeance: '2023-09-12'
+date_import: '2026-07-09T07:05:11.383Z'
+date_piece: '2023-09-12'
+donneur_ordre_id: null
+donneur_ordre_nom: CERRUTI
+donneur_ordre_prenom: Pierre
+email_index: 0
+facture_soldee: true
+id: imp_CqtlnKFXON
+id_dossier: '30704'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45180
+numero_dossier: 48694
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: CERRUTI
+proprietaire_prenom: Pierre
+ref_piece: FA230912 45180
+reference: '48694'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:51.951Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230912_45180/standard/FA230912 45180
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLENEUVE-LOUBET

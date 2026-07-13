@@ -1,0 +1,49 @@
+adresse_bien: 2 voie  Romaine  Le Tibere
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_gRzeXEOzRn
+created_at: '2026-06-24T16:31:43.909Z'
+date_echeance: '2024-01-17'
+date_import: '2026-07-09T07:05:10.624Z'
+date_piece: '2024-01-17'
+donneur_ordre_id: null
+donneur_ordre_nom: 'David '
+donneur_ordre_prenom: Michel
+email_index: 0
+facture_soldee: true
+id: imp_WvFbh9nzpd
+id_dossier: '32633'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45924
+numero_dossier: 49630
+payer_id: cont_gRzeXEOzRn
+payeur_civilite: ''
+payeur_email: dial06@orange.fr
+payeur_nom: 'David '
+payeur_prenom: Michel
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'David '
+proprietaire_prenom: Michel
+ref_piece: FA240117 45924
+reference: '49630'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:43.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240117_45924/standard/FA240117 45924
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

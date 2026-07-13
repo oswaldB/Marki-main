@@ -1,0 +1,49 @@
+adresse_bien: 188 avenue de Verdun
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_YRmTcOS5nf
+created_at: '2026-06-24T16:31:26.086Z'
+date_echeance: '2024-09-19'
+date_import: '2026-07-09T07:05:09.041Z'
+date_piece: '2024-09-19'
+donneur_ordre_id: null
+donneur_ordre_nom: LANDRA
+donneur_ordre_prenom: 'Gilbert '
+email_index: 0
+facture_soldee: true
+id: imp_8B4ybzrvRH
+id_dossier: '37613'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47451
+numero_dossier: 51619
+payer_id: cont_YRmTcOS5nf
+payeur_civilite: ''
+payeur_email: landrag@club-internet.fr
+payeur_nom: LANDRA
+payeur_prenom: 'Gilbert '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LANDRA
+proprietaire_prenom: 'Gilbert '
+ref_piece: FA240919 47451
+reference: '51619'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:26.086Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240919_47451/standard/FA240919 47451
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

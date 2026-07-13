@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue Général de Gaulle Palais Josephine
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_6Bpk65ziTc
+created_at: '2026-06-24T16:31:02.048Z'
+date_echeance: '2025-10-13'
+date_import: '2026-07-09T07:05:06.685Z'
+date_piece: '2025-10-06'
+donneur_ordre_id: null
+donneur_ordre_nom: KUKARE
+donneur_ordre_prenom: Olga
+email_index: 0
+facture_soldee: true
+id: imp_lGlD9OHXBK
+id_dossier: '40300'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49672
+numero_dossier: 54306
+payer_id: cont_6Bpk65ziTc
+payeur_civilite: ''
+payeur_email: olga.kukare@yahoo.com
+payeur_nom: KUKARE
+payeur_prenom: Olga
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: KUKARE
+proprietaire_prenom: Olga
+ref_piece: FA251006 49672
+reference: '54306'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 347.08
+total_ttc: 416.5
+type: impaye
+updated_at: '2026-06-24T16:31:02.048Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251006_49672/standard/FA251006 49672
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

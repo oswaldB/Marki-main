@@ -1,0 +1,49 @@
+adresse_bien: 229b chemin des Hautes Ginestieres La Louve
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06270'
+commentaire_piece: "LA LOUVE\r\n229b Chemin des Hautes Ginestieres\r\n06270 Villeneuve-Loubet\r\n\r\n4 lots principaux\r\n\r\n08/04 relance compta "
+contact_relance_id: cont_T9iNbq6UJx
+created_at: '2026-06-24T16:30:51.931Z'
+date_echeance: '2026-03-24'
+date_import: '2026-07-09T07:05:05.679Z'
+date_piece: '2026-03-17'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC LA LOUVE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jLupSmMro2
+id_dossier: '41006'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50629
+numero_dossier: 55012
+payer_id: cont_T9iNbq6UJx
+payeur_civilite: ''
+payeur_email: copro.la.louve@gmail.com
+payeur_nom: SDC LA LOUVE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SDC LA LOUVE
+proprietaire_prenom: null
+ref_piece: FA260317 50629
+reference: '55012'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1166.67
+total_ttc: 1400
+type: impaye
+updated_at: '2026-06-24T16:30:51.931Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260317_50629/standard/FA260317 50629 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VILLENEUVE-LOUBET

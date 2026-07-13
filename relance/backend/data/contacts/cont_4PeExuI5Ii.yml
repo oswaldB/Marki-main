@@ -1,0 +1,29 @@
+$loki: 5874
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:28.583Z'
+email: chelhage@gmail.com
+id: cont_4PeExuI5Ii
+impaye_ids:
+  - imp_C0hlsOXCBs
+is_blacklisted: false
+meta:
+  created: 1783580700470
+  revision: 0
+  version: 0
+nom: ELHAGE
+prenom: Charbel
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0618482154'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:28.344Z'

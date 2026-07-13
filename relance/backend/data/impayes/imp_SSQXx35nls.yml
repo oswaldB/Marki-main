@@ -1,0 +1,49 @@
+adresse_bien: 1 route de la Vigie  quartier Saint Roman  Les Pergolas
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_BGvTlVja7L
+created_at: '2026-06-24T16:31:44.909Z'
+date_echeance: '2023-12-22'
+date_import: '2026-07-09T07:05:10.725Z'
+date_piece: '2023-12-22'
+donneur_ordre_id: null
+donneur_ordre_nom: TUNON
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_SSQXx35nls
+id_dossier: '32506'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45840
+numero_dossier: 49503
+payer_id: cont_BGvTlVja7L
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: TUNON
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: TUNON
+proprietaire_prenom: null
+ref_piece: FA231222 45840
+reference: '49503'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 252.5
+total_ttc: 303
+type: impaye
+updated_at: '2026-06-24T16:31:44.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231222_45840/standard/FA231222 45840
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

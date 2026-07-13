@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue de la République
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_lwhiaoDoIh
+created_at: '2026-06-24T16:30:54.918Z'
+date_echeance: '2026-02-04'
+date_import: '2026-07-09T07:05:05.985Z'
+date_piece: '2026-01-28'
+donneur_ordre_id: null
+donneur_ordre_nom: GIORDANO
+donneur_ordre_prenom: Manon
+email_index: 0
+facture_soldee: true
+id: imp_6AsYFHg9y0
+id_dossier: '41051'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50374
+numero_dossier: 55057
+payer_id: cont_lwhiaoDoIh
+payeur_civilite: ''
+payeur_email: giordano.manon@yahoo.fr
+payeur_nom: GIORDANO
+payeur_prenom: Manon
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GIORDANO
+proprietaire_prenom: Manon
+ref_piece: FA260128 50374
+reference: '55057'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:30:54.918Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260128_50374/standard/FA260128 50374
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

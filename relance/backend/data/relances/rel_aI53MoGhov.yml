@@ -1,0 +1,94 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_qEsUXsrXqY
+corps: >
+  <p>Bonjour,</p>
+
+  <p><br></p>
+
+  <p>Nous constatons que votre facture <strong>n°50117</strong>, relative à une
+  prestation réalisée au <strong>2 rue Commandant Berretta, 06000 NICE - dossier
+  54577</strong>, n'a toujours pas été réglée malgré nos précédentes
+  relances.</p>
+
+  <p><br></p>
+
+  <p>Pour éviter l'application de pénalités, nous vous invitons à procéder
+  <strong>dès maintenant</strong> à son règlement :</p>
+
+  <p><br></p>
+
+  <table style="border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Facture</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Échéance</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Montant total</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Reste à payer</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Télécharger la facture</p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>50117</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>19/12/2025</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>340 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>340 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p><a href="https://adti.markidiags.com/redirect-pdf/6mH7MSCzxw">Télécharger</a></p></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=340&amp;vads_order_id=50117&amp;vads_cust_id=54577&amp;vads_cust_last_name=SCI
+  MASKA&amp;vads_cust_first_name=&amp;vads_cust_email=lolykas@gmail.com
+  &amp;vads_cust_cell_phone=">Paiement sécurisé en ligne en carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p><strong>À défaut de paiement sous 3 jours</strong>, des intérêts de retard
+  et une indemnité forfaitaire pour frais de recouvrement seront appliqués.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-06-25T16:21:06.184Z'
+date_envoi: '2026-07-03T17:00:11.969Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 4
+erreur_count: 0
+id: rel_aI53MoGhov
+impaye_ids:
+  - imp_6mH7MSCzxw
+manuelle: false
+message_id: null
+objet: >-
+  EX'IM - Dossier 54577 - Relance n°2 : Application prochaine des pénalités de
+  retard
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: Envoyée
+type: relance
+updated_at: '2026-07-03T17:00:11.969Z'
+valide: true

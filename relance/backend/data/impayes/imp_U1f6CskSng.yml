@@ -1,0 +1,49 @@
+adresse_bien: 29 rue de la Préfecture
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_wFq0DP7hWS
+created_at: '2026-06-24T16:31:43.047Z'
+date_echeance: '2024-01-23'
+date_import: '2026-07-09T07:05:10.589Z'
+date_piece: '2024-01-23'
+donneur_ordre_id: null
+donneur_ordre_nom: BAISLE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_U1f6CskSng
+id_dossier: '32692'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45966
+numero_dossier: 49689
+payer_id: cont_wFq0DP7hWS
+payeur_civilite: ''
+payeur_email: juliebaisle@yahoo.com
+payeur_nom: BAISLE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BAISLE
+proprietaire_prenom: null
+ref_piece: FA240123 45966
+reference: '49689'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:43.047Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240123_45966/standard/FA240123 45966
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 18 rue de la Plaine de Cimiez Les Mimosas
+apporteur_id: cont_kE2K3GxJjO
+apporteur_nom: UNPI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:53.987Z'
+date_echeance: '2023-08-10'
+date_import: '2026-07-09T07:05:11.571Z'
+date_piece: '2023-08-10'
+donneur_ordre_id: null
+donneur_ordre_nom: OGGERI
+donneur_ordre_prenom: 'Emilienne '
+email_index: 0
+facture_soldee: true
+id: imp_1jI4rQVxRJ
+id_dossier: '30451'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44971
+numero_dossier: 48441
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: OGGERI
+proprietaire_prenom: 'Emilienne '
+ref_piece: FA230810 44971
+reference: '48441'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 150
+total_ttc: 180
+type: impaye
+updated_at: '2026-06-24T16:31:53.987Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230810_44971/standard/FA230810 44971 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

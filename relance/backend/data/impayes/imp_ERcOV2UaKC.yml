@@ -1,0 +1,49 @@
+adresse_bien: 8 rue Dominique Paez
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_cV4jlpGIY1
+created_at: '2026-06-24T16:31:17.957Z'
+date_echeance: '2025-02-05'
+date_import: '2026-07-09T07:05:08.180Z'
+date_piece: '2025-02-05'
+donneur_ordre_id: null
+donneur_ordre_nom: CHARBIT Marcelle
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_ERcOV2UaKC
+id_dossier: '38613'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48259
+numero_dossier: 52619
+payer_id: cont_cV4jlpGIY1
+payeur_civilite: ''
+payeur_email: maracase1950@gmail.com
+payeur_nom: CHARBIT Marcelle
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CHARBIT Marcelle
+proprietaire_prenom: null
+ref_piece: FA250205 48259
+reference: '52619'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 95.83
+total_ttc: 115
+type: impaye
+updated_at: '2026-06-24T16:31:17.957Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250205_48259/standard/FA250205 48259
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 20 rue Albert Voisin Quai des Arts
+apporteur_id: cont_aFSXWA9ETI
+apporteur_nom: SAINT ROCH IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Z6pvzXhCFS
+created_at: '2026-06-24T16:31:10.017Z'
+date_echeance: '2025-06-02'
+date_import: '2026-07-09T07:05:07.444Z'
+date_piece: '2025-06-02'
+donneur_ordre_id: null
+donneur_ordre_nom: 'SARL BHC GESTION '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_EsJFgqeWsG
+id_dossier: '38478'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48975
+numero_dossier: 52484
+payer_id: cont_Z6pvzXhCFS
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: 'SARL BHC GESTION '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'SARL BHC GESTION '
+proprietaire_prenom: null
+ref_piece: FA250602 48975
+reference: '52484'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: -19.17
+total_ttc: -23
+type: impaye
+updated_at: '2026-06-24T16:31:10.017Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250602_48975/standard/FA250602 48975 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

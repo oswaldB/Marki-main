@@ -1,0 +1,49 @@
+$loki: 5277
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:23.555Z'
+email: c.barbero@fondationdenice.org
+id: cont_DP84VuLJa0
+impaye_ids:
+  - imp_wJynk7lUr4
+  - imp_dZTCG8PLYc
+  - imp_ouZLWRvrXP
+is_blacklisted: false
+meta:
+  created: 1783580700245
+  revision: 1
+  updated: 1783580712610
+  version: 0
+nom: BARBERO
+prenom: Carine
+relance_ids:
+  - rel_Tx6j7DQCSt
+  - rel_OfbQr2oECH
+  - rel_iN3P1POEpS
+  - rel_cf32QeUI4S
+  - rel_NH3vsuoESk
+  - rel_qnd4fdmNvh
+  - rel_uB3hKBeJTY
+  - rel_J7nnBcC0ei
+  - rel_8YCfLimmIx
+  - rel_sbwSYZC7dp
+  - rel_1o79CjCGOt
+  - rel_ZD1C1MAYEL
+  - rel_nJUL70fCDS
+  - rel_SIdTPayp9m
+  - rel_0LZtKLkXdX
+  - rel_aSIVV0q0Sf
+  - rel_ndCyY3pkLl
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:22.378Z'

@@ -1,0 +1,49 @@
+adresse_bien: 280 avenue Michel Jourdan Bâtiment D
+apporteur_id: cont_h38qdiRKRI
+apporteur_nom: SOGETRANS
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06150'
+commentaire_piece: ''
+contact_relance_id: cont_5jPnBooyLW
+created_at: '2026-06-24T16:31:53.003Z'
+date_echeance: '2023-08-24'
+date_import: '2026-07-09T07:05:11.502Z'
+date_piece: '2023-08-24'
+donneur_ordre_id: null
+donneur_ordre_nom: BUISSON
+donneur_ordre_prenom: Jean Jacques
+email_index: 0
+facture_soldee: true
+id: imp_S3kmhyLRWo
+id_dossier: '30542'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45051
+numero_dossier: 48532
+payer_id: cont_h38qdiRKRI
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: SOGETRANS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BUISSON
+proprietaire_prenom: Jean Jacques
+ref_piece: FA230824 45051
+reference: '48532'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 156.5
+total_ttc: 187.8
+type: impaye
+updated_at: '2026-06-24T16:31:53.003Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230824_45051/standard/FA230824 45051 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CANNES

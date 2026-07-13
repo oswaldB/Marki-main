@@ -1,0 +1,22 @@
+{
+  "name": "relance-flat-files",
+  "version": "1.0.0",
+  "description": "Backend Flat-Files YAML pour ADTI Relances",
+  "main": "lib/flat-file-db.js",
+  "scripts": {
+    "migrate": "node scripts/migrate-from-parse.js",
+    "init-admin": "node scripts/init-admin.js",
+    "create-user": "node scripts/create-user.js",
+    "change-password": "node scripts/change-password.js",
+    "demo-auth": "node scripts/creer-contact.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^16.3.1",
+    "js-yaml": "^4.1.0",
+    "jsonwebtoken": "^9.0.3",
+    "lokijs": "^1.5.12",
+    "parse": "^4.2.0",
+    "proper-lockfile": "^4.1.2"
+  }
+}

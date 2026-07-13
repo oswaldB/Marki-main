@@ -1,0 +1,49 @@
+adresse_bien: 71 avenue LANTERNE LE SONORAT BAT A
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:17.927Z'
+date_echeance: '2025-02-06'
+date_import: '2026-07-09T07:05:08.166Z'
+date_piece: '2025-02-06'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_KhAUGWuDBZ
+id_dossier: '38637'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48280
+numero_dossier: 52643
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: GOBIN
+proprietaire_prenom: null
+ref_piece: FA250206 48280
+reference: '52643'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 72.92
+total_ttc: 87.5
+type: impaye
+updated_at: '2026-06-24T16:31:17.927Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250206_48280/standard/FA250206 48280
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

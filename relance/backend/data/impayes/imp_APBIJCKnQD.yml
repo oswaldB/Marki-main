@@ -1,0 +1,49 @@
+adresse_bien: 15 rue du Poilu
+apporteur_id: cont_blb2dRpoQ7
+apporteur_nom: AZUR MEDITERRANEE VILLEFRANCHE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: 'Renouvellement des diagnostics '
+contact_relance_id: cont_fThNU6o8ww
+created_at: '2026-06-24T16:31:03.078Z'
+date_echeance: '2025-10-01'
+date_import: '2026-07-09T07:05:06.795Z'
+date_piece: '2025-09-24'
+donneur_ordre_id: null
+donneur_ordre_nom: BEISO
+donneur_ordre_prenom: Angelo
+email_index: 0
+facture_soldee: true
+id: imp_APBIJCKnQD
+id_dossier: '40280'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49580
+numero_dossier: 54286
+payer_id: cont_fThNU6o8ww
+payeur_civilite: ''
+payeur_email: chicco.beiso@free.fr
+payeur_nom: BEISO
+payeur_prenom: Angelo
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BEISO
+proprietaire_prenom: Angelo
+ref_piece: FA250924 49580
+reference: '54286'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 198.33
+total_ttc: 238
+type: impaye
+updated_at: '2026-06-24T16:31:03.078Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250924_49580/standard/FA250924 49580
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

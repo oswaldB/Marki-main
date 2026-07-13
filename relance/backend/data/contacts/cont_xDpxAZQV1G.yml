@@ -1,0 +1,39 @@
+$loki: 6822
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-07-06T22:01:41.451Z'
+email: laulau.06100@hotmail.fr
+id: cont_xDpxAZQV1G
+impaye_ids:
+  - imp_X4uVmRBlMX
+is_blacklisted: false
+meta:
+  created: 1783580700751
+  revision: 1
+  updated: 1783580718480
+  version: 0
+nom: FRASCA - LOBBRECH
+prenom: Laure - Frederic
+relance_ids:
+  - rel_y8BIDqmGdc
+  - rel_wNikQqLEVK
+  - rel_wXqTJlF0vO
+  - rel_xfoVapJZll
+  - rel_nVYjSaY603
+  - rel_KJBgcbBa8Y
+  - rel_h2GaLeMf6n
+  - rel_KXSKdSyZ3A
+  - rel_zICq7asE5G
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:36.419Z'

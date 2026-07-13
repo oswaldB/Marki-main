@@ -1,0 +1,49 @@
+adresse_bien: 23 boulevard de Garavan Le Vigia
+apporteur_id: cont_axwCVxbA8C
+apporteur_nom: CABINET CAIRO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "COPROPRIETE LE VIGIA\r\n23 boulevard de Garavan\r\n06500 Menton\r\n\r\nRAT suivant D-Q-E fourni par la société ASBECONCEPT"
+contact_relance_id: cont_axwCVxbA8C
+created_at: '2026-06-24T16:31:00.879Z'
+date_echeance: '2025-11-07'
+date_import: '2026-07-09T07:05:06.514Z'
+date_piece: '2025-10-31'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC VIGIA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_EMf6YvYJfS
+id_dossier: '40574'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49871
+numero_dossier: 54580
+payer_id: cont_axwCVxbA8C
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET CAIRO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC VIGIA
+proprietaire_prenom: null
+ref_piece: FA251031 49871
+reference: '54580'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1500
+total_ttc: 1800
+type: impaye
+updated_at: '2026-06-24T16:31:00.879Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251031_49871/standard/FA251031 49871
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

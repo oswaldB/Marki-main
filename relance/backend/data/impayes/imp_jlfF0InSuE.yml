@@ -1,0 +1,49 @@
+adresse_bien: 391 chemin des Groules Le Horizons Bleus
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: cont_bnUh6447t2
+created_at: '2026-06-24T16:30:51.960Z'
+date_echeance: '2026-03-20'
+date_import: '2026-07-09T07:05:05.681Z'
+date_piece: '2026-03-13'
+donneur_ordre_id: null
+donneur_ordre_nom: BOULLE
+donneur_ordre_prenom: Bernard
+email_index: 0
+facture_soldee: true
+id: imp_jlfF0InSuE
+id_dossier: '41339'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50614
+numero_dossier: 55345
+payer_id: cont_bnUh6447t2
+payeur_civilite: ''
+payeur_email: boulle.b@hotmail.fr
+payeur_nom: BOULLE
+payeur_prenom: Bernard
+payeur_telephone: '0609685465'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BOULLE
+proprietaire_prenom: Bernard
+ref_piece: FA260313 50614
+reference: '55345'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 750
+total_ttc: 900
+type: impaye
+updated_at: '2026-06-24T16:30:51.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260313_50614/standard/FA260313 50614 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

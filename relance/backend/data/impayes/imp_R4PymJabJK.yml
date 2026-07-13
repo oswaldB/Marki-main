@@ -1,0 +1,49 @@
+adresse_bien: 9 boulevard Maurice Maeterlinck Villa Graziosa
+apporteur_id: cont_e53R48o27k
+apporteur_nom: CABINET CAPAN -  BORDES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "Mme CHAPPUIS\r\nMme Mr SAAD\r\nVilla Graziosa\r\n9 boulevard Maurice Maeterlinck\r\n06300 Nice\r\n"
+contact_relance_id: cont_OrkwjCJN6b
+created_at: '2026-06-29T22:00:17.093Z'
+date_echeance: '2026-07-06'
+date_import: '2026-07-09T07:05:12.211Z'
+date_piece: '2026-06-29'
+donneur_ordre_id: null
+donneur_ordre_nom: Mme CHAPPUIS - Mme Mr SAAD
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_R4PymJabJK
+id_dossier: '42038'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51210
+numero_dossier: 56044
+payer_id: cont_OrkwjCJN6b
+payeur_civilite: ''
+payeur_email: flrn.saad@gmail.com
+payeur_nom: Mme CHAPPUIS - Mme Mr SAAD
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: Mme CHAPPUIS - Mme Mr SAAD
+proprietaire_prenom: null
+ref_piece: FA260629 51210
+reference: '56044'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 1102.5
+total_ttc: 1323
+type: impaye
+updated_at: '2026-07-01T08:50:00.282Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260629_51210/standard/FA260629 51210 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 15 avenue Shakespeare Les Floralies
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_CjYk88FDlP
+created_at: '2026-06-24T16:31:05.030Z'
+date_echeance: '2025-08-29'
+date_import: '2026-07-09T07:05:06.962Z'
+date_piece: '2025-08-22'
+donneur_ordre_id: null
+donneur_ordre_nom: GUIOL
+donneur_ordre_prenom: Daniele
+email_index: 0
+facture_soldee: true
+id: imp_tKlDBsIywz
+id_dossier: '40075'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49410
+numero_dossier: 54081
+payer_id: cont_CjYk88FDlP
+payeur_civilite: ''
+payeur_email: d.guiol@gmail.com
+payeur_nom: GUIOL
+payeur_prenom: Daniele
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GUIOL
+proprietaire_prenom: Daniele
+ref_piece: FA250822 49410
+reference: '54081'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:05.030Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250822_49410/standard/FA250822 49410 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 137 cours du Centenaire Le Saint Christophe
+apporteur_id: cont_nGbYMncL3T
+apporteur_nom: CABINET TRABAUD ACQUARONE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "ST CHRISTOPHE\r\n137 cours du Centenaire\r\n06500 MENTON\r\n\r\n1 bât. / 33 lots\r\n\r\n01/04 relance compta \r\n\r\n27/04 relance mail "
+contact_relance_id: cont_iLwX4pox69
+created_at: '2026-06-24T16:30:54.023Z'
+date_echeance: '2026-02-11'
+date_import: '2026-07-09T07:05:05.943Z'
+date_piece: '2026-02-04'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC LE SAINT CHRISTOPHE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_MIwcwp5DaK
+id_dossier: '39621'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50422
+numero_dossier: 53627
+payer_id: cont_iLwX4pox69
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SDC LE SAINT CHRISTOPHE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SDC LE SAINT CHRISTOPHE
+proprietaire_prenom: null
+ref_piece: FA260204 50422
+reference: '53627'
+reste_a_payer: 3500
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 2916.67
+total_ttc: 3500
+type: impaye
+updated_at: '2026-06-24T16:33:34.225Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260204_50422/standard/FA260204 50422
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

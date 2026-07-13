@@ -1,0 +1,49 @@
+adresse_bien: 31 rue Marceau
+apporteur_id: cont_3Lj4PPMcI0
+apporteur_nom: GT CAPITAL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_0dXGrto12W
+created_at: '2026-06-24T16:31:06.912Z'
+date_echeance: '2025-07-24'
+date_import: '2026-07-09T07:05:07.089Z'
+date_piece: '2025-07-24'
+donneur_ordre_id: null
+donneur_ordre_nom: GT CAPITAL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_f2dy710aHA
+id_dossier: '39920'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49285
+numero_dossier: 53926
+payer_id: cont_3Lj4PPMcI0
+payeur_civilite: ''
+payeur_email: gtc.ns@gtcapital.fr
+payeur_nom: GT CAPITAL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GT CAPITAL
+proprietaire_prenom: null
+ref_piece: FA250724 49285
+reference: '53926'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 56.67
+total_ttc: 68
+type: impaye
+updated_at: '2026-06-24T16:31:06.912Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250724_49285/standard/FA250724 49285
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

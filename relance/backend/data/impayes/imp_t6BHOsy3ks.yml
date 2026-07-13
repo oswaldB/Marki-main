@@ -1,0 +1,49 @@
+adresse_bien: 35 boulevard Guynemer Victoria Palace
+apporteur_id: cont_Ad2MwLchWa
+apporteur_nom: HOUSE & CO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_mMo3ovaC9N
+created_at: '2026-06-24T16:31:23.900Z'
+date_echeance: '2024-10-28'
+date_import: '2026-07-09T07:05:08.741Z'
+date_piece: '2024-10-28'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI VICTORY ESTATES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_t6BHOsy3ks
+id_dossier: '37890'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47703
+numero_dossier: 51896
+payer_id: cont_mMo3ovaC9N
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SCI VICTORY ESTATES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI VICTORY ESTATES
+proprietaire_prenom: null
+ref_piece: FA241028 47703
+reference: '51896'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:23.900Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241028_47703/standard/FA241028 47703
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

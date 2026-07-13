@@ -1,0 +1,49 @@
+adresse_bien: 210 avenue Pasteur La Saint Patrick
+apporteur_id: cont_yic6N4w5Fp
+apporteur_nom: AGENCE DE ROQUEBRUNE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "14/01 demande l'adresse     mail de la prop via  comptabilité\r\n\r\nPas de réponse  \r\n\r\nLISTING 27/01\r\n\r\n23/02 relance pour adresse mail\r\n27/02 relance au prop + copie agence \r\n\r\n10/03 relance a ERIKA parce que pas de retour du prop \r\n\r\n27/03 relance prop + agence\r\n\r\nsignature le 13 mai\r\n"
+contact_relance_id: cont_y77NEdFvRH
+created_at: '2026-06-24T16:30:56.010Z'
+date_echeance: '2026-01-14'
+date_import: '2026-07-09T07:05:06.117Z'
+date_piece: '2026-01-07'
+donneur_ordre_id: null
+donneur_ordre_nom: KRAEVA
+donneur_ordre_prenom: Tatiana
+email_index: 0
+facture_soldee: true
+id: imp_848c43Xz9U
+id_dossier: '40934'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50244
+numero_dossier: 54940
+payer_id: cont_y77NEdFvRH
+payeur_civilite: ''
+payeur_email: 'kraev.issa@outlook.com '
+payeur_nom: KRAEVA
+payeur_prenom: Tatiana
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: KRAEVA
+proprietaire_prenom: Tatiana
+ref_piece: FA260107 50244
+reference: '54940'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:30:56.010Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260107_50244/standard/FA260107 50244
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

@@ -1,0 +1,49 @@
+adresse_bien: 2 route de Nice Villa Augusta
+apporteur_id: cont_XfMiq6mNPd
+apporteur_nom: HAKKASAN
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_XfMiq6mNPd
+created_at: '2026-06-24T16:31:37.062Z'
+date_echeance: '2024-04-08'
+date_import: '2026-07-09T07:05:10.064Z'
+date_piece: '2024-04-08'
+donneur_ordre_id: null
+donneur_ordre_nom: DEMOUSTIER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_AnbQdQXs0T
+id_dossier: '34356'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46431
+numero_dossier: 50355
+payer_id: cont_XfMiq6mNPd
+payeur_civilite: ''
+payeur_email: ca.perard@hakkasan.immo
+payeur_nom: HAKKASAN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DEMOUSTIER
+proprietaire_prenom: null
+ref_piece: FA240408 46431
+reference: '50355'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204
+total_ttc: 244.8
+type: impaye
+updated_at: '2026-06-24T16:31:37.062Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240408_46431/standard/FA240408 46431
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: LA TURBIE

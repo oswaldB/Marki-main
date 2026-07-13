@@ -1,0 +1,29 @@
+$loki: 1028
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:43.714Z'
+email: lecafedupalais@orange.fr
+id: cont_hk4xpBQYl4
+impaye_ids:
+  - imp_ijW5WXO24d
+is_blacklisted: false
+meta:
+  created: 1783580698753
+  revision: 0
+  version: 0
+nom: SCI SERJEANCAR
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:43.321Z'

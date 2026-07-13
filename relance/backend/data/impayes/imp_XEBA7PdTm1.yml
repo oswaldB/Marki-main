@@ -1,0 +1,49 @@
+adresse_bien: 669 route de l'Audibergue
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06750'
+commentaire_piece: relance le 18/09
+contact_relance_id: cont_SHodzdGDye
+created_at: '2026-06-24T16:31:06.061Z'
+date_echeance: '2025-08-01'
+date_import: '2026-07-09T07:05:07.057Z'
+date_piece: '2025-08-01'
+donneur_ordre_id: null
+donneur_ordre_nom: SYNERGIE DIRECTION DED CONTENTIEUX
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_XEBA7PdTm1
+id_dossier: '39979'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49331
+numero_dossier: 53985
+payer_id: cont_SHodzdGDye
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SYNERGIE DIRECTION DED CONTENTIEUX
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SYNERGIE DIRECTION DED CONTENTIEUX
+proprietaire_prenom: null
+ref_piece: FA250801 49331
+reference: '53985'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 792.5
+total_ttc: 951
+type: impaye
+updated_at: '2026-06-24T16:31:06.061Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250801_49331/standard/FA250801 49331 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ANDON

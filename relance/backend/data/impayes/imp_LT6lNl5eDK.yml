@@ -1,0 +1,49 @@
+adresse_bien: 90 route du Val de Gorbio Azur Parc   Les Lauriers
+apporteur_id: cont_Kl8PBkhOa2
+apporteur_nom: LAFORET Menton Pieta
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "23/02 relance mail \r\n\r\n11/03 relance prop + agence\r\n\r\n01/04 relance compta\r\n\r\n10/04 relance compta \r\n17/04\r\n\r\n27/04 relance mail \r\n\r\n06/05 relance prop + agence"
+contact_relance_id: cont_Pbov0CBOfZ
+created_at: '2026-06-24T16:30:53.993Z'
+date_echeance: '2026-02-13'
+date_import: '2026-07-09T07:05:05.915Z'
+date_piece: '2026-02-06'
+donneur_ordre_id: null
+donneur_ordre_nom: MAHESWARAN SIS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_LT6lNl5eDK
+id_dossier: '41164'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50437
+numero_dossier: 55170
+payer_id: cont_Pbov0CBOfZ
+payeur_civilite: ''
+payeur_email: parmilasribala@gmail.com
+payeur_nom: MAHESWARAN SIS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MAHESWARAN SIS
+proprietaire_prenom: null
+ref_piece: FA260206 50437
+reference: '55170'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 129.17
+total_ttc: 155
+type: impaye
+updated_at: '2026-06-24T16:30:53.993Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260206_50437/standard/FA260206 50437
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

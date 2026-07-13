@@ -1,0 +1,49 @@
+adresse_bien: 31 avenue Hector Otto ESCORIAL
+apporteur_id: cont_OHlZ3trACx
+apporteur_nom: CAISSE AUTONOME DES RETRAITES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '98000'
+commentaire_piece: ''
+contact_relance_id: cont_K1J95vh17j
+created_at: '2026-06-24T16:30:49.963Z'
+date_echeance: '2026-04-23'
+date_import: '2026-07-09T07:05:05.492Z'
+date_piece: '2026-04-16'
+donneur_ordre_id: null
+donneur_ordre_nom: CAISSE AUTONOME DES RETRAITES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_PLHaTELESy
+id_dossier: '41511'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50784
+numero_dossier: 55517
+payer_id: cont_OHlZ3trACx
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CAISSE AUTONOME DES RETRAITES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAISSE AUTONOME DES RETRAITES
+proprietaire_prenom: null
+ref_piece: FA260416 50784
+reference: '55517'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 912.5
+total_ttc: 1095
+type: impaye
+updated_at: '2026-06-24T16:30:49.963Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260416_50784/standard/FA260416 50784
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MONACO

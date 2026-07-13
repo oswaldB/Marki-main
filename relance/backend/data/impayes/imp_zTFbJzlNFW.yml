@@ -1,0 +1,49 @@
+adresse_bien: 60 rue Herold
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:31:37.993Z'
+date_echeance: '2024-03-28'
+date_import: '2026-07-09T07:05:10.131Z'
+date_piece: '2024-03-28'
+donneur_ordre_id: null
+donneur_ordre_nom: LUBENOVA
+donneur_ordre_prenom: Veronika
+email_index: 0
+facture_soldee: true
+id: imp_zTFbJzlNFW
+id_dossier: '32087'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46371
+numero_dossier: 49084
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LUBENOVA
+proprietaire_prenom: Veronika
+ref_piece: FA240328 46371
+reference: '49084'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 6134.55
+total_ttc: 7361.46
+type: impaye
+updated_at: '2026-06-24T16:31:37.993Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240328_46371/standard/FA240328 46371 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

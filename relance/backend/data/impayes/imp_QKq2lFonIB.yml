@@ -1,0 +1,49 @@
+adresse_bien: 32 avenue du Mont Joli
+apporteur_id: cont_de5kv2FnG1
+apporteur_nom: 'WRETMAN CANNES '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06110'
+commentaire_piece: ''
+contact_relance_id: cont_J34qCn1pbV
+created_at: '2026-06-24T16:31:05.992Z'
+date_echeance: '2025-08-06'
+date_import: '2026-07-09T07:05:07.013Z'
+date_piece: '2025-08-06'
+donneur_ordre_id: null
+donneur_ordre_nom: 'LENNEMARK / MADSEN '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_QKq2lFonIB
+id_dossier: '40005'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49349
+numero_dossier: 54011
+payer_id: cont_J34qCn1pbV
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: 'LENNEMARK / MADSEN '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'LENNEMARK / MADSEN '
+proprietaire_prenom: null
+ref_piece: FA250806 49349
+reference: '54011'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:05.992Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250806_49349/standard/FA250806 49349 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: LE CANNET

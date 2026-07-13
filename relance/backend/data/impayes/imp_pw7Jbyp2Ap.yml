@@ -1,0 +1,49 @@
+adresse_bien: 7 rue du Pont Vieux
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "Gestion BARALE\r\n\r\n7 rue du Pont vieux\r\n06300 NICE"
+contact_relance_id: cont_Rev2j7FvL3
+created_at: '2026-06-24T16:30:59.939Z'
+date_echeance: '2025-11-13'
+date_import: '2026-07-09T07:05:06.461Z'
+date_piece: '2025-11-06'
+donneur_ordre_id: null
+donneur_ordre_nom: BARALE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_pw7Jbyp2Ap
+id_dossier: '40591'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49901
+numero_dossier: 54597
+payer_id: cont_F47dfC6qeF
+payeur_civilite: ''
+payeur_email: sophiesalomon@sarl-adp.fr
+payeur_nom: AGENCE DU PORT
+payeur_prenom: 'Cabinet Salomon '
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BARALE
+proprietaire_prenom: null
+ref_piece: FA251106 49901
+reference: '54597'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 362.25
+total_ttc: 434.7
+type: impaye
+updated_at: '2026-06-24T16:30:59.939Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251106_49901/standard/FA251106 49901
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

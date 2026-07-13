@@ -1,0 +1,34 @@
+$loki: 425
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:37.724Z'
+email: null
+id: cont_upLxDb1T7b
+impaye_ids:
+  - imp_NfGWiQTdei
+  - imp_QP3F6WKb2W
+  - imp_7twMmR7zhO
+  - imp_FOF8m6LVwc
+  - imp_fWE9T3BmQ5
+  - imp_xgrHk8ZOTM
+is_blacklisted: true
+meta:
+  created: 1783580698516
+  revision: 0
+  version: 0
+nom: GETRIM VICAT
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:37.363Z'

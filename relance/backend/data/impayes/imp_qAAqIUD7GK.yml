@@ -1,0 +1,49 @@
+adresse_bien: 130 avenue de la Côte d'Azur
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:06.955Z'
+date_echeance: '2025-07-22'
+date_import: '2026-07-09T07:05:07.112Z'
+date_piece: '2025-07-22'
+donneur_ordre_id: null
+donneur_ordre_nom: ANSALDO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_qAAqIUD7GK
+id_dossier: '39902'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49267
+numero_dossier: 53908
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: ANSALDO
+proprietaire_prenom: null
+ref_piece: FA250722 49267
+reference: '53908'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 101.25
+total_ttc: 121.5
+type: impaye
+updated_at: '2026-06-24T16:31:06.955Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250722_49267/standard/FA250722 49267
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

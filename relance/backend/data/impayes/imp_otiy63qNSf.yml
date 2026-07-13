@@ -1,0 +1,49 @@
+adresse_bien: 5 rue bis Cros de Capeu
+apporteur_id: cont_zttCmdIcGK
+apporteur_nom: AGENCE WILSON
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_zttCmdIcGK
+created_at: '2026-06-24T16:31:46.948Z'
+date_echeance: '2023-11-23'
+date_import: '2026-07-09T07:05:10.905Z'
+date_piece: '2023-11-23'
+donneur_ordre_id: null
+donneur_ordre_nom: AGENCE WILSON
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_otiy63qNSf
+id_dossier: '32303'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45665
+numero_dossier: 49300
+payer_id: cont_zttCmdIcGK
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: AGENCE WILSON
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BOUDOUF / HAFID
+proprietaire_prenom: null
+ref_piece: FA231123 45665
+reference: '49300'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 186.67
+total_ttc: 224
+type: impaye
+updated_at: '2026-06-24T16:31:46.948Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231123_45665/standard/FA231123 45665
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

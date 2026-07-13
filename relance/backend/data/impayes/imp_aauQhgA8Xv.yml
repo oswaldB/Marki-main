@@ -1,0 +1,49 @@
+adresse_bien: 46 Promenade Val du Careï LE GREKALE
+apporteur_id: cont_5keRx5VJny
+apporteur_nom: API AZUR PATRIMOINE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_U3YSg6WmjF
+created_at: '2026-06-24T16:31:45.980Z'
+date_echeance: '2023-12-06'
+date_import: '2026-07-09T07:05:10.829Z'
+date_piece: '2023-12-06'
+donneur_ordre_id: null
+donneur_ordre_nom: DE ARAUJO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_aauQhgA8Xv
+id_dossier: '32381'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45735
+numero_dossier: 49378
+payer_id: cont_U3YSg6WmjF
+payeur_civilite: ''
+payeur_email: marioramos5997@gmail.com
+payeur_nom: DE ARAUJO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DE ARAUJO
+proprietaire_prenom: null
+ref_piece: FA231206 45735
+reference: '49378'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 104.17
+total_ttc: 125
+type: impaye
+updated_at: '2026-06-24T16:31:45.980Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231206_45735/standard/FA231206 45735
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

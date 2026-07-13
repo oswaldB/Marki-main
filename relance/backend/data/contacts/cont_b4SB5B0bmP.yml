@@ -1,0 +1,57 @@
+$loki: 2132
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:54.525Z'
+email: creditmonitoringcontrol@cmb.mc
+id: cont_b4SB5B0bmP
+impaye_ids:
+  - imp_CyLejBhHkC
+  - imp_5NIimZvTq3
+  - imp_tzC8IgfrO9
+  - imp_1SMAH4tcH8
+  - imp_Gdy5QsYtZ9
+  - imp_tdvUZNBEg7
+  - imp_GN4hkgrs2X
+  - imp_oRDtvYLRgV
+  - imp_Hda8wwQaFX
+  - imp_UGSCE5VRuk
+  - imp_GghRGzY5G2
+  - imp_np6ruc3BDb
+  - imp_HfZAKw02Oz
+  - imp_MU4FTFkXuv
+  - imp_15ZT89NU5K
+  - imp_I9h6jUjKDe
+  - imp_AApptvOuqG
+  - imp_C0yqFBvEuS
+  - imp_Shxw4x8XZB
+  - imp_B1SjRqRRFc
+  - imp_iBMDkPBUwF
+  - imp_J7v4hT7e7c
+  - imp_aXpZ7bOsuH
+  - imp_jBp39XLneZ
+  - imp_6gADmU13Pg
+  - imp_zk5wzVdcrG
+  - imp_TNKeQMe1iU
+  - imp_AJzpvFPpyF
+  - imp_1FNMTjhMRS
+is_blacklisted: true
+meta:
+  created: 1783580699167
+  revision: 0
+  version: 0
+nom: C.M.B MONACO
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:53.340Z'

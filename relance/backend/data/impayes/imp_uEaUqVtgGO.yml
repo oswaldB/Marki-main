@@ -1,0 +1,49 @@
+adresse_bien: ''
+apporteur_id: cont_sfpCiuiAJC
+apporteur_nom: SAS EXIM EXPLOITATION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: ''
+commentaire_piece: "Numéro de commande : 00119-0000012167\r\nRepérages Amiante et Plomb avant travaux"
+contact_relance_id: cont_uEe1kqasth
+created_at: '2026-06-24T16:30:47.048Z'
+date_echeance: '2026-06-05'
+date_import: '2026-07-09T07:05:05.239Z'
+date_piece: '2026-05-29'
+donneur_ordre_id: null
+donneur_ordre_nom: SAS EXIM EXPLOITATION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_uEaUqVtgGO
+id_dossier: '41863'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51038
+numero_dossier: 55869
+payer_id: cont_sfpCiuiAJC
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SAS EXIM EXPLOITATION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SNCF
+proprietaire_prenom: null
+ref_piece: FA260529 51038
+reference: '55869'
+reste_a_payer: 2265.35
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 1887.79
+total_ttc: 2265.35
+type: impaye
+updated_at: '2026-06-24T16:33:33.184Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260529_51038/standard/FA260529 51038 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ''

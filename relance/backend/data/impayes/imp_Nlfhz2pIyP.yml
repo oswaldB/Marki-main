@@ -1,0 +1,49 @@
+adresse_bien: 136 avenue Maurice Donat Les Oeillets
+apporteur_id: cont_M36gzuBS33
+apporteur_nom: GTS IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06700'
+commentaire_piece: "SDC Roses et Oeillets\r\n136 avenue Maurice Donat\r\n06700 Saint-Laurent du Var\r\n\r\n2 bâtiments\r\n\r\nrelance le 22/12\r\n\r\n02/02 relance via comptabilite\r\n\r\n23/02 relance à nouveau par mail \r\n\r\n10*/03 relance mail \r\n\r\n23/03 va payer début de semaine prochaine ou début de semaine d'après"
+contact_relance_id: cont_O0LiDAiYi9
+created_at: '2026-06-24T16:31:00.976Z'
+date_echeance: '2025-10-31'
+date_import: '2026-07-09T07:05:06.553Z'
+date_piece: '2025-10-24'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC ROSES ET OEILLETS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Nlfhz2pIyP
+id_dossier: '40530'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49819
+numero_dossier: 54536
+payer_id: cont_M36gzuBS33
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: GTS IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC ROSES ET OEILLETS
+proprietaire_prenom: null
+ref_piece: FA251024 49819
+reference: '54536'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 4416.67
+total_ttc: 5300
+type: impaye
+updated_at: '2026-06-24T16:31:00.976Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251024_49819/standard/FA251024 49819
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SAINT-LAURENT-DU-VAR

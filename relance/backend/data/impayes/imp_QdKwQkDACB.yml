@@ -1,0 +1,49 @@
+adresse_bien: 22 avenue Maréchal Foch
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_Go7g3OrfD4
+created_at: '2026-06-24T16:31:19.897Z'
+date_echeance: '2025-01-10'
+date_import: '2026-07-09T07:05:08.333Z'
+date_piece: '2025-01-10'
+donneur_ordre_id: null
+donneur_ordre_nom: LABBE
+donneur_ordre_prenom: Aurore
+email_index: 0
+facture_soldee: true
+id: imp_QdKwQkDACB
+id_dossier: '38421'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48088
+numero_dossier: 52427
+payer_id: cont_Go7g3OrfD4
+payeur_civilite: ''
+payeur_email: aurore448@hotmail.fr
+payeur_nom: LABBE
+payeur_prenom: Aurore
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LABBE
+proprietaire_prenom: Aurore
+ref_piece: FA250110 48088
+reference: '52427'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-24T16:31:19.897Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250110_48088/standard/FA250110 48088
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

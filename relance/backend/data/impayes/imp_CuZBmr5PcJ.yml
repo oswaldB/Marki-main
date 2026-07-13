@@ -1,0 +1,49 @@
+adresse_bien: 3 rue Empereur Auguste
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_9KF7R3DCug
+created_at: '2026-06-24T16:31:39.941Z'
+date_echeance: '2024-03-08'
+date_import: '2026-07-09T07:05:10.275Z'
+date_piece: '2024-03-08'
+donneur_ordre_id: null
+donneur_ordre_nom: ROMAN
+donneur_ordre_prenom: Victor
+email_index: 0
+facture_soldee: true
+id: imp_CuZBmr5PcJ
+id_dossier: '34089'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46274
+numero_dossier: 50088
+payer_id: cont_9KF7R3DCug
+payeur_civilite: ''
+payeur_email: info@republique-beausoleil.com
+payeur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: ROMAN
+proprietaire_prenom: Victor
+ref_piece: FA240308 46274
+reference: '50088'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 258.33
+total_ttc: 310
+type: impaye
+updated_at: '2026-06-24T16:31:39.941Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240308_46274/standard/FA240308 46274 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: LA TURBIE

@@ -1,0 +1,29 @@
+$loki: 3311
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:05.528Z'
+email: 'fils : patrick.collombat06@gmail.com'
+id: cont_NV423kTFiG
+impaye_ids:
+  - imp_moGXy5JrGI
+is_blacklisted: false
+meta:
+  created: 1783580699607
+  revision: 0
+  version: 0
+nom: COLLOMBAT
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:04.382Z'

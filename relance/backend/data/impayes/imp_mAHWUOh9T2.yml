@@ -1,0 +1,49 @@
+adresse_bien: 96 avenue des Arènes de Cimiez Le Saint James
+apporteur_id: cont_5GmHIMyZpe
+apporteur_nom: ORION IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_mpIGHBJxyU
+created_at: '2026-06-24T16:31:02.949Z'
+date_echeance: '2025-10-10'
+date_import: '2026-07-09T07:05:06.727Z'
+date_piece: '2025-10-03'
+donneur_ordre_id: null
+donneur_ordre_nom: RENAUD
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_mAHWUOh9T2
+id_dossier: '40370'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49651
+numero_dossier: 54376
+payer_id: cont_mpIGHBJxyU
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: RENAUD
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: RENAUD
+proprietaire_prenom: null
+ref_piece: FA251003 49651
+reference: '54376'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 120.83
+total_ttc: 145
+type: impaye
+updated_at: '2026-06-24T16:31:02.949Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251003_49651/standard/FA251003 49651
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

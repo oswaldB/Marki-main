@@ -1,0 +1,49 @@
+adresse_bien: 290 route du Col des Blanquettes
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_z9vCuMGgss
+created_at: '2026-06-24T16:30:49.991Z'
+date_echeance: '2026-04-20'
+date_import: '2026-07-09T07:05:05.511Z'
+date_piece: '2026-04-13'
+donneur_ordre_id: null
+donneur_ordre_nom: ROBIN
+donneur_ordre_prenom: Ingrid
+email_index: 0
+facture_soldee: true
+id: imp_2KbNjqrPYU
+id_dossier: '41516'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50767
+numero_dossier: 55522
+payer_id: cont_z9vCuMGgss
+payeur_civilite: ''
+payeur_email: madi.ido.robin@gmail.com
+payeur_nom: ROBIN
+payeur_prenom: Ingrid
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROBIN
+proprietaire_prenom: Ingrid
+ref_piece: FA260413 50767
+reference: '55522'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1179.17
+total_ttc: 1415
+type: impaye
+updated_at: '2026-06-24T16:30:49.991Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260413_50767/standard/FA260413 50767
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SAINTE-AGNÈS

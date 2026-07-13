@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue de la Pinède Le Mesnil
+apporteur_id: cont_mSwEw9rkRW
+apporteur_nom: 'EASY MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_lYg6qyMnbr
+created_at: '2026-06-24T16:31:45.911Z'
+date_echeance: '2023-12-08'
+date_import: '2026-07-09T07:05:10.800Z'
+date_piece: '2023-12-08'
+donneur_ordre_id: null
+donneur_ordre_nom: CAUTEREELS
+donneur_ordre_prenom: Monica
+email_index: 0
+facture_soldee: true
+id: imp_gmjcTEdMqB
+id_dossier: '32402'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45753
+numero_dossier: 49399
+payer_id: cont_lYg6qyMnbr
+payeur_civilite: ''
+payeur_email: vic.cautereels@skynet.be
+payeur_nom: CAUTEREELS
+payeur_prenom: Monica
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAUTEREELS
+proprietaire_prenom: Monica
+ref_piece: FA231208 45753
+reference: '49399'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:45.911Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231208_45753/standard/FA231208 45753
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

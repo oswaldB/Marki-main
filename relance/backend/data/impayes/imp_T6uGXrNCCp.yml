@@ -1,0 +1,49 @@
+adresse_bien: 6 boulevard de la République Les Glycines
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_pHIgAMBdWV
+created_at: '2026-06-24T16:31:36.036Z'
+date_echeance: '2024-04-19'
+date_import: '2026-07-09T07:05:09.966Z'
+date_piece: '2024-04-19'
+donneur_ordre_id: null
+donneur_ordre_nom: GIRARDIN
+donneur_ordre_prenom: Nancy
+email_index: 0
+facture_soldee: true
+id: imp_T6uGXrNCCp
+id_dossier: '34477'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46537
+numero_dossier: 50476
+payer_id: cont_pHIgAMBdWV
+payeur_civilite: ''
+payeur_email: girardinnancy@neuf.fr
+payeur_nom: GIRARDIN
+payeur_prenom: Nancy
+payeur_telephone: '0613413635'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GIRARDIN
+proprietaire_prenom: Nancy
+ref_piece: FA240419 46537
+reference: '50476'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:36.036Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240419_46537/standard/FA240419 46537
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

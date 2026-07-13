@@ -1,0 +1,29 @@
+$loki: 2977
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:02.524Z'
+email: obadia.paul@wanadoo.fr
+id: cont_J0UuOWA0ED
+impaye_ids:
+  - imp_YhIUSLBGFw
+is_blacklisted: false
+meta:
+  created: 1783580699440
+  revision: 0
+  version: 0
+nom: OBADIA
+prenom: Raymonde
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:01.333Z'

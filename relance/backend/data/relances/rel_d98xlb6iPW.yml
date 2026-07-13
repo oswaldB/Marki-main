@@ -1,0 +1,87 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_iza29LLBAt
+corps: >
+  <p>Bonjour,</p>
+
+  <p><br></p>
+
+  <p>Malgré notre rappel du <strong>03/07/2026</strong>, votre facture
+  <strong>n°51194 (</strong> lors de nos prestations au <strong>22 avenue
+  Saint-Barthélemy, 06100 NICE - dossier 56030)</strong> reste à ce jour
+  impayée.</p>
+
+  <p><br></p>
+
+  <table style="border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Facture</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Échéance</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Montant total</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Reste à payer</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Télécharger la facture</p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>51194</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>02/07/2026</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>255 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>255 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p><a href="https://adti.markidiags.com/redirect-pdf/BuP4vlfEup">Télécharger</a></p></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=255&amp;vads_order_id=51194&amp;vads_cust_id=56030&amp;vads_cust_last_name=SCI
+  CARMELO&amp;vads_cust_first_name=&amp;vads_cust_email=gestionivd@gmail.com&amp;vads_cust_cell_phone=">Paiement
+  sécurisé en ligne en carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p>Nous vous remercions de procéder au règlement sous <strong>5 jours</strong>
+  afin d'éviter l'application des pénalités légales de retard.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-06-25T17:11:36.753Z'
+date_envoi: '2026-07-08T17:00:20.724Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 3
+erreur_count: 0
+id: rel_d98xlb6iPW
+impaye_ids:
+  - imp_BuP4vlfEup
+manuelle: false
+message_id: null
+objet: 'EX''IM - Dossier 56030 - Relance n°1 : Facture 51194 impayée'
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: Envoyée
+type: relance
+updated_at: '2026-07-08T17:00:20.725Z'
+valide: true

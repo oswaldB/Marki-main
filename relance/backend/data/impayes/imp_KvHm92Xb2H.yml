@@ -1,0 +1,49 @@
+adresse_bien: 42 rue Gounod Palais Othello
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:31:13.031Z'
+date_echeance: '2025-04-09'
+date_import: '2026-07-09T07:05:07.726Z'
+date_piece: '2025-04-09'
+donneur_ordre_id: null
+donneur_ordre_nom: VALARD
+donneur_ordre_prenom: Michel
+email_index: 0
+facture_soldee: true
+id: imp_KvHm92Xb2H
+id_dossier: '39124'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48691
+numero_dossier: 53130
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: VALARD
+proprietaire_prenom: Michel
+ref_piece: FA250409 48691
+reference: '53130'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2193.5
+total_ttc: 2632.2
+type: impaye
+updated_at: '2026-06-24T16:31:13.031Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250409_48691/standard/FA250409 48691
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

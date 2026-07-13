@@ -1,0 +1,49 @@
+adresse_bien: 54 boulevard Jean Jaures
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: relance le 18/09 agence
+contact_relance_id: cont_hx21uyCuhR
+created_at: '2026-06-24T16:31:06.912Z'
+date_echeance: '2025-07-24'
+date_import: '2026-07-09T07:05:07.081Z'
+date_piece: '2025-07-24'
+donneur_ordre_id: null
+donneur_ordre_nom: VSE MOE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_6w3b4MPHu2
+id_dossier: '39927'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49291
+numero_dossier: 53933
+payer_id: cont_0nPZpkqDTq
+payeur_civilite: ''
+payeur_email: contact@cabinet-grimaz.com
+payeur_nom: CABINET GRIMAZ
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: VSE MOE
+proprietaire_prenom: null
+ref_piece: FA250724 49291
+reference: '53933'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:06.912Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250724_49291/standard/FA250724 49291
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

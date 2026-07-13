@@ -1,0 +1,49 @@
+adresse_bien: 1 Sentier du Canet
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06670'
+commentaire_piece: ''
+contact_relance_id: cont_wQycwJ3lIt
+created_at: '2026-06-24T16:31:49.065Z'
+date_echeance: '2023-10-18'
+date_import: '2026-07-09T07:05:11.152Z'
+date_piece: '2023-10-18'
+donneur_ordre_id: null
+donneur_ordre_nom: OGGERI
+donneur_ordre_prenom: 'Emilienne '
+email_index: 0
+facture_soldee: true
+id: imp_Xooseuv36s
+id_dossier: '31986'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45423
+numero_dossier: 48983
+payer_id: cont_wQycwJ3lIt
+payeur_civilite: ''
+payeur_email: e.oggeri@wanadoo.fr
+payeur_nom: OGGERI
+payeur_prenom: 'Emilienne '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: OGGERI
+proprietaire_prenom: 'Emilienne '
+ref_piece: FA231018 45423
+reference: '48983'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 761.25
+total_ttc: 913.5
+type: impaye
+updated_at: '2026-06-24T16:31:49.065Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231018_45423/standard/FA231018 45423
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CASTAGNIERS

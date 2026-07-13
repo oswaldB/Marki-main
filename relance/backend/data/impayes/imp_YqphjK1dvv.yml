@@ -1,0 +1,49 @@
+adresse_bien: 187 chemin de Font Martine
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06560'
+commentaire_piece: "relance 21/11\r\n\r\nrelance 29/12\r\n\r\n13/01 relance via comptabilité\r\n14/01 paiement prop et pas notaire donc changement de payeur sur la fiche ce jour\r\nla notaire relance son client + je demande les coordonées du prop"
+contact_relance_id: cont_DXWwa15xdZ
+created_at: '2026-06-24T16:30:59.971Z'
+date_echeance: '2025-11-08'
+date_import: '2026-07-09T07:05:06.478Z'
+date_piece: '2025-11-01'
+donneur_ordre_id: null
+donneur_ordre_nom: ASSAYAG
+donneur_ordre_prenom: Johanne
+email_index: 0
+facture_soldee: true
+id: imp_YqphjK1dvv
+id_dossier: '40590'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49877
+numero_dossier: 54596
+payer_id: cont_DXWwa15xdZ
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ASSAYAG
+payeur_prenom: Johanne
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ASSAYAG
+proprietaire_prenom: Johanne
+ref_piece: FA251103 49877
+reference: '54596'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:30:59.971Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251103_49877/standard/FA251103 49877
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VALBONNE

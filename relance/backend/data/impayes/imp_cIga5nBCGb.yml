@@ -1,0 +1,49 @@
+adresse_bien: 25 avenue des Anglais Le Musigny
+apporteur_id: cont_lEFGgpCUfd
+apporteur_nom: AGENCE DU CANNET
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06400'
+commentaire_piece: ''
+contact_relance_id: cont_lEFGgpCUfd
+created_at: '2026-06-24T16:30:53.958Z'
+date_echeance: '2026-02-17'
+date_import: '2026-07-09T07:05:05.897Z'
+date_piece: '2026-02-10'
+donneur_ordre_id: null
+donneur_ordre_nom: PROST
+donneur_ordre_prenom: 'Anne Martine '
+email_index: 0
+facture_soldee: true
+id: imp_cIga5nBCGb
+id_dossier: '41189'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50450
+numero_dossier: 55195
+payer_id: cont_lEFGgpCUfd
+payeur_civilite: ''
+payeur_email: agenceducannet@orange.fr
+payeur_nom: AGENCE DU CANNET
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PROST
+proprietaire_prenom: 'Anne Martine '
+ref_piece: FA260210 50450
+reference: '55195'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:30:53.958Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260210_50450/standard/FA260210 50450
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CANNES

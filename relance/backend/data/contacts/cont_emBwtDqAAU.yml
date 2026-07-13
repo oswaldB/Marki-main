@@ -1,0 +1,29 @@
+$loki: 5909
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:29.555Z'
+email: clbellon6@gmail.com
+id: cont_emBwtDqAAU
+impaye_ids:
+  - imp_p8et2Wj9JC
+is_blacklisted: false
+meta:
+  created: 1783580700480
+  revision: 0
+  version: 0
+nom: BELLON
+prenom: Claude
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:28.383Z'

@@ -1,0 +1,49 @@
+adresse_bien: 36 avenue de la Bornala Le Sophia
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_mDNqq4C9IA
+created_at: '2026-06-24T16:31:17.057Z'
+date_echeance: '2025-02-12'
+date_import: '2026-07-09T07:05:08.120Z'
+date_piece: '2025-02-12'
+donneur_ordre_id: null
+donneur_ordre_nom: DEVAUJANY
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_JwIlIYkAzi
+id_dossier: '38689'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48313
+numero_dossier: 52695
+payer_id: cont_mDNqq4C9IA
+payeur_civilite: ''
+payeur_email: isabelle.godard.devaujany@wanadoo.fr
+payeur_nom: DEVAUJANY
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DEVAUJANY
+proprietaire_prenom: null
+ref_piece: FA250212 48313
+reference: '52695'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:17.057Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250212_48313/standard/FA250212 48313
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

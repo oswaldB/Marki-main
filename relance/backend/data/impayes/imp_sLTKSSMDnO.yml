@@ -1,0 +1,49 @@
+adresse_bien: 20 rue Maréchal Joffre
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_Nh1fOoyJMJ
+created_at: '2026-06-24T16:31:11.978Z'
+date_echeance: '2025-04-29'
+date_import: '2026-07-09T07:05:07.600Z'
+date_piece: '2025-04-29'
+donneur_ordre_id: null
+donneur_ordre_nom: IARA SCHOUVER
+donneur_ordre_prenom: Domenico
+email_index: 0
+facture_soldee: true
+id: imp_sLTKSSMDnO
+id_dossier: '39299'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48810
+numero_dossier: 53305
+payer_id: cont_Nh1fOoyJMJ
+payeur_civilite: ''
+payeur_email: info@tissinie.com
+payeur_nom: GESTION IMMOBILIERE TISSINIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: IARA SCHOUVER
+proprietaire_prenom: Domenico
+ref_piece: FA250429 48810
+reference: '53305'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:11.978Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250429_48810/standard/FA250429 48810
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 25 rue Bonaparte
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "25 rue Bonaparte\r\n06000 NICE\r\n\r\nattente infos DPE\r\n\r\n05/05 relance prop "
+contact_relance_id: cont_3ji9wCUQnq
+created_at: '2026-06-24T16:30:50.871Z'
+date_echeance: '2026-04-14'
+date_import: '2026-07-09T07:05:05.543Z'
+date_piece: '2026-04-07'
+donneur_ordre_id: null
+donneur_ordre_nom: LARQUET
+donneur_ordre_prenom: Marylene
+email_index: 0
+facture_soldee: true
+id: imp_C4v46K7Zr4
+id_dossier: '41514'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50747
+numero_dossier: 55520
+payer_id: cont_3ji9wCUQnq
+payeur_civilite: ''
+payeur_email: marylenemorelli.larquet@gmail.com
+payeur_nom: LARQUET
+payeur_prenom: Marylene
+payeur_telephone: '0646336251'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LARQUET
+proprietaire_prenom: Marylene
+ref_piece: FA260407 50747
+reference: '55520'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 492.75
+total_ttc: 591.3
+type: impaye
+updated_at: '2026-06-24T16:30:50.871Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260407_50747/standard/FA260407 50747
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

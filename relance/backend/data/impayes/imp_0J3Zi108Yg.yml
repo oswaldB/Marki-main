@@ -1,0 +1,49 @@
+adresse_bien: 2171 Moyenne Corniche des Pugets Les Jardins suspendus Villa n 13
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06700'
+commentaire_piece: ''
+contact_relance_id: cont_5vAQ0YEDyV
+created_at: '2026-06-24T16:30:56.161Z'
+date_echeance: '2026-01-07'
+date_import: '2026-07-09T07:05:06.153Z'
+date_piece: '2025-12-31'
+donneur_ordre_id: null
+donneur_ordre_nom: TAHON
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_0J3Zi108Yg
+id_dossier: '40926'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50215
+numero_dossier: 54932
+payer_id: cont_5vAQ0YEDyV
+payeur_civilite: ''
+payeur_email: dessus.laurette@gmail.com
+payeur_nom: TAHON
+payeur_prenom: ''
+payeur_telephone: '0775581758'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: TAHON
+proprietaire_prenom: null
+ref_piece: FA251231 50215
+reference: '54932'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 79.17
+total_ttc: 95
+type: impaye
+updated_at: '2026-06-24T16:30:56.161Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251231_50215/standard/FA251231 50215
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SAINT-LAURENT-DU-VAR

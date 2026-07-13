@@ -1,0 +1,49 @@
+adresse_bien: 69 route de Sospel San Antonio
+apporteur_id: cont_A0jsgezz8M
+apporteur_nom: SUD EST IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_YnHcbq7dl6
+created_at: '2026-06-24T16:31:08.035Z'
+date_echeance: '2025-07-01'
+date_import: '2026-07-09T07:05:07.252Z'
+date_piece: '2025-07-01'
+donneur_ordre_id: null
+donneur_ordre_nom: ROGE-GUEGAN
+donneur_ordre_prenom: 'Marie Christine Jeanne Lucienne '
+email_index: 0
+facture_soldee: true
+id: imp_vFPXGXzhyM
+id_dossier: '39732'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49130
+numero_dossier: 53738
+payer_id: cont_YnHcbq7dl6
+payeur_civilite: ''
+payeur_email: bernard.guegan0640@orange.fr
+payeur_nom: ROGE-GUEGAN
+payeur_prenom: 'Marie Christine Jeanne Lucienne '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROGE-GUEGAN
+proprietaire_prenom: 'Marie Christine Jeanne Lucienne '
+ref_piece: FA250627 49130
+reference: '53738'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 287.5
+total_ttc: 345
+type: impaye
+updated_at: '2026-06-24T16:31:08.035Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250627_49130/standard/FA250627 49130
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

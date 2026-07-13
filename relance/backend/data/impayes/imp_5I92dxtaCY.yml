@@ -1,0 +1,49 @@
+adresse_bien: 3 rue Sorgentino
+apporteur_id: cont_aFSXWA9ETI
+apporteur_nom: SAINT ROCH IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Fp80czyHoP
+created_at: '2026-06-24T16:31:29.056Z'
+date_echeance: '2024-08-01'
+date_import: '2026-07-09T07:05:09.391Z'
+date_piece: '2024-08-01'
+donneur_ordre_id: null
+donneur_ordre_nom: DELYFER
+donneur_ordre_prenom: Fabien
+email_index: 0
+facture_soldee: true
+id: imp_5I92dxtaCY
+id_dossier: '36234'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47137
+numero_dossier: 51238
+payer_id: cont_Fp80czyHoP
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: DELYFER
+payeur_prenom: Fabien
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DELYFER
+proprietaire_prenom: Fabien
+ref_piece: FA240726 47137
+reference: '51238'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-24T16:31:29.056Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240726_47137/standard/FA240726 47137 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

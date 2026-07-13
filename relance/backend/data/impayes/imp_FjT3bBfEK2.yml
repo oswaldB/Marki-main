@@ -1,0 +1,49 @@
+adresse_bien: 664 route des Cabrolles Les Bastides du Borrigo Bâtiment
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "02/02 relance mail compta \r\n\r\n23/02 relance mail prop\r\n\r\n10/03 relance prop \r\n\r\n\r\n27/03 appel avec la prop, elle va payer lundi normalement à vérifier\r\n\r\n08/04 eu au tel encore une fois elle dit qu'elle a payé à vérifier \r\n\r\n17/04 eu au tel + mail envoyé"
+contact_relance_id: cont_AkjBvSTvOM
+created_at: '2026-06-24T16:30:55.886Z'
+date_echeance: '2026-01-23'
+date_import: '2026-07-09T07:05:06.079Z'
+date_piece: '2026-01-16'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI ELMA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_FjT3bBfEK2
+id_dossier: '40995'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50298
+numero_dossier: 55001
+payer_id: cont_AkjBvSTvOM
+payeur_civilite: ''
+payeur_email: saoudpascale@gmail.com
+payeur_nom: SCI ELMA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI ELMA
+proprietaire_prenom: null
+ref_piece: FA260116 50298
+reference: '55001'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 129.17
+total_ttc: 155
+type: impaye
+updated_at: '2026-06-24T16:30:55.886Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260116_50298/standard/FA260116 50298
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

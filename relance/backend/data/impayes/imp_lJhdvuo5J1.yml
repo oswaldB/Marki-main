@@ -1,0 +1,49 @@
+adresse_bien: 1 avenue de Verdun
+apporteur_id: cont_LgArzyVnvd
+apporteur_nom: 'ACT''RIVIERA '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:23.010Z'
+date_echeance: '2024-11-12'
+date_import: '2026-07-09T07:05:08.712Z'
+date_piece: '2024-11-12'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI CELINE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_lJhdvuo5J1
+id_dossier: '38002'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47778
+numero_dossier: 52008
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SCI CELINE
+proprietaire_prenom: null
+ref_piece: FA241112 47778
+reference: '52008'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 347.92
+total_ttc: 417.5
+type: impaye
+updated_at: '2026-06-24T16:31:23.010Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241112_47778/standard/FA241112 47778
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

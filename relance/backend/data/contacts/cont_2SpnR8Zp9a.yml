@@ -1,0 +1,29 @@
+$loki: 236
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:35.719Z'
+email: catherine.ras@wanadoo.fr
+id: cont_2SpnR8Zp9a
+impaye_ids:
+  - imp_n2OW1DgYJN
+is_blacklisted: false
+meta:
+  created: 1783580698438
+  revision: 0
+  version: 0
+nom: RAS
+prenom: Catherine
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0618486878'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:35.361Z'

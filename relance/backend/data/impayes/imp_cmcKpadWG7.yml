@@ -1,0 +1,49 @@
+adresse_bien: 40 boulevard du Maréchal Alphonse Juin
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: ''
+contact_relance_id: cont_60EYU4FyxE
+created_at: '2026-06-24T16:31:28.063Z'
+date_echeance: '2024-08-23'
+date_import: '2026-07-09T07:05:09.273Z'
+date_piece: '2024-08-23'
+donneur_ordre_id: null
+donneur_ordre_nom: BALLESTER
+donneur_ordre_prenom: Serge
+email_index: 0
+facture_soldee: true
+id: imp_cmcKpadWG7
+id_dossier: '36405'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47267
+numero_dossier: 51409
+payer_id: cont_60EYU4FyxE
+payeur_civilite: ''
+payeur_email: jhon3@aliceadsl.fr
+payeur_nom: BALLESTER
+payeur_prenom: Serge
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BALLESTER
+proprietaire_prenom: Serge
+ref_piece: FA240823 47267
+reference: '51409'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:28.063Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240823_47267/standard/FA240823 47267 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

@@ -1,0 +1,49 @@
+adresse_bien: 17 avenue Francois de Monleon L'Aiglon Bonaparte
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:20.066Z'
+date_echeance: '2024-12-20'
+date_import: '2026-07-09T07:05:08.424Z'
+date_piece: '2024-12-20'
+donneur_ordre_id: null
+donneur_ordre_nom: RAMPELBERG
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Cjjtv9a4LY
+id_dossier: '38287'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48003
+numero_dossier: 52293
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: RAMPELBERG
+proprietaire_prenom: null
+ref_piece: FA241220 48003
+reference: '52293'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 60
+total_ttc: 72
+type: impaye
+updated_at: '2026-06-24T16:31:20.066Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241220_48003/standard/FA241220 48003
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

@@ -1,0 +1,49 @@
+adresse_bien: 13e avenue Aristide Briand Vina del mar
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_namKn3Jef5
+created_at: '2026-06-24T16:31:12.010Z'
+date_echeance: '2025-04-25'
+date_import: '2026-07-09T07:05:07.617Z'
+date_piece: '2025-04-25'
+donneur_ordre_id: null
+donneur_ordre_nom: PEREIRA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_rtKSkW5jK1
+id_dossier: '39271'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48788
+numero_dossier: 53277
+payer_id: cont_namKn3Jef5
+payeur_civilite: ''
+payeur_email: sissi94600@outlook.fr
+payeur_nom: PEREIRA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PEREIRA
+proprietaire_prenom: null
+ref_piece: FA250425 48788
+reference: '53277'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 75
+total_ttc: 90
+type: impaye
+updated_at: '2026-06-24T16:31:12.010Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250425_48788/standard/FA250425 48788
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

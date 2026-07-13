@@ -1,0 +1,49 @@
+adresse_bien: 31 avenue Marius Ferrier  12 rue Xavier de Maistre
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06790'
+commentaire_piece: ''
+contact_relance_id: cont_Csfdh36zm2
+created_at: '2026-06-24T16:31:35.970Z'
+date_echeance: '2024-04-25'
+date_import: '2026-07-09T07:05:09.943Z'
+date_piece: '2024-04-25'
+donneur_ordre_id: null
+donneur_ordre_nom: SUCCESSION BARTA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_VirrzdkiVZ
+id_dossier: '9680'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46563
+numero_dossier: 29663
+payer_id: cont_Csfdh36zm2
+payeur_civilite: ''
+payeur_email: susi@wicke.eu
+payeur_nom: SUCCESSION BARTA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SUCCESSION BARTA
+proprietaire_prenom: null
+ref_piece: FA240425 46563
+reference: '29663'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 712.5
+total_ttc: 855
+type: impaye
+updated_at: '2026-06-24T16:31:35.970Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240425_46563/standard/FA240425 46563
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ASPREMONT

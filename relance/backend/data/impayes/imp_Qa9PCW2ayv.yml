@@ -1,0 +1,49 @@
+adresse_bien: 397 rue Antoine Péglion Le Verger
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_MPaemTV7pQ
+created_at: '2026-06-24T16:31:36.968Z'
+date_echeance: '2024-04-12'
+date_import: '2026-07-09T07:05:10.020Z'
+date_piece: '2024-04-12'
+donneur_ordre_id: null
+donneur_ordre_nom: 'DOMINIAK '
+donneur_ordre_prenom: Jean-Philippe
+email_index: 0
+facture_soldee: true
+id: imp_Qa9PCW2ayv
+id_dossier: '34398'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46473
+numero_dossier: 50397
+payer_id: cont_MPaemTV7pQ
+payeur_civilite: ''
+payeur_email: dominiak.jp7@orange.fr
+payeur_nom: 'DOMINIAK '
+payeur_prenom: Jean-Philippe
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'DOMINIAK '
+proprietaire_prenom: Jean-Philippe
+ref_piece: FA240412 46473
+reference: '50397'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.67
+total_ttc: 230
+type: impaye
+updated_at: '2026-06-24T16:31:36.968Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240412_46473/standard/FA240412 46473
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

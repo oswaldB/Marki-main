@@ -1,0 +1,49 @@
+adresse_bien: 78 route de Grenoble
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: "PAS FAIT\r\nfacture à annuler "
+contact_relance_id: cont_kTYKIqo0A0
+created_at: '2026-06-24T16:31:28.902Z'
+date_echeance: '2024-08-21'
+date_import: '2026-07-09T07:05:09.297Z'
+date_piece: '2024-08-21'
+donneur_ordre_id: null
+donneur_ordre_nom: ZAFFARANO
+donneur_ordre_prenom: Adrien
+email_index: 0
+facture_soldee: true
+id: imp_x3z5qTt6lR
+id_dossier: '36380'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47251
+numero_dossier: 51384
+payer_id: cont_kTYKIqo0A0
+payeur_civilite: ''
+payeur_email: adrien.zaffarano@se.com
+payeur_nom: ZAFFARANO
+payeur_prenom: Adrien
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ZAFFARANO
+proprietaire_prenom: Adrien
+ref_piece: FA240821 47251
+reference: '51384'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:28.902Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240821_47251/standard/FA240821 47251 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

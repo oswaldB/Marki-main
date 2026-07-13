@@ -1,0 +1,49 @@
+adresse_bien: 71 boulevard Carnot
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Rev2j7FvL3
+created_at: '2026-06-24T16:31:07.945Z'
+date_echeance: '2025-07-09'
+date_import: '2026-07-09T07:05:07.192Z'
+date_piece: '2025-07-09'
+donneur_ordre_id: null
+donneur_ordre_nom: CIAMPI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_KmRcmTxjvj
+id_dossier: '39804'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49187
+numero_dossier: 53810
+payer_id: cont_F47dfC6qeF
+payeur_civilite: ''
+payeur_email: sophiesalomon@sarl-adp.fr
+payeur_nom: AGENCE DU PORT
+payeur_prenom: 'Cabinet Salomon '
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CIAMPI
+proprietaire_prenom: null
+ref_piece: FA250709 49187
+reference: '53810'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:07.945Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250709_49187/standard/FA250709 49187
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

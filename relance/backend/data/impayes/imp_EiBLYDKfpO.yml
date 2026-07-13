@@ -1,0 +1,49 @@
+adresse_bien: 19 boulevard Maurice Maeterlinck Les Dauphins
+apporteur_id: cont_JrgJkF9uHs
+apporteur_nom: ANDRE
+apporteur_prenom: Eric
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: '10/04 relance compta '
+contact_relance_id: cont_JrgJkF9uHs
+created_at: '2026-06-24T16:30:51.898Z'
+date_echeance: '2026-03-27'
+date_import: '2026-07-09T07:05:05.656Z'
+date_piece: '2026-03-20'
+donneur_ordre_id: null
+donneur_ordre_nom: SUCCESSION FORGUES veuve MILET
+donneur_ordre_prenom: chez Maître GEROMETTA
+email_index: 0
+facture_soldee: true
+id: imp_EiBLYDKfpO
+id_dossier: '41380'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50649
+numero_dossier: 55386
+payer_id: cont_JrgJkF9uHs
+payeur_civilite: ''
+payeur_email: eric.andre@notaires.fr
+payeur_nom: ANDRE
+payeur_prenom: Eric
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SUCCESSION FORGUES veuve MILET
+proprietaire_prenom: chez Maître GEROMETTA
+ref_piece: FA260320 50649
+reference: '55386'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:30:51.898Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260320_50649/standard/FA260320 50649 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

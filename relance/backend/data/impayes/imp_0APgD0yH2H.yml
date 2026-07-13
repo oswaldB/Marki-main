@@ -1,0 +1,49 @@
+adresse_bien: 6 route François Siccardi Domaine Saint Georges
+apporteur_id: cont_Q0jadWIlqE
+apporteur_nom: JLR IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_376OYBTIsK
+created_at: '2026-06-24T16:31:58.980Z'
+date_echeance: '2023-06-01'
+date_import: '2026-07-09T07:05:12.074Z'
+date_piece: '2023-06-01'
+donneur_ordre_id: null
+donneur_ordre_nom: MATTURRI
+donneur_ordre_prenom: Franca
+email_index: 0
+facture_soldee: true
+id: imp_0APgD0yH2H
+id_dossier: '28920'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44519
+numero_dossier: 47906
+payer_id: cont_376OYBTIsK
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: MATTURRI
+payeur_prenom: Franca
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MATTURRI
+proprietaire_prenom: Franca
+ref_piece: FA230601 44519
+reference: '47906'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:58.980Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juin/FA230601_44519/standard/FA230601 44519 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

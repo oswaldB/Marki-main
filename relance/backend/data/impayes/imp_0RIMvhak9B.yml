@@ -1,0 +1,49 @@
+adresse_bien: 2136 route des Clues
+apporteur_id: cont_upLxDb1T7b
+apporteur_nom: GETRIM VICAT
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06440'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:59.041Z'
+date_echeance: '2023-05-23'
+date_import: '2026-07-09T07:05:12.123Z'
+date_piece: '2023-05-23'
+donneur_ordre_id: null
+donneur_ordre_nom: SA VICAT
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_0RIMvhak9B
+id_dossier: '28815'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44463
+numero_dossier: 47801
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SA VICAT
+proprietaire_prenom: null
+ref_piece: FA230523 44463
+reference: '47801'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 574.58
+total_ttc: 689.5
+type: impaye
+updated_at: '2026-06-24T16:31:59.041Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/mai/FA230523_44463/standard/FA230523 44463 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: PEILLE

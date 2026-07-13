@@ -1,0 +1,49 @@
+adresse_bien: 308 avenue Sainte-Marguerite Parc Saint Martin  Bâtiment B
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_LCd95CjGCu
+created_at: '2026-06-24T16:31:14.055Z'
+date_echeance: '2025-03-25'
+date_import: '2026-07-09T07:05:07.823Z'
+date_piece: '2025-03-25'
+donneur_ordre_id: null
+donneur_ordre_nom: MARTIN
+donneur_ordre_prenom: Claudine
+email_index: 0
+facture_soldee: true
+id: imp_sTuptQJnDb
+id_dossier: '39015'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48585
+numero_dossier: 53021
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MARTIN
+proprietaire_prenom: Claudine
+ref_piece: FA250325 48585
+reference: '53021'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 162.17
+total_ttc: 194.6
+type: impaye
+updated_at: '2026-06-24T16:31:14.055Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250325_48585/standard/FA250325 48585 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 4 rue Centrale
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_zWLan9R7kt
+created_at: '2026-06-24T16:31:14.886Z'
+date_echeance: '2025-03-20'
+date_import: '2026-07-09T07:05:07.833Z'
+date_piece: '2025-03-20'
+donneur_ordre_id: null
+donneur_ordre_nom: COMPAGNON
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_tEE1aACpaG
+id_dossier: '38978'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48557
+numero_dossier: 52984
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: COMPAGNON
+proprietaire_prenom: null
+ref_piece: FA250320 48557
+reference: '52984'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:14.886Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250320_48557/standard/FA250320 48557 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Simon Rouvier L'Amaryllis
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06340'
+commentaire_piece: ''
+contact_relance_id: cont_gaSO3j9XDh
+created_at: '2026-06-24T16:31:12.892Z'
+date_echeance: '2025-04-15'
+date_import: '2026-07-09T07:05:07.665Z'
+date_piece: '2025-04-15'
+donneur_ordre_id: null
+donneur_ordre_nom: JANVIER
+donneur_ordre_prenom: Michel
+email_index: 0
+facture_soldee: true
+id: imp_D9qZdxRjt6
+id_dossier: '39145'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48719
+numero_dossier: 53151
+payer_id: cont_gaSO3j9XDh
+payeur_civilite: ''
+payeur_email: janviermi@orange.fr
+payeur_nom: JANVIER
+payeur_prenom: Michel
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: JANVIER
+proprietaire_prenom: Michel
+ref_piece: FA250415 48719
+reference: '53151'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:12.892Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250415_48719/standard/FA250415 48719
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: LA TRINITÉ

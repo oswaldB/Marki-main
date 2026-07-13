@@ -1,0 +1,49 @@
+adresse_bien: 13 chemin des Revoires Eden Cap
+apporteur_id: cont_Q0jadWIlqE
+apporteur_nom: JLR IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_Brejc6j5aM
+created_at: '2026-06-24T16:31:21.059Z'
+date_echeance: '2024-12-09'
+date_import: '2026-07-09T07:05:08.537Z'
+date_piece: '2024-12-09'
+donneur_ordre_id: null
+donneur_ordre_nom: SANFELICI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_FJlMw4mbff
+id_dossier: '38180'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47923
+numero_dossier: 52186
+payer_id: cont_Brejc6j5aM
+payeur_civilite: ''
+payeur_email: loredanabarbieri.17@gmail.com
+payeur_nom: SANFELICI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SANFELICI
+proprietaire_prenom: null
+ref_piece: FA241209 47923
+reference: '52186'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 0
+total_ttc: 0
+type: impaye
+updated_at: '2026-06-24T16:31:21.059Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241209_47923/standard/FA241209 47923
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

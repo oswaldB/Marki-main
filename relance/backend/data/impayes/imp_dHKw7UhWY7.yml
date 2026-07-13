@@ -1,0 +1,49 @@
+adresse_bien: 4 bis avenue des Fleurs Les Roses
+apporteur_id: cont_O85qls0kgw
+apporteur_nom: SOGEA
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "Madame SALLES\r\n\r\n4 bis avenue des Fleurs\r\nLES ROSES\r\n06000 Nice"
+contact_relance_id: cont_tFrvYGjn3b
+created_at: '2026-06-24T16:31:11.884Z'
+date_echeance: '2025-05-12'
+date_import: '2026-07-09T07:05:07.556Z'
+date_piece: '2025-05-12'
+donneur_ordre_id: null
+donneur_ordre_nom: 'RESIDENCE LES ROSES '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_dHKw7UhWY7
+id_dossier: '39369'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48868
+numero_dossier: 53375
+payer_id: cont_tFrvYGjn3b
+payeur_civilite: ''
+payeur_email: sallesraffestin@yahoo.fr
+payeur_nom: 'SALLES '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: 'RESIDENCE LES ROSES '
+proprietaire_prenom: null
+ref_piece: FA250512 48868
+reference: '53375'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 525
+total_ttc: 630
+type: impaye
+updated_at: '2026-06-24T16:31:11.884Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250512_48868/standard/FA250512 48868 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 100 Voie de la 1ere Dfl
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06540'
+commentaire_piece: ''
+contact_relance_id: cont_8BHyk8t0rX
+created_at: '2026-06-24T16:30:57.035Z'
+date_echeance: '2025-12-24'
+date_import: '2026-07-09T07:05:06.218Z'
+date_piece: '2025-12-17'
+donneur_ordre_id: null
+donneur_ordre_nom: CAMPESTRINI / CARRARO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_TxMENZYKeo
+id_dossier: '40797'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50143
+numero_dossier: 54803
+payer_id: cont_8BHyk8t0rX
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CAMPESTRINI / CARRARO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAMPESTRINI / CARRARO
+proprietaire_prenom: null
+ref_piece: FA251217 50143
+reference: '54803'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1120
+total_ttc: 1344
+type: impaye
+updated_at: '2026-06-24T16:30:57.035Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251217_50143/standard/FA251217 50143
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BREIL-SUR-ROYA

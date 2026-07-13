@@ -1,0 +1,49 @@
+adresse_bien: 2 rue du Four
+apporteur_id: cont_HKy4C2gxUH
+apporteur_nom: ARTHURIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06950'
+commentaire_piece: ''
+contact_relance_id: cont_lDwP0NwKQj
+created_at: '2026-06-24T16:30:54.918Z'
+date_echeance: '2026-02-05'
+date_import: '2026-07-09T07:05:05.981Z'
+date_piece: '2026-01-29'
+donneur_ordre_id: null
+donneur_ordre_nom: LERMET
+donneur_ordre_prenom: Marie Agnès
+email_index: 0
+facture_soldee: true
+id: imp_zddRol1Skz
+id_dossier: '41102'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50379
+numero_dossier: 55108
+payer_id: cont_lDwP0NwKQj
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: LERMET
+payeur_prenom: Marie Agnès
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LERMET
+proprietaire_prenom: Marie Agnès
+ref_piece: FA260129 50379
+reference: '55108'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 131.25
+total_ttc: 157.5
+type: impaye
+updated_at: '2026-06-24T16:30:54.918Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260129_50379/standard/FA260129 50379
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: FALICON

@@ -1,0 +1,29 @@
+$loki: 2747
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:59.567Z'
+email: null
+id: cont_jpzq9iE3Gd
+impaye_ids:
+  - imp_69RgtdYHbD
+is_blacklisted: false
+meta:
+  created: 1783580699365
+  revision: 0
+  version: 0
+nom: SDC LE BELLECOUR
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:58.411Z'

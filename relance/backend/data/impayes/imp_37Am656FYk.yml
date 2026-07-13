@@ -1,0 +1,49 @@
+adresse_bien: 2302 avenue Prince Rainier III
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_EaTz02Nl3o
+created_at: '2026-06-24T16:31:41.930Z'
+date_echeance: '2024-02-09'
+date_import: '2026-07-09T07:05:10.450Z'
+date_piece: '2024-02-09'
+donneur_ordre_id: null
+donneur_ordre_nom: INDIVISION FONTANA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_37Am656FYk
+id_dossier: '32857'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46082
+numero_dossier: 49854
+payer_id: cont_EaTz02Nl3o
+payeur_civilite: ''
+payeur_email: rfontana58@gmail.com
+payeur_nom: INDIVISION FONTANA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: INDIVISION FONTANA
+proprietaire_prenom: null
+ref_piece: FA240209 46082
+reference: '49854'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 158.33
+total_ttc: 190
+type: impaye
+updated_at: '2026-06-24T16:31:41.930Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240209_46082/standard/FA240209 46082
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

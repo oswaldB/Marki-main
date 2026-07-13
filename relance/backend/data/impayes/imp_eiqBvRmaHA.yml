@@ -1,0 +1,49 @@
+adresse_bien: 149 avenue de Verdun LE CAPITOLE
+apporteur_id: cont_yic6N4w5Fp
+apporteur_nom: AGENCE DE ROQUEBRUNE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_Yh8eVEYLy6
+created_at: '2026-06-24T16:31:17.057Z'
+date_echeance: '2025-02-12'
+date_import: '2026-07-09T07:05:08.109Z'
+date_piece: '2025-02-12'
+donneur_ordre_id: null
+donneur_ordre_nom: MASSIMO FRANCESCO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_eiqBvRmaHA
+id_dossier: '38695'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48318
+numero_dossier: 52701
+payer_id: cont_yic6N4w5Fp
+payeur_civilite: ''
+payeur_email: laroui-erika2@wanadoo.fr
+payeur_nom: AGENCE DE ROQUEBRUNE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MASSIMO FRANCESCO
+proprietaire_prenom: null
+ref_piece: FA250212 48318
+reference: '52701'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 186.67
+total_ttc: 224
+type: impaye
+updated_at: '2026-06-24T16:31:17.057Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250212_48318/standard/FA250212 48318
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

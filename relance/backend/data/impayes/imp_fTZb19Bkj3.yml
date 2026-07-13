@@ -1,0 +1,49 @@
+adresse_bien: 149 boulevard de la Madeleine Les Etoiles
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:48.010Z'
+date_echeance: '2023-11-08'
+date_import: '2026-07-09T07:05:11.045Z'
+date_piece: '2023-11-08'
+donneur_ordre_id: null
+donneur_ordre_nom: FABBRO
+donneur_ordre_prenom: Luigi
+email_index: 0
+facture_soldee: true
+id: imp_fTZb19Bkj3
+id_dossier: '24915'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45536
+numero_dossier: 44898
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: FABBRO
+proprietaire_prenom: Luigi
+ref_piece: FA231108 45536
+reference: '44898'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:48.010Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231108_45536/standard/FA231108 45536
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 15 rue Gambetta
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_QnYg3Po01C
+created_at: '2026-06-24T16:31:40.004Z'
+date_echeance: '2024-03-06'
+date_import: '2026-07-09T07:05:10.300Z'
+date_piece: '2024-03-06'
+donneur_ordre_id: null
+donneur_ordre_nom: ZAMPIERI
+donneur_ordre_prenom: Alexandre
+email_index: 0
+facture_soldee: true
+id: imp_AKXzDGJUIG
+id_dossier: '33064'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46252
+numero_dossier: 50061
+payer_id: cont_QnYg3Po01C
+payeur_civilite: ''
+payeur_email: alex13385@hotmail.fr
+payeur_nom: ZAMPIERI
+payeur_prenom: Alexandre
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ZAMPIERI
+proprietaire_prenom: Alexandre
+ref_piece: FA240306 46252
+reference: '50061'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-24T16:31:40.004Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240306_46252/standard/FA240306 46252 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: GORBIO

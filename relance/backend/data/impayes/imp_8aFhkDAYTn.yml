@@ -1,0 +1,49 @@
+adresse_bien: 18 route Val des Castagnins Le Nerolia
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_lqhjbF99j7
+created_at: '2026-06-24T16:31:09.885Z'
+date_echeance: '2025-06-11'
+date_import: '2026-07-09T07:05:07.375Z'
+date_piece: '2025-06-11'
+donneur_ordre_id: null
+donneur_ordre_nom: TABASSO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_8aFhkDAYTn
+id_dossier: '39588'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49028
+numero_dossier: 53594
+payer_id: cont_lqhjbF99j7
+payeur_civilite: ''
+payeur_email: rosalie@deplanche-immobilier.fr
+payeur_nom: AB IMMOBILIER
+payeur_prenom: groupe DEPLANCHE IMMOBILIER
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: TABASSO
+proprietaire_prenom: null
+ref_piece: FA250611 49028
+reference: '53594'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.25
+total_ttc: 229.5
+type: impaye
+updated_at: '2026-06-24T16:31:09.885Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250611_49028/standard/FA250611 49028 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 34 boulevard Pierre Sola
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:23.971Z'
+date_echeance: '2024-10-23'
+date_import: '2026-07-09T07:05:08.781Z'
+date_piece: '2024-10-23'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_7wqWRXvlGy
+id_dossier: '37861'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47678
+numero_dossier: 51867
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCHOUTEN
+proprietaire_prenom: Martin
+ref_piece: FA241023 47678
+reference: '51867'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 87.5
+total_ttc: 105
+type: impaye
+updated_at: '2026-06-24T16:31:23.971Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241023_47678/standard/FA241023 47678
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

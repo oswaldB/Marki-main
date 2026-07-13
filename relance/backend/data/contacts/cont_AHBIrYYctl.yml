@@ -1,0 +1,47 @@
+$loki: 3897
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:10.533Z'
+email: info@parnasse-immobilier.com
+id: cont_AHBIrYYctl
+impaye_ids:
+  - imp_MFOjhDtG0J
+  - imp_cADetFnq9P
+  - imp_KoEK0VwYQ9
+  - imp_mvCzhJbNFC
+  - imp_ZIC5mIR1wq
+  - imp_cIJw9IN7Xh
+  - imp_VlWexEm9cn
+  - imp_PHm5IM2Xbr
+  - imp_u3lEa4x3Yx
+  - imp_DdKrkgqFwD
+  - imp_hkHzaC0e01
+  - imp_Xb3Fms6EZC
+  - imp_V2fkAO2ID5
+  - imp_984WHjSPEN
+  - imp_Iw1p2CHbkQ
+  - imp_Zx7OFAS94L
+  - imp_KhWqBPduNS
+  - imp_Sd8WV0VXCQ
+  - imp_9CDgUPeLQA
+is_blacklisted: true
+meta:
+  created: 1783580699822
+  revision: 0
+  version: 0
+nom: RUFFINI
+prenom: 'Olivier '
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:09.375Z'

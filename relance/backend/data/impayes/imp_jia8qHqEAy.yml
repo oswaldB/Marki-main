@@ -1,0 +1,49 @@
+adresse_bien: 112 avenue François Bérenger
+apporteur_id: cont_AvZjNGS1n4
+apporteur_nom: PRADO IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06700'
+commentaire_piece: ''
+contact_relance_id: cont_AvZjNGS1n4
+created_at: '2026-06-24T16:31:36.036Z'
+date_echeance: '2024-04-19'
+date_import: '2026-07-09T07:05:09.969Z'
+date_piece: '2024-04-19'
+donneur_ordre_id: null
+donneur_ordre_nom: IMMO DU GENIE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jia8qHqEAy
+id_dossier: '34472'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46534
+numero_dossier: 50471
+payer_id: cont_AvZjNGS1n4
+payeur_civilite: ''
+payeur_email: 'contact@pradoimmobilier.com '
+payeur_nom: PRADO IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: IMMO DU GENIE
+proprietaire_prenom: null
+ref_piece: FA240419 46534
+reference: '50471'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 186.67
+total_ttc: 224
+type: impaye
+updated_at: '2026-06-24T16:31:36.036Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240419_46534/standard/FA240419 46534
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SAINT-LAURENT-DU-VAR

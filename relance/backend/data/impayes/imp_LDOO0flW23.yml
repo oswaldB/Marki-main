@@ -1,0 +1,49 @@
+adresse_bien: 46 bis route Bis de France Danika
+apporteur_id: cont_gszi3ULfaG
+apporteur_nom: AIA GROUPE ALLIANCE GESTION ANTIBES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: DANIKA
+contact_relance_id: cont_hiBh7VBtpf
+created_at: '2026-06-24T16:31:29.056Z'
+date_echeance: '2024-08-01'
+date_import: '2026-07-09T07:05:09.376Z'
+date_piece: '2024-08-01'
+donneur_ordre_id: null
+donneur_ordre_nom: DANIKA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_LDOO0flW23
+id_dossier: '36161'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47087
+numero_dossier: 51165
+payer_id: cont_gszi3ULfaG
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: AIA GROUPE ALLIANCE GESTION ANTIBES
+payeur_prenom: ''
+payeur_telephone: '0614310039'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DANIKA
+proprietaire_prenom: null
+ref_piece: FA240718 47087
+reference: '51165'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 500
+total_ttc: 600
+type: impaye
+updated_at: '2026-06-24T16:31:29.056Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240718_47087/standard/FA240718 47087 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

@@ -1,0 +1,49 @@
+adresse_bien: 39 Promenade Robert Schuman Les Jardins du bord de Mer
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_rTJFmncoAE
+created_at: '2026-06-24T16:31:23.048Z'
+date_echeance: '2024-11-05'
+date_import: '2026-07-09T07:05:08.726Z'
+date_piece: '2024-11-05'
+donneur_ordre_id: null
+donneur_ordre_nom: SPADA-INCENZO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_PelDfNEMsC
+id_dossier: '37938'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47737
+numero_dossier: 51944
+payer_id: cont_rTJFmncoAE
+payeur_civilite: ''
+payeur_email: inc.77@libero.it
+payeur_nom: SPADA-INCENZO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SPADA-INCENZO
+proprietaire_prenom: null
+ref_piece: FA241105 47737
+reference: '51944'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:23.048Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241105_47737/standard/FA241105 47737
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

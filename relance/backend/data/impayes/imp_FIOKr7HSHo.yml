@@ -1,0 +1,49 @@
+adresse_bien: 30 avenue Jean Moulin Terra Nova
+apporteur_id: cont_c7nQ6jqoM3
+apporteur_nom: BARBERA GESTION PATRIMOINE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06340'
+commentaire_piece: ''
+contact_relance_id: cont_oXy46gNiQx
+created_at: '2026-06-24T16:31:27.041Z'
+date_echeance: '2024-09-10'
+date_import: '2026-07-09T07:05:09.135Z'
+date_piece: '2024-09-10'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI JAUFFRET COULOMP
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_FIOKr7HSHo
+id_dossier: '37525'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47386
+numero_dossier: 51531
+payer_id: cont_oXy46gNiQx
+payeur_civilite: ''
+payeur_email: paul.coulomp@laposte.net
+payeur_nom: SCI JAUFFRET COULOMP
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI JAUFFRET COULOMP
+proprietaire_prenom: null
+ref_piece: FA240910 47386
+reference: '51531'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 237.5
+total_ttc: 285
+type: impaye
+updated_at: '2026-06-24T16:31:27.041Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240910_47386/standard/FA240910 47386
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: DRAP

@@ -1,0 +1,49 @@
+adresse_bien: 5 promenade  Reine Astrid  Résidence Hawai
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_YT6Bx2DSOE
+created_at: '2026-07-08T22:02:31.262Z'
+date_echeance: '2026-07-15'
+date_import: '2026-07-09T07:05:12.308Z'
+date_piece: '2026-07-08'
+donneur_ordre_id: null
+donneur_ordre_nom: COMBA
+donneur_ordre_prenom: Graziella
+email_index: 0
+facture_soldee: false
+id: imp_ixxw0s9FHb
+id_dossier: '42115'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51266
+numero_dossier: 56121
+payer_id: cont_YT6Bx2DSOE
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: COMBA
+payeur_prenom: Graziella
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: COMBA
+proprietaire_prenom: Graziella
+ref_piece: FA260708 51266
+reference: '56121'
+reste_a_payer: 280
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-07-08T22:02:32.897Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juillet/FA260708_51266/standard/FA260708 51266
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 8 bis avenue Jean Médecin
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_JgFQ6sbd7n
+created_at: '2026-06-24T16:31:10.050Z'
+date_echeance: '2025-05-28'
+date_import: '2026-07-09T07:05:07.452Z'
+date_piece: '2025-05-28'
+donneur_ordre_id: null
+donneur_ordre_nom: LOMBARDI
+donneur_ordre_prenom: Iginio
+email_index: 0
+facture_soldee: true
+id: imp_CvxdcPs55f
+id_dossier: '39499'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48964
+numero_dossier: 53505
+payer_id: cont_JgFQ6sbd7n
+payeur_civilite: ''
+payeur_email: giancarlo@colucci.biz
+payeur_nom: LOMBARDI
+payeur_prenom: Iginio
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LOMBARDI
+proprietaire_prenom: Iginio
+ref_piece: FA250528 48964
+reference: '53505'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 83.33
+total_ttc: 100
+type: impaye
+updated_at: '2026-06-24T16:31:10.050Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250528_48964/standard/FA250528 48964 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

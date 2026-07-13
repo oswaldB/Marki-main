@@ -1,0 +1,49 @@
+adresse_bien: 421 rue Antoine Péglion
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_oF6Ake43Ah
+created_at: '2026-06-24T16:31:39.017Z'
+date_echeance: '2024-03-22'
+date_import: '2026-07-09T07:05:10.208Z'
+date_piece: '2024-03-22'
+donneur_ordre_id: null
+donneur_ordre_nom: ADONTO
+donneur_ordre_prenom: Karine
+email_index: 0
+facture_soldee: true
+id: imp_EAryEHOdWp
+id_dossier: '34232'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46356
+numero_dossier: 50231
+payer_id: cont_oF6Ake43Ah
+payeur_civilite: ''
+payeur_email: kadonto@gmail.com
+payeur_nom: ADONTO
+payeur_prenom: Karine
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ADONTO
+proprietaire_prenom: Karine
+ref_piece: FA240322 46356
+reference: '50231'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:39.017Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240322_46356/standard/FA240322 46356 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

@@ -1,0 +1,49 @@
+adresse_bien: 39 boulevard de Cimiez
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:45.000Z'
+date_echeance: '2023-12-15'
+date_import: '2026-07-09T07:05:10.765Z'
+date_piece: '2023-12-15'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI ACGH
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_7m8wAxm3xN
+id_dossier: '32448'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45805
+numero_dossier: 49445
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SCI ACGH
+proprietaire_prenom: null
+ref_piece: FA231215 45805
+reference: '49445'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 291.67
+total_ttc: 350
+type: impaye
+updated_at: '2026-06-24T16:31:45.000Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231215_45805/standard/FA231215 45805
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

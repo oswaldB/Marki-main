@@ -1,0 +1,49 @@
+adresse_bien: 143 route du Mont-Chauve
+apporteur_id: cont_aFSXWA9ETI
+apporteur_nom: SAINT ROCH IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06950'
+commentaire_piece: ''
+contact_relance_id: cont_TYSSIezfRL
+created_at: '2026-06-24T16:30:45.991Z'
+date_echeance: '2026-06-25'
+date_import: '2026-07-09T07:05:05.092Z'
+date_piece: '2026-06-18'
+donneur_ordre_id: null
+donneur_ordre_nom: MARTARESCHE et SOUBAYROL
+donneur_ordre_prenom: Cécile et Christophe
+email_index: 0
+facture_soldee: true
+id: imp_CiQkvFPD2L
+id_dossier: '41954'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51154
+numero_dossier: 55960
+payer_id: cont_TYSSIezfRL
+payeur_civilite: ''
+payeur_email: cmartaresche@gmail.com
+payeur_nom: MARTARESCHE et SOUBAYROL
+payeur_prenom: Cécile et Christophe
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MARTARESCHE et SOUBAYROL
+proprietaire_prenom: Cécile et Christophe
+ref_piece: FA260618 51154
+reference: '55960'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-26T12:50:02.468Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260618_51154/standard/FA260618 51154 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: FALICON

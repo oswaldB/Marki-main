@@ -1,0 +1,49 @@
+adresse_bien: 17 avenue Docteur Ménard
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_Jt7FRrebZQ
+created_at: '2026-06-24T16:31:35.001Z'
+date_echeance: '2024-05-13'
+date_import: '2026-07-09T07:05:09.884Z'
+date_piece: '2024-05-13'
+donneur_ordre_id: null
+donneur_ordre_nom: SCORTECCI
+donneur_ordre_prenom: Gérard
+email_index: 0
+facture_soldee: true
+id: imp_SDVQMLr2hY
+id_dossier: '34629'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46651
+numero_dossier: 50628
+payer_id: cont_zttCmdIcGK
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: AGENCE WILSON
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SCORTECCI
+proprietaire_prenom: Gérard
+ref_piece: FA240513 46651
+reference: '50628'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 23.33
+total_ttc: 28
+type: impaye
+updated_at: '2026-06-24T16:31:35.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240513_46651/standard/FA240513 46651 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

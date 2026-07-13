@@ -1,0 +1,49 @@
+adresse_bien: 26 boulevard Guynemer Villa Florentine
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_9KF7R3DCug
+created_at: '2026-06-24T16:31:21.997Z'
+date_echeance: '2024-11-26'
+date_import: '2026-07-09T07:05:08.602Z'
+date_piece: '2024-11-26'
+donneur_ordre_id: null
+donneur_ordre_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_HomAdobr2t
+id_dossier: '38084'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47848
+numero_dossier: 52090
+payer_id: cont_9KF7R3DCug
+payeur_civilite: ''
+payeur_email: info@republique-beausoleil.com
+payeur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CAMPANA
+proprietaire_prenom: Hervé et Veronique
+ref_piece: FA241126 47848
+reference: '52090'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 79.17
+total_ttc: 95
+type: impaye
+updated_at: '2026-06-24T16:31:21.997Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241126_47848/standard/FA241126 47848
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

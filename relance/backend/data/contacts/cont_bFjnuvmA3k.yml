@@ -1,0 +1,30 @@
+$loki: 5321
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:23.601Z'
+email: l.figge@mestah.de
+id: cont_bFjnuvmA3k
+impaye_ids:
+  - imp_rhN7OTbJyd
+  - imp_EvrCpL9D2j
+is_blacklisted: false
+meta:
+  created: 1783580700260
+  revision: 0
+  version: 0
+nom: FIGGE
+prenom: 'Ulrike Hildegard '
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:23.341Z'

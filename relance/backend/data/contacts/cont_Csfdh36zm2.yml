@@ -1,0 +1,31 @@
+$loki: 750
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:40.737Z'
+email: susi@wicke.eu
+id: cont_Csfdh36zm2
+impaye_ids:
+  - imp_UqxIncKIPC
+  - imp_VirrzdkiVZ
+  - imp_TZivd10Edr
+is_blacklisted: false
+meta:
+  created: 1783580698650
+  revision: 0
+  version: 0
+nom: SUCCESSION BARTA
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:40.367Z'

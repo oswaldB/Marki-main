@@ -1,0 +1,49 @@
+adresse_bien: 7 rue du Mont Agel
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_rJqseH6N01
+created_at: '2026-06-24T16:31:47.016Z'
+date_echeance: '2023-11-17'
+date_import: '2026-07-09T07:05:10.940Z'
+date_piece: '2023-11-17'
+donneur_ordre_id: null
+donneur_ordre_nom: AREAL
+donneur_ordre_prenom: Anibal
+email_index: 0
+facture_soldee: true
+id: imp_Vr4ay09Shj
+id_dossier: '32255'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45631
+numero_dossier: 49252
+payer_id: cont_rJqseH6N01
+payeur_civilite: ''
+payeur_email: anibalareal@gmail.com
+payeur_nom: AREAL
+payeur_prenom: Anibal
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: AREAL
+proprietaire_prenom: Anibal
+ref_piece: FA231117 45631
+reference: '49252'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 170.25
+total_ttc: 204.3
+type: impaye
+updated_at: '2026-06-24T16:31:47.016Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231117_45631/standard/FA231117 45631
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

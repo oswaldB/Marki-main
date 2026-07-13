@@ -1,0 +1,49 @@
+adresse_bien: 6 avenue Pierre Weck Résidence du Parc Bâtiment
+apporteur_id: cont_Q0jadWIlqE
+apporteur_nom: JLR IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_Nh88Dh2FSU
+created_at: '2026-06-24T16:31:40.943Z'
+date_echeance: '2024-02-23'
+date_import: '2026-07-09T07:05:10.345Z'
+date_piece: '2024-02-23'
+donneur_ordre_id: null
+donneur_ordre_nom: JLR IMMO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_441FEa0YOe
+id_dossier: '32972'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46179
+numero_dossier: 49969
+payer_id: cont_Nh88Dh2FSU
+payeur_civilite: ''
+payeur_email: paolosardi@icloud.com
+payeur_nom: SARDI
+payeur_prenom: Paolo
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SARDI
+proprietaire_prenom: Paolo
+ref_piece: FA240223 46179
+reference: '49969'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:40.943Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240223_46179/standard/FA240223 46179
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

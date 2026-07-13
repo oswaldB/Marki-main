@@ -1,0 +1,31 @@
+$loki: 1830
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:51.527Z'
+email: gestion@progedi.com
+id: cont_pKAf60kHbg
+impaye_ids:
+  - imp_9S8wr5KyVC
+  - imp_K9IlvkdOMR
+  - imp_toAsYhF605
+is_blacklisted: false
+meta:
+  created: 1783580699073
+  revision: 0
+  version: 0
+nom: 'GUERIN '
+prenom: Jeffrey
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:50.362Z'

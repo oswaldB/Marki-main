@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue de Verdun Le Minerve
+apporteur_id: cont_OdGGwFKYqJ
+apporteur_nom: SPECIAL IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: ''
+contact_relance_id: cont_5sSeN33GNF
+created_at: '2026-06-24T16:30:55.943Z'
+date_echeance: '2026-01-22'
+date_import: '2026-07-09T07:05:06.089Z'
+date_piece: '2026-01-15'
+donneur_ordre_id: null
+donneur_ordre_nom: 'AUDIBERT '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_zCBJrnzQjw
+id_dossier: '40988'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50289
+numero_dossier: 54994
+payer_id: cont_OdGGwFKYqJ
+payeur_civilite: ''
+payeur_email: bienvenue@specialimmo.com
+payeur_nom: SPECIAL IMMO
+payeur_prenom: ''
+payeur_telephone: '0621001036'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'AUDIBERT '
+proprietaire_prenom: null
+ref_piece: FA260115 50289
+reference: '54994'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:30:55.943Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260115_50289/standard/FA260115 50289
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

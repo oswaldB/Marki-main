@@ -1,0 +1,49 @@
+adresse_bien: 7 rue Barberis
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "le 09/01 relance mail + tel karine doit regler rapidement \r\n20/01 prop au tel va payer si il a pas payer relance lundi prochain\r\n27/01 relance prop par mail suite à la conversation téléphonique de la semaine dernière\r\n02/02 il va payer je l:'ai eu au tel à rappeler si pas payé mercredi \r\n09/02 message laissé au prop car toujours pas payer \r\n23/02 demande la date\r\n10/03 relance prop pour date\r\n\r\n27/03 message laissé + mail envoyé\r\n\r\n22/04 eu au tel il me demande de lui renvoyer la facture et il nous fait un retour lors du réglement\r\n\r\n06/05 relance mail \r\n\r\n18/05 eu prop au tel il va bientot payer, nous envoie un mail quand c'est fait"
+contact_relance_id: cont_VJbEbfJg0T
+created_at: '2026-06-24T16:31:11.884Z'
+date_echeance: '2025-05-12'
+date_import: '2026-07-09T07:05:07.559Z'
+date_piece: '2025-05-12'
+donneur_ordre_id: null
+donneur_ordre_nom: FERRERO
+donneur_ordre_prenom: Pascal
+email_index: 0
+facture_soldee: false
+id: imp_omtMdj2GZ2
+id_dossier: '39365'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48863
+numero_dossier: 53371
+payer_id: cont_VJbEbfJg0T
+payeur_civilite: ''
+payeur_email: pascal.ferrero.perso@gmail.com
+payeur_nom: FERRERO
+payeur_prenom: Pascal
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FERRERO
+proprietaire_prenom: Pascal
+ref_piece: FA250512 48863
+reference: '53371'
+reste_a_payer: 1400
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 1166.67
+total_ttc: 1400
+type: impaye
+updated_at: '2026-06-24T16:33:34.309Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250512_48863/standard/FA250512 48863 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

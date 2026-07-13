@@ -1,0 +1,49 @@
+adresse_bien: 29 rue Tonduti de l'Escaréne
+apporteur_id: cont_3Lj4PPMcI0
+apporteur_nom: GT CAPITAL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_3Lj4PPMcI0
+created_at: '2026-06-24T16:31:40.066Z'
+date_echeance: '2024-02-29'
+date_import: '2026-07-09T07:05:10.323Z'
+date_piece: '2024-02-29'
+donneur_ordre_id: null
+donneur_ordre_nom: GT CAPITAL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_anewSkLwFN
+id_dossier: '33021'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46218
+numero_dossier: 50018
+payer_id: cont_3Lj4PPMcI0
+payeur_civilite: ''
+payeur_email: gtc.ns@gtcapital.fr
+payeur_nom: GT CAPITAL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GT CAPITAL
+proprietaire_prenom: null
+ref_piece: FA240229 46218
+reference: '50018'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 231.33
+total_ttc: 277.6
+type: impaye
+updated_at: '2026-06-24T16:31:40.066Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240229_46218/standard/FA240229 46218
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

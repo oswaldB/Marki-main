@@ -1,0 +1,49 @@
+adresse_bien: 26 avenue Maréchal Foch
+apporteur_id: cont_VRrtr4WXGH
+apporteur_nom: SABATIE
+apporteur_prenom: Cyril
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "PALAIS BEAULIEU\r\n26 Avenue du Marechal Foch\r\n06000 Nice\r\n\r\nObjet : Création de 2 lots pour cave et ancienne loge"
+contact_relance_id: cont_VRrtr4WXGH
+created_at: '2026-06-24T16:30:47.868Z'
+date_echeance: '2026-06-03'
+date_import: '2026-07-09T07:05:05.251Z'
+date_piece: '2026-05-27'
+donneur_ordre_id: null
+donneur_ordre_nom: SABATIE
+donneur_ordre_prenom: Cyril
+email_index: 0
+facture_soldee: true
+id: imp_b6pwSDZlM5
+id_dossier: '41680'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51015
+numero_dossier: 55686
+payer_id: cont_VRrtr4WXGH
+payeur_civilite: ''
+payeur_email: csabatie@lbvs-avocats.fr
+payeur_nom: SABATIE
+payeur_prenom: Cyril
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC PALAIS BEAULIEU
+proprietaire_prenom: null
+ref_piece: FA260527 51015
+reference: '55686'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 875
+total_ttc: 1050
+type: impaye
+updated_at: '2026-06-24T16:30:47.868Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260527_51015/standard/FA260527 51015 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

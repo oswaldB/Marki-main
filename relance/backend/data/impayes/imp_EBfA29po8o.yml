@@ -1,0 +1,49 @@
+adresse_bien: 11 rue du Louvre Résidence du Louvre
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_2cbiVXEbMk
+created_at: '2026-06-24T16:31:32.099Z'
+date_echeance: '2024-06-14'
+date_import: '2026-07-09T07:05:09.672Z'
+date_piece: '2024-06-14'
+donneur_ordre_id: null
+donneur_ordre_nom: PELLERIN
+donneur_ordre_prenom: Jean - Louis
+email_index: 0
+facture_soldee: true
+id: imp_EBfA29po8o
+id_dossier: '35924'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46891
+numero_dossier: 50928
+payer_id: cont_2cbiVXEbMk
+payeur_civilite: ''
+payeur_email: jeanlouis.pellerin44@gmail.com
+payeur_nom: PELLERIN
+payeur_prenom: Jean - Louis
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PELLERIN
+proprietaire_prenom: Jean - Louis
+ref_piece: FA240614 46891
+reference: '50928'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:32.099Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240614_46891/standard/FA240614 46891 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

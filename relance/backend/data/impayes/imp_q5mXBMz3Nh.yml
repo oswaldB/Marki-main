@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Henri de Bournazel
+apporteur_id: cont_aFSXWA9ETI
+apporteur_nom: SAINT ROCH IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_aD3ZglfLat
+created_at: '2026-06-24T16:31:22.055Z'
+date_echeance: '2024-11-21'
+date_import: '2026-07-09T07:05:08.632Z'
+date_piece: '2024-11-21'
+donneur_ordre_id: null
+donneur_ordre_nom: BIDET FACCA
+donneur_ordre_prenom: Béatrice
+email_index: 0
+facture_soldee: true
+id: imp_q5mXBMz3Nh
+id_dossier: '38062'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47831
+numero_dossier: 52068
+payer_id: cont_aFSXWA9ETI
+payeur_civilite: ''
+payeur_email: info@saintrochimmobilier.com
+payeur_nom: SAINT ROCH IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BIDET FACCA
+proprietaire_prenom: Béatrice
+ref_piece: FA241121 47831
+reference: '52068'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.67
+total_ttc: 230
+type: impaye
+updated_at: '2026-06-24T16:31:22.055Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241121_47831/standard/FA241121 47831
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

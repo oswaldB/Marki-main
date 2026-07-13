@@ -1,0 +1,49 @@
+adresse_bien: 69 route de Sospel San Antonio
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_wwJhiTMuQd
+created_at: '2026-06-24T16:31:40.005Z'
+date_echeance: '2024-03-04'
+date_import: '2026-07-09T07:05:10.291Z'
+date_piece: '2024-03-04'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI FRANCILUCI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_xRtgK8FTLc
+id_dossier: '33023'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46220
+numero_dossier: 50020
+payer_id: cont_lqhjbF99j7
+payeur_civilite: ''
+payeur_email: rosalie@deplanche-immobilier.fr
+payeur_nom: AB IMMOBILIER
+payeur_prenom: groupe DEPLANCHE IMMOBILIER
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCI FRANCILUCI
+proprietaire_prenom: null
+ref_piece: FA240229 46220
+reference: '50020'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:40.005Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240229_46220/standard/FA240229 46220 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

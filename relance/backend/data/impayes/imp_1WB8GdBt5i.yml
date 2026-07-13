@@ -1,0 +1,49 @@
+adresse_bien: 9 Petite avenue du Patrimoine LE JALNA
+apporteur_id: cont_CKRDUjb5F6
+apporteur_nom: AGENCE EUROPEENNE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_CKRDUjb5F6
+created_at: '2026-06-24T16:31:41.107Z'
+date_echeance: '2024-02-14'
+date_import: '2026-07-09T07:05:10.424Z'
+date_piece: '2024-02-14'
+donneur_ordre_id: null
+donneur_ordre_nom: AGENCE EUROPEENNE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_1WB8GdBt5i
+id_dossier: '32897'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46118
+numero_dossier: 49894
+payer_id: cont_CKRDUjb5F6
+payeur_civilite: ''
+payeur_email: info@agence-europeenne.fr
+payeur_nom: AGENCE EUROPEENNE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: GOLGO
+proprietaire_prenom: null
+ref_piece: FA240214 46118
+reference: '49894'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:41.107Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240214_46118/standard/FA240214 46118
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

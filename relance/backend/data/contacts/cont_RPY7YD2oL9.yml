@@ -1,0 +1,29 @@
+$loki: 5059
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:21.566Z'
+email: arosa2630@gmail.com
+id: cont_RPY7YD2oL9
+impaye_ids:
+  - imp_LrbKH9q9Y0
+is_blacklisted: false
+meta:
+  created: 1783580700181
+  revision: 0
+  version: 0
+nom: ACQUAVIVA
+prenom: Rosa
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:20.383Z'

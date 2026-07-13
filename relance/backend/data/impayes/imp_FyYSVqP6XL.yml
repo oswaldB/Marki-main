@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue Alfred Leroux L'Ecrin
+apporteur_id: cont_DzAG4jE38o
+apporteur_nom: HEMMA IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_XeNMVPFbbv
+created_at: '2026-06-24T16:31:48.964Z'
+date_echeance: '2023-10-25'
+date_import: '2026-07-09T07:05:11.096Z'
+date_piece: '2023-10-25'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL LEVA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_FyYSVqP6XL
+id_dossier: '32030'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45463
+numero_dossier: 49027
+payer_id: cont_XeNMVPFbbv
+payeur_civilite: ''
+payeur_email: leva.estate@gmail.com
+payeur_nom: SARL LEVA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SARL LEVA
+proprietaire_prenom: null
+ref_piece: FA231025 45463
+reference: '49027'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 210
+total_ttc: 252
+type: impaye
+updated_at: '2026-06-24T16:31:48.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231025_45463/standard/FA231025 45463
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

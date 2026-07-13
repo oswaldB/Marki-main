@@ -1,0 +1,49 @@
+adresse_bien: 17 rue Sorgentino
+apporteur_id: cont_ye83ZIaf3y
+apporteur_nom: SELARL PELLIER LES MANDATAIRES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "relance 02/10 mail matthias pour nouveau process on attend  \r\nMATTHIAS"
+contact_relance_id: cont_6N7y5W1ZoF
+created_at: '2026-06-24T16:31:03.973Z'
+date_echeance: '2025-09-22'
+date_import: '2026-07-09T07:05:06.848Z'
+date_piece: '2025-09-15'
+donneur_ordre_id: null
+donneur_ordre_nom: EURL BATI R
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Sr2oJsI3up
+id_dossier: '38831'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49528
+numero_dossier: 52837
+payer_id: cont_ye83ZIaf3y
+payeur_civilite: ''
+payeur_email: mariesophie.pellier@etude-pellier.com
+payeur_nom: SELARL PELLIER LES MANDATAIRES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: EURL BATI R
+proprietaire_prenom: null
+ref_piece: FA250915 49528
+reference: '52837'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 162.5
+total_ttc: 195
+type: impaye
+updated_at: '2026-06-24T16:31:03.973Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250915_49528/standard/FA250915 49528
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

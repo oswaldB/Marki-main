@@ -1,0 +1,29 @@
+$loki: 881
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:42.554Z'
+email: rodibello@gmail.com
+id: cont_2bT2slLX2B
+impaye_ids:
+  - imp_JLgzgsMD6P
+is_blacklisted: false
+meta:
+  created: 1783580698700
+  revision: 0
+  version: 0
+nom: DI BELLO
+prenom: Roberto
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:41.520Z'

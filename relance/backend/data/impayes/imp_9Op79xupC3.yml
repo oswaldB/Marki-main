@@ -1,0 +1,49 @@
+adresse_bien: 11 avenue de Verdun Le Jardin des Muses
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:21.930Z'
+date_echeance: '2024-12-03'
+date_import: '2026-07-09T07:05:08.556Z'
+date_piece: '2024-12-03'
+donneur_ordre_id: null
+donneur_ordre_nom: CAFIERO
+donneur_ordre_prenom: Valentino
+email_index: 0
+facture_soldee: true
+id: imp_9Op79xupC3
+id_dossier: '38137'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47890
+numero_dossier: 52143
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: CAFIERO
+proprietaire_prenom: Valentino
+ref_piece: FA241203 47890
+reference: '52143'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 104.17
+total_ttc: 125
+type: impaye
+updated_at: '2026-06-24T16:31:21.930Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241203_47890/standard/FA241203 47890
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

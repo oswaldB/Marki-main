@@ -1,0 +1,49 @@
+adresse_bien: 79 avenue Cernuschi Le San Angelo
+apporteur_id: cont_axwCVxbA8C
+apporteur_nom: CABINET CAIRO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_axwCVxbA8C
+created_at: '2026-06-24T16:30:47.974Z'
+date_echeance: '2026-05-27'
+date_import: '2026-07-09T07:05:05.311Z'
+date_piece: '2026-05-20'
+donneur_ordre_id: null
+donneur_ordre_nom: CABINET CAIRO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_kKtE4gUxVH
+id_dossier: '41771'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50974
+numero_dossier: 55777
+payer_id: cont_axwCVxbA8C
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET CAIRO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC LE SAN ANGELO
+proprietaire_prenom: null
+ref_piece: FA260520 50974
+reference: '55777'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 730
+total_ttc: 876
+type: impaye
+updated_at: '2026-06-24T16:30:47.974Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260520_50974/standard/FA260520 50974 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

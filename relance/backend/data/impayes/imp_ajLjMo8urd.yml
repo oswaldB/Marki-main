@@ -1,0 +1,49 @@
+adresse_bien: 95 rue de France Palais Arnoulf
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_JVnfYPyJnX
+created_at: '2026-06-24T16:31:21.930Z'
+date_echeance: '2024-12-04'
+date_import: '2026-07-09T07:05:08.551Z'
+date_piece: '2024-12-04'
+donneur_ordre_id: null
+donneur_ordre_nom: PERIER
+donneur_ordre_prenom: Tes et Xavier
+email_index: 0
+facture_soldee: true
+id: imp_ajLjMo8urd
+id_dossier: '38157'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47905
+numero_dossier: 52163
+payer_id: cont_Nh1fOoyJMJ
+payeur_civilite: ''
+payeur_email: info@tissinie.com
+payeur_nom: GESTION IMMOBILIERE TISSINIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PERIER
+proprietaire_prenom: Tes et Xavier
+ref_piece: FA241204 47905
+reference: '52163'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 141.67
+total_ttc: 170
+type: impaye
+updated_at: '2026-06-24T16:31:21.930Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241204_47905/standard/FA241204 47905
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

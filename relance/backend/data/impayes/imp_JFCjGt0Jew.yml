@@ -1,0 +1,49 @@
+adresse_bien: 149 chemin Roland
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06340'
+commentaire_piece: ''
+contact_relance_id: cont_F7zOlI5Sbf
+created_at: '2026-06-24T16:31:32.964Z'
+date_echeance: '2024-06-07'
+date_import: '2026-07-09T07:05:09.726Z'
+date_piece: '2024-06-07'
+donneur_ordre_id: null
+donneur_ordre_nom: CHAPELIER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_JFCjGt0Jew
+id_dossier: '35838'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46831
+numero_dossier: 50842
+payer_id: cont_F7zOlI5Sbf
+payeur_civilite: ''
+payeur_email: raoul.chapelier@orange.fr
+payeur_nom: CHAPELIER
+payeur_prenom: ''
+payeur_telephone: '0681175129'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CHAPELIER
+proprietaire_prenom: null
+ref_piece: FA240607 46831
+reference: '50842'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 833.33
+total_ttc: 1000
+type: impaye
+updated_at: '2026-06-24T16:31:32.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240607_46831/standard/FA240607 46831 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: LA TRINITÉ

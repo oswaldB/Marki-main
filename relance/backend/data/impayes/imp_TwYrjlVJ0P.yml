@@ -1,0 +1,49 @@
+adresse_bien: 18 avenue Maréchal Foch
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "15/07 : message tél. prop + relance mail prop / cc : agence\r\n18/06 : relance 2 propriétaire\r\n28/05 : retour agence suite envoi listing : \"mandat perdu, contact Manuel plus aucune nouvelle\"\r\n\r\n\r\n12/01 apporteur d'affaire laforet nice retiré, plus de mandat\r\nrelance ce jour \r\n\r\n10/03 j'ai eu le prop au tel, il voit avec l'agence parce que pour lui c'était à l'agence de payer, il est censé me rappeler pour éclaircir le sujet \r\n\r\n27/03 message envoyé à manu\r\n\r\n02/04 j'ai spécifié le problème dans le mail du listing "
+contact_relance_id: cont_vqP5w9ChQ6
+created_at: '2026-06-24T16:31:29.990Z'
+date_echeance: '2024-07-19'
+date_import: '2026-07-09T07:05:09.478Z'
+date_piece: '2024-07-19'
+donneur_ordre_id: null
+donneur_ordre_nom: BEN MESSAOUD
+donneur_ordre_prenom: Imad
+email_index: 0
+facture_soldee: false
+id: imp_TwYrjlVJ0P
+id_dossier: '36178'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47089
+numero_dossier: 51182
+payer_id: cont_vqP5w9ChQ6
+payeur_civilite: ''
+payeur_email: imad.benmess83300@gmail.com
+payeur_nom: BEN MESSAOUD
+payeur_prenom: Imad
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BEN MESSAOUD
+proprietaire_prenom: Imad
+ref_piece: FA240719 47089
+reference: '51182'
+reste_a_payer: 592
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 493.33
+total_ttc: 592
+type: impaye
+updated_at: '2026-06-24T16:33:34.338Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240719_47089/standard/FA240719 47089
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 8 quai des Docks Le Neptune
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_A1Zsd0kEMB
+created_at: '2026-06-24T16:30:52.026Z'
+date_echeance: '2026-03-17'
+date_import: '2026-07-09T07:05:05.717Z'
+date_piece: '2026-03-10'
+donneur_ordre_id: null
+donneur_ordre_nom: VERDIER
+donneur_ordre_prenom: Annick
+email_index: 0
+facture_soldee: true
+id: imp_evFgTo956F
+id_dossier: '41313'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50575
+numero_dossier: 55319
+payer_id: cont_A1Zsd0kEMB
+payeur_civilite: ''
+payeur_email: annickverdier@free.fr
+payeur_nom: VERDIER
+payeur_prenom: Annick
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: VERDIER
+proprietaire_prenom: Annick
+ref_piece: FA260310 50575
+reference: '55319'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:30:52.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260310_50575/standard/FA260310 50575 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

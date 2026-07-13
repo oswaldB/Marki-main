@@ -1,0 +1,49 @@
+adresse_bien: 23 avenue de Verdun
+apporteur_id: cont_98qyheyUph
+apporteur_nom: AGENCE MENTON IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_ZPgXWhps8n
+created_at: '2026-06-24T16:31:28.964Z'
+date_echeance: '2024-08-13'
+date_import: '2026-07-09T07:05:09.322Z'
+date_piece: '2024-08-13'
+donneur_ordre_id: null
+donneur_ordre_nom: SUCCESSION BEVIERE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jrwrsDVizt
+id_dossier: '36343'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47225
+numero_dossier: 51347
+payer_id: cont_ZPgXWhps8n
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SUCCESSION BEVIERE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SUCCESSION BEVIERE
+proprietaire_prenom: null
+ref_piece: FA240813 47225
+reference: '51347'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-24T16:31:28.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240813_47225/standard/FA240813 47225 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

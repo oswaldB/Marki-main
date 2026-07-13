@@ -1,0 +1,49 @@
+adresse_bien: 48 boulevard Joseph Garnier
+apporteur_id: cont_3hleN3RNdd
+apporteur_nom: BENAMOU
+apporteur_prenom: Olivier Isaac
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "SARL GC\r\n\r\n48 bd Joseph Garnier\r\n06100 NICE\r\n\r\nrelance 07/01"
+contact_relance_id: cont_oAMf45xF9G
+created_at: '2026-06-24T16:30:56.909Z'
+date_echeance: '2026-01-05'
+date_import: '2026-07-09T07:05:06.183Z'
+date_piece: '2025-12-29'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL GC
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_C27cEZwwWa
+id_dossier: '40922'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50193
+numero_dossier: 54928
+payer_id: cont_oAMf45xF9G
+payeur_civilite: ''
+payeur_email: brasseriegarnier@gmail.com
+payeur_nom: SARL GC
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SARL GC
+proprietaire_prenom: null
+ref_piece: FA251229 50193
+reference: '54928'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 395
+total_ttc: 474
+type: impaye
+updated_at: '2026-06-24T16:30:56.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251229_50193/standard/FA251229 50193
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 5 avenue Princesse Alice Le Saint James
+apporteur_id: cont_xOkmHVECsd
+apporteur_nom: FRANCE CONSEIL IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '98000'
+commentaire_piece: '08/06 relance mail '
+contact_relance_id: cont_p1WxbFXste
+created_at: '2026-06-24T16:30:50.871Z'
+date_echeance: '2026-04-14'
+date_import: '2026-07-09T07:05:05.540Z'
+date_piece: '2026-04-07'
+donneur_ordre_id: null
+donneur_ordre_nom: C.M.B MONACO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_7ka06rzhEw
+id_dossier: '41461'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50743
+numero_dossier: 55467
+payer_id: cont_b4SB5B0bmP
+payeur_civilite: ''
+payeur_email: creditmonitoringcontrol@cmb.mc
+payeur_nom: C.M.B MONACO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: CMB PALAIS SAINT JAMES
+proprietaire_prenom: null
+ref_piece: FA260407 50743
+reference: '55467'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:30:50.871Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260407_50743/standard/FA260407 50743
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MONACO

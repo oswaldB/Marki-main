@@ -1,0 +1,49 @@
+adresse_bien: 8 quai des Docks Le Neptune
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_EmEKSyzSa2
+created_at: '2026-06-24T16:31:38.910Z'
+date_echeance: '2024-03-27'
+date_import: '2026-07-09T07:05:10.176Z'
+date_piece: '2024-03-27'
+donneur_ordre_id: null
+donneur_ordre_nom: BONELLO
+donneur_ordre_prenom: Odette
+email_index: 0
+facture_soldee: true
+id: imp_z48HDlCP4k
+id_dossier: '34270'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46367
+numero_dossier: 50269
+payer_id: cont_EmEKSyzSa2
+payeur_civilite: ''
+payeur_email: odettebonello@gmail.com
+payeur_nom: BONELLO
+payeur_prenom: Odette
+payeur_telephone: '0609842429'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BONELLO
+proprietaire_prenom: Odette
+ref_piece: FA240327 46367
+reference: '50269'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:31:38.910Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240327_46367/standard/FA240327 46367 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

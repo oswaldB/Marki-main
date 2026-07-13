@@ -1,0 +1,29 @@
+$loki: 2500
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:57.533Z'
+email: ladyb7@hotmail.com
+id: cont_AvnG045vFh
+impaye_ids:
+  - imp_mOD9pxp3Jv
+is_blacklisted: false
+meta:
+  created: 1783580699289
+  revision: 0
+  version: 0
+nom: BELATECHE et AUBERT
+prenom: Sandrine et Christophe
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:56.374Z'

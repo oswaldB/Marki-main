@@ -1,0 +1,29 @@
+$loki: 6375
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:33.600Z'
+email: contact@coryvan.fr
+id: cont_37QlnnGagQ
+impaye_ids:
+  - imp_3Txm6FVYua
+is_blacklisted: false
+meta:
+  created: 1783580700617
+  revision: 0
+  version: 0
+nom: JMC IMMOBILIER
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:32.387Z'

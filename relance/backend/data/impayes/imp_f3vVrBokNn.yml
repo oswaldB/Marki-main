@@ -1,0 +1,49 @@
+adresse_bien: 95 Val des Castagnins La Chataigneraie
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_dQnxnBgxBx
+created_at: '2026-06-24T16:31:17.927Z'
+date_echeance: '2025-02-06'
+date_import: '2026-07-09T07:05:08.167Z'
+date_piece: '2025-02-06'
+donneur_ordre_id: null
+donneur_ordre_nom: PAHUIRI / DESFEUX
+donneur_ordre_prenom: Heiana et Bilbo
+email_index: 0
+facture_soldee: true
+id: imp_f3vVrBokNn
+id_dossier: '38634'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48276
+numero_dossier: 52640
+payer_id: cont_dQnxnBgxBx
+payeur_civilite: ''
+payeur_email: bilbo.desfeuxcaratti@yahoo.fr
+payeur_nom: PAHUIRI / DESFEUX
+payeur_prenom: Heiana et Bilbo
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PAHUIRI / DESFEUX
+proprietaire_prenom: Heiana et Bilbo
+ref_piece: FA250206 48276
+reference: '52640'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 258.33
+total_ttc: 310
+type: impaye
+updated_at: '2026-06-24T16:31:17.927Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250206_48276/standard/FA250206 48276
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 593  route D de Chateauneuf CD 815 Le Mykonos
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06390'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:57.986Z'
+date_echeance: '2023-06-09'
+date_import: '2026-07-09T07:05:11.978Z'
+date_piece: '2023-06-09'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI MYKONOS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_cIRAwlXDBU
+id_dossier: '29006'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44581
+numero_dossier: 47992
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SCI MYKONOS
+proprietaire_prenom: null
+ref_piece: FA230609 44581
+reference: '47992'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 158.33
+total_ttc: 190
+type: impaye
+updated_at: '2026-06-24T16:31:57.986Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juin/FA230609_44581/standard/FA230609 44581 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CONTES

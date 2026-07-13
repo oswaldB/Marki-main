@@ -1,0 +1,49 @@
+adresse_bien: 36 route de Nice Villa Aurelia Les Fuschias
+apporteur_id: cont_7mZDDGX8U2
+apporteur_nom: AGENCE MOLIERE CENTURY 21
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_7mZDDGX8U2
+created_at: '2026-06-24T16:30:47.868Z'
+date_echeance: '2026-06-04'
+date_import: '2026-07-09T07:05:05.255Z'
+date_piece: '2026-05-28'
+donneur_ordre_id: null
+donneur_ordre_nom: MILLO
+donneur_ordre_prenom: Wendel
+email_index: 0
+facture_soldee: true
+id: imp_II7SZRVMBj
+id_dossier: '41840'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51024
+numero_dossier: 55846
+payer_id: cont_7mZDDGX8U2
+payeur_civilite: ''
+payeur_email: agencemoliere@gmail.com
+payeur_nom: AGENCE MOLIERE CENTURY 21
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MILLO
+proprietaire_prenom: Wendel
+ref_piece: FA260528 51024
+reference: '55846'
+reste_a_payer: 0
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 191.67
+total_ttc: 230
+type: impaye
+updated_at: '2026-06-29T07:50:00.543Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260528_51024/standard/FA260528 51024 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: LA TURBIE

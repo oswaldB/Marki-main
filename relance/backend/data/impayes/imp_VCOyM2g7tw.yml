@@ -1,0 +1,49 @@
+adresse_bien: 5 rue Honoré Augier
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_lqhjbF99j7
+created_at: '2026-06-24T16:30:46.094Z'
+date_echeance: '2026-06-23'
+date_import: '2026-07-09T07:05:05.136Z'
+date_piece: '2026-06-16'
+donneur_ordre_id: null
+donneur_ordre_nom: BORGNA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_VCOyM2g7tw
+id_dossier: '41962'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51135
+numero_dossier: 55968
+payer_id: cont_lqhjbF99j7
+payeur_civilite: ''
+payeur_email: rosalie@deplanche-immobilier.fr
+payeur_nom: AB IMMOBILIER
+payeur_prenom: groupe DEPLANCHE IMMOBILIER
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BORGNA
+proprietaire_prenom: null
+ref_piece: FA260616 51135
+reference: '55968'
+reste_a_payer: 255
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:33:32.569Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260616_51135/standard/FA260616 51135 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

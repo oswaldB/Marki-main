@@ -1,0 +1,49 @@
+adresse_bien: 163 avenue Pasteur Le Colorado
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_LUMV3eCYIH
+created_at: '2026-06-24T16:31:47.976Z'
+date_echeance: '2023-11-09'
+date_import: '2026-07-09T07:05:11.028Z'
+date_piece: '2023-11-09'
+donneur_ordre_id: null
+donneur_ordre_nom: BESSI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_WXxKGjpEOS
+id_dossier: '32138'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45544
+numero_dossier: 49135
+payer_id: cont_LUMV3eCYIH
+payeur_civilite: ''
+payeur_email: ebessi@libello.com
+payeur_nom: BESSI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BESSI
+proprietaire_prenom: null
+ref_piece: FA231109 45544
+reference: '49135'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:47.976Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231109_45544/standard/FA231109 45544
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

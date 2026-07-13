@@ -1,0 +1,49 @@
+adresse_bien: 15 avenue Marie Henriette
+apporteur_id: cont_LgArzyVnvd
+apporteur_nom: 'ACT''RIVIERA '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "relance le 18/09 aux 2 mails*\r\n\r\nrelance 2 mails 21/11\r\n\r\n13/01 relance aux 2 mails de l'agence via comptabilité\r\n\r\n20/01 relance aux deux compta\r\n\r\n10/02 relance aux 2 mails \r\n\r\n23/02 relance mail\r\n24/02 paiement par l'agence elle vient de la faire nous devrions être payé dans les plus brefs délais"
+contact_relance_id: cont_EvdylHEbAk
+created_at: '2026-06-24T16:31:06.983Z'
+date_echeance: '2025-07-21'
+date_import: '2026-07-09T07:05:07.118Z'
+date_piece: '2025-07-21'
+donneur_ordre_id: null
+donneur_ordre_nom: TCHOUBAKLIAN
+donneur_ordre_prenom: Gregory
+email_index: 0
+facture_soldee: true
+id: imp_hDRjw8COBC
+id_dossier: '39870'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49243
+numero_dossier: 53876
+payer_id: cont_LgArzyVnvd
+payeur_civilite: ''
+payeur_email: actrivieragestion@gmail.com
+payeur_nom: 'ACT''RIVIERA '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: TCHOUBAKLIAN
+proprietaire_prenom: Gregory
+ref_piece: FA250721 49243
+reference: '53876'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 329.17
+total_ttc: 395
+type: impaye
+updated_at: '2026-06-24T16:31:06.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250721_49243/standard/FA250721 49243
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

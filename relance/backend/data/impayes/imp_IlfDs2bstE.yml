@@ -1,0 +1,49 @@
+adresse_bien: 101 Promenade Albert Camus
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: 09/09 relance mail prop + copie agence
+contact_relance_id: cont_x6s0GS83kb
+created_at: '2026-06-24T16:31:06.023Z'
+date_echeance: '2025-08-01'
+date_import: '2026-07-09T07:05:07.027Z'
+date_piece: '2025-08-01'
+donneur_ordre_id: null
+donneur_ordre_nom: LATHUILLIERE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_IlfDs2bstE
+id_dossier: '39967'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49322
+numero_dossier: 53973
+payer_id: cont_x6s0GS83kb
+payeur_civilite: ''
+payeur_email: jm.lathuilliere@orange.fr
+payeur_nom: LATHUILLIERE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LATHUILLIERE
+proprietaire_prenom: null
+ref_piece: FA250801 49322
+reference: '53973'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 383.33
+total_ttc: 460
+type: impaye
+updated_at: '2026-06-24T16:31:06.023Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250801_49322/standard/FA250801 49322 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

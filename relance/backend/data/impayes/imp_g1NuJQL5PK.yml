@@ -1,0 +1,49 @@
+adresse_bien: 41 avenue Raymond Comboul Nice Park Bâtiment C
+apporteur_id: cont_zttCmdIcGK
+apporteur_nom: AGENCE WILSON
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_zttCmdIcGK
+created_at: '2026-06-24T16:31:47.976Z'
+date_echeance: '2023-11-09'
+date_import: '2026-07-09T07:05:11.034Z'
+date_piece: '2023-11-09'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI MÉLANIE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_g1NuJQL5PK
+id_dossier: '32149'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45553
+numero_dossier: 49146
+payer_id: cont_zttCmdIcGK
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: AGENCE WILSON
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCI MÉLANIE
+proprietaire_prenom: null
+ref_piece: FA231109 45553
+reference: '49146'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 133.33
+total_ttc: 160
+type: impaye
+updated_at: '2026-06-24T16:31:47.976Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231109_45553/standard/FA231109 45553
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 16 place Georges Clemenceau
+apporteur_id: cont_CKRDUjb5F6
+apporteur_nom: AGENCE EUROPEENNE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Pse5CTRla6
+created_at: '2026-06-24T16:31:45.980Z'
+date_echeance: '2023-12-06'
+date_import: '2026-07-09T07:05:10.832Z'
+date_piece: '2023-12-06'
+donneur_ordre_id: null
+donneur_ordre_nom: MARCHISIO
+donneur_ordre_prenom: Laure et Marie-Laure
+email_index: 0
+facture_soldee: true
+id: imp_BX8nsY4EYZ
+id_dossier: '32384'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45739
+numero_dossier: 49381
+payer_id: cont_Pse5CTRla6
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: MARCHISIO
+payeur_prenom: Laure et Marie-Laure
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MARCHISIO
+proprietaire_prenom: Laure et Marie-Laure
+ref_piece: FA231206 45739
+reference: '49381'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 414.17
+total_ttc: 497
+type: impaye
+updated_at: '2026-06-24T16:31:45.980Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231206_45739/standard/FA231206 45739
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

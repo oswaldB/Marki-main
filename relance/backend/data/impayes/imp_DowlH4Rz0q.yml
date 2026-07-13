@@ -1,0 +1,49 @@
+adresse_bien: 93 boulevard Edouard Herriot Tour Sarrasine
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_1Ndl8gUKtu
+created_at: '2026-06-24T16:30:47.048Z'
+date_echeance: '2026-06-04'
+date_import: '2026-07-09T07:05:05.246Z'
+date_piece: '2026-05-28'
+donneur_ordre_id: null
+donneur_ordre_nom: MONTANO
+donneur_ordre_prenom: Claude
+email_index: 0
+facture_soldee: true
+id: imp_DowlH4Rz0q
+id_dossier: '41780'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51016
+numero_dossier: 55786
+payer_id: cont_1Ndl8gUKtu
+payeur_civilite: ''
+payeur_email: mparpi06@gmail.com
+payeur_nom: MONTANO
+payeur_prenom: Claude
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MONTANO
+proprietaire_prenom: Claude
+ref_piece: FA260528 51016
+reference: '55786'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:30:47.048Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260528_51016/standard/FA260528 51016 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 180 avenue de Verdun
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: '30/06 : relance 1'
+contact_relance_id: cont_md88QAmAS2
+created_at: '2026-06-24T16:31:12.076Z'
+date_echeance: '2025-04-22'
+date_import: '2026-07-09T07:05:07.643Z'
+date_piece: '2025-04-22'
+donneur_ordre_id: null
+donneur_ordre_nom: OPTI GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_mvHCRMrAkx
+id_dossier: '39224'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48751
+numero_dossier: 53230
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CLARAMUNT
+proprietaire_prenom: Carlos
+ref_piece: FA250422 48751
+reference: '53230'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:12.076Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250422_48751/standard/FA250422 48751
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

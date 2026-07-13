@@ -1,0 +1,49 @@
+adresse_bien: 86 avenue de la Côte d'Azur
+apporteur_id: cont_A0jsgezz8M
+apporteur_nom: SUD EST IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_9HnzS51c10
+created_at: '2026-06-24T16:31:43.969Z'
+date_echeance: '2024-01-12'
+date_import: '2026-07-09T07:05:10.651Z'
+date_piece: '2024-01-12'
+donneur_ordre_id: null
+donneur_ordre_nom: ULRIKE / LUTZ
+donneur_ordre_prenom: Hildegard et Figge
+email_index: 0
+facture_soldee: true
+id: imp_T20ssKCwLL
+id_dossier: '32601'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45898
+numero_dossier: 49598
+payer_id: cont_9HnzS51c10
+payeur_civilite: ''
+payeur_email: e-mail.figge@bahnboegen-koeln.de
+payeur_nom: ULRIKE / LUTZ
+payeur_prenom: Hildegard et Figge
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ULRIKE / LUTZ
+proprietaire_prenom: Hildegard et Figge
+ref_piece: FA240112 45898
+reference: '49598'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:31:43.969Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240112_45898/standard/FA240112 45898
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

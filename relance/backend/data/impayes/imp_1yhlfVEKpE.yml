@@ -1,0 +1,49 @@
+adresse_bien: 66 avenue Maréchal Foch L'Olympe
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_jP580TE9Uz
+created_at: '2026-06-24T16:31:01.940Z'
+date_echeance: '2025-10-20'
+date_import: '2026-07-09T07:05:06.627Z'
+date_piece: '2025-10-13'
+donneur_ordre_id: null
+donneur_ordre_nom: 'COMPAGNIE DE RICCOLE '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_1yhlfVEKpE
+id_dossier: '40405'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49720
+numero_dossier: 54411
+payer_id: cont_jP580TE9Uz
+payeur_civilite: ''
+payeur_email: s.koudi@futurdigital.fr
+payeur_nom: 'COMPAGNIE DE RICCOLE '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'COMPAGNIE DE RICCOLE '
+proprietaire_prenom: null
+ref_piece: FA251013 49720
+reference: '54411'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 163.33
+total_ttc: 196
+type: impaye
+updated_at: '2026-06-24T16:31:01.940Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251013_49720/standard/FA251013 49720
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

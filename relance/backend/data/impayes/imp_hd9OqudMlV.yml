@@ -1,0 +1,49 @@
+adresse_bien: 9 avenue de Verdun Les Tournesols
+apporteur_id: cont_XfMiq6mNPd
+apporteur_nom: HAKKASAN
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: "Madame Anna Rita SCHINA\r\n\r\n9 Boulevard de Verdun\r\n06240 BEAUSOLEIL"
+contact_relance_id: cont_aphNL83I9z
+created_at: '2026-06-24T16:30:58.983Z'
+date_echeance: '2025-11-28'
+date_import: '2026-07-09T07:05:06.402Z'
+date_piece: '2025-11-21'
+donneur_ordre_id: null
+donneur_ordre_nom: SCHINA
+donneur_ordre_prenom: Anna Rita
+email_index: 0
+facture_soldee: true
+id: imp_hd9OqudMlV
+id_dossier: '40695'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49986
+numero_dossier: 54701
+payer_id: cont_XfMiq6mNPd
+payeur_civilite: ''
+payeur_email: ca.perard@hakkasan.immo
+payeur_nom: HAKKASAN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCHINA
+proprietaire_prenom: Anna Rita
+ref_piece: FA251121 49986
+reference: '54701'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 146.04
+total_ttc: 175.25
+type: impaye
+updated_at: '2026-06-24T16:30:58.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251121_49986/standard/FA251121 49986
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

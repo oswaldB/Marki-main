@@ -1,0 +1,49 @@
+adresse_bien: 7 chemin des Myrtes Stella Maris
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_hUjTVSHoIm
+created_at: '2026-06-24T16:31:41.960Z'
+date_echeance: '2024-02-09'
+date_import: '2026-07-09T07:05:10.457Z'
+date_piece: '2024-02-09'
+donneur_ordre_id: null
+donneur_ordre_nom: DIONISOTTI
+donneur_ordre_prenom: Josephine
+email_index: 0
+facture_soldee: true
+id: imp_RvwH608SA9
+id_dossier: '32858'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46086
+numero_dossier: 49855
+payer_id: cont_hUjTVSHoIm
+payeur_civilite: ''
+payeur_email: josephine.dionisotti@gmail.com
+payeur_nom: DIONISOTTI
+payeur_prenom: Josephine
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DIONISOTTI
+proprietaire_prenom: Josephine
+ref_piece: FA240209 46086
+reference: '49855'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 50
+total_ttc: 60
+type: impaye
+updated_at: '2026-06-24T16:31:41.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240209_46086/standard/FA240209 46086
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

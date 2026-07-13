@@ -1,0 +1,49 @@
+adresse_bien: 238 avenue Sainte-Marguerite
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_SCnPbAiHIz
+created_at: '2026-06-24T16:31:28.063Z'
+date_echeance: '2024-08-23'
+date_import: '2026-07-09T07:05:09.269Z'
+date_piece: '2024-08-23'
+donneur_ordre_id: null
+donneur_ordre_nom: DANIELSONN
+donneur_ordre_prenom: 'Véronique et Michael '
+email_index: 0
+facture_soldee: true
+id: imp_0pj8fuewpt
+id_dossier: '36400'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47263
+numero_dossier: 51404
+payer_id: cont_SCnPbAiHIz
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: DANIELSONN
+payeur_prenom: 'Véronique et Michael '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DANIELSONN
+proprietaire_prenom: 'Véronique et Michael '
+ref_piece: FA240823 47263
+reference: '51404'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:28.063Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240823_47263/standard/FA240823 47263 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

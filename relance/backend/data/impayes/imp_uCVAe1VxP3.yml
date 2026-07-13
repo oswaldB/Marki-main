@@ -1,0 +1,49 @@
+adresse_bien: 13 Corniche André de Joly Château Riquier
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:20.006Z'
+date_echeance: '2025-01-06'
+date_import: '2026-07-09T07:05:08.383Z'
+date_piece: '2025-01-06'
+donneur_ordre_id: null
+donneur_ordre_nom: BONIFASSI
+donneur_ordre_prenom: Aurore
+email_index: 0
+facture_soldee: true
+id: imp_uCVAe1VxP3
+id_dossier: '38358'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48046
+numero_dossier: 52364
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: BONIFASSI
+proprietaire_prenom: Aurore
+ref_piece: FA250106 48046
+reference: '52364'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:20.006Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250106_48046/standard/FA250106 48046
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 75 boulevard de Garavan Les Gardenias
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:14.022Z'
+date_echeance: '2025-03-26'
+date_import: '2026-07-09T07:05:07.813Z'
+date_piece: '2025-03-26'
+donneur_ordre_id: null
+donneur_ordre_nom: JULITA
+donneur_ordre_prenom: Silke
+email_index: 0
+facture_soldee: true
+id: imp_BWdgsDYZQ2
+id_dossier: '39023'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48595
+numero_dossier: 53029
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: JULITA
+proprietaire_prenom: Silke
+ref_piece: FA250326 48595
+reference: '53029'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:14.022Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250326_48595/standard/FA250326 48595 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

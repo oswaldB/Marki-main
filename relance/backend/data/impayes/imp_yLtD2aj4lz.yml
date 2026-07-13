@@ -1,0 +1,49 @@
+adresse_bien: 314 chemin du docteur arthur mauran
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06690'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:34.932Z'
+date_echeance: '2024-05-16'
+date_import: '2026-07-09T07:05:09.869Z'
+date_piece: '2024-05-16'
+donneur_ordre_id: null
+donneur_ordre_nom: CORDA
+donneur_ordre_prenom: Benjamin
+email_index: 0
+facture_soldee: true
+id: imp_yLtD2aj4lz
+id_dossier: '34662'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46680
+numero_dossier: 50661
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: CORDA
+proprietaire_prenom: Benjamin
+ref_piece: FA240516 46680
+reference: '50661'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:34.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240516_46680/standard/FA240516 46680 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: TOURRETTE-LEVENS

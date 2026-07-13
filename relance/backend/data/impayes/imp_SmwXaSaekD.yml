@@ -1,0 +1,49 @@
+adresse_bien: 210 avenue de la Condamine
+apporteur_id: cont_Qn5hnvcSwH
+apporteur_nom: MCB syndic
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_qV2SBqN8Zv
+created_at: '2026-06-24T16:31:53.033Z'
+date_echeance: '2023-08-22'
+date_import: '2026-07-09T07:05:11.521Z'
+date_piece: '2023-08-22'
+donneur_ordre_id: null
+donneur_ordre_nom: CHOMEL
+donneur_ordre_prenom: Monique
+email_index: 0
+facture_soldee: true
+id: imp_SmwXaSaekD
+id_dossier: '30524'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45034
+numero_dossier: 48514
+payer_id: cont_qV2SBqN8Zv
+payeur_civilite: ''
+payeur_email: syndic-mcb@orange.fr
+payeur_nom: CHOMEL
+payeur_prenom: Monique
+payeur_telephone: '0636936131'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CHOMEL
+proprietaire_prenom: Monique
+ref_piece: FA230822 45034
+reference: '48514'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 720.42
+total_ttc: 864.5
+type: impaye
+updated_at: '2026-06-24T16:31:53.033Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230822_45034/standard/FA230822 45034 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

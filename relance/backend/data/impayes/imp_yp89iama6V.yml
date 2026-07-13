@@ -1,0 +1,49 @@
+adresse_bien: 200 avenue de Verdun Résidence Elsa
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_eb2BFCixiH
+created_at: '2026-06-24T16:31:39.975Z'
+date_echeance: '2024-03-06'
+date_import: '2026-07-09T07:05:10.281Z'
+date_piece: '2024-03-06'
+donneur_ordre_id: null
+donneur_ordre_nom: PRUNIER
+donneur_ordre_prenom: Monique
+email_index: 0
+facture_soldee: true
+id: imp_yp89iama6V
+id_dossier: '33062'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46250
+numero_dossier: 50059
+payer_id: cont_eb2BFCixiH
+payeur_civilite: ''
+payeur_email: christine.vivier-prunier@orange.fr
+payeur_nom: PRUNIER
+payeur_prenom: Monique
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PRUNIER
+proprietaire_prenom: Monique
+ref_piece: FA240306 46250
+reference: '50059'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:39.975Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240306_46250/standard/FA240306 46250 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

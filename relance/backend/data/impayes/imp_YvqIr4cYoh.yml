@@ -1,0 +1,49 @@
+adresse_bien: 35 Corniche André de Joly Le Panoramer
+apporteur_id: cont_zH7y9P60ST
+apporteur_nom: 'INGRID WARTEL IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_eIRvWWBnAD
+created_at: '2026-06-24T16:30:47.899Z'
+date_echeance: '2026-06-02'
+date_import: '2026-07-09T07:05:05.285Z'
+date_piece: '2026-05-26'
+donneur_ordre_id: null
+donneur_ordre_nom: SUCCESSION MAGNAN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_YvqIr4cYoh
+id_dossier: '41812'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51010
+numero_dossier: 55818
+payer_id: cont_eIRvWWBnAD
+payeur_civilite: ''
+payeur_email: pm.magnan@mac.com
+payeur_nom: SUCCESSION MAGNAN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SUCCESSION MAGNAN
+proprietaire_prenom: null
+ref_piece: FA260526 51010
+reference: '55818'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 226.67
+total_ttc: 272
+type: impaye
+updated_at: '2026-06-29T12:50:02.118Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260526_51010/standard/FA260526 51010 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

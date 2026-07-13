@@ -1,0 +1,49 @@
+adresse_bien: 16 rue Sorgentino Bâtiment
+apporteur_id: cont_aFSXWA9ETI
+apporteur_nom: SAINT ROCH IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_aNlsrfj49k
+created_at: '2026-06-24T16:31:32.099Z'
+date_echeance: '2024-06-19'
+date_import: '2026-07-09T07:05:09.671Z'
+date_piece: '2024-06-19'
+donneur_ordre_id: null
+donneur_ordre_nom: LA ROSEYRE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_xEyX1gJkFA
+id_dossier: '35948'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46904
+numero_dossier: 50952
+payer_id: cont_aFSXWA9ETI
+payeur_civilite: ''
+payeur_email: info@saintrochimmobilier.com
+payeur_nom: SAINT ROCH IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LA ROSEYRE
+proprietaire_prenom: null
+ref_piece: FA240619 46904
+reference: '50952'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 95.83
+total_ttc: 115
+type: impaye
+updated_at: '2026-06-24T16:31:32.099Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240619_46904/standard/FA240619 46904 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

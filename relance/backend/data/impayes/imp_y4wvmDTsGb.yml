@@ -1,0 +1,49 @@
+adresse_bien: 84 boulevard Jean Behra
+apporteur_id: cont_HKy4C2gxUH
+apporteur_nom: ARTHURIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_6eQHT9S1Ac
+created_at: '2026-06-24T16:31:15.889Z'
+date_echeance: '2025-03-07'
+date_import: '2026-07-09T07:05:07.928Z'
+date_piece: '2025-03-07'
+donneur_ordre_id: null
+donneur_ordre_nom: 'MOREAU / ARDAIN '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_y4wvmDTsGb
+id_dossier: '38874'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48472
+numero_dossier: 52880
+payer_id: cont_6eQHT9S1Ac
+payeur_civilite: ''
+payeur_email: ardain.olivier@bbox.fr
+payeur_nom: 'MOREAU / ARDAIN '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'MOREAU / ARDAIN '
+proprietaire_prenom: null
+ref_piece: FA250307 48472
+reference: '52880'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:15.889Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250307_48472/standard/FA250307 48472 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

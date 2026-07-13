@@ -1,0 +1,49 @@
+adresse_bien: 17 avenue de Sospel  l'Alhambra
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_uQF5GrmDmw
+created_at: '2026-06-24T16:30:49.061Z'
+date_echeance: '2026-05-05'
+date_import: '2026-07-09T07:05:05.443Z'
+date_piece: '2026-04-28'
+donneur_ordre_id: null
+donneur_ordre_nom: PAPASERGIO
+donneur_ordre_prenom: 'Laurent '
+email_index: 0
+facture_soldee: true
+id: imp_ziYScAbGNI
+id_dossier: '41674'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50860
+numero_dossier: 55680
+payer_id: cont_uQF5GrmDmw
+payeur_civilite: ''
+payeur_email: lpmotorsport@icloud.com
+payeur_nom: PAPASERGIO
+payeur_prenom: 'Laurent '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PAPASERGIO
+proprietaire_prenom: 'Laurent '
+ref_piece: FA260428 50860
+reference: '55680'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 62.5
+total_ttc: 75
+type: impaye
+updated_at: '2026-07-03T22:00:43.378Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260428_50860/standard/FA260428 50860
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

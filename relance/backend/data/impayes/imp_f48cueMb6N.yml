@@ -1,0 +1,49 @@
+adresse_bien: 28 30 rue du Château
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06440'
+commentaire_piece: "Adresse :\r\n28/30 rue du Château\r\n06440 L'Escarène\r\nProjet :\r\nDivision d'un lot d'habitation en 2 lots \r\nRéalisation des diagnostics de vente"
+contact_relance_id: cont_mZEJy4LFWe
+created_at: '2026-06-24T16:30:57.035Z'
+date_echeance: '2025-12-26'
+date_import: '2026-07-09T07:05:06.221Z'
+date_piece: '2025-12-19'
+donneur_ordre_id: null
+donneur_ordre_nom: ATRI'HOME
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_f48cueMb6N
+id_dossier: '40773'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50163
+numero_dossier: 54779
+payer_id: cont_mZEJy4LFWe
+payeur_civilite: ''
+payeur_email: cuevas.herve@gmail.com
+payeur_nom: ATRI'HOME
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ATRI'HOME
+proprietaire_prenom: null
+ref_piece: FA251219 50163
+reference: '54779'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 975
+total_ttc: 1170
+type: impaye
+updated_at: '2026-06-24T16:30:57.035Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251219_50163/standard/FA251219 50163
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: L'ESCARÈNE

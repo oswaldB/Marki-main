@@ -1,0 +1,49 @@
+adresse_bien: 89 Montée de la Crémaillère Le Rex
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: "REX\r\n89 MONTEE DE LA CREMAILLERE\r\n06240 BEAUSOLEIL"
+contact_relance_id: cont_6hBUk6fPVB
+created_at: '2026-06-24T16:30:50.025Z'
+date_echeance: '2026-04-17'
+date_import: '2026-07-09T07:05:05.523Z'
+date_piece: '2026-04-10'
+donneur_ordre_id: null
+donneur_ordre_nom: PROGEDI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_KaRUn5WG4i
+id_dossier: '41172'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50758
+numero_dossier: 55178
+payer_id: cont_6KB3jgW9oc
+payeur_civilite: ''
+payeur_email: accueil@progedi.com
+payeur_nom: PROGEDI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SDC REX
+proprietaire_prenom: null
+ref_piece: FA260410 50758
+reference: '55178'
+reste_a_payer: 4200
+sequence_id: null
+statut: non_payee
+total_ht: 3500
+total_ttc: 4200
+type: impaye
+updated_at: '2026-06-24T16:30:50.025Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260410_50758/standard/FA260410 50758
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

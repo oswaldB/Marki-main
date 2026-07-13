@@ -1,0 +1,49 @@
+adresse_bien: 14 rue du Poilu
+apporteur_id: cont_PPZsXPBL3f
+apporteur_nom: 'RIG '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: "14 RUE DU POILU\r\n06230 VILLEFRANCHE SUR MER\r\n\r\nMoins de 10 lots principaux\r\n1 bâtiment\r\n\r\nenvoyé le 17/06\r\n"
+contact_relance_id: cont_JkcgLXpWCB
+created_at: '2026-06-24T16:30:46.868Z'
+date_echeance: '2026-06-19'
+date_import: '2026-07-09T07:05:05.137Z'
+date_piece: '2026-06-12'
+donneur_ordre_id: null
+donneur_ordre_nom: 'RIG '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_mMmsPQb8OT
+id_dossier: '41453'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51123
+numero_dossier: 55459
+payer_id: cont_PPZsXPBL3f
+payeur_civilite: ''
+payeur_email: rig06@rig06.com
+payeur_nom: 'RIG '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC 14 RUE DU POILU
+proprietaire_prenom: null
+ref_piece: FA260612 51123
+reference: '55459'
+reste_a_payer: 1800
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 1500
+total_ttc: 1800
+type: impaye
+updated_at: '2026-06-24T16:33:32.604Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260612_51123/standard/FA260612 51123 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

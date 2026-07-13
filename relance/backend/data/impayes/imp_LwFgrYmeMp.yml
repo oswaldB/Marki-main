@@ -1,0 +1,49 @@
+adresse_bien: 179 Promenade des Anglais Adagio
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_Kbr7WnBgIN
+created_at: '2026-06-24T16:30:58.983Z'
+date_echeance: '2025-11-28'
+date_import: '2026-07-09T07:05:06.390Z'
+date_piece: '2025-11-21'
+donneur_ordre_id: null
+donneur_ordre_nom: JONSSON
+donneur_ordre_prenom: Tor Ove et Aud
+email_index: 0
+facture_soldee: true
+id: imp_LwFgrYmeMp
+id_dossier: '40696'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49969
+numero_dossier: 54702
+payer_id: cont_Kbr7WnBgIN
+payeur_civilite: ''
+payeur_email: torovejonsson@hotmail.com
+payeur_nom: JONSSON
+payeur_prenom: Tor Ove et Aud
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: JONSSON
+proprietaire_prenom: Tor Ove et Aud
+ref_piece: FA251121 49969
+reference: '54702'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:30:58.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251121_49969/standard/FA251121 49969
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 24 rue Verdi
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_PtmL8jUdKS
+created_at: '2026-06-24T16:31:31.046Z'
+date_echeance: '2024-07-08'
+date_import: '2026-07-09T07:05:09.567Z'
+date_piece: '2024-07-08'
+donneur_ordre_id: null
+donneur_ordre_nom: LE BAIL VOISIN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_JcW0gUBRCn
+id_dossier: '36082'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47006
+numero_dossier: 51086
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LE BAIL VOISIN
+proprietaire_prenom: null
+ref_piece: FA240708 47006
+reference: '51086'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:31.046Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240708_47006/standard/FA240708 47006
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

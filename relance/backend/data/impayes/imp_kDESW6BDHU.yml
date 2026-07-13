@@ -1,0 +1,49 @@
+adresse_bien: 31 boulevard de la République
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_LAFN8dUECJ
+created_at: '2026-06-24T16:31:32.099Z'
+date_echeance: '2024-06-13'
+date_import: '2026-07-09T07:05:09.678Z'
+date_piece: '2024-06-13'
+donneur_ordre_id: null
+donneur_ordre_nom: BALLAND
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_kDESW6BDHU
+id_dossier: '35855'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46874
+numero_dossier: 50859
+payer_id: cont_9KF7R3DCug
+payeur_civilite: ''
+payeur_email: info@republique-beausoleil.com
+payeur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BALLAND
+proprietaire_prenom: null
+ref_piece: FA240613 46874
+reference: '50859'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 199.17
+total_ttc: 239
+type: impaye
+updated_at: '2026-06-24T16:31:32.099Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240613_46874/standard/FA240613 46874 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

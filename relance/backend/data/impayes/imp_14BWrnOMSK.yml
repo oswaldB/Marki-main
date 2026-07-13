@@ -1,0 +1,49 @@
+adresse_bien: 79 avenue des Géraniums L'Anthurium
+apporteur_id: cont_dntkuJ727m
+apporteur_nom: 'WRETMAN MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:39.083Z'
+date_echeance: '2024-03-14'
+date_import: '2026-07-09T07:05:10.243Z'
+date_piece: '2024-03-14'
+donneur_ordre_id: null
+donneur_ordre_nom: VAZZANA
+donneur_ordre_prenom: Mauro
+email_index: 0
+facture_soldee: true
+id: imp_14BWrnOMSK
+id_dossier: '26269'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46308
+numero_dossier: 46252
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: VAZZANA
+proprietaire_prenom: Mauro
+ref_piece: FA240314 46308
+reference: '46252'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:39.083Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240314_46308/standard/FA240314 46308 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

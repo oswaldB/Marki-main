@@ -1,0 +1,49 @@
+adresse_bien: 8 quai des Docks Le Neptune
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Xwz1grQ7jU
+created_at: '2026-06-24T16:30:55.974Z'
+date_echeance: '2026-01-20'
+date_import: '2026-07-09T07:05:06.106Z'
+date_piece: '2026-01-13'
+donneur_ordre_id: null
+donneur_ordre_nom: BEZZINA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_DcbNF3ugEA
+id_dossier: '40984'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50273
+numero_dossier: 54990
+payer_id: cont_Xwz1grQ7jU
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BEZZINA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BEZZINA
+proprietaire_prenom: null
+ref_piece: FA260113 50273
+reference: '54990'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 75
+total_ttc: 90
+type: impaye
+updated_at: '2026-06-24T16:30:55.974Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260113_50273/standard/FA260113 50273
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

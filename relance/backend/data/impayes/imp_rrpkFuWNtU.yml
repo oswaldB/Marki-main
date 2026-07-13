@@ -1,0 +1,49 @@
+adresse_bien: 52 avenue Saint-Barthélemy
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_Ma3GR4qAgo
+created_at: '2026-06-24T16:30:51.931Z'
+date_echeance: '2026-03-24'
+date_import: '2026-07-09T07:05:05.676Z'
+date_piece: '2026-03-17'
+donneur_ordre_id: null
+donneur_ordre_nom: INDIVISION ROUSSEL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_rrpkFuWNtU
+id_dossier: '41391'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50628
+numero_dossier: 55397
+payer_id: cont_Ma3GR4qAgo
+payeur_civilite: ''
+payeur_email: andreluc@jlrimmo.com
+payeur_nom: INDIVISION ROUSSEL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: INDIVISION ROUSSEL
+proprietaire_prenom: null
+ref_piece: FA260317 50628
+reference: '55397'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 246.67
+total_ttc: 296
+type: impaye
+updated_at: '2026-06-24T16:30:51.931Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260317_50628/standard/FA260317 50628 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

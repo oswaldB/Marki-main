@@ -1,0 +1,49 @@
+adresse_bien: 20 avenue du Trois Septembre Le Gastaldy
+apporteur_id: cont_6KB3jgW9oc
+apporteur_nom: PROGEDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_KipSPsu7Mu
+created_at: '2026-06-24T16:31:25.901Z'
+date_echeance: '2024-10-01'
+date_import: '2026-07-09T07:05:08.954Z'
+date_piece: '2024-10-01'
+donneur_ordre_id: null
+donneur_ordre_nom: DUTTO
+donneur_ordre_prenom: Marie Louise
+email_index: 0
+facture_soldee: true
+id: imp_Es9BmCJD89
+id_dossier: '37693'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47533
+numero_dossier: 51699
+payer_id: cont_6KB3jgW9oc
+payeur_civilite: ''
+payeur_email: accueil@progedi.com
+payeur_nom: PROGEDI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DUTTO
+proprietaire_prenom: Marie Louise
+ref_piece: FA240926 47533
+reference: '51699'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:31:25.901Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA240926_47533/standard/FA240926 47533
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

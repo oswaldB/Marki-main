@@ -1,0 +1,65 @@
+$loki: 628
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:39.721Z'
+email: info@republique-beausoleil.com
+id: cont_9KF7R3DCug
+impaye_ids:
+  - imp_vqzYpADaDp
+  - imp_RHto05xmDi
+  - imp_MCNKic6tsm
+  - imp_5WBdzHKTjN
+  - imp_HomAdobr2t
+  - imp_vucJXEJPFS
+  - imp_PFFoFJVZLj
+  - imp_NihkrgGVxV
+  - imp_Ai0iAugPUS
+  - imp_KQDjm4MM7B
+  - imp_Uxn1aayGDf
+  - imp_T2izrzF0ZL
+  - imp_5zjFqHVG76
+  - imp_LXnXA7gTNT
+  - imp_Q1BpwhqXuG
+  - imp_zXF0cGJjTp
+  - imp_XTEEpPREkH
+  - imp_UVCjvRnw0s
+  - imp_2mxpOXCqk4
+  - imp_iEwdqIW55H
+  - imp_IOHCFIaYD5
+  - imp_jwxvGeaQqB
+  - imp_CuZBmr5PcJ
+  - imp_he8KN3kvzq
+  - imp_Fuf8dBNLe5
+  - imp_EJILGB4WX8
+  - imp_eelG7o9imK
+  - imp_pXwtPyTdGD
+  - imp_P8IthwqpzB
+  - imp_p14Z1OvK7v
+  - imp_qBHOV8IrNm
+  - imp_1cLFm4eXZs
+  - imp_L5lyqrhzzc
+  - imp_izUTdNC0G7
+  - imp_hpOyFTpnK5
+  - imp_bk9oYNNQFK
+  - imp_MzHEX0ZLle
+is_blacklisted: true
+meta:
+  created: 1783580698607
+  revision: 0
+  version: 0
+nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:39.365Z'

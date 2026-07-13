@@ -1,0 +1,49 @@
+adresse_bien: 14 avenue Albert 1er L'Hermitage
+apporteur_id: cont_XfMiq6mNPd
+apporteur_nom: HAKKASAN
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_aphNL83I9z
+created_at: '2026-07-06T22:01:41.766Z'
+date_echeance: '2026-07-13'
+date_import: '2026-07-09T07:05:12.293Z'
+date_piece: '2026-07-06'
+donneur_ordre_id: null
+donneur_ordre_nom: JAUMOULLE
+donneur_ordre_prenom: Nicole
+email_index: 0
+facture_soldee: false
+id: imp_aEG5NjCQK6
+id_dossier: '42079'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51247
+numero_dossier: 56085
+payer_id: cont_XfMiq6mNPd
+payeur_civilite: ''
+payeur_email: ca.perard@hakkasan.immo
+payeur_nom: HAKKASAN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: JAUMOULLE
+proprietaire_prenom: Nicole
+ref_piece: FA260706 51247
+reference: '56085'
+reste_a_payer: 255
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-07-07T22:00:52.354Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juillet/FA260706_51247/standard/FA260706 51247
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

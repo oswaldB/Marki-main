@@ -1,0 +1,93 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_VJbEbfJg0T
+corps: >
+  <p>Bonjour Pascal FERRERO,</p>
+
+  <p><br></p>
+
+  <p>Nous constatons que votre facture <strong>n°48863</strong>, relative à une
+  prestation réalisée au <strong>7 rue Barberis, 06300 NICE - dossier
+  53371</strong>, n'a toujours pas été réglée malgré nos précédentes
+  relances.</p>
+
+  <p><br></p>
+
+  <p>Pour éviter l'application de pénalités, nous vous invitons à procéder
+  <strong>dès maintenant</strong> à son règlement :</p>
+
+  <p><br></p>
+
+  <table style="border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Facture</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Échéance</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Montant total</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Reste à payer</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Télécharger la facture</p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>48863</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>12/05/2025</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>1400 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>1400 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p><a href="https://adti.markidiags.com/redirect-pdf/omtMdj2GZ2">Télécharger</a></p></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=1400&amp;vads_order_id=48863&amp;vads_cust_id=53371&amp;vads_cust_last_name=FERRERO&amp;vads_cust_first_name=Pascal&amp;vads_cust_email=pascal.ferrero.perso@gmail.com&amp;vads_cust_cell_phone=">Paiement
+  sécurisé en ligne en carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p><strong>À défaut de paiement sous 3 jours</strong>, des intérêts de retard
+  et une indemnité forfaitaire pour frais de recouvrement seront appliqués.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-06-25T16:29:13.505Z'
+date_envoi: '2026-07-03T17:00:13.817Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 4
+erreur_count: 0
+id: rel_wB0YWgxsS1
+impaye_ids:
+  - imp_omtMdj2GZ2
+manuelle: false
+message_id: null
+objet: >-
+  EX'IM - Dossier 53371 - Relance n°2 : Application prochaine des pénalités de
+  retard
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: Envoyée
+type: relance
+updated_at: '2026-07-03T17:00:13.817Z'
+valide: true

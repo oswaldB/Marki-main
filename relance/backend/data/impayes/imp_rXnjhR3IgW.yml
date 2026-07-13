@@ -1,0 +1,49 @@
+adresse_bien: 8 place Garibaldi 58 avenue de la Republique
+apporteur_id: cont_oRs8F9AOCW
+apporteur_nom: CITYA DALBERA IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "SDC 8 GARIBALDI\r\n8 PLACE GARIBALDI\r\n58 AVENUE DE LA REPUBLIQUE\r\n06300 NICE"
+contact_relance_id: cont_kL1P0m6DIC
+created_at: '2026-06-24T16:31:24.990Z'
+date_echeance: '2024-10-09'
+date_import: '2026-07-09T07:05:08.887Z'
+date_piece: '2024-10-09'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC 8 GARIBALDI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_rXnjhR3IgW
+id_dossier: '37769'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47590
+numero_dossier: 51775
+payer_id: cont_oRs8F9AOCW
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CITYA DALBERA IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC 8 GARIBALDI
+proprietaire_prenom: null
+ref_piece: FA241009 47590
+reference: '51775'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 850
+total_ttc: 1020
+type: impaye
+updated_at: '2026-06-24T16:31:24.990Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241009_47590/standard/FA241009 47590
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

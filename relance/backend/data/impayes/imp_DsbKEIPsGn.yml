@@ -1,0 +1,49 @@
+adresse_bien: 98 Promenade Val du Careï LE GALILEE
+apporteur_id: cont_axwCVxbA8C
+apporteur_nom: CABINET CAIRO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "COPROPRIETE LE GALILEE\r\n\r\n98 Promenade du Val du Careî\r\n06500 MENTON "
+contact_relance_id: cont_axwCVxbA8C
+created_at: '2026-06-24T16:30:53.898Z'
+date_echeance: '2026-02-20'
+date_import: '2026-07-09T07:05:05.850Z'
+date_piece: '2026-02-13'
+donneur_ordre_id: null
+donneur_ordre_nom: CABINET CAIRO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_DsbKEIPsGn
+id_dossier: '40396'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50480
+numero_dossier: 54402
+payer_id: cont_axwCVxbA8C
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET CAIRO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC LE GALILEE
+proprietaire_prenom: null
+ref_piece: FA260213 50480
+reference: '54402'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 3750
+total_ttc: 4500
+type: impaye
+updated_at: '2026-06-24T16:30:53.898Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260213_50480/standard/FA260213 50480
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

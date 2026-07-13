@@ -1,0 +1,30 @@
+$loki: 3991
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:11.530Z'
+email: josephgiunta1968@gmail.com
+id: cont_bkFyWkp98a
+impaye_ids:
+  - imp_bchtDEHSq2
+  - imp_uwqAJf0M5w
+is_blacklisted: false
+meta:
+  created: 1783580699849
+  revision: 0
+  version: 0
+nom: GIUNTA
+prenom: Isabelle et Joseph
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:10.377Z'

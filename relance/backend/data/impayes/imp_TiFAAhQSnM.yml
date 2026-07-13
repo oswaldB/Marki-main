@@ -1,0 +1,49 @@
+adresse_bien: 10 rue Urbana Le Piranese
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_JAv7e2AVqI
+created_at: '2026-06-24T16:31:32.931Z'
+date_echeance: '2024-06-12'
+date_import: '2026-07-09T07:05:09.698Z'
+date_piece: '2024-06-12'
+donneur_ordre_id: null
+donneur_ordre_nom: ANSALDI
+donneur_ordre_prenom: Clarissel et Emmanue
+email_index: 0
+facture_soldee: true
+id: imp_TiFAAhQSnM
+id_dossier: '35887'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46862
+numero_dossier: 50891
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: ANSALDI
+proprietaire_prenom: Clarissel et Emmanue
+ref_piece: FA240612 46862
+reference: '50891'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 107.5
+total_ttc: 129
+type: impaye
+updated_at: '2026-06-24T16:31:32.931Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240612_46862/standard/FA240612 46862 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

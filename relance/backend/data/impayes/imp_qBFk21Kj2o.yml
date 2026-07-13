@@ -1,0 +1,49 @@
+adresse_bien: 31 avenue Alfred Borriglione
+apporteur_id: cont_3hleN3RNdd
+apporteur_nom: BENAMOU
+apporteur_prenom: Olivier Isaac
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_mj9PUHXkVE
+created_at: '2026-06-24T16:31:33.902Z'
+date_echeance: '2024-06-03'
+date_import: '2026-07-09T07:05:09.781Z'
+date_piece: '2024-06-03'
+donneur_ordre_id: null
+donneur_ordre_nom: AU GOUT THE D'ANTAN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_qBFk21Kj2o
+id_dossier: '34703'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46773
+numero_dossier: 50702
+payer_id: cont_mj9PUHXkVE
+payeur_civilite: ''
+payeur_email: cortese.precilia@gmail.com
+payeur_nom: AU GOUT THE D'ANTAN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: AU GOUT THE D'ANTAN
+proprietaire_prenom: null
+ref_piece: FA240529 46773
+reference: '50702'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:33.902Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240529_46773/standard/FA240529 46773 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 4 avenue Edouard VII L'Astoria
+apporteur_id: cont_Kl8PBkhOa2
+apporteur_nom: LAFORET Menton Pieta
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_7I0LchDOE2
+created_at: '2026-06-24T16:31:02.877Z'
+date_echeance: '2025-10-13'
+date_import: '2026-07-09T07:05:06.694Z'
+date_piece: '2025-10-06'
+donneur_ordre_id: null
+donneur_ordre_nom: BERNARD
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_KbKHJSBmwY
+id_dossier: '40351'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49677
+numero_dossier: 54357
+payer_id: cont_7I0LchDOE2
+payeur_civilite: ''
+payeur_email: martineb147@gmail.com
+payeur_nom: BERNARD
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BERNARD
+proprietaire_prenom: null
+ref_piece: FA251006 49677
+reference: '54357'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 333.33
+total_ttc: 400
+type: impaye
+updated_at: '2026-06-24T16:31:02.877Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251006_49677/standard/FA251006 49677
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,29 @@
+$loki: 5659
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:27.545Z'
+email: stonero@live.fr
+id: cont_amj6n653eC
+impaye_ids:
+  - imp_FvAMILSQrr
+is_blacklisted: false
+meta:
+  created: 1783580700390
+  revision: 0
+  version: 0
+nom: MULLER
+prenom: Rolf
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:26.344Z'

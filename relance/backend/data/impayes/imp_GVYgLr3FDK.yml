@@ -1,0 +1,49 @@
+adresse_bien: 20 rue Albert Voisin Quai des Arts
+apporteur_id: cont_aFSXWA9ETI
+apporteur_nom: SAINT ROCH IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_aD3ZglfLat
+created_at: '2026-06-24T16:31:48.993Z'
+date_echeance: '2023-10-23'
+date_import: '2026-07-09T07:05:11.105Z'
+date_piece: '2023-10-23'
+donneur_ordre_id: null
+donneur_ordre_nom: GRINDA
+donneur_ordre_prenom: 'Rene '
+email_index: 0
+facture_soldee: true
+id: imp_GVYgLr3FDK
+id_dossier: '32008'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45443
+numero_dossier: 49005
+payer_id: cont_aFSXWA9ETI
+payeur_civilite: ''
+payeur_email: info@saintrochimmobilier.com
+payeur_nom: SAINT ROCH IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: GRINDA
+proprietaire_prenom: 'Rene '
+ref_piece: FA231023 45443
+reference: '49005'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 158.33
+total_ttc: 190
+type: impaye
+updated_at: '2026-06-24T16:31:48.993Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231023_45443/standard/FA231023 45443
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

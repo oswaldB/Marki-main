@@ -1,0 +1,49 @@
+adresse_bien: 14 avenue du Docteur Maurice Donat Les Agaves
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: ''
+contact_relance_id: cont_unY1BQJhlb
+created_at: '2026-06-24T16:30:52.870Z'
+date_echeance: '2026-03-16'
+date_import: '2026-07-09T07:05:05.723Z'
+date_piece: '2026-03-09'
+donneur_ordre_id: null
+donneur_ordre_nom: BENZAKEN
+donneur_ordre_prenom: Mikael
+email_index: 0
+facture_soldee: true
+id: imp_J3EebOTiJe
+id_dossier: '41348'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50566
+numero_dossier: 55354
+payer_id: cont_unY1BQJhlb
+payeur_civilite: ''
+payeur_email: mikael.benzaken@atlibitum.com
+payeur_nom: BENZAKEN
+payeur_prenom: Mikael
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BENZAKEN
+proprietaire_prenom: Mikael
+ref_piece: FA260309 50566
+reference: '55354'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 200
+total_ttc: 240
+type: impaye
+updated_at: '2026-06-24T16:30:52.870Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260309_50566/standard/FA260309 50566 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

@@ -1,0 +1,49 @@
+adresse_bien: 105 avenue Léopold II Le Brasilia
+apporteur_id: cont_blb2dRpoQ7
+apporteur_nom: AZUR MEDITERRANEE VILLEFRANCHE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_2hU6f1CEEA
+created_at: '2026-06-24T16:31:48.041Z'
+date_echeance: '2023-11-03'
+date_import: '2026-07-09T07:05:11.053Z'
+date_piece: '2023-11-03'
+donneur_ordre_id: null
+donneur_ordre_nom: PANTONE
+donneur_ordre_prenom: Nicola
+email_index: 0
+facture_soldee: true
+id: imp_8wELi2vt29
+id_dossier: '32083'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45510
+numero_dossier: 49080
+payer_id: cont_2hU6f1CEEA
+payeur_civilite: ''
+payeur_email: nicola.pantone@ubs.com
+payeur_nom: PANTONE
+payeur_prenom: Nicola
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PANTONE
+proprietaire_prenom: Nicola
+ref_piece: FA231031 45510
+reference: '49080'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:48.041Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231031_45510/standard/FA231031 45510
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

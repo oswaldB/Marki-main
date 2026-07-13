@@ -1,0 +1,49 @@
+adresse_bien: 86 avenue Raoul Dufy Marine fleurie
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_7L7bMc9f8c
+created_at: '2026-06-24T16:31:23.011Z'
+date_echeance: '2024-11-07'
+date_import: '2026-07-09T07:05:08.710Z'
+date_piece: '2024-11-07'
+donneur_ordre_id: null
+donneur_ordre_nom: IOAN
+donneur_ordre_prenom: Istoc
+email_index: 0
+facture_soldee: true
+id: imp_j2kWMbKZdM
+id_dossier: '37958'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47751
+numero_dossier: 51964
+payer_id: cont_7L7bMc9f8c
+payeur_civilite: ''
+payeur_email: istocioan@yahoo.com
+payeur_nom: IOAN
+payeur_prenom: Istoc
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: IOAN
+proprietaire_prenom: Istoc
+ref_piece: FA241107 47751
+reference: '51964'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 167.29
+total_ttc: 200.75
+type: impaye
+updated_at: '2026-06-24T16:31:23.011Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241107_47751/standard/FA241107 47751
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

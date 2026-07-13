@@ -1,0 +1,49 @@
+adresse_bien: 34 boulevard Général Louis Delfino
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "09/09 relance mail notaire\r\n\r\nla notaire nous indique que la signature devrait être début octobre, relancer vers le 10 octobre\r\n\r\nrelance notaire le 18/09"
+contact_relance_id: cont_yRour0I0VZ
+created_at: '2026-06-24T16:31:06.912Z'
+date_echeance: '2025-07-24'
+date_import: '2026-07-09T07:05:07.084Z'
+date_piece: '2025-07-24'
+donneur_ordre_id: null
+donneur_ordre_nom: CHINI
+donneur_ordre_prenom: Emilienne
+email_index: 0
+facture_soldee: true
+id: imp_e9lWSFXxLF
+id_dossier: '39926'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49290
+numero_dossier: 53932
+payer_id: cont_yRour0I0VZ
+payeur_civilite: ''
+payeur_email: 'valerie.wohl-dahan@odelia.notaires.fr '
+payeur_nom: WOHL DAHAN Valérie
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: CHINI
+proprietaire_prenom: Emilienne
+ref_piece: FA250724 49290
+reference: '53932'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:06.912Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250724_49290/standard/FA250724 49290
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

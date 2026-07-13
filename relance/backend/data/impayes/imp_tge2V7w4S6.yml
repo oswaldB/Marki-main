@@ -1,0 +1,49 @@
+adresse_bien: 26 avenue Riviera La Cerisaie
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_HvTmyG71J6
+created_at: '2026-06-24T16:30:54.918Z'
+date_echeance: '2026-02-06'
+date_import: '2026-07-09T07:05:05.984Z'
+date_piece: '2026-01-30'
+donneur_ordre_id: null
+donneur_ordre_nom: POWILEVICZ
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_tge2V7w4S6
+id_dossier: '41091'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50385
+numero_dossier: 55097
+payer_id: cont_HvTmyG71J6
+payeur_civilite: ''
+payeur_email: npowilewicz@laforet.com
+payeur_nom: POWILEVICZ
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: POWILEVICZ
+proprietaire_prenom: null
+ref_piece: FA260130 50385
+reference: '55097'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 0
+total_ttc: 0
+type: impaye
+updated_at: '2026-06-24T16:30:54.918Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260130_50385/standard/FA260130 50385
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

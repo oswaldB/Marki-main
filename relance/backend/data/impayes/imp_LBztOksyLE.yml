@@ -1,0 +1,49 @@
+adresse_bien: 28 boulevard de Garavan Les Terrasses du Levant
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:17.927Z'
+date_echeance: '2025-02-07'
+date_import: '2026-07-09T07:05:08.171Z'
+date_piece: '2025-02-07'
+donneur_ordre_id: null
+donneur_ordre_nom: PATARO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_LBztOksyLE
+id_dossier: '38646'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48286
+numero_dossier: 52652
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PATARO
+proprietaire_prenom: null
+ref_piece: FA250207 48286
+reference: '52652'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:17.927Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250207_48286/standard/FA250207 48286
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

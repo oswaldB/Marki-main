@@ -1,0 +1,49 @@
+adresse_bien: 8 quai des Docks Le Neptune B
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_D8fdlp33FD
+created_at: '2026-06-24T16:31:35.001Z'
+date_echeance: '2024-05-13'
+date_import: '2026-07-09T07:05:09.888Z'
+date_piece: '2024-05-13'
+donneur_ordre_id: null
+donneur_ordre_nom: FRANCO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_hGbHjP2xNa
+id_dossier: '34631'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46653
+numero_dossier: 50630
+payer_id: cont_5owmFecKf0
+payeur_civilite: ''
+payeur_email: contact@richerimmobilier.com
+payeur_nom: RICHER IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FRANCO
+proprietaire_prenom: null
+ref_piece: FA240513 46653
+reference: '50630'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 145.17
+total_ttc: 174.2
+type: impaye
+updated_at: '2026-06-24T16:31:35.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240513_46653/standard/FA240513 46653 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 30 34 avenue de Fabron Chateau Saint Anne Les Begonias
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_LCd95CjGCu
+created_at: '2026-06-24T16:30:45.930Z'
+date_echeance: '2026-06-29'
+date_import: '2026-07-09T07:05:05.063Z'
+date_piece: '2026-06-22'
+donneur_ordre_id: null
+donneur_ordre_nom: ABECASSIS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_SQuoOj4PGA
+id_dossier: '41615'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51170
+numero_dossier: 55621
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: ABECASSIS
+proprietaire_prenom: null
+ref_piece: FA260622 51170
+reference: '55621'
+reste_a_payer: 300
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:33:32.510Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260622_51170/standard/FA260622 51170 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

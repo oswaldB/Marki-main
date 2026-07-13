@@ -1,0 +1,49 @@
+adresse_bien: 105 avenue de Sospel Restaurant Le Tema
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_kn7rtgtiTJ
+created_at: '2026-06-24T16:31:37.001Z'
+date_echeance: '2024-04-12'
+date_import: '2026-07-09T07:05:10.037Z'
+date_piece: '2024-04-12'
+donneur_ordre_id: null
+donneur_ordre_nom: TALLONE
+donneur_ordre_prenom: 'Jean '
+email_index: 0
+facture_soldee: true
+id: imp_hezYWof35B
+id_dossier: '34409'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46482
+numero_dossier: 50408
+payer_id: cont_kn7rtgtiTJ
+payeur_civilite: ''
+payeur_email: jean.tallone@sfr.fr
+payeur_nom: TALLONE
+payeur_prenom: 'Jean '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: TALLONE
+proprietaire_prenom: 'Jean '
+ref_piece: FA240412 46482
+reference: '50408'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 358.33
+total_ttc: 430
+type: impaye
+updated_at: '2026-06-24T16:31:37.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240412_46482/standard/FA240412 46482
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

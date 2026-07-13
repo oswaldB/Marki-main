@@ -1,0 +1,49 @@
+adresse_bien: 205 avenue de la Californie
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_nhd79xJnxO
+created_at: '2026-06-25T09:07:58.993Z'
+date_echeance: '2026-07-02'
+date_import: '2026-07-09T07:05:12.183Z'
+date_piece: '2026-06-25'
+donneur_ordre_id: null
+donneur_ordre_nom: 'LINDGREN '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Zn4HVlZXkT
+id_dossier: '42033'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51186
+numero_dossier: 56039
+payer_id: cont_nhd79xJnxO
+payeur_civilite: ''
+payeur_email: christina.lindgren47@gmail.com
+payeur_nom: 'LINDGREN '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'LINDGREN '
+proprietaire_prenom: null
+ref_piece: FA260625 51186
+reference: '56039'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-30T07:50:00.790Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260625_51186/standard/FA260625 51186 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

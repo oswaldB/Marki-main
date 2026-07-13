@@ -1,0 +1,49 @@
+adresse_bien: 23 avenue du Petit Fabron LE DELLA
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:14.886Z'
+date_echeance: '2025-03-19'
+date_import: '2026-07-09T07:05:07.841Z'
+date_piece: '2025-03-19'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Fcl7Nk0eT5
+id_dossier: '38968'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48546
+numero_dossier: 52974
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BOULAY
+proprietaire_prenom: Caroline
+ref_piece: FA250319 48546
+reference: '52974'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 45.83
+total_ttc: 55
+type: impaye
+updated_at: '2026-06-24T16:31:14.886Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250319_48546/standard/FA250319 48546 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

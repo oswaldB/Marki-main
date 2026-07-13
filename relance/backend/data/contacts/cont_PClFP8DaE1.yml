@@ -1,0 +1,29 @@
+$loki: 842
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:41.726Z'
+email: celinearthurimmo@gmail.com
+id: cont_PClFP8DaE1
+impaye_ids:
+  - imp_0fEu8ihh1R
+is_blacklisted: false
+meta:
+  created: 1783580698686
+  revision: 0
+  version: 0
+nom: ERBESLER
+prenom: Céline
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:41.365Z'

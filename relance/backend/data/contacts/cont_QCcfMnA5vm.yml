@@ -1,0 +1,29 @@
+$loki: 5228
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:22.574Z'
+email: rivetti@monaco.mc
+id: cont_QCcfMnA5vm
+impaye_ids:
+  - imp_k2OISAnwHT
+is_blacklisted: false
+meta:
+  created: 1783580700230
+  revision: 0
+  version: 0
+nom: DELFINO
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:22.340Z'

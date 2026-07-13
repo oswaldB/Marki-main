@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Magenta
+apporteur_id: cont_vCAOy10UIf
+apporteur_nom: IMMOBILTREND
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_CiFv9vYXa0
+created_at: '2026-06-24T16:31:23.938Z'
+date_echeance: '2024-10-24'
+date_import: '2026-07-09T07:05:08.763Z'
+date_piece: '2024-10-24'
+donneur_ordre_id: null
+donneur_ordre_nom: 'VASSALLO / MOSSO '
+donneur_ordre_prenom: Anna Maria et Paolo
+email_index: 0
+facture_soldee: true
+id: imp_nzGurafnCn
+id_dossier: '37882'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47690
+numero_dossier: 51888
+payer_id: cont_CiFv9vYXa0
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: 'VASSALLO / MOSSO '
+payeur_prenom: Anna Maria et Paolo
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'VASSALLO / MOSSO '
+proprietaire_prenom: Anna Maria et Paolo
+ref_piece: FA241024 47690
+reference: '51888'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 370.83
+total_ttc: 445
+type: impaye
+updated_at: '2026-06-24T16:31:23.938Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241024_47690/standard/FA241024 47690
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

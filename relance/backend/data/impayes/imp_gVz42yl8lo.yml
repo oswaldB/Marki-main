@@ -1,0 +1,49 @@
+adresse_bien: 6 avenue Montfleury Le Clair Bois
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_1YYiFZWsA1
+created_at: '2026-06-24T16:31:17.957Z'
+date_echeance: '2025-02-05'
+date_import: '2026-07-09T07:05:08.185Z'
+date_piece: '2025-02-05'
+donneur_ordre_id: null
+donneur_ordre_nom: BERGMAN
+donneur_ordre_prenom: Elisabeth
+email_index: 0
+facture_soldee: true
+id: imp_gVz42yl8lo
+id_dossier: '38609'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48254
+numero_dossier: 52615
+payer_id: cont_1YYiFZWsA1
+payeur_civilite: ''
+payeur_email: elsaberg10@gmail.com
+payeur_nom: BERGMAN
+payeur_prenom: Elisabeth
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BERGMAN
+proprietaire_prenom: Elisabeth
+ref_piece: FA250205 48254
+reference: '52615'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:17.957Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250205_48254/standard/FA250205 48254
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

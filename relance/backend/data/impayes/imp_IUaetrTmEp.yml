@@ -1,0 +1,49 @@
+adresse_bien: 185 avenue Sainte-Marguerite Les Cigales
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_uLHOr9KTED
+created_at: '2026-06-24T16:31:02.017Z'
+date_echeance: '2025-10-17'
+date_import: '2026-07-09T07:05:06.665Z'
+date_piece: '2025-10-10'
+donneur_ordre_id: null
+donneur_ordre_nom: GOMEZ
+donneur_ordre_prenom: 'Sandrine '
+email_index: 0
+facture_soldee: true
+id: imp_IUaetrTmEp
+id_dossier: '40413'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49709
+numero_dossier: 54419
+payer_id: cont_uLHOr9KTED
+payeur_civilite: ''
+payeur_email: s-gomez13@hotmail.com
+payeur_nom: GOMEZ
+payeur_prenom: 'Sandrine '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GOMEZ
+proprietaire_prenom: 'Sandrine '
+ref_piece: FA251010 49709
+reference: '54419'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:02.017Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251010_49709/standard/FA251010 49709
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 15 rue Professeur Calmette  Maison Emilie
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_VaqXS1oHBL
+created_at: '2026-06-24T16:30:58.051Z'
+date_echeance: '2025-12-08'
+date_import: '2026-07-09T07:05:06.324Z'
+date_piece: '2025-12-01'
+donneur_ordre_id: null
+donneur_ordre_nom: 'DENTAL '
+donneur_ordre_prenom: 'Louis '
+email_index: 0
+facture_soldee: true
+id: imp_DeQYubiCT9
+id_dossier: '40743'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50055
+numero_dossier: 54749
+payer_id: cont_VaqXS1oHBL
+payeur_civilite: ''
+payeur_email: louis.dental@libello.com
+payeur_nom: 'DENTAL '
+payeur_prenom: 'Louis '
+payeur_telephone: '0678635843'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'DENTAL '
+proprietaire_prenom: 'Louis '
+ref_piece: FA251201 50055
+reference: '54749'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 188.75
+total_ttc: 226.5
+type: impaye
+updated_at: '2026-06-24T16:30:58.051Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251201_50055/standard/FA251201 50055
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

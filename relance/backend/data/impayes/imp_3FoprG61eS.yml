@@ -1,0 +1,49 @@
+adresse_bien: 12 rue Arazy
+apporteur_id: cont_ax6amK9uG4
+apporteur_nom: CAPGEST
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: cont_9HMvdEfErm
+created_at: '2026-06-24T16:31:48.074Z'
+date_echeance: '2023-10-27'
+date_import: '2026-07-09T07:05:11.070Z'
+date_piece: '2023-10-27'
+donneur_ordre_id: null
+donneur_ordre_nom: GUERPILLON
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_3FoprG61eS
+id_dossier: '32052'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45484
+numero_dossier: 49049
+payer_id: cont_ax6amK9uG4
+payeur_civilite: ''
+payeur_email: capgest@outlook.com
+payeur_nom: CAPGEST
+payeur_prenom: ''
+payeur_telephone: 0)660047242
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: GUERPILLON
+proprietaire_prenom: null
+ref_piece: FA231027 45484
+reference: '49049'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:48.074Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231027_45484/standard/FA231027 45484
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

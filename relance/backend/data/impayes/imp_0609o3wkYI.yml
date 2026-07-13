@@ -1,0 +1,49 @@
+adresse_bien: 5 rue Maurice Maccario Les Terrasses de Terra Blanca Bâtiment B
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:31:02.979Z'
+date_echeance: '2025-10-07'
+date_import: '2026-07-09T07:05:06.747Z'
+date_piece: '2025-09-30'
+donneur_ordre_id: null
+donneur_ordre_nom: FONCIERE DI 01/2007 9029
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_0609o3wkYI
+id_dossier: '40287'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49615
+numero_dossier: 54293
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FONCIERE DI 01/2007 9029
+proprietaire_prenom: null
+ref_piece: FA250930 49615
+reference: '54293'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1738.75
+total_ttc: 2086.5
+type: impaye
+updated_at: '2026-06-24T16:31:02.979Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250930_49615/standard/FA250930 49615
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

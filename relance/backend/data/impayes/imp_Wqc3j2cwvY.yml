@@ -1,0 +1,49 @@
+adresse_bien: 41 allée Jeanne d'Arc
+apporteur_id: cont_OdGGwFKYqJ
+apporteur_nom: SPECIAL IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06700'
+commentaire_piece: ''
+contact_relance_id: cont_HpfqwqREF9
+created_at: '2026-06-24T16:31:54.018Z'
+date_echeance: '2023-08-09'
+date_import: '2026-07-09T07:05:11.576Z'
+date_piece: '2023-08-09'
+donneur_ordre_id: null
+donneur_ordre_nom: IBAGHERACHE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Wqc3j2cwvY
+id_dossier: '30446'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44966
+numero_dossier: 48436
+payer_id: cont_HpfqwqREF9
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: IBAGHERACHE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: IBAGHERACHE
+proprietaire_prenom: null
+ref_piece: FA230809 44966
+reference: '48436'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 80
+total_ttc: 96
+type: impaye
+updated_at: '2026-06-24T16:31:54.018Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230809_44966/standard/FA230809 44966 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: SAINT-LAURENT-DU-VAR

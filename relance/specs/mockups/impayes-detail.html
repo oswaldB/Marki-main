@@ -54,7 +54,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         
         <!-- Colonne gauche: Infos facture, bien, missions, interventions, payeur, apporteur, propriétaire, historique -->
-        <div class="lg:col-span-2 space-y-6">
+        <div :class="showPdfViewer ? 'lg:col-span-1 space-y-6' : 'lg:col-span-2 space-y-6'">
           
           <!-- Section Facture -->
           <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
@@ -133,13 +133,10 @@
           
           <!-- Section Missions et Interventions -->
           <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
-            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+            <div class="px-6 py-4 border-b border-slate-100">
               <h3 class="font-semibold text-slate-900">
                 <i class="fas fa-tasks text-slate-400 mr-2"></i>Missions et interventions
               </h3>
-              <button @click="addIntervention()" class="text-sm text-sky-600 hover:text-sky-700 font-medium">
-                <i class="fas fa-plus mr-1"></i>Ajouter
-              </button>
             </div>
             <div class="p-6">
               <div class="space-y-4">
@@ -483,6 +480,24 @@
           
         </div>
         
+        <!-- Colonne PDF -->
+        <div x-show="showPdfViewer" class="lg:col-span-1 space-y-6 border-l border-slate-200 pl-6" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
+          <div class="bg-white rounded-xl border border-slate-200 h-full flex flex-col">
+            <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-file-pdf text-red-500"></i>
+                <span class="font-medium text-slate-700 text-sm">Facture PDF</span>
+              </div>
+              <button @click="closePdf()" class="text-slate-400 hover:text-slate-600 p-1.5 rounded hover:bg-slate-100 transition-all">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div class="flex-1 bg-slate-50 p-2">
+              <iframe :src="'./pdf/facture-' + impaye?.id + '.pdf'" class="w-full h-full border-0 rounded-lg bg-white" type="application/pdf"></iframe>
+            </div>
+          </div>
+        </div>
+        
       </div>
     </template>
     
@@ -583,6 +598,7 @@ function impayeDetailPage() {
     showUnsuspendConfirm: false,
     showBlacklistConfirm: false,
     showAddInterventionModal: false,
+    showPdfViewer: false,
     
     suspendForm: { motif: '', detail: '' },
     newIntervention: { type: '', agent: '', date: '', bien: '', description: '' },
@@ -770,7 +786,11 @@ function impayeDetailPage() {
     },
     
     openPdf() {
-      this.showToast('Info', 'Ouverture du PDF...', 'success');
+      this.showPdfViewer = true;
+    },
+    
+    closePdf() {
+      this.showPdfViewer = false;
     },
     
     getStatutLabel(statut) {

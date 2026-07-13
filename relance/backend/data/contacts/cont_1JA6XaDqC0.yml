@@ -1,0 +1,39 @@
+$loki: 6827
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-07-07T22:00:50.473Z'
+email: lili.galvez@gmail.com
+id: cont_1JA6XaDqC0
+impaye_ids:
+  - imp_QbNGh4b7X3
+is_blacklisted: false
+meta:
+  created: 1783580700752
+  revision: 1
+  updated: 1783580718482
+  version: 0
+nom: GALVEZ ET HERMANNI
+prenom: Liliana et Claus
+relance_ids:
+  - rel_N1yRvpkUml
+  - rel_RHfXmWyYHu
+  - rel_MQcARLlc4p
+  - rel_bDDr9hHmEG
+  - rel_ADe7YO9SPz
+  - rel_JzY3sGnFzg
+  - rel_869VBRXHdi
+  - rel_6LbBP22InW
+  - rel_Cebi3ELcpm
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:36.419Z'

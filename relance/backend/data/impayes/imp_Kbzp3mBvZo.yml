@@ -1,0 +1,49 @@
+adresse_bien: 6 rue Francis Gallo
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_OeC1xDfNQF
+created_at: '2026-06-24T16:31:12.892Z'
+date_echeance: '2025-04-16'
+date_import: '2026-07-09T07:05:07.664Z'
+date_piece: '2025-04-16'
+donneur_ordre_id: null
+donneur_ordre_nom: MAISON - PICON
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Kbzp3mBvZo
+id_dossier: '39203'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48732
+numero_dossier: 53209
+payer_id: cont_OeC1xDfNQF
+payeur_civilite: ''
+payeur_email: alexia.picon@yahoo.fr
+payeur_nom: MAISON - PICON
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: ' CAVELIER'
+proprietaire_prenom: Gaël
+ref_piece: FA250416 48732
+reference: '53209'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:12.892Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250416_48732/standard/FA250416 48732
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

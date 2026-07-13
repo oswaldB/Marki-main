@@ -1,0 +1,30 @@
+$loki: 5684
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:27.545Z'
+email: jonh-12@live.fr
+id: cont_r3whO3zXxS
+impaye_ids:
+  - imp_znt0gQpN00
+  - imp_WE3OCX4vHg
+is_blacklisted: false
+meta:
+  created: 1783580700400
+  revision: 0
+  version: 0
+nom: AUMOITTE BISIAUX
+prenom: Jonathan
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:26.344Z'

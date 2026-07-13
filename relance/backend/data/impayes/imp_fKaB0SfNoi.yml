@@ -1,0 +1,49 @@
+adresse_bien: 18 rue Pietra Scritta Le Patricia
+apporteur_id: cont_Kl8PBkhOa2
+apporteur_nom: LAFORET Menton Pieta
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_md88QAmAS2
+created_at: '2026-06-24T16:30:47.974Z'
+date_echeance: '2026-05-27'
+date_import: '2026-07-09T07:05:05.314Z'
+date_piece: '2026-05-20'
+donneur_ordre_id: null
+donneur_ordre_nom: BONIELLO
+donneur_ordre_prenom: Simone
+email_index: 0
+facture_soldee: true
+id: imp_fKaB0SfNoi
+id_dossier: '41807'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50980
+numero_dossier: 55813
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: BONIELLO
+proprietaire_prenom: Simone
+ref_piece: FA260520 50980
+reference: '55813'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 129.17
+total_ttc: 155
+type: impaye
+updated_at: '2026-07-07T09:50:00.487Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260520_50980/standard/FA260520 50980 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

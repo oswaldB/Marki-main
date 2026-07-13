@@ -1,0 +1,49 @@
+adresse_bien: 9 rue de Foresta
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:53.032Z'
+date_echeance: '2023-08-24'
+date_import: '2026-07-09T07:05:11.513Z'
+date_piece: '2023-08-24'
+donneur_ordre_id: null
+donneur_ordre_nom: VIDAL
+donneur_ordre_prenom: Etiennette
+email_index: 0
+facture_soldee: true
+id: imp_IrcHsp8EWd
+id_dossier: '30549'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45057
+numero_dossier: 48539
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: VIDAL
+proprietaire_prenom: Etiennette
+ref_piece: FA230824 45057
+reference: '48539'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:53.032Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230824_45057/standard/FA230824 45057 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

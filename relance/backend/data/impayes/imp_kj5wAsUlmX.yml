@@ -1,0 +1,49 @@
+adresse_bien: 231 avenue Antoine Peglion Le Florilege
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_Z7clhmHOek
+created_at: '2026-06-24T16:30:54.918Z'
+date_echeance: '2026-02-04'
+date_import: '2026-07-09T07:05:05.992Z'
+date_piece: '2026-01-28'
+donneur_ordre_id: null
+donneur_ordre_nom: 'SUCCESSION GRIBLOT MONIQUE '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_kj5wAsUlmX
+id_dossier: '41083'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50371
+numero_dossier: 55089
+payer_id: cont_Z7clhmHOek
+payeur_civilite: ''
+payeur_email: dblin78@free.fr
+payeur_nom: BLIN
+payeur_prenom: 'Dominque '
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: 'SUCCESSION GRIBLOT MONIQUE '
+proprietaire_prenom: null
+ref_piece: FA260128 50371
+reference: '55089'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:30:54.918Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260128_50371/standard/FA260128 50371
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

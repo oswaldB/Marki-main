@@ -1,0 +1,49 @@
+adresse_bien: 124 avenue du Trois Septembre Eden Cap
+apporteur_id: cont_Q0jadWIlqE
+apporteur_nom: JLR IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: 03/04 paiement notaire d'ici la fin de mois
+contact_relance_id: cont_egvPuO9Mlo
+created_at: '2026-06-24T16:30:55.018Z'
+date_echeance: '2026-01-28'
+date_import: '2026-07-09T07:05:06.043Z'
+date_piece: '2026-01-21'
+donneur_ordre_id: null
+donneur_ordre_nom: 'LE CAP D''AIL '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_plSIOxYMQ5
+id_dossier: '41036'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50331
+numero_dossier: 55042
+payer_id: cont_Q0jadWIlqE
+payeur_civilite: ''
+payeur_email: agence@jlrimmo.com
+payeur_nom: JLR IMMO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'LE CAP D''AIL '
+proprietaire_prenom: null
+ref_piece: FA260121 50331
+reference: '55042'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 179.17
+total_ttc: 215
+type: impaye
+updated_at: '2026-06-24T16:30:55.018Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260121_50331/standard/FA260121 50331
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

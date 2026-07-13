@@ -1,0 +1,49 @@
+adresse_bien: 247 avenue Francis Tonner
+apporteur_id: cont_9xTBmhXZJI
+apporteur_nom: FMDC DIAGNOSTICS EXIM
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06150'
+commentaire_piece: ''
+contact_relance_id: cont_9xTBmhXZJI
+created_at: '2026-06-24T16:30:47.048Z'
+date_echeance: '2026-06-05'
+date_import: '2026-07-09T07:05:05.249Z'
+date_piece: '2026-05-29'
+donneur_ordre_id: null
+donneur_ordre_nom: TOTAL ENERGIES MARKETING FRANCE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_orEvM4eSGi
+id_dossier: '41802'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51040
+numero_dossier: 55808
+payer_id: cont_9xTBmhXZJI
+payeur_civilite: ''
+payeur_email: contact77@exim-expertises.fr
+payeur_nom: FMDC DIAGNOSTICS EXIM
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: AEROPORT DE LA COTE D'AZUR
+proprietaire_prenom: null
+ref_piece: FA260529 51040
+reference: '55808'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: -3320
+total_ttc: -3984
+type: impaye
+updated_at: '2026-06-24T16:30:47.048Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260529_51040/standard/FA260529 51040 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CANNES

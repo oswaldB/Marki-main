@@ -1,0 +1,49 @@
+adresse_bien: 9 rue Massenet Massenet Résidence
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_gHAOeA2HZW
+created_at: '2026-06-24T16:31:31.015Z'
+date_echeance: '2024-07-08'
+date_import: '2026-07-09T07:05:09.560Z'
+date_piece: '2024-07-08'
+donneur_ordre_id: null
+donneur_ordre_nom: WALLENIUS
+donneur_ordre_prenom: Helena
+email_index: 0
+facture_soldee: true
+id: imp_cmbY5Fu9DV
+id_dossier: '36072'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46998
+numero_dossier: 51076
+payer_id: cont_gHAOeA2HZW
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: WALLENIUS
+payeur_prenom: Helena
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: WALLENIUS
+proprietaire_prenom: Helena
+ref_piece: FA240708 46998
+reference: '51076'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:31.015Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240708_46998/standard/FA240708 46998
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

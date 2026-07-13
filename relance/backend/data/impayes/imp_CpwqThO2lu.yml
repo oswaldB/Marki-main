@@ -1,0 +1,49 @@
+adresse_bien: 35 boulevard de Garavan Les Miradors Les Palmiers
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_KvBUIFwswr
+created_at: '2026-06-24T16:30:46.095Z'
+date_echeance: '2026-06-22'
+date_import: '2026-07-09T07:05:05.121Z'
+date_piece: '2026-06-15'
+donneur_ordre_id: null
+donneur_ordre_nom: FLACH
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_CpwqThO2lu
+id_dossier: '41963'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51130
+numero_dossier: 55969
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FLACH
+proprietaire_prenom: null
+ref_piece: FA260615 51130
+reference: '55969'
+reste_a_payer: 0
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 172.5
+total_ttc: 207
+type: impaye
+updated_at: '2026-06-26T09:50:00.580Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260615_51130/standard/FA260615 51130 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

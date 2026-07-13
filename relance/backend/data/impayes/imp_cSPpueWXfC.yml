@@ -1,0 +1,49 @@
+adresse_bien: 22 avenue du Tapis Vert Les Magnolias
+apporteur_id: cont_7mZDDGX8U2
+apporteur_nom: AGENCE MOLIERE CENTURY 21
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06220'
+commentaire_piece: ''
+contact_relance_id: cont_F65nIJbYKn
+created_at: '2026-06-24T16:31:01.983Z'
+date_echeance: '2025-10-17'
+date_import: '2026-07-09T07:05:06.642Z'
+date_piece: '2025-10-10'
+donneur_ordre_id: null
+donneur_ordre_nom: SOUQUET
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_cSPpueWXfC
+id_dossier: '40314'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49704
+numero_dossier: 54320
+payer_id: cont_F65nIJbYKn
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SOUQUET
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SOUQUET
+proprietaire_prenom: null
+ref_piece: FA251010 49704
+reference: '54320'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 183.75
+total_ttc: 220.5
+type: impaye
+updated_at: '2026-06-24T16:31:01.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251010_49704/standard/FA251010 49704
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VALLAURIS

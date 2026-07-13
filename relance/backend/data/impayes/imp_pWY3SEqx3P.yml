@@ -1,0 +1,49 @@
+adresse_bien: 25 avenue Aimé Martin
+apporteur_id: cont_HKy4C2gxUH
+apporteur_nom: ARTHURIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_XE7qdwfCGj
+created_at: '2026-06-24T16:31:43.047Z'
+date_echeance: '2024-01-24'
+date_import: '2026-07-09T07:05:10.590Z'
+date_piece: '2024-01-24'
+donneur_ordre_id: null
+donneur_ordre_nom: INIDIVISION BAILET - ALLEMAN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_pWY3SEqx3P
+id_dossier: '32714'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45975
+numero_dossier: 49711
+payer_id: cont_XE7qdwfCGj
+payeur_civilite: ''
+payeur_email: craveasimone@gmail.com
+payeur_nom: INIDIVISION BAILET - ALLEMAN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: INIDIVISION BAILET - ALLEMAN
+proprietaire_prenom: null
+ref_piece: FA240124 45975
+reference: '49711'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:43.047Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240124_45975/standard/FA240124 45975
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

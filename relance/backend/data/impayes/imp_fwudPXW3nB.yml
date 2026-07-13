@@ -1,0 +1,49 @@
+adresse_bien: 11 avenue de Verdun Le Jardin des Muses
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_q0KIboo56O
+created_at: '2026-06-24T16:31:28.998Z'
+date_echeance: '2024-08-05'
+date_import: '2026-07-09T07:05:09.337Z'
+date_piece: '2024-08-05'
+donneur_ordre_id: null
+donneur_ordre_nom: BIGON
+donneur_ordre_prenom: Umberto
+email_index: 0
+facture_soldee: true
+id: imp_fwudPXW3nB
+id_dossier: '36252'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47150
+numero_dossier: 51256
+payer_id: cont_q0KIboo56O
+payeur_civilite: ''
+payeur_email: ' umbertobigon2@gmail.com'
+payeur_nom: BIGON
+payeur_prenom: Umberto
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BIGON
+proprietaire_prenom: Umberto
+ref_piece: FA240730 47150
+reference: '51256'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 246.67
+total_ttc: 296
+type: impaye
+updated_at: '2026-06-24T16:31:28.998Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240730_47150/standard/FA240730 47150 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

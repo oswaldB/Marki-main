@@ -1,0 +1,49 @@
+adresse_bien: 108 bis rue Roquebiliere
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: relance 01/10
+contact_relance_id: cont_0nPZpkqDTq
+created_at: '2026-06-24T16:31:11.884Z'
+date_echeance: '2025-05-07'
+date_import: '2026-07-09T07:05:07.556Z'
+date_piece: '2025-05-07'
+donneur_ordre_id: null
+donneur_ordre_nom: INDIVISION MILLO C/O Cabinet Grimaz
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_mBJ6cJ3IU1
+id_dossier: '39355'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48856
+numero_dossier: 53361
+payer_id: cont_0nPZpkqDTq
+payeur_civilite: ''
+payeur_email: contact@cabinet-grimaz.com
+payeur_nom: CABINET GRIMAZ
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: INDIVISION MILLO C/O Cabinet Grimaz
+proprietaire_prenom: null
+ref_piece: FA250507 48856
+reference: '53361'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 566.25
+total_ttc: 679.5
+type: impaye
+updated_at: '2026-06-24T16:31:11.884Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250507_48856/standard/FA250507 48856 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

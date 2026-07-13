@@ -1,0 +1,49 @@
+adresse_bien: 21 avenue de Verdun Le Globe
+apporteur_id: cont_axwCVxbA8C
+apporteur_nom: CABINET CAIRO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:06.912Z'
+date_echeance: '2025-07-25'
+date_import: '2026-07-09T07:05:07.077Z'
+date_piece: '2025-07-25'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC LE GLOBE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_S2iZqCJvjP
+id_dossier: '39793'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49296
+numero_dossier: 53799
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SDC LE GLOBE
+proprietaire_prenom: null
+ref_piece: FA250725 49296
+reference: '53799'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 242.25
+total_ttc: 290.7
+type: impaye
+updated_at: '2026-06-24T16:31:06.912Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250725_49296/standard/FA250725 49296
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

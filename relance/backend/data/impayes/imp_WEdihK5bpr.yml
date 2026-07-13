@@ -1,0 +1,49 @@
+adresse_bien: 52 boulevard du Maréchal Leclerc
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_J5pw5FHyo4
+created_at: '2026-06-24T16:31:10.960Z'
+date_echeance: '2025-05-16'
+date_import: '2026-07-09T07:05:07.499Z'
+date_piece: '2025-05-16'
+donneur_ordre_id: null
+donneur_ordre_nom: 'Restaurant LE CATALAN '
+donneur_ordre_prenom: Représenté par Madame VALSOT
+email_index: 0
+facture_soldee: true
+id: imp_WEdihK5bpr
+id_dossier: '39427'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48907
+numero_dossier: 53433
+payer_id: cont_J5pw5FHyo4
+payeur_civilite: ''
+payeur_email: anjuna2022@gmail.com
+payeur_nom: DEGIOANNI
+payeur_prenom: Patrick
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: 'Restaurant LE CATALAN '
+proprietaire_prenom: Représenté par Madame VALSOT
+ref_piece: FA250516 48907
+reference: '53433'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 312.5
+total_ttc: 375
+type: impaye
+updated_at: '2026-06-24T16:31:10.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250516_48907/standard/FA250516 48907 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

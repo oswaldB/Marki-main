@@ -1,0 +1,49 @@
+adresse_bien: 35 rue Maréchal Joffre
+apporteur_id: cont_xwiycBTXvc
+apporteur_nom: ANA GROUPE ALLIANCE GESTION NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "Réf. immeuble : 0300127\r\nL'ARIZONA\r\n35 RUE MARECHAL JOFFRE\r\n06000 NICE\r\n18 lots\r\n1 bâtiment\r\nNuméro d’immatriculation: AD6738488\r\n\r\nrelance le 09/01\r\n\r\n"
+contact_relance_id: cont_xCW8teGj3p
+created_at: '2026-06-24T16:30:57.989Z'
+date_echeance: '2025-12-08'
+date_import: '2026-07-09T07:05:06.296Z'
+date_piece: '2025-12-01'
+donneur_ordre_id: null
+donneur_ordre_nom: L'ARIZONA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_UUgIsfgLih
+id_dossier: '39936'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50051
+numero_dossier: 53942
+payer_id: cont_xCW8teGj3p
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: L'ARIZONA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: L'ARIZONA
+proprietaire_prenom: null
+ref_piece: FA251201 50051
+reference: '53942'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2083.33
+total_ttc: 2500
+type: impaye
+updated_at: '2026-06-24T16:30:57.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251201_50051/standard/FA251201 50051
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

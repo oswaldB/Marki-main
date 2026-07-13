@@ -1,0 +1,49 @@
+adresse_bien: 62 Val du Carei Le Réal
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_woPbwYa8x0
+created_at: '2026-06-24T16:31:11.884Z'
+date_echeance: '2025-05-09'
+date_import: '2026-07-09T07:05:07.552Z'
+date_piece: '2025-05-09'
+donneur_ordre_id: null
+donneur_ordre_nom: ROBIN
+donneur_ordre_prenom: Alexis
+email_index: 0
+facture_soldee: true
+id: imp_SnBZi3grqn
+id_dossier: '39359'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48858
+numero_dossier: 53365
+payer_id: cont_woPbwYa8x0
+payeur_civilite: ''
+payeur_email: alexisrobinmullot@yahoo.fr
+payeur_nom: ROBIN
+payeur_prenom: Alexis
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROBIN
+proprietaire_prenom: Alexis
+ref_piece: FA250509 48858
+reference: '53365'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:11.884Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250509_48858/standard/FA250509 48858 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

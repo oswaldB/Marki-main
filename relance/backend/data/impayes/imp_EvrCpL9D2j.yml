@@ -1,0 +1,49 @@
+adresse_bien: 18 chemin des Yuccas
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: "21/07 : relance mail prop / cc : agence\r\n\r\n07/07 : relance 1 prop. : échange avec agent qui me confirme que le client a \"oublié\" et qu'il va régler sous peu..."
+contact_relance_id: cont_bFjnuvmA3k
+created_at: '2026-06-24T16:31:10.960Z'
+date_echeance: '2025-05-15'
+date_import: '2026-07-09T07:05:07.500Z'
+date_piece: '2025-05-15'
+donneur_ordre_id: null
+donneur_ordre_nom: FIGGE
+donneur_ordre_prenom: 'Ulrike Hildegard '
+email_index: 0
+facture_soldee: true
+id: imp_EvrCpL9D2j
+id_dossier: '39411'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48891
+numero_dossier: 53417
+payer_id: cont_bFjnuvmA3k
+payeur_civilite: ''
+payeur_email: l.figge@mestah.de
+payeur_nom: FIGGE
+payeur_prenom: 'Ulrike Hildegard '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FIGGE
+proprietaire_prenom: 'Ulrike Hildegard '
+ref_piece: FA250515 48891
+reference: '53417'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 816.67
+total_ttc: 980
+type: impaye
+updated_at: '2026-06-24T16:31:10.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250515_48891/standard/FA250515 48891 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

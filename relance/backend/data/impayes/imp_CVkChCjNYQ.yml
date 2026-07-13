@@ -1,0 +1,49 @@
+adresse_bien: 4 avenue des anciens combattants d'AFN
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_3ntbo87lI9
+created_at: '2026-06-24T16:31:05.030Z'
+date_echeance: '2025-08-29'
+date_import: '2026-07-09T07:05:06.966Z'
+date_piece: '2025-08-22'
+donneur_ordre_id: null
+donneur_ordre_nom: ELLENA
+donneur_ordre_prenom: Barbara
+email_index: 0
+facture_soldee: true
+id: imp_CVkChCjNYQ
+id_dossier: '40074'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49409
+numero_dossier: 54080
+payer_id: cont_3ntbo87lI9
+payeur_civilite: ''
+payeur_email: gary.ellena@gmail.com
+payeur_nom: ELLENA
+payeur_prenom: Barbara
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ELLENA
+proprietaire_prenom: Barbara
+ref_piece: FA250822 49409
+reference: '54080'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 100
+total_ttc: 120
+type: impaye
+updated_at: '2026-06-24T16:31:05.030Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250822_49409/standard/FA250822 49409 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

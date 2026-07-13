@@ -1,0 +1,49 @@
+adresse_bien: 25 boulevard Pierre Sola
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_MNjFqYKFb8
+created_at: '2026-06-24T16:31:20.035Z'
+date_echeance: '2024-12-31'
+date_import: '2026-07-09T07:05:08.410Z'
+date_piece: '2024-12-31'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI SOLA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Tr2gNJEUMv
+id_dossier: '38317'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48025
+numero_dossier: 52323
+payer_id: cont_MNjFqYKFb8
+payeur_civilite: ''
+payeur_email: yacouba06000@gmail.com
+payeur_nom: OIEBRAOGO
+payeur_prenom: Yacouba
+payeur_telephone: '0651171089'
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SCI SOLA
+proprietaire_prenom: null
+ref_piece: FA241231 48025
+reference: '52323'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 116.67
+total_ttc: 140
+type: impaye
+updated_at: '2026-06-24T16:31:20.035Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241231_48025/standard/FA241231 48025
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

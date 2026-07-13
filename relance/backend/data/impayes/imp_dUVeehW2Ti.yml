@@ -1,0 +1,49 @@
+adresse_bien: 6 avenue Lympia
+apporteur_id: cont_cDekj9DHr8
+apporteur_nom: AGENCE NESTENN NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_1q8A1eN8DU
+created_at: '2026-06-24T16:31:29.932Z'
+date_echeance: '2024-07-24'
+date_import: '2026-07-09T07:05:09.429Z'
+date_piece: '2024-07-24'
+donneur_ordre_id: null
+donneur_ordre_nom: LAURIERE MARMOZ
+donneur_ordre_prenom: Francoise
+email_index: 0
+facture_soldee: true
+id: imp_dUVeehW2Ti
+id_dossier: '36216'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47123
+numero_dossier: 51220
+payer_id: cont_1q8A1eN8DU
+payeur_civilite: ''
+payeur_email: comsi@comsi.fr
+payeur_nom: LAURIERE MARMOZ
+payeur_prenom: Francoise
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LAURIERE MARMOZ
+proprietaire_prenom: Francoise
+ref_piece: FA240724 47123
+reference: '51220'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 50
+total_ttc: 60
+type: impaye
+updated_at: '2026-06-24T16:31:29.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240724_47123/standard/FA240724 47123
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

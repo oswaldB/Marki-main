@@ -1,0 +1,49 @@
+adresse_bien: 122 rue Antoine Peglion  Les Glycines
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: Refus par l'agent du prlvt facturé
+contact_relance_id: cont_HsgiSTQqRp
+created_at: '2026-06-24T16:30:59.971Z'
+date_echeance: '2025-11-11'
+date_import: '2026-07-09T07:05:06.487Z'
+date_piece: '2025-11-04'
+donneur_ordre_id: null
+donneur_ordre_nom: SUCCESSION COTTENCEAU
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_kqTN0GBaO4
+id_dossier: '38370'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49882
+numero_dossier: 52376
+payer_id: cont_HsgiSTQqRp
+payeur_civilite: ''
+payeur_email: christine.brazillier06@gmail.com
+payeur_nom: SUCCESSION COTTENCEAU
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SUCCESSION COTTENCEAU
+proprietaire_prenom: null
+ref_piece: FA251104 49882
+reference: '52376'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: -54.17
+total_ttc: -65
+type: impaye
+updated_at: '2026-06-24T16:30:59.971Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251104_49882/standard/FA251104 49882
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

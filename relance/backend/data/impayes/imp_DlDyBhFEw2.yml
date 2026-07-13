@@ -1,0 +1,49 @@
+adresse_bien: 4 place de la Gare GARE DE CANNES
+apporteur_id: cont_OJBpXHvhIr
+apporteur_nom: 'KEOLIS '
+apporteur_prenom: Secteur Bleu Azur
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06400'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:59.919Z'
+date_echeance: '2023-05-19'
+date_import: '2026-07-09T07:05:12.161Z'
+date_piece: '2023-05-19'
+donneur_ordre_id: null
+donneur_ordre_nom: 'KEOLIS '
+donneur_ordre_prenom: Secteur Bleu Azur
+email_index: 0
+facture_soldee: true
+id: imp_DlDyBhFEw2
+id_dossier: '28838'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44451
+numero_dossier: 47824
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SNCF
+proprietaire_prenom: null
+ref_piece: FA230519 44451
+reference: '47824'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 535
+total_ttc: 642
+type: impaye
+updated_at: '2026-06-24T16:31:59.919Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/mai/FA230519_44451/standard/FA230519 44451 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CANNES

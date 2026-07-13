@@ -1,0 +1,49 @@
+adresse_bien: 12 rue Rossini
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_LARjMteBac
+created_at: '2026-06-24T16:31:37.001Z'
+date_echeance: '2024-04-12'
+date_import: '2026-07-09T07:05:10.033Z'
+date_piece: '2024-04-12'
+donneur_ordre_id: null
+donneur_ordre_nom: MOUREY
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Aye4lh57Nh
+id_dossier: '34406'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46479
+numero_dossier: 50405
+payer_id: cont_LARjMteBac
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: MOUREY
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MOUREY
+proprietaire_prenom: null
+ref_piece: FA240412 46479
+reference: '50405'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:37.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240412_46479/standard/FA240412 46479
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

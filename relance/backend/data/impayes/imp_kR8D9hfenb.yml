@@ -1,0 +1,49 @@
+adresse_bien: 8 avenue Gauthier-Roux
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_Bt2mD78LGP
+created_at: '2026-06-24T16:31:12.892Z'
+date_echeance: '2025-04-17'
+date_import: '2026-07-09T07:05:07.672Z'
+date_piece: '2025-04-17'
+donneur_ordre_id: null
+donneur_ordre_nom: SOLIMEIS
+donneur_ordre_prenom: Helene
+email_index: 0
+facture_soldee: true
+id: imp_kR8D9hfenb
+id_dossier: '39210'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48738
+numero_dossier: 53216
+payer_id: cont_Bt2mD78LGP
+payeur_civilite: ''
+payeur_email: eric.solimeis@gmail.com
+payeur_nom: SOLIMEIS
+payeur_prenom: Helene
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SOLIMEIS
+proprietaire_prenom: Helene
+ref_piece: FA250417 48738
+reference: '53216'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:12.892Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250417_48738/standard/FA250417 48738
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

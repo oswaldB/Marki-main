@@ -1,0 +1,29 @@
+$loki: 6320
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:33.548Z'
+email: g.schweitzer@generale-aviation.com
+id: cont_5YNu5GfKUR
+impaye_ids:
+  - imp_i0Gcl8DcR1
+is_blacklisted: false
+meta:
+  created: 1783580700602
+  revision: 0
+  version: 0
+nom: SWR PROPERTIES
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:32.350Z'

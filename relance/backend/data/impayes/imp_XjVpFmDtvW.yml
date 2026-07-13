@@ -1,0 +1,49 @@
+adresse_bien: 5 bis avenue Desambrois
+apporteur_id: cont_zttCmdIcGK
+apporteur_nom: AGENCE WILSON
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: RUFFINI
+contact_relance_id: cont_MV0EubSIFT
+created_at: '2026-06-24T16:31:25.932Z'
+date_echeance: '2024-09-26'
+date_import: '2026-07-09T07:05:08.985Z'
+date_piece: '2024-09-26'
+donneur_ordre_id: null
+donneur_ordre_nom: 'SCI MORGANE '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_XjVpFmDtvW
+id_dossier: '37676'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47517
+numero_dossier: 51682
+payer_id: cont_zttCmdIcGK
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: AGENCE WILSON
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'SCI MORGANE '
+proprietaire_prenom: null
+ref_piece: FA240926 47517
+reference: '51682'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 226.67
+total_ttc: 272
+type: impaye
+updated_at: '2026-06-24T16:31:25.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240926_47517/standard/FA240926 47517
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 39 rue Gioffrédo Les Hesperides
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_xtFvSt8B7s
+created_at: '2026-06-24T16:31:54.018Z'
+date_echeance: '2023-08-08'
+date_import: '2026-07-09T07:05:11.577Z'
+date_piece: '2023-08-08'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI MOPACAP
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_fUdC19AK1d
+id_dossier: '30431'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44946
+numero_dossier: 48421
+payer_id: cont_xtFvSt8B7s
+payeur_civilite: ''
+payeur_email: patrice.goujon@gmail.com
+payeur_nom: SCI MOPACAP
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI MOPACAP
+proprietaire_prenom: null
+ref_piece: FA230808 44946
+reference: '48421'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 150
+total_ttc: 180
+type: impaye
+updated_at: '2026-06-24T16:31:54.018Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230808_44946/standard/FA230808 44946 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

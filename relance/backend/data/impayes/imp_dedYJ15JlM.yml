@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue de Verdun Le Royalty
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Pjl9G4AF8F
+created_at: '2026-06-24T16:30:57.989Z'
+date_echeance: '2025-12-09'
+date_import: '2026-07-09T07:05:06.292Z'
+date_piece: '2025-12-02'
+donneur_ordre_id: null
+donneur_ordre_nom: SANDRETTI
+donneur_ordre_prenom: Claudio
+email_index: 0
+facture_soldee: true
+id: imp_dedYJ15JlM
+id_dossier: '40787'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50067
+numero_dossier: 54793
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SANDRETTI
+proprietaire_prenom: Claudio
+ref_piece: FA251202 50067
+reference: '54793'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 62.5
+total_ttc: 75
+type: impaye
+updated_at: '2026-06-24T16:30:57.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251202_50067/standard/FA251202 50067
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

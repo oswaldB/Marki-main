@@ -1,0 +1,49 @@
+adresse_bien: 23 Porte de France Le Rocamare
+apporteur_id: cont_vCAOy10UIf
+apporteur_nom: IMMOBILTREND
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_XEauKQTdWx
+created_at: '2026-06-24T16:31:00.005Z'
+date_echeance: '2025-11-08'
+date_import: '2026-07-09T07:05:06.488Z'
+date_piece: '2025-11-01'
+donneur_ordre_id: null
+donneur_ordre_nom: NEY
+donneur_ordre_prenom: Martine
+email_index: 0
+facture_soldee: true
+id: imp_jLnyNlrwDz
+id_dossier: '40576'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49878
+numero_dossier: 54582
+payer_id: cont_XEauKQTdWx
+payeur_civilite: ''
+payeur_email: mney250@gmail.com
+payeur_nom: NEY
+payeur_prenom: Martine
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: NEY
+proprietaire_prenom: Martine
+ref_piece: FA251103 49878
+reference: '54582'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:00.005Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251103_49878/standard/FA251103 49878
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

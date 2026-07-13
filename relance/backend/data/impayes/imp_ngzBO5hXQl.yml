@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue Saint-Sébastien Le Saint Sebastien
+apporteur_id: cont_nLKdX38bCK
+apporteur_nom: KAPERA IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_SqcSxvfZdG
+created_at: '2026-07-07T22:00:52.353Z'
+date_echeance: '2026-07-14'
+date_import: '2026-07-09T07:05:12.301Z'
+date_piece: '2026-07-07'
+donneur_ordre_id: null
+donneur_ordre_nom: GAIMARD
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_ngzBO5hXQl
+id_dossier: '42094'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51260
+numero_dossier: 56100
+payer_id: cont_SqcSxvfZdG
+payeur_civilite: ''
+payeur_email: mjgaimard@gmail.com
+payeur_nom: GAIMARD
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GAIMARD
+proprietaire_prenom: null
+ref_piece: FA260707 51260
+reference: '56100'
+reste_a_payer: 120
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 100
+total_ttc: 120
+type: impaye
+updated_at: '2026-07-08T22:02:31.262Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juillet/FA260707_51260/standard/FA260707 51260
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 06660 boulevard desTempliers Les Olympiades
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06660'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:43.014Z'
+date_echeance: '2024-01-25'
+date_import: '2026-07-09T07:05:10.585Z'
+date_piece: '2024-01-25'
+donneur_ordre_id: null
+donneur_ordre_nom: PESTOUR
+donneur_ordre_prenom: Marie Judith
+email_index: 0
+facture_soldee: true
+id: imp_6gHtNkvZfj
+id_dossier: '32729'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45980
+numero_dossier: 49726
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: PESTOUR
+proprietaire_prenom: Marie Judith
+ref_piece: FA240125 45980
+reference: '49726'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:43.014Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240125_45980/standard/FA240125 45980
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SAINT-ÉTIENNE-DE-TINÉE

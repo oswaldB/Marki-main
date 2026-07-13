@@ -1,0 +1,49 @@
+adresse_bien: 19 avenue de Saint-roman Villa Caterina
+apporteur_id: cont_Q0jadWIlqE
+apporteur_nom: JLR IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_aAOaiMWhDR
+created_at: '2026-06-24T16:31:40.943Z'
+date_echeance: '2024-02-21'
+date_import: '2026-07-09T07:05:10.360Z'
+date_piece: '2024-02-21'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI VILLA CATERINA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_tVIhfWkqZ7
+id_dossier: '32942'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46159
+numero_dossier: 49939
+payer_id: cont_aAOaiMWhDR
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SCI VILLA CATERINA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI VILLA CATERINA
+proprietaire_prenom: null
+ref_piece: FA240221 46159
+reference: '49939'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 195.62
+total_ttc: 234.75
+type: impaye
+updated_at: '2026-06-24T16:31:40.943Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240221_46159/standard/FA240221 46159
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

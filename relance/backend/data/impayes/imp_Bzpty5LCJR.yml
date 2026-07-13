@@ -1,0 +1,49 @@
+adresse_bien: 11 boulevard du Maréchal Joffre
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_LCd95CjGCu
+created_at: '2026-06-24T16:31:05.958Z'
+date_echeance: '2025-08-08'
+date_import: '2026-07-09T07:05:06.995Z'
+date_piece: '2025-08-08'
+donneur_ordre_id: null
+donneur_ordre_nom: HOIRIE KINAPENNE DRIVET
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Bzpty5LCJR
+id_dossier: '40014'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49360
+numero_dossier: 54020
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: HOIRIE KINAPENNE DRIVET
+proprietaire_prenom: null
+ref_piece: FA250808 49360
+reference: '54020'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 629.17
+total_ttc: 755
+type: impaye
+updated_at: '2026-06-24T16:31:05.958Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250808_49360/standard/FA250808 49360 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

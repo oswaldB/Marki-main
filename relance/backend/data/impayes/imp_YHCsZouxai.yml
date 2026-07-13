@@ -1,0 +1,49 @@
+adresse_bien: 22 rue de la Fontaine
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_nczuYYu41n
+created_at: '2026-06-24T16:30:49.875Z'
+date_echeance: '2026-05-01'
+date_import: '2026-07-09T07:05:05.450Z'
+date_piece: '2026-04-24'
+donneur_ordre_id: null
+donneur_ordre_nom: BARANI
+donneur_ordre_prenom: Jean Baptiste
+email_index: 0
+facture_soldee: false
+id: imp_YHCsZouxai
+id_dossier: '41621'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50844
+numero_dossier: 55627
+payer_id: cont_nczuYYu41n
+payeur_civilite: ''
+payeur_email: ' jb.barani@gmail.com'
+payeur_nom: BARANI
+payeur_prenom: Jean Baptiste
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BARANI
+proprietaire_prenom: Jean Baptiste
+ref_piece: FA260424 50844
+reference: '55627'
+reste_a_payer: 110
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 91.67
+total_ttc: 110
+type: impaye
+updated_at: '2026-06-24T16:33:33.328Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260424_50844/standard/FA260424 50844
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

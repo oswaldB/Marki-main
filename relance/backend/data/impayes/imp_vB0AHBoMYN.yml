@@ -1,0 +1,49 @@
+adresse_bien: 88 chemin des Caroubiers
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_r6PUjDOJHB
+created_at: '2026-06-24T16:31:46.983Z'
+date_echeance: '2023-11-22'
+date_import: '2026-07-09T07:05:10.915Z'
+date_piece: '2023-11-22'
+donneur_ordre_id: null
+donneur_ordre_nom: MATTIONI
+donneur_ordre_prenom: Pietro
+email_index: 0
+facture_soldee: true
+id: imp_vB0AHBoMYN
+id_dossier: '32289'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45652
+numero_dossier: 49286
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MATTIONI
+proprietaire_prenom: Pietro
+ref_piece: FA231122 45652
+reference: '49286'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 87.5
+total_ttc: 105
+type: impaye
+updated_at: '2026-06-24T16:31:46.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231122_45652/standard/FA231122 45652
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

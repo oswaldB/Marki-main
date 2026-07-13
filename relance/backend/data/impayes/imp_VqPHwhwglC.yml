@@ -1,0 +1,49 @@
+adresse_bien: 2985 avenue Prince Rainier III Les Terrasses d'Aurélia
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_h0QDb8czJL
+created_at: '2026-06-24T16:31:46.983Z'
+date_echeance: '2023-11-22'
+date_import: '2026-07-09T07:05:10.925Z'
+date_piece: '2023-11-22'
+donneur_ordre_id: null
+donneur_ordre_nom: LATORE
+donneur_ordre_prenom: Aurélie
+email_index: 0
+facture_soldee: true
+id: imp_VqPHwhwglC
+id_dossier: '32282'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45645
+numero_dossier: 49279
+payer_id: cont_h0QDb8czJL
+payeur_civilite: ''
+payeur_email: aurelie.tarrotoma@gmail.com
+payeur_nom: LATORE
+payeur_prenom: Aurélie
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LATORE
+proprietaire_prenom: Aurélie
+ref_piece: FA231122 45645
+reference: '49279'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:31:46.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231122_45645/standard/FA231122 45645
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

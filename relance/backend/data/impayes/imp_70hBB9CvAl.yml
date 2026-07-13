@@ -1,0 +1,49 @@
+adresse_bien: 29 rue Paganini
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_Nh1fOoyJMJ
+created_at: '2026-06-24T16:31:49.106Z'
+date_echeance: '2023-10-13'
+date_import: '2026-07-09T07:05:11.175Z'
+date_piece: '2023-10-13'
+donneur_ordre_id: null
+donneur_ordre_nom: VERNET
+donneur_ordre_prenom: Martina
+email_index: 0
+facture_soldee: true
+id: imp_70hBB9CvAl
+id_dossier: '31950'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45401
+numero_dossier: 48947
+payer_id: cont_Nh1fOoyJMJ
+payeur_civilite: ''
+payeur_email: info@tissinie.com
+payeur_nom: GESTION IMMOBILIERE TISSINIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: VERNET
+proprietaire_prenom: Martina
+ref_piece: FA231013 45401
+reference: '48947'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 451.67
+total_ttc: 542
+type: impaye
+updated_at: '2026-06-24T16:31:49.106Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231013_45401/standard/FA231013 45401
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

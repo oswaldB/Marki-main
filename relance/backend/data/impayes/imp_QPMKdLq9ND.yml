@@ -1,0 +1,49 @@
+adresse_bien: 60 Promenade du  Maréchal Leclerc de Hauteclocque Les Lilas
+apporteur_id: cont_pUInfdPkt1
+apporteur_nom: 'ZAFFINI '
+apporteur_prenom: Madeleine
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_pUInfdPkt1
+created_at: '2026-06-24T16:30:51.989Z'
+date_echeance: '2026-03-19'
+date_import: '2026-07-09T07:05:05.695Z'
+date_piece: '2026-03-12'
+donneur_ordre_id: null
+donneur_ordre_nom: 'ZAFFINI '
+donneur_ordre_prenom: Madeleine
+email_index: 0
+facture_soldee: true
+id: imp_QPMKdLq9ND
+id_dossier: '41304'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50601
+numero_dossier: 55310
+payer_id: cont_pUInfdPkt1
+payeur_civilite: ''
+payeur_email: mado.sismondini@wanadoo.fr
+payeur_nom: 'ZAFFINI '
+payeur_prenom: Madeleine
+payeur_telephone: '0609765980'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'ZAFFINI '
+proprietaire_prenom: Madeleine
+ref_piece: FA260312 50601
+reference: '55310'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 243.33
+total_ttc: 292
+type: impaye
+updated_at: '2026-06-24T16:30:51.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260312_50601/standard/FA260312 50601 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

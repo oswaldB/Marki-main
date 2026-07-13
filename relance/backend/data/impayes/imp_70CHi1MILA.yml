@@ -1,0 +1,49 @@
+adresse_bien: 15 rue Georges Ville Palais Mireille
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "Ravalement Facade \r\n\r\n15 rue Georges Ville\r\n06300 Nice"
+contact_relance_id: cont_qVbgUfs9GA
+created_at: '2026-06-24T16:31:09.925Z'
+date_echeance: '2025-06-05'
+date_import: '2026-07-09T07:05:07.392Z'
+date_piece: '2025-06-05'
+donneur_ordre_id: null
+donneur_ordre_nom: FIGASSO
+donneur_ordre_prenom: 'Denise '
+email_index: 0
+facture_soldee: true
+id: imp_70CHi1MILA
+id_dossier: '39468'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49000
+numero_dossier: 53474
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FIGASSO
+proprietaire_prenom: 'Denise '
+ref_piece: FA250605 49000
+reference: '53474'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 470.83
+total_ttc: 565
+type: impaye
+updated_at: '2026-06-24T16:31:09.925Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250605_49000/standard/FA250605 49000 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

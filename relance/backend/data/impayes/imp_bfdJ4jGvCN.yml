@@ -1,0 +1,49 @@
+adresse_bien: 21 rue Gubernatis
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_jIX6f4sJZA
+created_at: '2026-06-24T16:31:22.026Z'
+date_echeance: '2024-11-25'
+date_import: '2026-07-09T07:05:08.618Z'
+date_piece: '2024-11-25'
+donneur_ordre_id: null
+donneur_ordre_nom: HOCHET
+donneur_ordre_prenom: Yves
+email_index: 0
+facture_soldee: true
+id: imp_bfdJ4jGvCN
+id_dossier: '38083'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47847
+numero_dossier: 52089
+payer_id: cont_jIX6f4sJZA
+payeur_civilite: ''
+payeur_email: hochet.michel@free.fr
+payeur_nom: HOCHET
+payeur_prenom: Yves
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: HOCHET
+proprietaire_prenom: Yves
+ref_piece: FA241125 47847
+reference: '52089'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 277.5
+total_ttc: 333
+type: impaye
+updated_at: '2026-06-24T16:31:22.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241125_47847/standard/FA241125 47847
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

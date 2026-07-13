@@ -1,0 +1,49 @@
+adresse_bien: 5 avenue du Mont Alban
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Rf9EOIthMH
+created_at: '2026-06-24T16:31:44.060Z'
+date_echeance: '2024-01-04'
+date_import: '2026-07-09T07:05:10.697Z'
+date_piece: '2024-01-04'
+donneur_ordre_id: null
+donneur_ordre_nom: BREUL
+donneur_ordre_prenom: Jean-Pierre
+email_index: 0
+facture_soldee: true
+id: imp_10jkd5bzs4
+id_dossier: '32538'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45862
+numero_dossier: 49535
+payer_id: cont_Rf9EOIthMH
+payeur_civilite: ''
+payeur_email: jeanpierrebreul@gmail.com
+payeur_nom: BREUL
+payeur_prenom: Jean-Pierre
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BREUL
+proprietaire_prenom: Jean-Pierre
+ref_piece: FA240104 45862
+reference: '49535'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 246.67
+total_ttc: 296
+type: impaye
+updated_at: '2026-06-24T16:31:44.060Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240104_45862/standard/FA240104 45862
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

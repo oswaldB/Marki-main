@@ -1,0 +1,49 @@
+adresse_bien: 10 rue de Paris
+apporteur_id: cont_3xFdJdfdBd
+apporteur_nom: K EXCLUSIVE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:59.012Z'
+date_echeance: '2023-05-25'
+date_import: '2026-07-09T07:05:12.102Z'
+date_piece: '2023-05-25'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI COURTAL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_kIbRDcxymN
+id_dossier: '28870'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44490
+numero_dossier: 47856
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SCI COURTAL
+proprietaire_prenom: null
+ref_piece: FA230525 44490
+reference: '47856'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 274.17
+total_ttc: 329
+type: impaye
+updated_at: '2026-06-24T16:31:59.012Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/mai/FA230525_44490/standard/FA230525 44490 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

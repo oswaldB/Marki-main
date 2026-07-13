@@ -1,0 +1,49 @@
+adresse_bien: 1077 avenue Bellevue Royal View
+apporteur_id: cont_ggRBNbA6TG
+apporteur_nom: API NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: '08/07 : relance 1 mail prop + cc agence'
+contact_relance_id: cont_TeG6CBRV2g
+created_at: '2026-06-24T16:31:09.885Z'
+date_echeance: '2025-06-11'
+date_import: '2026-07-09T07:05:07.374Z'
+date_piece: '2025-06-11'
+donneur_ordre_id: null
+donneur_ordre_nom: PAJOT SERRI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_5UXOXb6hdn
+id_dossier: '39595'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49035
+numero_dossier: 53601
+payer_id: cont_TeG6CBRV2g
+payeur_civilite: ''
+payeur_email: m.sokolovsky.serri@gmail.com
+payeur_nom: PAJOT SERRI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PAJOT SERRI
+proprietaire_prenom: null
+ref_piece: FA250611 49035
+reference: '53601'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 387.5
+total_ttc: 465
+type: impaye
+updated_at: '2026-06-24T16:31:09.885Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250611_49035/standard/FA250611 49035 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

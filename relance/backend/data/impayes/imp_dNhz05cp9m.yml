@@ -1,0 +1,49 @@
+adresse_bien: 13 route des Serres La Coquette
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: 'le 10/11 agence relance la rpop '
+contact_relance_id: cont_f7iI7eAFai
+created_at: '2026-06-24T16:31:09.033Z'
+date_echeance: '2025-06-20'
+date_import: '2026-07-09T07:05:07.336Z'
+date_piece: '2025-06-20'
+donneur_ordre_id: null
+donneur_ordre_nom: 'SCI LES SERRES '
+donneur_ordre_prenom: 'Mme Sagols Christine '
+email_index: 0
+facture_soldee: true
+id: imp_dNhz05cp9m
+id_dossier: '39665'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49079
+numero_dossier: 53671
+payer_id: cont_f7iI7eAFai
+payeur_civilite: ''
+payeur_email: christine.sagols@yahoo.com
+payeur_nom: 'SCI LES SERRES '
+payeur_prenom: 'Mme Sagols Christine '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'SCI LES SERRES '
+proprietaire_prenom: 'Mme Sagols Christine '
+ref_piece: FA250620 49079
+reference: '53671'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 170.83
+total_ttc: 205
+type: impaye
+updated_at: '2026-06-24T16:31:09.033Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250620_49079/standard/FA250620 49079 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

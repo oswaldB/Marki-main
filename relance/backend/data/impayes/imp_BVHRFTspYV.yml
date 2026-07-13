@@ -1,0 +1,49 @@
+adresse_bien: 16 rue Gioffrédo
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:48.925Z'
+date_echeance: '2023-10-26'
+date_import: '2026-07-09T07:05:11.079Z'
+date_piece: '2023-10-26'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_BVHRFTspYV
+id_dossier: '32047'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45480
+numero_dossier: 49044
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCI NEROLIA
+proprietaire_prenom: null
+ref_piece: FA231026 45480
+reference: '49044'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 83.33
+total_ttc: 100
+type: impaye
+updated_at: '2026-06-24T16:31:48.925Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231026_45480/standard/FA231026 45480
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

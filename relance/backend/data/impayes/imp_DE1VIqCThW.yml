@@ -1,0 +1,49 @@
+adresse_bien: 10 avenue Henri Matisse Les Eucalyptus
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: "relance 21/11\r\n\r\n20/01 mail de suivi des dossier comptabilité "
+contact_relance_id: cont_W0sMl5Ml9o
+created_at: '2026-06-24T16:31:03.973Z'
+date_echeance: '2025-09-22'
+date_import: '2026-07-09T07:05:06.847Z'
+date_piece: '2025-09-15'
+donneur_ordre_id: null
+donneur_ordre_nom: 'SZWEK '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_DE1VIqCThW
+id_dossier: '40251'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49525
+numero_dossier: 54257
+payer_id: cont_F47dfC6qeF
+payeur_civilite: ''
+payeur_email: sophiesalomon@sarl-adp.fr
+payeur_nom: AGENCE DU PORT
+payeur_prenom: 'Cabinet Salomon '
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'SZWEK '
+proprietaire_prenom: null
+ref_piece: FA250915 49525
+reference: '54257'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:03.973Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250915_49525/standard/FA250915 49525
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

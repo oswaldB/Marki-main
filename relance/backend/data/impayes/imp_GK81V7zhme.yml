@@ -1,0 +1,49 @@
+adresse_bien: 40 boulevard de la République
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: "facture envoyé le 01/10\r\n\r\nrelance 29/12\r\n\r\n10/03 relance mail les 2 dossiers\r\n\r\n27/04 relance les 2 dossiers"
+contact_relance_id: cont_iCfN7NHYAX
+created_at: '2026-06-24T16:31:11.978Z'
+date_echeance: '2025-05-02'
+date_import: '2026-07-09T07:05:07.608Z'
+date_piece: '2025-05-02'
+donneur_ordre_id: null
+donneur_ordre_nom: LAFORET Beausoleil ARAMIS Immobilier
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_GK81V7zhme
+id_dossier: '38987'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48826
+numero_dossier: 52993
+payer_id: cont_YXYNM2lJX6
+payeur_civilite: ''
+payeur_email: beausoleil@laforet.com
+payeur_nom: LAFORET Beausoleil ARAMIS Immobilier
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SOLL
+proprietaire_prenom: Tatiana
+ref_piece: FA250502 48826
+reference: '52993'
+reste_a_payer: 240
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 200
+total_ttc: 240
+type: impaye
+updated_at: '2026-06-24T16:33:34.309Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250502_48826/standard/FA250502 48826 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

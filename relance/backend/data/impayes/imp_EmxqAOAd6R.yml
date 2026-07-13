@@ -1,0 +1,49 @@
+adresse_bien: 57 rue de la Buffa Bâtiment
+apporteur_id: cont_yqBBhH2hK0
+apporteur_nom: VEALYS 06 PORT
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: 'Crétion lot PC et regroupement plusieurs lots '
+contact_relance_id: cont_p5rqKXZob3
+created_at: '2026-06-24T16:31:26.939Z'
+date_echeance: '2024-09-13'
+date_import: '2026-07-09T07:05:09.062Z'
+date_piece: '2024-09-13'
+donneur_ordre_id: null
+donneur_ordre_nom: CEGYMO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_EmxqAOAd6R
+id_dossier: '37575'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47417
+numero_dossier: 51581
+payer_id: cont_p5rqKXZob3
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CEGYMO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CEGYMO
+proprietaire_prenom: null
+ref_piece: FA240913 47417
+reference: '51581'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 833.33
+total_ttc: 1000
+type: impaye
+updated_at: '2026-06-24T16:31:26.939Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240913_47417/standard/FA240913 47417
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

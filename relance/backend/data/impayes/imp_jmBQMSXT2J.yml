@@ -1,0 +1,49 @@
+adresse_bien: 19 et 21 avenue du Général Gallieni
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: "Mise en copro 3 lots \r\nEDD fait envoyé par mail"
+contact_relance_id: cont_OmhYmsiCYX
+created_at: '2026-06-24T16:31:24.932Z'
+date_echeance: '2024-10-11'
+date_import: '2026-07-09T07:05:08.874Z'
+date_piece: '2024-10-11'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL MDB
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jmBQMSXT2J
+id_dossier: '37789'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47611
+numero_dossier: 51795
+payer_id: cont_OmhYmsiCYX
+payeur_civilite: ''
+payeur_email: gaucher.eg@gmail.com
+payeur_nom: SARL MDB
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SARL MDB
+proprietaire_prenom: null
+ref_piece: FA241011 47611
+reference: '51795'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1445
+total_ttc: 1734
+type: impaye
+updated_at: '2026-06-24T16:31:24.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241011_47611/standard/FA241011 47611
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

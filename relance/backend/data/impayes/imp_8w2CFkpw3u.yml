@@ -1,0 +1,49 @@
+adresse_bien: 55 avenue Marechal Joffre
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_kJUf40MpPK
+created_at: '2026-06-24T16:31:27.912Z'
+date_echeance: '2024-09-03'
+date_import: '2026-07-09T07:05:09.187Z'
+date_piece: '2024-09-03'
+donneur_ordre_id: null
+donneur_ordre_nom: MARIOTTO
+donneur_ordre_prenom: Serge
+email_index: 0
+facture_soldee: true
+id: imp_8w2CFkpw3u
+id_dossier: '37486'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47334
+numero_dossier: 51492
+payer_id: cont_kJUf40MpPK
+payeur_civilite: ''
+payeur_email: smfrge@gmail.com
+payeur_nom: MARIOTTO
+payeur_prenom: Serge
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MARIOTTO
+proprietaire_prenom: Serge
+ref_piece: FA240903 47334
+reference: '51492'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:27.912Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240903_47334/standard/FA240903 47334
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

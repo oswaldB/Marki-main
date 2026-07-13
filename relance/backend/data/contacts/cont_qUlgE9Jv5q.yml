@@ -1,0 +1,31 @@
+$loki: 2057
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:53.574Z'
+email: p.fert@exim.fr
+id: cont_qUlgE9Jv5q
+impaye_ids:
+  - imp_DG5RqHyUdK
+  - imp_EoU8toh378
+  - imp_GWtzm1CjOS
+is_blacklisted: false
+meta:
+  created: 1783580699144
+  revision: 0
+  version: 0
+nom: FERT
+prenom: Pascale
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:52.394Z'

@@ -1,0 +1,49 @@
+adresse_bien: 1 avenue Général Weygand Les Résidences du Belvedere
+apporteur_id: cont_FhHrr5mVlw
+apporteur_nom: FIT IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "Copropriété :\r\nLes Résidences du Belvédère\r\n3 avenue du Général Weygand\r\n06000 NICE\r\nObjet : \r\nDiagnostics Ventes 3 loges\r\nModificatif EDD pour création de lots avec charges spécifiques\r\n"
+contact_relance_id: cont_TcijitMUuq
+created_at: '2026-06-24T16:31:08.997Z'
+date_echeance: '2025-06-20'
+date_import: '2026-07-09T07:05:07.320Z'
+date_piece: '2025-06-20'
+donneur_ordre_id: null
+donneur_ordre_nom: LES RESIDENCES DE BELVEDERE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_iKKo5o5rnZ
+id_dossier: '39660'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49075
+numero_dossier: 53666
+payer_id: cont_FhHrr5mVlw
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: FIT IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LES RESIDENCES DE BELVEDERE
+proprietaire_prenom: null
+ref_piece: FA250620 49075
+reference: '53666'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1475
+total_ttc: 1770
+type: impaye
+updated_at: '2026-06-24T16:31:08.997Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250620_49075/standard/FA250620 49075 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

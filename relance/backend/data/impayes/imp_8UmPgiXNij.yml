@@ -1,0 +1,49 @@
+adresse_bien: 11 rue du Louvre Résidence du Louvre
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_lqhjbF99j7
+created_at: '2026-06-24T16:30:51.039Z'
+date_echeance: '2026-04-03'
+date_import: '2026-07-09T07:05:05.609Z'
+date_piece: '2026-03-27'
+donneur_ordre_id: null
+donneur_ordre_nom: HUYOT
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_8UmPgiXNij
+id_dossier: '41463'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50693
+numero_dossier: 55469
+payer_id: cont_lqhjbF99j7
+payeur_civilite: ''
+payeur_email: rosalie@deplanche-immobilier.fr
+payeur_nom: AB IMMOBILIER
+payeur_prenom: groupe DEPLANCHE IMMOBILIER
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: HUYOT
+proprietaire_prenom: null
+ref_piece: FA260327 50693
+reference: '55469'
+reste_a_payer: 120
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 100
+total_ttc: 120
+type: impaye
+updated_at: '2026-06-24T16:33:33.356Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260327_50693/standard/FA260327 50693 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

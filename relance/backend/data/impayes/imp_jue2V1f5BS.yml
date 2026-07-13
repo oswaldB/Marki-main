@@ -1,0 +1,49 @@
+adresse_bien: 166 avenue Sainte-Marguerite
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_cfyAtRgbpa
+created_at: '2026-06-24T16:31:28.063Z'
+date_echeance: '2024-08-23'
+date_import: '2026-07-09T07:05:09.259Z'
+date_piece: '2024-08-23'
+donneur_ordre_id: null
+donneur_ordre_nom: AUVARO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jue2V1f5BS
+id_dossier: '36398'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47261
+numero_dossier: 51402
+payer_id: cont_cfyAtRgbpa
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: AUVARO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: AUVARO
+proprietaire_prenom: null
+ref_piece: FA240823 47261
+reference: '51402'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 172.5
+total_ttc: 207
+type: impaye
+updated_at: '2026-06-24T16:31:28.063Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240823_47261/standard/FA240823 47261 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

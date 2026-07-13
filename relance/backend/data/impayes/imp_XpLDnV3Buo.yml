@@ -1,0 +1,49 @@
+adresse_bien: 16 avenue Edouard VII Palais Rota
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_bqJHmbqcvt
+created_at: '2026-06-24T16:31:02.877Z'
+date_echeance: '2025-10-13'
+date_import: '2026-07-09T07:05:06.709Z'
+date_piece: '2025-10-06'
+donneur_ordre_id: null
+donneur_ordre_nom: CHEVALIN / BOUSSELIN
+donneur_ordre_prenom: Christophe / Linda
+email_index: 0
+facture_soldee: true
+id: imp_XpLDnV3Buo
+id_dossier: '40335'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49676
+numero_dossier: 54341
+payer_id: cont_bqJHmbqcvt
+payeur_civilite: ''
+payeur_email: lindachev@hotmail.fr
+payeur_nom: CHEVALIN / BOUSSELIN
+payeur_prenom: Christophe / Linda
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CHEVALIN / BOUSSELIN
+proprietaire_prenom: Christophe / Linda
+ref_piece: FA251006 49676
+reference: '54341'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 87.5
+total_ttc: 105
+type: impaye
+updated_at: '2026-06-24T16:31:02.877Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251006_49676/standard/FA251006 49676
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

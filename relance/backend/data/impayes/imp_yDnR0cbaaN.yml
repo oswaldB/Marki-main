@@ -1,0 +1,49 @@
+adresse_bien: 17 Promenade du Cap Résidence de la Plage
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_pyVWHsKdIL
+created_at: '2026-06-24T16:30:48.896Z'
+date_echeance: '2026-05-19'
+date_import: '2026-07-09T07:05:05.361Z'
+date_piece: '2026-05-12'
+donneur_ordre_id: null
+donneur_ordre_nom: NAPOLEONE
+donneur_ordre_prenom: Virginie
+email_index: 0
+facture_soldee: true
+id: imp_yDnR0cbaaN
+id_dossier: '41727'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50922
+numero_dossier: 55733
+payer_id: cont_pyVWHsKdIL
+payeur_civilite: ''
+payeur_email: vnapoleone@hotmail.com
+payeur_nom: NAPOLEONE
+payeur_prenom: Virginie
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: NAPOLEONE
+proprietaire_prenom: Virginie
+ref_piece: FA260512 50922
+reference: '55733'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:30:48.896Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260512_50922/standard/FA260512 50922 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

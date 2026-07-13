@@ -1,0 +1,49 @@
+adresse_bien: 184 route des Ciappes de Castellar Les Orangers des Ciappes
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: LISTING DAT
+contact_relance_id: cont_0dIZvQLMLZ
+created_at: '2026-06-24T16:31:01.983Z'
+date_echeance: '2025-10-17'
+date_import: '2026-07-09T07:05:06.648Z'
+date_piece: '2025-10-10'
+donneur_ordre_id: null
+donneur_ordre_nom: LOCKER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_uQMQWe3Xtp
+id_dossier: '40387'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49712
+numero_dossier: 54393
+payer_id: cont_0dIZvQLMLZ
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: LOCKER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LOCKER
+proprietaire_prenom: null
+ref_piece: FA251010 49712
+reference: '54393'
+reste_a_payer: 245
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:33:34.252Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251010_49712/standard/FA251010 49712
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

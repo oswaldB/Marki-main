@@ -1,0 +1,49 @@
+adresse_bien: 8 avenue Général de Gaulle Palais Flora
+apporteur_id: cont_6KB3jgW9oc
+apporteur_nom: PROGEDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_KipSPsu7Mu
+created_at: '2026-06-24T16:31:19.897Z'
+date_echeance: '2025-01-10'
+date_import: '2026-07-09T07:05:08.334Z'
+date_piece: '2025-01-10'
+donneur_ordre_id: null
+donneur_ordre_nom: FLORENTIN
+donneur_ordre_prenom: Aude
+email_index: 0
+facture_soldee: true
+id: imp_z90lspXVYU
+id_dossier: '38224'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48096
+numero_dossier: 52230
+payer_id: cont_6KB3jgW9oc
+payeur_civilite: ''
+payeur_email: accueil@progedi.com
+payeur_nom: PROGEDI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FLORENTIN
+proprietaire_prenom: Aude
+ref_piece: FA250110 48096
+reference: '52230'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.67
+total_ttc: 230
+type: impaye
+updated_at: '2026-06-24T16:31:19.897Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250110_48096/standard/FA250110 48096
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

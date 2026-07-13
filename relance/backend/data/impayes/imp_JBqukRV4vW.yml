@@ -1,0 +1,49 @@
+adresse_bien: 41 avenue Anatole France
+apporteur_id: cont_OdGGwFKYqJ
+apporteur_nom: SPECIAL IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: ''
+contact_relance_id: cont_OdGGwFKYqJ
+created_at: '2026-06-24T16:30:47.868Z'
+date_echeance: '2026-06-04'
+date_import: '2026-07-09T07:05:05.258Z'
+date_piece: '2026-05-28'
+donneur_ordre_id: null
+donneur_ordre_nom: COPROPRIETE 41 ANATOLE FRANCE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_JBqukRV4vW
+id_dossier: '41844'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51023
+numero_dossier: 55850
+payer_id: cont_OdGGwFKYqJ
+payeur_civilite: ''
+payeur_email: bienvenue@specialimmo.com
+payeur_nom: SPECIAL IMMO
+payeur_prenom: ''
+payeur_telephone: '0621001036'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: COPROPRIETE 41 ANATOLE FRANCE
+proprietaire_prenom: null
+ref_piece: FA260528 51023
+reference: '55850'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 83.33
+total_ttc: 100
+type: impaye
+updated_at: '2026-06-24T16:30:47.868Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260528_51023/standard/FA260528 51023 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

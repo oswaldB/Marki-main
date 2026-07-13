@@ -1,0 +1,29 @@
+$loki: 5018
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:21.533Z'
+email: 'Pierremarie.quere@gmail.com        '
+id: cont_qIG4UkwOHp
+impaye_ids:
+  - imp_ZFQFrl2Y7W
+is_blacklisted: false
+meta:
+  created: 1783580700169
+  revision: 0
+  version: 0
+nom: QUERE
+prenom: Pierre Marie
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:20.342Z'

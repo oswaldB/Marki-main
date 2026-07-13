@@ -1,0 +1,36 @@
+$loki: 52
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:34.520Z'
+email: contact@sudestimmo.fr
+id: cont_A0jsgezz8M
+impaye_ids:
+  - imp_perRuVXA37
+  - imp_xVjz47mQtx
+  - imp_vcA4NaNxBG
+  - imp_dCDPfax5l9
+  - imp_as7qQl2stN
+  - imp_MNwkGR4gEE
+  - imp_HTNMRFFqVf
+  - imp_g7ygdVE8ZO
+is_blacklisted: false
+meta:
+  created: 1783580698352
+  revision: 0
+  version: 0
+nom: SUD EST IMMOBILIER
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:33.500Z'

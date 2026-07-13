@@ -1,0 +1,49 @@
+adresse_bien: 95 avenue Winston Churchill Ciel et Mer
+apporteur_id: cont_nGbYMncL3T
+apporteur_nom: CABINET TRABAUD ACQUARONE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "SDC CIEL ET MER\r\n95 avenue Winston Churchill\r\n06190 ROQUEBRUNE CAP MARTIN\r\n\r\n58 lots"
+contact_relance_id: cont_nGbYMncL3T
+created_at: '2026-06-24T16:30:49.029Z'
+date_echeance: '2026-05-06'
+date_import: '2026-07-09T07:05:05.421Z'
+date_piece: '2026-04-29'
+donneur_ordre_id: null
+donneur_ordre_nom: COPROPRIETE LE CIEL ET MER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_31B2xRk3vd
+id_dossier: '40192'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50865
+numero_dossier: 54198
+payer_id: cont_nGbYMncL3T
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET TRABAUD ACQUARONE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: COPROPRIETE LE CIEL ET MER
+proprietaire_prenom: null
+ref_piece: FA260429 50865
+reference: '54198'
+reste_a_payer: 4300
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 3583.33
+total_ttc: 4300
+type: impaye
+updated_at: '2026-06-24T16:33:33.328Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260429_50865/standard/FA260429 50865
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

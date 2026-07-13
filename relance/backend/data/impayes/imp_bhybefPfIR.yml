@@ -1,0 +1,49 @@
+adresse_bien: 15 rue de Lépante Bâtiment
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "15 rue de Lépante \r\n06000 Nice\r\n\r\nMonsieur PEIRANI \r\n\r\n17/04 relance\r\nfacture transmise à la compta"
+contact_relance_id: cont_LHp4D2zHjL
+created_at: '2026-06-24T16:30:59.878Z'
+date_echeance: '2025-11-21'
+date_import: '2026-07-09T07:05:06.436Z'
+date_piece: '2025-11-14'
+donneur_ordre_id: null
+donneur_ordre_nom: CITYA NICE IMMOBILIER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_bhybefPfIR
+id_dossier: '40524'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49930
+numero_dossier: 54530
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: COPROPRIETE 15 RUE LEPANTE
+proprietaire_prenom: null
+ref_piece: FA251114 49930
+reference: '54530'
+reste_a_payer: 600
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 500
+total_ttc: 600
+type: impaye
+updated_at: '2026-06-24T16:33:34.252Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251114_49930/standard/FA251114 49930
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

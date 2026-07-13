@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue des Bruyères Les Cigales
+apporteur_id: cont_mSwEw9rkRW
+apporteur_nom: 'EASY MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_tfasnXQG3b
+created_at: '2026-06-24T16:31:20.960Z'
+date_echeance: '2024-12-16'
+date_import: '2026-07-09T07:05:08.484Z'
+date_piece: '2024-12-16'
+donneur_ordre_id: null
+donneur_ordre_nom: LIMON
+donneur_ordre_prenom: 'Luisella '
+email_index: 0
+facture_soldee: true
+id: imp_S1wpjIGe4r
+id_dossier: '38228'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47971
+numero_dossier: 52234
+payer_id: cont_tfasnXQG3b
+payeur_civilite: ''
+payeur_email: luisella.limon@orange.fr
+payeur_nom: LIMON
+payeur_prenom: 'Luisella '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LIMON
+proprietaire_prenom: 'Luisella '
+ref_piece: FA241216 47971
+reference: '52234'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:20.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241216_47971/standard/FA241216 47971
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

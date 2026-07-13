@@ -1,0 +1,49 @@
+adresse_bien: 1 avenue de Rimiez Cap Rimiez La Balance
+apporteur_id: cont_gdDN3kuwIF
+apporteur_nom: 'CENTURY 21 LAFAGE CIMIEZ '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_10F84Aldq9
+created_at: '2026-06-24T16:31:40.911Z'
+date_echeance: '2024-02-23'
+date_import: '2026-07-09T07:05:10.338Z'
+date_piece: '2024-02-23'
+donneur_ordre_id: null
+donneur_ordre_nom: 'CENTURY 21 LAFAGE CIMIEZ '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_T1NB9R8CXu
+id_dossier: '32949'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46175
+numero_dossier: 49946
+payer_id: cont_10F84Aldq9
+payeur_civilite: ''
+payeur_email: stephane.bocchi@mma.fr
+payeur_nom: KRLB
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: KRLB
+proprietaire_prenom: null
+ref_piece: FA240223 46175
+reference: '49946'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 210
+total_ttc: 252
+type: impaye
+updated_at: '2026-06-24T16:31:40.911Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240223_46175/standard/FA240223 46175
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,31 @@
+$loki: 3040
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:02.567Z'
+email: apouliquen@cfm-indosuez.mc
+id: cont_CdkoagD8Gl
+impaye_ids:
+  - imp_HOVKlFyjYD
+  - imp_Vog6mKZAzx
+  - imp_sEgYoPCByz
+is_blacklisted: false
+meta:
+  created: 1783580699485
+  revision: 0
+  version: 0
+nom: CFM MONACO
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:01.378Z'

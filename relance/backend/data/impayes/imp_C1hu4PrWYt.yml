@@ -1,0 +1,49 @@
+adresse_bien: 1 Traverse Monte-Cristo Monte Cristo
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_k2odo0Uqkz
+created_at: '2026-06-24T16:31:17.057Z'
+date_echeance: '2025-02-13'
+date_import: '2026-07-09T07:05:08.107Z'
+date_piece: '2025-02-13'
+donneur_ordre_id: null
+donneur_ordre_nom: CANESSE
+donneur_ordre_prenom: Stéphane
+email_index: 0
+facture_soldee: true
+id: imp_C1hu4PrWYt
+id_dossier: '38716'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48339
+numero_dossier: 52722
+payer_id: cont_k2odo0Uqkz
+payeur_civilite: ''
+payeur_email: scanesse@mooveo.org
+payeur_nom: CANESSE
+payeur_prenom: Stéphane
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CANESSE
+proprietaire_prenom: Stéphane
+ref_piece: FA250213 48339
+reference: '52722'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 210
+total_ttc: 252
+type: impaye
+updated_at: '2026-06-24T16:31:17.057Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250213_48339/standard/FA250213 48339
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

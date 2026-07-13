@@ -1,0 +1,49 @@
+adresse_bien: 82 bis boulevard Mantega Righi
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_qdrmbQlLEC
+created_at: '2026-06-24T16:31:47.016Z'
+date_echeance: '2023-11-17'
+date_import: '2026-07-09T07:05:10.929Z'
+date_piece: '2023-11-17'
+donneur_ordre_id: null
+donneur_ordre_nom: GRACIAS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_puuATqlrKS
+id_dossier: '32243'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45619
+numero_dossier: 49240
+payer_id: cont_qdrmbQlLEC
+payeur_civilite: ''
+payeur_email: carline06@aol.com
+payeur_nom: GRACIAS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GRACIAS
+proprietaire_prenom: null
+ref_piece: FA231117 45619
+reference: '49240'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 210
+total_ttc: 252
+type: impaye
+updated_at: '2026-06-24T16:31:47.016Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231117_45619/standard/FA231117 45619
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

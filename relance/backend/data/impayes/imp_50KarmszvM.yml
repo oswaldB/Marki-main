@@ -1,0 +1,49 @@
+adresse_bien: 7 avenue du Capitaine Scott Lotissement Rosemont Le Beauregard
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_ASmFCcmbxH
+created_at: '2026-06-24T16:30:52.995Z'
+date_echeance: '2026-03-06'
+date_import: '2026-07-09T07:05:05.781Z'
+date_piece: '2026-02-27'
+donneur_ordre_id: null
+donneur_ordre_nom: BARTHELEMY
+donneur_ordre_prenom: Alain
+email_index: 0
+facture_soldee: true
+id: imp_50KarmszvM
+id_dossier: '41279'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50530
+numero_dossier: 55285
+payer_id: cont_ASmFCcmbxH
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BARTHELEMY
+payeur_prenom: Alain
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BARTHELEMY
+proprietaire_prenom: Alain
+ref_piece: FA260227 50530
+reference: '55285'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:30:52.995Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260227_50530/standard/FA260227 50530
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

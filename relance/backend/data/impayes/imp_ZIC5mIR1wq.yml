@@ -1,0 +1,49 @@
+adresse_bien: 14-16 boulevard d’Olivetum
+apporteur_id: cont_h38qdiRKRI
+apporteur_nom: SOGETRANS
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06110'
+commentaire_piece: ''
+contact_relance_id: cont_AHBIrYYctl
+created_at: '2026-06-24T16:31:02.917Z'
+date_echeance: '2025-10-10'
+date_import: '2026-07-09T07:05:06.718Z'
+date_piece: '2025-10-03'
+donneur_ordre_id: null
+donneur_ordre_nom: PELLEQUER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_ZIC5mIR1wq
+id_dossier: '40344'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49642
+numero_dossier: 54350
+payer_id: cont_h38qdiRKRI
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: SOGETRANS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PELLEQUER
+proprietaire_prenom: null
+ref_piece: FA251002 49642
+reference: '54350'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 170
+total_ttc: 204
+type: impaye
+updated_at: '2026-06-24T16:31:02.917Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251002_49642/standard/FA251002 49642
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: LE CANNET

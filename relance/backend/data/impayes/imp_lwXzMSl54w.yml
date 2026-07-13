@@ -1,0 +1,49 @@
+adresse_bien: 1209 chemin des Combes
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: cont_iQy3ASzNVZ
+created_at: '2026-06-24T16:31:11.978Z'
+date_echeance: '2025-05-02'
+date_import: '2026-07-09T07:05:07.594Z'
+date_piece: '2025-05-02'
+donneur_ordre_id: null
+donneur_ordre_nom: JOCELYNE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_lwXzMSl54w
+id_dossier: '39315'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48823
+numero_dossier: 53321
+payer_id: cont_iQy3ASzNVZ
+payeur_civilite: ''
+payeur_email: npowilewicz@laforet.com
+payeur_nom: JOCELYNE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: JOCELYNE
+proprietaire_prenom: null
+ref_piece: FA250502 48823
+reference: '53321'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2391.67
+total_ttc: 2870
+type: impaye
+updated_at: '2026-06-24T16:31:11.978Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250502_48823/standard/FA250502 48823 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

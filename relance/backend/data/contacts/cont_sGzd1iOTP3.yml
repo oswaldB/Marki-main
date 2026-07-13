@@ -1,0 +1,42 @@
+$loki: 1508
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:48.559Z'
+email: raynald.cucherat@oxance.fr
+id: cont_sGzd1iOTP3
+impaye_ids:
+  - imp_C36xaY9sOn
+  - imp_sc6UWKdvwX
+  - imp_A3IGGwHzbM
+  - imp_qYvz6g3Rk4
+  - imp_b05VUajDll
+is_blacklisted: false
+meta:
+  created: 1783580698941
+  revision: 1
+  updated: 1783580713476
+  version: 0
+nom: OXANCE
+prenom: ''
+relance_ids:
+  - rel_gePG4VizCg
+  - rel_2j0C1swcFf
+  - rel_U4KNyv5yHv
+  - rel_cc8BtQM79k
+  - rel_ZfSEiQ1F0Z
+  - rel_brkcpkfBmP
+  - rel_k7RGdqmFql
+  - rel_IJEVXf8BcZ
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:47.371Z'

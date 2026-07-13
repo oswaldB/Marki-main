@@ -1,0 +1,49 @@
+adresse_bien: 47 avenue Cap de Croix
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_Dgf9jEDyxB
+created_at: '2026-06-24T16:31:32.932Z'
+date_echeance: '2024-06-11'
+date_import: '2026-07-09T07:05:09.710Z'
+date_piece: '2024-06-11'
+donneur_ordre_id: null
+donneur_ordre_nom: AMROUNI
+donneur_ordre_prenom: Mohamed Sami
+email_index: 0
+facture_soldee: true
+id: imp_LymfFPj5UN
+id_dossier: '35862'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46852
+numero_dossier: 50866
+payer_id: cont_Dgf9jEDyxB
+payeur_civilite: ''
+payeur_email: amrounisam@hotmail.fr
+payeur_nom: AMROUNI
+payeur_prenom: Mohamed Sami
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: AMROUNI
+proprietaire_prenom: Mohamed Sami
+ref_piece: FA240611 46852
+reference: '50866'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:32.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240611_46852/standard/FA240611 46852 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

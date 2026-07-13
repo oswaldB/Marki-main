@@ -1,0 +1,49 @@
+adresse_bien: 100 chemin de la Forna
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_VaqXS1oHBL
+created_at: '2026-06-24T16:31:39.017Z'
+date_echeance: '2024-03-22'
+date_import: '2026-07-09T07:05:10.209Z'
+date_piece: '2024-03-22'
+donneur_ordre_id: null
+donneur_ordre_nom: 'DENTAL '
+donneur_ordre_prenom: 'Louis '
+email_index: 0
+facture_soldee: true
+id: imp_eGDb9Ctgu8
+id_dossier: '34229'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46354
+numero_dossier: 50228
+payer_id: cont_VaqXS1oHBL
+payeur_civilite: ''
+payeur_email: louis.dental@libello.com
+payeur_nom: 'DENTAL '
+payeur_prenom: 'Louis '
+payeur_telephone: '0678635843'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'DENTAL '
+proprietaire_prenom: 'Louis '
+ref_piece: FA240322 46354
+reference: '50228'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 88.54
+total_ttc: 106.25
+type: impaye
+updated_at: '2026-06-24T16:31:39.017Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240322_46354/standard/FA240322 46354 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: LA TURBIE

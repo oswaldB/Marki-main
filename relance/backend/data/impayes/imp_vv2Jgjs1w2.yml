@@ -1,0 +1,49 @@
+adresse_bien: 38 place Saint Roch  Victoria Palace
+apporteur_id: cont_axwCVxbA8C
+apporteur_nom: CABINET CAIRO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_axwCVxbA8C
+created_at: '2026-06-24T16:30:56.909Z'
+date_echeance: '2026-01-05'
+date_import: '2026-07-09T07:05:06.188Z'
+date_piece: '2025-12-29'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC VICTORIA PALACE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_vv2Jgjs1w2
+id_dossier: '40874'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50190
+numero_dossier: 54880
+payer_id: cont_axwCVxbA8C
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET CAIRO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC VICTORIA PALACE
+proprietaire_prenom: null
+ref_piece: FA251229 50190
+reference: '54880'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 254.17
+total_ttc: 305
+type: impaye
+updated_at: '2026-06-24T16:30:56.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251229_50190/standard/FA251229 50190
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

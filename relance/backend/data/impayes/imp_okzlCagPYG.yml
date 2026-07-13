@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue Auguste Renoir
+apporteur_id: cont_iBK1tbalnS
+apporteur_nom: SELARL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: "Local commercial 55m²\r\n\r\n2 rue Auguste Renoir\r\n06800 Cagnes-sur-Mer\r\n\r\n"
+contact_relance_id: cont_cIYROvhmX4
+created_at: '2026-06-24T16:30:57.918Z'
+date_echeance: '2025-12-16'
+date_import: '2026-07-09T07:05:06.268Z'
+date_piece: '2025-12-09'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI FONCIERE MEDINVEST
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_okzlCagPYG
+id_dossier: '40816'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50104
+numero_dossier: 54822
+payer_id: cont_cIYROvhmX4
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: MAISON PERRIN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SCI FONCIERE MEDINVEST
+proprietaire_prenom: null
+ref_piece: FA251209 50104
+reference: '54822'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 302.25
+total_ttc: 362.7
+type: impaye
+updated_at: '2026-06-24T16:30:57.918Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251209_50104/standard/FA251209 50104
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

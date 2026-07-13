@@ -1,0 +1,49 @@
+adresse_bien: 51 boulevard du Maréchal Joffre
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: "SDC LE BEAULIEU\r\n51 Bd Maréchal Joffre\r\n06310 BEAULIEU-SUR-MER"
+contact_relance_id: cont_xwiycBTXvc
+created_at: '2026-06-24T16:30:52.908Z'
+date_echeance: '2026-03-13'
+date_import: '2026-07-09T07:05:05.733Z'
+date_piece: '2026-03-06'
+donneur_ordre_id: null
+donneur_ordre_nom: ANA GROUPE ALLIANCE GESTION NICE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Qx9hfDXqEW
+id_dossier: '41058'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50563
+numero_dossier: 55064
+payer_id: cont_xwiycBTXvc
+payeur_civilite: ''
+payeur_email: contact@ana-agence.fr
+payeur_nom: ANA GROUPE ALLIANCE GESTION NICE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: LE BEAULIEU
+proprietaire_prenom: null
+ref_piece: FA260306 50563
+reference: '55064'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1166.67
+total_ttc: 1400
+type: impaye
+updated_at: '2026-06-24T16:30:52.908Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260306_50563/standard/FA260306 50563 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

@@ -1,0 +1,49 @@
+adresse_bien: 4 rue Harpignies
+apporteur_id: cont_LgArzyVnvd
+apporteur_nom: 'ACT''RIVIERA '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_nv8MrydO6Q
+created_at: '2026-06-29T22:00:17.093Z'
+date_echeance: '2026-07-06'
+date_import: '2026-07-09T07:05:12.210Z'
+date_piece: '2026-06-29'
+donneur_ordre_id: null
+donneur_ordre_nom: 'ACT''RIVIERA '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_GcUtg0dXia
+id_dossier: '41999'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51202
+numero_dossier: 56005
+payer_id: cont_LgArzyVnvd
+payeur_civilite: ''
+payeur_email: actrivieragestion@gmail.com
+payeur_nom: 'ACT''RIVIERA '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MATERA
+proprietaire_prenom: Michel
+ref_piece: FA260629 51202
+reference: '56005'
+reste_a_payer: 460
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 383.33
+total_ttc: 460
+type: impaye
+updated_at: '2026-06-30T22:00:29.948Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260629_51202/standard/FA260629 51202 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

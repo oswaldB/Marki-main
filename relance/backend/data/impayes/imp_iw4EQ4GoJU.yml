@@ -1,0 +1,49 @@
+adresse_bien: 2 route de Turin
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_bUa3ANlCeQ
+created_at: '2026-06-24T16:31:13.887Z'
+date_echeance: '2025-04-03'
+date_import: '2026-07-09T07:05:07.761Z'
+date_piece: '2025-04-03'
+donneur_ordre_id: null
+donneur_ordre_nom: MATHON
+donneur_ordre_prenom: Rudy
+email_index: 0
+facture_soldee: true
+id: imp_iw4EQ4GoJU
+id_dossier: '39079'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48648
+numero_dossier: 53085
+payer_id: cont_bUa3ANlCeQ
+payeur_civilite: ''
+payeur_email: rudy.mathon@gmail.com
+payeur_nom: MATHON
+payeur_prenom: Rudy
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MATHON
+proprietaire_prenom: Rudy
+ref_piece: FA250403 48648
+reference: '53085'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:13.887Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250403_48648/standard/FA250403 48648
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

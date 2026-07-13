@@ -1,0 +1,49 @@
+adresse_bien: 409 avenue de la Paix Le Mirage
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_hrMYJ27uzV
+created_at: '2026-06-24T16:30:49.963Z'
+date_echeance: '2026-04-23'
+date_import: '2026-07-09T07:05:05.491Z'
+date_piece: '2026-04-16'
+donneur_ordre_id: null
+donneur_ordre_nom: CONSORTS CASADO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_i8kWC2WnA4
+id_dossier: '41541'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50786
+numero_dossier: 55547
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CONSORTS CASADO
+proprietaire_prenom: null
+ref_piece: FA260416 50786
+reference: '55547'
+reste_a_payer: 225
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 187.5
+total_ttc: 225
+type: impaye
+updated_at: '2026-06-24T16:33:33.328Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260416_50786/standard/FA260416 50786
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

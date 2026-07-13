@@ -1,0 +1,49 @@
+adresse_bien: 2718 avenue Prince Rainier III Pallazzio Grima
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_sDDaj9Fewz
+created_at: '2026-06-24T16:31:26.939Z'
+date_echeance: '2024-09-16'
+date_import: '2026-07-09T07:05:09.103Z'
+date_piece: '2024-09-16'
+donneur_ordre_id: null
+donneur_ordre_nom: LE DU
+donneur_ordre_prenom: Catherine
+email_index: 0
+facture_soldee: true
+id: imp_s0mPBlRi7s
+id_dossier: '37596'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47430
+numero_dossier: 51602
+payer_id: cont_sDDaj9Fewz
+payeur_civilite: ''
+payeur_email: catherine.ledu06@yahoo.com
+payeur_nom: LE DU
+payeur_prenom: Catherine
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LE DU
+proprietaire_prenom: Catherine
+ref_piece: FA240916 47430
+reference: '51602'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 133.33
+total_ttc: 160
+type: impaye
+updated_at: '2026-06-24T16:31:26.939Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240916_47430/standard/FA240916 47430
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

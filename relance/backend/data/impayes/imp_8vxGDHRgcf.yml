@@ -1,0 +1,49 @@
+adresse_bien: 27 avenue de Sospel L'Intercontinental
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_r6PUjDOJHB
+created_at: '2026-06-24T16:31:29.960Z'
+date_echeance: '2024-07-22'
+date_import: '2026-07-09T07:05:09.449Z'
+date_piece: '2024-07-22'
+donneur_ordre_id: null
+donneur_ordre_nom: OPTI GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_8vxGDHRgcf
+id_dossier: '36194'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47104
+numero_dossier: 51198
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCI SUNSCHINE
+proprietaire_prenom: null
+ref_piece: FA240722 47104
+reference: '51198'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 89.17
+total_ttc: 107
+type: impaye
+updated_at: '2026-06-24T16:31:29.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240722_47104/standard/FA240722 47104
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

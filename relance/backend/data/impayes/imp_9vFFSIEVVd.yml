@@ -1,0 +1,49 @@
+adresse_bien: 17 rue Bavastro
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_V3u4Mz4mkO
+created_at: '2026-06-24T16:31:31.970Z'
+date_echeance: '2024-06-24'
+date_import: '2026-07-09T07:05:09.624Z'
+date_piece: '2024-06-24'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI JONA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_9vFFSIEVVd
+id_dossier: '35983'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46927
+numero_dossier: 50987
+payer_id: cont_V3u4Mz4mkO
+payeur_civilite: ''
+payeur_email: emilie.grippaudo@gmail.com
+payeur_nom: SCI JONA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI JONA
+proprietaire_prenom: null
+ref_piece: FA240624 46927
+reference: '50987'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:31.970Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240624_46927/standard/FA240624 46927 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 11 avenue de Villaine
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_aSQ9KwPSrd
+created_at: '2026-06-24T16:31:01.940Z'
+date_echeance: '2025-10-21'
+date_import: '2026-07-09T07:05:06.623Z'
+date_piece: '2025-10-14'
+donneur_ordre_id: null
+donneur_ordre_nom: CHEVANT
+donneur_ordre_prenom: Nathalie
+email_index: 0
+facture_soldee: true
+id: imp_UGZzHvzL0K
+id_dossier: '40418'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49730
+numero_dossier: 54424
+payer_id: cont_aSQ9KwPSrd
+payeur_civilite: ''
+payeur_email: chevantnathalie06@gmail.com
+payeur_nom: CHEVANT
+payeur_prenom: Nathalie
+payeur_telephone: '0665912982'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CHEVANT
+proprietaire_prenom: Nathalie
+ref_piece: FA251014 49730
+reference: '54424'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 153.33
+total_ttc: 184
+type: impaye
+updated_at: '2026-06-24T16:31:01.940Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251014_49730/standard/FA251014 49730
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

@@ -1,0 +1,49 @@
+adresse_bien: 157 route de Saint-Pierre de Féric
+apporteur_id: cont_8Q0PuFAdJr
+apporteur_nom: CGG IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_tDH7ySEAkw
+created_at: '2026-06-24T16:31:15.019Z'
+date_echeance: '2025-03-14'
+date_import: '2026-07-09T07:05:07.898Z'
+date_piece: '2025-03-14'
+donneur_ordre_id: null
+donneur_ordre_nom: CARIOU
+donneur_ordre_prenom: 'Christian '
+email_index: 0
+facture_soldee: true
+id: imp_DcuQNan7ks
+id_dossier: '38815'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48420
+numero_dossier: 52821
+payer_id: cont_tDH7ySEAkw
+payeur_civilite: ''
+payeur_email: christian-h.cariou@laposte.net
+payeur_nom: CARIOU
+payeur_prenom: 'Christian '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CARIOU
+proprietaire_prenom: 'Christian '
+ref_piece: FA250227 48420
+reference: '52821'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 728.87
+total_ttc: 874.65
+type: impaye
+updated_at: '2026-06-24T16:31:15.019Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250227_48420/standard/FA250227 48420 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

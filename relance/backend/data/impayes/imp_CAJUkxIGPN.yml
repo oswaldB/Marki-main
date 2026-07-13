@@ -1,0 +1,49 @@
+adresse_bien: 552 avenue de Pradès Les Pervenches
+apporteur_id: cont_98qyheyUph
+apporteur_nom: AGENCE MENTON IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_50U7qAuPzy
+created_at: '2026-06-24T16:31:49.065Z'
+date_echeance: '2023-10-18'
+date_import: '2026-07-09T07:05:11.135Z'
+date_piece: '2023-10-18'
+donneur_ordre_id: null
+donneur_ordre_nom: PORRO
+donneur_ordre_prenom: Donato
+email_index: 0
+facture_soldee: true
+id: imp_CAJUkxIGPN
+id_dossier: '31975'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45415
+numero_dossier: 48972
+payer_id: cont_50U7qAuPzy
+payeur_civilite: ''
+payeur_email: info@porrocalcestruzzisas.it
+payeur_nom: PORRO
+payeur_prenom: Donato
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PORRO
+proprietaire_prenom: Donato
+ref_piece: FA231018 45415
+reference: '48972'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:49.065Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231018_45415/standard/FA231018 45415
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

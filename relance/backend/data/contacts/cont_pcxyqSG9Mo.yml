@@ -1,0 +1,29 @@
+$loki: 3375
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:05.564Z'
+email: jessica.buissonnier@gmail.com
+id: cont_pcxyqSG9Mo
+impaye_ids:
+  - imp_sskSCBP8r2
+is_blacklisted: false
+meta:
+  created: 1783580699636
+  revision: 0
+  version: 0
+nom: FAMILLE GRILLO
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:05.332Z'

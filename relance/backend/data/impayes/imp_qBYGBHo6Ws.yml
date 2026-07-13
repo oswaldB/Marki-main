@@ -1,0 +1,49 @@
+adresse_bien: 25bis Promenade des Anglais Les Immeubles de la Mediterannée
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_6WNXHoMJhp
+created_at: '2026-06-24T16:31:54.018Z'
+date_echeance: '2023-08-08'
+date_import: '2026-07-09T07:05:11.590Z'
+date_piece: '2023-08-08'
+donneur_ordre_id: null
+donneur_ordre_nom: SITARU
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_qBYGBHo6Ws
+id_dossier: '30435'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44956
+numero_dossier: 48425
+payer_id: cont_6WNXHoMJhp
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SITARU
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SITARU
+proprietaire_prenom: null
+ref_piece: FA230808 44956
+reference: '48425'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 133.33
+total_ttc: 160
+type: impaye
+updated_at: '2026-06-24T16:31:54.018Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230808_44956/standard/FA230808 44956 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

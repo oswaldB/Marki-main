@@ -1,0 +1,49 @@
+adresse_bien: 71 route de la Madone du Mont Le San Juan
+apporteur_id: cont_TWnVoCvWHW
+apporteur_nom: 'EASY MENTON SYNDIC '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06540'
+commentaire_piece: "V/Réf. : 64072332\r\n\r\nLE SAN JUAN\r\n71 route de la Madone du Mont\r\n06540 BREIL-SUR-ROYA\r\n\r\n1 bât. / 11 lots\r\n\r\n"
+contact_relance_id: cont_TWnVoCvWHW
+created_at: '2026-06-24T16:31:03.909Z'
+date_echeance: '2025-09-26'
+date_import: '2026-07-09T07:05:06.812Z'
+date_piece: '2025-09-19'
+donneur_ordre_id: null
+donneur_ordre_nom: LE SAN JUAN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_QyjoKAX3A1
+id_dossier: '40198'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49554
+numero_dossier: 54204
+payer_id: cont_TWnVoCvWHW
+payeur_civilite: ''
+payeur_email: menton1@easy-menton.fr
+payeur_nom: 'EASY MENTON SYNDIC '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LE SAN JUAN
+proprietaire_prenom: null
+ref_piece: FA250919 49554
+reference: '54204'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 575
+total_ttc: 690
+type: impaye
+updated_at: '2026-06-24T16:31:03.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250919_49554/standard/FA250919 49554
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BREIL-SUR-ROYA

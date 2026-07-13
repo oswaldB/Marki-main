@@ -1,0 +1,49 @@
+adresse_bien: 288 route de Pessicart Nice Panorama
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:30:48.969Z'
+date_echeance: '2026-05-07'
+date_import: '2026-07-09T07:05:05.388Z'
+date_piece: '2026-04-30'
+donneur_ordre_id: null
+donneur_ordre_nom: FONCIERE DI 01/2005-0229
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_7TNGDDzKAA
+id_dossier: '41569'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50881
+numero_dossier: 55575
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FONCIERE DI 01/2005-0229
+proprietaire_prenom: null
+ref_piece: FA260430 50881
+reference: '55575'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2053.5
+total_ttc: 2464.2
+type: impaye
+updated_at: '2026-06-24T16:30:48.969Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260430_50881/standard/FA260430 50881
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

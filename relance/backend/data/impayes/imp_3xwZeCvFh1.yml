@@ -1,0 +1,49 @@
+adresse_bien: 1 chemin de la Petite Source
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_CFZpVA6kob
+created_at: '2026-06-24T16:31:37.922Z'
+date_echeance: '2024-04-04'
+date_import: '2026-07-09T07:05:10.097Z'
+date_piece: '2024-04-04'
+donneur_ordre_id: null
+donneur_ordre_nom: BELHEOUANE
+donneur_ordre_prenom: Lyes
+email_index: 0
+facture_soldee: true
+id: imp_3xwZeCvFh1
+id_dossier: '34340'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46420
+numero_dossier: 50339
+payer_id: cont_CFZpVA6kob
+payeur_civilite: ''
+payeur_email: lyes.belheouane1@gmail.com
+payeur_nom: BELHEOUANE
+payeur_prenom: Lyes
+payeur_telephone: '0627030771'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BELHEOUANE
+proprietaire_prenom: Lyes
+ref_piece: FA240404 46420
+reference: '50339'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 154.17
+total_ttc: 185
+type: impaye
+updated_at: '2026-06-24T16:31:37.922Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240404_46420/standard/FA240404 46420
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

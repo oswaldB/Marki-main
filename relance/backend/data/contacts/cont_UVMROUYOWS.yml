@@ -1,0 +1,33 @@
+$loki: 739
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:40.737Z'
+email: serguy@tissinie.com
+id: cont_UVMROUYOWS
+impaye_ids:
+  - imp_dXAGWc3bl0
+  - imp_qryoLB8hbe
+  - imp_xSgeLWJI38
+  - imp_QLzJ5A2len
+  - imp_KPreV1xQhO
+is_blacklisted: false
+meta:
+  created: 1783580698646
+  revision: 0
+  version: 0
+nom: ERGUY
+prenom: Sonia
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:40.367Z'

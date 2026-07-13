@@ -1,0 +1,49 @@
+adresse_bien: 24 avenue Carnot  Le Bristol
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_r6PUjDOJHB
+created_at: '2026-06-24T16:31:45.061Z'
+date_echeance: '2023-12-13'
+date_import: '2026-07-09T07:05:10.782Z'
+date_piece: '2023-12-13'
+donneur_ordre_id: null
+donneur_ordre_nom: OPTI GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_UFPEir81kV
+id_dossier: '32433'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45778
+numero_dossier: 49430
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: RUBIOLO
+proprietaire_prenom: Carlo
+ref_piece: FA231213 45778
+reference: '49430'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 95.83
+total_ttc: 115
+type: impaye
+updated_at: '2026-06-24T16:31:45.061Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231213_45778/standard/FA231213 45778
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

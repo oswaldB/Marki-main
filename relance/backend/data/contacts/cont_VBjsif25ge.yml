@@ -1,0 +1,29 @@
+$loki: 2001
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:53.528Z'
+email: bertrand.isa.petit@gmail.com
+id: cont_VBjsif25ge
+impaye_ids:
+  - imp_Q44177TPs2
+is_blacklisted: false
+meta:
+  created: 1783580699127
+  revision: 0
+  version: 0
+nom: PETIT
+prenom: 'Isabelle et Bertrand '
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0650984719 Mr '
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:52.359Z'

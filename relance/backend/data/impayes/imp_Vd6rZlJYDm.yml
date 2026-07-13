@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue des Bruyères Les Pelouses II
+apporteur_id: cont_mSwEw9rkRW
+apporteur_nom: 'EASY MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_AB2IWmyZEu
+created_at: '2026-06-24T16:30:45.929Z'
+date_echeance: '2026-06-30'
+date_import: '2026-07-09T07:05:05.083Z'
+date_piece: '2026-06-23'
+donneur_ordre_id: null
+donneur_ordre_nom: RUSSO
+donneur_ordre_prenom: Marie Cristina
+email_index: 0
+facture_soldee: true
+id: imp_Vd6rZlJYDm
+id_dossier: '42004'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51172
+numero_dossier: 56010
+payer_id: cont_AB2IWmyZEu
+payeur_civilite: ''
+payeur_email: cristinapitogi@gmail.com
+payeur_nom: RUSSO
+payeur_prenom: Marie Cristina
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: RUSSO
+proprietaire_prenom: Marie Cristina
+ref_piece: FA260623 51172
+reference: '56010'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-07-03T22:00:43.378Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260623_51172/standard/FA260623 51172 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

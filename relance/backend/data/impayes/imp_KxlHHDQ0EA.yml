@@ -1,0 +1,49 @@
+adresse_bien: 44 boulevard Napoleon III Abbaye de Roseland Le Baccara
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_DGhOxlvFxc
+created_at: '2026-06-24T16:31:33.025Z'
+date_echeance: '2024-06-06'
+date_import: '2026-07-09T07:05:09.749Z'
+date_piece: '2024-06-06'
+donneur_ordre_id: null
+donneur_ordre_nom: MOVAREKHI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_KxlHHDQ0EA
+id_dossier: '35831'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46825
+numero_dossier: 50835
+payer_id: cont_DGhOxlvFxc
+payeur_civilite: ''
+payeur_email: novine.movarekhi@graduateinstitute.ch
+payeur_nom: MOVAREKHI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MOVAREKHI
+proprietaire_prenom: null
+ref_piece: FA240606 46825
+reference: '50835'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:33.025Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240606_46825/standard/FA240606 46825 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 450 rue Antoine Peglion Le Roccapina
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_xIfHZXJlT7
+created_at: '2026-06-24T16:31:32.099Z'
+date_echeance: '2024-06-14'
+date_import: '2026-07-09T07:05:09.683Z'
+date_piece: '2024-06-14'
+donneur_ordre_id: null
+donneur_ordre_nom: GUILLON
+donneur_ordre_prenom: Véronique
+email_index: 0
+facture_soldee: true
+id: imp_eKfyTbIQn5
+id_dossier: '35918'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46887
+numero_dossier: 50922
+payer_id: cont_xIfHZXJlT7
+payeur_civilite: ''
+payeur_email: veronique.guillon@edeis.com
+payeur_nom: GUILLON
+payeur_prenom: Véronique
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GUILLON
+proprietaire_prenom: Véronique
+ref_piece: FA240614 46887
+reference: '50922'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:32.099Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240614_46887/standard/FA240614 46887 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

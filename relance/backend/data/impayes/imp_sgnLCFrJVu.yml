@@ -1,0 +1,49 @@
+adresse_bien: 35 Promenade du Cap Residence du Cap
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "Copropriété : SDC RESIDENCE DU CAP 35 Promenade du Cap 06190 Roquebrune-Cap-Martin\r\nObjet : Devis création de lot / modificatif à EDD vente loge\r\nDocuments à fournir : \r\nRCP,\r\nEtat descriptif et différents modificatifs enregistrés,\r\nEtat hypothécaire à jour,\r\nPlans si disponibles."
+contact_relance_id: cont_HqUTfu1M6O
+created_at: '2026-06-24T16:30:47.048Z'
+date_echeance: '2026-06-05'
+date_import: '2026-07-09T07:05:05.233Z'
+date_piece: '2026-05-29'
+donneur_ordre_id: null
+donneur_ordre_nom: CABINET TRABAUD DE CLERCK
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_sgnLCFrJVu
+id_dossier: '40944'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51039
+numero_dossier: 54950
+payer_id: cont_HqUTfu1M6O
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET TRABAUD DE CLERCK
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: RESIDENCE DU CAP
+proprietaire_prenom: null
+ref_piece: FA260529 51039
+reference: '54950'
+reste_a_payer: 1030
+sequence_id: null
+statut: non_payee
+total_ht: 858.33
+total_ttc: 1030
+type: impaye
+updated_at: '2026-06-24T16:30:47.048Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260529_51039/standard/FA260529 51039 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

@@ -1,0 +1,49 @@
+adresse_bien: 59 avenue du Logis de Bonneau REGENT PARK
+apporteur_id: cont_aFSXWA9ETI
+apporteur_nom: SAINT ROCH IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06270'
+commentaire_piece: ''
+contact_relance_id: cont_aD3ZglfLat
+created_at: '2026-06-24T16:31:33.056Z'
+date_echeance: '2024-06-03'
+date_import: '2026-07-09T07:05:09.772Z'
+date_piece: '2024-06-03'
+donneur_ordre_id: null
+donneur_ordre_nom: CACCIOLATO
+donneur_ordre_prenom: Caterina
+email_index: 0
+facture_soldee: true
+id: imp_5QUNzQ0HyY
+id_dossier: '35801'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46802
+numero_dossier: 50805
+payer_id: cont_aFSXWA9ETI
+payeur_civilite: ''
+payeur_email: info@saintrochimmobilier.com
+payeur_nom: SAINT ROCH IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CACCIOLATO
+proprietaire_prenom: Caterina
+ref_piece: FA240603 46802
+reference: '50805'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 167.29
+total_ttc: 200.75
+type: impaye
+updated_at: '2026-06-24T16:31:33.056Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240603_46802/standard/FA240603 46802 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VILLENEUVE-LOUBET

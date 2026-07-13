@@ -1,0 +1,49 @@
+adresse_bien: 31 avenue Saint-Sylvestre Coeur Saint Sylvestre
+apporteur_id: cont_lKyCEvLzZh
+apporteur_nom: 'FONCIA RIVIERA ARSON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: "14/01 relance via comptabilité\r\n\r\n02/02 relance mail "
+contact_relance_id: cont_dd7JZHcTNi
+created_at: '2026-06-24T16:30:57.065Z'
+date_echeance: '2025-12-23'
+date_import: '2026-07-09T07:05:06.243Z'
+date_piece: '2025-12-16'
+donneur_ordre_id: null
+donneur_ordre_nom: BABE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_YtJL1o83er
+id_dossier: '40847'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50129
+numero_dossier: 54853
+payer_id: cont_lKyCEvLzZh
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: 'FONCIA RIVIERA ARSON '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BABE
+proprietaire_prenom: null
+ref_piece: FA251216 50129
+reference: '54853'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 163.33
+total_ttc: 196
+type: impaye
+updated_at: '2026-06-24T16:30:57.065Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251216_50129/standard/FA251216 50129
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

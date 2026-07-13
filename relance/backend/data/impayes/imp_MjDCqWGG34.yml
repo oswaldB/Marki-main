@@ -1,0 +1,49 @@
+adresse_bien: 244 avenue Ceux de Verdun La Soleilade
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06690'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:17.090Z'
+date_echeance: '2025-02-12'
+date_import: '2026-07-09T07:05:08.139Z'
+date_piece: '2025-02-12'
+donneur_ordre_id: null
+donneur_ordre_nom: GUIOL ROUZAUD
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_MjDCqWGG34
+id_dossier: '38589'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48326
+numero_dossier: 52595
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: INDIVISION GUIOL
+proprietaire_prenom: null
+ref_piece: FA250212 48326
+reference: '52595'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 187.5
+total_ttc: 225
+type: impaye
+updated_at: '2026-06-24T16:31:17.090Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250212_48326/standard/FA250212 48326
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: TOURRETTE-LEVENS

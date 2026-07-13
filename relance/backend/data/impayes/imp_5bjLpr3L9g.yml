@@ -1,0 +1,49 @@
+adresse_bien: 69 Corniche Fleurie
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_7B91qSDY7G
+created_at: '2026-06-24T16:31:39.017Z'
+date_echeance: '2024-03-21'
+date_import: '2026-07-09T07:05:10.212Z'
+date_piece: '2024-03-21'
+donneur_ordre_id: null
+donneur_ordre_nom: PIOCH
+donneur_ordre_prenom: Olivier
+email_index: 0
+facture_soldee: true
+id: imp_5bjLpr3L9g
+id_dossier: '34201'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46339
+numero_dossier: 50200
+payer_id: cont_7B91qSDY7G
+payeur_civilite: ''
+payeur_email: olivierpioch6@gmail.com
+payeur_nom: PIOCH
+payeur_prenom: Olivier
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PIOCH
+proprietaire_prenom: Olivier
+ref_piece: FA240321 46339
+reference: '50200'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 660.42
+total_ttc: 792.5
+type: impaye
+updated_at: '2026-06-24T16:31:39.017Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240321_46339/standard/FA240321 46339 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

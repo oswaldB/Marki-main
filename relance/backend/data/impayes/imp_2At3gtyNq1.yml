@@ -1,0 +1,49 @@
+adresse_bien: 48 rue du Vieux Château
+apporteur_id: cont_mSwEw9rkRW
+apporteur_nom: 'EASY MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_kw43SkJqH6
+created_at: '2026-06-24T16:31:33.965Z'
+date_echeance: '2024-05-28'
+date_import: '2026-07-09T07:05:09.803Z'
+date_piece: '2024-05-28'
+donneur_ordre_id: null
+donneur_ordre_nom: GANDUS
+donneur_ordre_prenom: Roberto
+email_index: 0
+facture_soldee: true
+id: imp_2At3gtyNq1
+id_dossier: '35741'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46752
+numero_dossier: 50745
+payer_id: cont_kw43SkJqH6
+payeur_civilite: ''
+payeur_email: 'r.gandus@alice.it '
+payeur_nom: GANDUS
+payeur_prenom: Roberto
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GANDUS
+proprietaire_prenom: Roberto
+ref_piece: FA240528 46752
+reference: '50745'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 416.67
+total_ttc: 500
+type: impaye
+updated_at: '2026-06-24T16:31:33.965Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240528_46752/standard/FA240528 46752 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

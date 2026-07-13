@@ -1,0 +1,29 @@
+$loki: 6016
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:30.549Z'
+email: catherine.gakpey@hotmail.fr
+id: cont_ddAQa03gCA
+impaye_ids:
+  - imp_IMqP29F1xu
+is_blacklisted: false
+meta:
+  created: 1783580700512
+  revision: 0
+  version: 0
+nom: VISAAC
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:29.381Z'

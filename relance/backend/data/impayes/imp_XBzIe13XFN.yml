@@ -1,0 +1,49 @@
+adresse_bien: 10 rue de France
+apporteur_id: cont_3Lj4PPMcI0
+apporteur_nom: GT CAPITAL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_3Lj4PPMcI0
+created_at: '2026-06-24T16:31:37.956Z'
+date_echeance: '2024-04-02'
+date_import: '2026-07-09T07:05:10.117Z'
+date_piece: '2024-04-02'
+donneur_ordre_id: null
+donneur_ordre_nom: GT CAPITAL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_XBzIe13XFN
+id_dossier: '34306'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46391
+numero_dossier: 50305
+payer_id: cont_3Lj4PPMcI0
+payeur_civilite: ''
+payeur_email: gtc.ns@gtcapital.fr
+payeur_nom: GT CAPITAL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GT CAPITAL
+proprietaire_prenom: null
+ref_piece: FA240402 46391
+reference: '50305'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 23.33
+total_ttc: 28
+type: impaye
+updated_at: '2026-06-24T16:31:37.956Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240402_46391/standard/FA240402 46391
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

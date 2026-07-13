@@ -1,0 +1,29 @@
+$loki: 386
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:37.552Z'
+email: vocaturo.alexandrine@wanadoo.fr
+id: cont_TkgADrcfD9
+impaye_ids:
+  - imp_FrpbZcRsCR
+is_blacklisted: false
+meta:
+  created: 1783580698500
+  revision: 0
+  version: 0
+nom: VOCATURO
+prenom: Alexandrine
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:36.540Z'

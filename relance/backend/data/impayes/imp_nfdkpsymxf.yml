@@ -1,0 +1,49 @@
+adresse_bien: 8 avenue Général de Gaulle Le Fiorentina B
+apporteur_id: cont_4Zc7DsPc6Y
+apporteur_nom: EDOUARD VII REAL ESTATE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_4Zc7DsPc6Y
+created_at: '2026-06-24T16:31:44.004Z'
+date_echeance: '2024-01-11'
+date_import: '2026-07-09T07:05:10.670Z'
+date_piece: '2024-01-11'
+donneur_ordre_id: null
+donneur_ordre_nom: SANTISE
+donneur_ordre_prenom: Antonio
+email_index: 0
+facture_soldee: true
+id: imp_nfdkpsymxf
+id_dossier: '32588'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45891
+numero_dossier: 49585
+payer_id: cont_4Zc7DsPc6Y
+payeur_civilite: ''
+payeur_email: contact@edouard7.com
+payeur_nom: EDOUARD VII REAL ESTATE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SANTISE
+proprietaire_prenom: Antonio
+ref_piece: FA240111 45891
+reference: '49585'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 66.67
+total_ttc: 80
+type: impaye
+updated_at: '2026-06-24T16:31:44.004Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240111_45891/standard/FA240111 45891
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

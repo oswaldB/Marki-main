@@ -1,0 +1,49 @@
+adresse_bien: 17 boulevard de la République
+apporteur_id: cont_wsGMBKTAQr
+apporteur_nom: GHE Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_wsGMBKTAQr
+created_at: '2026-06-24T16:31:31.970Z'
+date_echeance: '2024-06-26'
+date_import: '2026-07-09T07:05:09.622Z'
+date_piece: '2024-06-26'
+donneur_ordre_id: null
+donneur_ordre_nom: SNEOUAL
+donneur_ordre_prenom: Henriette
+email_index: 0
+facture_soldee: true
+id: imp_70mYA9r8nV
+id_dossier: '35992'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46936
+numero_dossier: 50996
+payer_id: cont_wsGMBKTAQr
+payeur_civilite: ''
+payeur_email: info@gheimmo.com
+payeur_nom: GHE Immobilier
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SNEOUAL
+proprietaire_prenom: Henriette
+ref_piece: FA240626 46936
+reference: '50996'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:31.970Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240626_46936/standard/FA240626 46936 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

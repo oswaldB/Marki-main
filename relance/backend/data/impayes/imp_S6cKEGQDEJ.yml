@@ -1,0 +1,49 @@
+adresse_bien: 130 boulevard de la Madeleine "Palais Galilée"
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_e9ni5qD62a
+created_at: '2026-06-24T16:31:27.970Z'
+date_echeance: '2024-08-29'
+date_import: '2026-07-09T07:05:09.208Z'
+date_piece: '2024-08-29'
+donneur_ordre_id: null
+donneur_ordre_nom: BOROWSKI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_S6cKEGQDEJ
+id_dossier: '37451'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47307
+numero_dossier: 51457
+payer_id: cont_e9ni5qD62a
+payeur_civilite: ''
+payeur_email: jaroboro.jb@gmail.com
+payeur_nom: BOROWSKI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BOROWSKI
+proprietaire_prenom: null
+ref_piece: FA240829 47307
+reference: '51457'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:27.970Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240829_47307/standard/FA240829 47307 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

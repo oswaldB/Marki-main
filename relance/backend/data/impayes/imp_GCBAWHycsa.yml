@@ -1,0 +1,49 @@
+adresse_bien: 118 boulevard Raymond Poincaré
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06160'
+commentaire_piece: "18/06/2025 : message tél. Nathalie Clemente + relance 2 avec facture par mail à Brigitte Clemente / cc : Nathalie Clemente (retour non distribution email nathalie.clemente@century.fr)\r\n\r\n12/01 relance les 2 mails par comptabilité\r\n\r\n02/02 message laissé à nathalie pas de réponse\r\n\r\n24/02 message laissé ce jour\r\n+ mail envoyé aux 3 mail donc les 2 de la fiche + n.clemente@proprietes-privees.com"
+contact_relance_id: cont_IutJf9EOCj
+created_at: '2026-06-24T16:31:47.976Z'
+date_echeance: '2023-11-10'
+date_import: '2026-07-09T07:05:11.024Z'
+date_piece: '2023-11-10'
+donneur_ordre_id: null
+donneur_ordre_nom: CLEMENTE
+donneur_ordre_prenom: Brigitte
+email_index: 0
+facture_soldee: true
+id: imp_GCBAWHycsa
+id_dossier: '32184'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45572
+numero_dossier: 49181
+payer_id: cont_IutJf9EOCj
+payeur_civilite: ''
+payeur_email: clementeb@wanadoo.fr
+payeur_nom: CLEMENTE
+payeur_prenom: Brigitte
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CLEMENTE
+proprietaire_prenom: Brigitte
+ref_piece: FA231110 45572
+reference: '49181'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 183.75
+total_ttc: 220.5
+type: impaye
+updated_at: '2026-06-24T16:31:47.976Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231110_45572/standard/FA231110 45572
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

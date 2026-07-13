@@ -1,0 +1,49 @@
+adresse_bien: 7 rue Jean Giono
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: ''
+contact_relance_id: cont_SQPLrGZgRL
+created_at: '2026-06-24T16:31:24.932Z'
+date_echeance: '2024-10-15'
+date_import: '2026-07-09T07:05:08.860Z'
+date_piece: '2024-10-15'
+donneur_ordre_id: null
+donneur_ordre_nom: HALLGREN
+donneur_ordre_prenom: Helena - Fredrik
+email_index: 0
+facture_soldee: true
+id: imp_6kD9oHQW4B
+id_dossier: '37802'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47621
+numero_dossier: 51808
+payer_id: cont_SQPLrGZgRL
+payeur_civilite: ''
+payeur_email: f.hallgren71@gmail.com
+payeur_nom: HALLGREN
+payeur_prenom: Helena - Fredrik
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: HALLGREN
+proprietaire_prenom: Helena - Fredrik
+ref_piece: FA241015 47621
+reference: '51808'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:24.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241015_47621/standard/FA241015 47621
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

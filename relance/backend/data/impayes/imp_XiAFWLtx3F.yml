@@ -1,0 +1,51 @@
+adresse_bien: 12 avenue du Bois de Cythère Villa du Piol
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: >-
+  28/05 : retour agence suite envoi listing : "mandat perdu, en vente dans une
+  autre agence"
+contact_relance_id: cont_HP40X4DGyJ
+created_at: '2026-06-24T16:31:27.002Z'
+date_echeance: '2024-09-12'
+date_import: '2026-07-09T07:05:09.124Z'
+date_piece: '2024-09-12'
+donneur_ordre_id: null
+donneur_ordre_nom: LAPP
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_XiAFWLtx3F
+id_dossier: '37568'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47415
+numero_dossier: 51574
+payer_id: cont_HP40X4DGyJ
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: LAPP
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LAPP
+proprietaire_prenom: null
+ref_piece: FA240912 47415
+reference: '51574'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:27.002Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240912_47415/standard/FA240912 47415
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

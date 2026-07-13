@@ -1,0 +1,49 @@
+adresse_bien: 204 avenue Louis Pasteur L'Albert 1er
+apporteur_id: cont_mSwEw9rkRW
+apporteur_nom: 'EASY MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_CEjhLq1Gn7
+created_at: '2026-06-24T16:31:17.957Z'
+date_echeance: '2025-02-05'
+date_import: '2026-07-09T07:05:08.179Z'
+date_piece: '2025-02-05'
+donneur_ordre_id: null
+donneur_ordre_nom: PARODI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_wlKApklbyZ
+id_dossier: '38618'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48262
+numero_dossier: 52624
+payer_id: cont_CEjhLq1Gn7
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: PARODI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PARODI
+proprietaire_prenom: null
+ref_piece: FA250205 48262
+reference: '52624'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:17.957Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250205_48262/standard/FA250205 48262
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

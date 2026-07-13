@@ -1,0 +1,49 @@
+adresse_bien: 24 rue Pasteur Cagnes Azur
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: relance le 25/09
+contact_relance_id: cont_DMfeZiLnK6
+created_at: '2026-06-24T16:31:04.033Z'
+date_echeance: '2025-09-16'
+date_import: '2026-07-09T07:05:06.874Z'
+date_piece: '2025-09-09'
+donneur_ordre_id: null
+donneur_ordre_nom: GRACIAS
+donneur_ordre_prenom: Caroline
+email_index: 0
+facture_soldee: true
+id: imp_50FNNw8DXQ
+id_dossier: '40174'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49486
+numero_dossier: 54180
+payer_id: cont_DMfeZiLnK6
+payeur_civilite: ''
+payeur_email: carline06@aol.com
+payeur_nom: GRACIAS
+payeur_prenom: Caroline
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GRACIAS
+proprietaire_prenom: Caroline
+ref_piece: FA250909 49486
+reference: '54180'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:04.033Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250909_49486/standard/FA250909 49486
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

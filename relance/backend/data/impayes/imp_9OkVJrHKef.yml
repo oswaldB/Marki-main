@@ -1,0 +1,49 @@
+adresse_bien: 3 rue Pasteur Résidence du Casino
+apporteur_id: cont_pfsqighWA2
+apporteur_nom: INTER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_JCI3GeuZWO
+created_at: '2026-06-24T16:31:45.061Z'
+date_echeance: '2023-12-12'
+date_import: '2026-07-09T07:05:10.793Z'
+date_piece: '2023-12-12'
+donneur_ordre_id: null
+donneur_ordre_nom: BOSISIO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_9OkVJrHKef
+id_dossier: '32425'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45771
+numero_dossier: 49422
+payer_id: cont_JCI3GeuZWO
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BOSISIO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BOSISIO
+proprietaire_prenom: null
+ref_piece: FA231212 45771
+reference: '49422'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:45.061Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231212_45771/standard/FA231212 45771
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

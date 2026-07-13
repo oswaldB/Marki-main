@@ -1,0 +1,33 @@
+$loki: 195
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:35.551Z'
+email: philippecaruso@yahoo.fr
+id: cont_kxlr0EFLNH
+impaye_ids:
+  - imp_DVYsXVtwVc
+  - imp_7EyjSsL6jN
+  - imp_h7mGY9To38
+  - imp_5gC1nl3gpJ
+  - imp_GDP3AiNKek
+is_blacklisted: false
+meta:
+  created: 1783580698419
+  revision: 0
+  version: 0
+nom: 'INDIVISION CALLAMAND '
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0698171044'
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:34.565Z'

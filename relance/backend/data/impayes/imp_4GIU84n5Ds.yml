@@ -1,0 +1,49 @@
+adresse_bien: 4941 route de Menton Les Terrasses du Soleil
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:30:59.970Z'
+date_echeance: '2025-11-12'
+date_import: '2026-07-09T07:05:06.477Z'
+date_piece: '2025-11-05'
+donneur_ordre_id: null
+donneur_ordre_nom: BATTISTI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_4GIU84n5Ds
+id_dossier: '40583'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49887
+numero_dossier: 54589
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BATTISTI
+proprietaire_prenom: null
+ref_piece: FA251105 49887
+reference: '54589'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 101.25
+total_ttc: 121.5
+type: impaye
+updated_at: '2026-06-24T16:30:59.970Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251105_49887/standard/FA251105 49887
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: GORBIO

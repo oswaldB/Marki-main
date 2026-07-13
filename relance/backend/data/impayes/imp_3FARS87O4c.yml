@@ -1,0 +1,49 @@
+adresse_bien: 60 val de Gorbio La Pinède
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_azX4O8PD4H
+created_at: '2026-06-24T16:30:52.939Z'
+date_echeance: '2026-03-10'
+date_import: '2026-07-09T07:05:05.759Z'
+date_piece: '2026-03-03'
+donneur_ordre_id: null
+donneur_ordre_nom: BAUDY
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_3FARS87O4c
+id_dossier: '41299'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50542
+numero_dossier: 55305
+payer_id: cont_azX4O8PD4H
+payeur_civilite: ''
+payeur_email: stephanie.reitano@hotmail.fr
+payeur_nom: BAUDY
+payeur_prenom: ''
+payeur_telephone: Mme 0623426861
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BAUDY
+proprietaire_prenom: null
+ref_piece: FA260303 50542
+reference: '55305'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:30:52.939Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260303_50542/standard/FA260303 50542 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

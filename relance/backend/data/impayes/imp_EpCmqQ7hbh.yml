@@ -1,0 +1,49 @@
+adresse_bien: 50 boulevard Jean Behra
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_bmEivQqMRp
+created_at: '2026-06-24T16:31:09.033Z'
+date_echeance: '2025-06-18'
+date_import: '2026-07-09T07:05:07.341Z'
+date_piece: '2025-06-18'
+donneur_ordre_id: null
+donneur_ordre_nom: MUSUMECI-TOPCIU
+donneur_ordre_prenom: Lisa
+email_index: 0
+facture_soldee: true
+id: imp_EpCmqQ7hbh
+id_dossier: '39647'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49066
+numero_dossier: 53653
+payer_id: cont_bmEivQqMRp
+payeur_civilite: ''
+payeur_email: lisatoppp@gmail.com
+payeur_nom: MUSUMECI-TOPCIU
+payeur_prenom: Lisa
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MUSUMECI-TOPCIU
+proprietaire_prenom: Lisa
+ref_piece: FA250618 49066
+reference: '53653'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 329.17
+total_ttc: 395
+type: impaye
+updated_at: '2026-06-24T16:31:09.033Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250618_49066/standard/FA250618 49066 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

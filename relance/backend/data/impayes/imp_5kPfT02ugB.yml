@@ -1,0 +1,49 @@
+adresse_bien: 75 route de Castellar
+apporteur_id: cont_Kl8PBkhOa2
+apporteur_nom: LAFORET Menton Pieta
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_XiRJPcSJOM
+created_at: '2026-06-24T16:30:49.874Z'
+date_echeance: '2026-05-01'
+date_import: '2026-07-09T07:05:05.452Z'
+date_piece: '2026-04-24'
+donneur_ordre_id: null
+donneur_ordre_nom: NOVIKOVA
+donneur_ordre_prenom: Jelena
+email_index: 0
+facture_soldee: true
+id: imp_5kPfT02ugB
+id_dossier: '41610'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50842
+numero_dossier: 55616
+payer_id: cont_XiRJPcSJOM
+payeur_civilite: ''
+payeur_email: jelena.novikova@yahoo.fr
+payeur_nom: NOVIKOVA
+payeur_prenom: Jelena
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: NOVIKOVA
+proprietaire_prenom: Jelena
+ref_piece: FA260424 50842
+reference: '55616'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:30:49.874Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260424_50842/standard/FA260424 50842
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 1 bis rue Cros de Capeu Le Primerose
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_JVnfYPyJnX
+created_at: '2026-06-24T16:31:00.944Z'
+date_echeance: '2025-11-04'
+date_import: '2026-07-09T07:05:06.544Z'
+date_piece: '2025-10-28'
+donneur_ordre_id: null
+donneur_ordre_nom: DURAND
+donneur_ordre_prenom: Veronique
+email_index: 0
+facture_soldee: true
+id: imp_vdMZug3Hlb
+id_dossier: '40557'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49841
+numero_dossier: 54563
+payer_id: cont_JVnfYPyJnX
+payeur_civilite: ''
+payeur_email: contact@tissinie.com
+payeur_nom: DURAND
+payeur_prenom: Veronique
+payeur_telephone: '0628471406'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DURAND
+proprietaire_prenom: Veronique
+ref_piece: FA251028 49841
+reference: '54563'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 133.33
+total_ttc: 160
+type: impaye
+updated_at: '2026-06-24T16:31:00.944Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251028_49841/standard/FA251028 49841
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -108,20 +108,20 @@
           >
             Tous
           </a>
-          <a href="./contacts-sans-email.html" 
+          <button 
              class="px-3 py-2 rounded-lg text-sm font-medium transition-all"
              :class="filterType === 'sans-email' ? 'bg-sky-500 text-white' : 'text-slate-600 hover:bg-slate-100'"
              @click.prevent="filterType = 'sans-email'"
           >
             <i class="fas fa-exclamation-triangle mr-1.5"></i>Sans email
-          </a>
-          <a href="./contacts-blacklist.html" 
+          </button>
+          <button 
              class="px-3 py-2 rounded-lg text-sm font-medium transition-all"
              :class="filterType === 'blacklist' ? 'bg-sky-500 text-white' : 'text-slate-600 hover:bg-slate-100'"
              @click.prevent="filterType = 'blacklist'"
           >
             <i class="fas fa-ban mr-1.5"></i>Blacklist
-          </a>
+          </button>
         </div>
         
         <div class="flex-1"></div>

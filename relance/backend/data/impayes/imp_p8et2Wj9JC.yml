@@ -1,0 +1,49 @@
+adresse_bien: 7 rue Meyerbeer
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "Local Commercial \r\n7 rue Meyerbeer \r\n06000 Nice"
+contact_relance_id: cont_emBwtDqAAU
+created_at: '2026-06-24T16:31:00.976Z'
+date_echeance: '2025-10-31'
+date_import: '2026-07-09T07:05:06.564Z'
+date_piece: '2025-10-24'
+donneur_ordre_id: null
+donneur_ordre_nom: BELLON
+donneur_ordre_prenom: Claude
+email_index: 0
+facture_soldee: true
+id: imp_p8et2Wj9JC
+id_dossier: '40504'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49820
+numero_dossier: 54510
+payer_id: cont_emBwtDqAAU
+payeur_civilite: ''
+payeur_email: clbellon6@gmail.com
+payeur_nom: BELLON
+payeur_prenom: Claude
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BELLON
+proprietaire_prenom: Claude
+ref_piece: FA251024 49820
+reference: '54510'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 241.67
+total_ttc: 290
+type: impaye
+updated_at: '2026-06-24T16:31:00.976Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251024_49820/standard/FA251024 49820
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

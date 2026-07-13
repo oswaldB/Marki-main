@@ -1,0 +1,49 @@
+adresse_bien: 2 impasse des escaliers de la plage Le Saphir
+apporteur_id: cont_MyutVJwsSf
+apporteur_nom: VISTA IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_896LmhUF2Q
+created_at: '2026-06-24T16:30:57.876Z'
+date_echeance: '2025-12-18'
+date_import: '2026-07-09T07:05:06.250Z'
+date_piece: '2025-12-11'
+donneur_ordre_id: null
+donneur_ordre_nom: CAUCHEMEZ
+donneur_ordre_prenom: Anne
+email_index: 0
+facture_soldee: true
+id: imp_bfEsbEzmiR
+id_dossier: '40809'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50113
+numero_dossier: 54815
+payer_id: cont_896LmhUF2Q
+payeur_civilite: ''
+payeur_email: anauma06@yahoo.fr
+payeur_nom: CAUCHEMEZ
+payeur_prenom: Anne
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAUCHEMEZ
+proprietaire_prenom: Anne
+ref_piece: FA251211 50113
+reference: '54815'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:30:57.876Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251211_50113/standard/FA251211 50113
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

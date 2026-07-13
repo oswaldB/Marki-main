@@ -1,0 +1,49 @@
+adresse_bien: 1 rue du Val des Castagnins Le Regiamer
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Umxi9pNBfS
+created_at: '2026-06-24T16:31:16.895Z'
+date_echeance: '2025-02-20'
+date_import: '2026-07-09T07:05:08.033Z'
+date_piece: '2025-02-20'
+donneur_ordre_id: null
+donneur_ordre_nom: AITA
+donneur_ordre_prenom: Nadia
+email_index: 0
+facture_soldee: true
+id: imp_veCgXThgl1
+id_dossier: '38747'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48363
+numero_dossier: 52753
+payer_id: cont_Umxi9pNBfS
+payeur_civilite: ''
+payeur_email: nadia.aita75@gmail.com
+payeur_nom: AITA
+payeur_prenom: Nadia
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: AITA
+proprietaire_prenom: Nadia
+ref_piece: FA250220 48363
+reference: '52753'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 183.75
+total_ttc: 220.5
+type: impaye
+updated_at: '2026-06-24T16:31:16.895Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250220_48363/standard/FA250220 48363
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

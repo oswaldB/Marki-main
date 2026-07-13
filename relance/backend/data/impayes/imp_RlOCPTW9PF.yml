@@ -1,0 +1,49 @@
+adresse_bien: 1 rue Saint Honoré  Villa Clorinde
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_VrWCNJqN0R
+created_at: '2026-06-24T16:30:53.993Z'
+date_echeance: '2026-02-13'
+date_import: '2026-07-09T07:05:05.917Z'
+date_piece: '2026-02-06'
+donneur_ordre_id: null
+donneur_ordre_nom: BODINO
+donneur_ordre_prenom: 'Valerie '
+email_index: 0
+facture_soldee: true
+id: imp_RlOCPTW9PF
+id_dossier: '41150'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50438
+numero_dossier: 55156
+payer_id: cont_VrWCNJqN0R
+payeur_civilite: ''
+payeur_email: bodino.valerie@orange.fr
+payeur_nom: BODINO
+payeur_prenom: 'Valerie '
+payeur_telephone: '0684054696'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BODINO
+proprietaire_prenom: 'Valerie '
+ref_piece: FA260206 50438
+reference: '55156'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:30:53.993Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260206_50438/standard/FA260206 50438
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

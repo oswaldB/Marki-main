@@ -1,0 +1,49 @@
+adresse_bien: 33 boulevard de Riquier
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_CDLW84mN2c
+created_at: '2026-06-24T16:31:44.033Z'
+date_echeance: '2024-01-10'
+date_import: '2026-07-09T07:05:10.688Z'
+date_piece: '2024-01-10'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI BEB
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_RDmUvuk9Su
+id_dossier: '32586'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45890
+numero_dossier: 49583
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCI BEB
+proprietaire_prenom: null
+ref_piece: FA240110 45890
+reference: '49583'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 23.33
+total_ttc: 28
+type: impaye
+updated_at: '2026-06-24T16:31:44.033Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240110_45890/standard/FA240110 45890
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

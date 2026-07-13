@@ -1,0 +1,49 @@
+adresse_bien: 208 avenue Louis Pasteur Le Brasilia
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_mLsz1M907C
+created_at: '2026-06-24T16:30:50.900Z'
+date_echeance: '2026-04-10'
+date_import: '2026-07-09T07:05:05.549Z'
+date_piece: '2026-04-03'
+donneur_ordre_id: null
+donneur_ordre_nom: PINARD
+donneur_ordre_prenom: Nicole
+email_index: 0
+facture_soldee: true
+id: imp_BVHpRFFc8T
+id_dossier: '41500'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50739
+numero_dossier: 55506
+payer_id: cont_mLsz1M907C
+payeur_civilite: ''
+payeur_email: Pinard.nicole@hotmail.com
+payeur_nom: PINARD
+payeur_prenom: Nicole
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PINARD
+proprietaire_prenom: Nicole
+ref_piece: FA260403 50739
+reference: '55506'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:30:50.900Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260403_50739/standard/FA260403 50739
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

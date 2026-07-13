@@ -1,0 +1,39 @@
+$loki: 4108
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:12.561Z'
+email: imad.benmess83300@gmail.com
+id: cont_vqP5w9ChQ6
+impaye_ids:
+  - imp_6ntG608j4v
+  - imp_TwYrjlVJ0P
+is_blacklisted: false
+meta:
+  created: 1783580699884
+  revision: 1
+  updated: 1783580717106
+  version: 0
+nom: BEN MESSAOUD
+prenom: Imad
+relance_ids:
+  - rel_vKaWLXMBzB
+  - rel_OkZbZVkvnE
+  - rel_V4vVRohUlL
+  - rel_5pPVnySKAG
+  - rel_oV70Am2ZSm
+  - rel_s1N1jUdPeX
+  - rel_GdHRWiQtTn
+  - rel_XYFgzxgXKy
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:11.411Z'

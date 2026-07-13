@@ -1,0 +1,29 @@
+$loki: 853
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:42.554Z'
+email: ericafgeijersstam@hotmail.com
+id: cont_pDYwZb4jM3
+impaye_ids:
+  - imp_HBO6d3Cmum
+is_blacklisted: false
+meta:
+  created: 1783580698690
+  revision: 0
+  version: 0
+nom: AF GEIJERSSTAM MARINA
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0046707720307'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:41.519Z'

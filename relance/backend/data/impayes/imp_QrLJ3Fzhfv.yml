@@ -1,0 +1,49 @@
+adresse_bien: 16 avenue Alfred Borriglione
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_FmLk3xlJq2
+created_at: '2026-06-24T16:31:04.967Z'
+date_echeance: '2025-09-09'
+date_import: '2026-07-09T07:05:06.928Z'
+date_piece: '2025-09-02'
+donneur_ordre_id: null
+donneur_ordre_nom: HAIDAR - ZRIRAK
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_QrLJ3Fzhfv
+id_dossier: '38760'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49440
+numero_dossier: 52766
+payer_id: cont_FmLk3xlJq2
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: HAIDAR - ZRIRAK
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: HAIDAR - ZRIRAK
+proprietaire_prenom: null
+ref_piece: FA250902 49440
+reference: '52766'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: -282
+total_ttc: -338.4
+type: impaye
+updated_at: '2026-06-24T16:31:04.967Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250902_49440/standard/FA250902 49440
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

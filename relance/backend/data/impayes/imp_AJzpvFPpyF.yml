@@ -1,0 +1,49 @@
+adresse_bien: 1029 route des Moulins de Paillas Domaine Cambon
+apporteur_id: cont_xOkmHVECsd
+apporteur_nom: FRANCE CONSEIL IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '83580'
+commentaire_piece: ''
+contact_relance_id: cont_b4SB5B0bmP
+created_at: '2026-06-24T16:31:49.953Z'
+date_echeance: '2023-10-12'
+date_import: '2026-07-09T07:05:11.198Z'
+date_piece: '2023-10-12'
+donneur_ordre_id: null
+donneur_ordre_nom: C.M.B MONACO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_AJzpvFPpyF
+id_dossier: '31933'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45385
+numero_dossier: 48930
+payer_id: cont_b4SB5B0bmP
+payeur_civilite: ''
+payeur_email: creditmonitoringcontrol@cmb.mc
+payeur_nom: C.M.B MONACO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: 'CMB SCI EDEN HOLDING FRANCE '
+proprietaire_prenom: null
+ref_piece: FA231012 45385
+reference: '48930'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 458.33
+total_ttc: 550
+type: impaye
+updated_at: '2026-06-24T16:31:49.953Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231012_45385/standard/FA231012 45385
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: GASSIN

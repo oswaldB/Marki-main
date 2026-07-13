@@ -1,0 +1,84 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_0dwCjMhP3E
+corps: >
+  <p>Bonjour Eve CAVALLI,</p>
+
+  <p><br></p>
+
+  <p>Malgré nos 3 précédents rappels, votre facture <strong>n°51246</strong>,
+  relative à une prestation réalisée au <strong>8 rue Rancher, 06000 NICE -
+  dossier 56106</strong>, reste impayée.</p>
+
+  <p><br></p>
+
+  <p>Nous constatons que la date d'échéance du <strong>13/07/2026</strong> est
+  désormais dépassée, et que le montant de <strong>340 €</strong> n'a toujours
+  pas été réglé.</p>
+
+  <p><br></p>
+
+  <p>Vous pouvez régler cette facture immédiatement :</p>
+
+  <p><a href="https://adti.markidiags.com/redirect-pdf/TapOBgtq6X">Télécharger
+  la facture (PDF)</a></p>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=340&vads_order_id=51246&vads_cust_id=56106&vads_cust_last_name=CAVALLI&vads_cust_first_name=Eve&vads_cust_email=evecava74@gmail.com">Paiement
+  sécurisé en ligne par carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p><strong>À défaut de paiement sous 3 jours</strong>, des intérêts de retard
+  et une indemnité forfaitaire de <strong>40 €</strong> pour frais de
+  recouvrement seront appliqués.</p>
+
+  <p><br></p>
+
+  <p>Pour toute question, vous pouvez consulter votre <a
+  href="https://adti.markidiags.com/redirect-espace/0dwCjMhP3E">espace
+  client</a> ou nous contacter.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-07-06T22:02:30.707Z'
+date_envoi: '2026-07-25T00:00:00.000Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 5
+erreur_count: 0
+id: rel_jHNXmDlHWu
+impaye_ids:
+  - imp_TapOBgtq6X
+manuelle: false
+message_id: null
+objet: >-
+  EX'IM - Dossier 56106 - Relance n°3 : Dernier rappel avant mise en demeure –
+  Facture 51246 impayée
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: pret pour envoi
+type: relance
+updated_at: '2026-07-06T22:02:30.707Z'
+valide: false

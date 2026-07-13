@@ -1,0 +1,49 @@
+adresse_bien: 23 avenue Louis Cappatti Les Terrasses de Cappatti
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_tZVVVZkouA
+created_at: '2026-06-24T16:31:01.039Z'
+date_echeance: '2025-10-27'
+date_import: '2026-07-09T07:05:06.579Z'
+date_piece: '2025-10-20'
+donneur_ordre_id: null
+donneur_ordre_nom: MORET
+donneur_ordre_prenom: 'Sandrine '
+email_index: 0
+facture_soldee: true
+id: imp_5nIkxCFMD4
+id_dossier: '40496'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49773
+numero_dossier: 54502
+payer_id: cont_tZVVVZkouA
+payeur_civilite: ''
+payeur_email: smoret78@gmail.com
+payeur_nom: MORET
+payeur_prenom: 'Sandrine '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MORET
+proprietaire_prenom: 'Sandrine '
+ref_piece: FA251020 49773
+reference: '54502'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 225
+total_ttc: 270
+type: impaye
+updated_at: '2026-06-24T16:31:01.039Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251020_49773/standard/FA251020 49773
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

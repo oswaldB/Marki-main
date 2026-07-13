@@ -1,0 +1,49 @@
+adresse_bien: 187 boulevard de la Madeleine
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "rdv annulé\r\nannuler la facture"
+contact_relance_id: cont_DbGAQY2WNJ
+created_at: '2026-06-24T16:30:55.048Z'
+date_echeance: '2026-01-27'
+date_import: '2026-07-09T07:05:06.053Z'
+date_piece: '2026-01-20'
+donneur_ordre_id: null
+donneur_ordre_nom: STRAUDO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_hElDOPEzx3
+id_dossier: '29381'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50317
+numero_dossier: 48367
+payer_id: cont_DbGAQY2WNJ
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: STRAUDO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: STRAUDO
+proprietaire_prenom: null
+ref_piece: FA260120 50317
+reference: '48367'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: -83.33
+total_ttc: -100
+type: impaye
+updated_at: '2026-06-24T16:30:55.048Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260120_50317/standard/FA260120 50317
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

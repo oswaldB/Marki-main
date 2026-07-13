@@ -1,0 +1,49 @@
+adresse_bien: 13 rue de Grammont
+apporteur_id: cont_M0OrqZhjRP
+apporteur_nom: 'HAP '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_msDSMQCD5k
+created_at: '2026-06-24T16:31:29.027Z'
+date_echeance: '2024-08-02'
+date_import: '2026-07-09T07:05:09.359Z'
+date_piece: '2024-08-02'
+donneur_ordre_id: null
+donneur_ordre_nom: LENTULO
+donneur_ordre_prenom: 'Francoise '
+email_index: 0
+facture_soldee: true
+id: imp_oMFEQEQNDD
+id_dossier: '36293'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47185
+numero_dossier: 51297
+payer_id: cont_msDSMQCD5k
+payeur_civilite: ''
+payeur_email: francoise.lentulo@wanadoo.fr
+payeur_nom: LENTULO
+payeur_prenom: 'Francoise '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LENTULO
+proprietaire_prenom: 'Francoise '
+ref_piece: FA240802 47185
+reference: '51297'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:29.027Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240802_47185/standard/FA240802 47185 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 687 chemin Val de Ville Soubran
+apporteur_id: cont_XfMiq6mNPd
+apporteur_nom: HAKKASAN
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06440'
+commentaire_piece: "22/07 : rglt non parvenu, info mail M. Pérard\r\n\r\n08/07 : vu avec M. PERARD au tél. : dossier en cours auprès de la banque, relancer si pas de règlement au 21/07\r\n\r\n18/06 retour HAKKASAN : \"Toutes les factures concernant ces deux sociétés y compris les récentes seront soldées quoi qu’il arrive d’ici la fin du mois soit via les comptes des sociétés si le nouveau gérant aura accès aux comptes bancaires (changement gérant sur Kbis en cours auprès du greffe) soit avec le compte perso de Monsieur GEDON\"\r\n\r\n11/06 : envoi listing impayé au 31/05"
+contact_relance_id: cont_aphNL83I9z
+created_at: '2026-06-24T16:31:11.025Z'
+date_echeance: '2025-05-14'
+date_import: '2026-07-09T07:05:07.536Z'
+date_piece: '2025-05-14'
+donneur_ordre_id: null
+donneur_ordre_nom: L'ARIANE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_zZBkI1ykig
+id_dossier: '39399'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48883
+numero_dossier: 53405
+payer_id: cont_XfMiq6mNPd
+payeur_civilite: ''
+payeur_email: ca.perard@hakkasan.immo
+payeur_nom: HAKKASAN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: L'ARIANE
+proprietaire_prenom: null
+ref_piece: FA250514 48883
+reference: '53405'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 560.42
+total_ttc: 672.5
+type: impaye
+updated_at: '2026-06-24T16:31:11.025Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250514_48883/standard/FA250514 48883 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: PEILLE

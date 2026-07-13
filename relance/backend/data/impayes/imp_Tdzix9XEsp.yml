@@ -1,0 +1,49 @@
+adresse_bien: 4 rue de la Suisse
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_xAJ9wfoI5E
+created_at: '2026-06-24T16:31:33.932Z'
+date_echeance: '2024-05-30'
+date_import: '2026-07-09T07:05:09.795Z'
+date_piece: '2024-05-30'
+donneur_ordre_id: null
+donneur_ordre_nom: BLANCHARD
+donneur_ordre_prenom: Patrick
+email_index: 0
+facture_soldee: true
+id: imp_Tdzix9XEsp
+id_dossier: '35768'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46775
+numero_dossier: 50772
+payer_id: cont_xAJ9wfoI5E
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BLANCHARD
+payeur_prenom: Patrick
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BLANCHARD
+proprietaire_prenom: Patrick
+ref_piece: FA240530 46775
+reference: '50772'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:33.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240530_46775/standard/FA240530 46775 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

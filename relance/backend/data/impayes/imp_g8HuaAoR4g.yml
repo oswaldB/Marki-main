@@ -1,0 +1,49 @@
+adresse_bien: 8 quai des Docks Le Neptune
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_C03R3KnuaI
+created_at: '2026-06-24T16:31:15.993Z'
+date_echeance: '2025-03-05'
+date_import: '2026-07-09T07:05:07.990Z'
+date_piece: '2025-03-05'
+donneur_ordre_id: null
+donneur_ordre_nom: VERNASSA
+donneur_ordre_prenom: Sylvaine
+email_index: 0
+facture_soldee: true
+id: imp_g8HuaAoR4g
+id_dossier: '38845'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48443
+numero_dossier: 52851
+payer_id: cont_C03R3KnuaI
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: VERNASSA
+payeur_prenom: Sylvaine
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: VERNASSA
+proprietaire_prenom: Sylvaine
+ref_piece: FA250305 48443
+reference: '52851'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:15.993Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250305_48443/standard/FA250305 48443 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

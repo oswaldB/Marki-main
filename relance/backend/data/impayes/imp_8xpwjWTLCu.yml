@@ -1,0 +1,49 @@
+adresse_bien: 28 boulevard Raimbaldi
+apporteur_id: cont_CKRDUjb5F6
+apporteur_nom: AGENCE EUROPEENNE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: relance le 18/09
+contact_relance_id: cont_CKRDUjb5F6
+created_at: '2026-06-24T16:31:07.046Z'
+date_echeance: '2025-07-21'
+date_import: '2026-07-09T07:05:07.158Z'
+date_piece: '2025-07-21'
+donneur_ordre_id: null
+donneur_ordre_nom: AGENCE EUROPEENNE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_8xpwjWTLCu
+id_dossier: '39854'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49255
+numero_dossier: 53860
+payer_id: cont_CKRDUjb5F6
+payeur_civilite: ''
+payeur_email: info@agence-europeenne.fr
+payeur_nom: AGENCE EUROPEENNE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PPF
+proprietaire_prenom: null
+ref_piece: FA250721 49255
+reference: '53860'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:07.046Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250721_49255/standard/FA250721 49255
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

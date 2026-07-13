@@ -1,0 +1,49 @@
+adresse_bien: 2 rue du Pont Vieux
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06380'
+commentaire_piece: ''
+contact_relance_id: cont_DdxDFgcbP3
+created_at: '2026-06-24T16:31:18.923Z'
+date_echeance: '2025-01-24'
+date_import: '2026-07-09T07:05:08.244Z'
+date_piece: '2025-01-24'
+donneur_ordre_id: null
+donneur_ordre_nom: PICARD épouse Da Silva
+donneur_ordre_prenom: Daniéle
+email_index: 0
+facture_soldee: true
+id: imp_CDGiBmL7OB
+id_dossier: '38546'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48192
+numero_dossier: 52552
+payer_id: cont_DdxDFgcbP3
+payeur_civilite: ''
+payeur_email: dasilva_danielle@orange.fr
+payeur_nom: PICARD épouse Da Silva
+payeur_prenom: Daniéle
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PICARD épouse Da Silva
+proprietaire_prenom: Daniéle
+ref_piece: FA250124 48192
+reference: '52552'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-24T16:31:18.923Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250124_48192/standard/FA250124 48192
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SOSPEL

@@ -1,0 +1,49 @@
+adresse_bien: 45 boulevard Stalingrad Les Algues  Bâtiment A
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_X4abxWIwed
+created_at: '2026-06-24T16:31:11.025Z'
+date_echeance: '2025-05-14'
+date_import: '2026-07-09T07:05:07.526Z'
+date_piece: '2025-05-14'
+donneur_ordre_id: null
+donneur_ordre_nom: PASEMANN
+donneur_ordre_prenom: Pierrette
+email_index: 0
+facture_soldee: true
+id: imp_plrrmKqAKC
+id_dossier: '39402'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48885
+numero_dossier: 53408
+payer_id: cont_X4abxWIwed
+payeur_civilite: ''
+payeur_email: pierrette-pasemann@t-online.de
+payeur_nom: PASEMANN
+payeur_prenom: Pierrette
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PASEMANN
+proprietaire_prenom: Pierrette
+ref_piece: FA250514 48885
+reference: '53408'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 198.33
+total_ttc: 238
+type: impaye
+updated_at: '2026-06-24T16:31:11.025Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250514_48885/standard/FA250514 48885 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 11 avenue de Verdun  L'Etoile
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_EqzsLLVu1z
+created_at: '2026-06-24T16:30:55.943Z'
+date_echeance: '2026-01-22'
+date_import: '2026-07-09T07:05:06.103Z'
+date_piece: '2026-01-15'
+donneur_ordre_id: null
+donneur_ordre_nom: TURRA
+donneur_ordre_prenom: Giancarlo
+email_index: 0
+facture_soldee: true
+id: imp_usy5f1yuOc
+id_dossier: '40999'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50290
+numero_dossier: 55005
+payer_id: cont_EqzsLLVu1z
+payeur_civilite: ''
+payeur_email: turragia@gmail.com
+payeur_nom: TURRA
+payeur_prenom: Giancarlo
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: TURRA
+proprietaire_prenom: Giancarlo
+ref_piece: FA260115 50290
+reference: '55005'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 243.33
+total_ttc: 292
+type: impaye
+updated_at: '2026-06-24T16:30:55.943Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260115_50290/standard/FA260115 50290
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

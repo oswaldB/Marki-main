@@ -1,0 +1,49 @@
+adresse_bien: 1 rue Désirée Clary Villa Clary Bâtiment 2
+apporteur_id: cont_lKyCEvLzZh
+apporteur_nom: 'FONCIA RIVIERA ARSON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_METIbkLlAB
+created_at: '2026-06-24T16:30:58.083Z'
+date_echeance: '2025-12-05'
+date_import: '2026-07-09T07:05:06.340Z'
+date_piece: '2025-11-28'
+donneur_ordre_id: null
+donneur_ordre_nom: FINELLI
+donneur_ordre_prenom: Francois
+email_index: 0
+facture_soldee: true
+id: imp_apkbcdRBoR
+id_dossier: '40718'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50046
+numero_dossier: 54724
+payer_id: cont_METIbkLlAB
+payeur_civilite: ''
+payeur_email: fifr34@orange.fr
+payeur_nom: FINELLI
+payeur_prenom: Francois
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FINELLI
+proprietaire_prenom: Francois
+ref_piece: FA251128 50046
+reference: '54724'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:30:58.083Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251128_50046/standard/FA251128 50046
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

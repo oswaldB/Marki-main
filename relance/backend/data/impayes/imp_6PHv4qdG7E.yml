@@ -1,0 +1,49 @@
+adresse_bien: 88 Allee Louis Moreno Eden Parc II
+apporteur_id: cont_4Zc7DsPc6Y
+apporteur_nom: EDOUARD VII REAL ESTATE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_9w3mheMsCE
+created_at: '2026-06-24T16:31:35.047Z'
+date_echeance: '2024-05-06'
+date_import: '2026-07-09T07:05:09.904Z'
+date_piece: '2024-05-06'
+donneur_ordre_id: null
+donneur_ordre_nom: Campanella
+donneur_ordre_prenom: Luisina
+email_index: 0
+facture_soldee: true
+id: imp_6PHv4qdG7E
+id_dossier: '34602'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46632
+numero_dossier: 50601
+payer_id: cont_9w3mheMsCE
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: Campanella
+payeur_prenom: Luisina
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: Campanella
+proprietaire_prenom: Luisina
+ref_piece: FA240506 46632
+reference: '50601'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 187.5
+total_ttc: 225
+type: impaye
+updated_at: '2026-06-24T16:31:35.047Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240506_46632/standard/FA240506 46632 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

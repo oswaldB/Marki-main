@@ -1,0 +1,49 @@
+adresse_bien: 24 rue Saint Michel
+apporteur_id: cont_eoGoh5WzN6
+apporteur_nom: MT AGENCY
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:16.895Z'
+date_echeance: '2025-02-20'
+date_import: '2026-07-09T07:05:08.034Z'
+date_piece: '2025-02-20'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI CAUREMA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_eCV4XugPPJ
+id_dossier: '38749'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48365
+numero_dossier: 52755
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SCI CAUREMA
+proprietaire_prenom: null
+ref_piece: FA250220 48365
+reference: '52755'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:31:16.895Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250220_48365/standard/FA250220 48365
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,62 @@
+$loki: 381
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:37.552Z'
+email: contact@syndictdac.fr
+id: cont_nGbYMncL3T
+impaye_ids:
+  - imp_QSoAXe7wt2
+  - imp_qGeaRv3MBo
+  - imp_31B2xRk3vd
+  - imp_aQEtpsGZ1j
+  - imp_jvkOtXRTpw
+  - imp_GkQzNPYEO6
+  - imp_WVTTtaeKnY
+  - imp_h26KNivppi
+  - imp_J9UGWV9Dug
+  - imp_jcQsyDlTAc
+  - imp_EsAIptOKwt
+  - imp_B8lRE7tHlz
+  - imp_ADnl5pU14C
+  - imp_lHwAMu96Jp
+  - imp_jBYxJqmaeY
+  - imp_lgZEy0cDtk
+  - imp_xyCyFWePRS
+  - imp_kBoZ44XrqY
+  - imp_73zE1LOmW9
+  - imp_7FXhwOluzj
+  - imp_Yok76Cbnb4
+  - imp_cmJmGI0xEb
+  - imp_iH5XDP46QS
+  - imp_sBNLDNxRtc
+  - imp_IImZdw46ZZ
+  - imp_jFOToXFzlW
+  - imp_3xFAlSQrpy
+  - imp_kUYxbsPYG9
+  - imp_hwn3sxKGUe
+  - imp_83ZKpE3t3Y
+  - imp_6uvjmAydyC
+  - imp_GLZndMBTbD
+  - imp_zLfbdH3RVb
+  - imp_4gVGfIgDtv
+is_blacklisted: true
+meta:
+  created: 1783580698498
+  revision: 0
+  version: 0
+nom: CABINET TRABAUD ACQUARONE
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:36.540Z'

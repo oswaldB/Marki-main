@@ -1,0 +1,49 @@
+adresse_bien: 8 boulevard Henri Sappia Le Rouret Bretagne
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_euGGVxmXgE
+created_at: '2026-06-24T16:30:47.868Z'
+date_echeance: '2026-06-04'
+date_import: '2026-07-09T07:05:05.256Z'
+date_piece: '2026-05-28'
+donneur_ordre_id: null
+donneur_ordre_nom: MARQUES DE FREITAS
+donneur_ordre_prenom: Manuel Augusto
+email_index: 0
+facture_soldee: false
+id: imp_M4EKMm32LD
+id_dossier: '41847'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51022
+numero_dossier: 55853
+payer_id: cont_euGGVxmXgE
+payeur_civilite: ''
+payeur_email: sarlbatmon@monaco.mc
+payeur_nom: MARQUES DE FREITAS
+payeur_prenom: Manuel Augusto
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MARQUES DE FREITAS
+proprietaire_prenom: Manuel Augusto
+ref_piece: FA260528 51022
+reference: '55853'
+reste_a_payer: 240
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 200
+total_ttc: 240
+type: impaye
+updated_at: '2026-06-24T16:33:33.227Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260528_51022/standard/FA260528 51022 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

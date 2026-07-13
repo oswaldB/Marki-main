@@ -1,0 +1,49 @@
+adresse_bien: 4 Prom Mal Leclerc de Hauteclocque Le Christophe Colomb
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_jaxrBCC2rQ
+created_at: '2026-06-24T16:30:57.035Z'
+date_echeance: '2025-12-24'
+date_import: '2026-07-09T07:05:06.231Z'
+date_piece: '2025-12-17'
+donneur_ordre_id: null
+donneur_ordre_nom: PAGLIUZZI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_vUHKAd60S1
+id_dossier: '40857'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50140
+numero_dossier: 54863
+payer_id: cont_jaxrBCC2rQ
+payeur_civilite: ''
+payeur_email: Manupagliuzzi1962@gmail.com
+payeur_nom: PAGLIUZZI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PAGLIUZZI
+proprietaire_prenom: null
+ref_piece: FA251217 50140
+reference: '54863'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 66.67
+total_ttc: 80
+type: impaye
+updated_at: '2026-06-24T16:30:57.035Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251217_50140/standard/FA251217 50140
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

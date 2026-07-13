@@ -1,0 +1,49 @@
+adresse_bien: 27 avenue de Sospel L'Intercontinental
+apporteur_id: cont_dntkuJ727m
+apporteur_nom: 'WRETMAN MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_sfXGVCWn4U
+created_at: '2026-06-24T16:30:54.950Z'
+date_echeance: '2026-02-03'
+date_import: '2026-07-09T07:05:06.007Z'
+date_piece: '2026-01-27'
+donneur_ordre_id: null
+donneur_ordre_nom: ALLEN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_vrErQvCy5e
+id_dossier: '40829'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50357
+numero_dossier: 54835
+payer_id: cont_sfXGVCWn4U
+payeur_civilite: ''
+payeur_email: pauline@ifaroma.org
+payeur_nom: ALLEN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ALLEN
+proprietaire_prenom: null
+ref_piece: FA260127 50357
+reference: '54835'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 186.67
+total_ttc: 224
+type: impaye
+updated_at: '2026-06-24T16:30:54.950Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260127_50357/standard/FA260127 50357
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

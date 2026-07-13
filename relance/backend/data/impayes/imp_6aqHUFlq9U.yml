@@ -1,0 +1,49 @@
+adresse_bien: 11 rue Beaulieu
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06400'
+commentaire_piece: ''
+contact_relance_id: cont_62tB6iDGoZ
+created_at: '2026-06-24T16:31:16.068Z'
+date_echeance: '2025-02-26'
+date_import: '2026-07-09T07:05:08.028Z'
+date_piece: '2025-02-26'
+donneur_ordre_id: null
+donneur_ordre_nom: HALBERSTAM
+donneur_ordre_prenom: Olivier
+email_index: 0
+facture_soldee: true
+id: imp_6aqHUFlq9U
+id_dossier: '38797'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48404
+numero_dossier: 52803
+payer_id: cont_62tB6iDGoZ
+payeur_civilite: ''
+payeur_email: olivier.halberstam@hotmail.fr
+payeur_nom: HALBERSTAM
+payeur_prenom: Olivier
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: HALBERSTAM
+proprietaire_prenom: Olivier
+ref_piece: FA250226 48404
+reference: '52803'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:16.068Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250226_48404/standard/FA250226 48404
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CANNES

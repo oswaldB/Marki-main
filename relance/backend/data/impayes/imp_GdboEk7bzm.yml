@@ -1,0 +1,49 @@
+adresse_bien: 15 rue Bonaparte
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_zV76Y7Fa1E
+created_at: '2026-06-24T16:31:48.964Z'
+date_echeance: '2023-10-25'
+date_import: '2026-07-09T07:05:11.097Z'
+date_piece: '2023-10-25'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_GdboEk7bzm
+id_dossier: '32034'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45467
+numero_dossier: 49031
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DURAND
+proprietaire_prenom: Jean Marie
+ref_piece: FA231025 45467
+reference: '49031'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 150
+total_ttc: 180
+type: impaye
+updated_at: '2026-06-24T16:31:48.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231025_45467/standard/FA231025 45467
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

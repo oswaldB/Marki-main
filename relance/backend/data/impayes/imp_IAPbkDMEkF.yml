@@ -1,0 +1,49 @@
+adresse_bien: 1 chemin de l'Olivaie  L'Olivaie
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06340'
+commentaire_piece: ''
+contact_relance_id: cont_VGQeUmHjxG
+created_at: '2026-06-24T16:30:53.026Z'
+date_echeance: '2026-03-04'
+date_import: '2026-07-09T07:05:05.794Z'
+date_piece: '2026-02-25'
+donneur_ordre_id: null
+donneur_ordre_nom: LOPEZ
+donneur_ordre_prenom: Daniel
+email_index: 0
+facture_soldee: true
+id: imp_IAPbkDMEkF
+id_dossier: '41268'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50515
+numero_dossier: 55274
+payer_id: cont_VGQeUmHjxG
+payeur_civilite: ''
+payeur_email: daniel.lopez31@orange.fr
+payeur_nom: LOPEZ
+payeur_prenom: Daniel
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LOPEZ
+proprietaire_prenom: Daniel
+ref_piece: FA260225 50515
+reference: '55274'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 210
+total_ttc: 252
+type: impaye
+updated_at: '2026-06-24T16:30:53.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260225_50515/standard/FA260225 50515
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: LA TRINITÉ

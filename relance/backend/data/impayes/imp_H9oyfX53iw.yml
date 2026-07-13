@@ -1,0 +1,49 @@
+adresse_bien: 13 impasse Jeanne Marlin Le Simonetta
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_zV76Y7Fa1E
+created_at: '2026-06-24T16:31:52.915Z'
+date_echeance: '2023-09-01'
+date_import: '2026-07-09T07:05:11.459Z'
+date_piece: '2023-09-01'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_H9oyfX53iw
+id_dossier: '30456'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44976
+numero_dossier: 48446
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: COATPIN
+proprietaire_prenom: Monsieur DUPIN
+ref_piece: FA230810 44976
+reference: '48446'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 97.92
+total_ttc: 117.5
+type: impaye
+updated_at: '2026-06-24T16:31:52.915Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230810_44976/standard/FA230810 44976
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

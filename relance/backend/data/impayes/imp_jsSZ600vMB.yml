@@ -1,0 +1,49 @@
+adresse_bien: 27 avenue Winston Churchill Las Olas
+apporteur_id: cont_OHlZ3trACx
+apporteur_nom: CAISSE AUTONOME DES RETRAITES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_K1J95vh17j
+created_at: '2026-06-24T16:31:34.969Z'
+date_echeance: '2024-05-14'
+date_import: '2026-07-09T07:05:09.872Z'
+date_piece: '2024-05-14'
+donneur_ordre_id: null
+donneur_ordre_nom: CAISSE AUTONOME DES RETRAITES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jsSZ600vMB
+id_dossier: '34633'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46655
+numero_dossier: 50632
+payer_id: cont_OHlZ3trACx
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CAISSE AUTONOME DES RETRAITES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAISSE AUTONOME DES RETRAITES
+proprietaire_prenom: null
+ref_piece: FA240514 46655
+reference: '50632'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.25
+total_ttc: 229.5
+type: impaye
+updated_at: '2026-06-24T16:31:34.969Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240514_46655/standard/FA240514 46655 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

@@ -1,0 +1,49 @@
+adresse_bien: 79 avenue de Sospel Les Jumelles
+apporteur_id: cont_TWnVoCvWHW
+apporteur_nom: 'EASY MENTON SYNDIC '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_ekok7fGBOS
+created_at: '2026-06-24T16:31:21.965Z'
+date_echeance: '2024-12-02'
+date_import: '2026-07-09T07:05:08.589Z'
+date_piece: '2024-12-02'
+donneur_ordre_id: null
+donneur_ordre_nom: LES DEUX JUMELLES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_pRIW3KfEji
+id_dossier: '37633'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47883
+numero_dossier: 51639
+payer_id: cont_TWnVoCvWHW
+payeur_civilite: ''
+payeur_email: menton1@easy-menton.fr
+payeur_nom: 'EASY MENTON SYNDIC '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LES DEUX JUMELLES
+proprietaire_prenom: null
+ref_piece: FA241202 47883
+reference: '51639'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 108.33
+total_ttc: 130
+type: impaye
+updated_at: '2026-06-24T16:31:21.965Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241202_47883/standard/FA241202 47883
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

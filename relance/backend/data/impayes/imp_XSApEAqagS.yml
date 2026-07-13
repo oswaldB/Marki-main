@@ -1,0 +1,49 @@
+adresse_bien: 59 boulevard de la Madeleine Le Marivaux
+apporteur_id: cont_zttCmdIcGK
+apporteur_nom: AGENCE WILSON
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_Jt7FRrebZQ
+created_at: '2026-06-24T16:31:33.994Z'
+date_echeance: '2024-05-23'
+date_import: '2026-07-09T07:05:09.819Z'
+date_piece: '2024-05-23'
+donneur_ordre_id: null
+donneur_ordre_nom: BOUSREZ
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_XSApEAqagS
+id_dossier: '34708'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46725
+numero_dossier: 50707
+payer_id: cont_zttCmdIcGK
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: AGENCE WILSON
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BOUSREZ
+proprietaire_prenom: null
+ref_piece: FA240523 46725
+reference: '50707'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 186.67
+total_ttc: 224
+type: impaye
+updated_at: '2026-06-24T16:31:33.994Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240523_46725/standard/FA240523 46725 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

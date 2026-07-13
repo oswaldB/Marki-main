@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue Victor Hugo L'Hernani
+apporteur_id: cont_l3FbxAhAue
+apporteur_nom: CABINET GESTION IMMOBILIERE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "RESIDENCE HERNANI\r\n3 Avenue Victor Hugo\r\n06190 Roquebrune Cap Martin\r\n\r\nTravaux prévus : Ravalement de façades\r\nTraitement en urgence"
+contact_relance_id: cont_UehgXIcwkR
+created_at: '2026-06-24T16:30:48.867Z'
+date_echeance: '2026-05-22'
+date_import: '2026-07-09T07:05:05.359Z'
+date_piece: '2026-05-15'
+donneur_ordre_id: null
+donneur_ordre_nom: CABINET GESTION IMMOBILIERE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_8cv6LWpQq0
+id_dossier: '41783'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50937
+numero_dossier: 55789
+payer_id: cont_l3FbxAhAue
+payeur_civilite: ''
+payeur_email: accueil@cgi-syndic.fr
+payeur_nom: CABINET GESTION IMMOBILIERE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'RESIDENCE HERNANI '
+proprietaire_prenom: null
+ref_piece: FA260515 50937
+reference: '55789'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1200
+total_ttc: 1440
+type: impaye
+updated_at: '2026-06-24T16:30:48.867Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260515_50937/standard/FA260515 50937 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue de Lyon Le Palais du Soleil
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06110'
+commentaire_piece: ''
+contact_relance_id: cont_eIP4R0XG0O
+created_at: '2026-06-24T16:30:55.886Z'
+date_echeance: '2026-01-23'
+date_import: '2026-07-09T07:05:06.078Z'
+date_piece: '2026-01-16'
+donneur_ordre_id: null
+donneur_ordre_nom: DELORME
+donneur_ordre_prenom: Gabriel
+email_index: 0
+facture_soldee: true
+id: imp_cRFowmAHi5
+id_dossier: '41016'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50296
+numero_dossier: 55022
+payer_id: cont_eIP4R0XG0O
+payeur_civilite: ''
+payeur_email: gabriel.delorme@davidson.fr
+payeur_nom: DELORME
+payeur_prenom: Gabriel
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DELORME
+proprietaire_prenom: Gabriel
+ref_piece: FA260116 50296
+reference: '55022'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 238.12
+total_ttc: 285.75
+type: impaye
+updated_at: '2026-06-24T16:30:55.886Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260116_50296/standard/FA260116 50296
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: LE CANNET

@@ -1,0 +1,49 @@
+adresse_bien: 34 boulevard Raimbaldi
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "LE FLORIDA\r\n34 boulevard Raimbaldi\r\n06000 NICE\r\n\r\nPropriétaire : Luca FRACASSO\r\n\r\nAppartement 80m2"
+contact_relance_id: cont_fVVW46ni67
+created_at: '2026-06-24T16:31:07.879Z'
+date_echeance: '2025-07-16'
+date_import: '2026-07-09T07:05:07.164Z'
+date_piece: '2025-07-16'
+donneur_ordre_id: null
+donneur_ordre_nom: FRACASSO
+donneur_ordre_prenom: Luca
+email_index: 0
+facture_soldee: true
+id: imp_2ol4jMQMBe
+id_dossier: '39376'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49219
+numero_dossier: 53382
+payer_id: cont_fVVW46ni67
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: FRACASSO
+payeur_prenom: Luca
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FRACASSO
+proprietaire_prenom: Luca
+ref_piece: FA250716 49219
+reference: '53382'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-24T16:31:07.879Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250716_49219/standard/FA250716 49219
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

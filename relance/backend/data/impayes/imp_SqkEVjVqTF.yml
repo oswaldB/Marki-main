@@ -1,0 +1,49 @@
+adresse_bien: 1 boulevard Eugene de Quay Horizon bleu  Le Rousseau
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06590'
+commentaire_piece: ''
+contact_relance_id: cont_KBHQRY8rwt
+created_at: '2026-06-24T16:31:51.039Z'
+date_echeance: '2023-09-21'
+date_import: '2026-07-09T07:05:11.331Z'
+date_piece: '2023-09-21'
+donneur_ordre_id: null
+donneur_ordre_nom: ALLART
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_SqkEVjVqTF
+id_dossier: '30770'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45239
+numero_dossier: 48760
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: ALLART
+proprietaire_prenom: null
+ref_piece: FA230921 45239
+reference: '48760'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:51.039Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230921_45239/standard/FA230921 45239
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: THÉOULE-SUR-MER

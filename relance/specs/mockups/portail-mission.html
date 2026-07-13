@@ -85,23 +85,6 @@
       
       <!-- Documents -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <!-- Rapport -->
-        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
-          <div class="flex items-center gap-4 mb-4">
-            <div class="w-12 h-12 rounded-lg bg-sky-100 flex items-center justify-center">
-              <i class="fas fa-file-alt text-sky-600 text-xl"></i>
-            </div>
-            <div>
-              <h3 class="font-semibold text-slate-900">Rapport de mission</h3>
-              <p class="text-sm text-slate-500">Document complet de la mission</p>
-            </div>
-          </div>
-          <button @click="downloadRapport()" class="w-full py-2.5 bg-sky-50 hover:bg-sky-100 text-sky-700 rounded-lg text-sm font-medium transition-all flex items-center justify-center gap-2">
-            <i class="fas fa-download"></i>
-            Télécharger le rapport
-          </button>
-        </div>
-        
         <!-- Facture -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
           <div class="flex items-center gap-4 mb-4">
@@ -186,10 +169,6 @@ function portailMissionPage() {
     
     logout() {
       window.location.href = './login.html';
-    },
-    
-    downloadRapport() {
-      this.showToast('Info', 'Téléchargement du rapport de mission...', 'success');
     },
     
     downloadFacture() {

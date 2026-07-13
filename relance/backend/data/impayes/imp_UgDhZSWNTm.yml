@@ -1,0 +1,49 @@
+adresse_bien: 25 avenue Desambrois
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_BUyFFB6fvA
+created_at: '2026-06-24T16:31:56.071Z'
+date_echeance: '2023-07-11'
+date_import: '2026-07-09T07:05:11.823Z'
+date_piece: '2023-07-11'
+donneur_ordre_id: null
+donneur_ordre_nom: SYNERGIE PROMOTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_UgDhZSWNTm
+id_dossier: '29225'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44759
+numero_dossier: 48211
+payer_id: cont_99CHNZlDm5
+payeur_civilite: ''
+payeur_email: pascal.riout@gmail.com
+payeur_nom: SYNERGIE PROMOTION
+payeur_prenom: ''
+payeur_telephone: '0616825301'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SYNERGIE PROMOTION
+proprietaire_prenom: null
+ref_piece: FA230711 44759
+reference: '48211'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 226.67
+total_ttc: 272
+type: impaye
+updated_at: '2026-06-24T16:31:56.071Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juillet/FA230711_44759/standard/FA230711 44759
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

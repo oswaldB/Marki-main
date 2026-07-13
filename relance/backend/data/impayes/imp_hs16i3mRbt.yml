@@ -1,0 +1,49 @@
+adresse_bien: 22 avenue Maréchal Foch
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: relance 02/02 compta prop + copie agence
+contact_relance_id: cont_qeHiHs2eyM
+created_at: '2026-06-24T16:30:55.943Z'
+date_echeance: '2026-01-21'
+date_import: '2026-07-09T07:05:06.100Z'
+date_piece: '2026-01-14'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI KHOLDINGS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_hs16i3mRbt
+id_dossier: '40974'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50279
+numero_dossier: 54980
+payer_id: cont_qeHiHs2eyM
+payeur_civilite: ''
+payeur_email: mkoltunoff@gmail.com
+payeur_nom: SCI KHOLDINGS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI KHOLDINGS
+proprietaire_prenom: null
+ref_piece: FA260114 50279
+reference: '54980'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.25
+total_ttc: 229.5
+type: impaye
+updated_at: '2026-06-24T16:30:55.943Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260114_50279/standard/FA260114 50279
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

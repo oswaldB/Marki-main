@@ -1,0 +1,49 @@
+adresse_bien: 20 rue Emmanuel-Philibert
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_W0sMl5Ml9o
+created_at: '2026-06-24T16:31:48.074Z'
+date_echeance: '2023-10-30'
+date_import: '2026-07-09T07:05:11.073Z'
+date_piece: '2023-10-30'
+donneur_ordre_id: null
+donneur_ordre_nom: BOTTIN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_heAfZIfn3v
+id_dossier: '32071'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45493
+numero_dossier: 49068
+payer_id: cont_F47dfC6qeF
+payeur_civilite: ''
+payeur_email: sophiesalomon@sarl-adp.fr
+payeur_nom: AGENCE DU PORT
+payeur_prenom: 'Cabinet Salomon '
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BOTTIN
+proprietaire_prenom: null
+ref_piece: FA231030 45493
+reference: '49068'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:48.074Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231030_45493/standard/FA231030 45493
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 49 route du Val de Gorbio Eden Val  Bâtiment D
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: relance le 25/09
+contact_relance_id: cont_i7rwv0M3CB
+created_at: '2026-06-24T16:31:03.942Z'
+date_echeance: '2025-09-23'
+date_import: '2026-07-09T07:05:06.838Z'
+date_piece: '2025-09-16'
+donneur_ordre_id: null
+donneur_ordre_nom: BRETAGNE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_uLvA98ALEv
+id_dossier: '40170'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49532
+numero_dossier: 54176
+payer_id: cont_i7rwv0M3CB
+payeur_civilite: ''
+payeur_email: a.bretagne@yahoo.fr
+payeur_nom: BRETAGNE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BRETAGNE
+proprietaire_prenom: null
+ref_piece: FA250916 49532
+reference: '54176'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:03.942Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250916_49532/standard/FA250916 49532
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

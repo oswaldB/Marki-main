@@ -1,0 +1,49 @@
+adresse_bien: 426 rue Antoine Peglion  Les Jardins de la Mer
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_T0C3yTDcAE
+created_at: '2026-06-24T16:31:47.976Z'
+date_echeance: '2023-11-09'
+date_import: '2026-07-09T07:05:11.035Z'
+date_piece: '2023-11-09'
+donneur_ordre_id: null
+donneur_ordre_nom: HOLZER
+donneur_ordre_prenom: Olivier
+email_index: 0
+facture_soldee: true
+id: imp_1gvcXKoKSp
+id_dossier: '32139'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45545
+numero_dossier: 49136
+payer_id: cont_T0C3yTDcAE
+payeur_civilite: ''
+payeur_email: holzero@hotmail.fr
+payeur_nom: HOLZER
+payeur_prenom: Olivier
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: HOLZER
+proprietaire_prenom: Olivier
+ref_piece: FA231109 45545
+reference: '49136'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 210
+total_ttc: 252
+type: impaye
+updated_at: '2026-06-24T16:31:47.976Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231109_45545/standard/FA231109 45545
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

@@ -1,0 +1,20 @@
+_acl:
+  created_at: '2026-07-09T07:33:46.784Z'
+  created_by: system
+  owner: system
+  permissions:
+    admin:
+      - read
+      - write
+      - delete
+    owner:
+      - read
+      - write
+      - delete
+    user:
+      - read
+  updated_at: '2026-07-09T07:33:46.784Z'
+email: test@test.com
+id: contact_1783582426784
+nom: Contact Sans Auth
+type: contact

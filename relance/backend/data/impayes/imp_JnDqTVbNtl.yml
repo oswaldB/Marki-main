@@ -1,0 +1,49 @@
+adresse_bien: 460 avenue de la Quiera ZI L'ARGILE 1 Bâtiment
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06370'
+commentaire_piece: '28/04 relance mail '
+contact_relance_id: cont_nMfvxYrEW1
+created_at: '2026-06-24T16:30:50.025Z'
+date_echeance: '2026-04-15'
+date_import: '2026-07-09T07:05:05.536Z'
+date_piece: '2026-04-08'
+donneur_ordre_id: null
+donneur_ordre_nom: PROVENCE 1
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_JnDqTVbNtl
+id_dossier: '41527'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50748
+numero_dossier: 55533
+payer_id: cont_nMfvxYrEW1
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: PROVENCE 1
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PROVENCE 1
+proprietaire_prenom: null
+ref_piece: FA260408 50748
+reference: '55533'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:30:50.025Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260408_50748/standard/FA260408 50748
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MOUANS-SARTOUX

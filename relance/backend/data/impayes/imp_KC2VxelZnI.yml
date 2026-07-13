@@ -1,0 +1,49 @@
+adresse_bien: 2278 avenue Prince Rainier III Maison Farina Lorenzi
+apporteur_id: cont_6KB3jgW9oc
+apporteur_nom: PROGEDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_lhPP2RTgu6
+created_at: '2026-06-24T16:31:45.980Z'
+date_echeance: '2023-12-06'
+date_import: '2026-07-09T07:05:10.834Z'
+date_piece: '2023-12-06'
+donneur_ordre_id: null
+donneur_ordre_nom: MARZI
+donneur_ordre_prenom: 'Eric '
+email_index: 0
+facture_soldee: true
+id: imp_KC2VxelZnI
+id_dossier: '32340'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45738
+numero_dossier: 49337
+payer_id: cont_lhPP2RTgu6
+payeur_civilite: ''
+payeur_email: emarzi@monaco.mc
+payeur_nom: MARZI
+payeur_prenom: 'Eric '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MARZI
+proprietaire_prenom: 'Eric '
+ref_piece: FA231206 45738
+reference: '49337'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 232.5
+total_ttc: 279
+type: impaye
+updated_at: '2026-06-24T16:31:45.980Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231206_45738/standard/FA231206 45738
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

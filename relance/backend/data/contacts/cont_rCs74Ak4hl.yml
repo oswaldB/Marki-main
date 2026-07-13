@@ -1,0 +1,29 @@
+$loki: 6591
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:35.557Z'
+email: pascal.andriuzzi@orange.fr
+id: cont_rCs74Ak4hl
+impaye_ids:
+  - imp_yq9F4rvanS
+is_blacklisted: false
+meta:
+  created: 1783580700682
+  revision: 0
+  version: 0
+nom: ANDRIUZZI
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:34.385Z'

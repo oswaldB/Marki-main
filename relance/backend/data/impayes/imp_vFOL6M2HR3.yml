@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue de Flirey Le Sainte Anne
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_GrbdOrCztp
+created_at: '2026-06-24T16:31:02.877Z'
+date_echeance: '2025-10-13'
+date_import: '2026-07-09T07:05:06.695Z'
+date_piece: '2025-10-06'
+donneur_ordre_id: null
+donneur_ordre_nom: BICAIS
+donneur_ordre_prenom: Christian
+email_index: 0
+facture_soldee: true
+id: imp_vFOL6M2HR3
+id_dossier: '40367'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49663
+numero_dossier: 54373
+payer_id: cont_GrbdOrCztp
+payeur_civilite: ''
+payeur_email: bicaischristian@gmail.com
+payeur_nom: BICAIS
+payeur_prenom: Christian
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BICAIS
+proprietaire_prenom: Christian
+ref_piece: FA251006 49663
+reference: '54373'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:02.877Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251006_49663/standard/FA251006 49663
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

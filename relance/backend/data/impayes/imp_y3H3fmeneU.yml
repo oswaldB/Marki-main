@@ -1,0 +1,49 @@
+adresse_bien: 7 Montée Desambrois Villa Carol
+apporteur_id: cont_mDqnSPUEfr
+apporteur_nom: AGENCE DU LITTORAL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_d1GftGTKik
+created_at: '2026-06-24T16:31:21.059Z'
+date_echeance: '2024-12-09'
+date_import: '2026-07-09T07:05:08.529Z'
+date_piece: '2024-12-09'
+donneur_ordre_id: null
+donneur_ordre_nom: AGENCE DU LITTORAL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_y3H3fmeneU
+id_dossier: '38181'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47924
+numero_dossier: 52187
+payer_id: cont_mDqnSPUEfr
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: AGENCE DU LITTORAL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: NICOLAI-MAVRICI
+proprietaire_prenom: null
+ref_piece: FA241209 47924
+reference: '52187'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 186.67
+total_ttc: 224
+type: impaye
+updated_at: '2026-06-24T16:31:21.059Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241209_47924/standard/FA241209 47924
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,107 @@
+$loki: 528
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:38.731Z'
+email: mgiuliano@caisses-sociales.mc
+id: cont_K1J95vh17j
+impaye_ids:
+  - imp_fl796T84aS
+  - imp_rYvJEhcPgY
+  - imp_qXv9t1o393
+  - imp_itGYWTxO3m
+  - imp_PLHaTELESy
+  - imp_wijXXaVcr2
+  - imp_9zc5CsZHcn
+  - imp_YwtJCBRfLP
+  - imp_phMw4yEahb
+  - imp_DfqzROV4nD
+  - imp_dFKEJU2YkN
+  - imp_htm1MvhDi7
+  - imp_Vs2LHBFl0A
+  - imp_NZimSBv7nE
+  - imp_GDjG69aSpn
+  - imp_FpGZd0xpuI
+  - imp_4lkfubDflx
+  - imp_YtOAx9OTP0
+  - imp_gBhp1TmVtk
+  - imp_DB37EsqD6O
+  - imp_EZ5SirD2Lp
+  - imp_5pCHjrqNHK
+  - imp_WMXudV41YB
+  - imp_DDA7UeekBK
+  - imp_GzWLrKS5Hk
+  - imp_cJCDTR78Iv
+  - imp_QLEbtAGI5K
+  - imp_yxjWRWpUAu
+  - imp_A3ATWaY40Q
+  - imp_fYBqGErkfn
+  - imp_aoPzHLrL73
+  - imp_P7sJGZ0zbv
+  - imp_yI3TL5S8ZV
+  - imp_uTtc4KaBwT
+  - imp_8TJnqYF6aw
+  - imp_UoQdianzWz
+  - imp_pX0glWUV2N
+  - imp_d4Uhw2PAlu
+  - imp_XRU6MLNsDn
+  - imp_qrpesRSgjN
+  - imp_yZEu97RZNX
+  - imp_O2h5MkeRQv
+  - imp_5DensE3mwg
+  - imp_zzaoAojeWF
+  - imp_LksB1xhM6T
+  - imp_1cbF6VduWH
+  - imp_0JXG6sb7yO
+  - imp_cAdu4zvo6i
+  - imp_HcoG4TK2BB
+  - imp_73kZrsD1YX
+  - imp_s3EN4MN109
+  - imp_VrYugSFr7N
+  - imp_XFw4TggFT7
+  - imp_IfWtcpApPw
+  - imp_4mIoXlVIai
+  - imp_sRb9h94gFf
+  - imp_9TVTJF0OVU
+  - imp_IIbbNlZXgG
+  - imp_6DfL3zk0F0
+  - imp_PnMcqPmmG7
+  - imp_ZdAd1FaWNy
+  - imp_aotUOE1SLL
+  - imp_5dJXRN0P5u
+  - imp_4EX4GKpoyr
+  - imp_e2q57y6YWD
+  - imp_3GK4lU3lK5
+  - imp_Lsf3kmmbDs
+  - imp_PNLT8k043R
+  - imp_jsSZ600vMB
+  - imp_nAJPtGKcCL
+  - imp_v2u5EA4eBS
+  - imp_jgqwCVeZ9h
+  - imp_7skD5vreJh
+  - imp_PHpgAGMRmC
+  - imp_VrbW8hPqZE
+  - imp_O9UTFrdntR
+  - imp_JxsTQdk1y9
+  - imp_DYYROGZ8dg
+  - imp_5sAo4H0g8K
+is_blacklisted: true
+meta:
+  created: 1783580698564
+  revision: 0
+  version: 0
+nom: GIULIANO
+prenom: Marc
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:38.376Z'

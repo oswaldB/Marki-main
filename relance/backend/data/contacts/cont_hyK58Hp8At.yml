@@ -1,0 +1,31 @@
+$loki: 1007
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:43.714Z'
+email: imbraguglio.charles@orange.fr
+id: cont_hyK58Hp8At
+impaye_ids:
+  - imp_cpJVy7FbyW
+  - imp_9wHh1WSqCT
+  - imp_qF91JIQTix
+is_blacklisted: false
+meta:
+  created: 1783580698746
+  revision: 0
+  version: 0
+nom: IMBRAGUGLIO
+prenom: Charles
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0650378010'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:43.321Z'

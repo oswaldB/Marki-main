@@ -1,0 +1,49 @@
+adresse_bien: 4 rue Paul Morillot L'Oiseau Bleu
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_JAv7e2AVqI
+created_at: '2026-06-24T16:31:35.903Z'
+date_echeance: '2024-05-02'
+date_import: '2026-07-09T07:05:09.924Z'
+date_piece: '2024-05-02'
+donneur_ordre_id: null
+donneur_ordre_nom: OPTI GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Yxkmnh0FaU
+id_dossier: '34576'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46607
+numero_dossier: 50575
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DE PASTRE
+proprietaire_prenom: Sophie
+ref_piece: FA240502 46607
+reference: '50575'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 82.5
+total_ttc: 99
+type: impaye
+updated_at: '2026-06-24T16:31:35.903Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240502_46607/standard/FA240502 46607 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

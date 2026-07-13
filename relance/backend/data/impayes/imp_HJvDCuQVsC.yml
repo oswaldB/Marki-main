@@ -1,0 +1,49 @@
+adresse_bien: 41 rue Bonaparte
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_JVnfYPyJnX
+created_at: '2026-06-24T16:31:06.954Z'
+date_echeance: '2025-07-23'
+date_import: '2026-07-09T07:05:07.105Z'
+date_piece: '2025-07-23'
+donneur_ordre_id: null
+donneur_ordre_nom: COLAS
+donneur_ordre_prenom: Olivier
+email_index: 0
+facture_soldee: true
+id: imp_HJvDCuQVsC
+id_dossier: '39909'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49273
+numero_dossier: 53915
+payer_id: cont_Nh1fOoyJMJ
+payeur_civilite: ''
+payeur_email: info@tissinie.com
+payeur_nom: GESTION IMMOBILIERE TISSINIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: COLAS
+proprietaire_prenom: Olivier
+ref_piece: FA250723 49273
+reference: '53915'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:06.954Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250723_49273/standard/FA250723 49273
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

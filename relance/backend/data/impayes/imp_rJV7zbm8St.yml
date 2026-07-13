@@ -1,0 +1,49 @@
+adresse_bien: 133 rue Saint Antoine de Saint Exupéry Aroma
+apporteur_id: cont_Kl8PBkhOa2
+apporteur_nom: LAFORET Menton Pieta
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_HMnxPq0DYk
+created_at: '2026-06-24T16:30:48.924Z'
+date_echeance: '2026-05-13'
+date_import: '2026-07-09T07:05:05.382Z'
+date_piece: '2026-05-06'
+donneur_ordre_id: null
+donneur_ordre_nom: GHISELLINI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_rJV7zbm8St
+id_dossier: '41695'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50894
+numero_dossier: 55701
+payer_id: cont_HMnxPq0DYk
+payeur_civilite: ''
+payeur_email: cassandra.puzzo@gmail.com
+payeur_nom: GHISELLINI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GHISELLINI
+proprietaire_prenom: null
+ref_piece: FA260506 50894
+reference: '55701'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:30:48.924Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260506_50894/standard/FA260506 50894 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

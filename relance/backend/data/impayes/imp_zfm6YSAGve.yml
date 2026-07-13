@@ -1,0 +1,49 @@
+adresse_bien: 8 quai des Docks Le Neptune
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_OfMF5VMj71
+created_at: '2026-06-24T16:31:16.030Z'
+date_echeance: '2025-03-03'
+date_import: '2026-07-09T07:05:08.007Z'
+date_piece: '2025-03-03'
+donneur_ordre_id: null
+donneur_ordre_nom: JAUSSAUD
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_zfm6YSAGve
+id_dossier: '38822'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48424
+numero_dossier: 52828
+payer_id: cont_OfMF5VMj71
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: JAUSSAUD
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: JAUSSAUD
+proprietaire_prenom: null
+ref_piece: FA250228 48424
+reference: '52828'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:16.030Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250228_48424/standard/FA250228 48424 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

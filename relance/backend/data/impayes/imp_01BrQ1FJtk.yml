@@ -1,0 +1,49 @@
+adresse_bien: 3 place Grimaldi
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:22.026Z'
+date_echeance: '2024-11-26'
+date_import: '2026-07-09T07:05:08.617Z'
+date_piece: '2024-11-26'
+donneur_ordre_id: null
+donneur_ordre_nom: GT CAPITAL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_01BrQ1FJtk
+id_dossier: '38089'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47855
+numero_dossier: 52095
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: GT CAPITAL
+proprietaire_prenom: null
+ref_piece: FA241126 47855
+reference: '52095'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 23.33
+total_ttc: 28
+type: impaye
+updated_at: '2026-06-24T16:31:22.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241126_47855/standard/FA241126 47855
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

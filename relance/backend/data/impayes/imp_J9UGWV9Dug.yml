@@ -1,0 +1,49 @@
+adresse_bien: 35 Promenade du Cap Residence du Cap
+apporteur_id: cont_nGbYMncL3T
+apporteur_nom: CABINET TRABAUD ACQUARONE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "LES RESIDENCES DU CAP\r\n35 Promenade du Cap\r\n06190 ROQUEBRUNE CAP MARTIN\r\n\r\nrelance le 09/01"
+contact_relance_id: cont_nGbYMncL3T
+created_at: '2026-06-24T16:30:58.940Z'
+date_echeance: '2025-11-28'
+date_import: '2026-07-09T07:05:06.377Z'
+date_piece: '2025-11-21'
+donneur_ordre_id: null
+donneur_ordre_nom: RESIDENCE DU CAP
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_J9UGWV9Dug
+id_dossier: '39256'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49985
+numero_dossier: 53262
+payer_id: cont_nGbYMncL3T
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET TRABAUD ACQUARONE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: RESIDENCE DU CAP
+proprietaire_prenom: null
+ref_piece: FA251121 49985
+reference: '53262'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 5158.33
+total_ttc: 6190
+type: impaye
+updated_at: '2026-06-24T16:30:58.940Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251121_49985/standard/FA251121 49985
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

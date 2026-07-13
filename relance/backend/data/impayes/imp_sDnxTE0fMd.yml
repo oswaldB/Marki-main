@@ -1,0 +1,49 @@
+adresse_bien: 17 rue Leotardi
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_3612R5DsK0
+created_at: '2026-06-24T16:31:18.982Z'
+date_echeance: '2025-01-20'
+date_import: '2026-07-09T07:05:08.290Z'
+date_piece: '2025-01-20'
+donneur_ordre_id: null
+donneur_ordre_nom: ROCHA 2
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_sDnxTE0fMd
+id_dossier: '38489'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48144
+numero_dossier: 52495
+payer_id: cont_3612R5DsK0
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ROCHAT
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: ROCHA 2
+proprietaire_prenom: null
+ref_piece: FA250120 48144
+reference: '52495'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 246.67
+total_ttc: 296
+type: impaye
+updated_at: '2026-06-24T16:31:18.982Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250120_48144/standard/FA250120 48144
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

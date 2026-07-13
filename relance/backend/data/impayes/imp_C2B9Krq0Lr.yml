@@ -1,0 +1,49 @@
+adresse_bien: 16 avenue Boyer  Villa Chateauneuf
+apporteur_id: cont_axwCVxbA8C
+apporteur_nom: CABINET CAIRO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "03/06 : relance avec dosseirs 52840/53196\r\n\r\nAdresse coppropriété :\r\nVilla Chateauneuf\r\n16 avenue Boyer \r\n06500 MENTON\r\n\r\nTravaux prévus :\r\nRénovation de l'étanchéité de 3 terrasses au 1er étage\r\n"
+contact_relance_id: cont_axwCVxbA8C
+created_at: '2026-06-24T16:31:12.892Z'
+date_echeance: '2025-04-15'
+date_import: '2026-07-09T07:05:07.669Z'
+date_piece: '2025-04-15'
+donneur_ordre_id: null
+donneur_ordre_nom: VILLA CHATEAUNEUF
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_C2B9Krq0Lr
+id_dossier: '39184'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48716
+numero_dossier: 53190
+payer_id: cont_axwCVxbA8C
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET CAIRO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: VILLA CHATEAUNEUF
+proprietaire_prenom: null
+ref_piece: FA250415 48716
+reference: '53190'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1390
+total_ttc: 1668
+type: impaye
+updated_at: '2026-06-24T16:31:12.892Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250415_48716/standard/FA250415 48716
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

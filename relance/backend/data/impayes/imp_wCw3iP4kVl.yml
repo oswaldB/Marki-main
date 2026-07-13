@@ -1,0 +1,49 @@
+adresse_bien: 26 avenue du Professeur Langevin La Joconde
+apporteur_id: cont_6KB3jgW9oc
+apporteur_nom: PROGEDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_KipSPsu7Mu
+created_at: '2026-06-24T16:31:16.962Z'
+date_echeance: '2025-02-19'
+date_import: '2026-07-09T07:05:08.064Z'
+date_piece: '2025-02-19'
+donneur_ordre_id: null
+donneur_ordre_nom: KLEIN
+donneur_ordre_prenom: Paul
+email_index: 0
+facture_soldee: true
+id: imp_wCw3iP4kVl
+id_dossier: '38813'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48357
+numero_dossier: 52819
+payer_id: cont_6KB3jgW9oc
+payeur_civilite: ''
+payeur_email: accueil@progedi.com
+payeur_nom: PROGEDI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: KLEIN
+proprietaire_prenom: Paul
+ref_piece: FA250219 48357
+reference: '52819'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:16.962Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250219_48357/standard/FA250219 48357
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

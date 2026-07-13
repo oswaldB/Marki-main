@@ -1,0 +1,49 @@
+adresse_bien: 98 avenue Princesse Grace  Villa Marie Pierre
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:30:54.918Z'
+date_echeance: '2026-02-04'
+date_import: '2026-07-09T07:05:05.994Z'
+date_piece: '2026-01-28'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI CLERAC
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_HcsAbwFjTB
+id_dossier: '41044'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50370
+numero_dossier: 55050
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCI CLERAC
+proprietaire_prenom: null
+ref_piece: FA260128 50370
+reference: '55050'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 90
+total_ttc: 108
+type: impaye
+updated_at: '2026-06-24T16:30:54.918Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260128_50370/standard/FA260128 50370
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

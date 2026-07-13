@@ -1,0 +1,49 @@
+adresse_bien: 1 rue Neuve
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "13/01 relance via comptabilité\r\nThomas a dit que c'était payé le 20/01/2026\r\n\r\n02/02 relance mail "
+contact_relance_id: cont_sPmmklceKq
+created_at: '2026-06-24T16:30:56.161Z'
+date_echeance: '2026-01-07'
+date_import: '2026-07-09T07:05:06.154Z'
+date_piece: '2025-12-31'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL F4
+donneur_ordre_prenom: 'Mr Remaux Philippe '
+email_index: 0
+facture_soldee: true
+id: imp_l2p5GOzfuC
+id_dossier: '40910'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50212
+numero_dossier: 54916
+payer_id: cont_sPmmklceKq
+payeur_civilite: ''
+payeur_email: philremo@gmail.com
+payeur_nom: SARL F4
+payeur_prenom: 'Mr Remaux Philippe '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SARL F4
+proprietaire_prenom: 'Mr Remaux Philippe '
+ref_piece: FA251231 50212
+reference: '54916'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 775
+total_ttc: 930
+type: impaye
+updated_at: '2026-06-24T16:30:56.161Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251231_50212/standard/FA251231 50212
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 25 boulevard Carnot Rosemont
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_fGUsQ8FtmR
+created_at: '2026-06-24T16:31:21.059Z'
+date_echeance: '2024-12-06'
+date_import: '2026-07-09T07:05:08.528Z'
+date_piece: '2024-12-06'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI RQ LEGACY
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_4dyc6ni3Af
+id_dossier: '38172'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47920
+numero_dossier: 52178
+payer_id: cont_fGUsQ8FtmR
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SCI RQ LEGACY
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI RQ LEGACY
+proprietaire_prenom: null
+ref_piece: FA241206 47920
+reference: '52178'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 76.67
+total_ttc: 92
+type: impaye
+updated_at: '2026-06-24T16:31:21.059Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241206_47920/standard/FA241206 47920
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

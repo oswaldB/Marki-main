@@ -1,0 +1,49 @@
+adresse_bien: 32 avenue Honoré d'Estienne d'Orves
+apporteur_id: cont_qB56j85Zyw
+apporteur_nom: IAD MIRC Jerome
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_9Yb9FFabMv
+created_at: '2026-06-24T16:30:46.933Z'
+date_echeance: '2026-06-11'
+date_import: '2026-07-09T07:05:05.177Z'
+date_piece: '2026-06-04'
+donneur_ordre_id: null
+donneur_ordre_nom: GENTILE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_CRSE8OGLAR
+id_dossier: '41876'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51076
+numero_dossier: 55882
+payer_id: cont_9Yb9FFabMv
+payeur_civilite: ''
+payeur_email: pierre.gentile@orange.fr
+payeur_nom: GENTILE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GENTILE
+proprietaire_prenom: null
+ref_piece: FA260604 51076
+reference: '55882'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:30:46.933Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260604_51076/standard/FA260604 51076 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

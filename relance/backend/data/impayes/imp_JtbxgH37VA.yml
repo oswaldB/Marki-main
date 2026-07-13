@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue Cyrille Besset
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_gKcHNtrW0l
+created_at: '2026-06-24T16:30:56.010Z'
+date_echeance: '2026-01-16'
+date_import: '2026-07-09T07:05:06.116Z'
+date_piece: '2026-01-09'
+donneur_ordre_id: null
+donneur_ordre_nom: BENLI
+donneur_ordre_prenom: Julien
+email_index: 0
+facture_soldee: true
+id: imp_JtbxgH37VA
+id_dossier: '40965'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50249
+numero_dossier: 54971
+payer_id: cont_gKcHNtrW0l
+payeur_civilite: ''
+payeur_email: jbenli@cabinetbenli.fr
+payeur_nom: BENLI
+payeur_prenom: Julien
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BENLI
+proprietaire_prenom: Julien
+ref_piece: FA260109 50249
+reference: '54971'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 230.42
+total_ttc: 276.5
+type: impaye
+updated_at: '2026-06-24T16:30:56.010Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260109_50249/standard/FA260109 50249
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

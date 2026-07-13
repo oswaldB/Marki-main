@@ -1,0 +1,49 @@
+adresse_bien: 64 boulevard Guynemer Le Sun Paradise
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_2v4At2rXB9
+created_at: '2026-06-24T16:30:51.039Z'
+date_echeance: '2026-04-01'
+date_import: '2026-07-09T07:05:05.629Z'
+date_piece: '2026-03-25'
+donneur_ordre_id: null
+donneur_ordre_nom: VERDINO - BELLATALLA
+donneur_ordre_prenom: Stephane
+email_index: 0
+facture_soldee: true
+id: imp_sGlHtEUd9f
+id_dossier: '41437'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50679
+numero_dossier: 55443
+payer_id: cont_2v4At2rXB9
+payeur_civilite: ''
+payeur_email: bellatalla.stephane@gmail.com
+payeur_nom: VERDINO - BELLATALLA
+payeur_prenom: Stephane
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: VERDINO - BELLATALLA
+proprietaire_prenom: Stephane
+ref_piece: FA260325 50679
+reference: '55443'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 200
+total_ttc: 240
+type: impaye
+updated_at: '2026-06-24T16:30:51.039Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260325_50679/standard/FA260325 50679 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

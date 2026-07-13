@@ -1,0 +1,49 @@
+adresse_bien: 31 avenue Hector Otto ESCORIAL
+apporteur_id: cont_OHlZ3trACx
+apporteur_nom: CAISSE AUTONOME DES RETRAITES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '98000'
+commentaire_piece: ''
+contact_relance_id: cont_K1J95vh17j
+created_at: '2026-06-24T16:31:26.900Z'
+date_echeance: '2024-09-19'
+date_import: '2026-07-09T07:05:09.046Z'
+date_piece: '2024-09-19'
+donneur_ordre_id: null
+donneur_ordre_nom: CAISSE AUTONOME DES RETRAITES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_6DfL3zk0F0
+id_dossier: '37619'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47457
+numero_dossier: 51625
+payer_id: cont_OHlZ3trACx
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CAISSE AUTONOME DES RETRAITES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAISSE AUTONOME DES RETRAITES
+proprietaire_prenom: null
+ref_piece: FA240919 47457
+reference: '51625'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 795.83
+total_ttc: 955
+type: impaye
+updated_at: '2026-06-24T16:31:26.900Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240919_47457/standard/FA240919 47457
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MONACO

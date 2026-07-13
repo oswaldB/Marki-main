@@ -1,0 +1,49 @@
+adresse_bien: 34 boulevard Stalingrad
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Zvv4XuC7FL
+created_at: '2026-06-24T16:30:53.898Z'
+date_echeance: '2026-02-23'
+date_import: '2026-07-09T07:05:05.846Z'
+date_piece: '2026-02-16'
+donneur_ordre_id: null
+donneur_ordre_nom: EKSTROM
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_FyZ1rlPYcb
+id_dossier: '41250'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50487
+numero_dossier: 55256
+payer_id: cont_Zvv4XuC7FL
+payeur_civilite: ''
+payeur_email: sooki.ekstrom@gmail.com
+payeur_nom: EKSTROM
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: EKSTROM
+proprietaire_prenom: null
+ref_piece: FA260216 50487
+reference: '55256'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 296.25
+total_ttc: 355.5
+type: impaye
+updated_at: '2026-06-24T16:30:53.898Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260216_50487/standard/FA260216 50487
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

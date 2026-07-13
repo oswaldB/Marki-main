@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue Paul Doumer Parc Massolin
+apporteur_id: cont_MyutVJwsSf
+apporteur_nom: VISTA IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_hM5HpDCsiG
+created_at: '2026-06-24T16:30:54.023Z'
+date_echeance: '2026-02-09'
+date_import: '2026-07-09T07:05:05.932Z'
+date_piece: '2026-02-02'
+donneur_ordre_id: null
+donneur_ordre_nom: CANONINO
+donneur_ordre_prenom: Valentino
+email_index: 0
+facture_soldee: true
+id: imp_D6fhTmBAbL
+id_dossier: '41080'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50406
+numero_dossier: 55086
+payer_id: cont_hM5HpDCsiG
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CANONICO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: CANONINO
+proprietaire_prenom: Valentino
+ref_piece: FA260202 50406
+reference: '55086'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 258.33
+total_ttc: 310
+type: impaye
+updated_at: '2026-06-24T16:30:54.023Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260202_50406/standard/FA260202 50406
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

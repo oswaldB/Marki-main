@@ -1,0 +1,29 @@
+$loki: 1636
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:49.610Z'
+email: null
+id: cont_fIm9T59hKZ
+impaye_ids:
+  - imp_Xy6DWJjE86
+is_blacklisted: false
+meta:
+  created: 1783580698990
+  revision: 0
+  version: 0
+nom: PARDI
+prenom: Spartaco
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:48.371Z'

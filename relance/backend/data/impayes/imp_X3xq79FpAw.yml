@@ -1,0 +1,49 @@
+adresse_bien: 17 avenue Jean Ray
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06470'
+commentaire_piece: ''
+contact_relance_id: cont_0nPZpkqDTq
+created_at: '2026-06-24T16:31:35.970Z'
+date_echeance: '2024-04-25'
+date_import: '2026-07-09T07:05:09.946Z'
+date_piece: '2024-04-25'
+donneur_ordre_id: null
+donneur_ordre_nom: GRIMAZ
+donneur_ordre_prenom: Lucette
+email_index: 0
+facture_soldee: true
+id: imp_X3xq79FpAw
+id_dossier: '34517'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46568
+numero_dossier: 50516
+payer_id: cont_0nPZpkqDTq
+payeur_civilite: ''
+payeur_email: contact@cabinet-grimaz.com
+payeur_nom: CABINET GRIMAZ
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: GRIMAZ
+proprietaire_prenom: Lucette
+ref_piece: FA240425 46568
+reference: '50516'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:35.970Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240425_46568/standard/FA240425 46568
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: PÉONE

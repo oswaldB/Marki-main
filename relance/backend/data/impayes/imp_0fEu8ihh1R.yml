@@ -1,0 +1,49 @@
+adresse_bien: 22 rue Louis Coppet
+apporteur_id: cont_HKy4C2gxUH
+apporteur_nom: ARTHURIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "LISTING\r\n\r\nrelance 26/09 christelle et céline\r\n\r\n17/04 RELANCE MAIL LES 2\r\n\r\n27/04 relance agence\r\n\r\n06/05 relance "
+contact_relance_id: cont_PClFP8DaE1
+created_at: '2026-06-24T16:31:09.885Z'
+date_echeance: '2025-06-11'
+date_import: '2026-07-09T07:05:07.380Z'
+date_piece: '2025-06-11'
+donneur_ordre_id: null
+donneur_ordre_nom: FACCIANO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_0fEu8ihh1R
+id_dossier: '39590'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49030
+numero_dossier: 53596
+payer_id: cont_HKy4C2gxUH
+payeur_civilite: ''
+payeur_email: christelle.peluchi@hotmail.fr
+payeur_nom: ARTHURIMMO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FACCIANO
+proprietaire_prenom: null
+ref_piece: FA250611 49030
+reference: '53596'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 100
+total_ttc: 120
+type: impaye
+updated_at: '2026-06-24T16:31:09.885Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250611_49030/standard/FA250611 49030 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

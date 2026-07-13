@@ -1,0 +1,49 @@
+adresse_bien: 5 avenue Albert 1er
+apporteur_id: cont_blb2dRpoQ7
+apporteur_nom: AZUR MEDITERRANEE VILLEFRANCHE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_tl73lA6UKN
+created_at: '2026-06-24T16:31:06.955Z'
+date_echeance: '2025-07-22'
+date_import: '2026-07-09T07:05:07.106Z'
+date_piece: '2025-07-22'
+donneur_ordre_id: null
+donneur_ordre_nom: ROMANELLI
+donneur_ordre_prenom: Myriam
+email_index: 0
+facture_soldee: true
+id: imp_ptgYJoxRDE
+id_dossier: '39900'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49265
+numero_dossier: 53906
+payer_id: cont_tl73lA6UKN
+payeur_civilite: ''
+payeur_email: roman.achat@outlook.com
+payeur_nom: ROMANELLI
+payeur_prenom: Myriam
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROMANELLI
+proprietaire_prenom: Myriam
+ref_piece: FA250722 49265
+reference: '53906'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:06.955Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250722_49265/standard/FA250722 49265
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

@@ -1,0 +1,49 @@
+adresse_bien: Quartier de la Chapelle
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06260'
+commentaire_piece: ''
+contact_relance_id: cont_ILcm7FJmB6
+created_at: '2026-06-24T16:31:04.996Z'
+date_echeance: '2025-09-03'
+date_import: '2026-07-09T07:05:06.942Z'
+date_piece: '2025-08-27'
+donneur_ordre_id: null
+donneur_ordre_nom: MARCHAL
+donneur_ordre_prenom: Marc
+email_index: 0
+facture_soldee: true
+id: imp_mfscVTk9JE
+id_dossier: '40078'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49422
+numero_dossier: 54084
+payer_id: cont_ILcm7FJmB6
+payeur_civilite: ''
+payeur_email: manetti.josephine@gmail.com
+payeur_nom: MARCHAL
+payeur_prenom: Marc
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MARCHAL
+proprietaire_prenom: Marc
+ref_piece: FA250827 49422
+reference: '54084'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 787.5
+total_ttc: 945
+type: impaye
+updated_at: '2026-06-24T16:31:04.996Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250827_49422/standard/FA250827 49422 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: SAINT-PIERRE

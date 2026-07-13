@@ -1,0 +1,31 @@
+$loki: 1068
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:44.556Z'
+email: null
+id: cont_DpCDNKeCtb
+impaye_ids:
+  - imp_37P0eWSwnk
+  - imp_D9m3Z7tDkg
+  - imp_YuTzrvQFpB
+is_blacklisted: false
+meta:
+  created: 1783580698768
+  revision: 0
+  version: 0
+nom: GAGNIER
+prenom: Yann
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:43.385Z'

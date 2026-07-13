@@ -1,0 +1,49 @@
+adresse_bien: 91 avenue Cernuschi  Le Florence
+apporteur_id: cont_pfsqighWA2
+apporteur_nom: INTER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_TgkirDBLHJ
+created_at: '2026-06-24T16:31:18.023Z'
+date_echeance: '2025-02-03'
+date_import: '2026-07-09T07:05:08.216Z'
+date_piece: '2025-02-03'
+donneur_ordre_id: null
+donneur_ordre_nom: INTER IMMOBILIER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Ejx3k6iSTM
+id_dossier: '38598'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48242
+numero_dossier: 52604
+payer_id: cont_pfsqighWA2
+payeur_civilite: ''
+payeur_email: inter.immobilier@wanadoo.fr
+payeur_nom: INTER IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: COLLING
+proprietaire_prenom: null
+ref_piece: FA250203 48242
+reference: '52604'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:18.023Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250203_48242/standard/FA250203 48242
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

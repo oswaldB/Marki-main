@@ -1,0 +1,49 @@
+adresse_bien: 5 rue Pasteur
+apporteur_id: cont_Q0jadWIlqE
+apporteur_nom: JLR IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_H2HPAP1JE9
+created_at: '2026-06-24T16:31:19.897Z'
+date_echeance: '2025-01-10'
+date_import: '2026-07-09T07:05:08.338Z'
+date_piece: '2025-01-10'
+donneur_ordre_id: null
+donneur_ordre_nom: DE FREITAS
+donneur_ordre_prenom: 'Miguel '
+email_index: 0
+facture_soldee: true
+id: imp_Y2XgUDuWCI
+id_dossier: '38419'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48087
+numero_dossier: 52425
+payer_id: cont_H2HPAP1JE9
+payeur_civilite: ''
+payeur_email: miguel@msc-sport.com
+payeur_nom: DE FREITAS
+payeur_prenom: 'Miguel '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DE FREITAS
+proprietaire_prenom: 'Miguel '
+ref_piece: FA250110 48087
+reference: '52425'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 329.17
+total_ttc: 395
+type: impaye
+updated_at: '2026-06-24T16:31:19.897Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250110_48087/standard/FA250110 48087
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

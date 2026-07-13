@@ -1,0 +1,49 @@
+adresse_bien: 18 rue Pietra Scritta Le Patricia
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_94vO1dQStE
+created_at: '2026-06-24T16:31:48.041Z'
+date_echeance: '2023-11-03'
+date_import: '2026-07-09T07:05:11.056Z'
+date_piece: '2023-11-03'
+donneur_ordre_id: null
+donneur_ordre_nom: OPTI GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_6BvN3MoGxt
+id_dossier: '32108'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45521
+numero_dossier: 49105
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LANGOT ROBIN
+proprietaire_prenom: Micheline
+ref_piece: FA231103 45521
+reference: '49105'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 104.17
+total_ttc: 125
+type: impaye
+updated_at: '2026-06-24T16:31:48.041Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231103_45521/standard/FA231103 45521
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

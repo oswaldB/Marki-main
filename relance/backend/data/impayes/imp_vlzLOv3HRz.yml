@@ -1,0 +1,49 @@
+adresse_bien: 28 boulevard de l'Armée des Alpes  Le Grand Palais
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_2DtGTTZJh1
+created_at: '2026-06-24T16:31:12.076Z'
+date_echeance: '2025-04-18'
+date_import: '2026-07-09T07:05:07.656Z'
+date_piece: '2025-04-18'
+donneur_ordre_id: null
+donneur_ordre_nom: BREYTON
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_vlzLOv3HRz
+id_dossier: '39219'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48745
+numero_dossier: 53225
+payer_id: cont_2DtGTTZJh1
+payeur_civilite: ''
+payeur_email: aureliebreyton0@gmail.com
+payeur_nom: BREYTON
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BREYTON
+proprietaire_prenom: null
+ref_piece: FA250418 48745
+reference: '53225'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:31:12.076Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250418_48745/standard/FA250418 48745
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

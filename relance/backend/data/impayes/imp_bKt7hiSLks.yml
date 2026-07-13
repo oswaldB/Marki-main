@@ -1,0 +1,49 @@
+adresse_bien: 15 rue Biscarra
+apporteur_id: cont_g9O7k9ZEAV
+apporteur_nom: 'PHT REAL ESTATE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_oP0kUfClk4
+created_at: '2026-06-24T16:31:16.934Z'
+date_echeance: '2025-02-20'
+date_import: '2026-07-09T07:05:08.051Z'
+date_piece: '2025-02-20'
+donneur_ordre_id: null
+donneur_ordre_nom: MANTERO
+donneur_ordre_prenom: Daniele
+email_index: 0
+facture_soldee: true
+id: imp_bKt7hiSLks
+id_dossier: '38754'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48370
+numero_dossier: 52760
+payer_id: cont_oP0kUfClk4
+payeur_civilite: ''
+payeur_email: manterodaniele1963@gmail.com
+payeur_nom: MANTERO
+payeur_prenom: Daniele
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MANTERO
+proprietaire_prenom: Daniele
+ref_piece: FA250220 48370
+reference: '52760'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 200
+total_ttc: 240
+type: impaye
+updated_at: '2026-06-24T16:31:16.934Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250220_48370/standard/FA250220 48370
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

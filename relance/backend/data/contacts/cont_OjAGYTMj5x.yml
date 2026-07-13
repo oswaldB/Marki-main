@@ -1,0 +1,33 @@
+$loki: 4337
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:14.563Z'
+email: ericzambetti22@gmail.com
+id: cont_OjAGYTMj5x
+impaye_ids:
+  - imp_BAjSbpGbTz
+  - imp_PGYxFwNXlF
+  - imp_4wCh1193lG
+  - imp_W6xVJHeuER
+  - imp_FlACsn5bhX
+is_blacklisted: false
+meta:
+  created: 1783580699957
+  revision: 0
+  version: 0
+nom: ZETA
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0628234648'
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:13.390Z'

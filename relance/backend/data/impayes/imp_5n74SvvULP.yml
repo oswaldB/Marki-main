@@ -1,0 +1,49 @@
+adresse_bien: 95 avenue Winston Churchill Ciel et Mer
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_5Hy3rH2GXp
+created_at: '2026-06-24T16:30:49.934Z'
+date_echeance: '2026-04-28'
+date_import: '2026-07-09T07:05:05.486Z'
+date_piece: '2026-04-21'
+donneur_ordre_id: null
+donneur_ordre_nom: LUISI
+donneur_ordre_prenom: Annamaria et Donato
+email_index: 0
+facture_soldee: true
+id: imp_5n74SvvULP
+id_dossier: '41595'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50809
+numero_dossier: 55601
+payer_id: cont_5Hy3rH2GXp
+payeur_civilite: ''
+payeur_email: donato_annamaria@yahoo.it
+payeur_nom: LUISI
+payeur_prenom: Annamaria et Donato
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LUISI
+proprietaire_prenom: Annamaria et Donato
+ref_piece: FA260421 50809
+reference: '55601'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:30:49.934Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260421_50809/standard/FA260421 50809
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

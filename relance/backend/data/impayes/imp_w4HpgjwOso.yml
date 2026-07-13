@@ -1,0 +1,49 @@
+adresse_bien: 35 Promenade du Cap Residence du Cap
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_tF5BG8gFCP
+created_at: '2026-06-24T16:31:44.004Z'
+date_echeance: '2024-01-10'
+date_import: '2026-07-09T07:05:10.681Z'
+date_piece: '2024-01-10'
+donneur_ordre_id: null
+donneur_ordre_nom: SUCCESSION JOFFRIDA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_w4HpgjwOso
+id_dossier: '32575'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45881
+numero_dossier: 49572
+payer_id: cont_tF5BG8gFCP
+payeur_civilite: ''
+payeur_email: franckviano@hotmail.com
+payeur_nom: SUCCESSION JOFFRIDA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SUCCESSION JOFFRIDA
+proprietaire_prenom: null
+ref_piece: FA240110 45881
+reference: '49572'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:44.004Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240110_45881/standard/FA240110 45881
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

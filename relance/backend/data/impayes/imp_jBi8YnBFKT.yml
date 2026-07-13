@@ -1,0 +1,49 @@
+adresse_bien: 286 chemin des Oliviers LES OLIVIERS Bâtiment B
+apporteur_id: cont_LJmBFjDiK2
+apporteur_nom: OPTIMHOME LESAULNIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: cont_NOUTTOm9NT
+created_at: '2026-06-24T16:30:47.899Z'
+date_echeance: '2026-06-02'
+date_import: '2026-07-09T07:05:05.288Z'
+date_piece: '2026-05-26'
+donneur_ordre_id: null
+donneur_ordre_nom: COTTAZ
+donneur_ordre_prenom: Magali
+email_index: 0
+facture_soldee: false
+id: imp_jBi8YnBFKT
+id_dossier: '41778'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51001
+numero_dossier: 55784
+payer_id: cont_NOUTTOm9NT
+payeur_civilite: ''
+payeur_email: magali.cottaz@gmail.com
+payeur_nom: COTTAZ
+payeur_prenom: Magali
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: COTTAZ
+proprietaire_prenom: Magali
+ref_piece: FA260526 51001
+reference: '55784'
+reste_a_payer: 280
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:33:33.227Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260526_51001/standard/FA260526 51001 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

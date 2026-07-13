@@ -1,0 +1,49 @@
+adresse_bien: 1607 chemin des Tourrettes
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06390'
+commentaire_piece: ''
+contact_relance_id: cont_gCFK8kqzBY
+created_at: '2026-06-24T16:31:05.030Z'
+date_echeance: '2025-08-28'
+date_import: '2026-07-09T07:05:06.959Z'
+date_piece: '2025-08-21'
+donneur_ordre_id: null
+donneur_ordre_nom: LUZI
+donneur_ordre_prenom: Anne
+email_index: 0
+facture_soldee: true
+id: imp_mNv6drHq3x
+id_dossier: '40069'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49406
+numero_dossier: 54075
+payer_id: cont_gCFK8kqzBY
+payeur_civilite: ''
+payeur_email: anne-lusi@orange.fr
+payeur_nom: LUZI
+payeur_prenom: Anne
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LUZI
+proprietaire_prenom: Anne
+ref_piece: FA250821 49406
+reference: '54075'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 329.17
+total_ttc: 395
+type: impaye
+updated_at: '2026-06-24T16:31:05.030Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250821_49406/standard/FA250821 49406 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CHÂTEAUNEUF-VILLEVIEILLE

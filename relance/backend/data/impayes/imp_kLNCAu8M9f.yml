@@ -1,0 +1,49 @@
+adresse_bien: 11 rue Saint-michel MAISON FERRO
+apporteur_id: cont_axwCVxbA8C
+apporteur_nom: CABINET CAIRO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: MAISON FERRO
+contact_relance_id: cont_axwCVxbA8C
+created_at: '2026-06-24T16:31:32.931Z'
+date_echeance: '2024-06-12'
+date_import: '2026-07-09T07:05:09.694Z'
+date_piece: '2024-06-12'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC MAISON FERRO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_kLNCAu8M9f
+id_dossier: '34524'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46857
+numero_dossier: 50523
+payer_id: cont_axwCVxbA8C
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET CAIRO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC MAISON FERRO
+proprietaire_prenom: null
+ref_piece: FA240612 46857
+reference: '50523'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1583.33
+total_ttc: 1900
+type: impaye
+updated_at: '2026-06-24T16:31:32.931Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240612_46857/standard/FA240612 46857 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 16 rue Guyau
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_5arXwfvppv
+created_at: '2026-06-24T16:31:21.024Z'
+date_echeance: '2024-12-11'
+date_import: '2026-07-09T07:05:08.518Z'
+date_piece: '2024-12-11'
+donneur_ordre_id: null
+donneur_ordre_nom: GUIDI-MOROSINI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_7FTqefP4F4
+id_dossier: '38199'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47939
+numero_dossier: 52205
+payer_id: cont_5arXwfvppv
+payeur_civilite: ''
+payeur_email: fg-m@sfr.fr
+payeur_nom: GUIDI-MOROSINI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GUIDI-MOROSINI
+proprietaire_prenom: null
+ref_piece: FA241211 47939
+reference: '52205'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 316.67
+total_ttc: 380
+type: impaye
+updated_at: '2026-06-24T16:31:21.024Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241211_47939/standard/FA241211 47939
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

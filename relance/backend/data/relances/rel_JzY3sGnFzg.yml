@@ -1,0 +1,91 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_1JA6XaDqC0
+corps: >
+  <p>Bonjour,</p>
+
+  <p><br></p>
+
+  <p><strong>Par la présente, nous vous mettons en demeure</strong> de régler,
+  dans les plus brefs délais, votre facture <strong>n°51257</strong> relative à
+  une prestation réalisée au <strong>25 boulevard de la Republique Palais de la
+  Poste, 06240 BEAUSOLEIL - dossier 56107</strong>.</p>
+
+  <p><br></p>
+
+  <p>Cette facture, d'un montant de <strong>150 €</strong>, était échue depuis
+  le <strong>14/07/2026</strong>. Malgré nos précédentes relances, le règlement
+  n'a toujours pas été effectué.</p>
+
+  <p><br></p>
+
+  <p>Vous pouvez régler cette facture par les moyens suivants :</p>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=150&vads_order_id=51257&vads_cust_id=56107&vads_cust_last_name=GALVEZ
+  ET HERMANNI&vads_cust_first_name=Liliana et
+  Claus&vads_cust_email=lili.galvez@gmail.com">Paiement sécurisé en ligne en
+  carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p><strong>Ce règlement devra intervenir sous 48 heures</strong> à compter de
+  la réception de ce courrier.</p>
+
+  <p>À défaut, nous serons contraints d'engager les procédures de recouvrement
+  prévues par la législation en vigueur.</p>
+
+  <p><br></p>
+
+  <p>La présente mise en demeure fait courir les intérêts légaux de retard ainsi
+  que l'indemnité forfaitaire pour frais de recouvrement.</p>
+
+  <p><br></p>
+
+  <p>Vous pouvez télécharger votre facture ici : <a
+  href="https://adti.markidiags.com/redirect-pdf/QbNGh4b7X3">Télécharger la
+  facture 51257</a></p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-07-07T22:01:58.547Z'
+date_envoi: '2026-08-01T00:00:00.000Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 6
+erreur_count: 0
+id: rel_JzY3sGnFzg
+impaye_ids:
+  - imp_QbNGh4b7X3
+manuelle: false
+message_id: null
+objet: >-
+  EX'IM - Dossier 56107 - Relance n°4 : Mise en demeure de payer – Facture 51257
+  impayée
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: pret pour envoi
+type: relance
+updated_at: '2026-07-07T22:01:58.547Z'
+valide: false

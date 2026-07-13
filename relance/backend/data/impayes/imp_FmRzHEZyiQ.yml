@@ -1,0 +1,49 @@
+adresse_bien: 13 chemin des Petits Plans RESIDENCE LE MOANA
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: "09/09 relance mail notaire :  nathalie.touati.06019@notaires.fr\r\n\r\n22/07 : échange tél. avec Mme TAILLADE : SPÉCIAL IMMO ne gère plus cette résidence depuis 2023, \"rachat\" par  EPF PACA le 26/04/2023, et à ce jour LAMY syndic professionnel (site annuaire des copros)\r\nPas de trace de demande"
+contact_relance_id: cont_ZWhISWW0zc
+created_at: '2026-06-24T16:31:14.056Z'
+date_echeance: '2025-03-21'
+date_import: '2026-07-09T07:05:07.826Z'
+date_piece: '2025-03-21'
+donneur_ordre_id: null
+donneur_ordre_nom: Societe AFASEC
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_FmRzHEZyiQ
+id_dossier: '39001'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48575
+numero_dossier: 53007
+payer_id: cont_ZWhISWW0zc
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: Societe AFASEC
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: Societe AFASEC
+proprietaire_prenom: null
+ref_piece: FA250321 48575
+reference: '53007'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:14.056Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250321_48575/standard/FA250321 48575 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

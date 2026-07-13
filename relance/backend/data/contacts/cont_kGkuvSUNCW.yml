@@ -1,0 +1,29 @@
+$loki: 6785
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-30T22:00:27.051Z'
+email: 'immobilier.facturation@caisses-sociales.mc '
+id: cont_kGkuvSUNCW
+impaye_ids:
+  - imp_locCBUyH5V
+is_blacklisted: true
+meta:
+  created: 1783580700742
+  revision: 0
+  version: 0
+nom: SERVICE FACTURATION ENVOI
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:36.384Z'

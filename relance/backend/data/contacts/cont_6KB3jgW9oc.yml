@@ -1,0 +1,61 @@
+$loki: 902
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:42.722Z'
+email: accueil@progedi.com
+id: cont_6KB3jgW9oc
+impaye_ids:
+  - imp_jEQAFg6vts
+  - imp_Cn8iHmkHqm
+  - imp_pTuZDRfY3j
+  - imp_KyhlDacJtd
+  - imp_ezZRJ4A9J1
+  - imp_IsjbZdQDbZ
+  - imp_5obQPsL1vL
+  - imp_QMNw9yxfPQ
+  - imp_5hrb1bFqwb
+  - imp_rPu4HgVZ5C
+  - imp_KKMB4lIWoS
+  - imp_VzPfd2i1Lv
+  - imp_FpCEIZMDbT
+  - imp_hz5ddejI24
+  - imp_e0f0qE8fRx
+  - imp_CDpFpHfHdr
+  - imp_jKKq5j1Chv
+  - imp_KMkB2speUt
+  - imp_8vxdBHgz7Y
+  - imp_REgiBEnjgh
+  - imp_GXgv36e6l8
+  - imp_bvxF79EqIu
+  - imp_1lNu1poyuR
+  - imp_IkcLD1Lxxr
+  - imp_gZYIdixzFK
+  - imp_kuuLqduk7m
+  - imp_ZGWx9ITJsQ
+  - imp_2baETpcJmo
+  - imp_icjKb1CTWY
+  - imp_g7pTm7wUF0
+  - imp_wh4g28C1yD
+  - imp_LrTqi8fxYg
+  - imp_OAIlklk6jV
+is_blacklisted: false
+meta:
+  created: 1783580698707
+  revision: 0
+  version: 0
+nom: PROGEDI
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:42.326Z'

@@ -1,0 +1,49 @@
+adresse_bien: 10 avenue des Ecoles
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06110'
+commentaire_piece: ''
+contact_relance_id: cont_zQGFChF0Bb
+created_at: '2026-06-24T16:31:29.991Z'
+date_echeance: '2024-07-17'
+date_import: '2026-07-09T07:05:09.475Z'
+date_piece: '2024-07-17'
+donneur_ordre_id: null
+donneur_ordre_nom: SOULARD
+donneur_ordre_prenom: Yasmine
+email_index: 0
+facture_soldee: true
+id: imp_oRcJ3ZWXky
+id_dossier: '36152'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47064
+numero_dossier: 51156
+payer_id: cont_zQGFChF0Bb
+payeur_civilite: ''
+payeur_email: yasmine.soulard@gmail.com
+payeur_nom: SOULARD
+payeur_prenom: Yasmine
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SOULARD
+proprietaire_prenom: Yasmine
+ref_piece: FA240717 47064
+reference: '51156'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.25
+total_ttc: 229.5
+type: impaye
+updated_at: '2026-06-24T16:31:29.991Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240717_47064/standard/FA240717 47064
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: LE CANNET

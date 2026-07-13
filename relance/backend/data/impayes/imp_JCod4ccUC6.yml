@@ -1,0 +1,49 @@
+adresse_bien: 6 avenue Fanny
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: "rdv annulé \r\nannuler la facture"
+contact_relance_id: cont_64loJicTaq
+created_at: '2026-06-24T16:31:43.014Z'
+date_echeance: '2024-01-26'
+date_import: '2026-07-09T07:05:10.584Z'
+date_piece: '2024-01-26'
+donneur_ordre_id: null
+donneur_ordre_nom: CARLO
+donneur_ordre_prenom: Patricia
+email_index: 0
+facture_soldee: true
+id: imp_JCod4ccUC6
+id_dossier: '32757'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46002
+numero_dossier: 49754
+payer_id: cont_64loJicTaq
+payeur_civilite: ''
+payeur_email: patricia.carlo@orange.fr
+payeur_nom: CARLO
+payeur_prenom: Patricia
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CARLO
+proprietaire_prenom: Patricia
+ref_piece: FA240126 46002
+reference: '49754'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 104.17
+total_ttc: 125
+type: impaye
+updated_at: '2026-06-24T16:31:43.014Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240126_46002/standard/FA240126 46002
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 7-9 avenue Cochrane Résidences du Borrigo
+apporteur_id: cont_yic6N4w5Fp
+apporteur_nom: AGENCE DE ROQUEBRUNE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_RdxTjZFPxp
+created_at: '2026-06-24T16:31:52.071Z'
+date_echeance: '2023-09-07'
+date_import: '2026-07-09T07:05:11.432Z'
+date_piece: '2023-09-07'
+donneur_ordre_id: null
+donneur_ordre_nom: AUDAGNIA
+donneur_ordre_prenom: 'Pier Diego '
+email_index: 0
+facture_soldee: true
+id: imp_X34u29p8Ay
+id_dossier: '30661'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45152
+numero_dossier: 48651
+payer_id: cont_RdxTjZFPxp
+payeur_civilite: ''
+payeur_email: diegoaudagna@gmail.com
+payeur_nom: AUDAGNIA
+payeur_prenom: 'Pier Diego '
+payeur_telephone: '00393388443187'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: AUDAGNIA
+proprietaire_prenom: 'Pier Diego '
+ref_piece: FA230907 45152
+reference: '48651'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:52.071Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230907_45152/standard/FA230907 45152
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

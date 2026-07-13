@@ -1,0 +1,49 @@
+adresse_bien: 38 rue d'Adhémar de Lantagnac Victoria Palace C
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "VICTORIA C\r\n38 RUE D’ADHEMAR DE LANTAGNAC\r\n06500 MENTON\r\n\r\n1 bât / 64 lots "
+contact_relance_id: cont_axwCVxbA8C
+created_at: '2026-06-24T16:30:51.899Z'
+date_echeance: '2026-03-27'
+date_import: '2026-07-09T07:05:05.662Z'
+date_piece: '2026-03-20'
+donneur_ordre_id: null
+donneur_ordre_nom: CABINET CAIRO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_FXM0idviHd
+id_dossier: '40756'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50652
+numero_dossier: 54762
+payer_id: cont_axwCVxbA8C
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET CAIRO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SDC VICTORIA PALACE C
+proprietaire_prenom: null
+ref_piece: FA260320 50652
+reference: '54762'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 3583.33
+total_ttc: 4300
+type: impaye
+updated_at: '2026-06-24T16:30:51.899Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260320_50652/standard/FA260320 50652 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

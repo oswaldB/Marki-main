@@ -1,0 +1,49 @@
+adresse_bien: ''
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: ''
+commentaire_piece: "Nice Ouest 6159 \r\n\r\n"
+contact_relance_id: cont_uEe1kqasth
+created_at: '2026-06-24T16:30:51.039Z'
+date_echeance: '2026-04-03'
+date_import: '2026-07-09T07:05:05.609Z'
+date_piece: '2026-03-27'
+donneur_ordre_id: null
+donneur_ordre_nom: SAS EXIM EXPLOITATION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_lwTV0b5VOw
+id_dossier: '41412'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50695
+numero_dossier: 55418
+payer_id: cont_sfpCiuiAJC
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SAS EXIM EXPLOITATION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SNCF
+proprietaire_prenom: null
+ref_piece: FA260327 50695
+reference: '55418'
+reste_a_payer: 1556.09
+sequence_id: null
+statut: non_payee
+total_ht: 1296.74
+total_ttc: 1556.09
+type: impaye
+updated_at: '2026-06-24T16:30:51.039Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260327_50695/standard/FA260327 50695 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ''

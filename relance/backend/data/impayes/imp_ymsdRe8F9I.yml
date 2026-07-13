@@ -1,0 +1,49 @@
+adresse_bien: 5 rue Meyerbeer
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_dRNkP3yM4b
+created_at: '2026-06-24T16:31:31.077Z'
+date_echeance: '2024-07-03'
+date_import: '2026-07-09T07:05:09.588Z'
+date_piece: '2024-07-03'
+donneur_ordre_id: null
+donneur_ordre_nom: PRILLARD
+donneur_ordre_prenom: Ingrid
+email_index: 0
+facture_soldee: true
+id: imp_ymsdRe8F9I
+id_dossier: '36051'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46978
+numero_dossier: 51055
+payer_id: cont_dRNkP3yM4b
+payeur_civilite: ''
+payeur_email: pprillard59@gmail.com
+payeur_nom: PRILLARD
+payeur_prenom: Ingrid
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PRILLARD
+proprietaire_prenom: Ingrid
+ref_piece: FA240703 46978
+reference: '51055'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 258.33
+total_ttc: 310
+type: impaye
+updated_at: '2026-06-24T16:31:31.077Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240703_46978/standard/FA240703 46978
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

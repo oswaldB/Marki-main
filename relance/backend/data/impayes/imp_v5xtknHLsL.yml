@@ -1,0 +1,49 @@
+adresse_bien: 4 rue Cluvier Jussieu Cluvier
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_Nh1fOoyJMJ
+created_at: '2026-06-24T16:31:48.074Z'
+date_echeance: '2023-11-02'
+date_import: '2026-07-09T07:05:11.068Z'
+date_piece: '2023-11-02'
+donneur_ordre_id: null
+donneur_ordre_nom: FICUCIELLO
+donneur_ordre_prenom: Julien
+email_index: 0
+facture_soldee: true
+id: imp_v5xtknHLsL
+id_dossier: '32086'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45513
+numero_dossier: 49083
+payer_id: cont_Nh1fOoyJMJ
+payeur_civilite: ''
+payeur_email: info@tissinie.com
+payeur_nom: GESTION IMMOBILIERE TISSINIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FICUCIELLO
+proprietaire_prenom: Julien
+ref_piece: FA231102 45513
+reference: '49083'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:48.074Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231102_45513/standard/FA231102 45513
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

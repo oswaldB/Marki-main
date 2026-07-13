@@ -1,0 +1,49 @@
+adresse_bien: 19 rue Theodore de Banville
+apporteur_id: cont_xwiycBTXvc
+apporteur_nom: ANA GROUPE ALLIANCE GESTION NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_7tJxrjbFUb
+created_at: '2026-06-24T16:31:22.084Z'
+date_echeance: '2024-11-18'
+date_import: '2026-07-09T07:05:08.648Z'
+date_piece: '2024-11-18'
+donneur_ordre_id: null
+donneur_ordre_nom: INDIVISION PIERLAS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_3sGnY1bMQC
+id_dossier: '38035'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47807
+numero_dossier: 52041
+payer_id: cont_xwiycBTXvc
+payeur_civilite: ''
+payeur_email: contact@ana-agence.fr
+payeur_nom: ANA GROUPE ALLIANCE GESTION NICE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: INDIVISION PIERLAS
+proprietaire_prenom: null
+ref_piece: FA241118 47807
+reference: '52041'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 181.46
+total_ttc: 217.75
+type: impaye
+updated_at: '2026-06-24T16:31:22.084Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241118_47807/standard/FA241118 47807
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

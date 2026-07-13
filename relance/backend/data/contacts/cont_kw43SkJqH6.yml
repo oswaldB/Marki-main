@@ -1,0 +1,30 @@
+$loki: 3866
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:10.533Z'
+email: 'r.gandus@alice.it '
+id: cont_kw43SkJqH6
+impaye_ids:
+  - imp_JtarvcIWrd
+  - imp_2At3gtyNq1
+is_blacklisted: false
+meta:
+  created: 1783580699813
+  revision: 0
+  version: 0
+nom: GANDUS
+prenom: Roberto
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:09.375Z'

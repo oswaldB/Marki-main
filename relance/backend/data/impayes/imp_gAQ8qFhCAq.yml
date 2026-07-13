@@ -1,0 +1,49 @@
+adresse_bien: 34 boulevard de la République Le Mauretania
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_OKFoYxFRSc
+created_at: '2026-06-24T16:31:29.056Z'
+date_echeance: '2024-08-01'
+date_import: '2026-07-09T07:05:09.369Z'
+date_piece: '2024-08-01'
+donneur_ordre_id: null
+donneur_ordre_nom: MATHIEU
+donneur_ordre_prenom: Laurence
+email_index: 0
+facture_soldee: true
+id: imp_gAQ8qFhCAq
+id_dossier: '36228'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47133
+numero_dossier: 51232
+payer_id: cont_OKFoYxFRSc
+payeur_civilite: ''
+payeur_email: laurence_mathieu@yahoo.fr
+payeur_nom: MATHIEU
+payeur_prenom: Laurence
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MATHIEU
+proprietaire_prenom: Laurence
+ref_piece: FA240726 47133
+reference: '51232'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:29.056Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240726_47133/standard/FA240726 47133 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

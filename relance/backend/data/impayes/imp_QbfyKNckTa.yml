@@ -1,0 +1,49 @@
+adresse_bien: 58 chemin des Mauberts
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:16.963Z'
+date_echeance: '2025-02-17'
+date_import: '2026-07-09T07:05:08.076Z'
+date_piece: '2025-02-17'
+donneur_ordre_id: null
+donneur_ordre_nom: PALAZZOLI
+donneur_ordre_prenom: Isabelle
+email_index: 0
+facture_soldee: true
+id: imp_QbfyKNckTa
+id_dossier: '38730'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48348
+numero_dossier: 52736
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: PALAZZOLI
+proprietaire_prenom: Isabelle
+ref_piece: FA250217 48348
+reference: '52736'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 87.5
+total_ttc: 105
+type: impaye
+updated_at: '2026-06-24T16:31:16.963Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250217_48348/standard/FA250217 48348
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

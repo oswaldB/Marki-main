@@ -1,0 +1,49 @@
+adresse_bien: 2 bis avenue Sainte-Marguerite
+apporteur_id: cont_ggRBNbA6TG
+apporteur_nom: API NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_GlLCkYmAlD
+created_at: '2026-06-24T16:31:02.949Z'
+date_echeance: '2025-10-08'
+date_import: '2026-07-09T07:05:06.733Z'
+date_piece: '2025-10-01'
+donneur_ordre_id: null
+donneur_ordre_nom: TUTIC
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_HhFiosjs1V
+id_dossier: '40330'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49631
+numero_dossier: 54336
+payer_id: cont_GlLCkYmAlD
+payeur_civilite: ''
+payeur_email: zrinkotutic0607@gmail.com
+payeur_nom: TUTIC
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: TUTIC
+proprietaire_prenom: null
+ref_piece: FA251001 49631
+reference: '54336'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 225
+total_ttc: 270
+type: impaye
+updated_at: '2026-06-24T16:31:02.949Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251001_49631/standard/FA251001 49631
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

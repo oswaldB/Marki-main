@@ -1,0 +1,49 @@
+adresse_bien: 21 avenue Aimé Martin Les Jardins de Silénia 2
+apporteur_id: cont_RIHSLFwvrN
+apporteur_nom: FONDATION DE NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_DP84VuLJa0
+created_at: '2026-07-02T22:00:21.223Z'
+date_echeance: '2026-07-09'
+date_import: '2026-07-09T07:05:12.283Z'
+date_piece: '2026-07-02'
+donneur_ordre_id: null
+donneur_ordre_nom: FONDATION DE NICE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_ouZLWRvrXP
+id_dossier: '41509'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51242
+numero_dossier: 55515
+payer_id: cont_RIHSLFwvrN
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: FONDATION DE NICE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FONDATION DE NICE
+proprietaire_prenom: null
+ref_piece: FA260702 51242
+reference: '55515'
+reste_a_payer: 99
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 82.5
+total_ttc: 99
+type: impaye
+updated_at: '2026-07-03T22:00:43.378Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juillet/FA260702_51242/standard/FA260702 51242
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

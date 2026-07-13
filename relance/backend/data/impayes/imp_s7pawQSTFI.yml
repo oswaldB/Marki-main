@@ -1,0 +1,49 @@
+adresse_bien: 1 rue du Général Sarrail
+apporteur_id: cont_dntkuJ727m
+apporteur_nom: 'WRETMAN MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Foof6p1fZP
+created_at: '2026-06-24T16:31:29.027Z'
+date_echeance: '2024-08-02'
+date_import: '2026-07-09T07:05:09.358Z'
+date_piece: '2024-08-02'
+donneur_ordre_id: null
+donneur_ordre_nom: 'MILTON '
+donneur_ordre_prenom: Anders
+email_index: 0
+facture_soldee: true
+id: imp_s7pawQSTFI
+id_dossier: '36255'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47153
+numero_dossier: 51259
+payer_id: cont_Foof6p1fZP
+payeur_civilite: ''
+payeur_email: anders.milton@medhand.com
+payeur_nom: 'MILTON '
+payeur_prenom: Anders
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'MILTON '
+proprietaire_prenom: Anders
+ref_piece: FA240730 47153
+reference: '51259'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 583.33
+total_ttc: 700
+type: impaye
+updated_at: '2026-06-24T16:31:29.027Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240730_47153/standard/FA240730 47153 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CASTELLAR

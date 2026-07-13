@@ -1,0 +1,49 @@
+adresse_bien: 7 rue du Poilu
+apporteur_id: cont_iFl9ufNQqc
+apporteur_nom: VILLEFRANCHE Real Estate
+apporteur_prenom: ARTHURIMMO
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:57.957Z'
+date_echeance: '2023-06-09'
+date_import: '2026-07-09T07:05:11.970Z'
+date_piece: '2023-06-09'
+donneur_ordre_id: null
+donneur_ordre_nom: HAGUE
+donneur_ordre_prenom: Andrew
+email_index: 0
+facture_soldee: true
+id: imp_21lmXBUu5L
+id_dossier: '29002'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44579
+numero_dossier: 47988
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: HAGUE
+proprietaire_prenom: Andrew
+ref_piece: FA230609 44579
+reference: '47988'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-24T16:31:57.957Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juin/FA230609_44579/standard/FA230609 44579 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

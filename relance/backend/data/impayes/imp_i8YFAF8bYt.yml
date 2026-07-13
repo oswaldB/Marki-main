@@ -1,0 +1,49 @@
+adresse_bien: 13 rue Dujardin Beaumetz
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:30:52.968Z'
+date_echeance: '2026-03-06'
+date_import: '2026-07-09T07:05:05.770Z'
+date_piece: '2026-02-27'
+donneur_ordre_id: null
+donneur_ordre_nom: SENCE
+donneur_ordre_prenom: Vyvette
+email_index: 0
+facture_soldee: true
+id: imp_i8YFAF8bYt
+id_dossier: '41196'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50533
+numero_dossier: 55202
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SENCE
+proprietaire_prenom: Vyvette
+ref_piece: FA260227 50533
+reference: '55202'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 981.8
+total_ttc: 1178.16
+type: impaye
+updated_at: '2026-06-24T16:30:52.968Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260227_50533/standard/FA260227 50533
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

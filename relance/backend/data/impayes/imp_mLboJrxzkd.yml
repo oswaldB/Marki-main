@@ -1,0 +1,49 @@
+adresse_bien: 360 chemin du Val de Pôme
+apporteur_id: cont_bHlDxqcrgJ
+apporteur_nom: POGLIANO
+apporteur_prenom: Céline
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06410'
+commentaire_piece: "29/04 relance mail notaire\r\n\r\n04/06 : appel tél. => facture bien reçue, vente non réalisée à ce jour, demandes de réactualisation à venir, tout sera réglé au moment de la vente\r\n\r\n12/01 relance faite depuis comptabilité\r\n\r\n03/02 appel avec la collaboratrice de la notaire, c'est un paiement prop donc tentative d'appel du prop sans réponse, message laissé, + relance par mail prop + notaire en copie \r\n\r\nil va payer la (il est trop mignon)\r\n"
+contact_relance_id: cont_bHlDxqcrgJ
+created_at: '2026-06-24T16:31:24.001Z'
+date_echeance: '2024-10-22'
+date_import: '2026-07-09T07:05:08.807Z'
+date_piece: '2024-10-22'
+donneur_ordre_id: null
+donneur_ordre_nom: FRUGIER
+donneur_ordre_prenom: 'Alain '
+email_index: 0
+facture_soldee: true
+id: imp_mLboJrxzkd
+id_dossier: '37851'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47670
+numero_dossier: 51857
+payer_id: cont_bHlDxqcrgJ
+payeur_civilite: ''
+payeur_email: celine.pogliano@notaires.fr
+payeur_nom: POGLIANO
+payeur_prenom: Céline
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FRUGIER
+proprietaire_prenom: 'Alain '
+ref_piece: FA241022 47670
+reference: '51857'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:24.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241022_47670/standard/FA241022 47670
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BIOT

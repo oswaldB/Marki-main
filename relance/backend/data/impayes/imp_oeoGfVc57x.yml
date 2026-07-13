@@ -1,0 +1,49 @@
+adresse_bien: 6 rue Defly
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "SDC 6 DEFLY / 7 PENCHIENATTI\r\n\r\n6 rue DEFLY / 7 rue PENCHIENATTI\r\n06300 NICE"
+contact_relance_id: cont_dpJ0AosNJK
+created_at: '2026-06-24T16:30:50.900Z'
+date_echeance: '2026-04-09'
+date_import: '2026-07-09T07:05:05.548Z'
+date_piece: '2026-04-02'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC 6 DEFLY - 7 PENCHIENATTI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_oeoGfVc57x
+id_dossier: '41498'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50727
+numero_dossier: 55504
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC 6 DEFLY - 7 PENCHIENATTI
+proprietaire_prenom: null
+ref_piece: FA260402 50727
+reference: '55504'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 416.67
+total_ttc: 500
+type: impaye
+updated_at: '2026-06-24T16:30:50.900Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260402_50727/standard/FA260402 50727
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

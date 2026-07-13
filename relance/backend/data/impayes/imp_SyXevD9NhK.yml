@@ -1,0 +1,49 @@
+adresse_bien: 7 rue de la République
+apporteur_id: cont_UCWy6DKwyS
+apporteur_nom: 'TALLIANCE AVOCATS '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "SARL AVANTLENEUF\r\n7  Rue de la République\r\n06500 MENTON"
+contact_relance_id: cont_XjBMDxY5J1
+created_at: '2026-06-24T16:31:03.040Z'
+date_echeance: '2025-10-06'
+date_import: '2026-07-09T07:05:06.780Z'
+date_piece: '2025-09-29'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL AVANT LE NEUF
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_SyXevD9NhK
+id_dossier: '40289'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49603
+numero_dossier: 54295
+payer_id: cont_XjBMDxY5J1
+payeur_civilite: ''
+payeur_email: avantleneuf-roquebrune@orange.fr
+payeur_nom: SARL AVANT LE NEUF
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SARL AVANT LE NEUF
+proprietaire_prenom: null
+ref_piece: FA250929 49603
+reference: '54295'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 324.17
+total_ttc: 389
+type: impaye
+updated_at: '2026-06-24T16:31:03.040Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250929_49603/standard/FA250929 49603
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 555 avenue Docteur Julien Lefebvre
+apporteur_id: cont_OdGGwFKYqJ
+apporteur_nom: SPECIAL IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06270'
+commentaire_piece: "le 03/05 relance aurelie \r\n09/09 relance mail aurelie \r\n\r\n23/02 relance compta\r\n24/02 aurelie nous a donné les coordonées des propriétaires \r\nmessage laissé + mail envoyé ce jour\r\n\r\n10/03 relance prop au tel me dit qu'il a transféré à sa femme donc il va normalement faire le nécessaire il doit me rappeler dans la journée\r\n\r\n16/04 relance par tel + mail \r\n\r\n27/04 relance mail + téléphone \r\n\r\n06/05 relance"
+contact_relance_id: cont_OdGGwFKYqJ
+created_at: '2026-06-24T16:31:47.075Z'
+date_echeance: '2023-11-15'
+date_import: '2026-07-09T07:05:10.961Z'
+date_piece: '2023-11-15'
+donneur_ordre_id: null
+donneur_ordre_nom: MESSINA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_Vvf7fDGW5V
+id_dossier: '32208'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45592
+numero_dossier: 49205
+payer_id: cont_OdGGwFKYqJ
+payeur_civilite: ''
+payeur_email: bienvenue@specialimmo.com
+payeur_nom: SPECIAL IMMO
+payeur_prenom: ''
+payeur_telephone: '0621001036'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MESSINA
+proprietaire_prenom: null
+ref_piece: FA231115 45592
+reference: '49205'
+reste_a_payer: 96
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 80
+total_ttc: 96
+type: impaye
+updated_at: '2026-06-24T16:33:34.338Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231115_45592/standard/FA231115 45592
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLENEUVE-LOUBET

@@ -1,0 +1,49 @@
+adresse_bien: 11 rue Jules Ferry Maison SCURSOGLIO
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_iCfN7NHYAX
+created_at: '2026-06-24T16:31:29.901Z'
+date_echeance: '2024-07-30'
+date_import: '2026-07-09T07:05:09.406Z'
+date_piece: '2024-07-30'
+donneur_ordre_id: null
+donneur_ordre_nom: PIERSON
+donneur_ordre_prenom: Adriana
+email_index: 0
+facture_soldee: true
+id: imp_lo2A30LqVo
+id_dossier: '36259'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47158
+numero_dossier: 51263
+payer_id: cont_YXYNM2lJX6
+payeur_civilite: ''
+payeur_email: beausoleil@laforet.com
+payeur_nom: LAFORET Beausoleil ARAMIS Immobilier
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PIERSON
+proprietaire_prenom: Adriana
+ref_piece: FA240730 47158
+reference: '51263'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:29.901Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240730_47158/standard/FA240730 47158
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

@@ -1,0 +1,49 @@
+adresse_bien: 47 Promenade des Anglais
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_O7CCawwJ8c
+created_at: '2026-06-24T16:30:58.881Z'
+date_echeance: '2025-12-04'
+date_import: '2026-07-09T07:05:06.350Z'
+date_piece: '2025-11-27'
+donneur_ordre_id: null
+donneur_ordre_nom: 'PALAIS DE LA PROMENADE '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_FnbLvD0yWU
+id_dossier: '40763'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50020
+numero_dossier: 54769
+payer_id: cont_Nh1fOoyJMJ
+payeur_civilite: ''
+payeur_email: info@tissinie.com
+payeur_nom: GESTION IMMOBILIERE TISSINIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'PALAIS DE LA PROMENADE '
+proprietaire_prenom: null
+ref_piece: FA251127 50020
+reference: '54769'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 91.67
+total_ttc: 110
+type: impaye
+updated_at: '2026-06-24T16:30:58.881Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251127_50020/standard/FA251127 50020
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

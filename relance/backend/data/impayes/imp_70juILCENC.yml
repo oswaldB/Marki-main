@@ -1,0 +1,49 @@
+adresse_bien: 8 rue Piéta
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_LgjjGzJCwV
+created_at: '2026-06-24T16:31:46.983Z'
+date_echeance: '2023-11-22'
+date_import: '2026-07-09T07:05:10.920Z'
+date_piece: '2023-11-22'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI JEJA
+donneur_ordre_prenom: Mr Oliva Jerome
+email_index: 0
+facture_soldee: true
+id: imp_70juILCENC
+id_dossier: '32270'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45649
+numero_dossier: 49267
+payer_id: cont_LgjjGzJCwV
+payeur_civilite: ''
+payeur_email: olivajerome2011@gmail.com
+payeur_nom: SCI JEJA
+payeur_prenom: Mr Oliva Jerome
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI JEJA
+proprietaire_prenom: Mr Oliva Jerome
+ref_piece: FA231122 45649
+reference: '49267'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 347.92
+total_ttc: 417.5
+type: impaye
+updated_at: '2026-06-24T16:31:46.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231122_45649/standard/FA231122 45649
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

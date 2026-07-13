@@ -1,0 +1,49 @@
+adresse_bien: 281 avenue du canton de Levens
+apporteur_id: cont_muCvRR89fr
+apporteur_nom: IMMOBILIERE NICOISE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06690'
+commentaire_piece: ''
+contact_relance_id: cont_cAzi6Z3ShG
+created_at: '2026-06-24T16:31:06.023Z'
+date_echeance: '2025-08-05'
+date_import: '2026-07-09T07:05:07.024Z'
+date_piece: '2025-08-05'
+donneur_ordre_id: null
+donneur_ordre_nom: BIAGIOTTI
+donneur_ordre_prenom: Auguste
+email_index: 0
+facture_soldee: true
+id: imp_sEov6iFIrn
+id_dossier: '39995'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49342
+numero_dossier: 54001
+payer_id: cont_cAzi6Z3ShG
+payeur_civilite: ''
+payeur_email: ginoubiagiotti@gmail.com
+payeur_nom: BIAGIOTTI
+payeur_prenom: Auguste
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BIAGIOTTI
+proprietaire_prenom: Auguste
+ref_piece: FA250805 49342
+reference: '54001'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 258.33
+total_ttc: 310
+type: impaye
+updated_at: '2026-06-24T16:31:06.023Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250805_49342/standard/FA250805 49342 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: TOURRETTE-LEVENS

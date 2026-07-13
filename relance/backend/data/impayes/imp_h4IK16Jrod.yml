@@ -1,0 +1,49 @@
+adresse_bien: 14 rue Morgan Le Center Palace
+apporteur_id: cont_cFjIPWR9lP
+apporteur_nom: SUD FINANCES CONSEIL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_eOuocJEdtq
+created_at: '2026-06-24T16:31:33.902Z'
+date_echeance: '2024-06-03'
+date_import: '2026-07-09T07:05:09.776Z'
+date_piece: '2024-06-03'
+donneur_ordre_id: null
+donneur_ordre_nom: SUD FINANCES CONSEIL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_h4IK16Jrod
+id_dossier: '35762'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46770
+numero_dossier: 50766
+payer_id: cont_cFjIPWR9lP
+payeur_civilite: ''
+payeur_email: leanne.viciana@sfcmenton.com
+payeur_nom: SUD FINANCES CONSEIL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LEPLAS LECLERC
+proprietaire_prenom: Pierre Laurent
+ref_piece: FA240529 46770
+reference: '50766'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 137.5
+total_ttc: 165
+type: impaye
+updated_at: '2026-06-24T16:31:33.902Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240529_46770/standard/FA240529 46770 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

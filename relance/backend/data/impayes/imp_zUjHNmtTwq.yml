@@ -1,0 +1,49 @@
+adresse_bien: 9 rue Marceau
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "SCI SEMENTIA\r\n7/9 rue Marceau 06000 NICE\r\nProjet modificatif EDD suite travaux\r\nLot 17 modification aménagement terrasse\r\nLot 18 suppression et remplacement par 2 nouveaux lots \r\nMesurage des lots"
+contact_relance_id: cont_QlMC5RePCr
+created_at: '2026-06-24T16:31:08.005Z'
+date_echeance: '2025-07-03'
+date_import: '2026-07-09T07:05:07.240Z'
+date_piece: '2025-07-03'
+donneur_ordre_id: null
+donneur_ordre_nom: SEMENTIA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_zUjHNmtTwq
+id_dossier: '39783'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49167
+numero_dossier: 53789
+payer_id: cont_QlMC5RePCr
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SEMENTIA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SEMENTIA
+proprietaire_prenom: null
+ref_piece: FA250703 49167
+reference: '53789'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1016.67
+total_ttc: 1220
+type: impaye
+updated_at: '2026-06-24T16:31:08.005Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250703_49167/standard/FA250703 49167
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

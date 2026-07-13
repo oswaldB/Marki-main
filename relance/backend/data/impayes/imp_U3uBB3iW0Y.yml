@@ -1,0 +1,49 @@
+adresse_bien: 31 avenue de Saint-roman Monte Carlo Hill
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: "07/05/2025 : relance 1\r\n\r\nLISTING\r\n\r\n10/03 relance mail pour demander l'avancement du dossier\r\n\r\n26/03 relance agence"
+contact_relance_id: cont_iCfN7NHYAX
+created_at: '2026-06-24T16:31:41.107Z'
+date_echeance: '2024-02-13'
+date_import: '2026-07-09T07:05:10.416Z'
+date_piece: '2024-02-13'
+donneur_ordre_id: null
+donneur_ordre_nom: LAFORET Beausoleil ARAMIS Immobilier
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_U3uBB3iW0Y
+id_dossier: '32891'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46112
+numero_dossier: 49888
+payer_id: cont_YXYNM2lJX6
+payeur_civilite: ''
+payeur_email: beausoleil@laforet.com
+payeur_nom: LAFORET Beausoleil ARAMIS Immobilier
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: POGLIO/ALBU
+proprietaire_prenom: null
+ref_piece: FA240213 46112
+reference: '49888'
+reste_a_payer: 105
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 87.5
+total_ttc: 105
+type: impaye
+updated_at: '2026-06-24T16:33:34.338Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240213_46112/standard/FA240213 46112
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

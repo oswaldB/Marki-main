@@ -1,0 +1,49 @@
+adresse_bien: 1 avenue de Provence
+apporteur_id: cont_ax6amK9uG4
+apporteur_nom: CAPGEST
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: cont_9HMvdEfErm
+created_at: '2026-06-24T16:31:33.056Z'
+date_echeance: '2024-06-03'
+date_import: '2026-07-09T07:05:09.763Z'
+date_piece: '2024-06-03'
+donneur_ordre_id: null
+donneur_ordre_nom: BERTOLINO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_28XI2ibfTz
+id_dossier: '35794'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46796
+numero_dossier: 50798
+payer_id: cont_ax6amK9uG4
+payeur_civilite: ''
+payeur_email: capgest@outlook.com
+payeur_nom: CAPGEST
+payeur_prenom: ''
+payeur_telephone: 0)660047242
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BERTOLINO
+proprietaire_prenom: null
+ref_piece: FA240603 46796
+reference: '50798'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:33.056Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240603_46796/standard/FA240603 46796 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

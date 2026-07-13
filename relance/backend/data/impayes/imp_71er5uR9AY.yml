@@ -1,0 +1,49 @@
+adresse_bien: 4 bis avenue Capitaine Scott Villa Graziella
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "VILLA GRAZIELLA\r\n4 bis av. Capitaine Scott\r\n06300 NICE"
+contact_relance_id: cont_qVbgUfs9GA
+created_at: '2026-06-24T16:31:27.002Z'
+date_echeance: '2024-09-10'
+date_import: '2026-07-09T07:05:09.118Z'
+date_piece: '2024-09-10'
+donneur_ordre_id: null
+donneur_ordre_nom: VILLA GRAZIELLA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_71er5uR9AY
+id_dossier: '36153'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47384
+numero_dossier: 51157
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: VILLA GRAZIELLA
+proprietaire_prenom: null
+ref_piece: FA240910 47384
+reference: '51157'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 733.33
+total_ttc: 880
+type: impaye
+updated_at: '2026-06-24T16:31:27.002Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240910_47384/standard/FA240910 47384
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

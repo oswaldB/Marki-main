@@ -1,0 +1,30 @@
+$loki: 1060
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:44.556Z'
+email: null
+id: cont_HpfqwqREF9
+impaye_ids:
+  - imp_tMHYI8kTgb
+  - imp_Wqc3j2cwvY
+is_blacklisted: false
+meta:
+  created: 1783580698765
+  revision: 0
+  version: 0
+nom: IBAGHERACHE
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:43.385Z'

@@ -1,0 +1,49 @@
+adresse_bien: 19 avenue Francois de Monléon Le Consul
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:48.963Z'
+date_echeance: '2023-10-25'
+date_import: '2026-07-09T07:05:11.086Z'
+date_piece: '2023-10-25'
+donneur_ordre_id: null
+donneur_ordre_nom: CUADRAS
+donneur_ordre_prenom: Daniel
+email_index: 0
+facture_soldee: true
+id: imp_aX7TGH3kV1
+id_dossier: '32022'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45455
+numero_dossier: 49019
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CUADRAS
+proprietaire_prenom: Daniel
+ref_piece: FA231025 45455
+reference: '49019'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 86.25
+total_ttc: 103.5
+type: impaye
+updated_at: '2026-06-24T16:31:48.963Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231025_45455/standard/FA231025 45455
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

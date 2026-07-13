@@ -1,0 +1,49 @@
+adresse_bien: 40 boulevard Francois Grosso
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_F47dfC6qeF
+created_at: '2026-06-24T16:31:42.022Z'
+date_echeance: '2024-02-01'
+date_import: '2026-07-09T07:05:10.482Z'
+date_piece: '2024-02-01'
+donneur_ordre_id: null
+donneur_ordre_nom: AGENCE DU PORT
+donneur_ordre_prenom: 'Cabinet Salomon '
+email_index: 0
+facture_soldee: true
+id: imp_T3Hfbx3LnF
+id_dossier: '32776'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46017
+numero_dossier: 49773
+payer_id: cont_F47dfC6qeF
+payeur_civilite: ''
+payeur_email: sophiesalomon@sarl-adp.fr
+payeur_nom: AGENCE DU PORT
+payeur_prenom: 'Cabinet Salomon '
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCI ANFLO
+proprietaire_prenom: null
+ref_piece: FA240131 46017
+reference: '49773'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:42.022Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240131_46017/standard/FA240131 46017
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

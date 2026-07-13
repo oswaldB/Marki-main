@@ -1,0 +1,93 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_DjfD5U944v
+corps: >
+  <p>Bonjour Madame Jeannine DUBOIS,</p>
+
+  <p><br></p>
+
+  <p>Nous constatons que votre facture <strong>n°51160</strong>, relative à une
+  prestation réalisée au <strong>15 rue Hotel des postes, 06000 NICE - dossier
+  56023</strong>, n'a toujours pas été réglée malgré nos précédentes
+  relances.</p>
+
+  <p><br></p>
+
+  <p>Pour éviter l'application de pénalités, nous vous invitons à procéder
+  <strong>dès maintenant</strong> à son règlement :</p>
+
+  <p><br></p>
+
+  <table style="border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Facture</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Échéance</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Montant total</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Reste à payer</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Télécharger la facture</p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>51160</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>25/06/2026</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>28 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>28 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p><a href="https://adti.markidiags.com/redirect-pdf/bxIlxuXORo">Télécharger</a></p></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=28&amp;vads_order_id=51160&amp;vads_cust_id=56023&amp;vads_cust_last_name=DUBOIS&amp;vads_cust_first_name=Jeannine&amp;vads_cust_email=jeannine.dubois0307@orange.fr&amp;vads_cust_cell_phone=">Paiement
+  sécurisé en ligne en carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p><strong>À défaut de paiement sous 3 jours</strong>, des intérêts de retard
+  et une indemnité forfaitaire pour frais de recouvrement seront appliqués.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-06-25T14:33:22.127Z'
+date_envoi: '2026-07-03T17:00:01.370Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 4
+erreur_count: 0
+id: rel_o6quQZnqxG
+impaye_ids:
+  - imp_bxIlxuXORo
+manuelle: false
+message_id: null
+objet: >-
+  EX'IM - Dossier 56023 - Relance n°2 : Application prochaine des pénalités de
+  retard
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: Envoyée
+type: relance
+updated_at: '2026-07-03T17:00:01.370Z'
+valide: true

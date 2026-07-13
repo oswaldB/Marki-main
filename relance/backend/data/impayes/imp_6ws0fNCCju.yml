@@ -1,0 +1,49 @@
+adresse_bien: 12 boulevard Jean Jaurès
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: 21/04 relance
+contact_relance_id: cont_o6l4YvYhQO
+created_at: '2026-06-24T16:30:51.008Z'
+date_echeance: '2026-04-07'
+date_import: '2026-07-09T07:05:05.601Z'
+date_piece: '2026-03-31'
+donneur_ordre_id: null
+donneur_ordre_nom: SIGFRIDSSON - SELLIN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_6ws0fNCCju
+id_dossier: '41480'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50710
+numero_dossier: 55486
+payer_id: cont_o6l4YvYhQO
+payeur_civilite: ''
+payeur_email: gunsigfridsson@gmail.com
+payeur_nom: SIGFRIDSSON - SELLIN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SIGFRIDSSON - SELLIN
+proprietaire_prenom: null
+ref_piece: FA260331 50710
+reference: '55486'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 277.5
+total_ttc: 333
+type: impaye
+updated_at: '2026-06-24T16:30:51.008Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260331_50710/standard/FA260331 50710 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

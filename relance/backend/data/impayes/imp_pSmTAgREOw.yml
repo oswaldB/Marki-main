@@ -1,0 +1,49 @@
+adresse_bien: 14 boulevard Princesse Grace de Monaco L'Agrianthe  Les Oliviers
+apporteur_id: cont_11gO16DxFH
+apporteur_nom: 3G IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_pcGdNCli7c
+created_at: '2026-06-24T16:31:26.940Z'
+date_echeance: '2024-09-13'
+date_import: '2026-07-09T07:05:09.098Z'
+date_piece: '2024-09-13'
+donneur_ordre_id: null
+donneur_ordre_nom: PEREZ
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_pSmTAgREOw
+id_dossier: '37579'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47421
+numero_dossier: 51585
+payer_id: cont_pcGdNCli7c
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: PEREZ
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PEREZ
+proprietaire_prenom: null
+ref_piece: FA240913 47421
+reference: '51585'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:26.940Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240913_47421/standard/FA240913 47421
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

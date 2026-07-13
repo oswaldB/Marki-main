@@ -1,0 +1,49 @@
+adresse_bien: 11 rue Paul Reboux
+apporteur_id: cont_aFSXWA9ETI
+apporteur_nom: SAINT ROCH IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_LpYpliLs26
+created_at: '2026-06-24T16:31:27.912Z'
+date_echeance: '2024-09-03'
+date_import: '2026-07-09T07:05:09.180Z'
+date_piece: '2024-09-03'
+donneur_ordre_id: null
+donneur_ordre_nom: DONNIAQUIO
+donneur_ordre_prenom: Anastasia
+email_index: 0
+facture_soldee: true
+id: imp_A9cwWlREUv
+id_dossier: '37482'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47329
+numero_dossier: 51488
+payer_id: cont_LpYpliLs26
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: DONNIAQUIO
+payeur_prenom: Anastasia
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DONNIAQUIO
+proprietaire_prenom: Anastasia
+ref_piece: FA240903 47329
+reference: '51488'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.67
+total_ttc: 230
+type: impaye
+updated_at: '2026-06-24T16:31:27.912Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240903_47329/standard/FA240903 47329
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

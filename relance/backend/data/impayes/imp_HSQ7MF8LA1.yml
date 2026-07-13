@@ -1,0 +1,49 @@
+adresse_bien: 79 rue de France
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "9010\r\n79 rue de France\r\n06000 NICE"
+contact_relance_id: cont_F3CTJYPxQg
+created_at: '2026-06-24T16:31:14.886Z'
+date_echeance: '2025-03-20'
+date_import: '2026-07-09T07:05:07.835Z'
+date_piece: '2025-03-20'
+donneur_ordre_id: null
+donneur_ordre_nom: 79 RUE DE FRANCE 9010
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_HSQ7MF8LA1
+id_dossier: '38983'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48562
+numero_dossier: 52989
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 79 RUE DE FRANCE 9010
+proprietaire_prenom: null
+ref_piece: FA250320 48562
+reference: '52989'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1740
+total_ttc: 2088
+type: impaye
+updated_at: '2026-06-24T16:31:14.886Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250320_48562/standard/FA250320 48562 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

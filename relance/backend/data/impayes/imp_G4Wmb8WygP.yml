@@ -1,0 +1,49 @@
+adresse_bien: 69 avenue des Arènes de Cimiez
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_XHSsPHYXzK
+created_at: '2026-06-24T16:31:32.003Z'
+date_echeance: '2024-06-21'
+date_import: '2026-07-09T07:05:09.642Z'
+date_piece: '2024-06-21'
+donneur_ordre_id: null
+donneur_ordre_nom: HAUSER
+donneur_ordre_prenom: Alain
+email_index: 0
+facture_soldee: true
+id: imp_G4Wmb8WygP
+id_dossier: '35979'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46925
+numero_dossier: 50983
+payer_id: cont_XHSsPHYXzK
+payeur_civilite: ''
+payeur_email: alain.hauser9@gmail.com
+payeur_nom: HAUSER
+payeur_prenom: Alain
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: HAUSER
+proprietaire_prenom: Alain
+ref_piece: FA240621 46925
+reference: '50983'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 186.67
+total_ttc: 224
+type: impaye
+updated_at: '2026-06-24T16:31:32.003Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240621_46925/standard/FA240621 46925 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

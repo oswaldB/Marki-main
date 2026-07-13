@@ -1,0 +1,49 @@
+adresse_bien: 262 avenue des Mimosas Residence du Midi
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_i921U1OdIX
+created_at: '2026-06-24T16:31:08.884Z'
+date_echeance: '2025-06-27'
+date_import: '2026-07-09T07:05:07.288Z'
+date_piece: '2025-06-27'
+donneur_ordre_id: null
+donneur_ordre_nom: MAIRIE DE ROQUEBRUNE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_HBPGTMk2g9
+id_dossier: '39719'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49118
+numero_dossier: 53725
+payer_id: cont_i921U1OdIX
+payeur_civilite: ''
+payeur_email: conseil.patrimoine@roquebrune-cap-martin.fr
+payeur_nom: MAIRIE DE ROQUEBRUNE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MAIRIE DE ROQUEBRUNE
+proprietaire_prenom: null
+ref_piece: FA250627 49118
+reference: '53725'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:08.884Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250627_49118/standard/FA250627 49118 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

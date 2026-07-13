@@ -1,0 +1,49 @@
+adresse_bien: 35 bis rue de France  Le Square Royal
+apporteur_id: cont_lDP9VJ9ene
+apporteur_nom: AGENCE LMI ARTHURIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "17/06 : message téléphonique + mail avec factures\r\n10/06 : relance mail du 27/05"
+contact_relance_id: cont_lDP9VJ9ene
+created_at: '2026-06-24T16:31:57.927Z'
+date_echeance: '2023-06-15'
+date_import: '2026-07-09T07:05:11.950Z'
+date_piece: '2023-06-15'
+donneur_ordre_id: null
+donneur_ordre_nom: CASTELMARE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_IFfadDCRGv
+id_dossier: '29035'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44607
+numero_dossier: 48021
+payer_id: cont_lDP9VJ9ene
+payeur_civilite: ''
+payeur_email: contact@agence-lmi.com
+payeur_nom: AGENCE LMI ARTHURIMMO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CASTELMARE
+proprietaire_prenom: null
+ref_piece: FA230615 44607
+reference: '48021'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 186.67
+total_ttc: 224
+type: impaye
+updated_at: '2026-06-24T16:31:57.927Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juin/FA230615_44607/standard/FA230615 44607 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

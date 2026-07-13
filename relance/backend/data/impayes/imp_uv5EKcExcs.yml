@@ -1,0 +1,49 @@
+adresse_bien: 33 avenue Valrose Résidence Parc Valrose Bâtiment A
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_LCd95CjGCu
+created_at: '2026-06-24T16:30:54.023Z'
+date_echeance: '2026-02-10'
+date_import: '2026-07-09T07:05:05.940Z'
+date_piece: '2026-02-03'
+donneur_ordre_id: null
+donneur_ordre_nom: ZP MEDITERRANNEE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_uv5EKcExcs
+id_dossier: '41073'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50410
+numero_dossier: 55079
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: ZP MEDITERRANNEE
+proprietaire_prenom: null
+ref_piece: FA260203 50410
+reference: '55079'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 140
+total_ttc: 168
+type: impaye
+updated_at: '2026-06-24T16:30:54.023Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260203_50410/standard/FA260203 50410
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

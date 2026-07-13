@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue Léopold II Le Phenix
+apporteur_id: cont_pX2w21zLPc
+apporteur_nom: FONCIA NICE OUEST
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "LE PHENIX\r\n3 avenue Léopold II\r\n06000 NICE\r\n\r\n5 lots"
+contact_relance_id: cont_tUDpWxAl1P
+created_at: '2026-06-24T16:31:09.925Z'
+date_echeance: '2025-06-06'
+date_import: '2026-07-09T07:05:07.386Z'
+date_piece: '2025-06-06'
+donneur_ordre_id: null
+donneur_ordre_nom: LE PHENIX
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_cY9F5hbs2M
+id_dossier: '39470'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49015
+numero_dossier: 53476
+payer_id: cont_pX2w21zLPc
+payeur_civilite: ''
+payeur_email: sophie.longy@foncia.fr
+payeur_nom: FONCIA NICE OUEST
+payeur_prenom: ''
+payeur_telephone: '049229755350'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LE PHENIX
+proprietaire_prenom: null
+ref_piece: FA250606 49015
+reference: '53476'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1166.67
+total_ttc: 1400
+type: impaye
+updated_at: '2026-06-24T16:31:09.925Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250606_49015/standard/FA250606 49015 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

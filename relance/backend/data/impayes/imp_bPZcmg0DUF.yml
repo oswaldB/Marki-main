@@ -1,0 +1,49 @@
+adresse_bien: 60 avenue des Acacias Le Virgile II
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "le 07/08 relance mail\r\n\r\nrelance le 18/09"
+contact_relance_id: cont_kCDE73xsmG
+created_at: '2026-06-24T16:31:08.005Z'
+date_echeance: '2025-07-03'
+date_import: '2026-07-09T07:05:07.237Z'
+date_piece: '2025-07-03'
+donneur_ordre_id: null
+donneur_ordre_nom: LE CALVEZ
+donneur_ordre_prenom: Mathilda
+email_index: 0
+facture_soldee: true
+id: imp_bPZcmg0DUF
+id_dossier: '39778'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49166
+numero_dossier: 53784
+payer_id: cont_kCDE73xsmG
+payeur_civilite: ''
+payeur_email: mathildamariama@gmail.com
+payeur_nom: LE CALVEZ
+payeur_prenom: Mathilda
+payeur_telephone: '0674925004'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LE CALVEZ
+proprietaire_prenom: Mathilda
+ref_piece: FA250703 49166
+reference: '53784'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:08.005Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250703_49166/standard/FA250703 49166
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

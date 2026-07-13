@@ -1,0 +1,29 @@
+$loki: 3384
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:05.564Z'
+email: stephane.bocchi@mma.fr
+id: cont_10F84Aldq9
+impaye_ids:
+  - imp_T1NB9R8CXu
+is_blacklisted: false
+meta:
+  created: 1783580699640
+  revision: 0
+  version: 0
+nom: KRLB
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:05.332Z'

@@ -1,0 +1,49 @@
+adresse_bien: 48 avenue de la Marne Les Tulipes
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_xDpxAZQV1G
+created_at: '2026-07-06T22:01:41.766Z'
+date_echeance: '2026-07-13'
+date_import: '2026-07-09T07:05:12.292Z'
+date_piece: '2026-07-06'
+donneur_ordre_id: null
+donneur_ordre_nom: FRASCA - LOBBRECH
+donneur_ordre_prenom: Laure - Frederic
+email_index: 0
+facture_soldee: false
+id: imp_X4uVmRBlMX
+id_dossier: '42095'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51248
+numero_dossier: 56101
+payer_id: cont_xDpxAZQV1G
+payeur_civilite: ''
+payeur_email: laulau.06100@hotmail.fr
+payeur_nom: FRASCA - LOBBRECH
+payeur_prenom: Laure - Frederic
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FRASCA - LOBBRECH
+proprietaire_prenom: Laure - Frederic
+ref_piece: FA260706 51248
+reference: '56101'
+reste_a_payer: 300
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-07-07T22:00:52.354Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juillet/FA260706_51248/standard/FA260706 51248
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

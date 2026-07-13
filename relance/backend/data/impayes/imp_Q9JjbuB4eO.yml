@@ -1,0 +1,49 @@
+adresse_bien: 3 quai de l’Amiral Ponchardier Le Palais de la Marine
+apporteur_id: cont_prHcKlMsMU
+apporteur_nom: ANTONINI
+apporteur_prenom: Laurence
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_7hQA5CxZ75
+created_at: '2026-06-24T16:31:28.063Z'
+date_echeance: '2024-08-22'
+date_import: '2026-07-09T07:05:09.259Z'
+date_piece: '2024-08-22'
+donneur_ordre_id: null
+donneur_ordre_nom: CAVERNES
+donneur_ordre_prenom: 'Chrystelle '
+email_index: 0
+facture_soldee: true
+id: imp_Q9JjbuB4eO
+id_dossier: '36393'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47257
+numero_dossier: 51397
+payer_id: cont_7hQA5CxZ75
+payeur_civilite: ''
+payeur_email: bchrys@free.fr
+payeur_nom: CAVERNES
+payeur_prenom: 'Chrystelle '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAVERNES
+proprietaire_prenom: 'Chrystelle '
+ref_piece: FA240822 47257
+reference: '51397'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:28.063Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240822_47257/standard/FA240822 47257 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

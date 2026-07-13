@@ -1,0 +1,49 @@
+adresse_bien: 14 avenue de la Barmassa Perle Blanche
+apporteur_id: cont_ttrq574L94
+apporteur_nom: ROUSSEL
+apporteur_prenom: Christian
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_pKjCNWTlSV
+created_at: '2026-06-24T16:30:55.018Z'
+date_echeance: '2026-01-28'
+date_import: '2026-07-09T07:05:06.047Z'
+date_piece: '2026-01-21'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL LIPNIZA INVESTMENTS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_DmAqr0FVlJ
+id_dossier: '41050'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50321
+numero_dossier: 55056
+payer_id: cont_pKjCNWTlSV
+payeur_civilite: ''
+payeur_email: tg@groupmcm.net
+payeur_nom: SARL LIPNIZA INVESTMENTS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SARL LIPNIZA INVESTMENTS
+proprietaire_prenom: null
+ref_piece: FA260121 50321
+reference: '55056'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:30:55.018Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260121_50321/standard/FA260121 50321
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

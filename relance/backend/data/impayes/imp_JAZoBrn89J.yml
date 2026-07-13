@@ -1,0 +1,49 @@
+adresse_bien: 23 avenue René Fatou
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06390'
+commentaire_piece: ''
+contact_relance_id: cont_XIuAdALcmS
+created_at: '2026-06-24T16:30:46.094Z'
+date_echeance: '2026-06-23'
+date_import: '2026-07-09T07:05:05.119Z'
+date_piece: '2026-06-16'
+donneur_ordre_id: null
+donneur_ordre_nom: ENNELIN
+donneur_ordre_prenom: Mickael
+email_index: 0
+facture_soldee: true
+id: imp_JAZoBrn89J
+id_dossier: '41980'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51138
+numero_dossier: 55986
+payer_id: cont_XIuAdALcmS
+payeur_civilite: ''
+payeur_email: mickaelennelin@hotmail.com
+payeur_nom: ENNELIN
+payeur_prenom: Mickael
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ENNELIN
+proprietaire_prenom: Mickael
+ref_piece: FA260616 51138
+reference: '55986'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 62.5
+total_ttc: 75
+type: impaye
+updated_at: '2026-06-24T16:30:46.094Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260616_51138/standard/FA260616 51138 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BENDEJUN

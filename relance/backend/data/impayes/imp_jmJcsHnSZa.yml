@@ -1,0 +1,49 @@
+adresse_bien: 15 avenue Lympia AGORA
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_D8fdlp33FD
+created_at: '2026-06-24T16:31:29.960Z'
+date_echeance: '2024-07-22'
+date_import: '2026-07-09T07:05:09.461Z'
+date_piece: '2024-07-22'
+donneur_ordre_id: null
+donneur_ordre_nom: BONA
+donneur_ordre_prenom: Anthony
+email_index: 0
+facture_soldee: true
+id: imp_jmJcsHnSZa
+id_dossier: '36187'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47098
+numero_dossier: 51191
+payer_id: cont_5owmFecKf0
+payeur_civilite: ''
+payeur_email: contact@richerimmobilier.com
+payeur_nom: RICHER IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BONA
+proprietaire_prenom: Anthony
+ref_piece: FA240722 47098
+reference: '51191'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 153.33
+total_ttc: 184
+type: impaye
+updated_at: '2026-06-24T16:31:29.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240722_47098/standard/FA240722 47098
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

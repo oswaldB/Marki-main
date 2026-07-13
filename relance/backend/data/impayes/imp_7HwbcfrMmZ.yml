@@ -1,0 +1,49 @@
+adresse_bien: 61 avenue Porte de France Espace 2000
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Qfz6aPEa31
+created_at: '2026-06-24T16:30:59.878Z'
+date_echeance: '2025-11-21'
+date_import: '2026-07-09T07:05:06.431Z'
+date_piece: '2025-11-14'
+donneur_ordre_id: null
+donneur_ordre_nom: BOSIO
+donneur_ordre_prenom: Elisabeth
+email_index: 0
+facture_soldee: true
+id: imp_7HwbcfrMmZ
+id_dossier: '40658'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49936
+numero_dossier: 54664
+payer_id: cont_Qfz6aPEa31
+payeur_civilite: ''
+payeur_email: bosiolisbeth@gmail.com
+payeur_nom: BOSIO
+payeur_prenom: Elisabeth
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BOSIO
+proprietaire_prenom: Elisabeth
+ref_piece: FA251114 49936
+reference: '54664'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:30:59.878Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251114_49936/standard/FA251114 49936
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

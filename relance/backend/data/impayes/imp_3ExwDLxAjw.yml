@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue de Verdun Le Minerve
+apporteur_id: cont_OdGGwFKYqJ
+apporteur_nom: SPECIAL IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: ''
+contact_relance_id: cont_uJB9vHPLnr
+created_at: '2026-06-24T16:31:02.048Z'
+date_echeance: '2025-10-13'
+date_import: '2026-07-09T07:05:06.687Z'
+date_piece: '2025-10-06'
+donneur_ordre_id: null
+donneur_ordre_nom: LE MARCHAND - COLOSIO
+donneur_ordre_prenom: Edwige - Sergio
+email_index: 0
+facture_soldee: true
+id: imp_3ExwDLxAjw
+id_dossier: '40320'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49675
+numero_dossier: 54326
+payer_id: cont_uJB9vHPLnr
+payeur_civilite: ''
+payeur_email: edwige.lemarchand@hotmail.com
+payeur_nom: LE MARCHAND - COLOSIO
+payeur_prenom: Edwige - Sergio
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LE MARCHAND - COLOSIO
+proprietaire_prenom: Edwige - Sergio
+ref_piece: FA251006 49675
+reference: '54326'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:02.048Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251006_49675/standard/FA251006 49675
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

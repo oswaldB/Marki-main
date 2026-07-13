@@ -1,0 +1,49 @@
+adresse_bien: 55 impasse de Provence
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_cHxfydBccX
+created_at: '2026-06-24T16:31:21.900Z'
+date_echeance: '2024-12-05'
+date_import: '2026-07-09T07:05:08.542Z'
+date_piece: '2024-12-05'
+donneur_ordre_id: null
+donneur_ordre_nom: BLOT
+donneur_ordre_prenom: Francesca
+email_index: 0
+facture_soldee: true
+id: imp_nbF1Q1UO1j
+id_dossier: '38147'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47916
+numero_dossier: 52153
+payer_id: cont_cHxfydBccX
+payeur_civilite: ''
+payeur_email: francescab@hotmail.fr
+payeur_nom: BLOT
+payeur_prenom: Francesca
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BLOT
+proprietaire_prenom: Francesca
+ref_piece: FA241205 47916
+reference: '52153'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 54.17
+total_ttc: 65
+type: impaye
+updated_at: '2026-06-24T16:31:21.900Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241205_47916/standard/FA241205 47916
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

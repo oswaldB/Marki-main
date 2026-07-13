@@ -1,0 +1,49 @@
+adresse_bien: 19 rue Pertinax
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "11/06 : appels au 06 50 88 83 37 => ligne tjrs occupée \r\n\r\n04/06 : relance 1"
+contact_relance_id: null
+created_at: '2026-06-24T16:31:20.960Z'
+date_echeance: '2024-12-16'
+date_import: '2026-07-09T07:05:08.490Z'
+date_piece: '2024-12-16'
+donneur_ordre_id: null
+donneur_ordre_nom: EL KAOUAK
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_NvROR9XBM3
+id_dossier: '38242'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47967
+numero_dossier: 52248
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: EL KAOUAK
+proprietaire_prenom: null
+ref_piece: FA241216 47967
+reference: '52248'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 95.83
+total_ttc: 115
+type: impaye
+updated_at: '2026-06-24T16:31:20.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241216_47967/standard/FA241216 47967
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

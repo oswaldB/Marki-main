@@ -1,0 +1,49 @@
+adresse_bien: 37 rue Scaliero Le Rubens
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_QcgPR9HSzK
+created_at: '2026-06-24T16:31:08.996Z'
+date_echeance: '2025-06-24'
+date_import: '2026-07-09T07:05:07.329Z'
+date_piece: '2025-06-24'
+donneur_ordre_id: null
+donneur_ordre_nom: MAZZOLA
+donneur_ordre_prenom: Joseph
+email_index: 0
+facture_soldee: true
+id: imp_jbX476t2wt
+id_dossier: '39678'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49093
+numero_dossier: 53684
+payer_id: cont_QcgPR9HSzK
+payeur_civilite: ''
+payeur_email: mazzola.joseph@outlook.fr
+payeur_nom: MAZZOLA
+payeur_prenom: Joseph
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MAZZOLA
+proprietaire_prenom: Joseph
+ref_piece: FA250624 49093
+reference: '53684'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 241.67
+total_ttc: 290
+type: impaye
+updated_at: '2026-06-24T16:31:08.996Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250624_49093/standard/FA250624 49093 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

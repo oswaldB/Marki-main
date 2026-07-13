@@ -1,0 +1,49 @@
+adresse_bien: 8 rue Emile Léonard
+apporteur_id: cont_rxtGcrWd4S
+apporteur_nom: TRANSAC FRANCE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "relance 07/01\r\n\r\nrelance 19/01 via comptabilité\r\n\r\n23/02 relance mail \r\n\r\n10/03 relance mail \r\n\r\n27/03 relance mail \r\n\r\n27/04 message laissé + mail envoyé \r\neu verhoeven..\r\non attend, on fait le point dans 1 mois, il la paiera au pire \r\n"
+contact_relance_id: cont_sGzd1iOTP3
+created_at: '2026-06-24T16:30:57.065Z'
+date_echeance: '2025-12-23'
+date_import: '2026-07-09T07:05:06.240Z'
+date_piece: '2025-12-16'
+donneur_ordre_id: null
+donneur_ordre_nom: OXANCE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_C36xaY9sOn
+id_dossier: '40840'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50136
+numero_dossier: 54846
+payer_id: cont_sGzd1iOTP3
+payeur_civilite: ''
+payeur_email: raynald.cucherat@oxance.fr
+payeur_nom: OXANCE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: OXANCE
+proprietaire_prenom: null
+ref_piece: FA251216 50136
+reference: '54846'
+reste_a_payer: 238
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 198.33
+total_ttc: 238
+type: impaye
+updated_at: '2026-06-24T16:33:34.225Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251216_50136/standard/FA251216 50136
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

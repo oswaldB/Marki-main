@@ -1,0 +1,49 @@
+adresse_bien: 34 boulevard de la République Le Mauretania
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_9KF7R3DCug
+created_at: '2026-06-24T16:31:23.899Z'
+date_echeance: '2024-10-30'
+date_import: '2026-07-09T07:05:08.752Z'
+date_piece: '2024-10-30'
+donneur_ordre_id: null
+donneur_ordre_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_vucJXEJPFS
+id_dossier: '37916'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47720
+numero_dossier: 51922
+payer_id: cont_9KF7R3DCug
+payeur_civilite: ''
+payeur_email: info@republique-beausoleil.com
+payeur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: KERDAT
+proprietaire_prenom: 'Nadine '
+ref_piece: FA241030 47720
+reference: '51922'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:23.899Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241030_47720/standard/FA241030 47720
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

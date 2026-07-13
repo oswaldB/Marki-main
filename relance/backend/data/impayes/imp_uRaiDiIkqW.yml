@@ -1,0 +1,49 @@
+adresse_bien: 88 chemin des Caroubiers Domaine de Beauregard
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_Zxyqx5BERX
+created_at: '2026-06-24T16:31:45.062Z'
+date_echeance: '2023-12-08'
+date_import: '2026-07-09T07:05:10.787Z'
+date_piece: '2023-12-08'
+donneur_ordre_id: null
+donneur_ordre_nom: MATTIONI
+donneur_ordre_prenom: Pietro
+email_index: 0
+facture_soldee: true
+id: imp_uRaiDiIkqW
+id_dossier: '32399'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45750
+numero_dossier: 49396
+payer_id: cont_Zxyqx5BERX
+payeur_civilite: ''
+payeur_email: giuliamattioni@gmail.com
+payeur_nom: MATTIONI
+payeur_prenom: Pietro
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MATTIONI
+proprietaire_prenom: Pietro
+ref_piece: FA231208 45750
+reference: '49396'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:45.062Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231208_45750/standard/FA231208 45750
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

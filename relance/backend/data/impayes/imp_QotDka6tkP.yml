@@ -1,0 +1,49 @@
+adresse_bien: 67 boulevard Bischoffsheim
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Go78exT8RH
+created_at: '2026-06-24T16:31:37.001Z'
+date_echeance: '2024-04-12'
+date_import: '2026-07-09T07:05:10.039Z'
+date_piece: '2024-04-12'
+donneur_ordre_id: null
+donneur_ordre_nom: GANOFSKY
+donneur_ordre_prenom: Pamela
+email_index: 0
+facture_soldee: true
+id: imp_QotDka6tkP
+id_dossier: '34405'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46478
+numero_dossier: 50404
+payer_id: cont_Go78exT8RH
+payeur_civilite: ''
+payeur_email: pamela.ganofsky@hotmail.fr
+payeur_nom: GANOFSKY
+payeur_prenom: Pamela
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GANOFSKY
+proprietaire_prenom: Pamela
+ref_piece: FA240412 46478
+reference: '50404'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:37.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240412_46478/standard/FA240412 46478
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 2 rue du Marché
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_6KnyNSAqbF
+created_at: '2026-06-24T16:31:51.075Z'
+date_echeance: '2023-09-15'
+date_import: '2026-07-09T07:05:11.355Z'
+date_piece: '2023-09-15'
+donneur_ordre_id: null
+donneur_ordre_nom: 'MARTIN '
+donneur_ordre_prenom: 'Frederique '
+email_index: 0
+facture_soldee: true
+id: imp_kNiaH5k3QL
+id_dossier: '30733'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45204
+numero_dossier: 48723
+payer_id: cont_6KnyNSAqbF
+payeur_civilite: ''
+payeur_email: fredmartin.grasse@gmail.com
+payeur_nom: 'MARTIN '
+payeur_prenom: 'Frederique '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'MARTIN '
+proprietaire_prenom: 'Frederique '
+ref_piece: FA230915 45204
+reference: '48723'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 104.17
+total_ttc: 125
+type: impaye
+updated_at: '2026-06-24T16:31:51.075Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230915_45204/standard/FA230915 45204
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

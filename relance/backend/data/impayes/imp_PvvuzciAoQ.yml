@@ -1,0 +1,49 @@
+adresse_bien: 98 avenue Valrose  Le Regina Park
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: 'paiement agence LISTING '
+contact_relance_id: cont_jO6Cep4oVa
+created_at: '2026-06-24T16:31:20.960Z'
+date_echeance: '2024-12-17'
+date_import: '2026-07-09T07:05:08.479Z'
+date_piece: '2024-12-17'
+donneur_ordre_id: null
+donneur_ordre_nom: CEPITELLI
+donneur_ordre_prenom: Thomas
+email_index: 0
+facture_soldee: true
+id: imp_PvvuzciAoQ
+id_dossier: '38259'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47978
+numero_dossier: 52265
+payer_id: cont_jO6Cep4oVa
+payeur_civilite: ''
+payeur_email: jugo@laforet.com
+payeur_nom: LAFORET NICE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CEPITELLI
+proprietaire_prenom: Thomas
+ref_piece: FA241217 47978
+reference: '52265'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:31:20.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241217_47978/standard/FA241217 47978
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

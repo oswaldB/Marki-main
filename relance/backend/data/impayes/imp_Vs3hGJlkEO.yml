@@ -1,0 +1,49 @@
+adresse_bien: 28 avenue Rivièra Riviera Palace
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:52.071Z'
+date_echeance: '2023-09-05'
+date_import: '2026-07-09T07:05:11.447Z'
+date_piece: '2023-09-05'
+donneur_ordre_id: null
+donneur_ordre_nom: AROBBIO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Vs3hGJlkEO
+id_dossier: '30615'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45109
+numero_dossier: 48605
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: AROBBIO
+proprietaire_prenom: null
+ref_piece: FA230831 45109
+reference: '48605'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 104.17
+total_ttc: 125
+type: impaye
+updated_at: '2026-06-24T16:31:52.071Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230831_45109/standard/FA230831 45109
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

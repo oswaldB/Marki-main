@@ -1,0 +1,49 @@
+adresse_bien: 21 rue Etienne Curti Les Coquelicots
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06670'
+commentaire_piece: ''
+contact_relance_id: cont_dMstRO0k6H
+created_at: '2026-06-24T16:30:47.048Z'
+date_echeance: '2026-06-05'
+date_import: '2026-07-09T07:05:05.243Z'
+date_piece: '2026-05-29'
+donneur_ordre_id: null
+donneur_ordre_nom: LE GOFF
+donneur_ordre_prenom: Denis
+email_index: 0
+facture_soldee: true
+id: imp_CdfLqGHUSg
+id_dossier: '41859'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51035
+numero_dossier: 55865
+payer_id: cont_dMstRO0k6H
+payeur_civilite: ''
+payeur_email: ddc.legoff@orange.fr
+payeur_nom: LE GOFF
+payeur_prenom: Denis
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LE GOFF
+proprietaire_prenom: Denis
+ref_piece: FA260529 51035
+reference: '55865'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:30:47.048Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260529_51035/standard/FA260529 51035 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: COLOMARS

@@ -1,0 +1,49 @@
+adresse_bien: 18 rue Emile Leonard FIORE
+apporteur_id: cont_InQITYA0TA
+apporteur_nom: L'ENTREPRISE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "Mr COHEN Bruno\r\nlocal\r\n18 rue Emile Léonard\r\n06300 Nice"
+contact_relance_id: cont_RgblDBayZS
+created_at: '2026-06-24T16:31:17.957Z'
+date_echeance: '2025-02-06'
+date_import: '2026-07-09T07:05:08.184Z'
+date_piece: '2025-02-06'
+donneur_ordre_id: null
+donneur_ordre_nom: COHEN
+donneur_ordre_prenom: Bruno
+email_index: 0
+facture_soldee: true
+id: imp_JeXKfqli5x
+id_dossier: '38641'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48283
+numero_dossier: 52647
+payer_id: cont_RgblDBayZS
+payeur_civilite: ''
+payeur_email: athenapromotion@wanadoo.fr
+payeur_nom: COHEN
+payeur_prenom: Bruno
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: COHEN
+proprietaire_prenom: Bruno
+ref_piece: FA250206 48283
+reference: '52647'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 409.17
+total_ttc: 491
+type: impaye
+updated_at: '2026-06-24T16:31:17.957Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250206_48283/standard/FA250206 48283
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

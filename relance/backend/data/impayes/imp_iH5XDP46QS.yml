@@ -1,0 +1,49 @@
+adresse_bien: Montée Jeansoulin
+apporteur_id: cont_nGbYMncL3T
+apporteur_nom: CABINET TRABAUD ACQUARONE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_nGbYMncL3T
+created_at: '2026-06-24T16:31:32.964Z'
+date_echeance: '2024-06-07'
+date_import: '2026-07-09T07:05:09.724Z'
+date_piece: '2024-06-07'
+donneur_ordre_id: null
+donneur_ordre_nom: 'COPROPRIETE VILLA AURORE '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_iH5XDP46QS
+id_dossier: '35845'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46838
+numero_dossier: 50849
+payer_id: cont_nGbYMncL3T
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET TRABAUD ACQUARONE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'COPROPRIETE VILLA AURORE '
+proprietaire_prenom: null
+ref_piece: FA240607 46838
+reference: '50849'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:32.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240607_46838/standard/FA240607 46838 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

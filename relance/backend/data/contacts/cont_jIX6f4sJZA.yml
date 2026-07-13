@@ -1,0 +1,29 @@
+$loki: 4617
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:17.535Z'
+email: hochet.michel@free.fr
+id: cont_jIX6f4sJZA
+impaye_ids:
+  - imp_bfdJ4jGvCN
+is_blacklisted: false
+meta:
+  created: 1783580700051
+  revision: 0
+  version: 0
+nom: HOCHET
+prenom: Yves
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:16.375Z'

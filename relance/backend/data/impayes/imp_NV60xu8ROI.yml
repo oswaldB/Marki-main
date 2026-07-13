@@ -1,0 +1,49 @@
+adresse_bien: 790 route du Sanatorium
+apporteur_id: cont_4Zc7DsPc6Y
+apporteur_nom: EDOUARD VII REAL ESTATE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_jgrXfx7Fzq
+created_at: '2026-06-24T16:31:26.975Z'
+date_echeance: '2024-09-12'
+date_import: '2026-07-09T07:05:09.111Z'
+date_piece: '2024-09-12'
+donneur_ordre_id: null
+donneur_ordre_nom: NISCEMI
+donneur_ordre_prenom: Nicolo
+email_index: 0
+facture_soldee: true
+id: imp_NV60xu8ROI
+id_dossier: '37552'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47401
+numero_dossier: 51558
+payer_id: cont_jgrXfx7Fzq
+payeur_civilite: ''
+payeur_email: nicolo.niscemi@gmail.com
+payeur_nom: NISCEMI
+payeur_prenom: Nicolo
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: NISCEMI
+proprietaire_prenom: Nicolo
+ref_piece: FA240912 47401
+reference: '51558'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 577.5
+total_ttc: 693
+type: impaye
+updated_at: '2026-06-24T16:31:26.975Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240912_47401/standard/FA240912 47401
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: GORBIO

@@ -1,0 +1,49 @@
+adresse_bien: 13 avenue de la Gare
+apporteur_id: cont_e53R48o27k
+apporteur_nom: CABINET CAPAN -  BORDES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_tSmyydyxtF
+created_at: '2026-06-24T16:31:02.877Z'
+date_echeance: '2025-10-13'
+date_import: '2026-07-09T07:05:06.693Z'
+date_piece: '2025-10-06'
+donneur_ordre_id: null
+donneur_ordre_nom: LYSON
+donneur_ordre_prenom: Bogdan
+email_index: 0
+facture_soldee: true
+id: imp_AVvA51AT5A
+id_dossier: '40338'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49673
+numero_dossier: 54344
+payer_id: cont_tSmyydyxtF
+payeur_civilite: ''
+payeur_email: bogdanlyson@hotmail.fr
+payeur_nom: LYSON
+payeur_prenom: Bogdan
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LYSON
+proprietaire_prenom: Bogdan
+ref_piece: FA251006 49673
+reference: '54344'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 200
+total_ttc: 240
+type: impaye
+updated_at: '2026-06-24T16:31:02.877Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251006_49673/standard/FA251006 49673
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

@@ -1,0 +1,49 @@
+adresse_bien: 590 avenue des Genets Parking du Rataou
+apporteur_id: cont_i921U1OdIX
+apporteur_nom: MAIRIE DE ROQUEBRUNE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_i921U1OdIX
+created_at: '2026-06-24T16:31:10.050Z'
+date_echeance: '2025-05-27'
+date_import: '2026-07-09T07:05:07.453Z'
+date_piece: '2025-05-27'
+donneur_ordre_id: null
+donneur_ordre_nom: MAIRIE DE ROQUEBRUNE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_e8kO6OL6xq
+id_dossier: '39479'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48944
+numero_dossier: 53485
+payer_id: cont_i921U1OdIX
+payeur_civilite: ''
+payeur_email: conseil.patrimoine@roquebrune-cap-martin.fr
+payeur_nom: MAIRIE DE ROQUEBRUNE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MAIRIE DE ROQUEBRUNE
+proprietaire_prenom: null
+ref_piece: FA250527 48944
+reference: '53485'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 62.5
+total_ttc: 75
+type: impaye
+updated_at: '2026-06-24T16:31:10.050Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250527_48944/standard/FA250527 48944 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

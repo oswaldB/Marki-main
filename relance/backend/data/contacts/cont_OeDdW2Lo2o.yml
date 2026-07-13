@@ -1,0 +1,32 @@
+$loki: 4184
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:13.529Z'
+email: h.bellone@free.fr
+id: cont_OeDdW2Lo2o
+impaye_ids:
+  - imp_tgCxemHAi4
+  - imp_LFPXN8kM7H
+  - imp_aqeQagfjQt
+  - imp_a1qyHjXQ8B
+is_blacklisted: false
+meta:
+  created: 1783580699912
+  revision: 0
+  version: 0
+nom: BELLONE
+prenom: Hervé
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:12.353Z'

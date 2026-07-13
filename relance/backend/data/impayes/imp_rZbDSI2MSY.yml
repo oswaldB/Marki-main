@@ -1,0 +1,49 @@
+adresse_bien: 7 Montée de l'Hermitage CARLTON
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_VJ4EGFqGGF
+created_at: '2026-06-24T16:31:15.957Z'
+date_echeance: '2025-03-06'
+date_import: '2026-07-09T07:05:07.978Z'
+date_piece: '2025-03-06'
+donneur_ordre_id: null
+donneur_ordre_nom: BACCOT
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_rZbDSI2MSY
+id_dossier: '38861'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48458
+numero_dossier: 52867
+payer_id: cont_VJ4EGFqGGF
+payeur_civilite: ''
+payeur_email: kathleen.mcglue@gmail.com
+payeur_nom: BACCOT
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BACCOT
+proprietaire_prenom: null
+ref_piece: FA250306 48458
+reference: '52867'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 329.17
+total_ttc: 395
+type: impaye
+updated_at: '2026-06-24T16:31:15.957Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250306_48458/standard/FA250306 48458 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

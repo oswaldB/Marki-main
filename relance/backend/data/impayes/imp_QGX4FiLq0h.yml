@@ -1,0 +1,49 @@
+adresse_bien: 32 rue Saint-michel
+apporteur_id: cont_UCWy6DKwyS
+apporteur_nom: 'TALLIANCE AVOCATS '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_UCWy6DKwyS
+created_at: '2026-06-24T16:31:43.909Z'
+date_echeance: '2024-01-18'
+date_import: '2026-07-09T07:05:10.621Z'
+date_piece: '2024-01-18'
+donneur_ordre_id: null
+donneur_ordre_nom: Societe STENARI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_QGX4FiLq0h
+id_dossier: '32666'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45950
+numero_dossier: 49663
+payer_id: cont_UCWy6DKwyS
+payeur_civilite: ''
+payeur_email: frometti@talliance-avocats.fr
+payeur_nom: 'TALLIANCE AVOCATS '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: Societe STENARI
+proprietaire_prenom: null
+ref_piece: FA240118 45950
+reference: '49663'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:43.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240118_45950/standard/FA240118 45950
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

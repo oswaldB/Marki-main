@@ -1,0 +1,49 @@
+adresse_bien: 85 avenue des Orchidées
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_wbFG0CPFuM
+created_at: '2026-06-24T16:31:01.039Z'
+date_echeance: '2025-10-28'
+date_import: '2026-07-09T07:05:06.591Z'
+date_piece: '2025-10-21'
+donneur_ordre_id: null
+donneur_ordre_nom: DE GINESTE
+donneur_ordre_prenom: Philippe
+email_index: 0
+facture_soldee: true
+id: imp_OAANCsGWEa
+id_dossier: '39721'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49790
+numero_dossier: 53727
+payer_id: cont_wbFG0CPFuM
+payeur_civilite: ''
+payeur_email: roquebrune.06075@notaires.fr
+payeur_nom: 'TRAN '
+payeur_prenom: Damien
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: DE GINESTE
+proprietaire_prenom: Philippe
+ref_piece: FA251021 49790
+reference: '53727'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:01.039Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251021_49790/standard/FA251021 49790
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

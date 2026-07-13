@@ -1,0 +1,49 @@
+adresse_bien: 110 rue du Val Fleuri Groupe Scolaire  du cap
+apporteur_id: cont_i921U1OdIX
+apporteur_nom: MAIRIE DE ROQUEBRUNE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_TqHsn7dHHn
+created_at: '2026-06-24T16:31:07.945Z'
+date_echeance: '2025-07-10'
+date_import: '2026-07-09T07:05:07.200Z'
+date_piece: '2025-07-10'
+donneur_ordre_id: null
+donneur_ordre_nom: MAIRIE DE ROQUEBRUNE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Mxz7HbECG3
+id_dossier: '39821'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49202
+numero_dossier: 53827
+payer_id: cont_i921U1OdIX
+payeur_civilite: ''
+payeur_email: conseil.patrimoine@roquebrune-cap-martin.fr
+payeur_nom: MAIRIE DE ROQUEBRUNE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MAIRIE DE ROQUEBRUNE
+proprietaire_prenom: null
+ref_piece: FA250710 49202
+reference: '53827'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 358.33
+total_ttc: 430
+type: impaye
+updated_at: '2026-06-24T16:31:07.945Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250710_49202/standard/FA250710 49202
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

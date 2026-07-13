@@ -1,0 +1,49 @@
+adresse_bien: 5 rue Michel Ange
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: "21/05 : relance 1\r\n\r\n9132\r\n5 rue Michel Ange\r\n06100 NICE"
+contact_relance_id: cont_F3CTJYPxQg
+created_at: '2026-06-24T16:31:18.983Z'
+date_echeance: '2025-01-20'
+date_import: '2026-07-09T07:05:08.285Z'
+date_piece: '2025-01-20'
+donneur_ordre_id: null
+donneur_ordre_nom: '5 RUE MICHEL ANGE 9132 '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_QpCuu0rIR3
+id_dossier: '37985'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48148
+numero_dossier: 51991
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: '5 RUE MICHEL ANGE 9132 '
+proprietaire_prenom: null
+ref_piece: FA250120 48148
+reference: '51991'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1766.67
+total_ttc: 2120
+type: impaye
+updated_at: '2026-06-24T16:31:18.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250120_48148/standard/FA250120 48148
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

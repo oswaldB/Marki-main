@@ -1,0 +1,49 @@
+adresse_bien: 373 avenue des Pugets Le Real Puget
+apporteur_id: cont_h38qdiRKRI
+apporteur_nom: SOGETRANS
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06700'
+commentaire_piece: LISTING
+contact_relance_id: cont_AHBIrYYctl
+created_at: '2026-06-24T16:30:56.010Z'
+date_echeance: '2026-01-15'
+date_import: '2026-07-09T07:05:06.121Z'
+date_piece: '2026-01-08'
+donneur_ordre_id: null
+donneur_ordre_nom: PERBET
+donneur_ordre_prenom: Denise
+email_index: 0
+facture_soldee: true
+id: imp_MFOjhDtG0J
+id_dossier: '40966'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50248
+numero_dossier: 54972
+payer_id: cont_h38qdiRKRI
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: SOGETRANS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PERBET
+proprietaire_prenom: Denise
+ref_piece: FA260109 50248
+reference: '54972'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 183.33
+total_ttc: 220
+type: impaye
+updated_at: '2026-06-24T16:30:56.010Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260109_50248/standard/FA260109 50248
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SAINT-LAURENT-DU-VAR

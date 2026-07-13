@@ -1,0 +1,49 @@
+adresse_bien: 41 rue Barberis
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Fr0VH78ujC
+created_at: '2026-06-24T16:31:08.035Z'
+date_echeance: '2025-07-01'
+date_import: '2026-07-09T07:05:07.245Z'
+date_piece: '2025-07-01'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI GARNERO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_4LNC10oL5X
+id_dossier: '39726'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49123
+numero_dossier: 53732
+payer_id: cont_Fr0VH78ujC
+payeur_civilite: ''
+payeur_email: scigarnero@free.fr
+payeur_nom: SCI GARNERO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI GARNERO
+proprietaire_prenom: null
+ref_piece: FA250627 49123
+reference: '53732'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 200
+total_ttc: 240
+type: impaye
+updated_at: '2026-06-24T16:31:08.035Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250627_49123/standard/FA250627 49123
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

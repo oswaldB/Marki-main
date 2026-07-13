@@ -1,0 +1,59 @@
+$loki: 5663
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:27.545Z'
+email: ' jb.barani@gmail.com'
+id: cont_nczuYYu41n
+impaye_ids:
+  - imp_7qq9ssp7EQ
+  - imp_YHCsZouxai
+  - imp_VEFtxVAqHo
+is_blacklisted: false
+meta:
+  created: 1783580700392
+  revision: 1
+  updated: 1783580712344
+  version: 0
+nom: BARANI
+prenom: Jean Baptiste
+relance_ids:
+  - rel_rf1jqXRGZC
+  - rel_fXaqNf2RDp
+  - rel_VGqx7xxe30
+  - rel_ruAqyJQabs
+  - rel_CEElL4FQiI
+  - rel_hOFJbRQES5
+  - rel_hNid6TEjMU
+  - rel_3MtTn17bro
+  - rel_dXJvxa5RN7
+  - rel_xMqJWFrfIH
+  - rel_HzmjJNzDUV
+  - rel_i8G3kdaa3M
+  - rel_GNDVvFwdyq
+  - rel_uAEPrz40SE
+  - rel_Uh1mnR7eZ9
+  - rel_6KrvISnMA7
+  - rel_iRtsmXoooD
+  - rel_j1tExTbDLK
+  - rel_sGda9acMGR
+  - rel_fZxZZeKji1
+  - rel_IZCIFGqtd3
+  - rel_jutcGxpgVu
+  - rel_wfWnzFVAfe
+  - rel_RI7GbAL8S6
+  - rel_sGROQYOuyp
+  - rel_9IKDV0PqEg
+  - rel_bUFLeqghGo
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:26.344Z'

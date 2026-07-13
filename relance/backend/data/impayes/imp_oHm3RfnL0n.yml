@@ -1,0 +1,49 @@
+adresse_bien: 7 place Amélie Pollonais 8 rue Henri Biais et 7 rue Gambetta
+apporteur_id: cont_FdS4QxS70K
+apporteur_nom: WELCOME HOTEL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_aSRQayV1Ae
+created_at: '2026-06-24T16:31:00.878Z'
+date_echeance: '2025-11-07'
+date_import: '2026-07-09T07:05:06.527Z'
+date_piece: '2025-10-31'
+donneur_ordre_id: null
+donneur_ordre_nom: WELCOME HOTEL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_oHm3RfnL0n
+id_dossier: '40560'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49866
+numero_dossier: 54566
+payer_id: cont_FdS4QxS70K
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: WELCOME HOTEL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: WELCOME HOTEL
+proprietaire_prenom: null
+ref_piece: FA251031 49866
+reference: '54566'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 275
+total_ttc: 330
+type: impaye
+updated_at: '2026-06-24T16:31:00.878Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251031_49866/standard/FA251031 49866
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

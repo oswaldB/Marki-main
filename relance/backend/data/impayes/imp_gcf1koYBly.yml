@@ -1,0 +1,49 @@
+adresse_bien: 24 rue du Chateau
+apporteur_id: cont_XfMiq6mNPd
+apporteur_nom: HAKKASAN
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "Mr Pollano Mme Arat\r\nLot 2 et 3\r\n24 rue du Chateau\r\n06190 RCM "
+contact_relance_id: cont_aphNL83I9z
+created_at: '2026-06-24T16:31:17.057Z'
+date_echeance: '2025-02-13'
+date_import: '2026-07-09T07:05:08.118Z'
+date_piece: '2025-02-13'
+donneur_ordre_id: null
+donneur_ordre_nom: POLLANO - ARAT
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_gcf1koYBly
+id_dossier: '38713'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48337
+numero_dossier: 52719
+payer_id: cont_XfMiq6mNPd
+payeur_civilite: ''
+payeur_email: ca.perard@hakkasan.immo
+payeur_nom: HAKKASAN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: POLLANO - ARAT
+proprietaire_prenom: null
+ref_piece: FA250213 48337
+reference: '52719'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 458.33
+total_ttc: 550
+type: impaye
+updated_at: '2026-06-24T16:31:17.057Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250213_48337/standard/FA250213 48337
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

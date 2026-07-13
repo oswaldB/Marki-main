@@ -1,0 +1,90 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_Yq0zrzMZf5
+corps: >
+  <p>Bonjour Monsieur Philippe DECOCK,</p>
+
+  <p><br></p>
+
+  <p>Nous vous rappelons que votre facture <strong>n°51265</strong>, arrivée à
+  échéance le <strong>15/07/2026</strong>, pour nos prestations au <strong>4
+  impasse des Ecoles Pie, 06500 MENTON - dossier 56069</strong> reste à ce jour
+  impayée.</p>
+
+  <p><br></p>
+
+  <p>Il s'agit sans doute d'un simple oubli. Nous vous remercions de bien
+  vouloir procéder à son règlement dans les meilleurs délais.</p>
+
+  <p><br></p>
+
+  <table>
+    <thead>
+      <tr>
+        <th><p>Facture</p></th>
+        <th><p>Échéance</p></th>
+        <th><p>Montant total</p></th>
+        <th><p>Reste à payer</p></th>
+        <th><p>Télécharger la facture</p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><p>51265</p></td>
+        <td><p>15/07/2026</p></td>
+        <td><p>135.00 €</p></td>
+        <td><p>135.00 €</p></td>
+        <td><p><a href="https://adti.markidiags.com/redirect-pdf/t97JDQVp9A">Télécharger</a></p></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=135.00&amp;vads_order_id=51265&amp;vads_cust_id=56069&amp;vads_cust_last_name=DECOCK&amp;vads_cust_first_name=Philippe&amp;vads_cust_email=phildec2001@yahoo.fr&amp;vads_cust_cell_phone=">Paiement
+  sécurisé en ligne en carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p>Nous restons à votre disposition pour toute information complémentaire.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-07-08T22:02:52.283Z'
+date_envoi: '2026-07-16T00:00:00.000Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 2
+erreur_count: 0
+id: rel_PHRblckunp
+impaye_ids:
+  - imp_t97JDQVp9A
+manuelle: false
+message_id: null
+objet: EX'IM - Dossier 56069 - Rappel de règlement – Facture 51265 arrivée à échéance
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: pret pour envoi
+type: relance
+updated_at: '2026-07-08T22:02:52.283Z'
+valide: false

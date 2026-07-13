@@ -1,0 +1,49 @@
+adresse_bien: 39 rue de l'Hôtel des Postes
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "06/05 : relance notaire + prop \r\nsignature le 20/05"
+contact_relance_id: cont_gqDWc9EFJD
+created_at: '2026-06-24T16:31:15.888Z'
+date_echeance: '2025-03-11'
+date_import: '2026-07-09T07:05:07.944Z'
+date_piece: '2025-03-11'
+donneur_ordre_id: null
+donneur_ordre_nom: FURLONG
+donneur_ordre_prenom: Michael
+email_index: 0
+facture_soldee: true
+id: imp_uQjzpjHEIG
+id_dossier: '38895'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48487
+numero_dossier: 52901
+payer_id: cont_gqDWc9EFJD
+payeur_civilite: ''
+payeur_email: michael@signalcommunications.ie
+payeur_nom: FURLONG
+payeur_prenom: Michael
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FURLONG
+proprietaire_prenom: Michael
+ref_piece: FA250311 48487
+reference: '52901'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 41.67
+total_ttc: 50
+type: impaye
+updated_at: '2026-06-24T16:31:15.888Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250311_48487/standard/FA250311 48487 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

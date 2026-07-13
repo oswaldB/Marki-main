@@ -1,0 +1,49 @@
+adresse_bien: place d'Auron
+apporteur_id: cont_3hleN3RNdd
+apporteur_nom: BENAMOU
+apporteur_prenom: Olivier Isaac
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06660'
+commentaire_piece: ''
+contact_relance_id: cont_KdxtVQrtuP
+created_at: '2026-06-24T16:31:49.036Z'
+date_echeance: '2023-10-20'
+date_import: '2026-07-09T07:05:11.121Z'
+date_piece: '2023-10-20'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL LMA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_PVIBINqmc3
+id_dossier: '32005'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45440
+numero_dossier: 49002
+payer_id: cont_KdxtVQrtuP
+payeur_civilite: ''
+payeur_email: leslalomauron@gmail.com
+payeur_nom: SARL LMA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SARL LMA
+proprietaire_prenom: null
+ref_piece: FA231020 45440
+reference: '49002'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 154.17
+total_ttc: 185
+type: impaye
+updated_at: '2026-06-24T16:31:49.036Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231020_45440/standard/FA231020 45440
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SAINT-ÉTIENNE-DE-TINÉE

@@ -1,0 +1,49 @@
+adresse_bien: 4 rue Amiral Albini
+apporteur_id: cont_pE4Ico8ds6
+apporteur_nom: EVANGELISTI
+apporteur_prenom: Marc
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_WQAAr87tNj
+created_at: '2026-06-24T16:31:37.031Z'
+date_echeance: '2024-04-11'
+date_import: '2026-07-09T07:05:10.043Z'
+date_piece: '2024-04-11'
+donneur_ordre_id: null
+donneur_ordre_nom: EVANGELISTI
+donneur_ordre_prenom: Marc
+email_index: 0
+facture_soldee: true
+id: imp_VyV3T8gDbm
+id_dossier: '34395'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46471
+numero_dossier: 50394
+payer_id: cont_WQAAr87tNj
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: COPROPRIETE 4 RUE AMIRAL ALBINI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: COPROPRIETE 4 RUE AMIRAL ALBINI
+proprietaire_prenom: null
+ref_piece: FA240411 46471
+reference: '50394'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 336
+total_ttc: 403.2
+type: impaye
+updated_at: '2026-06-24T16:31:37.031Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240411_46471/standard/FA240411 46471
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

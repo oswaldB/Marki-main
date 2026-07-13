@@ -1,0 +1,49 @@
+adresse_bien: 54 rue Smollett
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "09/09 RELANCE MAIL PROP \r\nrelance mail prop 04/11"
+contact_relance_id: cont_jO6Cep4oVa
+created_at: '2026-06-24T16:30:59.970Z'
+date_echeance: '2025-11-13'
+date_import: '2026-07-09T07:05:06.477Z'
+date_piece: '2025-11-06'
+donneur_ordre_id: null
+donneur_ordre_nom: LAROCHE
+donneur_ordre_prenom: Claire
+email_index: 0
+facture_soldee: true
+id: imp_d9m33P3zGn
+id_dossier: '40083'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49902
+numero_dossier: 54089
+payer_id: cont_jO6Cep4oVa
+payeur_civilite: ''
+payeur_email: jugo@laforet.com
+payeur_nom: LAFORET NICE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LAROCHE
+proprietaire_prenom: Claire
+ref_piece: FA251107 49902
+reference: '54089'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: -186.67
+total_ttc: -224
+type: impaye
+updated_at: '2026-06-24T16:30:59.970Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251107_49902/standard/FA251107 49902
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

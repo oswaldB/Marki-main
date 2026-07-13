@@ -1,0 +1,49 @@
+adresse_bien: 28 route des Serres
+apporteur_id: cont_cFjIPWR9lP
+apporteur_nom: SUD FINANCES CONSEIL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_eOuocJEdtq
+created_at: '2026-06-24T16:31:42.092Z'
+date_echeance: '2024-01-31'
+date_import: '2026-07-09T07:05:10.518Z'
+date_piece: '2024-01-31'
+donneur_ordre_id: null
+donneur_ordre_nom: SUD FINANCES CONSEIL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_KD8z9GqKrz
+id_dossier: '32783'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46024
+numero_dossier: 49780
+payer_id: cont_cFjIPWR9lP
+payeur_civilite: ''
+payeur_email: leanne.viciana@sfcmenton.com
+payeur_nom: SUD FINANCES CONSEIL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCI LAZARE
+proprietaire_prenom: null
+ref_piece: FA240131 46024
+reference: '49780'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 87.5
+total_ttc: 105
+type: impaye
+updated_at: '2026-06-24T16:31:42.092Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240131_46024/standard/FA240131 46024
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

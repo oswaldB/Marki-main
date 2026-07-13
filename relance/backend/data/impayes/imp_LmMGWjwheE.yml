@@ -1,0 +1,49 @@
+adresse_bien: 242 cours du Centenaire Le Floréal Palace
+apporteur_id: cont_mSwEw9rkRW
+apporteur_nom: 'EASY MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_NupgZeuMCz
+created_at: '2026-06-24T16:30:55.018Z'
+date_echeance: '2026-01-28'
+date_import: '2026-07-09T07:05:06.048Z'
+date_piece: '2026-01-21'
+donneur_ordre_id: null
+donneur_ordre_nom: CARENA
+donneur_ordre_prenom: Ivana - Bruno
+email_index: 0
+facture_soldee: true
+id: imp_LmMGWjwheE
+id_dossier: '41038'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50323
+numero_dossier: 55044
+payer_id: cont_NupgZeuMCz
+payeur_civilite: ''
+payeur_email: ivana.alessandria2@gmail.com
+payeur_nom: CARENA
+payeur_prenom: Ivana - Bruno
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CARENA
+proprietaire_prenom: Ivana - Bruno
+ref_piece: FA260121 50323
+reference: '55044'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 183.33
+total_ttc: 220
+type: impaye
+updated_at: '2026-06-24T16:30:55.018Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260121_50323/standard/FA260121 50323
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

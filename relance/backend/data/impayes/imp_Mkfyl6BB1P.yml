@@ -1,0 +1,49 @@
+adresse_bien: 39 boulevard Charles Guillaumont Palais des Tropiques
+apporteur_id: cont_wCMhMWrvGq
+apporteur_nom: FRANCE DOMAINE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06160'
+commentaire_piece: ''
+contact_relance_id: cont_zR38y3KjuQ
+created_at: '2026-06-24T16:31:37.062Z'
+date_echeance: '2024-04-10'
+date_import: '2026-07-09T07:05:10.060Z'
+date_piece: '2024-04-10'
+donneur_ordre_id: null
+donneur_ordre_nom: FRANCE DOMAINE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Mkfyl6BB1P
+id_dossier: '34415'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46460
+numero_dossier: 50414
+payer_id: cont_wCMhMWrvGq
+payeur_civilite: ''
+payeur_email: marie-francoise.pisella@dgfip.finances.gouv.fr
+payeur_nom: FRANCE DOMAINE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FRANCE DOMAINE GESTION
+proprietaire_prenom: null
+ref_piece: FA240410 46460
+reference: '50414'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 520.83
+total_ttc: 625
+type: impaye
+updated_at: '2026-06-24T16:31:37.062Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240410_46460/standard/FA240410 46460
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

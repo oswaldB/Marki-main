@@ -1,0 +1,49 @@
+adresse_bien: 80 avenue des Alliès Le Camelia
+apporteur_id: cont_WriqhhGy1u
+apporteur_nom: IMMALDI ET COMPAGNIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "\r\n\r\n \r\n"
+contact_relance_id: cont_OpiOSpP2Yj
+created_at: '2026-06-24T16:30:49.001Z'
+date_echeance: '2026-05-07'
+date_import: '2026-07-09T07:05:05.406Z'
+date_piece: '2026-04-30'
+donneur_ordre_id: null
+donneur_ordre_nom: IMMALDI ET COMPAGNIE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_EWl6eMrYr4
+id_dossier: '41648'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50883
+numero_dossier: 55654
+payer_id: cont_WriqhhGy1u
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: IMMALDI ET COMPAGNIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: IMMALDI ET COMPAGNIE
+proprietaire_prenom: null
+ref_piece: FA260430 50883
+reference: '55654'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 975
+total_ttc: 1170
+type: impaye
+updated_at: '2026-06-24T16:30:49.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260430_50883/standard/FA260430 50883
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

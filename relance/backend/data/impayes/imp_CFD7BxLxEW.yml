@@ -1,0 +1,49 @@
+adresse_bien: 14 rue de la République Le Central
+apporteur_id: cont_axwCVxbA8C
+apporteur_nom: CABINET CAIRO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "LE CENTRAL\r\n14 RUE DE LA REPUBLIQUE\r\n06500 MENTON"
+contact_relance_id: cont_axwCVxbA8C
+created_at: '2026-06-24T16:31:23.011Z'
+date_echeance: '2024-11-07'
+date_import: '2026-07-09T07:05:08.711Z'
+date_piece: '2024-11-07'
+donneur_ordre_id: null
+donneur_ordre_nom: LE CENTRAL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_CFD7BxLxEW
+id_dossier: '36397'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47755
+numero_dossier: 51401
+payer_id: cont_axwCVxbA8C
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET CAIRO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LE CENTRAL
+proprietaire_prenom: null
+ref_piece: FA241107 47755
+reference: '51401'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2083.33
+total_ttc: 2500
+type: impaye
+updated_at: '2026-06-24T16:31:23.011Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241107_47755/standard/FA241107 47755
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

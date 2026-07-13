@@ -1,0 +1,49 @@
+adresse_bien: 11 avenue Notre-Dame
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_JVnfYPyJnX
+created_at: '2026-06-24T16:31:14.056Z'
+date_echeance: '2025-03-21'
+date_import: '2026-07-09T07:05:07.827Z'
+date_piece: '2025-03-21'
+donneur_ordre_id: null
+donneur_ordre_nom: 'HONNORAT '
+donneur_ordre_prenom: Aline
+email_index: 0
+facture_soldee: true
+id: imp_l1REWdJ3Bt
+id_dossier: '38998'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48572
+numero_dossier: 53004
+payer_id: cont_Nh1fOoyJMJ
+payeur_civilite: ''
+payeur_email: info@tissinie.com
+payeur_nom: GESTION IMMOBILIERE TISSINIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'HONNORAT '
+proprietaire_prenom: Aline
+ref_piece: FA250321 48572
+reference: '53004'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 202.71
+total_ttc: 243.25
+type: impaye
+updated_at: '2026-06-24T16:31:14.056Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250321_48572/standard/FA250321 48572 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

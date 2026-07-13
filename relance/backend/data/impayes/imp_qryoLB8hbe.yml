@@ -1,0 +1,49 @@
+adresse_bien: 9 rue Clément Roassal
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_UVMROUYOWS
+created_at: '2026-06-24T16:30:59.971Z'
+date_echeance: '2025-11-12'
+date_import: '2026-07-09T07:05:06.474Z'
+date_piece: '2025-11-05'
+donneur_ordre_id: null
+donneur_ordre_nom: JAYR
+donneur_ordre_prenom: Christine
+email_index: 0
+facture_soldee: true
+id: imp_qryoLB8hbe
+id_dossier: '40579'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49885
+numero_dossier: 54585
+payer_id: cont_Nh1fOoyJMJ
+payeur_civilite: ''
+payeur_email: info@tissinie.com
+payeur_nom: GESTION IMMOBILIERE TISSINIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: JAYR
+proprietaire_prenom: Christine
+ref_piece: FA251105 49885
+reference: '54585'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 329.17
+total_ttc: 395
+type: impaye
+updated_at: '2026-06-24T16:30:59.971Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251105_49885/standard/FA251105 49885
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

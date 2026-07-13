@@ -1,0 +1,43 @@
+$loki: 1031
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:43.714Z'
+email: menton1@easy-menton.fr
+id: cont_TWnVoCvWHW
+impaye_ids:
+  - imp_xpHbe2vBtT
+  - imp_axz3DjmCgR
+  - imp_w8mYV9bCBn
+  - imp_ugDAXNB5YL
+  - imp_qatejsf0jZ
+  - imp_ccFwrDGQ6y
+  - imp_PTRfux7ine
+  - imp_QyjoKAX3A1
+  - imp_2dfHIwERi2
+  - imp_FtHdL2IjWn
+  - imp_W7IrQY94HB
+  - imp_dF4OlvxzDp
+  - imp_O6CT5dqR30
+  - imp_B8GcRDI6bI
+  - imp_ZSdDcwkbCv
+is_blacklisted: false
+meta:
+  created: 1783580698755
+  revision: 0
+  version: 0
+nom: 'EASY MENTON SYNDIC '
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:43.321Z'

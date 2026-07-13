@@ -1,0 +1,49 @@
+adresse_bien: 22 rue fontaine de la ville
+apporteur_id: cont_yqBBhH2hK0
+apporteur_nom: VEALYS 06 PORT
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_wFcC63DZit
+created_at: '2026-06-24T16:31:50.019Z'
+date_echeance: '2023-10-10'
+date_import: '2026-07-09T07:05:11.225Z'
+date_piece: '2023-10-10'
+donneur_ordre_id: null
+donneur_ordre_nom: GUITTON
+donneur_ordre_prenom: Florence
+email_index: 0
+facture_soldee: true
+id: imp_PDwATCMJjk
+id_dossier: '30915'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45363
+numero_dossier: 48905
+payer_id: cont_wFcC63DZit
+payeur_civilite: ''
+payeur_email: guitton.florence@gmail.com
+payeur_nom: GUITTON
+payeur_prenom: Florence
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GUITTON
+proprietaire_prenom: Florence
+ref_piece: FA231010 45363
+reference: '48905'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 145.83
+total_ttc: 175
+type: impaye
+updated_at: '2026-06-24T16:31:50.019Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231010_45363/standard/FA231010 45363
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

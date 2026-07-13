@@ -1,0 +1,29 @@
+$loki: 1079
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:44.556Z'
+email: roberta.busia@elliman.fr
+id: cont_zlZCMpNf44
+impaye_ids:
+  - imp_HtzY1e8Jei
+is_blacklisted: false
+meta:
+  created: 1783580698773
+  revision: 0
+  version: 0
+nom: BUSIA
+prenom: Roberta
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:43.385Z'

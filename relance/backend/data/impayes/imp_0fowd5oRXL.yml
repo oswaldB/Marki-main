@@ -1,0 +1,49 @@
+adresse_bien: 7 avenue Notre-Dame
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_eNRyZTaBWb
+created_at: '2026-06-24T16:31:23.900Z'
+date_echeance: '2024-10-25'
+date_import: '2026-07-09T07:05:08.745Z'
+date_piece: '2024-10-25'
+donneur_ordre_id: null
+donneur_ordre_nom: LACE VENTE PRIVEES
+donneur_ordre_prenom: 'Mr  PAGGEN BOTTON '
+email_index: 0
+facture_soldee: true
+id: imp_0fowd5oRXL
+id_dossier: '37893'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47696
+numero_dossier: 51899
+payer_id: cont_eNRyZTaBWb
+payeur_civilite: ''
+payeur_email: bernard_paggen@hotmail.com
+payeur_nom: LACE VENTE PRIVEES
+payeur_prenom: 'Mr  PAGGEN BOTTON '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LACE VENTE PRIVEES
+proprietaire_prenom: 'Mr  PAGGEN BOTTON '
+ref_piece: FA241025 47696
+reference: '51899'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:23.900Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241025_47696/standard/FA241025 47696
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

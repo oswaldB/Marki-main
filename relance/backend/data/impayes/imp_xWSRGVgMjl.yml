@@ -1,0 +1,49 @@
+adresse_bien: 44 boulevard d'Italie Chateau d'Azur
+apporteur_id: cont_xOkmHVECsd
+apporteur_nom: FRANCE CONSEIL IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '98000'
+commentaire_piece: ''
+contact_relance_id: cont_p1WxbFXste
+created_at: '2026-06-24T16:30:45.991Z'
+date_echeance: '2026-06-25'
+date_import: '2026-07-09T07:05:05.103Z'
+date_piece: '2026-06-18'
+donneur_ordre_id: null
+donneur_ordre_nom: C.M.B MONACO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_xWSRGVgMjl
+id_dossier: '41887'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51158
+numero_dossier: 55893
+payer_id: cont_b4SB5B0bmP
+payeur_civilite: ''
+payeur_email: creditmonitoringcontrol@cmb.mc
+payeur_nom: C.M.B MONACO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: ORSERO
+proprietaire_prenom: Sergio
+ref_piece: FA260618 51158
+reference: '55893'
+reste_a_payer: 450
+sequence_id: null
+statut: non_payee
+total_ht: 375
+total_ttc: 450
+type: impaye
+updated_at: '2026-06-24T16:30:45.991Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260618_51158/standard/FA260618 51158 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MONACO

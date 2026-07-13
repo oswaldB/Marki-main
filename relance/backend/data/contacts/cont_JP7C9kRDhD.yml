@@ -1,0 +1,29 @@
+$loki: 333
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:36.751Z'
+email: null
+id: cont_JP7C9kRDhD
+impaye_ids:
+  - imp_Rhhw7hiGcI
+is_blacklisted: false
+meta:
+  created: 1783580698477
+  revision: 0
+  version: 0
+nom: DEFER
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:36.363Z'

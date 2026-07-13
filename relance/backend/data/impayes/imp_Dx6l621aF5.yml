@@ -1,0 +1,49 @@
+adresse_bien: 37 rue Clément Roassal Résidence Opéra Bâtiment A
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:05.030Z'
+date_echeance: '2025-08-28'
+date_import: '2026-07-09T07:05:06.963Z'
+date_piece: '2025-08-21'
+donneur_ordre_id: null
+donneur_ordre_nom: SOUMMER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Dx6l621aF5
+id_dossier: '40070'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49405
+numero_dossier: 54076
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SOUMMER
+proprietaire_prenom: null
+ref_piece: FA250821 49405
+reference: '54076'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:05.030Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250821_49405/standard/FA250821 49405 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

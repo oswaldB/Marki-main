@@ -1,0 +1,49 @@
+adresse_bien: 23 avenue du Carnier Les Caroubiers
+apporteur_id: cont_eoitBy7P9C
+apporteur_nom: YOUR HOME IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_nJtYx2zaFA
+created_at: '2026-06-24T16:31:24.990Z'
+date_echeance: '2024-10-07'
+date_import: '2026-07-09T07:05:08.902Z'
+date_piece: '2024-10-07'
+donneur_ordre_id: null
+donneur_ordre_nom: CORSINOVI - BENEFORTI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_AJ4uDMGe6v
+id_dossier: '37755'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47580
+numero_dossier: 51761
+payer_id: cont_nJtYx2zaFA
+payeur_civilite: ''
+payeur_email: alexandre.beneforti@gmail.com
+payeur_nom: CORSINOVI - BENEFORTI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CORSINOVI - BENEFORTI
+proprietaire_prenom: null
+ref_piece: FA241007 47580
+reference: '51761'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:24.990Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241007_47580/standard/FA241007 47580
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

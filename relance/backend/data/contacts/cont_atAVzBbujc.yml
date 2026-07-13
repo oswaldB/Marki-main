@@ -1,0 +1,30 @@
+$loki: 4607
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:17.536Z'
+email: michel-klein78@wanadoo.fr
+id: cont_atAVzBbujc
+impaye_ids:
+  - imp_pITEtZ7JlA
+  - imp_7GPucd6SCS
+is_blacklisted: false
+meta:
+  created: 1783580700046
+  revision: 0
+  version: 0
+nom: KLEIN
+prenom: Michel
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:16.375Z'

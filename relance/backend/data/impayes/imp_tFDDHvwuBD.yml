@@ -1,0 +1,49 @@
+adresse_bien: 29 rue Pastorelli Nice Europe
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:32.099Z'
+date_echeance: '2024-06-17'
+date_import: '2026-07-09T07:05:09.680Z'
+date_piece: '2024-06-17'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI DG
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_tFDDHvwuBD
+id_dossier: '35878'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46895
+numero_dossier: 50882
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SCI DG
+proprietaire_prenom: null
+ref_piece: FA240617 46895
+reference: '50882'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 300.42
+total_ttc: 360.5
+type: impaye
+updated_at: '2026-06-24T16:31:32.099Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240617_46895/standard/FA240617 46895 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

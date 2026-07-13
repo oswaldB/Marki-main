@@ -1,0 +1,29 @@
+$loki: 2491
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:57.533Z'
+email: jeremy.nier@gmail.com
+id: cont_A9uoubiuv4
+impaye_ids:
+  - imp_H8GFwKCKbj
+is_blacklisted: false
+meta:
+  created: 1783580699286
+  revision: 0
+  version: 0
+nom: NIER
+prenom: Jérémy
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:56.374Z'

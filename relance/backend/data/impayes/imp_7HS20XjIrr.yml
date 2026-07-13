@@ -1,0 +1,49 @@
+adresse_bien: 98 avenue Saint-Lambert Costa Bella 1
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_0kntZDMHZm
+created_at: '2026-06-24T16:31:55.916Z'
+date_echeance: '2023-07-24'
+date_import: '2026-07-09T07:05:11.734Z'
+date_piece: '2023-07-24'
+donneur_ordre_id: null
+donneur_ordre_nom: GAGLIO
+donneur_ordre_prenom: Pierre-François
+email_index: 0
+facture_soldee: true
+id: imp_7HS20XjIrr
+id_dossier: '29287'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44832
+numero_dossier: 48273
+payer_id: cont_0kntZDMHZm
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: GAGLIO
+payeur_prenom: Pierre-François
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GAGLIO
+proprietaire_prenom: Pierre-François
+ref_piece: FA230724 44832
+reference: '48273'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 95.83
+total_ttc: 115
+type: impaye
+updated_at: '2026-06-24T16:31:55.916Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juillet/FA230724_44832/standard/FA230724 44832
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

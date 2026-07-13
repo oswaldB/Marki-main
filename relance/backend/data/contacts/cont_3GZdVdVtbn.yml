@@ -1,0 +1,29 @@
+$loki: 50
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:34.183Z'
+email: tinarelli-ripoll@notaires.fr
+id: cont_3GZdVdVtbn
+impaye_ids:
+  - imp_Fa98e0Erd8
+is_blacklisted: false
+meta:
+  created: 1783580698352
+  revision: 0
+  version: 0
+nom: TINARELLI RIPOLL Edith
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:33.287Z'

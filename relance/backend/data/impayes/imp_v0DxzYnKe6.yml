@@ -1,0 +1,49 @@
+adresse_bien: 74 boulevard Paul Montel ENEDIS MONTEL
+apporteur_id: cont_he2xHct2Gz
+apporteur_nom: MOBILYNK
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: "Site ENEDIS\r\nNICE MONTEL\r\n\r\nrelance le15/10"
+contact_relance_id: cont_he2xHct2Gz
+created_at: '2026-06-24T16:31:04.033Z'
+date_echeance: '2025-09-17'
+date_import: '2026-07-09T07:05:06.875Z'
+date_piece: '2025-09-10'
+donneur_ordre_id: null
+donneur_ordre_nom: MOBILYNK
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_v0DxzYnKe6
+id_dossier: '40177'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49502
+numero_dossier: 54183
+payer_id: cont_he2xHct2Gz
+payeur_civilite: ''
+payeur_email: justin.torres@mobilynk.fr
+payeur_nom: MOBILYNK
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: ENEDIS
+proprietaire_prenom: null
+ref_piece: FA250910 49502
+reference: '54183'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 830
+total_ttc: 996
+type: impaye
+updated_at: '2026-06-24T16:31:04.033Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250910_49502/standard/FA250910 49502
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

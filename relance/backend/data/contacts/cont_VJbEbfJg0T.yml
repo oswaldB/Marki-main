@@ -1,0 +1,38 @@
+$loki: 5227
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:22.574Z'
+email: pascal.ferrero.perso@gmail.com
+id: cont_VJbEbfJg0T
+impaye_ids:
+  - imp_omtMdj2GZ2
+is_blacklisted: false
+meta:
+  created: 1783580700230
+  revision: 1
+  updated: 1783580714779
+  version: 0
+nom: FERRERO
+prenom: Pascal
+relance_ids:
+  - rel_Jn5uCAHkPp
+  - rel_Aq19ZVoTtp
+  - rel_wB0YWgxsS1
+  - rel_qy3QzZDn1o
+  - rel_W9WPjB6DD7
+  - rel_VTM0FM3M1U
+  - rel_r7sVgYAXf7
+  - rel_hNMS4i5U8v
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:22.340Z'

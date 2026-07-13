@@ -1,0 +1,49 @@
+adresse_bien: 22 ter rue de France
+apporteur_id: cont_lKyCEvLzZh
+apporteur_nom: 'FONCIA RIVIERA ARSON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_qPc5cjcD5Z
+created_at: '2026-06-24T16:30:51.898Z'
+date_echeance: '2026-03-30'
+date_import: '2026-07-09T07:05:05.654Z'
+date_piece: '2026-03-23'
+donneur_ordre_id: null
+donneur_ordre_nom: PEREZ
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_AYG5gjaAB7
+id_dossier: '41414'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50654
+numero_dossier: 55420
+payer_id: cont_qPc5cjcD5Z
+payeur_civilite: ''
+payeur_email: perez.csl@gmail.com
+payeur_nom: PEREZ
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PEREZ
+proprietaire_prenom: null
+ref_piece: FA260323 50654
+reference: '55420'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:30:51.898Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260323_50654/standard/FA260323 50654 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

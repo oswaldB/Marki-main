@@ -1,0 +1,49 @@
+adresse_bien: 20 ter Prom Mal Leclerc de Hauteclocque Le Rosemary
+apporteur_id: cont_vCAOy10UIf
+apporteur_nom: IMMOBILTREND
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_faCe8KnEyu
+created_at: '2026-06-24T16:30:46.868Z'
+date_echeance: '2026-06-16'
+date_import: '2026-07-09T07:05:05.155Z'
+date_piece: '2026-06-09'
+donneur_ordre_id: null
+donneur_ordre_nom: CARMINE et NELLY  SEVA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_zsBXGeaogV
+id_dossier: '41944'
+is_blacklisted: true
+montant_total: 0
+nfacture: 51103
+numero_dossier: 55950
+payer_id: cont_faCe8KnEyu
+payeur_civilite: ''
+payeur_email: 'nelly52@hotmail.it '
+payeur_nom: CARMINE et NELLY  SEVA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CARMINE et NELLY  SEVA
+proprietaire_prenom: null
+ref_piece: FA260609 51103
+reference: '55950'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-07-07T10:50:01.505Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260609_51103/standard/FA260609 51103 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

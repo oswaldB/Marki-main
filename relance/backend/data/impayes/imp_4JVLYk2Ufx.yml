@@ -1,0 +1,49 @@
+adresse_bien: 54 avenue du Ray Domaine de Falicon
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: LISTING
+contact_relance_id: cont_GfiaaG65rY
+created_at: '2026-06-24T16:30:51.009Z'
+date_echeance: '2026-04-03'
+date_import: '2026-07-09T07:05:05.597Z'
+date_piece: '2026-03-27'
+donneur_ordre_id: null
+donneur_ordre_nom: FLEURY
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_4JVLYk2Ufx
+id_dossier: '41440'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50688
+numero_dossier: 55446
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FLEURY
+proprietaire_prenom: null
+ref_piece: FA260327 50688
+reference: '55446'
+reste_a_payer: 300
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:33:33.356Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260327_50688/standard/FA260327 50688 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 21 avenue Aimé Martin Villa Dédé
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_5gyqmhGBsC
+created_at: '2026-06-24T16:31:27.099Z'
+date_echeance: '2024-09-06'
+date_import: '2026-07-09T07:05:09.168Z'
+date_piece: '2024-09-06'
+donneur_ordre_id: null
+donneur_ordre_nom: VIGNOL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_imPIxoxYUo
+id_dossier: '37524'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47369
+numero_dossier: 51530
+payer_id: cont_5gyqmhGBsC
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: VIGNOL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: VIGNOL
+proprietaire_prenom: null
+ref_piece: FA240906 47369
+reference: '51530'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 104.17
+total_ttc: 125
+type: impaye
+updated_at: '2026-06-24T16:31:27.099Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240906_47369/standard/FA240906 47369
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

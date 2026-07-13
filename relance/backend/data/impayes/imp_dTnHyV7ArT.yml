@@ -1,0 +1,49 @@
+adresse_bien: 175 boulevard de la Madeleine Le San Miguel
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-07-01T22:00:26.342Z'
+date_echeance: '2026-07-07'
+date_import: '2026-07-09T07:05:12.254Z'
+date_piece: '2026-06-30'
+donneur_ordre_id: null
+donneur_ordre_nom: ISNARDY
+donneur_ordre_prenom: Georges
+email_index: 0
+facture_soldee: false
+id: imp_dTnHyV7ArT
+id_dossier: '41899'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51231
+numero_dossier: 55905
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: ISNARDY
+proprietaire_prenom: Georges
+ref_piece: FA260701 51231
+reference: '55905'
+reste_a_payer: 3122.52
+sequence_id: null
+statut: non_payee
+total_ht: 2602.1
+total_ttc: 3122.52
+type: impaye
+updated_at: '2026-07-02T22:00:21.412Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260701_51231/standard/FA260701 51231 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

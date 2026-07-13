@@ -1,0 +1,49 @@
+adresse_bien: 4 rue Saint Philippe Le Saint Philippe
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_ZVg6JNfdGs
+created_at: '2026-06-24T16:31:04.995Z'
+date_echeance: '2025-09-05'
+date_import: '2026-07-09T07:05:06.934Z'
+date_piece: '2025-08-29'
+donneur_ordre_id: null
+donneur_ordre_nom: ALKELL
+donneur_ordre_prenom: Pernilla et Frederic
+email_index: 0
+facture_soldee: true
+id: imp_fI5OYJfdwh
+id_dossier: '40115'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49431
+numero_dossier: 54121
+payer_id: cont_ZVg6JNfdGs
+payeur_civilite: ''
+payeur_email: pernilla.alkell@dnb.se
+payeur_nom: ALKELL
+payeur_prenom: Pernilla et Frederic
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ALKELL
+proprietaire_prenom: Pernilla et Frederic
+ref_piece: FA250901 49431
+reference: '54121'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 241.67
+total_ttc: 290
+type: impaye
+updated_at: '2026-06-24T16:31:04.995Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250901_49431/standard/FA250901 49431 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

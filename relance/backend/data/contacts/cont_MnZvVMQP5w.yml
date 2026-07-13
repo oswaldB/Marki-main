@@ -1,0 +1,29 @@
+$loki: 4216
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:13.562Z'
+email: marylene.albonetti@wanadoo.fr
+id: cont_MnZvVMQP5w
+impaye_ids:
+  - imp_cGKAcFZPvx
+is_blacklisted: false
+meta:
+  created: 1783580699922
+  revision: 0
+  version: 0
+nom: ALBONETTI
+prenom: Marylene
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:12.392Z'

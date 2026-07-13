@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue Boyer  Palais Ausonia
+apporteur_id: cont_98qyheyUph
+apporteur_nom: AGENCE MENTON IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_98qyheyUph
+created_at: '2026-06-24T16:31:44.968Z'
+date_echeance: '2023-12-18'
+date_import: '2026-07-09T07:05:10.742Z'
+date_piece: '2023-12-18'
+donneur_ordre_id: null
+donneur_ordre_nom: TIAN
+donneur_ordre_prenom: Andrea
+email_index: 0
+facture_soldee: true
+id: imp_UDzaqey6h7
+id_dossier: '32477'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45817
+numero_dossier: 49474
+payer_id: cont_98qyheyUph
+payeur_civilite: ''
+payeur_email: info@menton-immo.com
+payeur_nom: AGENCE MENTON IMMO
+payeur_prenom: ''
+payeur_telephone: '0607637016'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: TIAN
+proprietaire_prenom: Andrea
+ref_piece: FA231218 45817
+reference: '49474'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 220.42
+total_ttc: 264.5
+type: impaye
+updated_at: '2026-06-24T16:31:44.968Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231218_45817/standard/FA231218 45817
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

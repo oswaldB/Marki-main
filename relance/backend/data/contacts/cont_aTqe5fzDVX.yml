@@ -1,0 +1,29 @@
+$loki: 2085
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:53.574Z'
+email: null
+id: cont_aTqe5fzDVX
+impaye_ids:
+  - imp_UdvAhmMNgV
+is_blacklisted: false
+meta:
+  created: 1783580699153
+  revision: 0
+  version: 0
+nom: HASSELGREN - HAGDARD - HEUMAN
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:52.395Z'

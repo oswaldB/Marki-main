@@ -1,0 +1,93 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_2MRddHC4gi
+corps: >
+  <p>Bonjour,</p>
+
+  <p><br></p>
+
+  <p><strong>En l'absence de règlement de votre part</strong>, nous vous
+  informons que votre dossier ( <strong>1 avenue Reine Victoria VICTORIA CIMIEZ,
+  06100 NICE - dossier 52534</strong>) a été transmis à notre service
+  contentieux pour procédure de recouvrement.</p>
+
+  <p><br></p>
+
+  <p>Vous avez toutefois la possibilité de régulariser votre situation afin
+  d'interrompre la procédure judiciaire :</p>
+
+  <p><br></p>
+
+  <table style="border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Facture</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Échéance</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Montant total</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Reste à payer</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Télécharger la facture</p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>48176</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>23/01/2025</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>155 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>155 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p><a href="https://adti.markidiags.com/redirect-pdf/lvifZOz0JF">Télécharger</a></p></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=155&amp;vads_order_id=48176&amp;vads_cust_id=52534&amp;vads_cust_last_name=TOMATIS&amp;vads_cust_first_name=&amp;vads_cust_email=stephanie.tomatis@gmail.com
+  &amp;vads_cust_cell_phone=">Paiement sécurisé en ligne en carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p>Sans régularisation de votre part, le dossier suivra son cours
+  contentieux.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-06-25T16:41:07.371Z'
+date_envoi: '2026-07-30T16:40:50.743Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 9
+erreur_count: 0
+id: rel_Firr1mLDA9
+impaye_ids:
+  - imp_lvifZOz0JF
+manuelle: false
+message_id: null
+objet: >-
+  EX'IM - Dossier 52534 - Relance n°7 : Dossier transmis au service contentieux
+  – Facture 48176 impayée
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: pret pour envoi
+type: relance
+updated_at: '2026-07-02T15:34:50.386Z'
+valide: false

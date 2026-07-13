@@ -1,0 +1,49 @@
+adresse_bien: 2462 route de la Penetrante
+apporteur_id: cont_GZ5Gvl3VRt
+apporteur_nom: PRINCESSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06380'
+commentaire_piece: ''
+contact_relance_id: cont_CBsJZEH3W3
+created_at: '2026-06-24T16:31:09.925Z'
+date_echeance: '2025-06-06'
+date_import: '2026-07-09T07:05:07.395Z'
+date_piece: '2025-06-06'
+donneur_ordre_id: null
+donneur_ordre_nom: 'PALM ROLF '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_G3YeDOJ1rf
+id_dossier: '39570'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49014
+numero_dossier: 53576
+payer_id: cont_CBsJZEH3W3
+payeur_civilite: ''
+payeur_email: andreapalminfo@gmail.com
+payeur_nom: 'PALM ROLF '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'PALM ROLF '
+proprietaire_prenom: null
+ref_piece: FA250606 49014
+reference: '53576'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1083.33
+total_ttc: 1300
+type: impaye
+updated_at: '2026-06-24T16:31:09.925Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250606_49014/standard/FA250606 49014 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: SOSPEL

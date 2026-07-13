@@ -1,0 +1,49 @@
+adresse_bien: 47 avenue Jean Médecin
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_D8fdlp33FD
+created_at: '2026-06-24T16:31:18.953Z'
+date_echeance: '2025-01-20'
+date_import: '2026-07-09T07:05:08.276Z'
+date_piece: '2025-01-20'
+donneur_ordre_id: null
+donneur_ordre_nom: RICHER IMMOBILIER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_GJOvkX4Uyd
+id_dossier: '38483'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48139
+numero_dossier: 52489
+payer_id: cont_5owmFecKf0
+payeur_civilite: ''
+payeur_email: contact@richerimmobilier.com
+payeur_nom: RICHER IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DEFER
+proprietaire_prenom: null
+ref_piece: FA250120 48139
+reference: '52489'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 181.33
+total_ttc: 217.6
+type: impaye
+updated_at: '2026-06-24T16:31:18.953Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250120_48139/standard/FA250120 48139
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

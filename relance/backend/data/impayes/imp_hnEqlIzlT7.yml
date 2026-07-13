@@ -1,0 +1,49 @@
+adresse_bien: 5 rue Meyerbeer
+apporteur_id: cont_tLdK2JHkBS
+apporteur_nom: HAUSS
+apporteur_prenom: Edith
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_5ZamhYrCYI
+created_at: '2026-06-24T16:31:28.902Z'
+date_echeance: '2024-08-21'
+date_import: '2026-07-09T07:05:09.289Z'
+date_piece: '2024-08-21'
+donneur_ordre_id: null
+donneur_ordre_nom: CONTI
+donneur_ordre_prenom: 'Alberto '
+email_index: 0
+facture_soldee: true
+id: imp_hnEqlIzlT7
+id_dossier: '36376'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47249
+numero_dossier: 51380
+payer_id: cont_5ZamhYrCYI
+payeur_civilite: ''
+payeur_email: albertoconti52@gmail.com
+payeur_nom: CONTI
+payeur_prenom: 'Alberto '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CONTI
+proprietaire_prenom: 'Alberto '
+ref_piece: FA240821 47249
+reference: '51380'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:28.902Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240821_47249/standard/FA240821 47249 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

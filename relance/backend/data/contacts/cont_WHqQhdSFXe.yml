@@ -1,0 +1,38 @@
+$loki: 4394
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:15.529Z'
+email: wildeslide@yahoo.fr
+id: cont_WHqQhdSFXe
+impaye_ids:
+  - imp_I1REDdObOf
+is_blacklisted: false
+meta:
+  created: 1783580699972
+  revision: 1
+  updated: 1783580713005
+  version: 0
+nom: FREDRIKSSON
+prenom: 'Gael '
+relance_ids:
+  - rel_2nRyCKL2SV
+  - rel_B9QvqxQqfh
+  - rel_YN1HPTHfoZ
+  - rel_1v3AMIn7lE
+  - rel_KF375Hfm91
+  - rel_CK0RV7cmXR
+  - rel_RKOQzaXDD2
+  - rel_Mdpbsq45uZ
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:14.347Z'

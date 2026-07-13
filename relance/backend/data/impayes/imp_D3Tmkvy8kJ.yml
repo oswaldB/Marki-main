@@ -1,0 +1,49 @@
+adresse_bien: 60 boulevard Guynemer Résidence Eugenia
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_OegL2sbFMD
+created_at: '2026-06-24T16:31:10.990Z'
+date_echeance: '2025-05-15'
+date_import: '2026-07-09T07:05:07.520Z'
+date_piece: '2025-05-15'
+donneur_ordre_id: null
+donneur_ordre_nom: DONADONIBUS
+donneur_ordre_prenom: Giancarlo
+email_index: 0
+facture_soldee: true
+id: imp_D3Tmkvy8kJ
+id_dossier: '39416'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48897
+numero_dossier: 53422
+payer_id: cont_OegL2sbFMD
+payeur_civilite: ''
+payeur_email: Carlo_mara@libero.it
+payeur_nom: DONADONIBUS
+payeur_prenom: Giancarlo
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DONADONIBUS
+proprietaire_prenom: Giancarlo
+ref_piece: FA250515 48897
+reference: '53422'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 87.5
+total_ttc: 105
+type: impaye
+updated_at: '2026-06-24T16:31:10.990Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250515_48897/standard/FA250515 48897 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

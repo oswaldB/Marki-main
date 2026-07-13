@@ -1,0 +1,49 @@
+adresse_bien: 32 rue de Lépante
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_g4GTuGr00s
+created_at: '2026-06-24T16:31:12.966Z'
+date_echeance: '2025-04-11'
+date_import: '2026-07-09T07:05:07.699Z'
+date_piece: '2025-04-11'
+donneur_ordre_id: null
+donneur_ordre_nom: SUTOR
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Dh3m4lJi6J
+id_dossier: '39164'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48701
+numero_dossier: 53170
+payer_id: cont_g4GTuGr00s
+payeur_civilite: ''
+payeur_email: ayeto@orange.fr
+payeur_nom: SUTOR
+payeur_prenom: ''
+payeur_telephone: '0680579552'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SUTOR
+proprietaire_prenom: null
+ref_piece: FA250411 48701
+reference: '53170'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 583.33
+total_ttc: 700
+type: impaye
+updated_at: '2026-06-24T16:31:12.966Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250411_48701/standard/FA250411 48701
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

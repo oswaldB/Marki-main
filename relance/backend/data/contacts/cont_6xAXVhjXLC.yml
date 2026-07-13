@@ -1,0 +1,29 @@
+$loki: 269
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:36.551Z'
+email: monique.barichella@wanadoo.fr
+id: cont_6xAXVhjXLC
+impaye_ids:
+  - imp_2Z4Gb48RTF
+is_blacklisted: false
+meta:
+  created: 1783580698448
+  revision: 0
+  version: 0
+nom: 'BARICHELLA '
+prenom: 'Monique '
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:35.535Z'

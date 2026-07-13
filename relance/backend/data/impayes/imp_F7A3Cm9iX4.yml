@@ -1,0 +1,49 @@
+adresse_bien: 163 -165 avenue Louis Pasteur Le Colorado
+apporteur_id: cont_yic6N4w5Fp
+apporteur_nom: AGENCE DE ROQUEBRUNE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_lhU7qeTfAx
+created_at: '2026-06-24T16:31:33.965Z'
+date_echeance: '2024-05-28'
+date_import: '2026-07-09T07:05:09.808Z'
+date_piece: '2024-05-28'
+donneur_ordre_id: null
+donneur_ordre_nom: PEYRE
+donneur_ordre_prenom: Noelle
+email_index: 0
+facture_soldee: true
+id: imp_F7A3Cm9iX4
+id_dossier: '35735'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46745
+numero_dossier: 50739
+payer_id: cont_lhU7qeTfAx
+payeur_civilite: ''
+payeur_email: noelleroncalli@gmail.com
+payeur_nom: PEYRE
+payeur_prenom: Noelle
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PEYRE
+proprietaire_prenom: Noelle
+ref_piece: FA240528 46745
+reference: '50739'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:33.965Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240528_46745/standard/FA240528 46745 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

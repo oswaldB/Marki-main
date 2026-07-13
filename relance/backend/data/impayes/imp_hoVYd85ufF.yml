@@ -1,0 +1,49 @@
+adresse_bien: 90 avenue Princesse Grâce Villa Operto
+apporteur_id: cont_lln6xkG513
+apporteur_nom: ELY IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_O2S5Z3m9av
+created_at: '2026-06-24T16:30:54.950Z'
+date_echeance: '2026-02-03'
+date_import: '2026-07-09T07:05:06.004Z'
+date_piece: '2026-01-27'
+donneur_ordre_id: null
+donneur_ordre_nom: EL BOURAQADI
+donneur_ordre_prenom: Zoubida
+email_index: 0
+facture_soldee: true
+id: imp_hoVYd85ufF
+id_dossier: '41045'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50359
+numero_dossier: 55051
+payer_id: cont_O2S5Z3m9av
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: EL BOURAQADI
+payeur_prenom: Zoubida
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: EL BOURAQADI
+proprietaire_prenom: Zoubida
+ref_piece: FA260127 50359
+reference: '55051'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:30:54.950Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260127_50359/standard/FA260127 50359
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

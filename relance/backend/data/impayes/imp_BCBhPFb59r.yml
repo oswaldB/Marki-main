@@ -1,0 +1,49 @@
+adresse_bien: 1097 chemin des Fontanelles
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_tnyQD59vLB
+created_at: '2026-06-24T16:31:39.083Z'
+date_echeance: '2024-03-14'
+date_import: '2026-07-09T07:05:10.244Z'
+date_piece: '2024-03-14'
+donneur_ordre_id: null
+donneur_ordre_nom: BOUVIER - LOVERA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_BCBhPFb59r
+id_dossier: '34130'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46304
+numero_dossier: 50129
+payer_id: cont_tnyQD59vLB
+payeur_civilite: ''
+payeur_email: cecbou7@gmail.com
+payeur_nom: LOVERA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: BOUVIER - LOVERA
+proprietaire_prenom: null
+ref_piece: FA240314 46304
+reference: '50129'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 525
+total_ttc: 630
+type: impaye
+updated_at: '2026-06-24T16:31:39.083Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240314_46304/standard/FA240314 46304 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CASTILLON

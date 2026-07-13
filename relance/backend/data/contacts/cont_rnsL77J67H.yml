@@ -1,0 +1,30 @@
+$loki: 6093
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:30.588Z'
+email: jeanmarcel.goy@outlook.fr
+id: cont_rnsL77J67H
+impaye_ids:
+  - imp_sEcK1h2GX9
+  - imp_8UigIi04YH
+is_blacklisted: false
+meta:
+  created: 1783580700534
+  revision: 0
+  version: 0
+nom: GOY
+prenom: Jean-Marcel
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:29.416Z'

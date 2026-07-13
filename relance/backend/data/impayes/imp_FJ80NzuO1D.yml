@@ -1,0 +1,49 @@
+adresse_bien: 59 Porte de France Hippocampe
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_yK5CgFtctH
+created_at: '2026-06-24T16:31:39.051Z'
+date_echeance: '2024-03-18'
+date_import: '2026-07-09T07:05:10.237Z'
+date_piece: '2024-03-18'
+donneur_ordre_id: null
+donneur_ordre_nom: JEANNEAU
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_FJ80NzuO1D
+id_dossier: '34160'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46325
+numero_dossier: 50159
+payer_id: cont_yK5CgFtctH
+payeur_civilite: ''
+payeur_email: mn.jeanneau@gmail.com
+payeur_nom: JEANNEAU
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: JEANNEAU
+proprietaire_prenom: null
+ref_piece: FA240318 46325
+reference: '50159'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 63.75
+total_ttc: 76.5
+type: impaye
+updated_at: '2026-06-24T16:31:39.051Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240318_46325/standard/FA240318 46325 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

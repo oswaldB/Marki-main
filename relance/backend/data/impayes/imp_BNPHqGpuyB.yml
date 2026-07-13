@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue Victor Hugo L'Hernani
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_AtuCQf8Rhq
+created_at: '2026-06-24T16:31:28.964Z'
+date_echeance: '2024-08-08'
+date_import: '2026-07-09T07:05:09.321Z'
+date_piece: '2024-08-08'
+donneur_ordre_id: null
+donneur_ordre_nom: ARMAND
+donneur_ordre_prenom: Odette et Stéphane
+email_index: 0
+facture_soldee: true
+id: imp_BNPHqGpuyB
+id_dossier: '36272'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47206
+numero_dossier: 51276
+payer_id: cont_AtuCQf8Rhq
+payeur_civilite: ''
+payeur_email: 'Mme : odette.armand@orange.fr'
+payeur_nom: ARMAND
+payeur_prenom: Odette et Stéphane
+payeur_telephone: Mr 0760775934
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ARMAND
+proprietaire_prenom: Odette et Stéphane
+ref_piece: FA240808 47206
+reference: '51276'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 54.17
+total_ttc: 65
+type: impaye
+updated_at: '2026-06-24T16:31:28.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240808_47206/standard/FA240808 47206 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

@@ -1,0 +1,49 @@
+adresse_bien: 55 avenue Rivièra Le Montolivet
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_5d4FpaFyEa
+created_at: '2026-06-24T16:31:53.954Z'
+date_echeance: '2023-08-11'
+date_import: '2026-07-09T07:05:11.556Z'
+date_piece: '2023-08-11'
+donneur_ordre_id: null
+donneur_ordre_nom: FRAYRET
+donneur_ordre_prenom: Veronique
+email_index: 0
+facture_soldee: true
+id: imp_b4OSJKOdrb
+id_dossier: '30468'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44986
+numero_dossier: 48458
+payer_id: cont_5d4FpaFyEa
+payeur_civilite: ''
+payeur_email: vero.frayret@sfr.fr
+payeur_nom: FRAYRET
+payeur_prenom: Veronique
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FRAYRET
+proprietaire_prenom: Veronique
+ref_piece: FA230811 44986
+reference: '48458'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:53.954Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230811_44986/standard/FA230811 44986 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

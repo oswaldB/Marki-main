@@ -1,0 +1,49 @@
+adresse_bien: 10 avenue des Platanes
+apporteur_id: cont_ecAJvwuUAA
+apporteur_nom: GARINO
+apporteur_prenom: Géraldine
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_HpzEGgTOkF
+created_at: '2026-06-24T16:31:17.957Z'
+date_echeance: '2025-02-05'
+date_import: '2026-07-09T07:05:08.183Z'
+date_piece: '2025-02-05'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL FINANCE
+donneur_ordre_prenom: GARINO
+email_index: 0
+facture_soldee: true
+id: imp_fmaYqrnFl0
+id_dossier: '38614'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48260
+numero_dossier: 52620
+payer_id: cont_HpzEGgTOkF
+payeur_civilite: ''
+payeur_email: garinogeraldine@gmail.com
+payeur_nom: SARL FINANCE
+payeur_prenom: GARINO
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SARL FINANCE
+proprietaire_prenom: GARINO
+ref_piece: FA250205 48260
+reference: '52620'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:17.957Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250205_48260/standard/FA250205 48260
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

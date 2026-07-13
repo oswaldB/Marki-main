@@ -1,0 +1,49 @@
+adresse_bien: chemin du Cava Fond de Peille
+apporteur_id: cont_i921U1OdIX
+apporteur_nom: MAIRIE DE ROQUEBRUNE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_i921U1OdIX
+created_at: '2026-06-24T16:31:47.045Z'
+date_echeance: '2023-11-16'
+date_import: '2026-07-09T07:05:10.947Z'
+date_piece: '2023-11-16'
+donneur_ordre_id: null
+donneur_ordre_nom: MAIRIE DE ROQUEBRUNE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jhBsLERXWw
+id_dossier: '32226'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45607
+numero_dossier: 49223
+payer_id: cont_i921U1OdIX
+payeur_civilite: ''
+payeur_email: conseil.patrimoine@roquebrune-cap-martin.fr
+payeur_nom: MAIRIE DE ROQUEBRUNE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MAIRIE DE ROQUEBRUNE
+proprietaire_prenom: null
+ref_piece: FA231116 45607
+reference: '49223'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:47.045Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231116_45607/standard/FA231116 45607
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

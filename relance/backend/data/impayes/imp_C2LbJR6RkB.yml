@@ -1,0 +1,49 @@
+adresse_bien: 1291 chemin du Faliconnet
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06950'
+commentaire_piece: Bâtiment achevé en 2012 (moins de 15 ans)
+contact_relance_id: cont_Z4g8eeghEG
+created_at: '2026-06-24T16:30:53.026Z'
+date_echeance: '2026-03-03'
+date_import: '2026-07-09T07:05:05.799Z'
+date_piece: '2026-02-24'
+donneur_ordre_id: null
+donneur_ordre_nom: ROMERO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_C2LbJR6RkB
+id_dossier: '41286'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50507
+numero_dossier: 55292
+payer_id: cont_Z4g8eeghEG
+payeur_civilite: ''
+payeur_email: roger.romero@free.fr
+payeur_nom: ROMERO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROMERO
+proprietaire_prenom: null
+ref_piece: FA260224 50507
+reference: '55292'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 175
+total_ttc: 210
+type: impaye
+updated_at: '2026-06-24T16:30:53.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260224_50507/standard/FA260224 50507
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: FALICON

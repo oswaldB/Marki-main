@@ -1,0 +1,49 @@
+adresse_bien: 34 avenue Félix Faure Le Regina
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_t9OORTd1yA
+created_at: '2026-06-24T16:31:21.930Z'
+date_echeance: '2024-12-04'
+date_import: '2026-07-09T07:05:08.561Z'
+date_piece: '2024-12-04'
+donneur_ordre_id: null
+donneur_ordre_nom: QUEMERAIS
+donneur_ordre_prenom: Christian
+email_index: 0
+facture_soldee: true
+id: imp_xQRqPXP8GC
+id_dossier: '38151'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47902
+numero_dossier: 52157
+payer_id: cont_t9OORTd1yA
+payeur_civilite: ''
+payeur_email: christian.corinne.06@orange.fr
+payeur_nom: QUEMERAIS
+payeur_prenom: Christian
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: QUEMERAIS
+proprietaire_prenom: Christian
+ref_piece: FA241204 47902
+reference: '52157'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 245.42
+total_ttc: 294.5
+type: impaye
+updated_at: '2026-06-24T16:31:21.930Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241204_47902/standard/FA241204 47902
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 1 rue de la Tour
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: 02/02 relance compta
+contact_relance_id: cont_g4GTuGr00s
+created_at: '2026-06-24T16:30:54.986Z'
+date_echeance: '2026-02-02'
+date_import: '2026-07-09T07:05:06.011Z'
+date_piece: '2026-01-26'
+donneur_ordre_id: null
+donneur_ordre_nom: SUTOR
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_V0eJVJBqXS
+id_dossier: '41062'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50351
+numero_dossier: 55068
+payer_id: cont_g4GTuGr00s
+payeur_civilite: ''
+payeur_email: ayeto@orange.fr
+payeur_nom: SUTOR
+payeur_prenom: ''
+payeur_telephone: '0680579552'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SUTOR
+proprietaire_prenom: null
+ref_piece: FA260126 50351
+reference: '55068'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:30:54.986Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260126_50351/standard/FA260126 50351
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

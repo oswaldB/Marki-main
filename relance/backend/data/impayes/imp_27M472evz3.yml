@@ -1,0 +1,49 @@
+adresse_bien: 25 rue Soleau
+apporteur_id: cont_RIHSLFwvrN
+apporteur_nom: FONDATION DE NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: '21/07 : relance 1 mail aux 2'
+contact_relance_id: cont_jpCAMBHmGA
+created_at: '2026-06-24T16:31:10.884Z'
+date_echeance: '2025-05-26'
+date_import: '2026-07-09T07:05:07.464Z'
+date_piece: '2025-05-26'
+donneur_ordre_id: null
+donneur_ordre_nom: FONDATION DE NICE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_27M472evz3
+id_dossier: '39473'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48941
+numero_dossier: 53479
+payer_id: cont_RIHSLFwvrN
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: FONDATION DE NICE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FONDATION DE NICE
+proprietaire_prenom: null
+ref_piece: FA250526 48941
+reference: '53479'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 75
+total_ttc: 90
+type: impaye
+updated_at: '2026-06-24T16:31:10.884Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250526_48941/standard/FA250526 48941 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

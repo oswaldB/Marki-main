@@ -1,0 +1,29 @@
+$loki: 2583
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:58.529Z'
+email: olellouche@hotmail.com
+id: cont_Wq6E8QA83q
+impaye_ids:
+  - imp_SkYCLxYv0E
+is_blacklisted: false
+meta:
+  created: 1783580699312
+  revision: 0
+  version: 0
+nom: LELLOUCHE
+prenom: Olivier
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:57.364Z'

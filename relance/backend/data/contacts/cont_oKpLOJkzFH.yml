@@ -1,0 +1,29 @@
+$loki: 626
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:39.721Z'
+email: laetidenimal@free.fr
+id: cont_oKpLOJkzFH
+impaye_ids:
+  - imp_Cd2m1cJwDC
+is_blacklisted: false
+meta:
+  created: 1783580698606
+  revision: 0
+  version: 0
+nom: SCI BARBERIS 59
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:39.365Z'

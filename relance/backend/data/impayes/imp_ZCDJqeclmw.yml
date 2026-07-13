@@ -1,0 +1,49 @@
+adresse_bien: 37 rue Clément Roassal Résidence Opéra Bâtiment A
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:31:14.952Z'
+date_echeance: '2025-03-19'
+date_import: '2026-07-09T07:05:07.877Z'
+date_piece: '2025-03-19'
+donneur_ordre_id: null
+donneur_ordre_nom: 'KOSTROMINE '
+donneur_ordre_prenom: Irina
+email_index: 0
+facture_soldee: true
+id: imp_ZCDJqeclmw
+id_dossier: '38796'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48555
+numero_dossier: 52802
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'KOSTROMINE '
+proprietaire_prenom: Irina
+ref_piece: FA250319 48555
+reference: '52802'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2012.35
+total_ttc: 2414.82
+type: impaye
+updated_at: '2026-06-24T16:31:14.952Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250319_48555/standard/FA250319 48555 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

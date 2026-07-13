@@ -1,0 +1,49 @@
+adresse_bien: 49 ter avenue de la Lanterne  Les Ancolies B
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_FO8QpmNgEy
+created_at: '2026-06-24T16:30:55.943Z'
+date_echeance: '2026-01-20'
+date_import: '2026-07-09T07:05:06.095Z'
+date_piece: '2026-01-13'
+donneur_ordre_id: null
+donneur_ordre_nom: SOLER
+donneur_ordre_prenom: Jean Claude
+email_index: 0
+facture_soldee: true
+id: imp_ocrOuN9zur
+id_dossier: '40953'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50271
+numero_dossier: 54959
+payer_id: cont_FO8QpmNgEy
+payeur_civilite: ''
+payeur_email: jeanclaude.soler@creditmutuel.fr
+payeur_nom: SOLER
+payeur_prenom: Jean Claude
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SOLER
+proprietaire_prenom: Jean Claude
+ref_piece: FA260113 50271
+reference: '54959'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:30:55.943Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260113_50271/standard/FA260113 50271
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

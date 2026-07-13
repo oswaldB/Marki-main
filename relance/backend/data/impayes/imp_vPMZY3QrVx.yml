@@ -1,0 +1,49 @@
+adresse_bien: 3 quai de l’Amiral Ponchardier Le Palais de la Marine
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:42.062Z'
+date_echeance: '2024-02-01'
+date_import: '2026-07-09T07:05:10.495Z'
+date_piece: '2024-02-01'
+donneur_ordre_id: null
+donneur_ordre_nom: CAVERNES
+donneur_ordre_prenom: 'Chrystelle '
+email_index: 0
+facture_soldee: true
+id: imp_vPMZY3QrVx
+id_dossier: '25522'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46030
+numero_dossier: 45505
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: CAVERNES
+proprietaire_prenom: 'Chrystelle '
+ref_piece: FA240201 46030
+reference: '45505'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:42.062Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240201_46030/standard/FA240201 46030
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

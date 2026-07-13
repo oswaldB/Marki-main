@@ -1,0 +1,49 @@
+adresse_bien: 42 boulevard François Grosso Les Camélias
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: LISTING
+contact_relance_id: cont_EudZzc7GUK
+created_at: '2026-06-24T16:30:51.989Z'
+date_echeance: '2026-03-20'
+date_import: '2026-07-09T07:05:05.689Z'
+date_piece: '2026-03-13'
+donneur_ordre_id: null
+donneur_ordre_nom: GAUDON BERTHET
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_sfXIYQLh9J
+id_dossier: '40873'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50617
+numero_dossier: 54879
+payer_id: cont_jO6Cep4oVa
+payeur_civilite: ''
+payeur_email: jugo@laforet.com
+payeur_nom: LAFORET NICE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: GAUDON BERTHET
+proprietaire_prenom: null
+ref_piece: FA260313 50617
+reference: '54879'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 210
+total_ttc: 252
+type: impaye
+updated_at: '2026-06-24T16:30:51.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260313_50617/standard/FA260313 50617 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

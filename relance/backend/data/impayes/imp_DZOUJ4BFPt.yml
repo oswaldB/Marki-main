@@ -1,0 +1,49 @@
+adresse_bien: 59 Porte de France Hippocampe
+apporteur_id: cont_PnEhy90HCf
+apporteur_nom: VOUSFINANCER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_KaUyANqxVN
+created_at: '2026-06-24T16:31:09.033Z'
+date_echeance: '2025-06-18'
+date_import: '2026-07-09T07:05:07.339Z'
+date_piece: '2025-06-18'
+donneur_ordre_id: null
+donneur_ordre_nom: 'DI PERI '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_DZOUJ4BFPt
+id_dossier: '39648'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49067
+numero_dossier: 53654
+payer_id: cont_KaUyANqxVN
+payeur_civilite: ''
+payeur_email: diperiservices06@gmail.com
+payeur_nom: 'DI PERI '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: CAMMAREI
+proprietaire_prenom: Caterina
+ref_piece: FA250618 49067
+reference: '53654'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 100
+total_ttc: 120
+type: impaye
+updated_at: '2026-06-24T16:31:09.033Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250618_49067/standard/FA250618 49067 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

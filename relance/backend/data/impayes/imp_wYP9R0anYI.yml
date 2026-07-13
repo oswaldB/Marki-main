@@ -1,0 +1,49 @@
+adresse_bien: 11 avenue Robert Soleau
+apporteur_id: cont_gszi3ULfaG
+apporteur_nom: AIA GROUPE ALLIANCE GESTION ANTIBES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: cont_hiBh7VBtpf
+created_at: '2026-06-24T16:31:31.939Z'
+date_echeance: '2024-07-01'
+date_import: '2026-07-09T07:05:09.615Z'
+date_piece: '2024-07-01'
+donneur_ordre_id: null
+donneur_ordre_nom: LE BRASILIA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_wYP9R0anYI
+id_dossier: '34614'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46970
+numero_dossier: 50613
+payer_id: cont_gszi3ULfaG
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: AIA GROUPE ALLIANCE GESTION ANTIBES
+payeur_prenom: ''
+payeur_telephone: '0614310039'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LE BRASILIA
+proprietaire_prenom: null
+ref_piece: FA240628 46970
+reference: '50613'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2666.67
+total_ttc: 3200
+type: impaye
+updated_at: '2026-06-24T16:31:31.939Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240628_46970/standard/FA240628 46970
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

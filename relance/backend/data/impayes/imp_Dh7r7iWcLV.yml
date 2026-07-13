@@ -1,0 +1,49 @@
+adresse_bien: 27 boulevard de la République
+apporteur_id: cont_mhMbgrrhWs
+apporteur_nom: CABINET AVOCAT ERIC AGNETTI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:22.055Z'
+date_echeance: '2024-11-19'
+date_import: '2026-07-09T07:05:08.626Z'
+date_piece: '2024-11-19'
+donneur_ordre_id: null
+donneur_ordre_nom: SELARL PELLIER LES MANDATAIRES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Dh7r7iWcLV
+id_dossier: '38047'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47820
+numero_dossier: 52053
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SARL RESTAURATION PORTUGAISE
+proprietaire_prenom: null
+ref_piece: FA241119 47820
+reference: '52053'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 379.17
+total_ttc: 455
+type: impaye
+updated_at: '2026-06-24T16:31:22.055Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241119_47820/standard/FA241119 47820
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

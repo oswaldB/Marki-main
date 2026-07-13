@@ -1,0 +1,33 @@
+$loki: 2376
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:56.563Z'
+email: em@capan-bordes.com
+id: cont_SkI2D8nwmW
+impaye_ids:
+  - imp_0pX0duoBBj
+  - imp_GiLAtPmQ73
+  - imp_oQF62SdfTH
+  - imp_G6FWt9bCGS
+  - imp_Hv5hC5Erh3
+is_blacklisted: false
+meta:
+  created: 1783580699253
+  revision: 0
+  version: 0
+nom: MARECHAL
+prenom: Eva
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:55.365Z'

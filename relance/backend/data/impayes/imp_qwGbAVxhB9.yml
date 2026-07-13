@@ -1,0 +1,49 @@
+adresse_bien: 25 rue Assalit
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: listing
+contact_relance_id: cont_zWLan9R7kt
+created_at: '2026-06-24T16:30:59.049Z'
+date_echeance: '2025-11-26'
+date_import: '2026-07-09T07:05:06.427Z'
+date_piece: '2025-11-19'
+donneur_ordre_id: null
+donneur_ordre_nom: CROZATIER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_qwGbAVxhB9
+id_dossier: '40689'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49960
+numero_dossier: 54695
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CROZATIER
+proprietaire_prenom: null
+ref_piece: FA251119 49960
+reference: '54695'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 141.67
+total_ttc: 170
+type: impaye
+updated_at: '2026-06-24T16:30:59.049Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251119_49960/standard/FA251119 49960
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

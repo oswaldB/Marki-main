@@ -1,0 +1,49 @@
+adresse_bien: 85 route de Sospel Le Girosol
+apporteur_id: cont_OHlZ3trACx
+apporteur_nom: CAISSE AUTONOME DES RETRAITES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_K1J95vh17j
+created_at: '2026-06-24T16:30:46.933Z'
+date_echeance: '2026-06-08'
+date_import: '2026-07-09T07:05:05.169Z'
+date_piece: '2026-06-01'
+donneur_ordre_id: null
+donneur_ordre_nom: CAISSE AUTONOME DES RETRAITES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_fl796T84aS
+id_dossier: '41882'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51060
+numero_dossier: 55888
+payer_id: cont_OHlZ3trACx
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CAISSE AUTONOME DES RETRAITES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAISSE AUTONOME DES RETRAITES
+proprietaire_prenom: null
+ref_piece: FA260602 51060
+reference: '55888'
+reste_a_payer: 229.5
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 191.25
+total_ttc: 229.5
+type: impaye
+updated_at: '2026-06-24T16:33:32.604Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260602_51060/standard/FA260602 51060 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

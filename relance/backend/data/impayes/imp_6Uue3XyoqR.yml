@@ -1,0 +1,49 @@
+adresse_bien: 8 rue General Gallieni Le Saint Michel
+apporteur_id: cont_vCAOy10UIf
+apporteur_nom: IMMOBILTREND
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_tmOEMUy6L9
+created_at: '2026-06-24T16:31:13.989Z'
+date_echeance: '2025-03-27'
+date_import: '2026-07-09T07:05:07.793Z'
+date_piece: '2025-03-27'
+donneur_ordre_id: null
+donneur_ordre_nom: CARETTA
+donneur_ordre_prenom: 'Maria Carmela '
+email_index: 0
+facture_soldee: true
+id: imp_6Uue3XyoqR
+id_dossier: '39031'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48601
+numero_dossier: 53037
+payer_id: cont_tmOEMUy6L9
+payeur_civilite: ''
+payeur_email: carmenflorio@gmail.com
+payeur_nom: CARETTA
+payeur_prenom: 'Maria Carmela '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CARETTA
+proprietaire_prenom: 'Maria Carmela '
+ref_piece: FA250327 48601
+reference: '53037'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:13.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250327_48601/standard/FA250327 48601 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

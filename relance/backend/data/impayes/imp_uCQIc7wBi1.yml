@@ -1,0 +1,49 @@
+adresse_bien: 76 Promenade des Anglais Bâtiment
+apporteur_id: cont_tLdK2JHkBS
+apporteur_nom: HAUSS
+apporteur_prenom: Edith
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_tLdK2JHkBS
+created_at: '2026-06-24T16:31:28.902Z'
+date_echeance: '2024-08-20'
+date_import: '2026-07-09T07:05:09.288Z'
+date_piece: '2024-08-20'
+donneur_ordre_id: null
+donneur_ordre_nom: AFSHAR
+donneur_ordre_prenom: Françoise
+email_index: 0
+facture_soldee: true
+id: imp_uCQIc7wBi1
+id_dossier: '36364'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47242
+numero_dossier: 51368
+payer_id: cont_tLdK2JHkBS
+payeur_civilite: ''
+payeur_email: edith@nicehomesitting.com
+payeur_nom: HAUSS
+payeur_prenom: Edith
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: AFSHAR
+proprietaire_prenom: Françoise
+ref_piece: FA240820 47242
+reference: '51368'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 254.17
+total_ttc: 305
+type: impaye
+updated_at: '2026-06-24T16:31:28.902Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240820_47242/standard/FA240820 47242 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

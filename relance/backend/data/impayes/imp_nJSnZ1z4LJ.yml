@@ -1,0 +1,49 @@
+adresse_bien: 10 rue 10ème rue 4ème avenue CARROS Z1
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06510'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:45.062Z'
+date_echeance: '2023-12-11'
+date_import: '2026-07-09T07:05:10.795Z'
+date_piece: '2023-12-11'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI LOCARMEN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_nJSnZ1z4LJ
+id_dossier: '32415'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45764
+numero_dossier: 49412
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SCI LOCARMEN
+proprietaire_prenom: null
+ref_piece: FA231211 45764
+reference: '49412'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 916.67
+total_ttc: 1100
+type: impaye
+updated_at: '2026-06-24T16:31:45.062Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231211_45764/standard/FA231211 45764
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CARROS

@@ -1,0 +1,49 @@
+adresse_bien: 46 rue de France  Le Myr Azur Bâtiment sur Cour
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_CDLW84mN2c
+created_at: '2026-06-24T16:31:44.004Z'
+date_echeance: '2024-01-11'
+date_import: '2026-07-09T07:05:10.669Z'
+date_piece: '2024-01-11'
+donneur_ordre_id: null
+donneur_ordre_nom: PARNASSE IMMOBILIER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_4ankpDpfEG
+id_dossier: '32591'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45893
+numero_dossier: 49588
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DREVON
+proprietaire_prenom: null
+ref_piece: FA240111 45893
+reference: '49588'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 23.33
+total_ttc: 28
+type: impaye
+updated_at: '2026-06-24T16:31:44.004Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240111_45893/standard/FA240111 45893
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 24-30 rue Gounod Le Monteverdi
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_GznxeJj7PT
+created_at: '2026-06-24T16:31:07.046Z'
+date_echeance: '2025-07-18'
+date_import: '2026-07-09T07:05:07.145Z'
+date_piece: '2025-07-18'
+donneur_ordre_id: null
+donneur_ordre_nom: AGOSTINI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Hjbo8kky0b
+id_dossier: '39863'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49232
+numero_dossier: 53869
+payer_id: cont_GznxeJj7PT
+payeur_civilite: ''
+payeur_email: liguriaexportsrl@libero.it
+payeur_nom: AGOSTINI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: AGOSTINI
+proprietaire_prenom: null
+ref_piece: FA250718 49232
+reference: '53869'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 198.33
+total_ttc: 238
+type: impaye
+updated_at: '2026-06-24T16:31:07.046Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250718_49232/standard/FA250718 49232
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

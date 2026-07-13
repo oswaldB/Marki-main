@@ -1,0 +1,49 @@
+adresse_bien: 8 rue Maréchal Joffre
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_q3dXUCUC8A
+created_at: '2026-06-24T16:31:33.932Z'
+date_echeance: '2024-05-30'
+date_import: '2026-07-09T07:05:09.786Z'
+date_piece: '2024-05-30'
+donneur_ordre_id: null
+donneur_ordre_nom: ZANETTI GAMBARI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_4bPLVCSx1U
+id_dossier: '35777'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46782
+numero_dossier: 50781
+payer_id: cont_q3dXUCUC8A
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ZANETTI GAMBARI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ZANETTI GAMBARI
+proprietaire_prenom: null
+ref_piece: FA240530 46782
+reference: '50781'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:33.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240530_46782/standard/FA240530 46782 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

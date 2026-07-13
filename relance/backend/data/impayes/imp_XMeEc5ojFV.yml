@@ -1,0 +1,49 @@
+adresse_bien: 21 Bretelle du Centre Le Val Verde  Val Verde 2
+apporteur_id: cont_axwCVxbA8C
+apporteur_nom: CABINET CAIRO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: "SDC VAL VERDE 2\r\n21 BRETELLE DU CENTRE\r\n06240 BEAUSOLEIL\r\n\r\n18 lots principaux"
+contact_relance_id: cont_axwCVxbA8C
+created_at: '2026-06-24T16:30:49.935Z'
+date_echeance: '2026-04-28'
+date_import: '2026-07-09T07:05:05.479Z'
+date_piece: '2026-04-21'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC VAL VERDE 2
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_XMeEc5ojFV
+id_dossier: '34526'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50814
+numero_dossier: 50525
+payer_id: cont_axwCVxbA8C
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET CAIRO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC VAL VERDE 2
+proprietaire_prenom: null
+ref_piece: FA260421 50814
+reference: '50525'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1583.33
+total_ttc: 1900
+type: impaye
+updated_at: '2026-06-24T16:30:49.935Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260421_50814/standard/FA260421 50814
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

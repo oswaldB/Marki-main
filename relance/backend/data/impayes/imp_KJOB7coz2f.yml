@@ -1,0 +1,49 @@
+adresse_bien: 8 impasse des Violettes
+apporteur_id: cont_O85qls0kgw
+apporteur_nom: SOGEA
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_O85qls0kgw
+created_at: '2026-07-07T22:00:52.353Z'
+date_echeance: '2026-07-14'
+date_import: '2026-07-09T07:05:12.298Z'
+date_piece: '2026-07-07'
+donneur_ordre_id: null
+donneur_ordre_nom: SOGEA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_KJOB7coz2f
+id_dossier: '42092'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51251
+numero_dossier: 56098
+payer_id: cont_O85qls0kgw
+payeur_civilite: ''
+payeur_email: info@cabinet-sogea.com
+payeur_nom: SOGEA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CI LES VIOLETTES
+proprietaire_prenom: null
+ref_piece: FA260707 51251
+reference: '56098'
+reste_a_payer: 190
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 158.33
+total_ttc: 190
+type: impaye
+updated_at: '2026-07-08T22:02:31.262Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juillet/FA260707_51251/standard/FA260707 51251
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

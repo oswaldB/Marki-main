@@ -1,0 +1,49 @@
+adresse_bien: 28 rue Berlioz PALAIS BRANCA
+apporteur_id: cont_OanF7EFT8e
+apporteur_nom: GALLESE
+apporteur_prenom: Eva
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_odaF8HAXfW
+created_at: '2026-06-24T16:30:45.992Z'
+date_echeance: '2026-06-25'
+date_import: '2026-07-09T07:05:05.094Z'
+date_piece: '2026-06-18'
+donneur_ordre_id: null
+donneur_ordre_nom: MIG IMMOBILIER
+donneur_ordre_prenom: Mme Tanal Liliane
+email_index: 0
+facture_soldee: true
+id: imp_DlWXdpqHmq
+id_dossier: '41978'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51155
+numero_dossier: 55984
+payer_id: cont_odaF8HAXfW
+payeur_civilite: ''
+payeur_email: ' ltanal@medicalsintl.com'
+payeur_nom: MIG IMMOBILIER
+payeur_prenom: Mme Tanal Liliane
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MIG IMMOBILIER
+proprietaire_prenom: Mme Tanal Liliane
+ref_piece: FA260618 51155
+reference: '55984'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 90
+total_ttc: 108
+type: impaye
+updated_at: '2026-06-24T16:30:45.992Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260618_51155/standard/FA260618 51155 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

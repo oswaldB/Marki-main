@@ -1,0 +1,49 @@
+adresse_bien: 2  Traverse des Maraichers Les Charmettes Bâtiment B
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_LCd95CjGCu
+created_at: '2026-06-24T16:30:46.868Z'
+date_echeance: '2026-06-18'
+date_import: '2026-07-09T07:05:05.141Z'
+date_piece: '2026-06-11'
+donneur_ordre_id: null
+donneur_ordre_nom: MERMILLON
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_v3ipnTUvNw
+id_dossier: '41275'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51108
+numero_dossier: 55281
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MERMILLON
+proprietaire_prenom: null
+ref_piece: FA260611 51108
+reference: '55281'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: -250
+total_ttc: -300
+type: impaye
+updated_at: '2026-06-24T16:30:46.868Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260611_51108/standard/FA260611 51108 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 6 bis place Fontaine du Temple Les Sylphides
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: "relance 15/10\r\n\r\n16/10 : attente signature compromis ou vente pour reglement\r\n\r\n13/01 relance via comptabilité\r\n20/01 CHANGEMENT AGENCE  PLUS ETIDE GALLO CONNAISSANCE KARINE \r\n\r\nDOSSIER KARINE\r\n\r\n28/04 relance prop par mail"
+contact_relance_id: cont_232ukcrqtW
+created_at: '2026-06-24T16:31:02.949Z'
+date_echeance: '2025-10-10'
+date_import: '2026-07-09T07:05:06.737Z'
+date_piece: '2025-10-03'
+donneur_ordre_id: null
+donneur_ordre_nom: BOUKAYA
+donneur_ordre_prenom: Lionel
+email_index: 0
+facture_soldee: true
+id: imp_Ytx7Tv1ASi
+id_dossier: '40267'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49635
+numero_dossier: 54273
+payer_id: cont_232ukcrqtW
+payeur_civilite: ''
+payeur_email: boukayalionel@msn.com
+payeur_nom: BOUKAYA
+payeur_prenom: Lionel
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BOUKAYA
+proprietaire_prenom: Lionel
+ref_piece: FA251002 49635
+reference: '54273'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 225
+total_ttc: 270
+type: impaye
+updated_at: '2026-06-24T16:31:02.949Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251002_49635/standard/FA251002 49635
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

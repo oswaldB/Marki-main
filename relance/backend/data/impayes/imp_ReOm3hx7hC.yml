@@ -1,0 +1,49 @@
+adresse_bien: 10 Prom Mal Leclerc de Hauteclocque Le San Severina
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_DWJbd7l450
+created_at: '2026-06-24T16:30:59.049Z'
+date_echeance: '2025-11-25'
+date_import: '2026-07-09T07:05:06.428Z'
+date_piece: '2025-11-18'
+donneur_ordre_id: null
+donneur_ordre_nom: ORTOLANI
+donneur_ordre_prenom: Fanny
+email_index: 0
+facture_soldee: true
+id: imp_ReOm3hx7hC
+id_dossier: '40666'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49954
+numero_dossier: 54672
+payer_id: cont_DWJbd7l450
+payeur_civilite: ''
+payeur_email: spookine@hotmail.fr
+payeur_nom: ORTOLANI
+payeur_prenom: Fanny
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ORTOLANI
+proprietaire_prenom: Fanny
+ref_piece: FA251118 49954
+reference: '54672'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 186.67
+total_ttc: 224
+type: impaye
+updated_at: '2026-06-24T16:30:59.049Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251118_49954/standard/FA251118 49954
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

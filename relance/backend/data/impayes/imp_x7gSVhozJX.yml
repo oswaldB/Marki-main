@@ -1,0 +1,49 @@
+adresse_bien: 312 boulevard des Ecureuils Marco Polo
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06210'
+commentaire_piece: ''
+contact_relance_id: cont_N3ne14eaMA
+created_at: '2026-06-24T16:30:51.989Z'
+date_echeance: '2026-03-18'
+date_import: '2026-07-09T07:05:05.697Z'
+date_piece: '2026-03-11'
+donneur_ordre_id: null
+donneur_ordre_nom: 'LISOVSKAYA '
+donneur_ordre_prenom: 'Natalia '
+email_index: 0
+facture_soldee: true
+id: imp_x7gSVhozJX
+id_dossier: '41294'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50580
+numero_dossier: 55300
+payer_id: cont_N3ne14eaMA
+payeur_civilite: ''
+payeur_email: natalialisovskaya06@gmail.com
+payeur_nom: 'LISOVSKAYA '
+payeur_prenom: 'Natalia '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'LISOVSKAYA '
+proprietaire_prenom: 'Natalia '
+ref_piece: FA260311 50580
+reference: '55300'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:30:51.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260311_50580/standard/FA260311 50580 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MANDELIEU-LA-NAPOULE

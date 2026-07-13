@@ -1,0 +1,31 @@
+$loki: 119
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:34.684Z'
+email: rollandmichel826@gmail.com
+id: cont_EXe74AQ4xq
+impaye_ids:
+  - imp_RF1y9IhGfQ
+  - imp_PBr8vO8pY6
+  - imp_s1W765MxZr
+is_blacklisted: false
+meta:
+  created: 1783580698385
+  revision: 0
+  version: 0
+nom: ROLLAND
+prenom: Michel
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:34.361Z'

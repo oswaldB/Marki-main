@@ -1,0 +1,49 @@
+adresse_bien: 41 Promenade Robert Schuman Résidence Les Jardins du Bord de Mer Le Caroubier
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_gl6iMpgDN1
+created_at: '2026-06-24T16:31:09.985Z'
+date_echeance: '2025-06-04'
+date_import: '2026-07-09T07:05:07.414Z'
+date_piece: '2025-06-04'
+donneur_ordre_id: null
+donneur_ordre_nom: BEACCI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_UWqHElKGSb
+id_dossier: '39534'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48987
+numero_dossier: 53540
+payer_id: cont_gl6iMpgDN1
+payeur_civilite: ''
+payeur_email: jolrem@orange.fr
+payeur_nom: BEACCI
+payeur_prenom: ''
+payeur_telephone: '0612102980'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BEACCI
+proprietaire_prenom: null
+ref_piece: FA250604 48987
+reference: '53540'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 153.33
+total_ttc: 184
+type: impaye
+updated_at: '2026-06-24T16:31:09.985Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250604_48987/standard/FA250604 48987 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

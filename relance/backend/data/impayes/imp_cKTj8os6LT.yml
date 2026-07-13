@@ -1,0 +1,49 @@
+adresse_bien: 520 chemin de Saint Sauveur Villa Lou Milou
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_UxMMjVwxVs
+created_at: '2026-06-24T16:31:09.885Z'
+date_echeance: '2025-06-12'
+date_import: '2026-07-09T07:05:07.367Z'
+date_piece: '2025-06-12'
+donneur_ordre_id: null
+donneur_ordre_nom: BENNETT
+donneur_ordre_prenom: Jilly
+email_index: 0
+facture_soldee: true
+id: imp_cKTj8os6LT
+id_dossier: '39601'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49041
+numero_dossier: 53607
+payer_id: cont_UxMMjVwxVs
+payeur_civilite: ''
+payeur_email: jilly@jillybennett.com
+payeur_nom: BENNETT
+payeur_prenom: Jilly
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BENNETT
+proprietaire_prenom: Jilly
+ref_piece: FA250612 49041
+reference: '53607'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 83.33
+total_ttc: 100
+type: impaye
+updated_at: '2026-06-24T16:31:09.885Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250612_49041/standard/FA250612 49041 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: GORBIO

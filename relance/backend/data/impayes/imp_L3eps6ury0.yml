@@ -1,0 +1,49 @@
+adresse_bien: 5 Passage du Petit Parc
+apporteur_id: cont_yqBBhH2hK0
+apporteur_nom: VEALYS 06 PORT
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "10/01 relance par mail 51738\r\n05/02 relance mail prop + copie agence\r\n\r\n06/02 le prop reviens en Europe le 14/03, le relancer apès cette date si toujours pas payé\r\n\r\n20/03 vente prévu au mois de mars paiement après\r\n\r\n29/04 relance mail prop + agence\r\n\r\n18/06 relance 1 prop / cc : agence\r\n\r\n21/07 : appel agence, échange avec Mme BALLA, relance 2 prop / cc : agence\r\n\r\n09/09 relance agence et prop\r\n\r\n06/05\r\n\r\n\r\n"
+contact_relance_id: cont_MHaBr63EAu
+created_at: '2026-06-24T16:31:24.990Z'
+date_echeance: '2024-10-07'
+date_import: '2026-07-09T07:05:08.894Z'
+date_piece: '2024-10-07'
+donneur_ordre_id: null
+donneur_ordre_nom: ROTA
+donneur_ordre_prenom: Fabio
+email_index: 0
+facture_soldee: false
+id: imp_L3eps6ury0
+id_dossier: '37751'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47576
+numero_dossier: 51757
+payer_id: cont_MHaBr63EAu
+payeur_civilite: ''
+payeur_email: arkitron@yahoo.it
+payeur_nom: ROTA
+payeur_prenom: Fabio
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROTA
+proprietaire_prenom: Fabio
+ref_piece: FA241007 47576
+reference: '51757'
+reste_a_payer: 55
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 45.83
+total_ttc: 55
+type: impaye
+updated_at: '2026-06-24T16:33:34.309Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241007_47576/standard/FA241007 47576
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

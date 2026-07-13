@@ -1,0 +1,49 @@
+adresse_bien: 2718 avenue Prince Rainier III Palazzio Grima
+apporteur_id: cont_6KB3jgW9oc
+apporteur_nom: PROGEDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_6KB3jgW9oc
+created_at: '2026-06-24T16:30:46.096Z'
+date_echeance: '2026-06-22'
+date_import: '2026-07-09T07:05:05.127Z'
+date_piece: '2026-06-15'
+donneur_ordre_id: null
+donneur_ordre_nom: DVORSZKY
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_jEQAFg6vts
+id_dossier: '41950'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51131
+numero_dossier: 55956
+payer_id: cont_6KB3jgW9oc
+payeur_civilite: ''
+payeur_email: accueil@progedi.com
+payeur_nom: PROGEDI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DVORSZKY
+proprietaire_prenom: null
+ref_piece: FA260615 51131
+reference: '55956'
+reste_a_payer: 229.5
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 191.25
+total_ttc: 229.5
+type: impaye
+updated_at: '2026-06-24T16:33:32.569Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260615_51131/standard/FA260615 51131 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

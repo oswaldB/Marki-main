@@ -1,0 +1,104 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_vqP5w9ChQ6
+corps: >
+  <p>Bonjour Imad BEN MESSAOUD,</p>
+
+  <p><br></p>
+
+  <p>Plusieurs de vos factures, dont la <strong>n°47089</strong>, lors de nos
+  prestations au <strong>18 avenue Maréchal Foch, 06000 NICE - dossier
+  51183</strong> sont arrivées à échéance le <strong>19/07/2024</strong> et
+  restent à ce jour impayées.</p>
+
+  <p>Nous vous remercions de bien vouloir procéder à leur règlement dans les
+  meilleurs délais.</p>
+
+  <p><br></p>
+
+  <table style="border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Facture</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Échéance</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Montant total</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Rest à payer</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Lien règlement CB</p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>47089</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>19/07/2024</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>592 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>592 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p><a href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=592&vads_order_id=47089&vads_cust_id=51183&vads_cust_last_name=BEN MESSAOUD&vads_cust_first_name=Imad&vads_cust_email=imad.benmess83300@gmail.com">Paiement sécurisé en ligne</a></p></td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>47089</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>19/07/2024</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>592 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>592 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p><a href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=592&vads_order_id=47089&vads_cust_id=51182&vads_cust_last_name=BEN MESSAOUD&vads_cust_first_name=Imad&vads_cust_email=imad.benmess83300@gmail.com">Paiement sécurisé en ligne</a></p></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><br></p>
+
+  <div contenteditable="false"><hr></div>
+
+  <p><strong>Pour voir vos factures :
+  https://adti.markidiags.com/redirect-espace/vqP5w9ChQ6</strong></p>
+
+  <p>Pour tout régler : <a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=1184&vads_order_id=47089&vads_cust_id=reg_glo&vads_cust_last_name=BEN
+  MESSAOUD&vads_cust_first_name=Imad&vads_cust_email=imad.benmess83300@gmail.com&vads_ext_info_Message+d%27accompagnement=47089,47089">Paiement
+  global sécurisé</a></p>
+
+  <p><br></p>
+
+  <p><strong>Modalités de paiement :</strong></p>
+
+  <ul>
+    <li><p><strong>Par carte bleue</strong> : Utilisez les liens ci-dessus pour un paiement sécurisé en ligne.</p></li>
+    <li><p><strong>Par virement bancaire</strong> :<strong>IBAN</strong> : <code>FR76 1460 7003 5370 1217 0161 406</code><strong>BIC</strong> : <code>CCBPFRPPMAR</code><strong>Titulaire</strong> : <strong>ADTI - EX'IM AZUR</strong></p></li>
+    <li><p><strong>Par chèque</strong> : À l'ordre de <strong>ADTI - EX'IM AZUR</strong> – 40 avenue des Diables Bleus, 06300 Nice.</p></li>
+  </ul>
+
+  <p><br></p>
+
+  <p>Nous restons à votre disposition pour toute information complémentaire.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-06-25T16:48:45.137Z'
+date_envoi: '2026-06-25T20:14:04.019Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 2
+erreur_count: 0
+id: rel_vKaWLXMBzB
+impaye_ids:
+  - imp_6ntG608j4v
+  - imp_TwYrjlVJ0P
+manuelle: false
+message_id: null
+objet: >-
+  EX'IM - Dossiers 51183, 51182 - Rappel de règlement – Plusieurs factures
+  arrivées à échéance
+ouvert: false
+planifiee_le: null
+scenario: multiple
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: Envoyée
+type: relance
+updated_at: '2026-06-25T20:14:04.019Z'
+valide: true

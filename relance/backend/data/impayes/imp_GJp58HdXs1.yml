@@ -1,0 +1,49 @@
+adresse_bien: 81 avenue Cernuschi Le Val Dano
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_1foQG5paBw
+created_at: '2026-06-24T16:31:14.022Z'
+date_echeance: '2025-03-26'
+date_import: '2026-07-09T07:05:07.817Z'
+date_piece: '2025-03-26'
+donneur_ordre_id: null
+donneur_ordre_nom: ESNAULT
+donneur_ordre_prenom: Christiane
+email_index: 0
+facture_soldee: true
+id: imp_GJp58HdXs1
+id_dossier: '39022'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48594
+numero_dossier: 53028
+payer_id: cont_1foQG5paBw
+payeur_civilite: ''
+payeur_email: edithpastor27@gmail.com
+payeur_nom: ESNAULT
+payeur_prenom: Christiane
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ESNAULT
+proprietaire_prenom: Christiane
+ref_piece: FA250326 48594
+reference: '53028'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 229.17
+total_ttc: 275
+type: impaye
+updated_at: '2026-06-24T16:31:14.022Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250326_48594/standard/FA250326 48594 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

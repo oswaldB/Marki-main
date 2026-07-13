@@ -1,0 +1,49 @@
+adresse_bien: 9 rue du Grand Pin
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_SvyyDmNksU
+created_at: '2026-06-24T16:31:04.034Z'
+date_echeance: '2025-09-15'
+date_import: '2026-07-09T07:05:06.876Z'
+date_piece: '2025-09-08'
+donneur_ordre_id: null
+donneur_ordre_nom: MAURAIN
+donneur_ordre_prenom: Pierre-Henry
+email_index: 0
+facture_soldee: true
+id: imp_RDmfbjNrPi
+id_dossier: '40159'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49481
+numero_dossier: 54165
+payer_id: cont_SvyyDmNksU
+payeur_civilite: ''
+payeur_email: maurain@yahoo.fr
+payeur_nom: MAURAIN
+payeur_prenom: Pierre-Henry
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MAURAIN
+proprietaire_prenom: Pierre-Henry
+ref_piece: FA250908 49481
+reference: '54165'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 230.42
+total_ttc: 276.5
+type: impaye
+updated_at: '2026-06-24T16:31:04.034Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250908_49481/standard/FA250908 49481
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

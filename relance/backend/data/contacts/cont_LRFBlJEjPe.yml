@@ -1,0 +1,29 @@
+$loki: 4020
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:11.566Z'
+email: p.seval@yahoo.fr
+id: cont_LRFBlJEjPe
+impaye_ids:
+  - imp_urdLcYXgPo
+is_blacklisted: false
+meta:
+  created: 1783580699858
+  revision: 0
+  version: 0
+nom: SEVAL
+prenom: Philippe
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0666246080'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:11.336Z'

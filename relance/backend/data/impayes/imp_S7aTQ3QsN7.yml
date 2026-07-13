@@ -1,0 +1,49 @@
+adresse_bien: 19 rue Delille
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_2cPeKk4CjD
+created_at: '2026-06-24T16:30:47.974Z'
+date_echeance: '2026-05-27'
+date_import: '2026-07-09T07:05:05.313Z'
+date_piece: '2026-05-20'
+donneur_ordre_id: null
+donneur_ordre_nom: SERE
+donneur_ordre_prenom: Veronique - Olivier
+email_index: 0
+facture_soldee: true
+id: imp_S7aTQ3QsN7
+id_dossier: '41767'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50979
+numero_dossier: 55773
+payer_id: cont_2cPeKk4CjD
+payeur_civilite: ''
+payeur_email: ovsere@gmail.com
+payeur_nom: SERE
+payeur_prenom: Veronique - Olivier
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SERE
+proprietaire_prenom: Veronique - Olivier
+ref_piece: FA260520 50979
+reference: '55773'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 296.25
+total_ttc: 355.5
+type: impaye
+updated_at: '2026-07-03T08:50:03.103Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260520_50979/standard/FA260520 50979 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

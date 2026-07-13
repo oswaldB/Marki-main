@@ -1,0 +1,49 @@
+adresse_bien: 124 chemin Vieux de Gairaut Les Berges de Gairaut
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: "Mme OLINDO Naomie\r\nLes Berges de Gairaut\r\n124 vieux chemin de Gairaut\r\n06100 Nice "
+contact_relance_id: cont_5cFvx0d8eI
+created_at: '2026-06-24T16:30:45.927Z'
+date_echeance: '2026-07-01'
+date_import: '2026-07-09T07:05:05.066Z'
+date_piece: '2026-06-24'
+donneur_ordre_id: null
+donneur_ordre_nom: OLINDO
+donneur_ordre_prenom: Naomie
+email_index: 0
+facture_soldee: true
+id: imp_OntqH4guHI
+id_dossier: '41987'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51178
+numero_dossier: 55993
+payer_id: cont_5cFvx0d8eI
+payeur_civilite: ''
+payeur_email: caroleolindo@icloud.com
+payeur_nom: OLINDO
+payeur_prenom: Naomie
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: OLINDO
+proprietaire_prenom: Naomie
+ref_piece: FA260624 51178
+reference: '55993'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 799.58
+total_ttc: 959.5
+type: impaye
+updated_at: '2026-06-25T22:00:49.857Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260624_51178/standard/FA260624 51178 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 8 rue Rancher
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_yHAzZ6QgDr
+created_at: '2026-06-24T16:31:23.900Z'
+date_echeance: '2024-10-28'
+date_import: '2026-07-09T07:05:08.757Z'
+date_piece: '2024-10-28'
+donneur_ordre_id: null
+donneur_ordre_nom: BARRALIS
+donneur_ordre_prenom: 'Fanny '
+email_index: 0
+facture_soldee: true
+id: imp_Bk7xPSCn7m
+id_dossier: '37903'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47709
+numero_dossier: 51909
+payer_id: cont_yHAzZ6QgDr
+payeur_civilite: ''
+payeur_email: fannybarralis@hotmail.com
+payeur_nom: BARRALIS
+payeur_prenom: 'Fanny '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BARRALIS
+proprietaire_prenom: 'Fanny '
+ref_piece: FA241028 47709
+reference: '51909'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:31:23.900Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241028_47709/standard/FA241028 47709
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 16 rue Guyau
+apporteur_id: cont_TWnVoCvWHW
+apporteur_nom: 'EASY MENTON SYNDIC '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "Copropriété : 16 rue Guyau 06500 MENTON\r\nProjet : Calcul de charges spécifiques Cage d'Escalier"
+contact_relance_id: cont_TWnVoCvWHW
+created_at: '2026-06-24T16:31:03.010Z'
+date_echeance: '2025-10-07'
+date_import: '2026-07-09T07:05:06.762Z'
+date_piece: '2025-09-30'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC 16 RUE GUYAU
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_PTRfux7ine
+id_dossier: '40261'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49626
+numero_dossier: 54267
+payer_id: cont_TWnVoCvWHW
+payeur_civilite: ''
+payeur_email: menton1@easy-menton.fr
+payeur_nom: 'EASY MENTON SYNDIC '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC 16 RUE GUYAU
+proprietaire_prenom: null
+ref_piece: FA250930 49626
+reference: '54267'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 470.83
+total_ttc: 565
+type: impaye
+updated_at: '2026-06-24T16:31:03.010Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250930_49626/standard/FA250930 49626
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

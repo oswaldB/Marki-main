@@ -1,0 +1,49 @@
+adresse_bien: 47 boulevard Marinoni Le Victoria
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_FBHy3Gn8BY
+created_at: '2026-06-24T16:30:58.083Z'
+date_echeance: '2025-12-08'
+date_import: '2026-07-09T07:05:06.341Z'
+date_piece: '2025-12-01'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI AT IMMO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_GRSsnQCrZR
+id_dossier: '40778'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50047
+numero_dossier: 54784
+payer_id: cont_FBHy3Gn8BY
+payeur_civilite: ''
+payeur_email: cisbos26@gmail.com
+payeur_nom: SCI AT IMMO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI AT IMMO
+proprietaire_prenom: null
+ref_piece: FA251201 50047
+reference: '54784'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:30:58.083Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251201_50047/standard/FA251201 50047
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

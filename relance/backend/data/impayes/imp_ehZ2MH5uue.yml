@@ -1,0 +1,49 @@
+adresse_bien: 1 rue des Romains
+apporteur_id: cont_HDgbSNMQIH
+apporteur_nom: TESTA IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06380'
+commentaire_piece: "par virement 16/09 100 euros\r\n16/10 147.50 euros\r\n16/11 147.50 euros \r\n\r\nrelance 21/11"
+contact_relance_id: cont_4DCpUzOAMj
+created_at: '2026-06-24T16:31:03.942Z'
+date_echeance: '2025-09-22'
+date_import: '2026-07-09T07:05:06.830Z'
+date_piece: '2025-09-15'
+donneur_ordre_id: null
+donneur_ordre_nom: GIUNTA
+donneur_ordre_prenom: 'Mai - Antony '
+email_index: 0
+facture_soldee: true
+id: imp_ehZ2MH5uue
+id_dossier: '40234'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49529
+numero_dossier: 54240
+payer_id: cont_4DCpUzOAMj
+payeur_civilite: ''
+payeur_email: antony.giunta@wanadoo.fr
+payeur_nom: GIUNTA
+payeur_prenom: 'Mai - Antony '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GIUNTA
+proprietaire_prenom: 'Mai - Antony '
+ref_piece: FA250916 49529
+reference: '54240'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 329.17
+total_ttc: 395
+type: impaye
+updated_at: '2026-06-24T16:31:03.942Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250916_49529/standard/FA250916 49529
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SOSPEL

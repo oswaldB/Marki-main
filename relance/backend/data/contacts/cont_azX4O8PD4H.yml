@@ -1,0 +1,29 @@
+$loki: 6362
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:33.600Z'
+email: stephanie.reitano@hotmail.fr
+id: cont_azX4O8PD4H
+impaye_ids:
+  - imp_3FARS87O4c
+is_blacklisted: false
+meta:
+  created: 1783580700613
+  revision: 0
+  version: 0
+nom: BAUDY
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: Mme 0623426861
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:32.387Z'

@@ -1,0 +1,43 @@
+$loki: 1667
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:49.655Z'
+email: gbaby@laforet.com
+id: cont_zV76Y7Fa1E
+impaye_ids:
+  - imp_I0mHlfenpk
+  - imp_A6EVzI8bEd
+  - imp_CaTk4dlKZ5
+  - imp_ATZZsSDERo
+  - imp_bhU1MbIv7I
+  - imp_Imnl2gK3I7
+  - imp_GdboEk7bzm
+  - imp_xYvEpFCrp8
+  - imp_By0GHVa3tX
+  - imp_aLhX2b5GtM
+  - imp_45BFR6E9dt
+  - imp_H9oyfX53iw
+  - imp_sfOzmVDCyv
+  - imp_sPR7sDGr7w
+  - imp_2iXgUlYeEh
+is_blacklisted: false
+meta:
+  created: 1783580699007
+  revision: 0
+  version: 0
+nom: BABY
+prenom: Garance
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:49.326Z'

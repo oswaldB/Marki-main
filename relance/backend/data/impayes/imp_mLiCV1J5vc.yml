@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Acquassoma
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_jUQqPxtZ3Z
+created_at: '2026-06-24T16:31:10.916Z'
+date_echeance: '2025-05-20'
+date_import: '2026-07-09T07:05:07.475Z'
+date_piece: '2025-05-20'
+donneur_ordre_id: null
+donneur_ordre_nom: LOYEZ
+donneur_ordre_prenom: Julien
+email_index: 0
+facture_soldee: true
+id: imp_mLiCV1J5vc
+id_dossier: '39440'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48920
+numero_dossier: 53446
+payer_id: cont_jUQqPxtZ3Z
+payeur_civilite: ''
+payeur_email: jules.loyez9@gmail.com
+payeur_nom: LOYEZ
+payeur_prenom: Julien
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LOYEZ
+proprietaire_prenom: Julien
+ref_piece: FA250520 48920
+reference: '53446'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:10.916Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250520_48920/standard/FA250520 48920 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

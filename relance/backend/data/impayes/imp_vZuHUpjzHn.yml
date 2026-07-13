@@ -1,0 +1,49 @@
+adresse_bien: 30 chemin Vieux de Gairaut PARC CHAMBRUN Le Vigny
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_LCd95CjGCu
+created_at: '2026-06-24T16:31:19.926Z'
+date_echeance: '2025-01-09'
+date_import: '2026-07-09T07:05:08.354Z'
+date_piece: '2025-01-09'
+donneur_ordre_id: null
+donneur_ordre_nom: CHOLVY
+donneur_ordre_prenom: Yves
+email_index: 0
+facture_soldee: true
+id: imp_vZuHUpjzHn
+id_dossier: '38413'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48082
+numero_dossier: 52419
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CHOLVY
+proprietaire_prenom: Yves
+ref_piece: FA250109 48082
+reference: '52419'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 23.33
+total_ttc: 28
+type: impaye
+updated_at: '2026-06-24T16:31:19.926Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250109_48082/standard/FA250109 48082
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

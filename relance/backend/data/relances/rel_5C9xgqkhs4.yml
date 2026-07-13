@@ -1,0 +1,90 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_d0Fxcpp23E
+corps: >
+  <p>Bonjour Nelly MONTANERA,</p>
+
+  <p><br></p>
+
+  <p>Nous vous rappelons que votre facture <strong>n°48385</strong>, arrivée à
+  échéance le <strong>03/03/2025</strong>, pour nos prestations au <strong>144
+  avenue du Concours Hippique, 06190 ROQUEBRUNE-CAP-MARTIN - dossier
+  52779</strong> reste à ce jour impayée.</p>
+
+  <p><br></p>
+
+  <p>Il s'agit sans doute d'un simple oubli. Nous vous remercions de bien
+  vouloir procéder à son règlement dans les meilleurs délais.</p>
+
+  <p><br></p>
+
+  <table style="border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Facture</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Échéance</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Montant total</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Rest à payer</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Télécharger la facture</p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>48385</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>03/03/2025</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>650 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>650 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p><a href="https://adti.markidiags.com/redirect-pdf/IbpsK1mtyB">Télécharger</a></p></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=650&amp;vads_order_id=48385&amp;vads_cust_id=52779&amp;vads_cust_last_name=MONTANERA&amp;vads_cust_first_name=Nelly&amp;vads_cust_email=menton-immo@wanadoo.fr&amp;vads_cust_cell_phone=">Paiement
+  sécurisé en ligne en carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p>Nous restons à votre disposition pour toute information complémentaire.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-06-25T16:37:05.039Z'
+date_envoi: '2026-06-25T20:14:02.270Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 2
+erreur_count: 0
+id: rel_5C9xgqkhs4
+impaye_ids:
+  - imp_IbpsK1mtyB
+manuelle: false
+message_id: null
+objet: EX'IM - Dossier 52779 - Rappel de règlement – Facture 48385 arrivée à échéance
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: Envoyée
+type: relance
+updated_at: '2026-06-25T20:14:02.270Z'
+valide: true

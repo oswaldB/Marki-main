@@ -1,0 +1,29 @@
+$loki: 1266
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:46.512Z'
+email: patrice.goujon@gmail.com
+id: cont_Q5c7DSYU54
+impaye_ids:
+  - imp_OPL3OxwxRm
+is_blacklisted: false
+meta:
+  created: 1783580698853
+  revision: 0
+  version: 0
+nom: GOUJON
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:45.360Z'

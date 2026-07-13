@@ -1,0 +1,49 @@
+adresse_bien: 6/8 rue Delille SDC 6/8 RUE DELILLE Bâtiment
+apporteur_id: cont_GIqt0zLmMB
+apporteur_nom: BOGALET IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_30li6Dwrs6
+created_at: '2026-06-24T16:31:35.970Z'
+date_echeance: '2024-04-25'
+date_import: '2026-07-09T07:05:09.949Z'
+date_piece: '2024-04-25'
+donneur_ordre_id: null
+donneur_ordre_nom: MAGNANI
+donneur_ordre_prenom: Sandra
+email_index: 0
+facture_soldee: true
+id: imp_bbW3beswXS
+id_dossier: '34509'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46560
+numero_dossier: 50508
+payer_id: cont_30li6Dwrs6
+payeur_civilite: ''
+payeur_email: magnanisandra76@gmail.com
+payeur_nom: MAGNANI
+payeur_prenom: Sandra
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MAGNANI
+proprietaire_prenom: Sandra
+ref_piece: FA240425 46560
+reference: '50508'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 116.67
+total_ttc: 140
+type: impaye
+updated_at: '2026-06-24T16:31:35.970Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240425_46560/standard/FA240425 46560
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

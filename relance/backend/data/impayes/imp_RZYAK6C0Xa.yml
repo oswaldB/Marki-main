@@ -1,0 +1,49 @@
+adresse_bien: 22 Voie Romaine
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_MuArfqunQ5
+created_at: '2026-06-24T16:30:57.876Z'
+date_echeance: '2025-12-19'
+date_import: '2026-07-09T07:05:06.248Z'
+date_piece: '2025-12-12'
+donneur_ordre_id: null
+donneur_ordre_nom: LAGARDE
+donneur_ordre_prenom: Marianne
+email_index: 0
+facture_soldee: true
+id: imp_RZYAK6C0Xa
+id_dossier: '40842'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50123
+numero_dossier: 54848
+payer_id: cont_MuArfqunQ5
+payeur_civilite: ''
+payeur_email: lagarde.marianne@gmail.com
+payeur_nom: LAGARDE
+payeur_prenom: Marianne
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LAGARDE
+proprietaire_prenom: Marianne
+ref_piece: FA251212 50123
+reference: '54848'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:30:57.876Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251212_50123/standard/FA251212 50123
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

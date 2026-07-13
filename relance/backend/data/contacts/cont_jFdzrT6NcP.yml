@@ -1,0 +1,29 @@
+$loki: 3601
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:08.526Z'
+email: null
+id: cont_jFdzrT6NcP
+impaye_ids:
+  - imp_dWgdGE8qP3
+is_blacklisted: false
+meta:
+  created: 1783580699719
+  revision: 0
+  version: 0
+nom: BERTELLE
+prenom: Consorts
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:07.339Z'

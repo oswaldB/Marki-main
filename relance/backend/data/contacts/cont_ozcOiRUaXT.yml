@@ -1,0 +1,50 @@
+$loki: 3625
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:08.526Z'
+email: contact@expertiseetsynergies.com
+id: cont_ozcOiRUaXT
+impaye_ids:
+  - imp_HrOZd1gGkJ
+  - imp_GJppR7PGtI
+  - imp_xSbh9OgpX8
+  - imp_UUzJDUWqQ4
+  - imp_FE7wmEs8uX
+  - imp_sl599rtGeU
+  - imp_H6vzsx3Sf2
+  - imp_VQD6ZfSR1K
+  - imp_zyMqo0YQV3
+  - imp_FA7FAVlRqH
+  - imp_POkh7U5yQO
+  - imp_VVed2uwwim
+  - imp_UCWnVLWTxr
+  - imp_rhkJi2ejhv
+  - imp_KX3F9UVXfL
+  - imp_dDxdn4Fpgn
+  - imp_IIQbulWl8k
+  - imp_W5Sk4ST8CB
+  - imp_3KHziVz65O
+  - imp_Z45quySKEp
+  - imp_p40r210fUA
+  - imp_VqnSDOwg8p
+is_blacklisted: false
+meta:
+  created: 1783580699736
+  revision: 0
+  version: 0
+nom: EXPERTISE ET SYNERGIES
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:07.340Z'

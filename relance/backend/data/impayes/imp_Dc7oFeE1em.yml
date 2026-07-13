@@ -1,0 +1,49 @@
+adresse_bien: 31 boulevard Dubouchage Résidence L'Empire
+apporteur_id: cont_kUEHC1vuCa
+apporteur_nom: BOSCARDIN
+apporteur_prenom: Riccardo
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_kUEHC1vuCa
+created_at: '2026-06-24T16:30:58.983Z'
+date_echeance: '2025-11-28'
+date_import: '2026-07-09T07:05:06.405Z'
+date_piece: '2025-11-21'
+donneur_ordre_id: null
+donneur_ordre_nom: TRENTIN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Dc7oFeE1em
+id_dossier: '40692'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49983
+numero_dossier: 54698
+payer_id: cont_kUEHC1vuCa
+payeur_civilite: ''
+payeur_email: r.boscardin@orange.fr
+payeur_nom: BOSCARDIN
+payeur_prenom: Riccardo
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: TRENTIN
+proprietaire_prenom: null
+ref_piece: FA251121 49983
+reference: '54698'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 179.17
+total_ttc: 215
+type: impaye
+updated_at: '2026-06-24T16:30:58.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251121_49983/standard/FA251121 49983
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

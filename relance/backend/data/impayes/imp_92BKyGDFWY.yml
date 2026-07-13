@@ -1,0 +1,49 @@
+adresse_bien: 3 boulevard du Général Leclerc L'Alcazar
+apporteur_id: cont_cuVGEslhrB
+apporteur_nom: AF IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_6OPt8GHKpH
+created_at: '2026-06-24T16:31:21.997Z'
+date_echeance: '2024-11-28'
+date_import: '2026-07-09T07:05:08.590Z'
+date_piece: '2024-11-28'
+donneur_ordre_id: null
+donneur_ordre_nom: MATHIEU
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_92BKyGDFWY
+id_dossier: '38103'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47866
+numero_dossier: 52109
+payer_id: cont_6OPt8GHKpH
+payeur_civilite: ''
+payeur_email: beatrice.mathieu88@gmail.com
+payeur_nom: MATHIEU
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MATHIEU
+proprietaire_prenom: null
+ref_piece: FA241128 47866
+reference: '52109'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:21.997Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241128_47866/standard/FA241128 47866
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

@@ -1,0 +1,49 @@
+adresse_bien: 10 avenue Thiers Le Home
+apporteur_id: cont_mSwEw9rkRW
+apporteur_nom: 'EASY MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_lC6fBYF41K
+created_at: '2026-06-24T16:31:11.947Z'
+date_echeance: '2025-05-02'
+date_import: '2026-07-09T07:05:07.587Z'
+date_piece: '2025-05-02'
+donneur_ordre_id: null
+donneur_ordre_nom: GNECH
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_W53hHzoGWj
+id_dossier: '39286'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48799
+numero_dossier: 53292
+payer_id: cont_lC6fBYF41K
+payeur_civilite: ''
+payeur_email: gilbert.gnech@laposte.net
+payeur_nom: GNECH
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GNECH
+proprietaire_prenom: null
+ref_piece: FA250428 48799
+reference: '53292'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 420.83
+total_ttc: 505
+type: impaye
+updated_at: '2026-06-24T16:31:11.947Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250428_48799/standard/FA250428 48799 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 67 avenue des Freesias Les Freesias
+apporteur_id: cont_hKExnMDFAP
+apporteur_nom: AGENCE 107 PROMENADE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: 50% accord MW
+contact_relance_id: cont_A6i4k4hcic
+created_at: '2026-06-24T16:31:04.003Z'
+date_echeance: '2025-09-17'
+date_import: '2026-07-09T07:05:06.857Z'
+date_piece: '2025-09-10'
+donneur_ordre_id: null
+donneur_ordre_nom: ROQUEBILIERE NETTOYAGE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_IQ38MuzAbM
+id_dossier: '40175'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49500
+numero_dossier: 54181
+payer_id: cont_A6i4k4hcic
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ROQUEBILIERE NETTOYAGE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROQUEBILIERE NETTOYAGE
+proprietaire_prenom: null
+ref_piece: FA250910 49500
+reference: '54181'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 47.92
+total_ttc: 57.5
+type: impaye
+updated_at: '2026-06-24T16:31:04.003Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250910_49500/standard/FA250910 49500
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

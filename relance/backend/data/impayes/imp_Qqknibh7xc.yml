@@ -1,0 +1,49 @@
+adresse_bien: 209 boulevard de la Madeleine Le Floriane
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "9012 - LE FLORIANE\r\n209 Bd de la Madeleine\r\n06100 NICE"
+contact_relance_id: cont_F3CTJYPxQg
+created_at: '2026-06-24T16:31:15.888Z'
+date_echeance: '2025-03-13'
+date_import: '2026-07-09T07:05:07.935Z'
+date_piece: '2025-03-13'
+donneur_ordre_id: null
+donneur_ordre_nom: CITYA NICE IMMOBILIER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Qqknibh7xc
+id_dossier: '38919'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48510
+numero_dossier: 52925
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LE FLORIANE 9012
+proprietaire_prenom: null
+ref_piece: FA250313 48510
+reference: '52925'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1193.33
+total_ttc: 1432
+type: impaye
+updated_at: '2026-06-24T16:31:15.888Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250313_48510/standard/FA250313 48510 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

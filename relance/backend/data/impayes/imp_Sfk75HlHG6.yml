@@ -1,0 +1,49 @@
+adresse_bien: rue des Vento Maison MAGLIANO
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: PAIEMENT AGENCE LISTING
+contact_relance_id: cont_hrMYJ27uzV
+created_at: '2026-06-24T16:31:08.005Z'
+date_echeance: '2025-07-03'
+date_import: '2026-07-09T07:05:07.238Z'
+date_piece: '2025-07-03'
+donneur_ordre_id: null
+donneur_ordre_nom: SIMULA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_Sfk75HlHG6
+id_dossier: '39776'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49164
+numero_dossier: 53782
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SIMULA
+proprietaire_prenom: null
+ref_piece: FA250703 49164
+reference: '53782'
+reste_a_payer: 315
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 262.5
+total_ttc: 315
+type: impaye
+updated_at: '2026-06-24T16:33:34.276Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250703_49164/standard/FA250703 49164
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

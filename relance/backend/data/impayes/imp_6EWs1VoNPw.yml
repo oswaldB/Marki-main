@@ -1,0 +1,49 @@
+adresse_bien: 13 bis route de Sospel Le Saint Charles
+apporteur_id: cont_T6mfFfdSuM
+apporteur_nom: SCP SEGUIN-MARTOS-REICHENECKER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_4z1CcMOMjL
+created_at: '2026-06-25T13:55:38.430Z'
+date_echeance: '2026-07-02'
+date_import: '2026-07-09T07:05:12.197Z'
+date_piece: '2026-06-25'
+donneur_ordre_id: null
+donneur_ordre_nom: INDIVISION GUIDOBONO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_6EWs1VoNPw
+id_dossier: '42021'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51191
+numero_dossier: 56027
+payer_id: cont_4z1CcMOMjL
+payeur_civilite: ''
+payeur_email: guidobonomichel@gmail.com
+payeur_nom: INDIVISION GUIDOBONO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: INDIVISION GUIDOBONO
+proprietaire_prenom: null
+ref_piece: FA260625 51191
+reference: '56027'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-07-01T08:50:00.215Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260625_51191/standard/FA260625 51191 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

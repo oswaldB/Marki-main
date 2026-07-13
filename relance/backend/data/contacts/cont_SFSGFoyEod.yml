@@ -1,0 +1,29 @@
+$loki: 5468
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:25.546Z'
+email: silviasforzini47@gmail.com
+id: cont_SFSGFoyEod
+impaye_ids:
+  - imp_KEBQsYu05O
+is_blacklisted: false
+meta:
+  created: 1783580700310
+  revision: 0
+  version: 0
+nom: SFORZINI
+prenom: Silvia
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0785720568'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:24.357Z'

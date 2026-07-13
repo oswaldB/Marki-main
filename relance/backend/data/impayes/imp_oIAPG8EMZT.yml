@@ -1,0 +1,49 @@
+adresse_bien: 47 boulevard Guynemer Les flots d'Or
+apporteur_id: cont_YDmNKmyhG6
+apporteur_nom: AGENCE MARCHETTI MENTON
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_V3JVND44Ww
+created_at: '2026-06-24T16:31:46.948Z'
+date_echeance: '2023-11-23'
+date_import: '2026-07-09T07:05:10.904Z'
+date_piece: '2023-11-23'
+donneur_ordre_id: null
+donneur_ordre_nom: GRIFONI
+donneur_ordre_prenom: Giorgia
+email_index: 0
+facture_soldee: true
+id: imp_oIAPG8EMZT
+id_dossier: '32304'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45666
+numero_dossier: 49301
+payer_id: cont_V3JVND44Ww
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: GRIFONI
+payeur_prenom: Giorgia
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GRIFONI
+proprietaire_prenom: Giorgia
+ref_piece: FA231123 45666
+reference: '49301'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:46.948Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231123_45666/standard/FA231123 45666
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

@@ -1,0 +1,49 @@
+adresse_bien: 18 rue Morgan Le Morgan
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_VmAqOynH2c
+created_at: '2026-06-24T16:31:40.943Z'
+date_echeance: '2024-02-22'
+date_import: '2026-07-09T07:05:10.358Z'
+date_piece: '2024-02-22'
+donneur_ordre_id: null
+donneur_ordre_nom: GAMBA et MORALI
+donneur_ordre_prenom: Giancarlo et Patrizia
+email_index: 0
+facture_soldee: true
+id: imp_SiifRsCEwm
+id_dossier: '32956'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46172
+numero_dossier: 49953
+payer_id: cont_VmAqOynH2c
+payeur_civilite: ''
+payeur_email: giancarlogamba@libero.it
+payeur_nom: GAMBA et MORALI
+payeur_prenom: Giancarlo et Patrizia
+payeur_telephone: '00393478915532'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GAMBA et MORALI
+proprietaire_prenom: Giancarlo et Patrizia
+ref_piece: FA240222 46172
+reference: '49953'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:40.943Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240222_46172/standard/FA240222 46172
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

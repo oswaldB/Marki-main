@@ -1,0 +1,49 @@
+adresse_bien: 50 Corniche Fleurie Résidence Antinea Bâtiment Les Anagallis
+apporteur_id: cont_h38qdiRKRI
+apporteur_nom: SOGETRANS
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_AHBIrYYctl
+created_at: '2026-06-24T16:31:33.026Z'
+date_echeance: '2024-06-04'
+date_import: '2026-07-09T07:05:09.744Z'
+date_piece: '2024-06-04'
+donneur_ordre_id: null
+donneur_ordre_nom: SCHEER
+donneur_ordre_prenom: Luc
+email_index: 0
+facture_soldee: true
+id: imp_Sd8WV0VXCQ
+id_dossier: '35802'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46804
+numero_dossier: 50806
+payer_id: cont_h38qdiRKRI
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: SOGETRANS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCHEER
+proprietaire_prenom: Luc
+ref_piece: FA240604 46804
+reference: '50806'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 145.17
+total_ttc: 174.2
+type: impaye
+updated_at: '2026-06-24T16:31:33.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240604_46804/standard/FA240604 46804 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

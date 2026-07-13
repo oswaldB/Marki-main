@@ -1,0 +1,49 @@
+adresse_bien: 14 boulevard Princesse Grace de Monaco L'Agrianthe
+apporteur_id: cont_blb2dRpoQ7
+apporteur_nom: AZUR MEDITERRANEE VILLEFRANCHE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_soqMGP1mGE
+created_at: '2026-06-24T16:31:23.011Z'
+date_echeance: '2024-11-07'
+date_import: '2026-07-09T07:05:08.698Z'
+date_piece: '2024-11-07'
+donneur_ordre_id: null
+donneur_ordre_nom: CLINTWORTH
+donneur_ordre_prenom: Mark
+email_index: 0
+facture_soldee: true
+id: imp_HbBacHXph7
+id_dossier: '37968'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47757
+numero_dossier: 51974
+payer_id: cont_soqMGP1mGE
+payeur_civilite: ''
+payeur_email: 'clintwor@gmail.com '
+payeur_nom: CLINTWORTH
+payeur_prenom: Mark
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CLINTWORTH
+proprietaire_prenom: Mark
+ref_piece: FA241107 47757
+reference: '51974'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:23.011Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241107_47757/standard/FA241107 47757
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

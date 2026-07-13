@@ -1,0 +1,49 @@
+adresse_bien: 206 avenue Louis Pasteur Le Primavera
+apporteur_id: cont_pfsqighWA2
+apporteur_nom: INTER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:57.957Z'
+date_echeance: '2023-06-12'
+date_import: '2026-07-09T07:05:11.971Z'
+date_piece: '2023-06-12'
+donneur_ordre_id: null
+donneur_ordre_nom: RABSCINI
+donneur_ordre_prenom: Edoardo
+email_index: 0
+facture_soldee: true
+id: imp_4eseO29HDg
+id_dossier: '29017'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44591
+numero_dossier: 48003
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: RABSCINI
+proprietaire_prenom: Edoardo
+ref_piece: FA230612 44591
+reference: '48003'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.67
+total_ttc: 230
+type: impaye
+updated_at: '2026-06-24T16:31:57.957Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juin/FA230612_44591/standard/FA230612 44591 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

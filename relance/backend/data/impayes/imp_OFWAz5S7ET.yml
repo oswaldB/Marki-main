@@ -1,0 +1,49 @@
+adresse_bien: 108 avenue Simone Veil By my Car
+apporteur_id: cont_ye83ZIaf3y
+apporteur_nom: SELARL PELLIER LES MANDATAIRES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_6N7y5W1ZoF
+created_at: '2026-06-24T16:31:14.056Z'
+date_echeance: '2025-03-25'
+date_import: '2026-07-09T07:05:07.824Z'
+date_piece: '2025-03-25'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL ELISA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_OFWAz5S7ET
+id_dossier: '38891'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48586
+numero_dossier: 52897
+payer_id: cont_ye83ZIaf3y
+payeur_civilite: ''
+payeur_email: mariesophie.pellier@etude-pellier.com
+payeur_nom: SELARL PELLIER LES MANDATAIRES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SARL ELISA
+proprietaire_prenom: null
+ref_piece: FA250325 48586
+reference: '52897'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 437.5
+total_ttc: 525
+type: impaye
+updated_at: '2026-06-24T16:31:14.056Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250325_48586/standard/FA250325 48586 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

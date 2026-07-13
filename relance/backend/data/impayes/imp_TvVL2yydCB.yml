@@ -1,0 +1,49 @@
+adresse_bien: 14 boulevard Jean-Baptiste Verany
+apporteur_id: cont_lDP9VJ9ene
+apporteur_nom: AGENCE LMI ARTHURIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "17/06 : message téléphonique + mail avec factures\r\n10/06 : relance mail du 27/05"
+contact_relance_id: cont_cGVcXEzjHM
+created_at: '2026-06-24T16:31:54.055Z'
+date_echeance: '2023-08-04'
+date_import: '2026-07-09T07:05:11.610Z'
+date_piece: '2023-08-04'
+donneur_ordre_id: null
+donneur_ordre_nom: CARAVECCHIA
+donneur_ordre_prenom: Aurelie
+email_index: 0
+facture_soldee: true
+id: imp_TvVL2yydCB
+id_dossier: '29425'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44936
+numero_dossier: 48411
+payer_id: cont_lDP9VJ9ene
+payeur_civilite: ''
+payeur_email: contact@agence-lmi.com
+payeur_nom: AGENCE LMI ARTHURIMMO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CARAVECCHIA
+proprietaire_prenom: Aurelie
+ref_piece: FA230804 44936
+reference: '48411'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 121.83
+total_ttc: 146.2
+type: impaye
+updated_at: '2026-06-24T16:31:54.055Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230804_44936/standard/FA230804 44936 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

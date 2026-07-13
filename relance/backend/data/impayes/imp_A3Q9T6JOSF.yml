@@ -1,0 +1,49 @@
+adresse_bien: 37 avenue Varavilla L'Apollon
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_LAFN8dUECJ
+created_at: '2026-06-24T16:31:25.932Z'
+date_echeance: '2024-09-26'
+date_import: '2026-07-09T07:05:08.966Z'
+date_piece: '2024-09-26'
+donneur_ordre_id: null
+donneur_ordre_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_A3Q9T6JOSF
+id_dossier: '37684'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47524
+numero_dossier: 51690
+payer_id: cont_9KF7R3DCug
+payeur_civilite: ''
+payeur_email: info@republique-beausoleil.com
+payeur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LAUNAY
+proprietaire_prenom: Loic
+ref_piece: FA240926 47524
+reference: '51690'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 87.5
+total_ttc: 105
+type: impaye
+updated_at: '2026-06-24T16:31:25.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240926_47524/standard/FA240926 47524
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

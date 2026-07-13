@@ -1,0 +1,49 @@
+adresse_bien: 10 rue Paul Morillot Alexandra Palace
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "01/04 RELANCE\r\n\r\nLe chèque ne devrait pas tarder à arriver au bureau."
+contact_relance_id: cont_88uxdB4Vhg
+created_at: '2026-06-24T16:30:51.960Z'
+date_echeance: '2026-03-20'
+date_import: '2026-07-09T07:05:05.682Z'
+date_piece: '2026-03-13'
+donneur_ordre_id: null
+donneur_ordre_nom: SCHMIDLIN
+donneur_ordre_prenom: Marie-France
+email_index: 0
+facture_soldee: true
+id: imp_tdQVzMLQeG
+id_dossier: '41364'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50610
+numero_dossier: 55370
+payer_id: cont_88uxdB4Vhg
+payeur_civilite: ''
+payeur_email: mariefrance.schmidlin@gmail.com
+payeur_nom: SCHMIDLIN
+payeur_prenom: Marie-France
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCHMIDLIN
+proprietaire_prenom: Marie-France
+ref_piece: FA260313 50610
+reference: '55370'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 91.67
+total_ttc: 110
+type: impaye
+updated_at: '2026-06-24T16:30:51.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260313_50610/standard/FA260313 50610 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

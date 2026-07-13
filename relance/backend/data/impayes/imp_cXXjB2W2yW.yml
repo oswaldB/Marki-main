@@ -1,0 +1,49 @@
+adresse_bien: 71 avenue Cernuschi Villa Farnese
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_OcrOVDgsUB
+created_at: '2026-06-24T16:31:05.992Z'
+date_echeance: '2025-08-07'
+date_import: '2026-07-09T07:05:07.009Z'
+date_piece: '2025-08-07'
+donneur_ordre_id: null
+donneur_ordre_nom: MESSE
+donneur_ordre_prenom: Yvette et Maurice
+email_index: 0
+facture_soldee: true
+id: imp_cXXjB2W2yW
+id_dossier: '40015'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49355
+numero_dossier: 54021
+payer_id: cont_OcrOVDgsUB
+payeur_civilite: ''
+payeur_email: y.messe@laposte.net
+payeur_nom: MESSE
+payeur_prenom: Yvette et Maurice
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MESSE
+proprietaire_prenom: Yvette et Maurice
+ref_piece: FA250807 49355
+reference: '54021'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 100
+total_ttc: 120
+type: impaye
+updated_at: '2026-06-24T16:31:05.992Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250807_49355/standard/FA250807 49355 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

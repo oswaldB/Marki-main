@@ -1,0 +1,29 @@
+$loki: 5678
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:27.545Z'
+email: pas06500@gmail.com
+id: cont_d8ybTOCD2t
+impaye_ids:
+  - imp_soFVpU1K2X
+is_blacklisted: false
+meta:
+  created: 1783580700398
+  revision: 0
+  version: 0
+nom: LE MA JO
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:26.344Z'

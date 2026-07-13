@@ -1,0 +1,49 @@
+adresse_bien: 99 chemin de la Costière Les Coteaux de la Madeleine  Bâtiment N
+apporteur_id: cont_HKy4C2gxUH
+apporteur_nom: ARTHURIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_DYswbVC3Zt
+created_at: '2026-06-24T16:31:37.095Z'
+date_echeance: '2024-04-05'
+date_import: '2026-07-09T07:05:10.089Z'
+date_piece: '2024-04-05'
+donneur_ordre_id: null
+donneur_ordre_nom: ISSEL
+donneur_ordre_prenom: Céline
+email_index: 0
+facture_soldee: true
+id: imp_xMitWSTaEI
+id_dossier: '34349'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46426
+numero_dossier: 50348
+payer_id: cont_DYswbVC3Zt
+payeur_civilite: ''
+payeur_email: celine06410@hotmail.fr
+payeur_nom: ISSEL
+payeur_prenom: Céline
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ISSEL
+proprietaire_prenom: Céline
+ref_piece: FA240405 46426
+reference: '50348'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:37.095Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240405_46426/standard/FA240405 46426
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 280 avenue Michel Jourdan Green Domaine  Bâtiment J
+apporteur_id: cont_h38qdiRKRI
+apporteur_nom: SOGETRANS
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06150'
+commentaire_piece: ''
+contact_relance_id: cont_5jPnBooyLW
+created_at: '2026-06-24T16:31:52.037Z'
+date_echeance: '2023-09-08'
+date_import: '2026-07-09T07:05:11.417Z'
+date_piece: '2023-09-08'
+donneur_ordre_id: null
+donneur_ordre_nom: BOULANGER
+donneur_ordre_prenom: 'Edwin Marie '
+email_index: 0
+facture_soldee: true
+id: imp_LALfGrIRhW
+id_dossier: '30669'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45159
+numero_dossier: 48659
+payer_id: cont_h38qdiRKRI
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: SOGETRANS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BOULANGER
+proprietaire_prenom: 'Edwin Marie '
+ref_piece: FA230908 45159
+reference: '48659'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 90
+total_ttc: 108
+type: impaye
+updated_at: '2026-06-24T16:31:52.037Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230908_45159/standard/FA230908 45159
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CANNES

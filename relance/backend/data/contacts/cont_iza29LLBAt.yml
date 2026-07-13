@@ -1,0 +1,39 @@
+$loki: 6765
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-25T13:55:36.729Z'
+email: gestionivd@gmail.com
+id: cont_iza29LLBAt
+impaye_ids:
+  - imp_BuP4vlfEup
+is_blacklisted: false
+meta:
+  created: 1783580700737
+  revision: 1
+  updated: 1783580718418
+  version: 0
+nom: SCI CARMELO
+prenom: ''
+relance_ids:
+  - rel_M0RHU9uKIb
+  - rel_Tr54qU8j2B
+  - rel_d98xlb6iPW
+  - rel_dLSLXAfQL1
+  - rel_bRkAsBVQav
+  - rel_zkiMyCXEdB
+  - rel_MuzOuGiXJ0
+  - rel_d8etApeYte
+  - rel_uqN8x5pLs9
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:36.384Z'

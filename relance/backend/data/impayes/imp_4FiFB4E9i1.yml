@@ -1,0 +1,49 @@
+adresse_bien: 11 bis avenue Aristide Briand Palais des Fleurs
+apporteur_id: cont_4Zc7DsPc6Y
+apporteur_nom: EDOUARD VII REAL ESTATE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_iBaX7DUq4F
+created_at: '2026-06-24T16:31:43.076Z'
+date_echeance: '2024-01-23'
+date_import: '2026-07-09T07:05:10.617Z'
+date_piece: '2024-01-23'
+donneur_ordre_id: null
+donneur_ordre_nom: SARTORI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_4FiFB4E9i1
+id_dossier: '32697'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45970
+numero_dossier: 49694
+payer_id: cont_iBaX7DUq4F
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SARTORIS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SARTORI
+proprietaire_prenom: null
+ref_piece: FA240123 45970
+reference: '49694'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:43.076Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240123_45970/standard/FA240123 45970
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 34 avenue Auber  Palais Navarre
+apporteur_id: cont_lKyCEvLzZh
+apporteur_nom: 'FONCIA RIVIERA ARSON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "19/01 relance via comptabilité\r\nfacture régler à la fin du mois"
+contact_relance_id: cont_jAcVSB6zZc
+created_at: '2026-06-24T16:30:57.035Z'
+date_echeance: '2025-12-25'
+date_import: '2026-07-09T07:05:06.236Z'
+date_piece: '2025-12-18'
+donneur_ordre_id: null
+donneur_ordre_nom: VIVIEN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_YtrfDkgn8F
+id_dossier: '40870'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50146
+numero_dossier: 54876
+payer_id: cont_jAcVSB6zZc
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: VIVIEN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: VIVIEN
+proprietaire_prenom: null
+ref_piece: FA251218 50146
+reference: '54876'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 164.58
+total_ttc: 197.5
+type: impaye
+updated_at: '2026-06-24T16:30:57.035Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251218_50146/standard/FA251218 50146
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

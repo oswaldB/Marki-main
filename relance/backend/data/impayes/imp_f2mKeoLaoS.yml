@@ -1,0 +1,49 @@
+adresse_bien: 15 rue de Sospel
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "SCI LA LORRAINE\r\n15 rue de Sospel\r\n06300 Nice "
+contact_relance_id: cont_m6Qd7FuFhK
+created_at: '2026-06-24T16:30:48.044Z'
+date_echeance: '2026-05-26'
+date_import: '2026-07-09T07:05:05.343Z'
+date_piece: '2026-05-19'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI LA LORRAINE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_f2mKeoLaoS
+id_dossier: '41773'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50947
+numero_dossier: 55779
+payer_id: cont_m6Qd7FuFhK
+payeur_civilite: ''
+payeur_email: gerardpatrin@yahoo.com
+payeur_nom: SCI LA LORRAINE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI LA LORRAINE
+proprietaire_prenom: null
+ref_piece: FA260519 50947
+reference: '55779'
+reste_a_payer: 512
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 426.67
+total_ttc: 512
+type: impaye
+updated_at: '2026-06-24T16:33:33.254Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260519_50947/standard/FA260519 50947 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

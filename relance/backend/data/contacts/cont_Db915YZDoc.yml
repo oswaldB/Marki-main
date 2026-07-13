@@ -1,0 +1,32 @@
+$loki: 1871
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:51.563Z'
+email: arnaud.mirey@gmail.com
+id: cont_Db915YZDoc
+impaye_ids:
+  - imp_1AZlaBHvEN
+  - imp_8QFi5OTgQK
+  - imp_LvcQ64Fysh
+  - imp_WntwQGw3b5
+is_blacklisted: false
+meta:
+  created: 1783580699087
+  revision: 0
+  version: 0
+nom: MIREY
+prenom: Arnaud
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:51.323Z'

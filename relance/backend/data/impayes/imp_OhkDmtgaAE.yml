@@ -1,0 +1,49 @@
+adresse_bien: 72 chemin de Pallarea Lieu-dit le Collet Bâtiment
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06440'
+commentaire_piece: ''
+contact_relance_id: cont_KUqOb7HwEm
+created_at: '2026-06-24T16:31:09.033Z'
+date_echeance: '2025-06-18'
+date_import: '2026-07-09T07:05:07.344Z'
+date_piece: '2025-06-18'
+donneur_ordre_id: null
+donneur_ordre_nom: ROUBIN et LABORDE
+donneur_ordre_prenom: Jennifer, Chantal et Anthony
+email_index: 0
+facture_soldee: true
+id: imp_OhkDmtgaAE
+id_dossier: '39652'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49070
+numero_dossier: 53658
+payer_id: cont_KUqOb7HwEm
+payeur_civilite: ''
+payeur_email: jennifer.roubin@gmail.com
+payeur_nom: ROUBIN et LABORDE
+payeur_prenom: Jennifer, Chantal et Anthony
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SEYTRE et LAUDEBAT
+proprietaire_prenom: Coralie et Laurent
+ref_piece: FA250618 49070
+reference: '53658'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 833.33
+total_ttc: 1000
+type: impaye
+updated_at: '2026-06-24T16:31:09.033Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250618_49070/standard/FA250618 49070 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BLAUSASC

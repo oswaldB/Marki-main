@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Benoit Bunico
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_ltpJLHGtSZ
+created_at: '2026-06-24T16:31:03.078Z'
+date_echeance: '2025-10-02'
+date_import: '2026-07-09T07:05:06.796Z'
+date_piece: '2025-09-25'
+donneur_ordre_id: null
+donneur_ordre_nom: COPROPRIETE 2 RUE BENOIT BUNICO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_UkrJ7qWKyl
+id_dossier: '34534'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49588
+numero_dossier: 50533
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: COPROPRIETE 2 RUE BENOIT BUNICO
+proprietaire_prenom: null
+ref_piece: FA250925 49588
+reference: '50533'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 500
+total_ttc: 600
+type: impaye
+updated_at: '2026-06-24T16:31:03.078Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250925_49588/standard/FA250925 49588
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 105 avenue Léopold II Le Brasilia
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_956MlqiCXD
+created_at: '2026-06-24T16:31:28.964Z'
+date_echeance: '2024-08-09'
+date_import: '2026-07-09T07:05:09.324Z'
+date_piece: '2024-08-09'
+donneur_ordre_id: null
+donneur_ordre_nom: FREED
+donneur_ordre_prenom: Barbara
+email_index: 0
+facture_soldee: true
+id: imp_WYUpAFe7iR
+id_dossier: '36334'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47217
+numero_dossier: 51338
+payer_id: cont_956MlqiCXD
+payeur_civilite: ''
+payeur_email: bf0u@andrew.cmu.edu
+payeur_nom: FREED
+payeur_prenom: Barbara
+payeur_telephone: '0012156016123'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FREED
+proprietaire_prenom: Barbara
+ref_piece: FA240809 47217
+reference: '51338'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 408.33
+total_ttc: 490
+type: impaye
+updated_at: '2026-06-24T16:31:28.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240809_47217/standard/FA240809 47217 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

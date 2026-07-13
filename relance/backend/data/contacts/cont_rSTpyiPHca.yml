@@ -1,0 +1,39 @@
+$loki: 2638
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:58.567Z'
+email: castellacci@nmcg.fr
+id: cont_rSTpyiPHca
+impaye_ids:
+  - imp_7msBDdihz4
+  - imp_ofUk7wLnN8
+is_blacklisted: false
+meta:
+  created: 1783580699329
+  revision: 1
+  updated: 1783580716389
+  version: 0
+nom: SCI 11 RUE ALEXANDRE MARI
+prenom: ''
+relance_ids:
+  - rel_m552fOBsy5
+  - rel_Mj9McaMjAy
+  - rel_AqqpGFLeeU
+  - rel_rDnCX3q7w2
+  - rel_tiYRfWeqsR
+  - rel_LAIpyyZSHJ
+  - rel_ZtAWJRFuzi
+  - rel_l1ugGRwz9v
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:58.329Z'

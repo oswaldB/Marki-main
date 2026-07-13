@@ -1,0 +1,49 @@
+adresse_bien: 24 rue Gounod Le Monteverdi
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:31:34.031Z'
+date_echeance: '2024-05-23'
+date_import: '2026-07-09T07:05:09.830Z'
+date_piece: '2024-05-23'
+donneur_ordre_id: null
+donneur_ordre_nom: AGOSTINI
+donneur_ordre_prenom: PINUCCIO
+email_index: 0
+facture_soldee: true
+id: imp_CGgWvdbycF
+id_dossier: '34352'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46720
+numero_dossier: 50351
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: AGOSTINI
+proprietaire_prenom: PINUCCIO
+ref_piece: FA240523 46720
+reference: '50351'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 3145.4
+total_ttc: 3774.48
+type: impaye
+updated_at: '2026-06-24T16:31:34.031Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240523_46720/standard/FA240523 46720 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 6 bis avenue Alfred Borriglione
+apporteur_id: cont_2WjsqwL5XV
+apporteur_nom: A2 IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_QvcKUMxMli
+created_at: '2026-06-24T16:31:00.879Z'
+date_echeance: '2025-11-06'
+date_import: '2026-07-09T07:05:06.513Z'
+date_piece: '2025-10-30'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC 6BIS ALFRED BORRIGLIONE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_DIZfjHC2Au
+id_dossier: '40472'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49852
+numero_dossier: 54478
+payer_id: cont_QvcKUMxMli
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SDC 6BIS ALFRED BORRIGLIONE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SDC 6BIS ALFRED BORRIGLIONE
+proprietaire_prenom: null
+ref_piece: FA251030 49852
+reference: '54478'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:00.879Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251030_49852/standard/FA251030 49852
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

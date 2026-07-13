@@ -1,0 +1,49 @@
+adresse_bien: 8bis boulevard du Fossan
+apporteur_id: cont_cFjIPWR9lP
+apporteur_nom: SUD FINANCES CONSEIL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_eOuocJEdtq
+created_at: '2026-06-24T16:31:47.976Z'
+date_echeance: '2023-11-09'
+date_import: '2026-07-09T07:05:11.026Z'
+date_piece: '2023-11-09'
+donneur_ordre_id: null
+donneur_ordre_nom: FOUCHER / AMADOS
+donneur_ordre_prenom: Chiara et Yoan
+email_index: 0
+facture_soldee: true
+id: imp_AA6dKl7UNr
+id_dossier: '32145'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45550
+numero_dossier: 49142
+payer_id: cont_cFjIPWR9lP
+payeur_civilite: ''
+payeur_email: leanne.viciana@sfcmenton.com
+payeur_nom: SUD FINANCES CONSEIL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FOUCHER / AMADOS
+proprietaire_prenom: Chiara et Yoan
+ref_piece: FA231109 45550
+reference: '49142'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:47.976Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231109_45550/standard/FA231109 45550
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

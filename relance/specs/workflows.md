@@ -81,6 +81,10 @@ Le backend utilise une **Flat Files Database** avec les principes suivants :
 
 ### Workflows backend
 
+**Opérations CRUD natives** (via `flat-file-db.js`) :
+- `GET /api/factures` → `db.query('factures')` avec filtres/pagination
+- `GET /api/factures/:id` → `db.read('factures', id)`
+
 | Workflow | Dossier spec | Description |
 |----------|--------------|-------------|
 | `query-factures` | `specs/_app/backend/workflows/query-factures/` | Query LokiJS avec filtres, tri, pagination |
@@ -99,6 +103,10 @@ Le backend utilise une **Flat Files Database** avec les principes suivants :
 | `afficher-solde` | `specs/_app/frontend/fiche-client/workflows/afficher-solde/` | Calculer et afficher le solde débiteur |
 
 ### Workflows backend
+
+**Opérations CRUD natives** (via `flat-file-db.js`) :
+- `GET /api/payers` → `db.query('payers')`
+- `GET /api/payers/:id` → `db.read('payers', id)`
 
 | Workflow | Dossier spec | Description |
 |----------|--------------|-------------|
@@ -157,9 +165,15 @@ Le backend utilise une **Flat Files Database** avec les principes suivants :
 
 ### Workflows backend
 
+**Opérations CRUD natives** (via `flat-file-db.js`) :
+- `GET /api/relances` → `db.query('relances')` avec filtres
+- `POST /api/relances` → `db.create('relances', {...})` avec validation basique
+
 | Workflow | Dossier spec | Description |
 |----------|--------------|-------------|
-| `send-email-smtp` | `specs/_app/backend/workflows/send-email-smtp/` | Envoi réel via SMTP avec retry |
+| `send-emails` | `specs/workflows/backend/send-emails.md` | Envoi SMTP réel avec retry |
+| `relances-validate` | `specs/workflows/backend/relances-validate.md` | Validation + envoi conditionnel |
+| `relances-cancel` | `specs/workflows/backend/relances-cancel.md` | Annulation relance programmée |
 | `log-relance` | `specs/_app/backend/workflows/log-relance/` | Création fichier YAML de log |
 
 ---
@@ -184,9 +198,16 @@ Le backend utilise une **Flat Files Database** avec les principes suivants :
 
 ### Workflows backend
 
+**Opérations CRUD natives** (via `flat-file-db.js`) :
+- `GET /api/impayes` → `db.query('impayes')`
+- `GET /api/impayes/:id` → `db.read('impayes', id)`
+
 | Workflow | Dossier spec | Description |
 |----------|--------------|-------------|
-| `toggle-blacklist` | `specs/_app/backend/workflows/toggle-blacklist/` | Update YAML impaye avec locking |
+| `impayes-suspend` | `specs/workflows/backend/impayes-suspend.md` | Suspendre + annuler relances |
+| `impayes-unsuspend` | `specs/workflows/backend/impayes-unsuspend.md` | Réactiver + régénérer relances |
+| `contacts-toggle-blacklist` | `specs/workflows/backend/contacts-toggle-blacklist.md` | Toggle blacklist + cascade annulation |
+| `generate-relances` | `specs/workflows/backend/generate-relances.md` | Génération automatique depuis impayés |
 | `regenerate-relances-contact` | `specs/_app/backend/workflows/regenerate-relances-contact/` | Régénère relances après blacklist/unblacklist |
 
 ---
@@ -214,6 +235,11 @@ Le backend utilise une **Flat Files Database** avec les principes suivants :
 | `reorder-sequences` | `specs/_app/frontend/config-sequences/workflows/reorder-sequences/` | Changer ordre des séquences |
 
 ### Workflows backend
+
+**Opérations CRUD natives** (via `flat-file-db.js`) :
+- `GET /api/sequences` → `db.query('sequences')`
+- `POST /api/sequences` → `db.create('sequences', {...})`
+- `PUT /api/sequences/:id` → `db.update('sequences', id, {...})`
 
 | Workflow | Dossier spec | Description |
 |----------|--------------|-------------|
@@ -260,9 +286,10 @@ Le backend utilise une **Flat Files Database** avec les principes suivants :
 |------|--------|-------------|
 | Frontend écran | ~30 | Composants AlpineJS par écran |
 | Frontend global | 7 | Utilitaires réutilisables |
-| Backend API | ~15 | Endpoints Express avec LokiJS |
+| Backend API | ~6 | Workflows métier (hors CRUD natif) |
+| Backend CRUD | Natif | Via `flat-file-db.js` (search, read, update) |
 | Backend CRON | 3 | Jobs quotidiens/automatiques |
-| **Total** | **~55** | |
+| **Total** | **~46** | |
 
 ---
 
@@ -271,34 +298,47 @@ Le backend utilise une **Flat Files Database** avec les principes suivants :
 ### Factures
 | Méthode | Endpoint | Description |
 |---------|----------|-------------|
-| GET | `/api/factures` | Liste avec pagination/filtres |
-| GET | `/api/factures/:id` | Détail facture |
-| POST | `/api/factures` | Créer facture (YAML) |
-| PUT | `/api/factures/:id` | Modifier facture (avec lock) |
-| DELETE | `/api/factures/:id` | Supprimer facture |
+| GET | `/api/factures` | Liste avec pagination/filtres (natif) |
+| GET | `/api/factures/:id` | Détail facture (natif) |
+| POST | `/api/factures` | Créer facture (natif) |
+| PUT | `/api/factures/:id` | Modifier facture (natif) |
+| DELETE | `/api/factures/:id` | Supprimer facture (natif) |
 
 ### Payers
 | Méthode | Endpoint | Description |
 |---------|----------|-------------|
-| GET | `/api/payers` | Liste payers |
-| GET | `/api/payers/:id` | Détail avec factures |
-| POST | `/api/payers` | Créer payer |
-| PUT | `/api/payers/:id` | Modifier payer |
-| GET | `/api/payers/:id/factures` | Factures du payer |
+| GET | `/api/payers` | Liste payers (natif) |
+| GET | `/api/payers/:id` | Détail avec factures (natif) |
+| POST | `/api/payers` | Créer payer (natif) |
+| PUT | `/api/payers/:id` | Modifier payer (natif) |
+| GET | `/api/payers/:id/factures` | Factures du payer (natif) |
 
 ### Impayés
 | Méthode | Endpoint | Description |
 |---------|----------|-------------|
-| GET | `/api/impayes` | Liste impayés |
-| PUT | `/api/impayes/:id/blacklist` | Toggle blacklist |
-| GET | `/api/impayes/blacklistes` | Liste blacklistés |
+| GET | `/api/impayes` | Liste impayés (natif) |
+| GET | `/api/impayes/:id` | Détail impayé (natif) |
+| POST | `/api/impayes/:id/suspend` | Suspendre (workflow) |
+| POST | `/api/impayes/:id/unsuspend` | Réactiver (workflow) |
+| POST | `/api/contacts/:id/toggle-blacklist` | Toggle blacklist (workflow) |
+| GET | `/api/impayes/blacklistes` | Liste blacklistés (natif) |
 
 ### Relances
 | Méthode | Endpoint | Description |
 |---------|----------|-------------|
-| GET | `/api/relances` | Liste relances |
-| POST | `/api/relances` | Créer relance |
-| POST | `/api/relances/:id/send` | Envoyer email |
+| GET | `/api/relances` | Liste relances (natif) |
+| POST | `/api/relances` | Créer relance (natif) |
+| POST | `/api/relances/:id/validate` | Valider relance (workflow) |
+| POST | `/api/relances/:id/cancel` | Annuler relance (workflow) |
+| POST | `/api/relances/:id/send` | Envoyer email (workflow) |
+
+### Séquences
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/api/sequences` | Liste séquences (natif) |
+| POST | `/api/sequences` | Créer séquence (natif) |
+| PUT | `/api/sequences/:id` | Modifier séquence (natif) |
+| DELETE | `/api/sequences/:id` | Supprimer séquence (natif) |
 
 ### Dashboard
 | Méthode | Endpoint | Description |

@@ -1,0 +1,49 @@
+adresse_bien: 23 boulevard de la Corne d'Or
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_65TyGpOcQ5
+created_at: '2026-06-24T16:30:51.989Z'
+date_echeance: '2026-03-20'
+date_import: '2026-07-09T07:05:05.692Z'
+date_piece: '2026-03-13'
+donneur_ordre_id: null
+donneur_ordre_nom: GALBOIS
+donneur_ordre_prenom: Charles
+email_index: 0
+facture_soldee: true
+id: imp_D34HCfnAGe
+id_dossier: '41387'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50607
+numero_dossier: 55393
+payer_id: cont_65TyGpOcQ5
+payeur_civilite: ''
+payeur_email: chgalbois@gmail.com
+payeur_nom: GALBOIS
+payeur_prenom: Charles
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GALBOIS
+proprietaire_prenom: Charles
+ref_piece: FA260313 50607
+reference: '55393'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 183.33
+total_ttc: 220
+type: impaye
+updated_at: '2026-06-24T16:30:51.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260313_50607/standard/FA260313 50607 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

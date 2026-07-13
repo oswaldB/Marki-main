@@ -1,0 +1,49 @@
+adresse_bien: 16 rue de la Liberté
+apporteur_id: cont_AvZjNGS1n4
+apporteur_nom: PRADO IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:58.919Z'
+date_echeance: '2023-06-05'
+date_import: '2026-07-09T07:05:12.054Z'
+date_piece: '2023-06-05'
+donneur_ordre_id: null
+donneur_ordre_nom: 'INDIVISION ROUSTAN '
+donneur_ordre_prenom: chez Prado Immobilier
+email_index: 0
+facture_soldee: true
+id: imp_FDPCUmB6Gw
+id_dossier: '28941'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44536
+numero_dossier: 47927
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: 'INDIVISION ROUSTAN '
+proprietaire_prenom: chez Prado Immobilier
+ref_piece: FA230605 44536
+reference: '47927'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 358.33
+total_ttc: 430
+type: impaye
+updated_at: '2026-06-24T16:31:58.919Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juin/FA230605_44536/standard/FA230605 44536 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

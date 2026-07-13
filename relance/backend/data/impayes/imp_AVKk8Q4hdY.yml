@@ -1,0 +1,49 @@
+adresse_bien: 16 rue du Professeur Calmette
+apporteur_id: cont_rxtGcrWd4S
+apporteur_nom: TRANSAC FRANCE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_pHIgAMBdWV
+created_at: '2026-06-24T16:31:37.001Z'
+date_echeance: '2024-04-12'
+date_import: '2026-07-09T07:05:10.034Z'
+date_piece: '2024-04-12'
+donneur_ordre_id: null
+donneur_ordre_nom: GIRARDIN
+donneur_ordre_prenom: Nancy
+email_index: 0
+facture_soldee: true
+id: imp_AVKk8Q4hdY
+id_dossier: '34410'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46483
+numero_dossier: 50409
+payer_id: cont_pHIgAMBdWV
+payeur_civilite: ''
+payeur_email: girardinnancy@neuf.fr
+payeur_nom: GIRARDIN
+payeur_prenom: Nancy
+payeur_telephone: '0613413635'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GIRARDIN
+proprietaire_prenom: Nancy
+ref_piece: FA240412 46483
+reference: '50409'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1500
+total_ttc: 1800
+type: impaye
+updated_at: '2026-06-24T16:31:37.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240412_46483/standard/FA240412 46483
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

@@ -1,0 +1,49 @@
+adresse_bien: 4 avenue Joseph Giordan Clair Horizon
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:31:17.026Z'
+date_echeance: '2025-02-13'
+date_import: '2026-07-09T07:05:08.102Z'
+date_piece: '2025-02-13'
+donneur_ordre_id: null
+donneur_ordre_nom: SNEXI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_5Iymx0HJTW
+id_dossier: '38783'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48328
+numero_dossier: 52789
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FLAMARY
+proprietaire_prenom: Jean Jacques
+ref_piece: FA250213 48328
+reference: '52789'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2830.75
+total_ttc: 3396.9
+type: impaye
+updated_at: '2026-06-24T16:31:17.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250213_48328/standard/FA250213 48328
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

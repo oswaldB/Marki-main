@@ -1,0 +1,49 @@
+adresse_bien: 12-14 rue Morgan Center Palace
+apporteur_id: cont_mSwEw9rkRW
+apporteur_nom: 'EASY MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Fk1JJWHqIm
+created_at: '2026-06-25T13:55:38.430Z'
+date_echeance: '2026-07-02'
+date_import: '2026-07-09T07:05:12.191Z'
+date_piece: '2026-06-25'
+donneur_ordre_id: null
+donneur_ordre_nom: SCHIARETTI
+donneur_ordre_prenom: Bruno
+email_index: 0
+facture_soldee: true
+id: imp_tRasA6cE6p
+id_dossier: '42023'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51192
+numero_dossier: 56029
+payer_id: cont_Fk1JJWHqIm
+payeur_civilite: ''
+payeur_email: bschiaretti@outlook.it
+payeur_nom: SCHIARETTI
+payeur_prenom: Bruno
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCHIARETTI
+proprietaire_prenom: Bruno
+ref_piece: FA260625 51192
+reference: '56029'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-30T08:50:02.562Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260625_51192/standard/FA260625 51192 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

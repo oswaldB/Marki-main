@@ -1,0 +1,49 @@
+adresse_bien: 393 chemin des Rascas Les Hautes Terres
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06700'
+commentaire_piece: ''
+contact_relance_id: cont_jFr9S5AQYB
+created_at: '2026-06-24T16:30:53.898Z'
+date_echeance: '2026-02-20'
+date_import: '2026-07-09T07:05:05.843Z'
+date_piece: '2026-02-13'
+donneur_ordre_id: null
+donneur_ordre_nom: RICHEZ
+donneur_ordre_prenom: Sandra
+email_index: 0
+facture_soldee: true
+id: imp_rgQkKCgjIn
+id_dossier: '41151'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50468
+numero_dossier: 55157
+payer_id: cont_jFr9S5AQYB
+payeur_civilite: ''
+payeur_email: sandra.richez@hotmail.fr
+payeur_nom: RICHEZ
+payeur_prenom: Sandra
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: RICHEZ
+proprietaire_prenom: Sandra
+ref_piece: FA260213 50468
+reference: '55157'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:30:53.898Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260213_50468/standard/FA260213 50468
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SAINT-LAURENT-DU-VAR

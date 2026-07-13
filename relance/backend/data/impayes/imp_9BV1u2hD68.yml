@@ -1,0 +1,49 @@
+adresse_bien: 13 chemin des Revoires Eden Cap
+apporteur_id: cont_6KB3jgW9oc
+apporteur_nom: PROGEDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: "LISTING\r\n\r\n27/04 relance agence\r\n\r\n06/05 relance"
+contact_relance_id: cont_6hBUk6fPVB
+created_at: '2026-06-24T16:31:10.017Z'
+date_echeance: '2025-06-02'
+date_import: '2026-07-09T07:05:07.434Z'
+date_piece: '2025-06-02'
+donneur_ordre_id: null
+donneur_ordre_nom: MARTINELLI
+donneur_ordre_prenom: Luciana
+email_index: 0
+facture_soldee: false
+id: imp_9BV1u2hD68
+id_dossier: '39507'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48971
+numero_dossier: 53513
+payer_id: cont_6KB3jgW9oc
+payeur_civilite: ''
+payeur_email: accueil@progedi.com
+payeur_nom: PROGEDI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MARTINELLI
+proprietaire_prenom: Luciana
+ref_piece: FA250602 48971
+reference: '53513'
+reste_a_payer: 280
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:33:34.276Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250602_48971/standard/FA250602 48971 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

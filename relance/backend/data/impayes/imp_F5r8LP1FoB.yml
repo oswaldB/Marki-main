@@ -1,0 +1,49 @@
+adresse_bien: 9 avenue Balbi
+apporteur_id: cont_yqyjB3umBG
+apporteur_nom: ASSOCIATION ALC
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_sZwJM8e8H3
+created_at: '2026-06-24T16:31:35.937Z'
+date_echeance: '2024-05-02'
+date_import: '2026-07-09T07:05:09.929Z'
+date_piece: '2024-05-02'
+donneur_ordre_id: null
+donneur_ordre_nom: ASSOCIATION ALC
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_F5r8LP1FoB
+id_dossier: '34580'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46612
+numero_dossier: 50579
+payer_id: cont_yqyjB3umBG
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ASSOCIATION ALC
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ASSOCIATION ALC
+proprietaire_prenom: null
+ref_piece: FA240502 46612
+reference: '50579'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 738.33
+total_ttc: 886
+type: impaye
+updated_at: '2026-06-24T16:31:35.937Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240502_46612/standard/FA240502 46612 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

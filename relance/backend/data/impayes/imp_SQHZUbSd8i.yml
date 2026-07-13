@@ -1,0 +1,49 @@
+adresse_bien: 1125 boulevard Napoléon III Les Marinieres III
+apporteur_id: cont_iFl9ufNQqc
+apporteur_nom: VILLEFRANCHE Real Estate
+apporteur_prenom: ARTHURIMMO
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_3LHxY1XIoU
+created_at: '2026-06-24T16:30:51.989Z'
+date_echeance: '2026-03-20'
+date_import: '2026-07-09T07:05:05.705Z'
+date_piece: '2026-03-13'
+donneur_ordre_id: null
+donneur_ordre_nom: MOSCA
+donneur_ordre_prenom: Marco
+email_index: 0
+facture_soldee: true
+id: imp_SQHZUbSd8i
+id_dossier: '41371'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50606
+numero_dossier: 55377
+payer_id: cont_iFl9ufNQqc
+payeur_civilite: ''
+payeur_email: go@villefranche-realestate.fr
+payeur_nom: VILLEFRANCHE Real Estate
+payeur_prenom: ARTHURIMMO
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MOSCA
+proprietaire_prenom: Marco
+ref_piece: FA260313 50606
+reference: '55377'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:30:51.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260313_50606/standard/FA260313 50606 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

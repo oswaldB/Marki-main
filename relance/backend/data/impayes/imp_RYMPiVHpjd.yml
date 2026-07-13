@@ -1,0 +1,49 @@
+adresse_bien: 22 avenue Rivièra Palais Albion
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "21/07 : échange tél. ce jour avec agent immo (Mme FARRUGIO) => prop encore en gestion locative auprès de CITYA, locataires actuels partent de l'appartement le 30/07\r\nVa les recontacter\r\n\r\n01/07 : relance 1 proprio / cc : agence"
+contact_relance_id: cont_xzW2qovGye
+created_at: '2026-06-24T16:31:11.947Z'
+date_echeance: '2025-05-05'
+date_import: '2026-07-09T07:05:07.580Z'
+date_piece: '2025-05-05'
+donneur_ordre_id: null
+donneur_ordre_nom: RENSSEN
+donneur_ordre_prenom: Rienk et Karen
+email_index: 0
+facture_soldee: true
+id: imp_RYMPiVHpjd
+id_dossier: '39326'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48833
+numero_dossier: 53332
+payer_id: cont_xzW2qovGye
+payeur_civilite: ''
+payeur_email: rienk.renssen@gmail.com
+payeur_nom: RENSSEN
+payeur_prenom: Rienk et Karen
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: RENSSEN
+proprietaire_prenom: Rienk et Karen
+ref_piece: FA250505 48833
+reference: '53332'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 329.17
+total_ttc: 395
+type: impaye
+updated_at: '2026-06-24T16:31:11.947Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250505_48833/standard/FA250505 48833 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue Alfred Leroux L'Ecrin
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_NJVWMafeax
+created_at: '2026-06-24T16:30:46.099Z'
+date_echeance: '2026-06-19'
+date_import: '2026-07-09T07:05:05.135Z'
+date_piece: '2026-06-12'
+donneur_ordre_id: null
+donneur_ordre_nom: CHAMALBIDE
+donneur_ordre_prenom: José
+email_index: 0
+facture_soldee: true
+id: imp_DNOTkLSeXv
+id_dossier: '41946'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51114
+numero_dossier: 55952
+payer_id: cont_NJVWMafeax
+payeur_civilite: ''
+payeur_email: chamalbide.catherine@orange.fr
+payeur_nom: CHAMALBIDE
+payeur_prenom: José
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CHAMALBIDE
+proprietaire_prenom: José
+ref_piece: FA260612 51114
+reference: '55952'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:30:46.099Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260612_51114/standard/FA260612 51114 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

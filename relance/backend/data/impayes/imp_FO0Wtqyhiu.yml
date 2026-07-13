@@ -1,0 +1,49 @@
+adresse_bien: 24 Prom Mal Leclerc de Hauteclocque L'Ambassador
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_bhsClaquEn
+created_at: '2026-06-24T16:31:41.930Z'
+date_echeance: '2024-02-12'
+date_import: '2026-07-09T07:05:10.443Z'
+date_piece: '2024-02-12'
+donneur_ordre_id: null
+donneur_ordre_nom: 'MOLINENGO '
+donneur_ordre_prenom: Maria Maddalena
+email_index: 0
+facture_soldee: true
+id: imp_FO0Wtqyhiu
+id_dossier: '32880'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46102
+numero_dossier: 49877
+payer_id: cont_bhsClaquEn
+payeur_civilite: ''
+payeur_email: maddalena.molinengo@gmail.com
+payeur_nom: 'MOLINENGO '
+payeur_prenom: Maria Maddalena
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'MOLINENGO '
+proprietaire_prenom: Maria Maddalena
+ref_piece: FA240212 46102
+reference: '49877'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 183.75
+total_ttc: 220.5
+type: impaye
+updated_at: '2026-06-24T16:31:41.930Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240212_46102/standard/FA240212 46102
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

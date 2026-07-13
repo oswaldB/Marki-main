@@ -1,0 +1,49 @@
+adresse_bien: 50 avenue du Semaphore
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_JPnEMJPu0P
+created_at: '2026-06-24T16:31:20.992Z'
+date_echeance: '2024-12-13'
+date_import: '2026-07-09T07:05:08.498Z'
+date_piece: '2024-12-13'
+donneur_ordre_id: null
+donneur_ordre_nom: CAPARO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_7mqCBUJji6
+id_dossier: '38225'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47963
+numero_dossier: 52231
+payer_id: cont_JPnEMJPu0P
+payeur_civilite: ''
+payeur_email: barbara.monot67@gmail.com
+payeur_nom: CAPARO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAPARO
+proprietaire_prenom: null
+ref_piece: FA241213 47963
+reference: '52231'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 389.17
+total_ttc: 467
+type: impaye
+updated_at: '2026-06-24T16:31:20.992Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241213_47963/standard/FA241213 47963
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

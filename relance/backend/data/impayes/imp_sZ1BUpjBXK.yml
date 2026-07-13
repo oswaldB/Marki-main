@@ -1,0 +1,49 @@
+adresse_bien: 65 boulevard Gambetta BOURGOGNE
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_kyTCccB8zw
+created_at: '2026-06-24T16:31:44.938Z'
+date_echeance: '2023-12-20'
+date_import: '2026-07-09T07:05:10.729Z'
+date_piece: '2023-12-20'
+donneur_ordre_id: null
+donneur_ordre_nom: WOLINSKY
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_sZ1BUpjBXK
+id_dossier: '32488'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45826
+numero_dossier: 49485
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: WOLINSKY
+proprietaire_prenom: null
+ref_piece: FA231220 45826
+reference: '49485'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:44.938Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231220_45826/standard/FA231220 45826
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

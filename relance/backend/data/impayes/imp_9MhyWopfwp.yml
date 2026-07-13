@@ -1,0 +1,49 @@
+adresse_bien: 54 avenue Simone Veil West Park Bâtiment G
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:33.056Z'
+date_echeance: '2024-06-03'
+date_import: '2026-07-09T07:05:09.761Z'
+date_piece: '2024-06-03'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_9MhyWopfwp
+id_dossier: '35787'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46788
+numero_dossier: 50791
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: AZOULAI et AYADI
+proprietaire_prenom: null
+ref_piece: FA240531 46788
+reference: '50791'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 95.83
+total_ttc: 115
+type: impaye
+updated_at: '2026-06-24T16:31:33.056Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240531_46788/standard/FA240531 46788 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

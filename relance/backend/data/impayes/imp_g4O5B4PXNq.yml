@@ -1,0 +1,49 @@
+adresse_bien: 5 avenue Raymond Féraud
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_nFVOFisiYA
+created_at: '2026-06-24T16:31:16.962Z'
+date_echeance: '2025-02-19'
+date_import: '2026-07-09T07:05:08.070Z'
+date_piece: '2025-02-19'
+donneur_ordre_id: null
+donneur_ordre_nom: 'HONEIN / ZOCK '
+donneur_ordre_prenom: Nour et Maya
+email_index: 0
+facture_soldee: true
+id: imp_g4O5B4PXNq
+id_dossier: '38744'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48361
+numero_dossier: 52750
+payer_id: cont_nFVOFisiYA
+payeur_civilite: ''
+payeur_email: honeinnour@hotmail.com
+payeur_nom: 'HONEIN / ZOCK '
+payeur_prenom: Nour et Maya
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'HONEIN / ZOCK '
+proprietaire_prenom: Nour et Maya
+ref_piece: FA250219 48361
+reference: '52750'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 100
+total_ttc: 120
+type: impaye
+updated_at: '2026-06-24T16:31:16.962Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250219_48361/standard/FA250219 48361
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

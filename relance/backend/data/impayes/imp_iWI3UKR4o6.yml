@@ -1,0 +1,49 @@
+adresse_bien: 41 rue Bonaparte
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_u4x6WtLNH9
+created_at: '2026-06-24T16:31:07.974Z'
+date_echeance: '2025-07-08'
+date_import: '2026-07-09T07:05:07.213Z'
+date_piece: '2025-07-08'
+donneur_ordre_id: null
+donneur_ordre_nom: FIGARELLA
+donneur_ordre_prenom: 'Jean Christophe '
+email_index: 0
+facture_soldee: true
+id: imp_iWI3UKR4o6
+id_dossier: '39799'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49183
+numero_dossier: 53805
+payer_id: cont_u4x6WtLNH9
+payeur_civilite: ''
+payeur_email: figarella.jeanchrist@free.fr
+payeur_nom: FIGARELLA
+payeur_prenom: 'Jean Christophe '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FIGARELLA
+proprietaire_prenom: 'Jean Christophe '
+ref_piece: FA250708 49183
+reference: '53805'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:31:07.974Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250708_49183/standard/FA250708 49183
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

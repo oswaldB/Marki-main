@@ -1,0 +1,49 @@
+adresse_bien: 69 avenue Paul Doumer La Palmeraie
+apporteur_id: cont_vCAOy10UIf
+apporteur_nom: IMMOBILTREND
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_84GkcjiJbi
+created_at: '2026-06-24T16:31:22.027Z'
+date_echeance: '2024-11-22'
+date_import: '2026-07-09T07:05:08.611Z'
+date_piece: '2024-11-22'
+donneur_ordre_id: null
+donneur_ordre_nom: PANTELEONI
+donneur_ordre_prenom: Barbara
+email_index: 0
+facture_soldee: true
+id: imp_x2OEz20YuQ
+id_dossier: '38075'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47840
+numero_dossier: 52081
+payer_id: cont_84GkcjiJbi
+payeur_civilite: ''
+payeur_email: barbarapanteleoni@gmail.com
+payeur_nom: PANTELEONI
+payeur_prenom: Barbara
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PANTELEONI
+proprietaire_prenom: Barbara
+ref_piece: FA241122 47840
+reference: '52081'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:22.027Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241122_47840/standard/FA241122 47840
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

@@ -1,0 +1,49 @@
+adresse_bien: 20 boulevard du Fossan
+apporteur_id: cont_rxtGcrWd4S
+apporteur_nom: TRANSAC FRANCE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_wDWTl56bqI
+created_at: '2026-06-24T16:31:17.899Z'
+date_echeance: '2025-02-07'
+date_import: '2026-07-09T07:05:08.156Z'
+date_piece: '2025-02-07'
+donneur_ordre_id: null
+donneur_ordre_nom: INOPPAC
+donneur_ordre_prenom: CAPPONI Raymond
+email_index: 0
+facture_soldee: true
+id: imp_aycDvYTQvt
+id_dossier: '38672'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48297
+numero_dossier: 52678
+payer_id: cont_wDWTl56bqI
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: INOPPAC
+payeur_prenom: CAPPONI Raymond
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: INOPPAC
+proprietaire_prenom: CAPPONI Raymond
+ref_piece: FA250207 48297
+reference: '52678'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 389.17
+total_ttc: 467
+type: impaye
+updated_at: '2026-06-24T16:31:17.899Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250207_48297/standard/FA250207 48297
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

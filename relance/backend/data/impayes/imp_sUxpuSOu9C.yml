@@ -1,0 +1,49 @@
+adresse_bien: 14 boulevard Henri Sappia le Savoie
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_w5G32b2g2E
+created_at: '2026-06-24T16:31:02.877Z'
+date_echeance: '2025-10-13'
+date_import: '2026-07-09T07:05:06.705Z'
+date_piece: '2025-10-06'
+donneur_ordre_id: null
+donneur_ordre_nom: ECABERT
+donneur_ordre_prenom: Sylvie
+email_index: 0
+facture_soldee: true
+id: imp_sUxpuSOu9C
+id_dossier: '40345'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49665
+numero_dossier: 54351
+payer_id: cont_w5G32b2g2E
+payeur_civilite: ''
+payeur_email: sylvie.ecabert@free.fr
+payeur_nom: ECABERT
+payeur_prenom: Sylvie
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ECABERT
+proprietaire_prenom: Sylvie
+ref_piece: FA251006 49665
+reference: '54351'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 170.83
+total_ttc: 205
+type: impaye
+updated_at: '2026-06-24T16:31:02.877Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251006_49665/standard/FA251006 49665
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

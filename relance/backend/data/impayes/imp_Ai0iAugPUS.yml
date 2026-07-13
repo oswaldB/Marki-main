@@ -1,0 +1,49 @@
+adresse_bien: 2278 Moyenne Corniche D6007
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_9KF7R3DCug
+created_at: '2026-06-24T16:31:27.912Z'
+date_echeance: '2024-09-02'
+date_import: '2026-07-09T07:05:09.195Z'
+date_piece: '2024-09-02'
+donneur_ordre_id: null
+donneur_ordre_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Ai0iAugPUS
+id_dossier: '37464'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47316
+numero_dossier: 51470
+payer_id: cont_9KF7R3DCug
+payeur_civilite: ''
+payeur_email: info@republique-beausoleil.com
+payeur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: RAYNAUD
+proprietaire_prenom: Chantal
+ref_piece: FA240829 47316
+reference: '51470'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 79.17
+total_ttc: 95
+type: impaye
+updated_at: '2026-06-24T16:31:27.912Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240829_47316/standard/FA240829 47316
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

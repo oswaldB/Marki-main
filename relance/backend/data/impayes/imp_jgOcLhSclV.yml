@@ -1,0 +1,49 @@
+adresse_bien: 28 boulevard Dubouchage
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_NH0l49D0Z8
+created_at: '2026-06-24T16:31:53.916Z'
+date_echeance: '2023-08-17'
+date_import: '2026-07-09T07:05:11.545Z'
+date_piece: '2023-08-17'
+donneur_ordre_id: null
+donneur_ordre_nom: SIGISMONDI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jgOcLhSclV
+id_dossier: '30488'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44997
+numero_dossier: 48478
+payer_id: cont_NH0l49D0Z8
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SIGISMONDI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SIGISMONDI
+proprietaire_prenom: null
+ref_piece: FA230817 44997
+reference: '48478'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 23.33
+total_ttc: 28
+type: impaye
+updated_at: '2026-06-24T16:31:53.916Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230817_44997/standard/FA230817 44997 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

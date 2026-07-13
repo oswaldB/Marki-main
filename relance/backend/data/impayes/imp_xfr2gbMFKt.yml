@@ -1,0 +1,49 @@
+adresse_bien: 71 avenue du Trois Septembre
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_PnF6B5oecj
+created_at: '2026-06-24T16:31:32.099Z'
+date_echeance: '2024-06-13'
+date_import: '2026-07-09T07:05:09.675Z'
+date_piece: '2024-06-13'
+donneur_ordre_id: null
+donneur_ordre_nom: FONCIERE EPILOGUE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_xfr2gbMFKt
+id_dossier: '35900'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46875
+numero_dossier: 50904
+payer_id: cont_PnF6B5oecj
+payeur_civilite: ''
+payeur_email: service.gestion@fonciere-epilogue.fr
+payeur_nom: FONCIERE EPILOGUE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FONCIERE EPILOGUE
+proprietaire_prenom: null
+ref_piece: FA240613 46875
+reference: '50904'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 393.75
+total_ttc: 472.5
+type: impaye
+updated_at: '2026-06-24T16:31:32.099Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240613_46875/standard/FA240613 46875 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

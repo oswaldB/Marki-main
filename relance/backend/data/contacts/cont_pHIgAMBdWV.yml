@@ -1,0 +1,30 @@
+$loki: 703
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:40.737Z'
+email: girardinnancy@neuf.fr
+id: cont_pHIgAMBdWV
+impaye_ids:
+  - imp_T6uGXrNCCp
+  - imp_AVKk8Q4hdY
+is_blacklisted: false
+meta:
+  created: 1783580698634
+  revision: 0
+  version: 0
+nom: GIRARDIN
+prenom: Nancy
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0613413635'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:40.367Z'

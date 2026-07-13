@@ -1,0 +1,49 @@
+adresse_bien: 182 cours du Centenaire
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_D5zUhwhNCy
+created_at: '2026-06-24T16:31:32.964Z'
+date_echeance: '2024-06-07'
+date_import: '2026-07-09T07:05:09.716Z'
+date_piece: '2024-06-07'
+donneur_ordre_id: null
+donneur_ordre_nom: GUILLY
+donneur_ordre_prenom: Corinne
+email_index: 0
+facture_soldee: true
+id: imp_BT87gq8WIX
+id_dossier: '35850'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46843
+numero_dossier: 50854
+payer_id: cont_D5zUhwhNCy
+payeur_civilite: ''
+payeur_email: guillyco@aol.com
+payeur_nom: GUILLY
+payeur_prenom: Corinne
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GUILLY
+proprietaire_prenom: Corinne
+ref_piece: FA240607 46843
+reference: '50854'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 533.33
+total_ttc: 640
+type: impaye
+updated_at: '2026-06-24T16:31:32.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240607_46843/standard/FA240607 46843 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

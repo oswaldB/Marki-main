@@ -1,0 +1,49 @@
+adresse_bien: 11 boulevard du Fossan le Jolimont
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_BJ3uUs3d1v
+created_at: '2026-06-24T16:31:17.957Z'
+date_echeance: '2025-02-04'
+date_import: '2026-07-09T07:05:08.182Z'
+date_piece: '2025-02-04'
+donneur_ordre_id: null
+donneur_ordre_nom: RIBOTTA MAGNANO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_MbwVd3Muif
+id_dossier: '38580'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48227
+numero_dossier: 52586
+payer_id: cont_BJ3uUs3d1v
+payeur_civilite: ''
+payeur_email: nadia.magnano@gmail.com
+payeur_nom: RIBOTTA MAGNANO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: RIBOTTA MAGNANO
+proprietaire_prenom: null
+ref_piece: FA250131 48227
+reference: '52586'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.67
+total_ttc: 230
+type: impaye
+updated_at: '2026-06-24T16:31:17.957Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250131_48227/standard/FA250131 48227
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

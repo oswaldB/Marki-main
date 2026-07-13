@@ -1,0 +1,49 @@
+adresse_bien: 42 rue de cannes
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06150'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:30:58.022Z'
+date_echeance: '2025-12-08'
+date_import: '2026-07-09T07:05:06.312Z'
+date_piece: '2025-12-01'
+donneur_ordre_id: null
+donneur_ordre_nom: PICHET
+donneur_ordre_prenom: Fabrice
+email_index: 0
+facture_soldee: true
+id: imp_ArF12lnuAX
+id_dossier: '40638'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50052
+numero_dossier: 54644
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PICHET
+proprietaire_prenom: Fabrice
+ref_piece: FA251201 50052
+reference: '54644'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2599.15
+total_ttc: 3118.98
+type: impaye
+updated_at: '2026-06-24T16:30:58.022Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251201_50052/standard/FA251201 50052
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CANNES

@@ -1,0 +1,49 @@
+adresse_bien: 3 Square Kraemer Les Primeveres
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: "Dernier mail sur lequel il m'a répondu : concierge-laclefdor@outlook.com\r\n\r\nMme AGABABOVA TATIANA +33632513959 -> mess laissé le 18/05\r\nMr NOURKHBINOV Nikolaï +33662875657 - > mess laissé le 18/05\r\n\r\nSCI ALBION \r\nSIREN 540 097 169\r\n\r\n18/05 demande a andrea si nouvelle \r\n\r\n26/05 andrea au tel aujourd'hui, ils ont payés à surveiller\r\n"
+contact_relance_id: cont_IF92GYDJCC
+created_at: '2026-06-24T16:31:39.941Z'
+date_echeance: '2024-03-11'
+date_import: '2026-07-09T07:05:10.276Z'
+date_piece: '2024-03-11'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI ALBION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_GmNdmdlQB4
+id_dossier: '32815'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46278
+numero_dossier: 49812
+payer_id: cont_IF92GYDJCC
+payeur_civilite: ''
+payeur_email: nikolaifr@hotmail.fr
+payeur_nom: SCI ALBION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI ALBION
+proprietaire_prenom: null
+ref_piece: FA240311 46278
+reference: '49812'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:39.941Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240311_46278/standard/FA240311 46278 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

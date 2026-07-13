@@ -1,0 +1,23 @@
+id: seq_test
+nom: "Séquence Test"
+type_sequence: relances
+actif: true
+validation_obligatoire: false
+emails:
+  - email_index: 0
+    delai: 7
+    objet: "Rappel de paiement - Facture [[nfacture]]"
+    corps: "<p>Bonjour,</p><p>Nous vous rappelons la facture de [[montant]]€.</p>"
+    scenarios:
+      - format: single
+        active: true
+        smtp_profile_id: smtp_test
+      - format: multiple
+        active: true
+        smtp_profile_id: smtp_test
+      - format: broker
+        active: true
+        smtp_profile_id: smtp_test
+      - format: both
+        active: true
+        smtp_profile_id: smtp_test

@@ -1,0 +1,49 @@
+adresse_bien: 102 avenue du Trois Septembre
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_TrcR7QdquM
+created_at: '2026-06-24T16:31:28.998Z'
+date_echeance: '2024-08-05'
+date_import: '2026-07-09T07:05:09.343Z'
+date_piece: '2024-08-05'
+donneur_ordre_id: null
+donneur_ordre_nom: 'VITALI '
+donneur_ordre_prenom: Felice
+email_index: 0
+facture_soldee: true
+id: imp_GLMEGZyvZ3
+id_dossier: '36295'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47187
+numero_dossier: 51299
+payer_id: cont_TrcR7QdquM
+payeur_civilite: ''
+payeur_email: vitali11637@gmail.com
+payeur_nom: 'VITALI '
+payeur_prenom: Felice
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'VITALI '
+proprietaire_prenom: Felice
+ref_piece: FA240805 47187
+reference: '51299'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:28.998Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240805_47187/standard/FA240805 47187 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

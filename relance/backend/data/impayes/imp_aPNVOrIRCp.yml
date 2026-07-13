@@ -1,0 +1,49 @@
+adresse_bien: 9 rue du Vieux Château
+apporteur_id: cont_5keRx5VJny
+apporteur_nom: API AZUR PATRIMOINE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "17/06 : retour API \"un compromis vient d’être signé, le règlement interviendra donc dans deux mois\"\r\n\r\n17/06 : relance par mail, pas de décroché"
+contact_relance_id: cont_BDUSTOnWUX
+created_at: '2026-06-24T16:31:11.978Z'
+date_echeance: '2025-05-02'
+date_import: '2026-07-09T07:05:07.597Z'
+date_piece: '2025-05-02'
+donneur_ordre_id: null
+donneur_ordre_nom: GRECH
+donneur_ordre_prenom: Raymond
+email_index: 0
+facture_soldee: true
+id: imp_aPNVOrIRCp
+id_dossier: '39319'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48825
+numero_dossier: 53325
+payer_id: cont_5keRx5VJny
+payeur_civilite: ''
+payeur_email: api06500@gmail.com
+payeur_nom: API AZUR PATRIMOINE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: GRECH
+proprietaire_prenom: Raymond
+ref_piece: FA250502 48825
+reference: '53325'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 270.83
+total_ttc: 325
+type: impaye
+updated_at: '2026-06-24T16:31:11.978Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250502_48825/standard/FA250502 48825 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

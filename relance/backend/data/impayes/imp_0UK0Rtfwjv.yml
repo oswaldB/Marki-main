@@ -1,0 +1,49 @@
+adresse_bien: 48-50 Val du Carei Le Cyrnos
+apporteur_id: cont_cFjIPWR9lP
+apporteur_nom: SUD FINANCES CONSEIL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_eOuocJEdtq
+created_at: '2026-06-24T16:31:33.026Z'
+date_echeance: '2024-06-04'
+date_import: '2026-07-09T07:05:09.742Z'
+date_piece: '2024-06-04'
+donneur_ordre_id: null
+donneur_ordre_nom: RODRIGUES FREITAS
+donneur_ordre_prenom: Patricia
+email_index: 0
+facture_soldee: true
+id: imp_0UK0Rtfwjv
+id_dossier: '35807'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46807
+numero_dossier: 50811
+payer_id: cont_cFjIPWR9lP
+payeur_civilite: ''
+payeur_email: leanne.viciana@sfcmenton.com
+payeur_nom: SUD FINANCES CONSEIL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: RODRIGUES FREITAS
+proprietaire_prenom: Patricia
+ref_piece: FA240604 46807
+reference: '50811'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:33.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240604_46807/standard/FA240604 46807 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

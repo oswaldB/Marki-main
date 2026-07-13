@@ -1,0 +1,49 @@
+adresse_bien: 1106 chemin de Saint-jeaume
+apporteur_id: cont_yxNIr5KYwN
+apporteur_nom: PERALDI
+apporteur_prenom: Olivia
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06740'
+commentaire_piece: "relance 01/10\r\n\r\nrelance 19/12"
+contact_relance_id: cont_S4y7xBUghP
+created_at: '2026-06-24T16:31:03.942Z'
+date_echeance: '2025-09-24'
+date_import: '2026-07-09T07:05:06.838Z'
+date_piece: '2025-09-17'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI SCG RIVIERA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_9hzMBvbneb
+id_dossier: '40209'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49543
+numero_dossier: 54215
+payer_id: cont_S4y7xBUghP
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SCI SCG RIVIERA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI SCG RIVIERA
+proprietaire_prenom: null
+ref_piece: FA250917 49543
+reference: '54215'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1062.5
+total_ttc: 1275
+type: impaye
+updated_at: '2026-06-24T16:31:03.942Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250917_49543/standard/FA250917 49543
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CHÂTEAUNEUF-GRASSE

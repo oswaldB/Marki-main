@@ -1,0 +1,49 @@
+adresse_bien: 55 avenue de Villaine Le Saint Georges
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_9KF7R3DCug
+created_at: '2026-06-24T16:30:57.035Z'
+date_echeance: '2025-12-24'
+date_import: '2026-07-09T07:05:06.226Z'
+date_piece: '2025-12-17'
+donneur_ordre_id: null
+donneur_ordre_nom: DE CONTO
+donneur_ordre_prenom: 'Nadia '
+email_index: 0
+facture_soldee: true
+id: imp_RHto05xmDi
+id_dossier: '40859'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50142
+numero_dossier: 54865
+payer_id: cont_9KF7R3DCug
+payeur_civilite: ''
+payeur_email: info@republique-beausoleil.com
+payeur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DE CONTO
+proprietaire_prenom: 'Nadia '
+ref_piece: FA251217 50142
+reference: '54865'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 100
+total_ttc: 120
+type: impaye
+updated_at: '2026-06-24T16:30:57.035Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251217_50142/standard/FA251217 50142
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

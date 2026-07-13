@@ -1,0 +1,29 @@
+$loki: 3909
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:10.569Z'
+email: coletti.martine@wanadoo.fr
+id: cont_YJewRwSaMw
+impaye_ids:
+  - imp_5g95UYv8hK
+is_blacklisted: false
+meta:
+  created: 1783580699825
+  revision: 0
+  version: 0
+nom: COLETTI
+prenom: Robert
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:10.337Z'

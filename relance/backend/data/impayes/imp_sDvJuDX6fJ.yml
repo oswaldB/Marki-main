@@ -1,0 +1,49 @@
+adresse_bien: 18 rue Paul Morillot Hermitage Park
+apporteur_id: cont_F9a1C2QFwv
+apporteur_nom: Agence L&SO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_7PKgQyUBr5
+created_at: '2026-06-24T16:31:35.001Z'
+date_echeance: '2024-05-10'
+date_import: '2026-07-09T07:05:09.886Z'
+date_piece: '2024-05-10'
+donneur_ordre_id: null
+donneur_ordre_nom: DUPLOUY
+donneur_ordre_prenom: Corinne
+email_index: 0
+facture_soldee: true
+id: imp_sDvJuDX6fJ
+id_dossier: '34621'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46644
+numero_dossier: 50620
+payer_id: cont_7PKgQyUBr5
+payeur_civilite: ''
+payeur_email: c.duplouy@hotmail.fr
+payeur_nom: DUPLOUY
+payeur_prenom: Corinne
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DUPLOUY
+proprietaire_prenom: Corinne
+ref_piece: FA240510 46644
+reference: '50620'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:35.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240510_46644/standard/FA240510 46644 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue Hugues Savorani Saint Antoine
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: '20/05 : relance 2'
+contact_relance_id: cont_VwRgul9KMb
+created_at: '2026-06-24T16:31:13.989Z'
+date_echeance: '2025-03-28'
+date_import: '2026-07-09T07:05:07.788Z'
+date_piece: '2025-03-28'
+donneur_ordre_id: null
+donneur_ordre_nom: HABERT
+donneur_ordre_prenom: Michelle
+email_index: 0
+facture_soldee: true
+id: imp_RoHCsvUFpT
+id_dossier: '39044'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48611
+numero_dossier: 53050
+payer_id: cont_VwRgul9KMb
+payeur_civilite: ''
+payeur_email: michellehabert@orange.fr
+payeur_nom: HABERT
+payeur_prenom: Michelle
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: HABERT
+proprietaire_prenom: Michelle
+ref_piece: FA250328 48611
+reference: '53050'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:13.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250328_48611/standard/FA250328 48611 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

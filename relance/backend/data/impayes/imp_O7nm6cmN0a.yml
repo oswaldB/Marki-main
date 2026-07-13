@@ -1,0 +1,49 @@
+adresse_bien: 101 avenue des Hespérides Les Villas du Cap
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_ZvEFAOq9lb
+created_at: '2026-06-24T16:31:47.045Z'
+date_echeance: '2023-11-15'
+date_import: '2026-07-09T07:05:10.945Z'
+date_piece: '2023-11-15'
+donneur_ordre_id: null
+donneur_ordre_nom: OLSEN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_O7nm6cmN0a
+id_dossier: '32200'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45585
+numero_dossier: 49197
+payer_id: cont_ZvEFAOq9lb
+payeur_civilite: ''
+payeur_email: wr-olsen@oultook.com
+payeur_nom: OLSEN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: OLSEN
+proprietaire_prenom: null
+ref_piece: FA231115 45585
+reference: '49197'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:47.045Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231115_45585/standard/FA231115 45585
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,29 @@
+$loki: 5049
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:21.533Z'
+email: ardain.olivier@bbox.fr
+id: cont_6eQHT9S1Ac
+impaye_ids:
+  - imp_y4wvmDTsGb
+is_blacklisted: false
+meta:
+  created: 1783580700178
+  revision: 0
+  version: 0
+nom: 'MOREAU / ARDAIN '
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:20.342Z'

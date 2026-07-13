@@ -1,0 +1,49 @@
+adresse_bien: 6 rue du Lieutenant Layet
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06270'
+commentaire_piece: ''
+contact_relance_id: cont_BL3e5PMVGH
+created_at: '2026-06-24T16:31:10.990Z'
+date_echeance: '2025-05-15'
+date_import: '2026-07-09T07:05:07.519Z'
+date_piece: '2025-05-15'
+donneur_ordre_id: null
+donneur_ordre_nom: KALBOUSSI
+donneur_ordre_prenom: Vanessa
+email_index: 0
+facture_soldee: true
+id: imp_2uv4xjjF8N
+id_dossier: '39415'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48896
+numero_dossier: 53421
+payer_id: cont_BL3e5PMVGH
+payeur_civilite: ''
+payeur_email: kalboussi-vanessa@hotmail.fr
+payeur_nom: KALBOUSSI
+payeur_prenom: Vanessa
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: KALBOUSSI
+proprietaire_prenom: Vanessa
+ref_piece: FA250515 48896
+reference: '53421'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 290.67
+total_ttc: 348.8
+type: impaye
+updated_at: '2026-06-24T16:31:10.990Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250515_48896/standard/FA250515 48896 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VILLENEUVE-LOUBET

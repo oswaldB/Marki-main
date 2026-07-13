@@ -1,0 +1,49 @@
+adresse_bien: 5 chemin du Perroquet Le Perroquet
+apporteur_id: cont_axwCVxbA8C
+apporteur_nom: CABINET CAIRO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "SDC PERROQUET\r\n5 chemin du Perroquet\r\n06500 MENTON"
+contact_relance_id: cont_OFcnQfiKe6
+created_at: '2026-06-24T16:31:00.034Z'
+date_echeance: '2025-11-07'
+date_import: '2026-07-09T07:05:06.503Z'
+date_piece: '2025-10-31'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC PERROQUET
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_EcD1G9ZoLg
+id_dossier: '39283'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49860
+numero_dossier: 53289
+payer_id: cont_axwCVxbA8C
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET CAIRO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC PERROQUET
+proprietaire_prenom: null
+ref_piece: FA251031 49860
+reference: '53289'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2333.33
+total_ttc: 2800
+type: impaye
+updated_at: '2026-06-24T16:31:00.034Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251031_49860/standard/FA251031 49860
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

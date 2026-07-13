@@ -1,0 +1,49 @@
+adresse_bien: 1 rue des Roses
+apporteur_id: cont_AvZjNGS1n4
+apporteur_nom: PRADO IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06410'
+commentaire_piece: ''
+contact_relance_id: cont_tjcI12h5kF
+created_at: '2026-06-24T16:31:00.976Z'
+date_echeance: '2025-10-30'
+date_import: '2026-07-09T07:05:06.563Z'
+date_piece: '2025-10-23'
+donneur_ordre_id: null
+donneur_ordre_nom: 'INDIVISION ROUSTAN '
+donneur_ordre_prenom: chez Prado Immobilier
+email_index: 0
+facture_soldee: true
+id: imp_IYwTEE1sdT
+id_dossier: '40500'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49800
+numero_dossier: 54506
+payer_id: cont_tjcI12h5kF
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: 'INDIVISION ROUSTAN '
+payeur_prenom: chez Prado Immobilier
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'INDIVISION ROUSTAN '
+proprietaire_prenom: chez Prado Immobilier
+ref_piece: FA251023 49800
+reference: '54506'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 258.33
+total_ttc: 310
+type: impaye
+updated_at: '2026-06-24T16:31:00.976Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251023_49800/standard/FA251023 49800
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BIOT

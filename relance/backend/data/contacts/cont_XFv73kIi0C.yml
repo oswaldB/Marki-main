@@ -1,0 +1,29 @@
+$loki: 4155
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:13.529Z'
+email: luca.candeloro@hotmail.fr
+id: cont_XFv73kIi0C
+impaye_ids:
+  - imp_X86EBAatHz
+is_blacklisted: false
+meta:
+  created: 1783580699902
+  revision: 0
+  version: 0
+nom: CANDELORO
+prenom: Luca
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:12.352Z'

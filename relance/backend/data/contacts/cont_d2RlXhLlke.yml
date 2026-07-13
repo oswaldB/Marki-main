@@ -1,0 +1,29 @@
+$loki: 6774
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-29T22:00:15.646Z'
+email: stan@europliage.com
+id: cont_d2RlXhLlke
+impaye_ids:
+  - imp_BKR0G2MD62
+is_blacklisted: false
+meta:
+  created: 1783580700739
+  revision: 0
+  version: 0
+nom: EUROPLIAGE
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0628019439'
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:36.384Z'

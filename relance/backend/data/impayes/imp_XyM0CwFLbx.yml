@@ -1,0 +1,49 @@
+adresse_bien: 25 rue Guiglia
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_EjJ3N2gWgi
+created_at: '2026-06-24T16:31:23.078Z'
+date_echeance: '2024-11-04'
+date_import: '2026-07-09T07:05:08.735Z'
+date_piece: '2024-11-04'
+donneur_ordre_id: null
+donneur_ordre_nom: CARDELIN
+donneur_ordre_prenom: 'William '
+email_index: 0
+facture_soldee: true
+id: imp_XyM0CwFLbx
+id_dossier: '37926'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47725
+numero_dossier: 51932
+payer_id: cont_EjJ3N2gWgi
+payeur_civilite: ''
+payeur_email: william.cardelin@gmail.com
+payeur_nom: CARDELIN
+payeur_prenom: 'William '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CARDELIN
+proprietaire_prenom: 'William '
+ref_piece: FA241031 47725
+reference: '51932'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:23.078Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241031_47725/standard/FA241031 47725
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

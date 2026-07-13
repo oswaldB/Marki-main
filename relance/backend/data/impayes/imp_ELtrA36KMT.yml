@@ -1,0 +1,49 @@
+adresse_bien: 13 boulevard de Cessole
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: LISTING
+contact_relance_id: cont_zWLan9R7kt
+created_at: '2026-06-24T16:30:54.023Z'
+date_echeance: '2026-02-10'
+date_import: '2026-07-09T07:05:05.936Z'
+date_piece: '2026-02-03'
+donneur_ordre_id: null
+donneur_ordre_nom: PAULMIER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_ELtrA36KMT
+id_dossier: '41153'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50414
+numero_dossier: 55159
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PAULMIER
+proprietaire_prenom: null
+ref_piece: FA260203 50414
+reference: '55159'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:30:54.023Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260203_50414/standard/FA260203 50414
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

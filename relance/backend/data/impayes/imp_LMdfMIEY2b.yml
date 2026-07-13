@@ -1,0 +1,49 @@
+adresse_bien: 4 avenue de Saint-Roman Villa Medicis
+apporteur_id: cont_H0MJ8XQVTJ
+apporteur_nom: KOZLOVA
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_98F89oSDEe
+created_at: '2026-06-24T16:31:44.909Z'
+date_echeance: '2024-01-02'
+date_import: '2026-07-09T07:05:10.712Z'
+date_piece: '2024-01-02'
+donneur_ordre_id: null
+donneur_ordre_nom: KUIPERS
+donneur_ordre_prenom: Harm
+email_index: 0
+facture_soldee: true
+id: imp_LMdfMIEY2b
+id_dossier: '32513'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45847
+numero_dossier: 49510
+payer_id: cont_98F89oSDEe
+payeur_civilite: ''
+payeur_email: harry@libello.com
+payeur_nom: KUIPERS
+payeur_prenom: Harm
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: KUIPERS
+proprietaire_prenom: Harm
+ref_piece: FA240102 45847
+reference: '49510'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:31:44.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240102_45847/standard/FA240102 45847
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

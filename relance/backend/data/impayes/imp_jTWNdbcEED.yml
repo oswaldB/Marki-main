@@ -1,0 +1,49 @@
+adresse_bien: 18 rue Louis Garneray Le Bernard Palissy
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_YbDAj1n6Y4
+created_at: '2026-06-24T16:31:25.027Z'
+date_echeance: '2024-10-04'
+date_import: '2026-07-09T07:05:08.924Z'
+date_piece: '2024-10-04'
+donneur_ordre_id: null
+donneur_ordre_nom: VERRIEZ
+donneur_ordre_prenom: Vincent
+email_index: 0
+facture_soldee: true
+id: imp_jTWNdbcEED
+id_dossier: '37749'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47574
+numero_dossier: 51755
+payer_id: cont_YbDAj1n6Y4
+payeur_civilite: ''
+payeur_email: verriezfamily@yahoo.fr
+payeur_nom: VERRIEZ
+payeur_prenom: Vincent
+payeur_telephone: '0680485139'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: VERRIEZ
+proprietaire_prenom: Vincent
+ref_piece: FA241004 47574
+reference: '51755'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 198.33
+total_ttc: 238
+type: impaye
+updated_at: '2026-06-24T16:31:25.027Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241004_47574/standard/FA241004 47574
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

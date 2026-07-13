@@ -1,0 +1,49 @@
+adresse_bien: 15 rue Pasteur La Vigie
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_qEHfOEOydO
+created_at: '2026-06-24T16:31:32.994Z'
+date_echeance: '2024-06-06'
+date_import: '2026-07-09T07:05:09.733Z'
+date_piece: '2024-06-06'
+donneur_ordre_id: null
+donneur_ordre_nom: THERIEN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_9LdFeroBbJ
+id_dossier: '35827'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46821
+numero_dossier: 50831
+payer_id: cont_qEHfOEOydO
+payeur_civilite: ''
+payeur_email: gillestherien0@gmail.com
+payeur_nom: THERIEN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: THERIEN
+proprietaire_prenom: null
+ref_piece: FA240606 46821
+reference: '50831'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 277.5
+total_ttc: 333
+type: impaye
+updated_at: '2026-06-24T16:31:32.994Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240606_46821/standard/FA240606 46821 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

@@ -1,0 +1,49 @@
+adresse_bien: 10 rue Saint-Augustin
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: relance 29/12
+contact_relance_id: cont_kJrDadA5qi
+created_at: '2026-06-24T16:30:57.918Z'
+date_echeance: '2025-12-16'
+date_import: '2026-07-09T07:05:06.279Z'
+date_piece: '2025-12-09'
+donneur_ordre_id: null
+donneur_ordre_nom: RUE PAIROLIERE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_3rmU5r4I9R
+id_dossier: '40832'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50100
+numero_dossier: 54838
+payer_id: cont_kJrDadA5qi
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: RUE PAIROLIERE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: RUE PAIROLIERE
+proprietaire_prenom: null
+ref_piece: FA251209 50100
+reference: '54838'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:30:57.918Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251209_50100/standard/FA251209 50100
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

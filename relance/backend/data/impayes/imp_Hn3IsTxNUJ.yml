@@ -1,0 +1,49 @@
+adresse_bien: 38 rue Baron de Bres
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_OGh5HHgiYU
+created_at: '2026-06-24T16:31:00.976Z'
+date_echeance: '2025-10-30'
+date_import: '2026-07-09T07:05:06.568Z'
+date_piece: '2025-10-23'
+donneur_ordre_id: null
+donneur_ordre_nom: ROCHA 2
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Hn3IsTxNUJ
+id_dossier: '40505'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49797
+numero_dossier: 54511
+payer_id: cont_OGh5HHgiYU
+payeur_civilite: ''
+payeur_email: 'baptiste@paloma-beach.com '
+payeur_nom: ROCHA 2
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROCHA 2
+proprietaire_prenom: null
+ref_piece: FA251023 49797
+reference: '54511'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 226.67
+total_ttc: 272
+type: impaye
+updated_at: '2026-06-24T16:31:00.976Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251023_49797/standard/FA251023 49797
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

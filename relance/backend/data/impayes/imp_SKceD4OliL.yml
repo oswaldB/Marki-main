@@ -1,0 +1,49 @@
+adresse_bien: 48 boulevard Lazare Settimelli
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:54.055Z'
+date_echeance: '2023-08-04'
+date_import: '2026-07-09T07:05:11.604Z'
+date_piece: '2023-08-04'
+donneur_ordre_id: null
+donneur_ordre_nom: DUCREUX
+donneur_ordre_prenom: Dorothée
+email_index: 0
+facture_soldee: true
+id: imp_SKceD4OliL
+id_dossier: '29421'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44932
+numero_dossier: 48407
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: DUCREUX
+proprietaire_prenom: Dorothée
+ref_piece: FA230804 44932
+reference: '48407'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 669.38
+total_ttc: 803.25
+type: impaye
+updated_at: '2026-06-24T16:31:54.055Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230804_44932/standard/FA230804 44932 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

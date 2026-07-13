@@ -1,0 +1,40 @@
+$loki: 981
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:43.553Z'
+email: immo.parnasse@wanadoo.fr
+id: cont_zttCmdIcGK
+impaye_ids:
+  - imp_EOm4sD1P6j
+  - imp_GizwsutFNe
+  - imp_Qie1E2iHh9
+  - imp_BIq1AAriZI
+  - imp_z5TQAFThST
+  - imp_jqtpTOwKOl
+  - imp_yt5mn3892x
+  - imp_6llbCBGij1
+  - imp_otiy63qNSf
+  - imp_MoGBr9hetC
+  - imp_g1NuJQL5PK
+  - imp_p2sD3ad2yf
+is_blacklisted: true
+meta:
+  created: 1783580698735
+  revision: 0
+  version: 0
+nom: AGENCE WILSON
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:42.363Z'

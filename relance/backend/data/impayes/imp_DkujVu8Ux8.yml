@@ -1,0 +1,49 @@
+adresse_bien: 31 avenue des Arènes de Cimiez Le Saint Louis
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_Itj9gTL2Q7
+created_at: '2026-06-24T16:31:09.985Z'
+date_echeance: '2025-06-04'
+date_import: '2026-07-09T07:05:07.413Z'
+date_piece: '2025-06-04'
+donneur_ordre_id: null
+donneur_ordre_nom: DODI
+donneur_ordre_prenom: Daniel
+email_index: 0
+facture_soldee: true
+id: imp_DkujVu8Ux8
+id_dossier: '39540'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48992
+numero_dossier: 53546
+payer_id: cont_Itj9gTL2Q7
+payeur_civilite: ''
+payeur_email: daniel.dodi@free.fr
+payeur_nom: DODI
+payeur_prenom: Daniel
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DODI
+proprietaire_prenom: Daniel
+ref_piece: FA250604 48992
+reference: '53546'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 200
+total_ttc: 240
+type: impaye
+updated_at: '2026-06-24T16:31:09.985Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250604_48992/standard/FA250604 48992 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 3405 avenue 4ème Entrepôt LOCAPOSTE
+apporteur_id: cont_gJCf03FtDc
+apporteur_nom: PROJET CAP IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06510'
+commentaire_piece: "relance agence 15/10\r\n\r\nrelance agence 21/11"
+contact_relance_id: cont_HC03QvoZmO
+created_at: '2026-06-24T16:31:04.996Z'
+date_echeance: '2025-09-04'
+date_import: '2026-07-09T07:05:06.937Z'
+date_piece: '2025-08-28'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI NICE CARROS 3
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_PaELfo39aG
+id_dossier: '40079'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49428
+numero_dossier: 54085
+payer_id: cont_HC03QvoZmO
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SCI NICE CARROS 3
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI NICE CARROS 3
+proprietaire_prenom: null
+ref_piece: FA250828 49428
+reference: '54085'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 920
+total_ttc: 1104
+type: impaye
+updated_at: '2026-06-24T16:31:04.996Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250828_49428/standard/FA250828 49428 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CARROS

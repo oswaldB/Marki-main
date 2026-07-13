@@ -1,0 +1,49 @@
+adresse_bien: chemin de Godissar
+apporteur_id: cont_upLxDb1T7b
+apporteur_nom: GETRIM VICAT
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06440'
+commentaire_piece: ''
+contact_relance_id: cont_upLxDb1T7b
+created_at: '2026-06-24T16:31:39.051Z'
+date_echeance: '2024-03-15'
+date_import: '2026-07-09T07:05:10.235Z'
+date_piece: '2024-03-15'
+donneur_ordre_id: null
+donneur_ordre_nom: SA VICAT
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_FOF8m6LVwc
+id_dossier: '34106'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46312
+numero_dossier: 50105
+payer_id: cont_upLxDb1T7b
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: GETRIM VICAT
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SA VICAT
+proprietaire_prenom: null
+ref_piece: FA240315 46312
+reference: '50105'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 470.83
+total_ttc: 565
+type: impaye
+updated_at: '2026-06-24T16:31:39.051Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240315_46312/standard/FA240315 46312 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: PEILLE

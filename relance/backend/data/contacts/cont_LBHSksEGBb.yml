@@ -1,0 +1,31 @@
+$loki: 5609
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:26.577Z'
+email: gws.company1@gmail.com
+id: cont_LBHSksEGBb
+impaye_ids:
+  - imp_rZVyYZlacP
+  - imp_8V7SLTmBLY
+  - imp_5zasBP00Pp
+is_blacklisted: false
+meta:
+  created: 1783580700371
+  revision: 0
+  version: 0
+nom: SMITS
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0031625092524'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:25.383Z'

@@ -1,0 +1,49 @@
+adresse_bien: 44 avenue de la Californie Villa Victoria
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_CjYk88FDlP
+created_at: '2026-06-24T16:31:19.925Z'
+date_echeance: '2025-01-09'
+date_import: '2026-07-09T07:05:08.353Z'
+date_piece: '2025-01-09'
+donneur_ordre_id: null
+donneur_ordre_nom: GUIOL
+donneur_ordre_prenom: Daniele
+email_index: 0
+facture_soldee: true
+id: imp_2TmA6ZNuop
+id_dossier: '38396'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48069
+numero_dossier: 52402
+payer_id: cont_CjYk88FDlP
+payeur_civilite: ''
+payeur_email: d.guiol@gmail.com
+payeur_nom: GUIOL
+payeur_prenom: Daniele
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GUIOL
+proprietaire_prenom: Daniele
+ref_piece: FA250109 48069
+reference: '52402'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:19.925Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250109_48069/standard/FA250109 48069
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

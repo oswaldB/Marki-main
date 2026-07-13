@@ -1,0 +1,64 @@
+$loki: 2731
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:59.567Z'
+email: agignoli@laforet.com
+id: cont_iCfN7NHYAX
+impaye_ids:
+  - imp_OkuwmLBPIT
+  - imp_KFDyCVk3SE
+  - imp_GK81V7zhme
+  - imp_6oShhge9aG
+  - imp_NwRFN1VyrM
+  - imp_A4cUBKb7sZ
+  - imp_SIYTVY8w5A
+  - imp_tEuaeoBEBa
+  - imp_U9XNmzmPeU
+  - imp_2rDVHMJA4h
+  - imp_BOkywLC3WI
+  - imp_DRd5cqn8c4
+  - imp_uRftszlmzA
+  - imp_88UnPHl6zt
+  - imp_FceCD3o5wk
+  - imp_oH2qldImD9
+  - imp_f2goZW15NY
+  - imp_OhKqX2aD7v
+  - imp_EwJqDIe7ju
+  - imp_6aURr1rRp2
+  - imp_MCQaq75GPr
+  - imp_lo2A30LqVo
+  - imp_TXAoT6zp4a
+  - imp_zuQy3gdUnu
+  - imp_HN4hhIW0kw
+  - imp_mhAFvvxF8T
+  - imp_i5FbrLBuuA
+  - imp_U3uBB3iW0Y
+  - imp_et7clTvPhS
+  - imp_3RGfpo0oeZ
+  - imp_rMaSyDoVVD
+  - imp_aQmMVV4q5D
+  - imp_McdKiadTW7
+  - imp_QHbf4bk2GN
+  - imp_EA803MqKpi
+  - imp_09WKf5Lcly
+is_blacklisted: false
+meta:
+  created: 1783580699359
+  revision: 0
+  version: 0
+nom: GIGNOLI
+prenom: 'Andreea '
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:58.411Z'

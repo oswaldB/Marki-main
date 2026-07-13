@@ -1,0 +1,49 @@
+adresse_bien: 242 cours du Centenaire Le Floréal Palace
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "listing\r\n\r\npaiement de luana en avril"
+contact_relance_id: cont_4xBNVEIYX8
+created_at: '2026-06-24T16:30:51.960Z'
+date_echeance: '2026-03-20'
+date_import: '2026-07-09T07:05:05.683Z'
+date_piece: '2026-03-13'
+donneur_ordre_id: null
+donneur_ordre_nom: BRERA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_AqsZGu1giz
+id_dossier: '41352'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50609
+numero_dossier: 55358
+payer_id: cont_4xBNVEIYX8
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BRERA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BRERA
+proprietaire_prenom: null
+ref_piece: FA260313 50609
+reference: '55358'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:30:51.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260313_50609/standard/FA260313 50609 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 31 bis rue Pasteur Villa La Neige
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:40.911Z'
+date_echeance: '2024-02-26'
+date_import: '2026-07-09T07:05:10.341Z'
+date_piece: '2024-02-26'
+donneur_ordre_id: null
+donneur_ordre_nom: PROVENZANI
+donneur_ordre_prenom: Marc
+email_index: 0
+facture_soldee: true
+id: imp_8ZTDA1H6uD
+id_dossier: '32986'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46186
+numero_dossier: 49983
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: PROVENZANI
+proprietaire_prenom: Marc
+ref_piece: FA240226 46186
+reference: '49983'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:40.911Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240226_46186/standard/FA240226 46186
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

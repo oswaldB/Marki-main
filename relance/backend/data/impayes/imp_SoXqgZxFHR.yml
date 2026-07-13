@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue Porte de France L'Amirauté
+apporteur_id: cont_LjRFyrFWY0
+apporteur_nom: 'AZUR ESTATE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_flqCpRUy3C
+created_at: '2026-06-24T16:31:33.932Z'
+date_echeance: '2024-05-30'
+date_import: '2026-07-09T07:05:09.788Z'
+date_piece: '2024-05-30'
+donneur_ordre_id: null
+donneur_ordre_nom: COUTO DA COSTA
+donneur_ordre_prenom: Emilia
+email_index: 0
+facture_soldee: true
+id: imp_SoXqgZxFHR
+id_dossier: '35769'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46776
+numero_dossier: 50773
+payer_id: cont_flqCpRUy3C
+payeur_civilite: ''
+payeur_email: emilia.costa@orange.fr
+payeur_nom: COUTO DA COSTA
+payeur_prenom: Emilia
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: COUTO DA COSTA
+proprietaire_prenom: Emilia
+ref_piece: FA240530 46776
+reference: '50773'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:33.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240530_46776/standard/FA240530 46776 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

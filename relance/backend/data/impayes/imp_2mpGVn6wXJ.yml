@@ -1,0 +1,49 @@
+adresse_bien: 267 avenue des Mouettes Dolce Vita
+apporteur_id: cont_aFSXWA9ETI
+apporteur_nom: SAINT ROCH IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06700'
+commentaire_piece: ''
+contact_relance_id: cont_fR6SLIby34
+created_at: '2026-06-24T16:31:48.074Z'
+date_echeance: '2023-11-02'
+date_import: '2026-07-09T07:05:11.063Z'
+date_piece: '2023-11-02'
+donneur_ordre_id: null
+donneur_ordre_nom: FASANO
+donneur_ordre_prenom: Mario
+email_index: 0
+facture_soldee: true
+id: imp_2mpGVn6wXJ
+id_dossier: '32096'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45515
+numero_dossier: 49093
+payer_id: cont_fR6SLIby34
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: FASANO
+payeur_prenom: Mario
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FASANO
+proprietaire_prenom: Mario
+ref_piece: FA231102 45515
+reference: '49093'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:48.074Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231102_45515/standard/FA231102 45515
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SAINT-LAURENT-DU-VAR

@@ -1,0 +1,49 @@
+adresse_bien: 2 route de Nice Villa Augusta Bâtiment F
+apporteur_id: cont_XfMiq6mNPd
+apporteur_nom: HAKKASAN
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_XfMiq6mNPd
+created_at: '2026-06-24T16:31:15.956Z'
+date_echeance: '2025-03-06'
+date_import: '2026-07-09T07:05:07.966Z'
+date_piece: '2025-03-06'
+donneur_ordre_id: null
+donneur_ordre_nom: NOVENA-RAMORA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_wPHOKGTh7h
+id_dossier: '38854'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48464
+numero_dossier: 52860
+payer_id: cont_XfMiq6mNPd
+payeur_civilite: ''
+payeur_email: ca.perard@hakkasan.immo
+payeur_nom: HAKKASAN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: NOVENA-RAMORA
+proprietaire_prenom: null
+ref_piece: FA250306 48464
+reference: '52860'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 183.33
+total_ttc: 220
+type: impaye
+updated_at: '2026-06-24T16:31:15.956Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250306_48464/standard/FA250306 48464 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: LA TURBIE

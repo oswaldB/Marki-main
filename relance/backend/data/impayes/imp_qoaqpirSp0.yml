@@ -1,0 +1,49 @@
+adresse_bien: 8 rue du Comte Vert Les Pléiades
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_qVbgUfs9GA
+created_at: '2026-06-24T16:31:45.061Z'
+date_echeance: '2023-12-12'
+date_import: '2026-07-09T07:05:10.783Z'
+date_piece: '2023-12-12'
+donneur_ordre_id: null
+donneur_ordre_nom: AMROUNI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_qoaqpirSp0
+id_dossier: '32422'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45768
+numero_dossier: 49419
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: AMROUNI
+proprietaire_prenom: null
+ref_piece: FA231212 45768
+reference: '49419'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 245.83
+total_ttc: 295
+type: impaye
+updated_at: '2026-06-24T16:31:45.061Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231212_45768/standard/FA231212 45768
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

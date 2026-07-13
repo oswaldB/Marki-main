@@ -1,0 +1,49 @@
+adresse_bien: 6 rue Raoul Lesueur Les Fougeres
+apporteur_id: cont_5GmHIMyZpe
+apporteur_nom: ORION IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_1Glj1AiFjQ
+created_at: '2026-06-24T16:30:52.909Z'
+date_echeance: '2026-03-11'
+date_import: '2026-07-09T07:05:05.736Z'
+date_piece: '2026-03-04'
+donneur_ordre_id: null
+donneur_ordre_nom: ASSOCIATION LES CHIENS GUIDES D'AVEUGLES
+donneur_ordre_prenom: Succession DEVINE
+email_index: 0
+facture_soldee: false
+id: imp_UgqAgpjySa
+id_dossier: '41303'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50547
+numero_dossier: 55309
+payer_id: cont_5GmHIMyZpe
+payeur_civilite: ''
+payeur_email: info@orionimmobilier.fr
+payeur_nom: ORION IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: '0621769752'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: ASSOCIATION LES CHIENS GUIDES D'AVEUGLES
+proprietaire_prenom: Succession DEVINE
+ref_piece: FA260304 50547
+reference: '55309'
+reste_a_payer: 95
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 79.17
+total_ttc: 95
+type: impaye
+updated_at: '2026-06-24T16:33:34.184Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260304_50547/standard/FA260304 50547 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

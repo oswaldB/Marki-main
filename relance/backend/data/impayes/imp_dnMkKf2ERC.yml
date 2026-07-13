@@ -1,0 +1,49 @@
+adresse_bien: 23 chemin de l'Eglise de Saint-Pancrace Fleur de Cyrnos
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_gI6iwqAn7J
+created_at: '2026-06-24T16:31:06.023Z'
+date_echeance: '2025-08-04'
+date_import: '2026-07-09T07:05:07.026Z'
+date_piece: '2025-08-04'
+donneur_ordre_id: null
+donneur_ordre_nom: LANNOCH
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_dnMkKf2ERC
+id_dossier: '39983'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49335
+numero_dossier: 53989
+payer_id: cont_gI6iwqAn7J
+payeur_civilite: ''
+payeur_email: lannoch@lannoch.de
+payeur_nom: LANNOCH
+payeur_prenom: ''
+payeur_telephone: '00491703146965'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LANNOCH
+proprietaire_prenom: null
+ref_piece: FA250804 49335
+reference: '53989'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 958.33
+total_ttc: 1150
+type: impaye
+updated_at: '2026-06-24T16:31:06.023Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250804_49335/standard/FA250804 49335 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

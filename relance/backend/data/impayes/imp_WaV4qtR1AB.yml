@@ -1,0 +1,49 @@
+adresse_bien: 2246 route de la Vernéa
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06390'
+commentaire_piece: ''
+contact_relance_id: cont_cdYm2Dsunk
+created_at: '2026-06-24T16:31:43.969Z'
+date_echeance: '2024-01-12'
+date_import: '2026-07-09T07:05:10.660Z'
+date_piece: '2024-01-12'
+donneur_ordre_id: null
+donneur_ordre_nom: CARLO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_WaV4qtR1AB
+id_dossier: '32599'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45897
+numero_dossier: 49596
+payer_id: cont_cdYm2Dsunk
+payeur_civilite: ''
+payeur_email: nccarlo55@gmail.com
+payeur_nom: CARLO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CARLO
+proprietaire_prenom: null
+ref_piece: FA240112 45897
+reference: '49596'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 354.17
+total_ttc: 425
+type: impaye
+updated_at: '2026-06-24T16:31:43.969Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240112_45897/standard/FA240112 45897
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CONTES

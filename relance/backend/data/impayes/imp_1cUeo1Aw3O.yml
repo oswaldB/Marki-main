@@ -1,0 +1,49 @@
+adresse_bien: 3 rue Michel Ange Bâtiment
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_OvFEyCDR3G
+created_at: '2026-06-24T16:31:48.964Z'
+date_echeance: '2023-10-25'
+date_import: '2026-07-09T07:05:11.087Z'
+date_piece: '2023-10-25'
+donneur_ordre_id: null
+donneur_ordre_nom: SCAPPATURA
+donneur_ordre_prenom: Valérie et Massimo
+email_index: 0
+facture_soldee: true
+id: imp_1cUeo1Aw3O
+id_dossier: '32037'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45469
+numero_dossier: 49034
+payer_id: cont_OvFEyCDR3G
+payeur_civilite: ''
+payeur_email: valerie@scappatura.fr
+payeur_nom: SCAPPATURA
+payeur_prenom: Valérie et Massimo
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCAPPATURA
+proprietaire_prenom: Valérie et Massimo
+ref_piece: FA231025 45469
+reference: '49034'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 350
+total_ttc: 420
+type: impaye
+updated_at: '2026-06-24T16:31:48.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231025_45469/standard/FA231025 45469
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

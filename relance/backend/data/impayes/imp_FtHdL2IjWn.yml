@@ -1,0 +1,49 @@
+adresse_bien: 4 rue de la Marne Le Welcome
+apporteur_id: cont_TWnVoCvWHW
+apporteur_nom: 'EASY MENTON SYNDIC '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "LE WELCOME\r\n4 RUE DE LA MARNE\r\n06500 MENTON "
+contact_relance_id: cont_TWnVoCvWHW
+created_at: '2026-06-24T16:31:22.906Z'
+date_echeance: '2024-11-14'
+date_import: '2026-07-09T07:05:08.660Z'
+date_piece: '2024-11-14'
+donneur_ordre_id: null
+donneur_ordre_nom: LE WELCOME
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_FtHdL2IjWn
+id_dossier: '38023'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47796
+numero_dossier: 52029
+payer_id: cont_TWnVoCvWHW
+payeur_civilite: ''
+payeur_email: menton1@easy-menton.fr
+payeur_nom: 'EASY MENTON SYNDIC '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LE WELCOME
+proprietaire_prenom: null
+ref_piece: FA241114 47796
+reference: '52029'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1483.33
+total_ttc: 1780
+type: impaye
+updated_at: '2026-06-24T16:31:22.906Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241114_47796/standard/FA241114 47796
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

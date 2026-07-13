@@ -1,0 +1,49 @@
+adresse_bien: 2 bis rue du Professeur Calmette
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_OU25ZRNzmV
+created_at: '2026-06-24T16:30:46.095Z'
+date_echeance: '2026-06-22'
+date_import: '2026-07-09T07:05:05.123Z'
+date_piece: '2026-06-15'
+donneur_ordre_id: null
+donneur_ordre_nom: CERESA
+donneur_ordre_prenom: Josephine
+email_index: 0
+facture_soldee: true
+id: imp_VAG5rmszSB
+id_dossier: '41922'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51126
+numero_dossier: 55928
+payer_id: cont_OU25ZRNzmV
+payeur_civilite: ''
+payeur_email: Marc.ceresa@gmail.com
+payeur_nom: CERESA
+payeur_prenom: Josephine
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CERESA
+proprietaire_prenom: Josephine
+ref_piece: FA260615 51126
+reference: '55928'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 1180
+total_ttc: 1416
+type: impaye
+updated_at: '2026-06-26T16:50:00.331Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260615_51126/standard/FA260615 51126 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

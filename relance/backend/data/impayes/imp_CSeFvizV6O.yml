@@ -1,0 +1,49 @@
+adresse_bien: 76 avenue des Alliès Le Cécilia
+apporteur_id: cont_mSwEw9rkRW
+apporteur_nom: 'EASY MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_iY5WYz2z4v
+created_at: '2026-06-24T16:31:22.084Z'
+date_echeance: '2024-11-19'
+date_import: '2026-07-09T07:05:08.644Z'
+date_piece: '2024-11-19'
+donneur_ordre_id: null
+donneur_ordre_nom: SCHMITT
+donneur_ordre_prenom: Raymond
+email_index: 0
+facture_soldee: true
+id: imp_CSeFvizV6O
+id_dossier: '38049'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47822
+numero_dossier: 52055
+payer_id: cont_iY5WYz2z4v
+payeur_civilite: ''
+payeur_email: raymond57.schmitt@gmail.com
+payeur_nom: SCHMITT
+payeur_prenom: Raymond
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCHMITT
+proprietaire_prenom: Raymond
+ref_piece: FA241119 47822
+reference: '52055'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:22.084Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241119_47822/standard/FA241119 47822
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

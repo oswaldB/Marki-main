@@ -1,0 +1,29 @@
+$loki: 675
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:40.554Z'
+email: kgrira@gmail.com
+id: cont_MxWZtlTRK1
+impaye_ids:
+  - imp_O4FcdftB9V
+is_blacklisted: false
+meta:
+  created: 1783580698623
+  revision: 0
+  version: 0
+nom: GRIRA
+prenom: KARIM
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0650491805'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:39.519Z'

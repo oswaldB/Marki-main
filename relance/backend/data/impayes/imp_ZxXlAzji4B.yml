@@ -1,0 +1,49 @@
+adresse_bien: 2208 route de Grasse Espace Antibes n°20
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: cont_eGBb7RDao4
+created_at: '2026-06-24T16:31:45.030Z'
+date_echeance: '2023-12-13'
+date_import: '2026-07-09T07:05:10.778Z'
+date_piece: '2023-12-13'
+donneur_ordre_id: null
+donneur_ordre_nom: CONSORTS RAYNAL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_ZxXlAzji4B
+id_dossier: '32407'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45776
+numero_dossier: 49404
+payer_id: cont_eGBb7RDao4
+payeur_civilite: ''
+payeur_email: raynal_marc@yahoo.fr
+payeur_nom: CONSORTS RAYNAL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CONSORTS RAYNAL
+proprietaire_prenom: null
+ref_piece: FA231213 45776
+reference: '49404'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:31:45.030Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231213_45776/standard/FA231213 45776
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

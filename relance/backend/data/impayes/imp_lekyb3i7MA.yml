@@ -1,0 +1,49 @@
+adresse_bien: 25 rue Assalit
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_F2EWW6X9yz
+created_at: '2026-06-24T16:31:11.066Z'
+date_echeance: '2025-05-13'
+date_import: '2026-07-09T07:05:07.543Z'
+date_piece: '2025-05-13'
+donneur_ordre_id: null
+donneur_ordre_nom: YBLED
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_lekyb3i7MA
+id_dossier: '39371'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48869
+numero_dossier: 53377
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: YBLED
+proprietaire_prenom: null
+ref_piece: FA250513 48869
+reference: '53377'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 141.67
+total_ttc: 170
+type: impaye
+updated_at: '2026-06-24T16:31:11.066Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250513_48869/standard/FA250513 48869 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

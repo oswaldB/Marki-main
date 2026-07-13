@@ -1,0 +1,49 @@
+adresse_bien: 468 avenue de Saint-roman
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_hGKrWLWvCA
+created_at: '2026-06-24T16:31:14.021Z'
+date_echeance: '2025-03-26'
+date_import: '2026-07-09T07:05:07.811Z'
+date_piece: '2025-03-26'
+donneur_ordre_id: null
+donneur_ordre_nom: BERTI
+donneur_ordre_prenom: Edgar
+email_index: 0
+facture_soldee: true
+id: imp_oRTafjJVeF
+id_dossier: '39029'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48599
+numero_dossier: 53035
+payer_id: cont_hGKrWLWvCA
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BERTI
+payeur_prenom: Edgar
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BERTI
+proprietaire_prenom: Edgar
+ref_piece: FA250326 48599
+reference: '53035'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 95.83
+total_ttc: 115
+type: impaye
+updated_at: '2026-06-24T16:31:14.021Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250326_48599/standard/FA250326 48599 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

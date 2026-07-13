@@ -1,0 +1,49 @@
+adresse_bien: 1 rue Boyer Le Garibaldi
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_8tk0dQu7yN
+created_at: '2026-06-24T16:30:55.943Z'
+date_echeance: '2026-01-22'
+date_import: '2026-07-09T07:05:06.102Z'
+date_piece: '2026-01-15'
+donneur_ordre_id: null
+donneur_ordre_nom: MARTENSSON
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_ZFSOJ1Rdvh
+id_dossier: '40993'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50287
+numero_dossier: 54999
+payer_id: cont_8tk0dQu7yN
+payeur_civilite: ''
+payeur_email: dmartensson@me.com
+payeur_nom: MARTENSSON
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MARTENSSON
+proprietaire_prenom: null
+ref_piece: FA260115 50287
+reference: '54999'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 287.5
+total_ttc: 345
+type: impaye
+updated_at: '2026-06-24T16:30:55.943Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260115_50287/standard/FA260115 50287
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

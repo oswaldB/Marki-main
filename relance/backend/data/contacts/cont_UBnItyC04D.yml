@@ -1,0 +1,29 @@
+$loki: 270
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:36.551Z'
+email: denisegagnier1951@gmail.com
+id: cont_UBnItyC04D
+impaye_ids:
+  - imp_v6EYKffoTc
+is_blacklisted: false
+meta:
+  created: 1783580698449
+  revision: 0
+  version: 0
+nom: SCI ANTOINE
+prenom: 'Mme Gagnier '
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0609842944'
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:35.535Z'

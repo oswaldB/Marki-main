@@ -1,0 +1,49 @@
+adresse_bien: 14 Montée Claire Virenque
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_HZbxTEY8pa
+created_at: '2026-06-24T16:31:39.017Z'
+date_echeance: '2024-03-21'
+date_import: '2026-07-09T07:05:10.215Z'
+date_piece: '2024-03-21'
+donneur_ordre_id: null
+donneur_ordre_nom: MIRALLES
+donneur_ordre_prenom: Lisa
+email_index: 0
+facture_soldee: true
+id: imp_tCLk1z9e2y
+id_dossier: '34211'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46345
+numero_dossier: 50210
+payer_id: cont_HZbxTEY8pa
+payeur_civilite: ''
+payeur_email: lisamiralless@gmail.com
+payeur_nom: MIRALLES
+payeur_prenom: Lisa
+payeur_telephone: '0650144863'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MIRALLES
+proprietaire_prenom: Lisa
+ref_piece: FA240321 46345
+reference: '50210'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:39.017Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240321_46345/standard/FA240321 46345 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

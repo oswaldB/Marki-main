@@ -1,0 +1,49 @@
+adresse_bien: 14 avenue du Val de Vesqui Villa Yacky
+apporteur_id: cont_4Zc7DsPc6Y
+apporteur_nom: EDOUARD VII REAL ESTATE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "Pour Madame ALBONETTI Marylene\r\n\r\n124 Av du Val de Vesqui\r\n06190 Roquebrune Cap Martin"
+contact_relance_id: cont_MnZvVMQP5w
+created_at: '2026-06-24T16:31:28.935Z'
+date_echeance: '2024-08-16'
+date_import: '2026-07-09T07:05:09.299Z'
+date_piece: '2024-08-16'
+donneur_ordre_id: null
+donneur_ordre_nom: ALBONETTI
+donneur_ordre_prenom: Marylene
+email_index: 0
+facture_soldee: true
+id: imp_cGKAcFZPvx
+id_dossier: '36354'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47231
+numero_dossier: 51358
+payer_id: cont_MnZvVMQP5w
+payeur_civilite: ''
+payeur_email: marylene.albonetti@wanadoo.fr
+payeur_nom: ALBONETTI
+payeur_prenom: Marylene
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ALBONETTI
+proprietaire_prenom: Marylene
+ref_piece: FA240816 47231
+reference: '51358'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 612.5
+total_ttc: 735
+type: impaye
+updated_at: '2026-06-24T16:31:28.935Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240816_47231/standard/FA240816 47231 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

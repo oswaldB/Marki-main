@@ -1,0 +1,93 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_tHUZwGZ1IJ
+corps: >
+  <p>Bonjour Monsieur Federico LANTIERI,</p>
+
+  <p><br></p>
+
+  <p><strong>En l'absence de règlement de votre part</strong>, nous vous
+  informons que votre dossier ( <strong>1 rue du Grenadier, 06500 MENTON -
+  dossier 48295</strong>) a été transmis à notre service contentieux pour
+  procédure de recouvrement.</p>
+
+  <p><br></p>
+
+  <p>Vous avez toutefois la possibilité de régulariser votre situation afin
+  d'interrompre la procédure judiciaire :</p>
+
+  <p><br></p>
+
+  <table style="border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Facture</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Échéance</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Montant total</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Reste à payer</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Télécharger la facture</p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>44838</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>25/07/2023</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>370 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>370 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p><a href="https://adti.markidiags.com/redirect-pdf/8DNIy5iPWP">Télécharger</a></p></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=370&amp;vads_order_id=44838&amp;vads_cust_id=48295&amp;vads_cust_last_name=LANTIERI&amp;vads_cust_first_name=Federico&amp;vads_cust_email=plantieri@alice.it&amp;vads_cust_cell_phone=">Paiement
+  sécurisé en ligne en carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p>Sans régularisation de votre part, le dossier suivra son cours
+  contentieux.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-06-25T16:53:16.909Z'
+date_envoi: '2026-07-30T16:53:05.309Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 9
+erreur_count: 0
+id: rel_e1MI2tn9Mp
+impaye_ids:
+  - imp_8DNIy5iPWP
+manuelle: false
+message_id: null
+objet: >-
+  EX'IM - Dossier 48295 - Relance n°7 : Dossier transmis au service contentieux
+  – Facture 44838 impayée
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: pret pour envoi
+type: relance
+updated_at: '2026-07-02T15:34:50.927Z'
+valide: false

@@ -1,0 +1,49 @@
+adresse_bien: 193 avenue de Rimiez Domaine de Gairaut
+apporteur_id: cont_xfSDVx7VTP
+apporteur_nom: ENGEL VÖLKERS
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_pBFxgzBgvt
+created_at: '2026-06-24T16:30:48.867Z'
+date_echeance: '2026-05-20'
+date_import: '2026-07-09T07:05:05.355Z'
+date_piece: '2026-05-13'
+donneur_ordre_id: null
+donneur_ordre_nom: BENCHETRIT
+donneur_ordre_prenom: Ddier
+email_index: 0
+facture_soldee: true
+id: imp_xUkOREyqpO
+id_dossier: '41708'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50931
+numero_dossier: 55714
+payer_id: cont_pBFxgzBgvt
+payeur_civilite: ''
+payeur_email: d.ben@mac.com
+payeur_nom: BENCHETRIT
+payeur_prenom: Ddier
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BENCHETRIT
+proprietaire_prenom: Ddier
+ref_piece: FA260513 50931
+reference: '55714'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 253.33
+total_ttc: 304
+type: impaye
+updated_at: '2026-06-24T16:30:48.867Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260513_50931/standard/FA260513 50931 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

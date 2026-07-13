@@ -1,0 +1,49 @@
+adresse_bien: 66 avenue des Alliès Le Nausicaa
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_dGVhBFCh3N
+created_at: '2026-06-24T16:31:40.037Z'
+date_echeance: '2024-03-01'
+date_import: '2026-07-09T07:05:10.310Z'
+date_piece: '2024-03-01'
+donneur_ordre_id: null
+donneur_ordre_nom: CAMAILLE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_YENVvfgGSd
+id_dossier: '33034'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46233
+numero_dossier: 50031
+payer_id: cont_dGVhBFCh3N
+payeur_civilite: ''
+payeur_email: camaille@me.com
+payeur_nom: CAMAILLE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAMAILLE
+proprietaire_prenom: null
+ref_piece: FA240301 46233
+reference: '50031'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 198.33
+total_ttc: 238
+type: impaye
+updated_at: '2026-06-24T16:31:40.037Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240301_46233/standard/FA240301 46233 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

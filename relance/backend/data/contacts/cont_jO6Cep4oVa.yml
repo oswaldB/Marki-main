@@ -1,0 +1,43 @@
+$loki: 84
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:34.520Z'
+email: jugo@laforet.com
+id: cont_jO6Cep4oVa
+impaye_ids:
+  - imp_Ci0792gZa5
+  - imp_LGARteZT01
+  - imp_OKQb9jxWN2
+  - imp_0WthHkRAuJ
+  - imp_RTy4O7RhTT
+  - imp_d9m33P3zGn
+  - imp_t4ZJbS3Uow
+  - imp_PvvuzciAoQ
+  - imp_yQR2BRhnbN
+  - imp_Oax9GCUAo6
+  - imp_CIZKtXNDbW
+  - imp_E8YYABoV1y
+  - imp_Dx1RsJpIsf
+  - imp_hG3aPyfVJY
+  - imp_f9Y0Iq1bjC
+is_blacklisted: false
+meta:
+  created: 1783580698372
+  revision: 0
+  version: 0
+nom: LAFORET NICE
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:33.500Z'

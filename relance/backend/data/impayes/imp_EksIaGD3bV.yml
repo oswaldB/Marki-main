@@ -1,0 +1,49 @@
+adresse_bien: 16 rue Alberti
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_KZCckDQZaI
+created_at: '2026-06-24T16:31:10.960Z'
+date_echeance: '2025-05-15'
+date_import: '2026-07-09T07:05:07.495Z'
+date_piece: '2025-05-15'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI JENERIC
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_EksIaGD3bV
+id_dossier: '39406'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48887
+numero_dossier: 53412
+payer_id: cont_KZCckDQZaI
+payeur_civilite: ''
+payeur_email: proposenice@gmail.com
+payeur_nom: SCI JENERIC
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI JENERIC
+proprietaire_prenom: null
+ref_piece: FA250515 48887
+reference: '53412'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 277.5
+total_ttc: 333
+type: impaye
+updated_at: '2026-06-24T16:31:10.960Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250515_48887/standard/FA250515 48887 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

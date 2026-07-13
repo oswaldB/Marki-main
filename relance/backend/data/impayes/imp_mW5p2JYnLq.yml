@@ -1,0 +1,49 @@
+adresse_bien: 4 place Maréchal Juin Plaza Diana
+apporteur_id: cont_tjqfJWUJNQ
+apporteur_nom: AIA GROUPE ALLIANCE GESTION VENCE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06140'
+commentaire_piece: "PLAZA DIANA\r\n4 place Maréchal Juin\r\n06140 VENCE\r\n\r\n2 Bât. 3 entrées\r\n66 Logements"
+contact_relance_id: cont_flxhKbDdcb
+created_at: '2026-06-24T16:31:15.888Z'
+date_echeance: '2025-03-13'
+date_import: '2026-07-09T07:05:07.932Z'
+date_piece: '2025-03-13'
+donneur_ordre_id: null
+donneur_ordre_nom: AIA GROUPE ALLIANCE GESTION VENCE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_mW5p2JYnLq
+id_dossier: '38920'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48511
+numero_dossier: 52926
+payer_id: cont_tjqfJWUJNQ
+payeur_civilite: ''
+payeur_email: syndic4@aia06.fr
+payeur_nom: AIA GROUPE ALLIANCE GESTION VENCE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PLAZA DIANA
+proprietaire_prenom: null
+ref_piece: FA250313 48511
+reference: '52926'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1875
+total_ttc: 2250
+type: impaye
+updated_at: '2026-06-24T16:31:15.888Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250313_48511/standard/FA250313 48511 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VENCE

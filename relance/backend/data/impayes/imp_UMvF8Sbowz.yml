@@ -1,0 +1,49 @@
+adresse_bien: 848 promenade  du Soleil  L'Admiral Plazza
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_md88QAmAS2
+created_at: '2026-06-24T16:30:59.970Z'
+date_echeance: '2025-11-12'
+date_import: '2026-07-09T07:05:06.479Z'
+date_piece: '2025-11-05'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI PANAMIRO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_UMvF8Sbowz
+id_dossier: '40527'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49890
+numero_dossier: 54533
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCI PANAMIRO
+proprietaire_prenom: null
+ref_piece: FA251105 49890
+reference: '54533'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 170
+total_ttc: 204
+type: impaye
+updated_at: '2026-06-24T16:30:59.970Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251105_49890/standard/FA251105 49890
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 17 Montée du Caroubier
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_tOa6EgShEg
+created_at: '2026-06-24T16:30:47.943Z'
+date_echeance: '2026-06-02'
+date_import: '2026-07-09T07:05:05.297Z'
+date_piece: '2026-05-26'
+donneur_ordre_id: null
+donneur_ordre_nom: PESSINA
+donneur_ordre_prenom: Philippe
+email_index: 0
+facture_soldee: true
+id: imp_cEnSEWRkct
+id_dossier: '41830'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51007
+numero_dossier: 55836
+payer_id: cont_tOa6EgShEg
+payeur_civilite: ''
+payeur_email: phpessina@hotmail.fr
+payeur_nom: PESSINA
+payeur_prenom: Philippe
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PESSINA
+proprietaire_prenom: Philippe
+ref_piece: FA260526 51007
+reference: '55836'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 333.33
+total_ttc: 400
+type: impaye
+updated_at: '2026-06-24T16:30:47.943Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260526_51007/standard/FA260526 51007 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

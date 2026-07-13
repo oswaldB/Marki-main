@@ -1,0 +1,49 @@
+adresse_bien: 7 boulevard Victor de Cessole
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06660'
+commentaire_piece: "Copropriété \r\n7 bd de Cessole\r\n06660 Saint Etienne de Tinée\r\n\r\nenvoyé le 21/05 elle va régler avant la fin du mois par virement"
+contact_relance_id: cont_JASBpE8am0
+created_at: '2026-06-24T16:30:48.867Z'
+date_echeance: '2026-05-20'
+date_import: '2026-07-09T07:05:05.350Z'
+date_piece: '2026-05-13'
+donneur_ordre_id: null
+donneur_ordre_nom: COPRO 7 BD DE CESSOLE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_HMwDTpThJb
+id_dossier: '41535'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50925
+numero_dossier: 55541
+payer_id: cont_N2KD7hQyil
+payeur_civilite: ''
+payeur_email: claudie.chardon49@gmail.com
+payeur_nom: COPRO 7 BD DE CESSOLE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: COPRO 7 BD DE CESSOLE
+proprietaire_prenom: null
+ref_piece: FA260513 50925
+reference: '55541'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 1542
+total_ttc: 1850.4
+type: impaye
+updated_at: '2026-06-30T07:50:00.659Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260513_50925/standard/FA260513 50925 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: SAINT-ÉTIENNE-DE-TINÉE

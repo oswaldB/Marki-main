@@ -1,0 +1,49 @@
+adresse_bien: 1420 chemin du Col de Garde
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:05.992Z'
+date_echeance: '2025-08-07'
+date_import: '2026-07-09T07:05:07.010Z'
+date_piece: '2025-08-07'
+donneur_ordre_id: null
+donneur_ordre_nom: ARTIERI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_OkYOxOpRHi
+id_dossier: '40013'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49354
+numero_dossier: 54019
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: ARTIERI
+proprietaire_prenom: null
+ref_piece: FA250807 49354
+reference: '54019'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 180
+total_ttc: 216
+type: impaye
+updated_at: '2026-06-24T16:31:05.992Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250807_49354/standard/FA250807 49354 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: GORBIO

@@ -1,0 +1,49 @@
+adresse_bien: 50 rue Emmanuel Grout Nice Meridia Pléiade
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_bYJezulftT
+created_at: '2026-06-24T16:30:49.905Z'
+date_echeance: '2026-04-29'
+date_import: '2026-07-09T07:05:05.469Z'
+date_piece: '2026-04-22'
+donneur_ordre_id: null
+donneur_ordre_nom: GLEVAREC
+donneur_ordre_prenom: Morgan
+email_index: 0
+facture_soldee: true
+id: imp_ETv9fCrVCQ
+id_dossier: '41630'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50824
+numero_dossier: 55636
+payer_id: cont_bYJezulftT
+payeur_civilite: ''
+payeur_email: mo-06-g@hotmail.fr
+payeur_nom: GLEVAREC
+payeur_prenom: Morgan
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GLEVAREC
+proprietaire_prenom: Morgan
+ref_piece: FA260423 50824
+reference: '55636'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:30:49.905Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260423_50824/standard/FA260423 50824
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

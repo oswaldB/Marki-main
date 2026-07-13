@@ -1,0 +1,49 @@
+adresse_bien: 9 rue Biscarra Palais Biscarra
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_LCd95CjGCu
+created_at: '2026-06-24T16:31:22.979Z'
+date_echeance: '2024-11-12'
+date_import: '2026-07-09T07:05:08.693Z'
+date_piece: '2024-11-12'
+donneur_ordre_id: null
+donneur_ordre_nom: DEVARIEUX
+donneur_ordre_prenom: Agathe
+email_index: 0
+facture_soldee: true
+id: imp_wJW1H6CJ6v
+id_dossier: '37994'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47771
+numero_dossier: 52000
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DEVARIEUX
+proprietaire_prenom: Agathe
+ref_piece: FA241112 47771
+reference: '52000'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 226.67
+total_ttc: 272
+type: impaye
+updated_at: '2026-06-24T16:31:22.979Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241112_47771/standard/FA241112 47771
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

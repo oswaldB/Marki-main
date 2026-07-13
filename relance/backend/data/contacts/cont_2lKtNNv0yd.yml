@@ -1,0 +1,29 @@
+$loki: 6470
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:34.592Z'
+email: audenat@hotmail.com
+id: cont_2lKtNNv0yd
+impaye_ids:
+  - imp_dTNUNp9g4J
+is_blacklisted: false
+meta:
+  created: 1783580700645
+  revision: 0
+  version: 0
+nom: LE FORESTIER
+prenom: Audrey
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:33.381Z'

@@ -1,0 +1,49 @@
+adresse_bien: 18 rue des Potiers Le Dante Riviera
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_Qy9fYkuaQN
+created_at: '2026-06-24T16:31:07.879Z'
+date_echeance: '2025-07-17'
+date_import: '2026-07-09T07:05:07.160Z'
+date_piece: '2025-07-17'
+donneur_ordre_id: null
+donneur_ordre_nom: TRULLARD
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_BSwg7UJEjM
+id_dossier: '39861'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49230
+numero_dossier: 53867
+payer_id: cont_Qy9fYkuaQN
+payeur_civilite: ''
+payeur_email: armelletrullard@hotmail.fr
+payeur_nom: TRULLARD
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: TRULLARD
+proprietaire_prenom: null
+ref_piece: FA250717 49230
+reference: '53867'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:07.879Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250717_49230/standard/FA250717 49230
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

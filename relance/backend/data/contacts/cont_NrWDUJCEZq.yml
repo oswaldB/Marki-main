@@ -1,0 +1,29 @@
+$loki: 3513
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:07.527Z'
+email: docteur.fanciulli@gmail.com
+id: cont_NrWDUJCEZq
+impaye_ids:
+  - imp_LtFxACqJ60
+is_blacklisted: false
+meta:
+  created: 1783580699693
+  revision: 0
+  version: 0
+nom: FANCIULLI
+prenom: Johanna
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0603585781'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:06.349Z'

@@ -1,0 +1,49 @@
+adresse_bien: 148 avenue de la Californie Le Parvis de la Mer
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_zWLan9R7kt
+created_at: '2026-06-24T16:31:05.926Z'
+date_echeance: '2025-08-25'
+date_import: '2026-07-09T07:05:06.988Z'
+date_piece: '2025-08-18'
+donneur_ordre_id: null
+donneur_ordre_nom: MARCIC
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_4d4XhFn153
+id_dossier: '40051'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49388
+numero_dossier: 54057
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MARCIC
+proprietaire_prenom: null
+ref_piece: FA250818 49388
+reference: '54057'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:05.926Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250818_49388/standard/FA250818 49388 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

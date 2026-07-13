@@ -1,0 +1,49 @@
+adresse_bien: 47 avenue de la Californie
+apporteur_id: cont_TSnviTU1mO
+apporteur_nom: LAFORET GAMBETTA
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_M8QbPHBfcf
+created_at: '2026-06-24T16:31:00.944Z'
+date_echeance: '2025-11-04'
+date_import: '2026-07-09T07:05:06.539Z'
+date_piece: '2025-10-28'
+donneur_ordre_id: null
+donneur_ordre_nom: RIVALLAND - POIRET
+donneur_ordre_prenom: CO SARL IMMO GAMNETTA
+email_index: 0
+facture_soldee: true
+id: imp_mLQICHf4Eh
+id_dossier: '40538'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49836
+numero_dossier: 54544
+payer_id: cont_M8QbPHBfcf
+payeur_civilite: ''
+payeur_email: tony.pierre.poiret@gmail.com
+payeur_nom: RIVALLAND - POIRET
+payeur_prenom: CO SARL IMMO GAMNETTA
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: RIVALLAND - POIRET
+proprietaire_prenom: CO SARL IMMO GAMNETTA
+ref_piece: FA251028 49836
+reference: '54544'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:00.944Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251028_49836/standard/FA251028 49836
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

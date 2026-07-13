@@ -1,0 +1,49 @@
+adresse_bien: 28 rue des Martyrs de la Resistance Palais Berlioz
+apporteur_id: cont_LgArzyVnvd
+apporteur_nom: 'ACT''RIVIERA '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: relance le 18/09 act + maitre ghiandai
+contact_relance_id: cont_PgklJmZqHY
+created_at: '2026-06-24T16:31:07.911Z'
+date_echeance: '2025-07-15'
+date_import: '2026-07-09T07:05:07.180Z'
+date_piece: '2025-07-15'
+donneur_ordre_id: null
+donneur_ordre_nom: YOGONATHAN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jQPTY4fFzB
+id_dossier: '39839'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49214
+numero_dossier: 53845
+payer_id: cont_LgArzyVnvd
+payeur_civilite: ''
+payeur_email: actrivieragestion@gmail.com
+payeur_nom: 'ACT''RIVIERA '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: YOGONATHAN
+proprietaire_prenom: null
+ref_piece: FA250715 49214
+reference: '53845'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 220.42
+total_ttc: 264.5
+type: impaye
+updated_at: '2026-06-24T16:31:07.911Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250715_49214/standard/FA250715 49214
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

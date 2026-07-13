@@ -1,0 +1,49 @@
+adresse_bien: 66 avenue Paul Cézanne Le Rose Garden B
+apporteur_id: cont_EhbrchRzEW
+apporteur_nom: IMMOBILIERE AVENUE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06700'
+commentaire_piece: ''
+contact_relance_id: cont_EhbrchRzEW
+created_at: '2026-06-24T16:31:44.967Z'
+date_echeance: '2023-12-19'
+date_import: '2026-07-09T07:05:10.753Z'
+date_piece: '2023-12-19'
+donneur_ordre_id: null
+donneur_ordre_nom: TEULET
+donneur_ordre_prenom: Robert
+email_index: 0
+facture_soldee: true
+id: imp_0nrfAGK8Lf
+id_dossier: '32480'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45820
+numero_dossier: 49477
+payer_id: cont_EhbrchRzEW
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: IMMOBILIERE AVENUE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: TEULET
+proprietaire_prenom: Robert
+ref_piece: FA231219 45820
+reference: '49477'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 213.33
+total_ttc: 256
+type: impaye
+updated_at: '2026-06-24T16:31:44.967Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231219_45820/standard/FA231219 45820
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SAINT-LAURENT-DU-VAR

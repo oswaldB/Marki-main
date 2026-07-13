@@ -1,0 +1,35 @@
+$loki: 534
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:38.731Z'
+email: contact@cabinet-grimaz.com
+id: cont_G77kVo1E0f
+impaye_ids:
+  - imp_TgskrnvO54
+  - imp_7v50xC9tqZ
+  - imp_5AcUBbg0ap
+  - imp_MkNIbuHsjc
+  - imp_vjtpxAlvHF
+  - imp_c3crHcDRhU
+  - imp_ZfQP78GrtQ
+is_blacklisted: false
+meta:
+  created: 1783580698567
+  revision: 0
+  version: 0
+nom: DITTO
+prenom: 'Carmen '
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:38.376Z'

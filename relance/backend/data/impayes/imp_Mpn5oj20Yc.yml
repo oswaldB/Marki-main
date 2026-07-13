@@ -1,0 +1,49 @@
+adresse_bien: 2 boulevard Saint-Roch Palais Helios
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_kGKUYvjiZ8
+created_at: '2026-06-24T16:31:37.001Z'
+date_echeance: '2024-04-12'
+date_import: '2026-07-09T07:05:10.036Z'
+date_piece: '2024-04-12'
+donneur_ordre_id: null
+donneur_ordre_nom: BIANCHI
+donneur_ordre_prenom: Christian
+email_index: 0
+facture_soldee: true
+id: imp_Mpn5oj20Yc
+id_dossier: '34408'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46481
+numero_dossier: 50407
+payer_id: cont_kGKUYvjiZ8
+payeur_civilite: ''
+payeur_email: bianchi.cmx@gmail.com
+payeur_nom: BIANCHI
+payeur_prenom: Christian
+payeur_telephone: '0609848830'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BIANCHI
+proprietaire_prenom: Christian
+ref_piece: FA240412 46481
+reference: '50407'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 133.33
+total_ttc: 160
+type: impaye
+updated_at: '2026-06-24T16:31:37.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240412_46481/standard/FA240412 46481
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 921 avenue de Bellevue  Villa Cap Martin
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_md88QAmAS2
+created_at: '2026-06-24T16:31:14.984Z'
+date_echeance: '2025-03-17'
+date_import: '2026-07-09T07:05:07.894Z'
+date_piece: '2025-03-17'
+donneur_ordre_id: null
+donneur_ordre_nom: DROSOS
+donneur_ordre_prenom: Loannis et Sandrine
+email_index: 0
+facture_soldee: true
+id: imp_QmcKYA3Ny4
+id_dossier: '38933'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48521
+numero_dossier: 52939
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DROSOS
+proprietaire_prenom: Loannis et Sandrine
+ref_piece: FA250317 48521
+reference: '52939'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 153.33
+total_ttc: 184
+type: impaye
+updated_at: '2026-06-24T16:31:14.984Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250317_48521/standard/FA250317 48521 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

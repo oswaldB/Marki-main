@@ -1,0 +1,49 @@
+adresse_bien: 37 rue Pietra Scritta Le Jean Bart
+apporteur_id: cont_nGbYMncL3T
+apporteur_nom: CABINET TRABAUD ACQUARONE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "JEAN BART\r\n37 RUE PIETRA SCRITTA\r\n06500 MENTON"
+contact_relance_id: cont_nGbYMncL3T
+created_at: '2026-06-24T16:30:54.950Z'
+date_echeance: '2026-02-03'
+date_import: '2026-07-09T07:05:06.000Z'
+date_piece: '2026-01-27'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC LE JEAN BART
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jvkOtXRTpw
+id_dossier: '40190'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50356
+numero_dossier: 54196
+payer_id: cont_nGbYMncL3T
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET TRABAUD ACQUARONE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC LE JEAN BART
+proprietaire_prenom: null
+ref_piece: FA260127 50356
+reference: '54196'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 4025
+total_ttc: 4830
+type: impaye
+updated_at: '2026-06-24T16:30:54.950Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260127_50356/standard/FA260127 50356
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

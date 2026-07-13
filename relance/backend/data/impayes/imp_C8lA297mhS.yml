@@ -1,0 +1,49 @@
+adresse_bien: ''
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: ''
+commentaire_piece: "Zone Cannes Marchandises S50 :\r\nDossier 5954\r\n\r\nPK185+200 au PK186+000\r\nPK184+100 au PK184+530\r\nPK181+000 au PK181+500\r\nPK182+300 au PK182+900\r\nPK183+100 au PK183+700\r\nPK184+530 au PK185+000\r\nPK187+100 au PK187+300\r\nPK187+900 au PK188+400\r\nPK188+850 au PK189+050\r\nPK189+600 au PK189+700\r\nPK189+900 au PK190+200\r\n\r\nLa facture a bien été transmis au service comptabilité pour mise en paiement\r\n\r\n"
+contact_relance_id: cont_uEe1kqasth
+created_at: '2026-06-24T16:30:57.035Z'
+date_echeance: '2025-12-26'
+date_import: '2026-07-09T07:05:06.222Z'
+date_piece: '2025-12-19'
+donneur_ordre_id: null
+donneur_ordre_nom: SAS EXIM EXPLOITATION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_C8lA297mhS
+id_dossier: '40912'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50168
+numero_dossier: 54918
+payer_id: cont_sfpCiuiAJC
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SAS EXIM EXPLOITATION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SNCF
+proprietaire_prenom: null
+ref_piece: FA251219 50168
+reference: '54918'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 4096.76
+total_ttc: 4916.11
+type: impaye
+updated_at: '2026-06-24T16:30:57.035Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251219_50168/standard/FA251219 50168
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ''

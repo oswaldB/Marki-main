@@ -1,0 +1,29 @@
+$loki: 5292
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:23.555Z'
+email: ranzatopatricia@gmail.com
+id: cont_lh4MgVX7S8
+impaye_ids:
+  - imp_9QDM67gfik
+is_blacklisted: false
+meta:
+  created: 1783580700250
+  revision: 0
+  version: 0
+nom: SETT
+prenom: Federico
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:22.378Z'

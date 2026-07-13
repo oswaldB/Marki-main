@@ -1,0 +1,49 @@
+adresse_bien: 4 rue Kosma Palais Marguerite
+apporteur_id: cont_HL41u0iQHO
+apporteur_nom: APARTE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:36.036Z'
+date_echeance: '2024-04-19'
+date_import: '2026-07-09T07:05:09.972Z'
+date_piece: '2024-04-19'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI SPARROW
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_PNS3DrSTCV
+id_dossier: '34474'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46536
+numero_dossier: 50473
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SCI SPARROW
+proprietaire_prenom: null
+ref_piece: FA240419 46536
+reference: '50473'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 583.33
+total_ttc: 700
+type: impaye
+updated_at: '2026-06-24T16:31:36.036Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240419_46536/standard/FA240419 46536
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

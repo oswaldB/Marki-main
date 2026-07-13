@@ -1,0 +1,49 @@
+adresse_bien: 12 rue Miron
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_kyTCccB8zw
+created_at: '2026-07-07T22:00:52.353Z'
+date_echeance: '2026-07-14'
+date_import: '2026-07-09T07:05:12.295Z'
+date_piece: '2026-07-07'
+donneur_ordre_id: null
+donneur_ordre_nom: DEROUBAIX
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_rpe5hEwggv
+id_dossier: '42097'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51259
+numero_dossier: 56103
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DEROUBAIX
+proprietaire_prenom: null
+ref_piece: FA260707 51259
+reference: '56103'
+reste_a_payer: 248
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 206.67
+total_ttc: 248
+type: impaye
+updated_at: '2026-07-08T22:02:31.262Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juillet/FA260707_51259/standard/FA260707 51259
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

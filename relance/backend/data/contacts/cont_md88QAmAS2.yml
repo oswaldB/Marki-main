@@ -1,0 +1,113 @@
+$loki: 3690
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:08.559Z'
+email: contact@locationgestion.com
+id: cont_md88QAmAS2
+impaye_ids:
+  - imp_5lRzH4aZxU
+  - imp_fKaB0SfNoi
+  - imp_s8EPEpBxqT
+  - imp_TOx1JFTsxN
+  - imp_UMvF8Sbowz
+  - imp_HAGQ4jYjhX
+  - imp_hvVIqwD2jJ
+  - imp_BsyTYqmDNE
+  - imp_RLYYMZk808
+  - imp_BBGQZxJ67w
+  - imp_aCdGuXPhGa
+  - imp_6fGRomRcrZ
+  - imp_HIG27Mdl5G
+  - imp_mvHCRMrAkx
+  - imp_7F07EPR1fB
+  - imp_MjBXThYikv
+  - imp_hHWdKE4wBm
+  - imp_r54DmrXZiQ
+  - imp_VvWrI0eiJ0
+  - imp_HQxmuj5Yoj
+  - imp_CKh4uuKRqE
+  - imp_MNGDhuRL7c
+  - imp_ExjP6mrUeN
+  - imp_O3PHO3V9Iw
+  - imp_P9vVTJQGh1
+  - imp_PvQgTvHtrF
+  - imp_fnf34xdHba
+  - imp_6UTgMeei7d
+  - imp_QmcKYA3Ny4
+  - imp_DJPjpVSkB7
+  - imp_61r1B4DhLo
+  - imp_mqg6euEyi6
+  - imp_eo6EhhK0uI
+  - imp_sFXzeHwmJQ
+  - imp_JckpDAjcfp
+  - imp_3hsBU76kNw
+  - imp_tlohqz19kb
+  - imp_rdmzYCTFNr
+  - imp_uqKx0N9NEi
+  - imp_ONuD9syrmZ
+  - imp_MYww2wWbHS
+  - imp_HSeCBsom8N
+  - imp_UAk81jyOlk
+  - imp_AF0noTBnji
+  - imp_cAoblVJweC
+  - imp_G6sQqNnuC2
+  - imp_MSfFGryDvo
+  - imp_xwLG7OzlQH
+  - imp_CvmQzhxGul
+  - imp_ECApn2jtKe
+  - imp_5G1pPqcVp5
+  - imp_cgg6QySPNQ
+  - imp_fqP9DO3WaG
+  - imp_FSAmfSf475
+  - imp_NdBxAW0piq
+  - imp_vmikobrYBy
+  - imp_amL9CF1ZmP
+  - imp_jecIj0PCAV
+  - imp_ivDTy4yxG1
+  - imp_SzPEL052Km
+  - imp_Q4OeQukzCg
+  - imp_NElwCgSCqB
+  - imp_1yYB2kOX6o
+  - imp_NLR6CK6gzH
+  - imp_FUMH1DliWe
+  - imp_lzsVWoHUsF
+  - imp_XY0G90gTqN
+  - imp_ScAtPm7RVB
+  - imp_rv0dpP6TI2
+  - imp_shL82rKwlJ
+  - imp_CnL3cuGsej
+  - imp_FvVnwTZ1wJ
+  - imp_30pqqMKDIN
+  - imp_vXzEDPNbL3
+  - imp_jAtwcyFH0D
+  - imp_oKgWSoqaYf
+  - imp_RNQdxzsqbB
+  - imp_6LvWRCLNMF
+  - imp_TGlhIpfWXG
+  - imp_ZhTTV8EICS
+  - imp_UjskHEMXSj
+  - imp_1GzAz6Gohj
+  - imp_WSmO1fVqlv
+  - imp_QU38Q2LVcf
+  - imp_7AWRv3wrFX
+is_blacklisted: false
+meta:
+  created: 1783580699756
+  revision: 0
+  version: 0
+nom: CUISINIER
+prenom: Cynthia
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:07.375Z'

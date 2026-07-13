@@ -1,0 +1,49 @@
+adresse_bien: 26 Val des Castagnins Villa Méditerranée
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_7DotoGmm3j
+created_at: '2026-06-24T16:31:41.989Z'
+date_echeance: '2024-02-07'
+date_import: '2026-07-09T07:05:10.468Z'
+date_piece: '2024-02-07'
+donneur_ordre_id: null
+donneur_ordre_nom: CACARIE
+donneur_ordre_prenom: Florent
+email_index: 0
+facture_soldee: true
+id: imp_EduNSzYv31
+id_dossier: '32835'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46068
+numero_dossier: 49832
+payer_id: cont_7DotoGmm3j
+payeur_civilite: ''
+payeur_email: florentcacarier@hotmail.fr
+payeur_nom: CACARIE
+payeur_prenom: Florent
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CACARIE
+proprietaire_prenom: Florent
+ref_piece: FA240207 46068
+reference: '49832'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 150
+total_ttc: 180
+type: impaye
+updated_at: '2026-06-24T16:31:41.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240207_46068/standard/FA240207 46068
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 6 rue Fontaine de la Ville
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_UFJXLFSGl8
+created_at: '2026-06-24T16:31:28.964Z'
+date_echeance: '2024-08-08'
+date_import: '2026-07-09T07:05:09.311Z'
+date_piece: '2024-08-08'
+donneur_ordre_id: null
+donneur_ordre_nom: FESQUET
+donneur_ordre_prenom: Tom
+email_index: 0
+facture_soldee: true
+id: imp_4A9HK0FvFP
+id_dossier: '36323'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47207
+numero_dossier: 51327
+payer_id: cont_UFJXLFSGl8
+payeur_civilite: ''
+payeur_email: tom.fesquet@hotmail.com
+payeur_nom: FESQUET
+payeur_prenom: Tom
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FESQUET
+proprietaire_prenom: Tom
+ref_piece: FA240808 47207
+reference: '51327'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:28.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240808_47207/standard/FA240808 47207 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

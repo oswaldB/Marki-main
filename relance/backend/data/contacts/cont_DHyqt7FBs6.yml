@@ -1,0 +1,41 @@
+$loki: 6345
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:33.548Z'
+email: erossiplaza@gouv.mc
+id: cont_DHyqt7FBs6
+impaye_ids:
+  - imp_FpSIAY4O4v
+  - imp_LHbFrP2cnJ
+  - imp_Xuh1GYLh2P
+  - imp_wnUAX33f84
+  - imp_ydqHTLkG4b
+  - imp_ZtkrN5zx2j
+  - imp_4pEc8zYh3d
+  - imp_HckKqYBsjo
+  - imp_bHuKs1IubR
+  - imp_0QkBxqNYWe
+  - imp_vGr3R1NiL2
+  - imp_nOcMOcODjm
+  - imp_teHUCHXEnR
+is_blacklisted: false
+meta:
+  created: 1783580700609
+  revision: 0
+  version: 0
+nom: ROSSI-PLAZA
+prenom: Emilie
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:32.351Z'

@@ -1,0 +1,49 @@
+adresse_bien: 1 avenue de suède
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_McpXhxQEZZ
+created_at: '2026-06-24T16:30:51.039Z'
+date_echeance: '2026-04-01'
+date_import: '2026-07-09T07:05:05.614Z'
+date_piece: '2026-03-25'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI JISSAI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_MfsKqFm0Jr
+id_dossier: '41441'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50674
+numero_dossier: 55447
+payer_id: cont_McpXhxQEZZ
+payeur_civilite: ''
+payeur_email: nagedac@hotmail.fr
+payeur_nom: SCI JISSAI
+payeur_prenom: ''
+payeur_telephone: ' Mme 0609717071'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI JISSAI
+proprietaire_prenom: null
+ref_piece: FA260325 50674
+reference: '55447'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 206.67
+total_ttc: 248
+type: impaye
+updated_at: '2026-06-24T16:30:51.039Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260325_50674/standard/FA260325 50674 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

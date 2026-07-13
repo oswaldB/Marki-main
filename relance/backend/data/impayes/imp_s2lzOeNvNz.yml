@@ -1,0 +1,49 @@
+adresse_bien: 15 rue de Roquebiliere L'Ensoleillée
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_I2o7HDjOke
+created_at: '2026-06-24T16:31:09.985Z'
+date_echeance: '2025-06-03'
+date_import: '2026-07-09T07:05:07.420Z'
+date_piece: '2025-06-03'
+donneur_ordre_id: null
+donneur_ordre_nom: 'SCI LEPANTE '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_s2lzOeNvNz
+id_dossier: '39528'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48984
+numero_dossier: 53534
+payer_id: cont_I2o7HDjOke
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: 'SCI LEPANTE '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'SCI LEPANTE '
+proprietaire_prenom: null
+ref_piece: FA250603 48984
+reference: '53534'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 23.33
+total_ttc: 28
+type: impaye
+updated_at: '2026-06-24T16:31:09.985Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250603_48984/standard/FA250603 48984 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

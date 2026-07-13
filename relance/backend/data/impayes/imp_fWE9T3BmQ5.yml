@@ -1,0 +1,49 @@
+adresse_bien: 13 rue Paul Reboux La Scala Bâtiment
+apporteur_id: cont_upLxDb1T7b
+apporteur_nom: GETRIM VICAT
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_upLxDb1T7b
+created_at: '2026-06-24T16:31:44.060Z'
+date_echeance: '2024-01-05'
+date_import: '2026-07-09T07:05:10.696Z'
+date_piece: '2024-01-05'
+donneur_ordre_id: null
+donneur_ordre_nom: SA VICAT
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_fWE9T3BmQ5
+id_dossier: '32545'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45865
+numero_dossier: 49542
+payer_id: cont_upLxDb1T7b
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: GETRIM VICAT
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SA VICAT
+proprietaire_prenom: null
+ref_piece: FA240105 45865
+reference: '49542'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 195.62
+total_ttc: 234.75
+type: impaye
+updated_at: '2026-06-24T16:31:44.060Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240105_45865/standard/FA240105 45865
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

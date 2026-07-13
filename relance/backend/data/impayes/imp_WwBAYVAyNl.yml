@@ -1,0 +1,49 @@
+adresse_bien: 14 boulevard Princesse Grace de Monaco L'Agrianthe
+apporteur_id: cont_blb2dRpoQ7
+apporteur_nom: AZUR MEDITERRANEE VILLEFRANCHE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06230'
+commentaire_piece: ''
+contact_relance_id: cont_hnnmeyL7rV
+created_at: '2026-06-24T16:31:35.903Z'
+date_echeance: '2024-05-02'
+date_import: '2026-07-09T07:05:09.927Z'
+date_piece: '2024-05-02'
+donneur_ordre_id: null
+donneur_ordre_nom: INHERITANCE VAN-MEEGEREN-WINTER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_WwBAYVAyNl
+id_dossier: '34568'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46600
+numero_dossier: 50567
+payer_id: cont_hnnmeyL7rV
+payeur_civilite: ''
+payeur_email: ronaldwinter@hotmail.com
+payeur_nom: INHERITANCE VAN-MEEGEREN-WINTER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: INHERITANCE VAN-MEEGEREN-WINTER
+proprietaire_prenom: null
+ref_piece: FA240502 46600
+reference: '50567'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:35.903Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240502_46600/standard/FA240502 46600 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VILLEFRANCHE-SUR-MER

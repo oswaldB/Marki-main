@@ -1,0 +1,49 @@
+adresse_bien: 137 chemin de la Costière Bâtiment 4
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_eKYi2PG1Qv
+created_at: '2026-06-24T16:31:31.046Z'
+date_echeance: '2024-07-08'
+date_import: '2026-07-09T07:05:09.571Z'
+date_piece: '2024-07-08'
+donneur_ordre_id: null
+donneur_ordre_nom: BLEUSE
+donneur_ordre_prenom: Patricia
+email_index: 0
+facture_soldee: true
+id: imp_JZJbRvMh2j
+id_dossier: '36087'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47011
+numero_dossier: 51091
+payer_id: cont_eKYi2PG1Qv
+payeur_civilite: ''
+payeur_email: ' patricia.bleuse@laposte.net'
+payeur_nom: BLEUSE
+payeur_prenom: Patricia
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BLEUSE
+proprietaire_prenom: Patricia
+ref_piece: FA240708 47011
+reference: '51091'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:31.046Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240708_47011/standard/FA240708 47011
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

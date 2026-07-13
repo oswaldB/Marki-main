@@ -1,0 +1,49 @@
+adresse_bien: 11 rue de la Fontaine
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_18n0jFQZBT
+created_at: '2026-06-24T16:31:32.963Z'
+date_echeance: '2024-06-10'
+date_import: '2026-07-09T07:05:09.712Z'
+date_piece: '2024-06-10'
+donneur_ordre_id: null
+donneur_ordre_nom: RAIMONDI
+donneur_ordre_prenom: Daniele
+email_index: 0
+facture_soldee: true
+id: imp_sj1nd4HPuK
+id_dossier: '35857'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46848
+numero_dossier: 50861
+payer_id: cont_18n0jFQZBT
+payeur_civilite: ''
+payeur_email: daniele.raimondi@serravalle.it
+payeur_nom: RAIMONDI
+payeur_prenom: Daniele
+payeur_telephone: '00393479025029'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: RAIMONDI
+proprietaire_prenom: Daniele
+ref_piece: FA240610 46848
+reference: '50861'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:32.963Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240610_46848/standard/FA240610 46848 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

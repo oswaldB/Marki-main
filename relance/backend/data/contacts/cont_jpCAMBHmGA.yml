@@ -1,0 +1,31 @@
+$loki: 1055
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:44.555Z'
+email: c.famelart@fondationdenice.org
+id: cont_jpCAMBHmGA
+impaye_ids:
+  - imp_27M472evz3
+  - imp_CD3OZDelBU
+  - imp_lLS5zIWUiH
+is_blacklisted: false
+meta:
+  created: 1783580698763
+  revision: 0
+  version: 0
+nom: FAMELART
+prenom: Carole
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:43.385Z'

@@ -1,0 +1,49 @@
+adresse_bien: 12 rue Nathalie Masse Les Eaux fraiches
+apporteur_id: cont_yqBBhH2hK0
+apporteur_nom: VEALYS 06 PORT
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_axRMlJULdh
+created_at: '2026-06-24T16:31:20.065Z'
+date_echeance: '2024-12-23'
+date_import: '2026-07-09T07:05:08.416Z'
+date_piece: '2024-12-23'
+donneur_ordre_id: null
+donneur_ordre_nom: ABECASSIS
+donneur_ordre_prenom: Jean Charles
+email_index: 0
+facture_soldee: true
+id: imp_wb9QDVjPEx
+id_dossier: '38293'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48008
+numero_dossier: 52299
+payer_id: cont_axRMlJULdh
+payeur_civilite: ''
+payeur_email: abecassis.jc@wanadoo.fr
+payeur_nom: ABECASSIS
+payeur_prenom: Jean Charles
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ABECASSIS
+proprietaire_prenom: Jean Charles
+ref_piece: FA241223 48008
+reference: '52299'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:31:20.065Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241223_48008/standard/FA241223 48008
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

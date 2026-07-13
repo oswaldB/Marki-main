@@ -1,0 +1,49 @@
+adresse_bien: 2 route de Nice Villa Augusta Bâtiment D
+apporteur_id: cont_XfMiq6mNPd
+apporteur_nom: HAKKASAN
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_XfMiq6mNPd
+created_at: '2026-06-24T16:30:49.875Z'
+date_echeance: '2026-05-01'
+date_import: '2026-07-09T07:05:05.447Z'
+date_piece: '2026-04-24'
+donneur_ordre_id: null
+donneur_ordre_nom: MINETTI
+donneur_ordre_prenom: 'Frederico '
+email_index: 0
+facture_soldee: true
+id: imp_RFOWDY3egV
+id_dossier: '41634'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50840
+numero_dossier: 55640
+payer_id: cont_XfMiq6mNPd
+payeur_civilite: ''
+payeur_email: ca.perard@hakkasan.immo
+payeur_nom: HAKKASAN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MINETTI
+proprietaire_prenom: 'Frederico '
+ref_piece: FA260424 50840
+reference: '55640'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 50
+total_ttc: 60
+type: impaye
+updated_at: '2026-06-24T16:30:49.875Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260424_50840/standard/FA260424 50840
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: LA TURBIE

@@ -1,0 +1,49 @@
+adresse_bien: 92 Promenade des Anglais Le San Diego
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_5SdBZbMUer
+created_at: '2026-06-24T16:31:54.916Z'
+date_echeance: '2023-08-02'
+date_import: '2026-07-09T07:05:11.646Z'
+date_piece: '2023-08-02'
+donneur_ordre_id: null
+donneur_ordre_nom: BONA
+donneur_ordre_prenom: Paulette
+email_index: 0
+facture_soldee: true
+id: imp_HD4gMJtMkN
+id_dossier: '29371'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44885
+numero_dossier: 48357
+payer_id: cont_5SdBZbMUer
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BONA
+payeur_prenom: Paulette
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BONA
+proprietaire_prenom: Paulette
+ref_piece: FA230731 44885
+reference: '48357'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 133.17
+total_ttc: 159.8
+type: impaye
+updated_at: '2026-06-24T16:31:54.916Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230731_44885/standard/FA230731 44885 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

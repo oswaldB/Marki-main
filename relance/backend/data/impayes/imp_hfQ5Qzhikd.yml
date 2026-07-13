@@ -1,0 +1,49 @@
+adresse_bien: 206 avenue Louis Pasteur Le Primavera
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-30T22:00:29.907Z'
+date_echeance: '2026-07-07'
+date_import: '2026-07-09T07:05:12.220Z'
+date_piece: '2026-06-30'
+donneur_ordre_id: null
+donneur_ordre_nom: CACCIAGRANO
+donneur_ordre_prenom: Enio
+email_index: 0
+facture_soldee: false
+id: imp_hfQ5Qzhikd
+id_dossier: '42045'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51225
+numero_dossier: 56051
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CACCIAGRANO
+proprietaire_prenom: Enio
+ref_piece: FA260630 51225
+reference: '56051'
+reste_a_payer: 207
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 172.5
+total_ttc: 207
+type: impaye
+updated_at: '2026-07-01T22:00:26.758Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260630_51225/standard/FA260630 51225 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

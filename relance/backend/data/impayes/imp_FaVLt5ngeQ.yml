@@ -1,0 +1,49 @@
+adresse_bien: 18 boulevard de Riquier Villa Barel
+apporteur_id: cont_OdGGwFKYqJ
+apporteur_nom: SPECIAL IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: SPECIAL IMMO
+contact_relance_id: cont_5sSeN33GNF
+created_at: '2026-06-24T16:30:50.900Z'
+date_echeance: '2026-04-10'
+date_import: '2026-07-09T07:05:05.560Z'
+date_piece: '2026-04-03'
+donneur_ordre_id: null
+donneur_ordre_nom: CERON
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_FaVLt5ngeQ
+id_dossier: '41502'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50742
+numero_dossier: 55508
+payer_id: cont_OdGGwFKYqJ
+payeur_civilite: ''
+payeur_email: bienvenue@specialimmo.com
+payeur_nom: SPECIAL IMMO
+payeur_prenom: ''
+payeur_telephone: '0621001036'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CERON
+proprietaire_prenom: null
+ref_piece: FA260403 50742
+reference: '55508'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 182.08
+total_ttc: 218.5
+type: impaye
+updated_at: '2026-06-24T16:30:50.900Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260403_50742/standard/FA260403 50742
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

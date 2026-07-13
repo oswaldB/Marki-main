@@ -1,0 +1,49 @@
+adresse_bien: 2 place Mitto
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_uv8e5UheuK
+created_at: '2026-06-24T16:31:37.956Z'
+date_echeance: '2024-04-02'
+date_import: '2026-07-09T07:05:10.115Z'
+date_piece: '2024-04-02'
+donneur_ordre_id: null
+donneur_ordre_nom: POGGI CHRISTMANN
+donneur_ordre_prenom: Danielle
+email_index: 0
+facture_soldee: true
+id: imp_FfMS7ADkax
+id_dossier: '34317'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46401
+numero_dossier: 50316
+payer_id: cont_uv8e5UheuK
+payeur_civilite: ''
+payeur_email: christmanndanielle@gmail.com
+payeur_nom: POGGI CHRISTMANN
+payeur_prenom: Danielle
+payeur_telephone: '0660611684'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: POGGI CHRISTMANN
+proprietaire_prenom: Danielle
+ref_piece: FA240402 46401
+reference: '50316'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:37.956Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240402_46401/standard/FA240402 46401
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: LA TURBIE

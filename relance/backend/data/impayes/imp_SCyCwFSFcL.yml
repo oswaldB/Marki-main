@@ -1,0 +1,49 @@
+adresse_bien: 22 impasse des Citronniers Les Terrasses du Suillet
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_XUhI1HVc1u
+created_at: '2026-06-24T16:31:20.992Z'
+date_echeance: '2024-12-13'
+date_import: '2026-07-09T07:05:08.494Z'
+date_piece: '2024-12-13'
+donneur_ordre_id: null
+donneur_ordre_nom: JOHNSON
+donneur_ordre_prenom: Alan
+email_index: 0
+facture_soldee: true
+id: imp_SCyCwFSFcL
+id_dossier: '38222'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47959
+numero_dossier: 52228
+payer_id: cont_XUhI1HVc1u
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: JOHNSON
+payeur_prenom: Alan
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: JOHNSON
+proprietaire_prenom: Alan
+ref_piece: FA241213 47959
+reference: '52228'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 210
+total_ttc: 252
+type: impaye
+updated_at: '2026-06-24T16:31:20.992Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241213_47959/standard/FA241213 47959
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

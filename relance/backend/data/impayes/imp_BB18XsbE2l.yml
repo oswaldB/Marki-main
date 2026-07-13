@@ -1,0 +1,49 @@
+adresse_bien: 61 rue Pietra Scritta
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_v40qv4DJ5O
+created_at: '2026-06-24T16:31:28.935Z'
+date_echeance: '2024-08-16'
+date_import: '2026-07-09T07:05:09.301Z'
+date_piece: '2024-08-16'
+donneur_ordre_id: null
+donneur_ordre_nom: 'PETRICCIONE '
+donneur_ordre_prenom: Luca
+email_index: 0
+facture_soldee: true
+id: imp_BB18XsbE2l
+id_dossier: '36356'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47232
+numero_dossier: 51360
+payer_id: cont_v40qv4DJ5O
+payeur_civilite: ''
+payeur_email: luca.petriccione@wanadoo.fr
+payeur_nom: 'PETRICCIONE '
+payeur_prenom: Luca
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'PETRICCIONE '
+proprietaire_prenom: Luca
+ref_piece: FA240816 47232
+reference: '51360'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 226.67
+total_ttc: 272
+type: impaye
+updated_at: '2026-06-24T16:31:28.935Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240816_47232/standard/FA240816 47232 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: chemin du Mont Fleuri
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: "Adresse Maison :\r\nChemin du Mont Fleuri\r\n06600 ANTIBES\r\nProjet de travaux :\r\nRéaménagement d'une maison selon plans fournis"
+contact_relance_id: cont_FbKwi14DwU
+created_at: '2026-06-24T16:31:13.952Z'
+date_echeance: '2025-04-02'
+date_import: '2026-07-09T07:05:07.774Z'
+date_piece: '2025-04-02'
+donneur_ordre_id: null
+donneur_ordre_nom: ARNAUDO
+donneur_ordre_prenom: Valério
+email_index: 0
+facture_soldee: true
+id: imp_7Te8zhNvJV
+id_dossier: '39073'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48636
+numero_dossier: 53079
+payer_id: cont_FbKwi14DwU
+payeur_civilite: ''
+payeur_email: arnaudovalerio@yahoo.it
+payeur_nom: ARNAUDO
+payeur_prenom: Valério
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ARNAUDO
+proprietaire_prenom: Valério
+ref_piece: FA250402 48636
+reference: '53079'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 3210
+total_ttc: 3852
+type: impaye
+updated_at: '2026-06-24T16:31:13.952Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250402_48636/standard/FA250402 48636
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

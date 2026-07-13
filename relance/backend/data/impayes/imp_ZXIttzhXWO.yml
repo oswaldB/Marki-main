@@ -1,0 +1,49 @@
+adresse_bien: 24 rue du Vieux Château
+apporteur_id: cont_dntkuJ727m
+apporteur_nom: 'WRETMAN MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "24 Rue du Vieux Château\r\n06500 MENTON"
+contact_relance_id: cont_Mdblxd2leT
+created_at: '2026-06-24T16:31:01.983Z'
+date_echeance: '2025-10-17'
+date_import: '2026-07-09T07:05:06.650Z'
+date_piece: '2025-10-10'
+donneur_ordre_id: null
+donneur_ordre_nom: LARSSON
+donneur_ordre_prenom: Hans et Annika
+email_index: 0
+facture_soldee: true
+id: imp_ZXIttzhXWO
+id_dossier: '40356'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49710
+numero_dossier: 54362
+payer_id: cont_Mdblxd2leT
+payeur_civilite: ''
+payeur_email: hanstglarsson@gmail.com
+payeur_nom: LARSSON
+payeur_prenom: Hans et Annika
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LARSSON
+proprietaire_prenom: Hans et Annika
+ref_piece: FA251010 49710
+reference: '54362'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 416.67
+total_ttc: 500
+type: impaye
+updated_at: '2026-06-24T16:31:01.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251010_49710/standard/FA251010 49710
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

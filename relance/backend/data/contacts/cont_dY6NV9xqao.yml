@@ -1,0 +1,29 @@
+$loki: 6081
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:30.588Z'
+email: yohannbuquet64@gmail.com
+id: cont_dY6NV9xqao
+impaye_ids:
+  - imp_XpIft2hmem
+is_blacklisted: false
+meta:
+  created: 1783580700531
+  revision: 0
+  version: 0
+nom: BUQUET
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:29.416Z'

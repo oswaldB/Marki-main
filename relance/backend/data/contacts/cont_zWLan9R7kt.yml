@@ -1,0 +1,65 @@
+$loki: 3047
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:02.567Z'
+email: gestion.compta.domus@century21.fr
+id: cont_zWLan9R7kt
+impaye_ids:
+  - imp_ItEkctOQ4u
+  - imp_VXwcWnH1pO
+  - imp_zki6pkbwTf
+  - imp_AtiVUvVKR8
+  - imp_SXmf4wjOPw
+  - imp_ELtrA36KMT
+  - imp_j8c8w3d1dE
+  - imp_ceNdwhFZn2
+  - imp_3QNcsMqbok
+  - imp_XfeHHJmjx9
+  - imp_i0vhuH0Wjo
+  - imp_O6xuuU8WrH
+  - imp_rueNRY424K
+  - imp_59rlnJIpU5
+  - imp_qwGbAVxhB9
+  - imp_qEw3g3ayCp
+  - imp_E6f4KrIqBc
+  - imp_4d4XhFn153
+  - imp_oFt5wBsUwp
+  - imp_tnpXdjDo3x
+  - imp_b3Huu72F6G
+  - imp_6dNFBDLCM8
+  - imp_hDWq9Vjx8n
+  - imp_tEE1aACpaG
+  - imp_MoqkxtIMeG
+  - imp_UfRESrILiL
+  - imp_yzBOooioLd
+  - imp_B1mymIdlVK
+  - imp_Ty9BQAcxxq
+  - imp_YjprldHEDb
+  - imp_mJvuh14psu
+  - imp_EkpdDWCkkq
+  - imp_Zf7OSg4WPy
+  - imp_L23XPDCmPA
+  - imp_CQaA0xcAgV
+  - imp_gVZHKC8Gdh
+  - imp_AYHsVbKFUa
+is_blacklisted: false
+meta:
+  created: 1783580699489
+  revision: 0
+  version: 0
+nom: NILLES
+prenom: Anais
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:01.378Z'

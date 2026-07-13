@@ -1,0 +1,49 @@
+adresse_bien: 15 bis avenue du Petit Fabron Le Dolce Vita Bâtiment B
+apporteur_id: cont_HKy4C2gxUH
+apporteur_nom: ARTHURIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_OIV4nGq59F
+created_at: '2026-06-24T16:31:28.964Z'
+date_echeance: '2024-08-09'
+date_import: '2026-07-09T07:05:09.312Z'
+date_piece: '2024-08-09'
+donneur_ordre_id: null
+donneur_ordre_nom: NEYRINCK
+donneur_ordre_prenom: Aurélie et Christophe
+email_index: 0
+facture_soldee: true
+id: imp_ICfAjJqBWD
+id_dossier: '36333'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47216
+numero_dossier: 51337
+payer_id: cont_OIV4nGq59F
+payeur_civilite: ''
+payeur_email: aurecris@orange.fr
+payeur_nom: NEYRINCK
+payeur_prenom: Aurélie et Christophe
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: NEYRINCK
+proprietaire_prenom: Aurélie et Christophe
+ref_piece: FA240809 47216
+reference: '51337'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:28.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240809_47216/standard/FA240809 47216 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

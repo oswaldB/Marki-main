@@ -1,0 +1,49 @@
+adresse_bien: 34 boulevard de la République Le Mauretania
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_HJkGkBkmHE
+created_at: '2026-06-24T16:31:16.068Z'
+date_echeance: '2025-02-27'
+date_import: '2026-07-09T07:05:08.021Z'
+date_piece: '2025-02-27'
+donneur_ordre_id: null
+donneur_ordre_nom: MALECEK
+donneur_ordre_prenom: Alexia
+email_index: 0
+facture_soldee: true
+id: imp_1aw6u926uj
+id_dossier: '38817'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48422
+numero_dossier: 52823
+payer_id: cont_HJkGkBkmHE
+payeur_civilite: ''
+payeur_email: alexia.malecek@icloud.com
+payeur_nom: MALECEK
+payeur_prenom: Alexia
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MALECEK
+proprietaire_prenom: Alexia
+ref_piece: FA250227 48422
+reference: '52823'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:16.068Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250227_48422/standard/FA250227 48422
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

@@ -1,0 +1,49 @@
+adresse_bien: 192 boulevard de la Madeleine
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_JRFzKhdS7J
+created_at: '2026-06-24T16:30:49.061Z'
+date_echeance: '2026-05-05'
+date_import: '2026-07-09T07:05:05.434Z'
+date_piece: '2026-04-28'
+donneur_ordre_id: null
+donneur_ordre_nom: ALIZIER
+donneur_ordre_prenom: Julien
+email_index: 0
+facture_soldee: true
+id: imp_TEPiw6PAD6
+id_dossier: '41616'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50857
+numero_dossier: 55622
+payer_id: cont_JRFzKhdS7J
+payeur_civilite: ''
+payeur_email: julien.alizier@laposte.net
+payeur_nom: ALIZIER
+payeur_prenom: Julien
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ALIZIER
+proprietaire_prenom: Julien
+ref_piece: FA260428 50857
+reference: '55622'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:30:49.061Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260428_50857/standard/FA260428 50857
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

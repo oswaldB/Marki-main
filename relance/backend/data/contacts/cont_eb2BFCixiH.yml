@@ -1,0 +1,29 @@
+$loki: 3465
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:06.560Z'
+email: christine.vivier-prunier@orange.fr
+id: cont_eb2BFCixiH
+impaye_ids:
+  - imp_yp89iama6V
+is_blacklisted: false
+meta:
+  created: 1783580699676
+  revision: 0
+  version: 0
+nom: PRUNIER
+prenom: Monique
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:05.407Z'

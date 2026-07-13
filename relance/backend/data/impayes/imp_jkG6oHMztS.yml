@@ -1,0 +1,49 @@
+adresse_bien: 601 avenue Marcel Celeschi
+apporteur_id: cont_ikdewjsyjG
+apporteur_nom: 'MAISON FAMILIALE DE PROVENCE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06390'
+commentaire_piece: ''
+contact_relance_id: cont_5dD0CJ7XAy
+created_at: '2026-06-24T16:30:52.909Z'
+date_echeance: '2026-03-12'
+date_import: '2026-07-09T07:05:05.741Z'
+date_piece: '2026-03-05'
+donneur_ordre_id: null
+donneur_ordre_nom: 'MAISON FAMILIALE DE PROVENCE '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jkG6oHMztS
+id_dossier: '41324'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50560
+numero_dossier: 55330
+payer_id: cont_ikdewjsyjG
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: 'MAISON FAMILIALE DE PROVENCE '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'MAISON FAMILIALE DE PROVENCE '
+proprietaire_prenom: null
+ref_piece: FA260305 50560
+reference: '55330'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 82.5
+total_ttc: 99
+type: impaye
+updated_at: '2026-06-24T16:30:52.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260305_50560/standard/FA260305 50560 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CONTES

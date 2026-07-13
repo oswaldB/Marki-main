@@ -1,0 +1,49 @@
+adresse_bien: 1370 chemin de l'Euira
+apporteur_id: cont_upLxDb1T7b
+apporteur_nom: GETRIM VICAT
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06440'
+commentaire_piece: ''
+contact_relance_id: cont_kx2R8Zcg2K
+created_at: '2026-06-24T16:31:04.939Z'
+date_echeance: '2025-09-09'
+date_import: '2026-07-09T07:05:06.908Z'
+date_piece: '2025-09-02'
+donneur_ordre_id: null
+donneur_ordre_nom: SA VICAT
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_XKZvNWBzPP
+id_dossier: '40125'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49447
+numero_dossier: 54131
+payer_id: cont_kx2R8Zcg2K
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SA VICAT
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SA VICAT
+proprietaire_prenom: null
+ref_piece: FA250902 49447
+reference: '54131'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 887.5
+total_ttc: 1065
+type: impaye
+updated_at: '2026-06-24T16:31:04.939Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250902_49447/standard/FA250902 49447
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: PEILLE

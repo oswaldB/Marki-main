@@ -1,0 +1,49 @@
+adresse_bien: 64 boulevard de Garavan
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: Mise en copropriété 64 Boulevard de Garavan
+contact_relance_id: cont_LpTDLO9piZ
+created_at: '2026-06-24T16:30:49.991Z'
+date_echeance: '2026-04-22'
+date_import: '2026-07-09T07:05:05.506Z'
+date_piece: '2026-04-15'
+donneur_ordre_id: null
+donneur_ordre_nom: TABIMMO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_EtuVxZnXCK
+id_dossier: '41564'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50776
+numero_dossier: 55570
+payer_id: cont_ik5XjLXRU4
+payeur_civilite: ''
+payeur_email: tabimmo@s-f-c.eu
+payeur_nom: TABIMMO
+payeur_prenom: ''
+payeur_telephone: '0760572525'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: TABIMMO
+proprietaire_prenom: null
+ref_piece: FA260415 50776
+reference: '55570'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 1250
+total_ttc: 1500
+type: impaye
+updated_at: '2026-07-03T22:00:43.378Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260415_50776/standard/FA260415 50776
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

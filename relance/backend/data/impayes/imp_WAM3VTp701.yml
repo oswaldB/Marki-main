@@ -1,0 +1,49 @@
+adresse_bien: 54 Montée de la Crémaillière La Gaité
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_1Ih02k4VHP
+created_at: '2026-06-24T16:31:12.076Z'
+date_echeance: '2025-04-18'
+date_import: '2026-07-09T07:05:07.649Z'
+date_piece: '2025-04-18'
+donneur_ordre_id: null
+donneur_ordre_nom: WANG
+donneur_ordre_prenom: Nina
+email_index: 0
+facture_soldee: true
+id: imp_WAM3VTp701
+id_dossier: '39220'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48746
+numero_dossier: 53226
+payer_id: cont_1Ih02k4VHP
+payeur_civilite: ''
+payeur_email: kelly_france@hotmail.com
+payeur_nom: WANG
+payeur_prenom: Nina
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: WANG
+proprietaire_prenom: Nina
+ref_piece: FA250418 48746
+reference: '53226'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:12.076Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250418_48746/standard/FA250418 48746
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

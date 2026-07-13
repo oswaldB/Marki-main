@@ -1,0 +1,42 @@
+$loki: 27
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:34.182Z'
+email: beausoleil@laforet.com
+id: cont_YXYNM2lJX6
+impaye_ids:
+  - imp_eVFDbe1qLs
+  - imp_CnRI429hgF
+  - imp_hpfsJ6loSQ
+  - imp_g1tpEPRTLz
+  - imp_v5BqNDekmw
+  - imp_VDH6QnvDxI
+  - imp_58EShVpR5r
+  - imp_9hgAYrygcY
+  - imp_3LPLAagER4
+  - imp_Y2Hu5hV0IZ
+  - imp_f2AqRQfj52
+  - imp_XgAAGhpo35
+  - imp_8vFEDSUcFC
+  - imp_RcVfu8L2wD
+is_blacklisted: false
+meta:
+  created: 1783580698342
+  revision: 0
+  version: 0
+nom: LAFORET Beausoleil ARAMIS Immobilier
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:33.287Z'

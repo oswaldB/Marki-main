@@ -1,0 +1,49 @@
+adresse_bien: 12 avenue Urbain Bosio L'Olympe
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:51.981Z'
+date_echeance: '2023-09-11'
+date_import: '2026-07-09T07:05:11.401Z'
+date_piece: '2023-09-11'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_8RgsQWBDCS
+id_dossier: '30678'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45168
+numero_dossier: 48668
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CELSE
+proprietaire_prenom: null
+ref_piece: FA230911 45168
+reference: '48668'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 106.25
+total_ttc: 127.5
+type: impaye
+updated_at: '2026-06-24T16:31:51.981Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230911_45168/standard/FA230911 45168
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 19 rue Humbert Ricolfi Le Nicea
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "SCI LE BERLUGAN\r\n19 rue Humbert Ricolfi\r\n06300 Nice "
+contact_relance_id: cont_G77kVo1E0f
+created_at: '2026-06-24T16:31:07.910Z'
+date_echeance: '2025-07-16'
+date_import: '2026-07-09T07:05:07.173Z'
+date_piece: '2025-07-16'
+donneur_ordre_id: null
+donneur_ordre_nom: CABINET GRIMAZ
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_5AcUBbg0ap
+id_dossier: '39845'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49220
+numero_dossier: 53851
+payer_id: cont_0nPZpkqDTq
+payeur_civilite: ''
+payeur_email: contact@cabinet-grimaz.com
+payeur_nom: CABINET GRIMAZ
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LE BERLUGAN
+proprietaire_prenom: null
+ref_piece: FA250716 49220
+reference: '53851'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 241.67
+total_ttc: 290
+type: impaye
+updated_at: '2026-06-24T16:31:07.910Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250716_49220/standard/FA250716 49220
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 3   rue Masséna Le Massena
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_s3vQMHHyOa
+created_at: '2026-06-29T22:00:17.094Z'
+date_echeance: '2026-07-06'
+date_import: '2026-07-09T07:05:12.214Z'
+date_piece: '2026-06-29'
+donneur_ordre_id: null
+donneur_ordre_nom: SAS TIMOTHY - SAS ROSALIMMO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_k5oxl0kqp9
+id_dossier: '41951'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51205
+numero_dossier: 55957
+payer_id: cont_s3vQMHHyOa
+payeur_civilite: ''
+payeur_email: rosalie.lauli@gmail.com
+payeur_nom: SAS TIMOTHY - SAS ROSALIMMO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SAS TIMOTHY - SAS ROSALIMMO
+proprietaire_prenom: null
+ref_piece: FA260629 51205
+reference: '55957'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 163.33
+total_ttc: 196
+type: impaye
+updated_at: '2026-06-30T22:00:29.949Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260629_51205/standard/FA260629 51205 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

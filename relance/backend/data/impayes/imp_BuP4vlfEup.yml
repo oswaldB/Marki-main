@@ -1,0 +1,49 @@
+adresse_bien: 22 avenue Saint-Barthélemy
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_iza29LLBAt
+created_at: '2026-06-25T13:55:38.430Z'
+date_echeance: '2026-07-02'
+date_import: '2026-07-09T07:05:12.195Z'
+date_piece: '2026-06-25'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI CARMELO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_BuP4vlfEup
+id_dossier: '42024'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51194
+numero_dossier: 56030
+payer_id: cont_iza29LLBAt
+payeur_civilite: ''
+payeur_email: gestionivd@gmail.com
+payeur_nom: SCI CARMELO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI CARMELO
+proprietaire_prenom: null
+ref_piece: FA260625 51194
+reference: '56030'
+reste_a_payer: 255
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-26T22:00:25.397Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260625_51194/standard/FA260625 51194 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 137 avenue de Verdun San Sebastien
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_47UrEP2MO3
+created_at: '2026-06-24T16:31:40.911Z'
+date_echeance: '2024-02-23'
+date_import: '2026-07-09T07:05:10.337Z'
+date_piece: '2024-02-23'
+donneur_ordre_id: null
+donneur_ordre_nom: VENTURI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_SqUfvZBVUG
+id_dossier: '32968'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46176
+numero_dossier: 49965
+payer_id: cont_47UrEP2MO3
+payeur_civilite: ''
+payeur_email: mattiav21@icloud.com
+payeur_nom: VENTURI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: VENTURI
+proprietaire_prenom: null
+ref_piece: FA240223 46176
+reference: '49965'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:40.911Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240223_46176/standard/FA240223 46176
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

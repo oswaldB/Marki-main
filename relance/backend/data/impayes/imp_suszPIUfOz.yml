@@ -1,0 +1,49 @@
+adresse_bien: 25 avenue Frémont Villa Fremont
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_m92YiXzDBC
+created_at: '2026-06-24T16:31:35.046Z'
+date_echeance: '2024-05-10'
+date_import: '2026-07-09T07:05:09.896Z'
+date_piece: '2024-05-10'
+donneur_ordre_id: null
+donneur_ordre_nom: FIEVET
+donneur_ordre_prenom: Caroline
+email_index: 0
+facture_soldee: true
+id: imp_suszPIUfOz
+id_dossier: '34626'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46648
+numero_dossier: 50625
+payer_id: cont_m92YiXzDBC
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: FIEVET
+payeur_prenom: Caroline
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FIEVET
+proprietaire_prenom: Caroline
+ref_piece: FA240510 46648
+reference: '50625'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:35.046Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240510_46648/standard/FA240510 46648 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

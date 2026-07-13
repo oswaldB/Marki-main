@@ -1,0 +1,29 @@
+$loki: 3027
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:02.567Z'
+email: olivia.cere@orange.fr
+id: cont_IdilAlEqTz
+impaye_ids:
+  - imp_JnXkzMLHHf
+is_blacklisted: false
+meta:
+  created: 1783580699477
+  revision: 0
+  version: 0
+nom: SARL PIVOINE
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:01.378Z'

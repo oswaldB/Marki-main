@@ -1,0 +1,49 @@
+adresse_bien: 49 route du Val de Gorbio Eden Val  Bâtiment A
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:52.071Z'
+date_echeance: '2023-09-05'
+date_import: '2026-07-09T07:05:11.444Z'
+date_piece: '2023-09-05'
+donneur_ordre_id: null
+donneur_ordre_nom: OPTI GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_6cHVnJV523
+id_dossier: '30492'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45001
+numero_dossier: 48482
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: LAMBERT
+proprietaire_prenom: null
+ref_piece: FA230817 45001
+reference: '48482'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 80
+total_ttc: 96
+type: impaye
+updated_at: '2026-06-24T16:31:52.071Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230817_45001/standard/FA230817 45001
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

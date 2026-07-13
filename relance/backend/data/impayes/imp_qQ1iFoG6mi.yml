@@ -1,0 +1,49 @@
+adresse_bien: 221 avenue de Fabron Les Oliviers de Fabron
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_fIHug1qkay
+created_at: '2026-06-24T16:30:50.900Z'
+date_echeance: '2026-04-09'
+date_import: '2026-07-09T07:05:05.559Z'
+date_piece: '2026-04-02'
+donneur_ordre_id: null
+donneur_ordre_nom: COLET
+donneur_ordre_prenom: Béatrice
+email_index: 0
+facture_soldee: true
+id: imp_qQ1iFoG6mi
+id_dossier: '41473'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50730
+numero_dossier: 55479
+payer_id: cont_fIHug1qkay
+payeur_civilite: ''
+payeur_email: b.colet@laposte.net
+payeur_nom: COLET
+payeur_prenom: Béatrice
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: COLET
+proprietaire_prenom: Béatrice
+ref_piece: FA260402 50730
+reference: '55479'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 91.67
+total_ttc: 110
+type: impaye
+updated_at: '2026-06-24T16:30:50.900Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260402_50730/standard/FA260402 50730
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

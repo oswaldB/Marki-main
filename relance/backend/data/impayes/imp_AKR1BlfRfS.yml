@@ -1,0 +1,49 @@
+adresse_bien: 39 rue du Val des Castagnins L'Orangerie
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: '22/09 renvoie de la facture + des rapports '
+contact_relance_id: cont_WEHMDcCIEm
+created_at: '2026-06-24T16:31:16.030Z'
+date_echeance: '2025-03-03'
+date_import: '2026-07-09T07:05:08.002Z'
+date_piece: '2025-03-03'
+donneur_ordre_id: null
+donneur_ordre_nom: MARCHESE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_AKR1BlfRfS
+id_dossier: '38808'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48415
+numero_dossier: 52814
+payer_id: cont_WEHMDcCIEm
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: MARCHESE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MARCHESE
+proprietaire_prenom: null
+ref_piece: FA250227 48415
+reference: '52814'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 120.83
+total_ttc: 145
+type: impaye
+updated_at: '2026-06-24T16:31:16.030Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250227_48415/standard/FA250227 48415 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

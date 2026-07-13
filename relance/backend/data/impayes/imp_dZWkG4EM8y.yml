@@ -1,0 +1,49 @@
+adresse_bien: 131 Promenade des Anglais Le Milord
+apporteur_id: cont_HKy4C2gxUH
+apporteur_nom: ARTHURIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:51.075Z'
+date_echeance: '2023-09-18'
+date_import: '2026-07-09T07:05:11.346Z'
+date_piece: '2023-09-18'
+donneur_ordre_id: null
+donneur_ordre_nom: ZITOLO
+donneur_ordre_prenom: Antonio
+email_index: 0
+facture_soldee: true
+id: imp_dZWkG4EM8y
+id_dossier: '30748'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45215
+numero_dossier: 48738
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: ZITOLO
+proprietaire_prenom: Antonio
+ref_piece: FA230918 45215
+reference: '48738'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 183.75
+total_ttc: 220.5
+type: impaye
+updated_at: '2026-06-24T16:31:51.075Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230918_45215/standard/FA230918 45215
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

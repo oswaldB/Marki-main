@@ -1,0 +1,49 @@
+adresse_bien: 4 bis avenue Sainte-Marguerite Le Samantha
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_kyTCccB8zw
+created_at: '2026-06-24T16:31:06.884Z'
+date_echeance: '2025-07-29'
+date_import: '2026-07-09T07:05:07.070Z'
+date_piece: '2025-07-29'
+donneur_ordre_id: null
+donneur_ordre_nom: HUARD
+donneur_ordre_prenom: Kevin
+email_index: 0
+facture_soldee: true
+id: imp_s1jdypNMam
+id_dossier: '39951'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49305
+numero_dossier: 53957
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: HUARD
+proprietaire_prenom: Kevin
+ref_piece: FA250729 49305
+reference: '53957'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.67
+total_ttc: 230
+type: impaye
+updated_at: '2026-06-24T16:31:06.884Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250729_49305/standard/FA250729 49305
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

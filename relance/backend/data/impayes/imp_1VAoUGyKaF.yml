@@ -1,0 +1,49 @@
+adresse_bien: 1 rue Boyer Le Garibaldi
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:24.932Z'
+date_echeance: '2024-10-16'
+date_import: '2026-07-09T07:05:08.863Z'
+date_piece: '2024-10-16'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_1VAoUGyKaF
+id_dossier: '37820'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47636
+numero_dossier: 51826
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: GALVEZ
+proprietaire_prenom: Yolande
+ref_piece: FA241016 47636
+reference: '51826'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 118.75
+total_ttc: 142.5
+type: impaye
+updated_at: '2026-06-24T16:31:24.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241016_47636/standard/FA241016 47636
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

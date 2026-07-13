@@ -1,0 +1,38 @@
+$loki: 350
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:36.751Z'
+email: jeannine.dubois0307@orange.fr
+id: cont_DjfD5U944v
+impaye_ids:
+  - imp_bxIlxuXORo
+is_blacklisted: false
+meta:
+  created: 1783580698484
+  revision: 1
+  updated: 1783580712332
+  version: 0
+nom: DUBOIS
+prenom: Jeannine
+relance_ids:
+  - rel_NcewlYDcdZ
+  - rel_QkN9yk5xSJ
+  - rel_o6quQZnqxG
+  - rel_BBDgSOeW4x
+  - rel_62FgFBCwKe
+  - rel_nQiVvbsCkg
+  - rel_20P36ZWxVh
+  - rel_GejpIWZ5lH
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:36.363Z'

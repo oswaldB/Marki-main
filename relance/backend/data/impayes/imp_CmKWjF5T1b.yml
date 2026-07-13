@@ -1,0 +1,49 @@
+adresse_bien: 16 avenue Edouard VII Palais Rota
+apporteur_id: cont_Kl8PBkhOa2
+apporteur_nom: LAFORET Menton Pieta
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_ZtUWWp4CC1
+created_at: '2026-06-24T16:30:46.932Z'
+date_echeance: '2026-06-12'
+date_import: '2026-07-09T07:05:05.189Z'
+date_piece: '2026-06-05'
+donneur_ordre_id: null
+donneur_ordre_nom: THUDOR
+donneur_ordre_prenom: Tiphaine
+email_index: 0
+facture_soldee: true
+id: imp_CmKWjF5T1b
+id_dossier: '41910'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51082
+numero_dossier: 55916
+payer_id: cont_ZtUWWp4CC1
+payeur_civilite: ''
+payeur_email: tchristien@free.fr
+payeur_nom: THUDOR
+payeur_prenom: Tiphaine
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: THUDOR
+proprietaire_prenom: Tiphaine
+ref_piece: FA260605 51082
+reference: '55916'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 304.17
+total_ttc: 365
+type: impaye
+updated_at: '2026-06-24T16:30:46.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260605_51082/standard/FA260605 51082 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

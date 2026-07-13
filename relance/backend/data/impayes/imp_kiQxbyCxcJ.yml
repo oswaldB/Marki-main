@@ -1,0 +1,49 @@
+adresse_bien: 54 avenue Simone Veil West Park Bâtiment G
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: '28/05 : retour agence suite envoi listing : "mandat perdu, pas de nouvelles"'
+contact_relance_id: cont_SaWspfWpGR
+created_at: '2026-06-24T16:31:32.904Z'
+date_echeance: '2024-06-13'
+date_import: '2026-07-09T07:05:09.689Z'
+date_piece: '2024-06-13'
+donneur_ordre_id: null
+donneur_ordre_nom: AZOULAI et AYADI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_kiQxbyCxcJ
+id_dossier: '35914'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46883
+numero_dossier: 50918
+payer_id: cont_SaWspfWpGR
+payeur_civilite: ''
+payeur_email: red.one.nice@gmail.com
+payeur_nom: AZOULAI et AYADI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: AZOULAI et AYADI
+proprietaire_prenom: null
+ref_piece: FA240613 46883
+reference: '50918'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 186.67
+total_ttc: 224
+type: impaye
+updated_at: '2026-06-24T16:31:32.904Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240613_46883/standard/FA240613 46883 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

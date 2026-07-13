@@ -1,0 +1,49 @@
+adresse_bien: 88 route de Castellar Le Hameau de la Sorgentine
+apporteur_id: cont_5keRx5VJny
+apporteur_nom: API AZUR PATRIMOINE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_0bmymydQow
+created_at: '2026-06-24T16:31:28.964Z'
+date_echeance: '2024-08-09'
+date_import: '2026-07-09T07:05:09.326Z'
+date_piece: '2024-08-09'
+donneur_ordre_id: null
+donneur_ordre_nom: PICHON
+donneur_ordre_prenom: Bettina
+email_index: 0
+facture_soldee: true
+id: imp_fdqmm7LC7J
+id_dossier: '36331'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47213
+numero_dossier: 51335
+payer_id: cont_0bmymydQow
+payeur_civilite: ''
+payeur_email: bettina.pichon@hotmail.fr
+payeur_nom: PICHON
+payeur_prenom: Bettina
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PICHON
+proprietaire_prenom: Bettina
+ref_piece: FA240809 47213
+reference: '51335'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 210
+total_ttc: 252
+type: impaye
+updated_at: '2026-06-24T16:31:28.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240809_47213/standard/FA240809 47213 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

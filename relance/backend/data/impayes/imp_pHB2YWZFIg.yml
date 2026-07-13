@@ -1,0 +1,49 @@
+adresse_bien: 7 avenue d'Alsace Les Sirènes
+apporteur_id: cont_yRTu0IsJ04
+apporteur_nom: 'YPSILON IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: relance le 15/10
+contact_relance_id: cont_xbrpuaUfwD
+created_at: '2026-06-24T16:31:03.973Z'
+date_echeance: '2025-09-22'
+date_import: '2026-07-09T07:05:06.845Z'
+date_piece: '2025-09-15'
+donneur_ordre_id: null
+donneur_ordre_nom: SCAVINI
+donneur_ordre_prenom: Gabriel
+email_index: 0
+facture_soldee: true
+id: imp_pHB2YWZFIg
+id_dossier: '40252'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49524
+numero_dossier: 54258
+payer_id: cont_xbrpuaUfwD
+payeur_civilite: ''
+payeur_email: nicole.scavini@monaco.mc
+payeur_nom: SCAVINI
+payeur_prenom: Gabriel
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCAVINI
+proprietaire_prenom: Gabriel
+ref_piece: FA250915 49524
+reference: '54258'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 79.17
+total_ttc: 95
+type: impaye
+updated_at: '2026-06-24T16:31:03.973Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250915_49524/standard/FA250915 49524
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

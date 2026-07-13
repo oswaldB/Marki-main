@@ -1,0 +1,49 @@
+adresse_bien: 7 Montée du Lutétia Le Lutétia
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_r6PUjDOJHB
+created_at: '2026-06-24T16:31:39.909Z'
+date_echeance: '2024-03-13'
+date_import: '2026-07-09T07:05:10.261Z'
+date_piece: '2024-03-13'
+donneur_ordre_id: null
+donneur_ordre_nom: OPTI GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_D60fF9aMd9
+id_dossier: '34110'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46292
+numero_dossier: 50109
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PUZZO
+proprietaire_prenom: Cassandra
+ref_piece: FA240313 46292
+reference: '50109'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 133.33
+total_ttc: 160
+type: impaye
+updated_at: '2026-06-24T16:31:39.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240313_46292/standard/FA240313 46292 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 6 avenue Mirabeau
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_atAVzBbujc
+created_at: '2026-06-24T16:31:22.026Z'
+date_echeance: '2024-11-26'
+date_import: '2026-07-09T07:05:08.612Z'
+date_piece: '2024-11-26'
+donneur_ordre_id: null
+donneur_ordre_nom: KLEIN
+donneur_ordre_prenom: Michel
+email_index: 0
+facture_soldee: true
+id: imp_7GPucd6SCS
+id_dossier: '38095'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47858
+numero_dossier: 52101
+payer_id: cont_atAVzBbujc
+payeur_civilite: ''
+payeur_email: michel-klein78@wanadoo.fr
+payeur_nom: KLEIN
+payeur_prenom: Michel
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: KLEIN
+proprietaire_prenom: Michel
+ref_piece: FA241126 47858
+reference: '52101'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 322.5
+total_ttc: 387
+type: impaye
+updated_at: '2026-06-24T16:31:22.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241126_47858/standard/FA241126 47858
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,423 +1,237 @@
-# Inventaire des écrans frontend ADTI
+# Inventaire des écrans frontend Marki Relance
 
 **Source** : specs/mockups/*.html  
-**Date** : 2026-07-02  
+**Date** : 2026-07-09  
 **Architecture** : Static HTML + AlpineJS + Tailwind CSS
 
 ---
 
 ## Écrans et leurs états
 
-### 1. Login (`/login`)
+### 1. Login (`login.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Formulaire de connexion affiché |
-| `loading` | Authentification en cours |
-| `error` | Identifiants invalides |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `login.html` | Formulaire de connexion affiché |
 
 ---
 
-### 2. Dashboard (`/dashboard`)
+### 2. Dashboard (`dashboard.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | KPIs affichés, graphiques chargés |
-| `loading` | Skeleton cards et graphiques |
-| `empty` | Aucune donnée importée, message + CTA |
-| `error` | Erreur de chargement données |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `dashboard.html` | KPIs affichés, graphiques chargés |
 
 ---
 
-### 3. Impayés - Liste (`/impayes`)
+### 3. Impayés - Liste (`impayes.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Tableau paginé avec données |
-| `loading` | Skeleton rows |
-| `empty` | Aucune facture trouvée |
-| `filtered` | Résultats filtrés affichés |
-| `error` | Erreur de chargement |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `impayes.html` | Tableau paginé avec données |
 
 ---
 
-### 4. Impayés - Par payeur (`/impayes/payeur/:id`)
+### 4. Impayés - Par payeur (`impayes-payeur.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Factures du payeur affichées |
-| `loading` | Skeleton rows |
-| `empty` | Aucune facture pour ce payeur |
-| `error` | Payeur non trouvé |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `impayes-payeur.html` | Factures du payeur affichées |
 
 ---
 
-### 5. Impayés - Par facture (`/impayes/facture/:id`)
+### 5. Impayés - Détail facture (`impayes-detail.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Détails de la facture |
-| `loading` | Chargement |
-| `error` | Facture non trouvée |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `impayes-detail.html` | Détails de la facture |
 
 ---
 
-### 6. Impayés - Par contact (`/impayes/contact/:id`)
+### 6. Impayés - Suspendus (`impayes-suspendus.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Factures liées au contact |
-| `loading` | Skeleton rows |
-| `empty` | Aucune facture pour ce contact |
-| `error` | Contact non trouvé |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `impayes-suspendus.html` | Liste des factures en attente |
 
 ---
 
-### 7. Impayés - Suspendus (`/impayes/suspendus`)
+### 7. Relances - Tableau (`relances.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Liste des factures en attente |
-| `loading` | Skeleton rows |
-| `empty` | Aucune facture suspendue |
-| `filtered` | Résultats filtrés |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `relances.html` | Tableau des relances programmées |
 
 ---
 
-### 8. Impayés - À réparer (`/impayes/a-reparer`)
+### 9. Relances - Calendrier (`relances-calendrier.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Liste des factures avec erreurs |
-| `loading` | Skeleton rows |
-| `empty` | Aucune facture à réparer |
-| `editing` | Correction en cours |
-| `saving` | Sauvegarde des corrections |
-| `success` | Factures corrigées |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `relances-calendrier.html` | Vue mensuelle avec relances |
 
 ---
 
-### 9. Relances - Tableau (`/relances`)
+### 10. Relances - Validation (`relances-validation.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Tableau des relances programmées |
-| `loading` | Skeleton rows |
-| `empty` | Aucune relance planifiée |
-| `filtered` | Résultats filtrés |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `relances-validation.html` | Liste des relances à approuver |
 
 ---
 
-### 10. Relances - Calendrier (`/relances/calendrier`)
+### 11. Séquences - Liste (`sequences.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Vue mensuelle avec relances |
-| `loading` | Chargement du calendrier |
-| `empty` | Aucune relance ce mois |
-| `slideover-detail` | Slideover infos relance ouvert |
-
-**Slideover** : `\u003ctemplate x-if="slideoverOpen"\u003e` (panneau latéral vertical)
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `sequences.html` | Liste des workflows |
 
 ---
 
-### 11. Relances - Validation (`/relances/validation`)
+### 12. Séquences - Détail relance (`sequences-relance-detail.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Liste des relances à approuver |
-| `loading` | Skeleton rows |
-| `empty` | Rien à valider |
-| `slideover-detail` | Slideover infos relance ouvert |
-| `validating` | Validation en cours |
-| `success` | Relances approuvées |
-
-**Slideover** : `\u003ctemplate x-if="slideoverOpen"\u003e` (panneau latéral vertical)
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `sequences-relance-detail.html` | Détails de la séquence relance |
 
 ---
 
-### 12. Suivi - Tableau (`/suivi`)
+### 13. Séquences - Détail suivi (`sequences-suivi-detail.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Tableau des suivis programmés |
-| `loading` | Skeleton rows |
-| `empty` | Aucun suivi planifié |
-| `filtered` | Résultats filtrés |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `sequences-suivi-detail.html` | Détails de la séquence suivi |
 
 ---
 
-### 13. Suivi - Calendrier (`/suivi/calendrier`)
+### 14. Contacts - Tous (`contacts.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Vue mensuelle avec suivis |
-| `loading` | Chargement du calendrier |
-| `empty` | Aucun suivi ce mois |
-| `slideover-detail` | Slideover infos suivi ouvert |
-
-**Slideover** : `\u003ctemplate x-if="slideoverOpen"\u003e` (panneau latéral vertical)
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `contacts.html` | Liste complète des contacts |
 
 ---
 
-### 14. Suivi - Validation (`/suivi/validation`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Liste des suivis à approuver |
-| `loading` | Skeleton rows |
-| `empty` | Rien à valider |
-| `slideover-detail` | Slideover infos suivi ouvert |
-| `validating` | Validation en cours |
-| `success` | Suivis approuvés |
+### 15. Settings - SMTP (`settings-smtp.html`)
 
-**Slideover** : `\u003ctemplate x-if="slideoverOpen"\u003e` (panneau latéral vertical)
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `settings-smtp.html` | Configuration SMTP (liste des profils) |
 
 ---
 
-### 15. Séquences - Liste (`/sequences`)
+### 16. Settings - SMTP Détail (`settings-smtp-detail.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Liste des workflows |
-| `loading` | Skeleton rows |
-| `empty` | Aucune séquence |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `settings-smtp-detail.html` | Formulaire détail profil SMTP |
 
 ---
 
-### 16. Séquences - Détail relance (`/sequences/relance/:id`)
+### 17. Settings - Utilisateurs (`settings-utilisateurs.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Détails de la séquence relance |
-| `loading` | Chargement |
-| `editing` | Modal édition ouvert |
-| `slideover-test-email` | Test d'un email spécifique |
-| `slideover-test-sequence` | Test de toute la séquence |
-| `testing` | Test en cours |
-| `saving` | Sauvegarde en cours |
-| `success` | Action réussie |
-| `error` | Erreur |
-
-**Modal** : `\u003ctemplate x-if="modalOpen"\u003e` (overlay centré)
-
-**Slideover** : `\u003ctemplate x-if="slideoverOpen"\u003e` (panneau latéral vertical)
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `settings-utilisateurs.html` | Gestion utilisateurs |
 
 ---
 
-### 17. Séquences - Détail suivi (`/sequences/suivi/:id`)
+### 18. Portail Mission (`portail-mission.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Détails de la séquence suivi |
-| `loading` | Chargement |
-| `editing` | Modal édition ouvert |
-| `slideover-test-email` | Test d'un email spécifique |
-| `slideover-test-sequence` | Test de toute la séquence |
-| `testing` | Test en cours |
-| `saving` | Sauvegarde en cours |
-| `success` | Action réussie |
-| `error` | Erreur |
-
-**Modal** : `\u003ctemplate x-if="modalOpen"\u003e` (overlay centré)
-
-**Slideover** : `\u003ctemplate x-if="slideoverOpen"\u003e` (panneau latéral vertical)
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `portail-mission.html` | Dashboard mission affiché |
 
 ---
 
-### 18. Contacts - Tous (`/contacts`)
+### 19. Portail Client (`portail-client.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Liste complète des contacts |
-| `loading` | Skeleton rows |
-| `empty` | Aucun contact |
-| `filtered` | Résultats filtrés |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `portail-client.html` | Dashboard client affiché |
 
 ---
 
-### 19. Contacts - Sans email (`/contacts/sans-email`)
+### 20. Événements (`evenements.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Liste des contacts incomplets |
-| `loading` | Skeleton rows |
-| `empty` | Tous les contacts ont un email |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `evenements.html` | Historique des événements |
 
 ---
 
-### 20. Contacts - Blacklist (`/contacts/blacklist`)
+### 21. Smart Marki (`smart-marki.html`)
 
-| État | Description |
-|------|-------------|
-| `nominal` | Liste des contacts exclus |
-| `loading` | Skeleton rows |
-| `empty` | Aucun contact black-listé |
-| `filtered` | Résultats filtrés |
+| État | Fichier | Description |
+|------|---------|-------------|
+| `nominal` | `smart-marki.html` | Interface IA Smart Marki |
 
 ---
 
-### 21. Settings - SMTP (`/settings/smtp-profil`)
-
-| État | Description |
-|------|-------------|
-| `nominal` | Formulaire SMTP affiché |
-| `editing` | Champs en modification |
-| `testing` | Test de connexion en cours |
-| `saving` | Sauvegarde en cours |
-| `success` | Configuration enregistrée |
-| `error` | Erreur de connexion SMTP |
-
----
-
-### 22. Settings - Utilisateurs (`/settings/utilisateurs`)
-
-| État | Description |
-|------|-------------|
-| `nominal` | Liste des utilisateurs |
-| `loading` | Skeleton rows |
-| `empty` | Aucun utilisateur |
-| `modal-add` | Modal ajout utilisateur |
-| `modal-edit` | Modal édition utilisateur |
-| `saving` | Sauvegarde en cours |
-| `success` | Utilisateur enregistré |
-| `error` | Erreur de sauvegarde |
-
-**Modal** : `\u003ctemplate x-if="modal === 'add' || modal === 'edit'"\u003e` (overlay centré)
-
----
-
-### 23. Portail Mission (`/portail/mission`)
-
-| État | Description |
-|------|-------------|
-| `nominal` | Dashboard mission affiché |
-| `loading` | Chargement des données |
-| `empty` | Aucune mission en cours |
-| `error` | Erreur de chargement |
-
----
-
-### 24. Portail Client (`/portail/client`)
-
-| État | Description |
-|------|-------------|
-| `nominal` | Dashboard client affiché |
-| `loading` | Chargement des données |
-| `empty` | Aucune donnée client |
-| `error` | Erreur de chargement |
-
----
-
-## Modaux globaux
-
-### Modal export
-
-| État | Description |
-|------|-------------|
-| `nominal` | Modal avec choix format |
-| `loading` | Génération en cours |
-| `success` | Fichier prêt, bouton télécharger |
-| `error` | Erreur génération |
-
-**Modal** : `\u003ctemplate x-if="modal === 'export'"\u003e` (overlay centré)
-
----
-
-### Modal relance
-
-| État | Description |
-|------|-------------|
-| `nominal` | Template pré-rempli, éditable |
-| `loading` | Envoi en cours |
-| `success` | Email envoyé, confirmation |
-| `error` | Erreur SMTP |
-
-**Modal** : `\u003ctemplate x-if="modal === 'relance'"\u003e` (overlay centré)
-
----
-
-## Arborescence des routes
+## Arborescence des mockups
 
 ```
-/
-├── /login                        → Connexion (authentification)
-├── /dashboard                    → Vue d'ensemble (KPIs et stats)
+specs/mockups/
+├── components/                    → Composants réutilisables
+├── tests/                         → Tests et validations
 │
-├── /impayes                      → Liste des factures
-│   ├── /payeurs/                 → Factures par payeur
-│   ├── /factures/                → Détail facture
-│   ├── /contacts/                → Factures par contact
-│   ├── /suspendus                → Factures en attente
-│   └── /a-reparer                → Factures avec erreurs
+├── login.html                     → Connexion (authentification)
+├── dashboard.html                 → Vue d'ensemble (KPIs et stats)
 │
-├── /relances                     → Liste des relances
-│   ├── /calendrier               → Vue mensuelle
-│   │   └── /#:relanceId          → Slideover détail relance
-│   └── /validation               → Approuver les envois
-│       └── /#:relanceId          → Slideover détail relance  
+├── impayes.html                   → Liste des factures
+├── impayes-payeur.html            → Factures par payeur
+├── impayes-detail.html            → Détail facture
+├── impayes-suspendus.html         → Factures en attente
 │
-├── /suivi                        → Liste des suivis
-│   ├── /calendrier               → Vue mensuelle
-│   │   └── /#:suiviId            → Slideover détail suivi
-│   └── /validation               → Approuver les envois
-│       └── /#:suiviId            → Slideover détail suivi  
+├── relances.html                  → Liste des relances
+├── relances-calendrier.html       → Vue mensuelle
+├── relances-validation.html       → Approuver les envois
 │
-├── /sequences                    → Liste des workflows
-│   ├── /relance/:id              → Détail séquence relance
-│   │   └── /#test-email          → Slideover test email
-│   │   └── /#test-sequence       → Slideover test séquence
-│   └── /suivi/:id                → Détail séquence suivi
-│       └── /#test-email          → Slideover test email
-│       └── /#test-sequence       → Slideover test séquence
+├── sequences.html                 → Liste des workflows
+├── sequences-relance-detail.html  → Détail séquence relance
+├── sequences-suivi-detail.html    → Détail séquence suivi
 │
-├── /contacts                     → Vue complète
-│   ├── /sans-email               → Contacts incomplets
-│   └── /blacklist                → Contacts exclus
+├── contacts.html                  → Vue complète contacts
 │
-├── /settings                     → Paramètres
-│   ├── /smtp-profil              → Configuration email
-│   └── /utilisateurs             → Gestion utilisateurs
+├── settings-smtp.html             → Liste profils SMTP
+├── settings-smtp-detail.html      → Détail profil SMTP
+├── settings-utilisateurs.html     → Gestion utilisateurs
 │
-└── /portail
-    ├── /mission                  → Dashboard mission
-    └── /client                   → Dashboard client
-
-Modaux (pas de route dédiée):
-├── modal-export                  → Export rapports
-└── modal-relance                 → Envoi relance email
+├── portail-mission.html           → Dashboard mission
+├── portail-client.html            → Dashboard client
+│
+├── evenements.html                → Historique événements
+├── smart-marki.html               → Interface IA Smart Marki
+│
+└── marki-logo.png                 → Logo
 ```
 
 ---
 
 ## Récapitulatif
 
-| Écran | Route | Nb états |
-|-------|-------|----------|
-| Login | `/login` | 3 |
-| Dashboard | `/dashboard` | 4 |
-| Impayés - Liste | `/impayes` | 5 |
-| Impayés - Par payeur | `/impayes/payeur/:id` | 4 |
-| Impayés - Par facture | `/impayes/facture/:id` | 3 |
-| Impayés - Par contact | `/impayes/contact/:id` | 4 |
-| Impayés - Suspendus | `/impayes/suspendus` | 4 |
-| Impayés - À réparer | `/impayes/a-reparer` | 6 |
-| Relances - Tableau | `/relances` | 4 |
-| Relances - Calendrier | `/relances/calendrier` | 4 |
-| Relances - Validation | `/relances/validation` | 6 |
-| Suivi - Tableau | `/suivi` | 4 |
-| Suivi - Calendrier | `/suivi/calendrier` | 4 |
-| Suivi - Validation | `/suivi/validation` | 6 |
-| Séquences - Liste | `/sequences` | 3 |
-| Séquences - Détail relance | `/sequences/relance/:id` | 9 |
-| Séquences - Détail suivi | `/sequences/suivi/:id` | 9 |
-| Contacts - Tous | `/contacts` | 4 |
-| Contacts - Sans email | `/contacts/sans-email` | 3 |
-| Contacts - Blacklist | `/contacts/blacklist` | 4 |
-| Settings - SMTP | `/settings/smtp-profil` | 6 |
-| Settings - Utilisateurs | `/settings/utilisateurs` | 8 |
-| Portail Mission | `/portail/mission` | 4 |
-| Portail Client | `/portail/client` | 4 |
-| **Modaux** | - | 4+4 |
+| Écran | Fichier | Route logique |
+|-------|---------|---------------|
+| Login | `login.html` | `/login` |
+| Dashboard | `dashboard.html` | `/dashboard` |
+| Impayés - Liste | `impayes.html` | `/impayes` |
+| Impayés - Par payeur | `impayes-payeur.html` | `/impayes/payeur/:id` |
+| Impayés - Détail | `impayes-detail.html` | `/impayes/facture/:id` |
+| Impayés - Suspendus | `impayes-suspendus.html` | `/impayes/suspendus` |
+| Relances - Tableau | `relances.html` | `/relances` |
+| Relances - Calendrier | `relances-calendrier.html` | `/relances/calendrier` |
+| Relances - Validation | `relances-validation.html` | `/relances/validation` |
+| Séquences - Liste | `sequences.html` | `/sequences` |
+| Séquences - Détail relance | `sequences-relance-detail.html` | `/sequences/relance/:id` |
+| Séquences - Détail suivi | `sequences-suivi-detail.html` | `/sequences/suivi/:id` |
+| Contacts - Tous | `contacts.html` | `/contacts` |
+| Settings - SMTP | `settings-smtp.html` | `/settings/smtp` |
+| Settings - SMTP Détail | `settings-smtp-detail.html` | `/settings/smtp/:id` |
+| Settings - Utilisateurs | `settings-utilisateurs.html` | `/settings/utilisateurs` |
+| Portail Mission | `portail-mission.html` | `/portail/mission` |
+| Portail Client | `portail-client.html` | `/portail/client` |
+| Événements | `evenements.html` | `/evenements` |
+| Smart Marki | `smart-marki.html` | `/smart-marki` |
 
-**Total** : 24 écrans + 2 modaux globaux
+**Total** : 20 écrans HTML réels

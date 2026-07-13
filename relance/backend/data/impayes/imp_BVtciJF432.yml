@@ -1,0 +1,49 @@
+adresse_bien: 35 Promenade du Cap Residence du Cap
+apporteur_id: cont_dntkuJ727m
+apporteur_nom: 'WRETMAN MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "11/03 relance prop + agence\r\n\r\nva payer prochainement nous avons eu un retour"
+contact_relance_id: cont_5CSt5Km8W0
+created_at: '2026-06-24T16:30:53.026Z'
+date_echeance: '2026-03-02'
+date_import: '2026-07-09T07:05:05.808Z'
+date_piece: '2026-02-23'
+donneur_ordre_id: null
+donneur_ordre_nom: CHRISTIANSON
+donneur_ordre_prenom: Sven
+email_index: 0
+facture_soldee: true
+id: imp_BVtciJF432
+id_dossier: '41270'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50506
+numero_dossier: 55276
+payer_id: cont_5CSt5Km8W0
+payeur_civilite: ''
+payeur_email: psykologi@svenchristianson.se
+payeur_nom: CHRISTIANSON
+payeur_prenom: Sven
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CHRISTIANSON
+proprietaire_prenom: Sven
+ref_piece: FA260223 50506
+reference: '55276'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:30:53.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260223_50506/standard/FA260223 50506
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

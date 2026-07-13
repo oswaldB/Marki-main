@@ -1,0 +1,29 @@
+$loki: 4181
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:13.529Z'
+email: pocpoc06@orange.fr
+id: cont_JQj9TeHW23
+impaye_ids:
+  - imp_bnmyU4HnpR
+is_blacklisted: false
+meta:
+  created: 1783580699911
+  revision: 0
+  version: 0
+nom: OIZAN CHAPON
+prenom: Patrick
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0672006459'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:12.353Z'

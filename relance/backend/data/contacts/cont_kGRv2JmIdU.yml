@@ -1,0 +1,40 @@
+$loki: 5708
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:27.579Z'
+email: abecassis.f@gmail.com
+id: cont_kGRv2JmIdU
+impaye_ids:
+  - imp_SAUJepHEGo
+  - imp_Fi9YGPvF7U
+is_blacklisted: false
+meta:
+  created: 1783580700411
+  revision: 1
+  updated: 1783580714113
+  version: 0
+nom: ABECASSIS
+prenom: ''
+relance_ids:
+  - rel_6v8XkMBA3B
+  - rel_0Lp7uHLKZx
+  - rel_JDWHAxEhVy
+  - rel_SNc8rfEdyV
+  - rel_omUEuMtvT3
+  - rel_UabOj2d3GR
+  - rel_SAh4Htrgko
+  - rel_nFPyXZhJDK
+  - rel_yGo4a3y3CG
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:26.380Z'

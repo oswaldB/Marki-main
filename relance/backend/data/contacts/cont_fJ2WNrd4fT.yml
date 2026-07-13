@@ -1,0 +1,23 @@
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:52.566Z'
+email: null
+id: cont_fJ2WNrd4fT
+impaye_ids: []
+is_blacklisted: false
+nom: FONCIERE DI 01/2009-0991
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:52.323Z'

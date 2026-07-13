@@ -1,0 +1,49 @@
+adresse_bien: 18 bis rue Biscarra
+apporteur_id: cont_zFTUI3LSHC
+apporteur_nom: HAURET
+apporteur_prenom: Vanessa
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_zFTUI3LSHC
+created_at: '2026-06-24T16:31:03.942Z'
+date_echeance: '2025-09-25'
+date_import: '2026-07-09T07:05:06.843Z'
+date_piece: '2025-09-18'
+donneur_ordre_id: null
+donneur_ordre_nom: HAURET
+donneur_ordre_prenom: Vanessa
+email_index: 0
+facture_soldee: true
+id: imp_1YfjGEGuAF
+id_dossier: '40281'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49544
+numero_dossier: 54287
+payer_id: cont_zFTUI3LSHC
+payeur_civilite: ''
+payeur_email: v.hauret@lexwell-avocats.com
+payeur_nom: HAURET
+payeur_prenom: Vanessa
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: VASQUEZ
+proprietaire_prenom: Hôtel CENAC RIVIERA
+ref_piece: FA250918 49544
+reference: '54287'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 550
+total_ttc: 660
+type: impaye
+updated_at: '2026-06-24T16:31:03.942Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250918_49544/standard/FA250918 49544
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

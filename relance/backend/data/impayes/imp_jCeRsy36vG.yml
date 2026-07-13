@@ -1,0 +1,49 @@
+adresse_bien: 8 quai des Docks Le Neptune
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_2nqg0iGJCC
+created_at: '2026-06-24T16:30:45.928Z'
+date_echeance: '2026-07-01'
+date_import: '2026-07-09T07:05:05.072Z'
+date_piece: '2026-06-24'
+donneur_ordre_id: null
+donneur_ordre_nom: SAS AG IMMO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_jCeRsy36vG
+id_dossier: '39446'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51181
+numero_dossier: 53452
+payer_id: cont_2nqg0iGJCC
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SAS AG IMMO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SAS AG IMMO
+proprietaire_prenom: null
+ref_piece: FA260624 51181
+reference: '53452'
+reste_a_payer: 90
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 75
+total_ttc: 90
+type: impaye
+updated_at: '2026-06-25T22:00:50.054Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260624_51181/standard/FA260624 51181 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

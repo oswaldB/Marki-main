@@ -1,0 +1,49 @@
+adresse_bien: 25 boulevard Carnot Rosemont
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: '28/04 : paiement dans 3 mois par le notaire'
+contact_relance_id: cont_j3NrxFKtEt
+created_at: '2026-06-24T16:31:15.888Z'
+date_echeance: '2025-03-10'
+date_import: '2026-07-09T07:05:07.930Z'
+date_piece: '2025-03-10'
+donneur_ordre_id: null
+donneur_ordre_nom: DAMILANO-VARETTO
+donneur_ordre_prenom: paola
+email_index: 0
+facture_soldee: true
+id: imp_BNEQqQz2AW
+id_dossier: '38887'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48482
+numero_dossier: 52893
+payer_id: cont_j3NrxFKtEt
+payeur_civilite: ''
+payeur_email: var.dam48@gmail.com
+payeur_nom: DAMILANO-VARETTO
+payeur_prenom: paola
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DAMILANO-VARETTO
+proprietaire_prenom: paola
+ref_piece: FA250310 48482
+reference: '52893'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:15.888Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250310_48482/standard/FA250310 48482 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

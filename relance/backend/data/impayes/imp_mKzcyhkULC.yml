@@ -1,0 +1,49 @@
+adresse_bien: 47 bis boulevard Guynemer Le Monte Verdi
+apporteur_id: cont_dntkuJ727m
+apporteur_nom: 'WRETMAN MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_9hW5fZyl3g
+created_at: '2026-06-30T22:00:29.907Z'
+date_echeance: '2026-07-07'
+date_import: '2026-07-09T07:05:12.218Z'
+date_piece: '2026-06-30'
+donneur_ordre_id: null
+donneur_ordre_nom: ERIKSEN
+donneur_ordre_prenom: Lars
+email_index: 0
+facture_soldee: true
+id: imp_mKzcyhkULC
+id_dossier: '42054'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51218
+numero_dossier: 56060
+payer_id: cont_9hW5fZyl3g
+payeur_civilite: ''
+payeur_email: laer@novonordisk.com
+payeur_nom: ERIKSEN
+payeur_prenom: Lars
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ERIKSEN
+proprietaire_prenom: Lars
+ref_piece: FA260630 51218
+reference: '56060'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 120.83
+total_ttc: 145
+type: impaye
+updated_at: '2026-07-06T17:50:00.439Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260630_51218/standard/FA260630 51218 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

@@ -1,0 +1,49 @@
+adresse_bien: 12 avenue Marquet Baie Marquet
+apporteur_id: cont_Q0jadWIlqE
+apporteur_nom: JLR IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_egvPuO9Mlo
+created_at: '2026-06-24T16:31:17.056Z'
+date_echeance: '2025-02-13'
+date_import: '2026-07-09T07:05:08.111Z'
+date_piece: '2025-02-13'
+donneur_ordre_id: null
+donneur_ordre_nom: FRENAY
+donneur_ordre_prenom: Didier
+email_index: 0
+facture_soldee: true
+id: imp_UdbUUclx47
+id_dossier: '38711'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48335
+numero_dossier: 52717
+payer_id: cont_Q0jadWIlqE
+payeur_civilite: ''
+payeur_email: agence@jlrimmo.com
+payeur_nom: JLR IMMO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FRENAY
+proprietaire_prenom: Didier
+ref_piece: FA250213 48335
+reference: '52717'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 163.33
+total_ttc: 196
+type: impaye
+updated_at: '2026-06-24T16:31:17.056Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250213_48335/standard/FA250213 48335
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

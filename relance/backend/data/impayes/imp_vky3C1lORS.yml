@@ -1,0 +1,49 @@
+adresse_bien: 12-14 rue Morgan Center Palace
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: LISTING
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:30:53.869Z'
+date_echeance: '2026-02-24'
+date_import: '2026-07-09T07:05:05.816Z'
+date_piece: '2026-02-17'
+donneur_ordre_id: null
+donneur_ordre_nom: CARAGLIO GENESIO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_vky3C1lORS
+id_dossier: '41238'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50490
+numero_dossier: 55244
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CARAGLIO GENESIO
+proprietaire_prenom: null
+ref_piece: FA260217 50490
+reference: '55244'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 130.42
+total_ttc: 156.5
+type: impaye
+updated_at: '2026-06-24T16:30:53.869Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260217_50490/standard/FA260217 50490
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

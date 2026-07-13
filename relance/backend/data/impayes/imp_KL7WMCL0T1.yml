@@ -1,0 +1,49 @@
+adresse_bien: 7 place du Chateau Bâtiment
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06250'
+commentaire_piece: ''
+contact_relance_id: cont_1q7JJQuOZK
+created_at: '2026-06-24T16:30:57.989Z'
+date_echeance: '2025-12-10'
+date_import: '2026-07-09T07:05:06.302Z'
+date_piece: '2025-12-03'
+donneur_ordre_id: null
+donneur_ordre_nom: REGIS
+donneur_ordre_prenom: Celia
+email_index: 0
+facture_soldee: true
+id: imp_KL7WMCL0T1
+id_dossier: '40805'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50076
+numero_dossier: 54811
+payer_id: cont_1q7JJQuOZK
+payeur_civilite: ''
+payeur_email: celiaregis@hotmail.fr
+payeur_nom: REGIS
+payeur_prenom: Celia
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: REGIS
+proprietaire_prenom: Celia
+ref_piece: FA251203 50076
+reference: '54811'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:30:57.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251203_50076/standard/FA251203 50076
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MOUGINS

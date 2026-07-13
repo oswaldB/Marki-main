@@ -1,0 +1,49 @@
+adresse_bien: 59 rue des Potiers
+apporteur_id: cont_ye83ZIaf3y
+apporteur_nom: SELARL PELLIER LES MANDATAIRES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "LISTING 11/03\r\n\r\n11/03 pellier nous informe que l'acte est prévu fin mars\r\n\r\n10/04 RELANCE\r\n\r\n13/04 : Madame bonjour,\r\nLe dossier a pris du retard pour la signature des actes.\r\nIl ne sera pas possible de vous régler dans l'immédiat.\r\nJe vous remercie de bien vouloir encore un peu patienter.\r\n"
+contact_relance_id: cont_ye83ZIaf3y
+created_at: '2026-06-24T16:30:55.943Z'
+date_echeance: '2026-01-22'
+date_import: '2026-07-09T07:05:06.101Z'
+date_piece: '2026-01-15'
+donneur_ordre_id: null
+donneur_ordre_nom: SELARL PELLIER LES MANDATAIRES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Qbx6rG2MLk
+id_dossier: '40970'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50291
+numero_dossier: 54976
+payer_id: cont_ye83ZIaf3y
+payeur_civilite: ''
+payeur_email: mariesophie.pellier@etude-pellier.com
+payeur_nom: SELARL PELLIER LES MANDATAIRES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SARL CARROSSERIE BENVENUTO
+proprietaire_prenom: null
+ref_piece: FA260115 50291
+reference: '54976'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 633.33
+total_ttc: 760
+type: impaye
+updated_at: '2026-06-24T16:30:55.943Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260115_50291/standard/FA260115 50291
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

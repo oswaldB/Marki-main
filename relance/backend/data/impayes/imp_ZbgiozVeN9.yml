@@ -1,0 +1,49 @@
+adresse_bien: 59 Promenade Robert Schuman Les Ligures
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_QmhRtelCk8
+created_at: '2026-06-24T16:31:10.884Z'
+date_echeance: '2025-05-23'
+date_import: '2026-07-09T07:05:07.468Z'
+date_piece: '2025-05-23'
+donneur_ordre_id: null
+donneur_ordre_nom: BINDA
+donneur_ordre_prenom: 'Beatrice '
+email_index: 0
+facture_soldee: true
+id: imp_ZbgiozVeN9
+id_dossier: '39460'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48938
+numero_dossier: 53466
+payer_id: cont_QmhRtelCk8
+payeur_civilite: ''
+payeur_email: beatrice.binda@gmail.com
+payeur_nom: BINDA
+payeur_prenom: 'Beatrice '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BINDA
+proprietaire_prenom: 'Beatrice '
+ref_piece: FA250523 48938
+reference: '53466'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:10.884Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250523_48938/standard/FA250523 48938 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

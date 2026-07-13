@@ -1,0 +1,49 @@
+adresse_bien: 15 rue du Lycée
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_TZThED1xiB
+created_at: '2026-06-24T16:30:45.993Z'
+date_echeance: '2026-06-24'
+date_import: '2026-07-09T07:05:05.099Z'
+date_piece: '2026-06-17'
+donneur_ordre_id: null
+donneur_ordre_nom: PHENIX IMMO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_oCTYBbHcEp
+id_dossier: '41972'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51139
+numero_dossier: 55978
+payer_id: cont_TZThED1xiB
+payeur_civilite: ''
+payeur_email: m2prana@yahoo.com
+payeur_nom: PHENIX IMMO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PHENIX IMMO
+proprietaire_prenom: null
+ref_piece: FA260617 51139
+reference: '55978'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 416.67
+total_ttc: 500
+type: impaye
+updated_at: '2026-06-24T16:30:45.993Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260617_51139/standard/FA260617 51139 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

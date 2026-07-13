@@ -1,0 +1,49 @@
+adresse_bien: 8 quai des Docks Le Neptune B
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_XYcdnfHq4k
+created_at: '2026-06-24T16:31:43.909Z'
+date_echeance: '2024-01-18'
+date_import: '2026-07-09T07:05:10.620Z'
+date_piece: '2024-01-18'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI EOULX
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_yenX1W7AlK
+id_dossier: '32655'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45941
+numero_dossier: 49652
+payer_id: cont_XYcdnfHq4k
+payeur_civilite: ''
+payeur_email: aurelia@dharambure.com
+payeur_nom: SCI EOULX
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI EOULX
+proprietaire_prenom: null
+ref_piece: FA240118 45941
+reference: '49652'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 129.17
+total_ttc: 155
+type: impaye
+updated_at: '2026-06-24T16:31:43.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240118_45941/standard/FA240118 45941
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

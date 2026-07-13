@@ -1,0 +1,49 @@
+adresse_bien: 15 Porte de France Le Marly
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_hrMYJ27uzV
+created_at: '2026-06-24T16:31:23.900Z'
+date_echeance: '2024-10-28'
+date_import: '2026-07-09T07:05:08.750Z'
+date_piece: '2024-10-28'
+donneur_ordre_id: null
+donneur_ordre_nom: PIRAUX
+donneur_ordre_prenom: Francoise
+email_index: 0
+facture_soldee: true
+id: imp_NFVZHwWk3F
+id_dossier: '37899'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47707
+numero_dossier: 51905
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PIRAUX
+proprietaire_prenom: Francoise
+ref_piece: FA241028 47707
+reference: '51905'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 186.67
+total_ttc: 224
+type: impaye
+updated_at: '2026-06-24T16:31:23.900Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241028_47707/standard/FA241028 47707
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

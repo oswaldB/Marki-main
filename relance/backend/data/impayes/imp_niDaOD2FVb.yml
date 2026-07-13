@@ -1,0 +1,49 @@
+adresse_bien: 12 avenue Edouard VII Le France Palace
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:57.129Z'
+date_echeance: '2023-06-21'
+date_import: '2026-07-09T07:05:11.931Z'
+date_piece: '2023-06-21'
+donneur_ordre_id: null
+donneur_ordre_nom: REVEMONT
+donneur_ordre_prenom: Nicolas
+email_index: 0
+facture_soldee: true
+id: imp_niDaOD2FVb
+id_dossier: '29077'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44644
+numero_dossier: 48063
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: REVEMONT
+proprietaire_prenom: Nicolas
+ref_piece: FA230621 44644
+reference: '48063'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:57.129Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juin/FA230621_44644/standard/FA230621 44644 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

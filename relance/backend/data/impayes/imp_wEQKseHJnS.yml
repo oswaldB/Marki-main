@@ -1,0 +1,49 @@
+adresse_bien: 47 boulevard Guynemer Les Flots d'Or
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_TBem9MT2Ni
+created_at: '2026-06-24T16:31:55.074Z'
+date_echeance: '2023-08-01'
+date_import: '2026-07-09T07:05:11.699Z'
+date_piece: '2023-08-01'
+donneur_ordre_id: null
+donneur_ordre_nom: TAYLOR Tracy Lee
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_wEQKseHJnS
+id_dossier: '29387'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44900
+numero_dossier: 48373
+payer_id: cont_TBem9MT2Ni
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: TAYLOR Tracy Lee
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: TAYLOR Tracy Lee
+proprietaire_prenom: null
+ref_piece: FA230801 44900
+reference: '48373'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:55.074Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230801_44900/standard/FA230801 44900 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

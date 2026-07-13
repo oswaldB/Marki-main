@@ -1,0 +1,49 @@
+adresse_bien: 6 avenue du Dauphiné Les Pleiades
+apporteur_id: cont_h38qdiRKRI
+apporteur_nom: SOGETRANS
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_AHBIrYYctl
+created_at: '2026-06-24T16:31:31.939Z'
+date_echeance: '2024-06-27'
+date_import: '2026-07-09T07:05:09.615Z'
+date_piece: '2024-06-27'
+donneur_ordre_id: null
+donneur_ordre_nom: PALMEIRO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Zx7OFAS94L
+id_dossier: '35985'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46951
+numero_dossier: 50989
+payer_id: cont_h38qdiRKRI
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: SOGETRANS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PALMEIRO
+proprietaire_prenom: null
+ref_piece: FA240627 46951
+reference: '50989'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 153.33
+total_ttc: 184
+type: impaye
+updated_at: '2026-06-24T16:31:31.939Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240627_46951/standard/FA240627 46951 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

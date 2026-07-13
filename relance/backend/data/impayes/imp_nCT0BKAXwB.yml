@@ -1,0 +1,49 @@
+adresse_bien: 15 place Saint-François
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Nh1fOoyJMJ
+created_at: '2026-06-24T16:30:45.993Z'
+date_echeance: '2026-06-25'
+date_import: '2026-07-09T07:05:05.098Z'
+date_piece: '2026-06-18'
+donneur_ordre_id: null
+donneur_ordre_nom: GESTION IMMOBILIERE TISSINIE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_nCT0BKAXwB
+id_dossier: '42019'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51162
+numero_dossier: 56025
+payer_id: cont_Nh1fOoyJMJ
+payeur_civilite: ''
+payeur_email: info@tissinie.com
+payeur_nom: GESTION IMMOBILIERE TISSINIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'HONNORAT '
+proprietaire_prenom: Aline
+ref_piece: FA260618 51162
+reference: '56025'
+reste_a_payer: 35
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:33:32.539Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260618_51162/standard/FA260618 51162 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

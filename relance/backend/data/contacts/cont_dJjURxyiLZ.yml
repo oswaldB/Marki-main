@@ -1,0 +1,29 @@
+$loki: 1936
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:52.522Z'
+email: thomas.barberis@gmail.com
+id: cont_dJjURxyiLZ
+impaye_ids:
+  - imp_GfELEPT55Q
+is_blacklisted: false
+meta:
+  created: 1783580699107
+  revision: 0
+  version: 0
+nom: SETIS
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:51.361Z'

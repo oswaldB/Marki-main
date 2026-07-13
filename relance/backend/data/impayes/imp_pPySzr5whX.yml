@@ -1,0 +1,49 @@
+adresse_bien: 25 rue Rossini
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:58.980Z'
+date_echeance: '2023-05-30'
+date_import: '2026-07-09T07:05:12.089Z'
+date_piece: '2023-05-30'
+donneur_ordre_id: null
+donneur_ordre_nom: LOZATO
+donneur_ordre_prenom: Marc
+email_index: 0
+facture_soldee: true
+id: imp_pPySzr5whX
+id_dossier: '28906'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44514
+numero_dossier: 47892
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: LOZATO
+proprietaire_prenom: Marc
+ref_piece: FA230530 44514
+reference: '47892'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:58.980Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/mai/FA230530_44514/standard/FA230530 44514 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

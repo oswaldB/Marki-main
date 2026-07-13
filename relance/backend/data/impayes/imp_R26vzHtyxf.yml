@@ -1,0 +1,49 @@
+adresse_bien: 14 bis allée des Acacias Le Grand Large
+apporteur_id: cont_cFjIPWR9lP
+apporteur_nom: SUD FINANCES CONSEIL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:50.910Z'
+date_echeance: '2023-10-02'
+date_import: '2026-07-09T07:05:11.278Z'
+date_piece: '2023-10-02'
+donneur_ordre_id: null
+donneur_ordre_nom: SUD FINANCES CONSEIL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_R26vzHtyxf
+id_dossier: '30833'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45288
+numero_dossier: 48823
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: GAUTIIER TRIPET LORIS ALICE
+proprietaire_prenom: null
+ref_piece: FA230928 45288
+reference: '48823'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:50.910Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA230928_45288/standard/FA230928 45288
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

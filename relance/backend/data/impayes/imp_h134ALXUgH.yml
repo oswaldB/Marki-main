@@ -1,0 +1,49 @@
+adresse_bien: 54 avenue du Ray Domaine de Falicon Bâtiment 9
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_mmwPHjXBrZ
+created_at: '2026-07-07T22:00:52.353Z'
+date_echeance: '2026-07-14'
+date_import: '2026-07-09T07:05:12.304Z'
+date_piece: '2026-07-07'
+donneur_ordre_id: null
+donneur_ordre_nom: PASTORINI
+donneur_ordre_prenom: Manon
+email_index: 0
+facture_soldee: true
+id: imp_h134ALXUgH
+id_dossier: '42096'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51258
+numero_dossier: 56102
+payer_id: cont_mmwPHjXBrZ
+payeur_civilite: ''
+payeur_email: pastorini.manon@gmail.com
+payeur_nom: PASTORINI
+payeur_prenom: Manon
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PASTORINI
+proprietaire_prenom: Manon
+ref_piece: FA260707 51258
+reference: '56102'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 206.25
+total_ttc: 247.5
+type: impaye
+updated_at: '2026-07-08T22:02:31.262Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juillet/FA260707_51258/standard/FA260707 51258
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

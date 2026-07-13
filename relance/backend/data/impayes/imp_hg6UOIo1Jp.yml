@@ -1,0 +1,49 @@
+adresse_bien: 88 chemin de la Garde de Maiffret
+apporteur_id: cont_lDP9VJ9ene
+apporteur_nom: AGENCE LMI ARTHURIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06670'
+commentaire_piece: ''
+contact_relance_id: cont_lDP9VJ9ene
+created_at: '2026-06-24T16:31:57.927Z'
+date_echeance: '2023-06-15'
+date_import: '2026-07-09T07:05:11.965Z'
+date_piece: '2023-06-15'
+donneur_ordre_id: null
+donneur_ordre_nom: BOCCIOLESI
+donneur_ordre_prenom: Franck
+email_index: 0
+facture_soldee: true
+id: imp_hg6UOIo1Jp
+id_dossier: '29040'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44612
+numero_dossier: 48026
+payer_id: cont_lDP9VJ9ene
+payeur_civilite: ''
+payeur_email: contact@agence-lmi.com
+payeur_nom: AGENCE LMI ARTHURIMMO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BOCCIOLESI
+proprietaire_prenom: Franck
+ref_piece: FA230615 44612
+reference: '48026'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:57.927Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juin/FA230615_44612/standard/FA230615 44612 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CASTAGNIERS

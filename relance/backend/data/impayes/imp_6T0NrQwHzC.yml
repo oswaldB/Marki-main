@@ -1,0 +1,49 @@
+adresse_bien: 84 avenue Cyrnos
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_HN9Rh7Rhj6
+created_at: '2026-06-24T16:31:07.945Z'
+date_echeance: '2025-07-10'
+date_import: '2026-07-09T07:05:07.194Z'
+date_piece: '2025-07-10'
+donneur_ordre_id: null
+donneur_ordre_nom: RODRIGUEZ
+donneur_ordre_prenom: Fanny
+email_index: 0
+facture_soldee: true
+id: imp_6T0NrQwHzC
+id_dossier: '39823'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49203
+numero_dossier: 53829
+payer_id: cont_HN9Rh7Rhj6
+payeur_civilite: ''
+payeur_email: dallonifanny@aol.fr
+payeur_nom: RODRIGUEZ
+payeur_prenom: Fanny
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: RODRIGUEZ
+proprietaire_prenom: Fanny
+ref_piece: FA250710 49203
+reference: '53829'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 172.5
+total_ttc: 207
+type: impaye
+updated_at: '2026-06-24T16:31:07.945Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250710_49203/standard/FA250710 49203
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

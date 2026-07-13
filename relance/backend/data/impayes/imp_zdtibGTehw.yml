@@ -1,0 +1,49 @@
+adresse_bien: 26 place des Arcades
+apporteur_id: cont_AvZjNGS1n4
+apporteur_nom: PRADO IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06410'
+commentaire_piece: ''
+contact_relance_id: cont_AvZjNGS1n4
+created_at: '2026-06-24T16:31:40.037Z'
+date_echeance: '2024-03-04'
+date_import: '2026-07-09T07:05:10.304Z'
+date_piece: '2024-03-04'
+donneur_ordre_id: null
+donneur_ordre_nom: INDIVISION ROUSTAN/BEL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_zdtibGTehw
+id_dossier: '33030'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46229
+numero_dossier: 50027
+payer_id: cont_AvZjNGS1n4
+payeur_civilite: ''
+payeur_email: 'contact@pradoimmobilier.com '
+payeur_nom: PRADO IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: INDIVISION ROUSTAN/BEL
+proprietaire_prenom: null
+ref_piece: FA240229 46229
+reference: '50027'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 289.17
+total_ttc: 347
+type: impaye
+updated_at: '2026-06-24T16:31:40.037Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240229_46229/standard/FA240229 46229 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BIOT

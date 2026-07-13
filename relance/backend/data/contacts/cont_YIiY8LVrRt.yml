@@ -1,0 +1,43 @@
+$loki: 6757
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-25T12:50:59.625Z'
+email: 'okatser@gmail.com '
+id: cont_YIiY8LVrRt
+impaye_ids:
+  - imp_J1lrjafqz7
+  - imp_mQT0xmbJHN
+  - imp_tsilchVC0D
+  - imp_ZImYyEDDuI
+  - imp_JFc6ZXQhP5
+is_blacklisted: false
+meta:
+  created: 1783580700735
+  revision: 1
+  updated: 1783580718414
+  version: 0
+nom: YURCHENKO
+prenom: ''
+relance_ids:
+  - rel_81lwApDjxa
+  - rel_DMUzcGmVd1
+  - rel_wCRDMbp7TX
+  - rel_z5GkbbJviW
+  - rel_MYt57VkdkB
+  - rel_GRWfCEekJ9
+  - rel_NEMmyRn68p
+  - rel_Q7sVUrAw3d
+  - rel_wUXvRNZIJ1
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:36.383Z'

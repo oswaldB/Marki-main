@@ -1,0 +1,30 @@
+$loki: 311
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:36.751Z'
+email: emanuele.pasta@virgilio.it
+id: cont_FcU1tXT3qv
+impaye_ids:
+  - imp_xl349d6wV3
+  - imp_Qx4Y1srpCn
+is_blacklisted: false
+meta:
+  created: 1783580698469
+  revision: 0
+  version: 0
+nom: PASTA
+prenom: Emmanuele
+relance_ids: []
+societe: null
+statut: actif
+telephone: '00393276962400'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:36.362Z'

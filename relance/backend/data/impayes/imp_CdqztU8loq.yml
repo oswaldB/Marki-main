@@ -1,0 +1,49 @@
+adresse_bien: 286 route de Saint-Antoine
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:12.928Z'
+date_echeance: '2025-04-14'
+date_import: '2026-07-09T07:05:07.678Z'
+date_piece: '2025-04-14'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_CdqztU8loq
+id_dossier: '39170'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48706
+numero_dossier: 53176
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCI MC06
+proprietaire_prenom: null
+ref_piece: FA250414 48706
+reference: '53176'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 91.67
+total_ttc: 110
+type: impaye
+updated_at: '2026-06-24T16:31:12.928Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250414_48706/standard/FA250414 48706
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

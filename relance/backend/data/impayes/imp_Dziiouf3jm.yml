@@ -1,0 +1,49 @@
+adresse_bien: 25 rue du Palmier
+apporteur_id: cont_vCAOy10UIf
+apporteur_nom: IMMOBILTREND
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_rITmHGCkGx
+created_at: '2026-06-24T16:31:13.886Z'
+date_echeance: '2025-04-04'
+date_import: '2026-07-09T07:05:07.759Z'
+date_piece: '2025-04-04'
+donneur_ordre_id: null
+donneur_ordre_nom: PERMKOPF
+donneur_ordre_prenom: Ilse
+email_index: 0
+facture_soldee: true
+id: imp_Dziiouf3jm
+id_dossier: '39097'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48655
+numero_dossier: 53103
+payer_id: cont_rITmHGCkGx
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: PERMKOPF
+payeur_prenom: Ilse
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PERMKOPF
+proprietaire_prenom: Ilse
+ref_piece: FA250404 48655
+reference: '53103'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 716.25
+total_ttc: 859.5
+type: impaye
+updated_at: '2026-06-24T16:31:13.886Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250404_48655/standard/FA250404 48655
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

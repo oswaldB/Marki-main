@@ -1,0 +1,49 @@
+adresse_bien: 144 cours du Centenaire Les Pelouses
+apporteur_id: cont_dntkuJ727m
+apporteur_nom: 'WRETMAN MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_PuUnqf14pS
+created_at: '2026-06-24T16:31:23.971Z'
+date_echeance: '2024-10-24'
+date_import: '2026-07-09T07:05:08.780Z'
+date_piece: '2024-10-24'
+donneur_ordre_id: null
+donneur_ordre_nom: FORSSEN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_EiT1zXHHA9
+id_dossier: '37887'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47693
+numero_dossier: 51893
+payer_id: cont_PuUnqf14pS
+payeur_civilite: ''
+payeur_email: monica.forssen@telia.com
+payeur_nom: FORSSEN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FORSSEN
+proprietaire_prenom: null
+ref_piece: FA241024 47693
+reference: '51893'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:23.971Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241024_47693/standard/FA241024 47693
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

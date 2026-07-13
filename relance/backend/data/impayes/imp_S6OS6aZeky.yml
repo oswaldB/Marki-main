@@ -1,0 +1,49 @@
+adresse_bien: 305 chemin du Puits du Plan Bâtiment
+apporteur_id: cont_vYxZuqohdi
+apporteur_nom: PEZY
+apporteur_prenom: Laurène
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06370'
+commentaire_piece: "relance 15/10\r\n\r\nrelance 21/11"
+contact_relance_id: cont_vYxZuqohdi
+created_at: '2026-06-24T16:31:03.909Z'
+date_echeance: '2025-09-29'
+date_import: '2026-07-09T07:05:06.816Z'
+date_piece: '2025-09-22'
+donneur_ordre_id: null
+donneur_ordre_nom: BIMONT
+donneur_ordre_prenom: Emmanuel
+email_index: 0
+facture_soldee: true
+id: imp_S6OS6aZeky
+id_dossier: '40294'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49564
+numero_dossier: 54300
+payer_id: cont_vYxZuqohdi
+payeur_civilite: ''
+payeur_email: laurene.pezy.06039@notaires.fr
+payeur_nom: PEZY
+payeur_prenom: Laurène
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BIMONT
+proprietaire_prenom: Emmanuel
+ref_piece: FA250922 49564
+reference: '54300'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:03.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250922_49564/standard/FA250922 49564
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MOUANS-SARTOUX

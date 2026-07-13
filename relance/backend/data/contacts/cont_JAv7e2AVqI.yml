@@ -1,0 +1,62 @@
+$loki: 1959
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:52.566Z'
+email: contact@locationgestion.com
+id: cont_JAv7e2AVqI
+impaye_ids:
+  - imp_U6a3buXAjs
+  - imp_AtBxb3yF53
+  - imp_xW5n6LkOYg
+  - imp_ZrIKB60yHG
+  - imp_EWQ3xjYY71
+  - imp_sWCXBCN1QF
+  - imp_zZSLyFB3Nq
+  - imp_c9e5oRNVOA
+  - imp_9TkriWijsf
+  - imp_y1xYTG66kK
+  - imp_uFFnMck4R7
+  - imp_BgiLBg2uNm
+  - imp_ARRqBbzjkr
+  - imp_5VA4zknRNV
+  - imp_E7z1HwVsQQ
+  - imp_gSuMJGfIgO
+  - imp_TiFAAhQSnM
+  - imp_GPbTx8upMA
+  - imp_4tNLaZQ6Y6
+  - imp_iVoXsQLBcE
+  - imp_7sbR7My3UA
+  - imp_QJXdI9Zvvb
+  - imp_iDV2byoKkZ
+  - imp_WZCMCJD3Tz
+  - imp_M1J0yzmrCs
+  - imp_KAvuyLPaGC
+  - imp_pABmjnurGG
+  - imp_IaLePuLRDb
+  - imp_Yxkmnh0FaU
+  - imp_mwx2XCx76T
+  - imp_jaWQZNdFEw
+  - imp_1nJnGSfopp
+  - imp_ACmg8ye3D9
+  - imp_5w4DGfj1yp
+is_blacklisted: false
+meta:
+  created: 1783580699114
+  revision: 0
+  version: 0
+nom: LECOUTURIER
+prenom: 'Sandrine '
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:52.323Z'

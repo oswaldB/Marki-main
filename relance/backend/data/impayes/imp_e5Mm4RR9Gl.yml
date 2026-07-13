@@ -1,0 +1,49 @@
+adresse_bien: 5 avenue Michel de Cimiez Les Jardins de Cimiez
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_u5698FU4CX
+created_at: '2026-06-24T16:31:39.017Z'
+date_echeance: '2024-03-21'
+date_import: '2026-07-09T07:05:10.218Z'
+date_piece: '2024-03-21'
+donneur_ordre_id: null
+donneur_ordre_nom: MONTET
+donneur_ordre_prenom: Marc
+email_index: 0
+facture_soldee: true
+id: imp_e5Mm4RR9Gl
+id_dossier: '34198'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46336
+numero_dossier: 50197
+payer_id: cont_u5698FU4CX
+payeur_civilite: ''
+payeur_email: marcou7@wanadoo.fr
+payeur_nom: MONTET
+payeur_prenom: Marc
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MONTET
+proprietaire_prenom: Marc
+ref_piece: FA240321 46336
+reference: '50197'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:31:39.017Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240321_46336/standard/FA240321 46336 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

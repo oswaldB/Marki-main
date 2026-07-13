@@ -1,0 +1,49 @@
+adresse_bien: 2-4 rue du Bastion
+apporteur_id: cont_dntkuJ727m
+apporteur_nom: 'WRETMAN MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_SFSGFoyEod
+created_at: '2026-06-24T16:31:08.005Z'
+date_echeance: '2025-07-02'
+date_import: '2026-07-09T07:05:07.228Z'
+date_piece: '2025-07-02'
+donneur_ordre_id: null
+donneur_ordre_nom: SFORZINI
+donneur_ordre_prenom: Silvia
+email_index: 0
+facture_soldee: true
+id: imp_KEBQsYu05O
+id_dossier: '39735'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49132
+numero_dossier: 53741
+payer_id: cont_SFSGFoyEod
+payeur_civilite: ''
+payeur_email: silviasforzini47@gmail.com
+payeur_nom: SFORZINI
+payeur_prenom: Silvia
+payeur_telephone: '0785720568'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SFORZINI
+proprietaire_prenom: Silvia
+ref_piece: FA250630 49132
+reference: '53741'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 255
+total_ttc: 306
+type: impaye
+updated_at: '2026-06-24T16:31:08.005Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250630_49132/standard/FA250630 49132
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

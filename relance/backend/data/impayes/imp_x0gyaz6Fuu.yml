@@ -1,0 +1,49 @@
+adresse_bien: 14 avenue Edouard VII Casa Isabelle
+apporteur_id: cont_rxtGcrWd4S
+apporteur_nom: TRANSAC FRANCE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_uQi9aD7KX5
+created_at: '2026-06-24T16:31:48.993Z'
+date_echeance: '2023-10-24'
+date_import: '2026-07-09T07:05:11.108Z'
+date_piece: '2023-10-24'
+donneur_ordre_id: null
+donneur_ordre_nom: SAS PASSICONIA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_x0gyaz6Fuu
+id_dossier: '32017'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45451
+numero_dossier: 49014
+payer_id: cont_uQi9aD7KX5
+payeur_civilite: ''
+payeur_email: mmagne06@gmail.com
+payeur_nom: SAS PASSICONIA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SAS PASSICONIA
+proprietaire_prenom: null
+ref_piece: FA231024 45451
+reference: '49014'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 150
+total_ttc: 180
+type: impaye
+updated_at: '2026-06-24T16:31:48.993Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231024_45451/standard/FA231024 45451
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 18 route Val des Castagnins Le Nerolia
+apporteur_id: cont_98qyheyUph
+apporteur_nom: AGENCE MENTON IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_szmlWpKNZS
+created_at: '2026-06-24T16:30:48.044Z'
+date_echeance: '2026-05-26'
+date_import: '2026-07-09T07:05:05.345Z'
+date_piece: '2026-05-19'
+donneur_ordre_id: null
+donneur_ordre_nom: BASI
+donneur_ordre_prenom: 'Chrisly - Julien '
+email_index: 0
+facture_soldee: false
+id: imp_WTkgIjNpkO
+id_dossier: '41760'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50962
+numero_dossier: 55766
+payer_id: cont_98qyheyUph
+payeur_civilite: ''
+payeur_email: info@menton-immo.com
+payeur_nom: AGENCE MENTON IMMO
+payeur_prenom: ''
+payeur_telephone: '0607637016'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BASI
+proprietaire_prenom: 'Chrisly - Julien '
+ref_piece: FA260519 50962
+reference: '55766'
+reste_a_payer: 270
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 225
+total_ttc: 270
+type: impaye
+updated_at: '2026-06-24T16:33:33.254Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260519_50962/standard/FA260519 50962 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

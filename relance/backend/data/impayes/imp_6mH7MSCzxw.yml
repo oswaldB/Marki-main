@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Commandant Berretta
+apporteur_id: cont_grne1KFMB7
+apporteur_nom: VICTOR IMMOBILIER REAL ESTATE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "le 12/12 envoi facture prop + copie agence \r\n\r\n13/01 relance prop + copie agence via comptabilité\r\nréponse : paiement prop lors de la vente \r\n-> demande de la date de vente\r\n\r\n02/02 relance prop \r\n\r\n23/02 relance à nouveau mail \r\nretour du client, il n'aurait rien demandé donc il veut pas payer la facture, j'ai transféré ce jour la réponse à l'agence pour demander si paiement agence\r\n\r\nréponse de l'agence : \r\nBonjour,\r\nSi il y a vente oui, mais je n'ai plus le mandat et c'est une autre agence qui s'en occupe, donc logiquement c'est à cette agence de prendre le relais.\r\nAvez-vous contacté cette personne ?\r\n\r\nClarisse: 06.99.63.94.43 - clarisse.buchband@hostnfly.com\r\nMessage laissé + mail envoyé\r\n\r\n27/02 demande de faire le point et de nous rappeler a clarisse \r\n\r\n10/03 relance par mail clarisse\r\nelle nous demande de se rapporhcer du DO \r\nj'ai donc renoyé un mail a PICAN \r\n27/03 relance pican\r\n\r\n17/04 relance infos \r\n\r\n27/04 pican au tel il va me rappeler \r\nMonsieur pican n'a plus le mandat je l'ai eu tel, donc message laissé à clarisse + au prop aucune réponse depuis 2 mois.\r\nJe renvoie un mail à clarisse \r\n\r\n06/05 message laissé à benoit + appelle avec mme Bushband ( ne plus jamais rappeler parce que c'est une folle ) + message laissé au prop + mail de relance envoyé au prop avec avocat en copie et 72h pour régler la facture\r\n"
+contact_relance_id: cont_qEsUXsrXqY
+created_at: '2026-06-24T16:30:57.876Z'
+date_echeance: '2025-12-19'
+date_import: '2026-07-09T07:05:06.258Z'
+date_piece: '2025-12-12'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI MASKA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_6mH7MSCzxw
+id_dossier: '40571'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50117
+numero_dossier: 54577
+payer_id: cont_qEsUXsrXqY
+payeur_civilite: ''
+payeur_email: 'lolykas@gmail.com '
+payeur_nom: SCI MASKA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI MASKA
+proprietaire_prenom: null
+ref_piece: FA251212 50117
+reference: '54577'
+reste_a_payer: 340
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:33:34.225Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251212_50117/standard/FA251212 50117
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

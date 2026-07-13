@@ -1,0 +1,49 @@
+adresse_bien: 12 avenue Katherine Mansfield Chateau Vallaya
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:45.980Z'
+date_echeance: '2023-12-05'
+date_import: '2026-07-09T07:05:10.826Z'
+date_piece: '2023-12-05'
+donneur_ordre_id: null
+donneur_ordre_nom: BECCARIA
+donneur_ordre_prenom: Margherita
+email_index: 0
+facture_soldee: true
+id: imp_pRt3bTFX36
+id_dossier: '32370'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45724
+numero_dossier: 49367
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: BECCARIA
+proprietaire_prenom: Margherita
+ref_piece: FA231205 45724
+reference: '49367'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 150
+total_ttc: 180
+type: impaye
+updated_at: '2026-06-24T16:31:45.980Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231205_45724/standard/FA231205 45724
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

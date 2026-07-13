@@ -1,0 +1,31 @@
+$loki: 5868
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:28.583Z'
+email: k.graglia@orea-syndic.fr
+id: cont_QOWwkKxvGq
+impaye_ids:
+  - imp_fM69uw5t8b
+  - imp_AJ3Gni6xV7
+  - imp_lFdHjkf664
+is_blacklisted: false
+meta:
+  created: 1783580700467
+  revision: 0
+  version: 0
+nom: Graglia
+prenom: Kévin
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:28.344Z'

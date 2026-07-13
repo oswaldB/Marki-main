@@ -1,0 +1,49 @@
+adresse_bien: 16 avenue Alfred de Vigny Arc en Ciel
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_LCd95CjGCu
+created_at: '2026-06-24T16:31:32.994Z'
+date_echeance: '2024-06-06'
+date_import: '2026-07-09T07:05:09.737Z'
+date_piece: '2024-06-06'
+donneur_ordre_id: null
+donneur_ordre_nom: LAUDOYER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_GELEt5cghg
+id_dossier: '35822'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46816
+numero_dossier: 50826
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LAUDOYER
+proprietaire_prenom: null
+ref_piece: FA240606 46816
+reference: '50826'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 76.67
+total_ttc: 92
+type: impaye
+updated_at: '2026-06-24T16:31:32.994Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240606_46816/standard/FA240606 46816 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

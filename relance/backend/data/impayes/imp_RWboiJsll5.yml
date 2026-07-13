@@ -1,0 +1,49 @@
+adresse_bien: 24 rue Arson
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_lSMp2viGqt
+created_at: '2026-06-24T16:31:06.983Z'
+date_echeance: '2025-07-21'
+date_import: '2026-07-09T07:05:07.126Z'
+date_piece: '2025-07-21'
+donneur_ordre_id: null
+donneur_ordre_nom: 'MAGNAN / MOURON '
+donneur_ordre_prenom: Delphine / Amélie
+email_index: 0
+facture_soldee: true
+id: imp_RWboiJsll5
+id_dossier: '39868'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49239
+numero_dossier: 53874
+payer_id: cont_lSMp2viGqt
+payeur_civilite: ''
+payeur_email: delphmagnan@yahoo.fr
+payeur_nom: 'MAGNAN / MOURON '
+payeur_prenom: Delphine / Amélie
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'MAGNAN / MOURON '
+proprietaire_prenom: Delphine / Amélie
+ref_piece: FA250721 49239
+reference: '53874'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 215.83
+total_ttc: 259
+type: impaye
+updated_at: '2026-06-24T16:31:06.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250721_49239/standard/FA250721 49239
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

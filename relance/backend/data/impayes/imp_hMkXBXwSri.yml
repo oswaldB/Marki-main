@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Imberty Villa Portfino
+apporteur_id: cont_xOkmHVECsd
+apporteur_nom: FRANCE CONSEIL IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '98000'
+commentaire_piece: ''
+contact_relance_id: cont_p1WxbFXste
+created_at: '2026-06-24T16:30:49.061Z'
+date_echeance: '2026-05-05'
+date_import: '2026-07-09T07:05:05.444Z'
+date_piece: '2026-04-28'
+donneur_ordre_id: null
+donneur_ordre_nom: CMB VILLA PORTOFINO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_hMkXBXwSri
+id_dossier: '41625'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50853
+numero_dossier: 55631
+payer_id: cont_b4SB5B0bmP
+payeur_civilite: ''
+payeur_email: creditmonitoringcontrol@cmb.mc
+payeur_nom: C.M.B MONACO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: CMB VILLA PORTOFINO
+proprietaire_prenom: null
+ref_piece: FA260428 50853
+reference: '55631'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 375
+total_ttc: 450
+type: impaye
+updated_at: '2026-06-24T16:30:49.061Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260428_50853/standard/FA260428 50853
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MONACO

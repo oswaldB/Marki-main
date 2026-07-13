@@ -1,0 +1,49 @@
+adresse_bien: 157 rue Antoine Péglion Les Citronniers
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_ht1OrdOW6j
+created_at: '2026-06-24T16:31:14.056Z'
+date_echeance: '2025-03-21'
+date_import: '2026-07-09T07:05:07.824Z'
+date_piece: '2025-03-21'
+donneur_ordre_id: null
+donneur_ordre_nom: SOUY
+donneur_ordre_prenom: Angelina
+email_index: 0
+facture_soldee: true
+id: imp_2LGBIOjEHh
+id_dossier: '39002'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48576
+numero_dossier: 53008
+payer_id: cont_ht1OrdOW6j
+payeur_civilite: ''
+payeur_email: a.souy@proton.me
+payeur_nom: SOUY
+payeur_prenom: Angelina
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SOUY
+proprietaire_prenom: Angelina
+ref_piece: FA250321 48576
+reference: '53008'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 206.67
+total_ttc: 248
+type: impaye
+updated_at: '2026-06-24T16:31:14.056Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250321_48576/standard/FA250321 48576 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

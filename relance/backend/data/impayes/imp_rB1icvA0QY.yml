@@ -1,0 +1,49 @@
+adresse_bien: 152 boulevard Raymond Poincaré
+apporteur_id: cont_DXhXUDwRzU
+apporteur_nom: AZUR CONSEIL EXPERTISES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06160'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:50.019Z'
+date_echeance: '2023-10-10'
+date_import: '2026-07-09T07:05:11.230Z'
+date_piece: '2023-10-10'
+donneur_ordre_id: null
+donneur_ordre_nom: AZUR CONSEIL EXPERTISES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_rB1icvA0QY
+id_dossier: '30910'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45359
+numero_dossier: 48900
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: AMAMI
+proprietaire_prenom: Abdelmoez
+ref_piece: FA231010 45359
+reference: '48900'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1341.7
+total_ttc: 1610.04
+type: impaye
+updated_at: '2026-06-24T16:31:50.019Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231010_45359/standard/FA231010 45359
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

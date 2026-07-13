@@ -1,0 +1,49 @@
+adresse_bien: 8 avenue de Picardie Le Picardie
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: l'agence relance
+contact_relance_id: cont_VadeP9ri9f
+created_at: '2026-06-24T16:31:03.909Z'
+date_echeance: '2025-09-25'
+date_import: '2026-07-09T07:05:06.817Z'
+date_piece: '2025-09-18'
+donneur_ordre_id: null
+donneur_ordre_nom: SAURIE
+donneur_ordre_prenom: Veronique
+email_index: 0
+facture_soldee: true
+id: imp_ebe4ft1BE8
+id_dossier: '40226'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49547
+numero_dossier: 54232
+payer_id: cont_VadeP9ri9f
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SAURIE
+payeur_prenom: Veronique
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SAURIE
+proprietaire_prenom: Veronique
+ref_piece: FA250918 49547
+reference: '54232'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:03.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250918_49547/standard/FA250918 49547
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

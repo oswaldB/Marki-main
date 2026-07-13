@@ -1,0 +1,49 @@
+adresse_bien: 21 boulevard Maréchal Foch Le Clair Azur
+apporteur_id: cont_gszi3ULfaG
+apporteur_nom: AIA GROUPE ALLIANCE GESTION ANTIBES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: cont_hiBh7VBtpf
+created_at: '2026-06-24T16:31:21.930Z'
+date_echeance: '2024-12-03'
+date_import: '2026-07-09T07:05:08.555Z'
+date_piece: '2024-12-03'
+donneur_ordre_id: null
+donneur_ordre_nom: CLAIR AZUR
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_EozAic0VYN
+id_dossier: '38145'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47897
+numero_dossier: 52151
+payer_id: cont_gszi3ULfaG
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: AIA GROUPE ALLIANCE GESTION ANTIBES
+payeur_prenom: ''
+payeur_telephone: '0614310039'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CLAIR AZUR
+proprietaire_prenom: null
+ref_piece: FA241203 47897
+reference: '52151'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1000
+total_ttc: 1200
+type: impaye
+updated_at: '2026-06-24T16:31:21.930Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241203_47897/standard/FA241203 47897
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

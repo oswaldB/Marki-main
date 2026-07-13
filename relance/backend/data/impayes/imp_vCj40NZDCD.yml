@@ -1,0 +1,49 @@
+adresse_bien: 330 boulevard de la Vallée
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06440'
+commentaire_piece: ''
+contact_relance_id: cont_Qj9JVcl7Dj
+created_at: '2026-06-24T16:30:51.931Z'
+date_echeance: '2026-03-25'
+date_import: '2026-07-09T07:05:05.670Z'
+date_piece: '2026-03-18'
+donneur_ordre_id: null
+donneur_ordre_nom: COLOMBINI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_vCj40NZDCD
+id_dossier: '41402'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50631
+numero_dossier: 55408
+payer_id: cont_Qj9JVcl7Dj
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: COLOMBINI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: COLOMBINI
+proprietaire_prenom: null
+ref_piece: FA260318 50631
+reference: '55408'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:30:51.931Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260318_50631/standard/FA260318 50631 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: PEILLON

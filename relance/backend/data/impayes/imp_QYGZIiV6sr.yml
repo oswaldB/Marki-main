@@ -1,0 +1,49 @@
+adresse_bien: 14 Promenade du Val de Menton La loggia
+apporteur_id: cont_axwCVxbA8C
+apporteur_nom: CABINET CAIRO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "LA LOGGIA\r\n14 PROMENADE VAL DE MENTON\r\nMENTON 06500"
+contact_relance_id: cont_axwCVxbA8C
+created_at: '2026-06-24T16:31:27.971Z'
+date_echeance: '2024-08-29'
+date_import: '2026-07-09T07:05:09.212Z'
+date_piece: '2024-08-29'
+donneur_ordre_id: null
+donneur_ordre_nom: COPROPRIETE LA LOGGIA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_QYGZIiV6sr
+id_dossier: '36387'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47317
+numero_dossier: 51391
+payer_id: cont_axwCVxbA8C
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET CAIRO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: COPROPRIETE LA LOGGIA
+proprietaire_prenom: null
+ref_piece: FA240829 47317
+reference: '51391'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 833.33
+total_ttc: 1000
+type: impaye
+updated_at: '2026-06-24T16:31:27.971Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240829_47317/standard/FA240829 47317 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

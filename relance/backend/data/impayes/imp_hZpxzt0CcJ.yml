@@ -1,0 +1,49 @@
+adresse_bien: 96 Promenade Val du Careï Le Santa Lucia
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: relance le 18/09
+contact_relance_id: cont_4nn6BwQtNZ
+created_at: '2026-06-24T16:31:05.926Z'
+date_echeance: '2025-08-26'
+date_import: '2026-07-09T07:05:06.974Z'
+date_piece: '2025-08-19'
+donneur_ordre_id: null
+donneur_ordre_nom: COUPERY
+donneur_ordre_prenom: Jean Marc
+email_index: 0
+facture_soldee: true
+id: imp_hZpxzt0CcJ
+id_dossier: '39826'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49389
+numero_dossier: 53832
+payer_id: cont_4nn6BwQtNZ
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: COUPERY
+payeur_prenom: Jean Marc
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: COUPERY
+proprietaire_prenom: Jean Marc
+ref_piece: FA250819 49389
+reference: '53832'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:05.926Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250819_49389/standard/FA250819 49389 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

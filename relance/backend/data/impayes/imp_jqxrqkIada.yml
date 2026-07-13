@@ -1,0 +1,49 @@
+adresse_bien: 10 avenue Saint-Jean-Baptiste
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_u8BY0ezY57
+created_at: '2026-06-24T16:31:39.051Z'
+date_echeance: '2024-03-18'
+date_import: '2026-07-09T07:05:10.230Z'
+date_piece: '2024-03-18'
+donneur_ordre_id: null
+donneur_ordre_nom: PERINET
+donneur_ordre_prenom: Laurent
+email_index: 0
+facture_soldee: true
+id: imp_jqxrqkIada
+id_dossier: '34159'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46324
+numero_dossier: 50158
+payer_id: cont_u8BY0ezY57
+payeur_civilite: ''
+payeur_email: 'laurent.perinet@gmail.com '
+payeur_nom: PERINET
+payeur_prenom: Laurent
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PERINET
+proprietaire_prenom: Laurent
+ref_piece: FA240318 46324
+reference: '50158'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-24T16:31:39.051Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240318_46324/standard/FA240318 46324 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

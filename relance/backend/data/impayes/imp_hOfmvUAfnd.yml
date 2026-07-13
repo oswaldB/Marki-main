@@ -1,0 +1,49 @@
+adresse_bien: 7 rue Jean Bono Le Saint Michel
+apporteur_id: cont_XfMiq6mNPd
+apporteur_nom: HAKKASAN
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_aphNL83I9z
+created_at: '2026-06-24T16:31:13.886Z'
+date_echeance: '2025-04-04'
+date_import: '2026-07-09T07:05:07.750Z'
+date_piece: '2025-04-04'
+donneur_ordre_id: null
+donneur_ordre_nom: 'ORAISON '
+donneur_ordre_prenom: Michele
+email_index: 0
+facture_soldee: true
+id: imp_hOfmvUAfnd
+id_dossier: '39098'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48656
+numero_dossier: 53104
+payer_id: cont_XfMiq6mNPd
+payeur_civilite: ''
+payeur_email: ca.perard@hakkasan.immo
+payeur_nom: HAKKASAN
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'ORAISON '
+proprietaire_prenom: Michele
+ref_piece: FA250404 48656
+reference: '53104'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 154.17
+total_ttc: 185
+type: impaye
+updated_at: '2026-06-24T16:31:13.886Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250404_48656/standard/FA250404 48656
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

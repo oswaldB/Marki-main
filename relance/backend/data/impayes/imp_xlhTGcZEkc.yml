@@ -1,0 +1,49 @@
+adresse_bien: 37 avenue Cyrille Besset
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06800'
+commentaire_piece: ''
+contact_relance_id: cont_pN4MvDYj8h
+created_at: '2026-06-24T16:31:05.879Z'
+date_echeance: '2025-08-27'
+date_import: '2026-07-09T07:05:06.968Z'
+date_piece: '2025-08-20'
+donneur_ordre_id: null
+donneur_ordre_nom: NICOLAS-REIROSA
+donneur_ordre_prenom: 'Chantal '
+email_index: 0
+facture_soldee: true
+id: imp_xlhTGcZEkc
+id_dossier: '40053'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49395
+numero_dossier: 54059
+payer_id: cont_pN4MvDYj8h
+payeur_civilite: ''
+payeur_email: chantalnicolasreirosa@gmail.com
+payeur_nom: NICOLAS-REIROSA
+payeur_prenom: 'Chantal '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: NICOLAS-REIROSA
+proprietaire_prenom: 'Chantal '
+ref_piece: FA250820 49395
+reference: '54059'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 456.87
+total_ttc: 548.25
+type: impaye
+updated_at: '2026-06-24T16:31:05.879Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250820_49395/standard/FA250820 49395 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CAGNES-SUR-MER

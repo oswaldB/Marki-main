@@ -1,0 +1,49 @@
+adresse_bien: 167 avenue Louis Pasteur Le Sorrento
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_Ql7z5FELOj
+created_at: '2026-06-24T16:30:48.867Z'
+date_echeance: '2026-05-22'
+date_import: '2026-07-09T07:05:05.359Z'
+date_piece: '2026-05-15'
+donneur_ordre_id: null
+donneur_ordre_nom: MEGARD
+donneur_ordre_prenom: Valérie
+email_index: 0
+facture_soldee: true
+id: imp_PZD8SxA4E5
+id_dossier: '41751'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50944
+numero_dossier: 55757
+payer_id: cont_Ql7z5FELOj
+payeur_civilite: ''
+payeur_email: vmegard@aol.com
+payeur_nom: MEGARD
+payeur_prenom: Valérie
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MEGARD
+proprietaire_prenom: Valérie
+ref_piece: FA260515 50944
+reference: '55757'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:30:48.867Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260515_50944/standard/FA260515 50944 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

@@ -1,0 +1,49 @@
+adresse_bien: 3 boulevard Carabacel
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:27.912Z'
+date_echeance: '2024-09-03'
+date_import: '2026-07-09T07:05:09.196Z'
+date_piece: '2024-09-03'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jrSVhEr06k
+id_dossier: '37456'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47309
+numero_dossier: 51462
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PONCELET
+proprietaire_prenom: null
+ref_piece: FA240829 47309
+reference: '51462'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 93.75
+total_ttc: 112.5
+type: impaye
+updated_at: '2026-06-24T16:31:27.912Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240829_47309/standard/FA240829 47309
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

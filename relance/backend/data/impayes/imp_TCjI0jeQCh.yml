@@ -1,0 +1,49 @@
+adresse_bien: 32 route des Serres
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_E1QWrgB6DX
+created_at: '2026-06-24T16:31:16.068Z'
+date_echeance: '2025-02-25'
+date_import: '2026-07-09T07:05:08.018Z'
+date_piece: '2025-02-25'
+donneur_ordre_id: null
+donneur_ordre_nom: LABIBES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_TCjI0jeQCh
+id_dossier: '38777'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48397
+numero_dossier: 52783
+payer_id: cont_E1QWrgB6DX
+payeur_civilite: ''
+payeur_email: 'lab.cyriaque@gmail.com '
+payeur_nom: LABIBES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LABIBES
+proprietaire_prenom: null
+ref_piece: FA250225 48397
+reference: '52783'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 277.5
+total_ttc: 333
+type: impaye
+updated_at: '2026-06-24T16:31:16.068Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250225_48397/standard/FA250225 48397
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

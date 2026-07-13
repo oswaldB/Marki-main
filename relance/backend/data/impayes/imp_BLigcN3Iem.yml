@@ -1,0 +1,49 @@
+adresse_bien: 8 avenue Durante Palais Excelsior
+apporteur_id: cont_zttCmdIcGK
+apporteur_nom: AGENCE WILSON
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_MV0EubSIFT
+created_at: '2026-06-24T16:31:57.129Z'
+date_echeance: '2023-06-20'
+date_import: '2026-07-09T07:05:11.926Z'
+date_piece: '2023-06-20'
+donneur_ordre_id: null
+donneur_ordre_nom: CHIAPPINI
+donneur_ordre_prenom: Paulette
+email_index: 0
+facture_soldee: true
+id: imp_BLigcN3Iem
+id_dossier: '29069'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44637
+numero_dossier: 48055
+payer_id: cont_zttCmdIcGK
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: AGENCE WILSON
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CHIAPPINI
+proprietaire_prenom: Paulette
+ref_piece: FA230620 44637
+reference: '48055'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 246.67
+total_ttc: 296
+type: impaye
+updated_at: '2026-06-24T16:31:57.129Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juin/FA230620_44637/standard/FA230620 44637 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

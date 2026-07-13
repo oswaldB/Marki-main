@@ -1,0 +1,49 @@
+adresse_bien: 159 avenue Sainte-Marguerite L'Akenathon
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_Ye7uDeDE1m
+created_at: '2026-06-24T16:31:59.041Z'
+date_echeance: '2023-05-24'
+date_import: '2026-07-09T07:05:12.126Z'
+date_piece: '2023-05-24'
+donneur_ordre_id: null
+donneur_ordre_nom: BABISE
+donneur_ordre_prenom: Georges
+email_index: 0
+facture_soldee: true
+id: imp_wUCN5rz8ci
+id_dossier: '28868'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44486
+numero_dossier: 47854
+payer_id: cont_Ye7uDeDE1m
+payeur_civilite: ''
+payeur_email: jl.babise@wanadoo.fr
+payeur_nom: BABISE
+payeur_prenom: Georges
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BABISE
+proprietaire_prenom: Georges
+ref_piece: FA230524 44486
+reference: '47854'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:59.041Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/mai/FA230524_44486/standard/FA230524 44486 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

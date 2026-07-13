@@ -1,0 +1,49 @@
+adresse_bien: 11 boulevard Général Delfino Sainte Agathe
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_I8wB01HpUg
+created_at: '2026-06-24T16:31:27.971Z'
+date_echeance: '2024-08-29'
+date_import: '2026-07-09T07:05:09.216Z'
+date_piece: '2024-08-29'
+donneur_ordre_id: null
+donneur_ordre_nom: MOHAMMADI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_LDjY14rE3Y
+id_dossier: '37471'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47319
+numero_dossier: 51477
+payer_id: cont_I8wB01HpUg
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: MOHAMMADI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MOHAMMADI
+proprietaire_prenom: null
+ref_piece: FA240829 47319
+reference: '51477'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 136.67
+total_ttc: 164
+type: impaye
+updated_at: '2026-06-24T16:31:27.971Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240829_47319/standard/FA240829 47319 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

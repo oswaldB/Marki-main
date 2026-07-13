@@ -1,0 +1,49 @@
+adresse_bien: 14 rue Maraldi
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:52.916Z'
+date_echeance: '2023-09-01'
+date_import: '2026-07-09T07:05:11.457Z'
+date_piece: '2023-09-01'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_4UwNPnlZ8D
+id_dossier: '30561'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45068
+numero_dossier: 48551
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: UGO - FONTANA
+proprietaire_prenom: null
+ref_piece: FA230825 45068
+reference: '48551'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 62.5
+total_ttc: 75
+type: impaye
+updated_at: '2026-06-24T16:31:52.916Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230825_45068/standard/FA230825 45068
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

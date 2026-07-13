@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue Général de Gaulle Palais Josephine
+apporteur_id: cont_6KB3jgW9oc
+apporteur_nom: PROGEDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_KipSPsu7Mu
+created_at: '2026-06-24T16:31:18.896Z'
+date_echeance: '2025-01-28'
+date_import: '2026-07-09T07:05:08.243Z'
+date_piece: '2025-01-28'
+donneur_ordre_id: null
+donneur_ordre_nom: PROGEDI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_O9Qb6SvQVQ
+id_dossier: '38538'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48197
+numero_dossier: 52544
+payer_id: cont_6KB3jgW9oc
+payeur_civilite: ''
+payeur_email: accueil@progedi.com
+payeur_nom: PROGEDI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SANSONI
+proprietaire_prenom: Paola
+ref_piece: FA250128 48197
+reference: '52544'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 104.17
+total_ttc: 125
+type: impaye
+updated_at: '2026-06-24T16:31:18.896Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250128_48197/standard/FA250128 48197
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

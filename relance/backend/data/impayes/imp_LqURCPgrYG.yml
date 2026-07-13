@@ -1,0 +1,49 @@
+adresse_bien: 827 chemin des Barraques
+apporteur_id: cont_3hleN3RNdd
+apporteur_nom: BENAMOU
+apporteur_prenom: Olivier Isaac
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06510'
+commentaire_piece: ''
+contact_relance_id: cont_pXY9BKW92n
+created_at: '2026-06-24T16:31:37.956Z'
+date_echeance: '2024-04-02'
+date_import: '2026-07-09T07:05:10.113Z'
+date_piece: '2024-04-02'
+donneur_ordre_id: null
+donneur_ordre_nom: FLORODA
+donneur_ordre_prenom: AU DELICE DES PLANS
+email_index: 0
+facture_soldee: true
+id: imp_LqURCPgrYG
+id_dossier: '34277'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46395
+numero_dossier: 50276
+payer_id: cont_pXY9BKW92n
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: FLORODA
+payeur_prenom: AU DELICE DES PLANS
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FLORODA
+proprietaire_prenom: AU DELICE DES PLANS
+ref_piece: FA240402 46395
+reference: '50276'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 150
+total_ttc: 180
+type: impaye
+updated_at: '2026-06-24T16:31:37.956Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240402_46395/standard/FA240402 46395
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CARROS

@@ -1,0 +1,29 @@
+$loki: 5021
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:21.533Z'
+email: var.dam48@gmail.com
+id: cont_j3NrxFKtEt
+impaye_ids:
+  - imp_BNEQqQz2AW
+is_blacklisted: false
+meta:
+  created: 1783580700170
+  revision: 0
+  version: 0
+nom: DAMILANO-VARETTO
+prenom: paola
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:20.342Z'

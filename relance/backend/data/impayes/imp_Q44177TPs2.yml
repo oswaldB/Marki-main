@@ -1,0 +1,49 @@
+adresse_bien: 3 rue Niepce
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_VBjsif25ge
+created_at: '2026-06-24T16:30:57.876Z'
+date_echeance: '2025-12-17'
+date_import: '2026-07-09T07:05:06.257Z'
+date_piece: '2025-12-10'
+donneur_ordre_id: null
+donneur_ordre_nom: PETIT
+donneur_ordre_prenom: 'Isabelle et Bertrand '
+email_index: 0
+facture_soldee: true
+id: imp_Q44177TPs2
+id_dossier: '40818'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50110
+numero_dossier: 54824
+payer_id: cont_VBjsif25ge
+payeur_civilite: ''
+payeur_email: bertrand.isa.petit@gmail.com
+payeur_nom: PETIT
+payeur_prenom: 'Isabelle et Bertrand '
+payeur_telephone: '0650984719 Mr '
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PETIT
+proprietaire_prenom: 'Isabelle et Bertrand '
+ref_piece: FA251210 50110
+reference: '54824'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 258.54
+total_ttc: 310.25
+type: impaye
+updated_at: '2026-06-24T16:30:57.876Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251210_50110/standard/FA251210 50110
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

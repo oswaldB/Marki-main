@@ -1,0 +1,9 @@
+id: seq_suivi
+type_sequence: suivi
+actif: true
+emails:
+  - email_index: 0
+    delai: 1
+    scenarios:
+      - format: suivi_agence
+        active: true

@@ -1,0 +1,29 @@
+$loki: 2614
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:58.567Z'
+email: stephane.roustan.06016@notaires.fr
+id: cont_PpW9FvI1ra
+impaye_ids:
+  - imp_aGvXNHB0tf
+is_blacklisted: false
+meta:
+  created: 1783580699322
+  revision: 0
+  version: 0
+nom: ROUSTAN
+prenom: Stephane
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:58.329Z'

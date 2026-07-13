@@ -1,0 +1,49 @@
+adresse_bien: 126 Promenade Val du Careï Le Saint Vincent
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_YHog9DIKVC
+created_at: '2026-06-24T16:30:59.970Z'
+date_echeance: '2025-11-12'
+date_import: '2026-07-09T07:05:06.474Z'
+date_piece: '2025-11-05'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI CAST DRAP
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_qPRZGquA8I
+id_dossier: '40577'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49888
+numero_dossier: 54583
+payer_id: cont_YHog9DIKVC
+payeur_civilite: ''
+payeur_email: docteur.castellani@gmail.com
+payeur_nom: SCI CAST DRAP
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI CAST DRAP
+proprietaire_prenom: null
+ref_piece: FA251105 49888
+reference: '54583'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 225
+total_ttc: 270
+type: impaye
+updated_at: '2026-06-24T16:30:59.970Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251105_49888/standard/FA251105 49888
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

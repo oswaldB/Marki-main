@@ -1,0 +1,49 @@
+adresse_bien: 12 rue de la Republique
+apporteur_id: cont_lqhjbF99j7
+apporteur_nom: AB IMMOBILIER
+apporteur_prenom: groupe DEPLANCHE IMMOBILIER
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_YCiuVJixWK
+created_at: '2026-06-24T16:31:10.916Z'
+date_echeance: '2025-05-16'
+date_import: '2026-07-09T07:05:07.487Z'
+date_piece: '2025-05-16'
+donneur_ordre_id: null
+donneur_ordre_nom: LE POLLOZEC
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_f8o98THkBU
+id_dossier: '39431'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48910
+numero_dossier: 53437
+payer_id: cont_YCiuVJixWK
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: LE POLLOZEC
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LE POLLOZEC
+proprietaire_prenom: null
+ref_piece: FA250516 48910
+reference: '53437'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:10.916Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250516_48910/standard/FA250516 48910 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

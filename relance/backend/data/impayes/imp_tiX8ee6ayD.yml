@@ -1,0 +1,49 @@
+adresse_bien: 308 avenue Sainte-Marguerite Parc Saint Martin  Beverly E1
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_F47dfC6qeF
+created_at: '2026-06-24T16:31:38.948Z'
+date_echeance: '2024-03-27'
+date_import: '2026-07-09T07:05:10.195Z'
+date_piece: '2024-03-27'
+donneur_ordre_id: null
+donneur_ordre_nom: PAPAVERO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_tiX8ee6ayD
+id_dossier: '34272'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46368
+numero_dossier: 50271
+payer_id: cont_F47dfC6qeF
+payeur_civilite: ''
+payeur_email: sophiesalomon@sarl-adp.fr
+payeur_nom: AGENCE DU PORT
+payeur_prenom: 'Cabinet Salomon '
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PAPAVERO
+proprietaire_prenom: null
+ref_piece: FA240327 46368
+reference: '50271'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:38.948Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240327_46368/standard/FA240327 46368 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

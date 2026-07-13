@@ -1,0 +1,49 @@
+adresse_bien: 32 chemin de l'Esquie
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06950'
+commentaire_piece: "relance 29/12\r\n\r\n13/01 relance prop via comptabilité"
+contact_relance_id: cont_GfdxZ85BsQ
+created_at: '2026-06-24T16:30:57.035Z'
+date_echeance: '2025-12-23'
+date_import: '2026-07-09T07:05:06.240Z'
+date_piece: '2025-12-16'
+donneur_ordre_id: null
+donneur_ordre_nom: DIOLEZ
+donneur_ordre_prenom: Pascal
+email_index: 0
+facture_soldee: true
+id: imp_Xkf7fyoua1
+id_dossier: '40833'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50127
+numero_dossier: 54839
+payer_id: cont_GfdxZ85BsQ
+payeur_civilite: ''
+payeur_email: pascal.diolez@orange.fr
+payeur_nom: DIOLEZ
+payeur_prenom: Pascal
+payeur_telephone: '0611640790'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DIOLEZ
+proprietaire_prenom: Pascal
+ref_piece: FA251216 50127
+reference: '54839'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 453.33
+total_ttc: 544
+type: impaye
+updated_at: '2026-06-24T16:30:57.035Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251216_50127/standard/FA251216 50127
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: FALICON

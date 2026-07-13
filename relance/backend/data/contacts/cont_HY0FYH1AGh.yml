@@ -1,0 +1,30 @@
+$loki: 4165
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:13.529Z'
+email: info@nexusfarm.com
+id: cont_HY0FYH1AGh
+impaye_ids:
+  - imp_Ir1UycICXC
+  - imp_pIMIWUj3X2
+is_blacklisted: false
+meta:
+  created: 1783580699907
+  revision: 0
+  version: 0
+nom: MORA
+prenom: Paola
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:12.353Z'

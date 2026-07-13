@@ -1,0 +1,49 @@
+adresse_bien: 47 boulevard Guynemer Villa Paradiso
+apporteur_id: cont_6KB3jgW9oc
+apporteur_nom: PROGEDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_sVCsCvdf1H
+created_at: '2026-06-24T16:31:47.976Z'
+date_echeance: '2023-11-09'
+date_import: '2026-07-09T07:05:11.036Z'
+date_piece: '2023-11-09'
+donneur_ordre_id: null
+donneur_ordre_nom: BERTI
+donneur_ordre_prenom: Patricia
+email_index: 0
+facture_soldee: true
+id: imp_SYGL91o9HF
+id_dossier: '32152'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45555
+numero_dossier: 49149
+payer_id: cont_sVCsCvdf1H
+payeur_civilite: ''
+payeur_email: carineberti1970@gmail.com
+payeur_nom: BERTI
+payeur_prenom: Patricia
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BERTI
+proprietaire_prenom: Patricia
+ref_piece: FA231109 45555
+reference: '49149'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 150
+total_ttc: 180
+type: impaye
+updated_at: '2026-06-24T16:31:47.976Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231109_45555/standard/FA231109 45555
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

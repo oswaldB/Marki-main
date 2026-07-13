@@ -1,0 +1,49 @@
+adresse_bien: 7 chemin des Myrtes Stella Maris Bâtiment E (box)
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_sGY8dtiGpf
+created_at: '2026-06-24T16:31:17.927Z'
+date_echeance: '2025-02-06'
+date_import: '2026-07-09T07:05:08.173Z'
+date_piece: '2025-02-06'
+donneur_ordre_id: null
+donneur_ordre_nom: ARABA
+donneur_ordre_prenom: Marc
+email_index: 0
+facture_soldee: true
+id: imp_kBLmxQxBkE
+id_dossier: '38624'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48267
+numero_dossier: 52630
+payer_id: cont_sGY8dtiGpf
+payeur_civilite: ''
+payeur_email: beaulieubox06@gmail.com
+payeur_nom: ARABA
+payeur_prenom: Marc
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ARABA
+proprietaire_prenom: Marc
+ref_piece: FA250206 48267
+reference: '52630'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 31.25
+total_ttc: 37.5
+type: impaye
+updated_at: '2026-06-24T16:31:17.927Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250206_48267/standard/FA250206 48267
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

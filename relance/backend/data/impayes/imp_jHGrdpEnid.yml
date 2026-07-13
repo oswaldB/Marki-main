@@ -1,0 +1,49 @@
+adresse_bien: 11 boulevard des Monéghetti Eden Résidence
+apporteur_id: cont_6KB3jgW9oc
+apporteur_nom: PROGEDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_0Bf9goEjrH
+created_at: '2026-06-24T16:31:48.041Z'
+date_echeance: '2023-11-03'
+date_import: '2026-07-09T07:05:11.061Z'
+date_piece: '2023-11-03'
+donneur_ordre_id: null
+donneur_ordre_nom: SLIKOVA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jHGrdpEnid
+id_dossier: '32109'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45522
+numero_dossier: 49106
+payer_id: cont_0Bf9goEjrH
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SLIKOVA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SLIKOVA
+proprietaire_prenom: null
+ref_piece: FA231103 45522
+reference: '49106'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 83.33
+total_ttc: 100
+type: impaye
+updated_at: '2026-06-24T16:31:48.041Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231103_45522/standard/FA231103 45522
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

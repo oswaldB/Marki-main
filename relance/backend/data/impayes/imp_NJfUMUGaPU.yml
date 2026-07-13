@@ -1,0 +1,49 @@
+adresse_bien: 78 boulevard Général Louis Delfino
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Rev2j7FvL3
+created_at: '2026-06-24T16:30:49.029Z'
+date_echeance: '2026-05-06'
+date_import: '2026-07-09T07:05:05.422Z'
+date_piece: '2026-04-29'
+donneur_ordre_id: null
+donneur_ordre_nom: JOSEPH
+donneur_ordre_prenom: Alain
+email_index: 0
+facture_soldee: true
+id: imp_NJfUMUGaPU
+id_dossier: '41666'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50873
+numero_dossier: 55672
+payer_id: cont_F47dfC6qeF
+payeur_civilite: ''
+payeur_email: sophiesalomon@sarl-adp.fr
+payeur_nom: AGENCE DU PORT
+payeur_prenom: 'Cabinet Salomon '
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: JOSEPH
+proprietaire_prenom: Alain
+ref_piece: FA260429 50873
+reference: '55672'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 226.67
+total_ttc: 272
+type: impaye
+updated_at: '2026-06-24T16:30:49.029Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260429_50873/standard/FA260429 50873
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

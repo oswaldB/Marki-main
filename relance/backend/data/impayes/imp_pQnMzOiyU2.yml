@@ -1,0 +1,49 @@
+adresse_bien: 30 avenue Jean Moulin Terra Nova
+apporteur_id: cont_c7nQ6jqoM3
+apporteur_nom: BARBERA GESTION PATRIMOINE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06340'
+commentaire_piece: ''
+contact_relance_id: cont_aUH4MC3DTJ
+created_at: '2026-06-24T16:31:32.994Z'
+date_echeance: '2024-06-07'
+date_import: '2026-07-09T07:05:09.733Z'
+date_piece: '2024-06-07'
+donneur_ordre_id: null
+donneur_ordre_nom: ARHZAF
+donneur_ordre_prenom: Soufiane
+email_index: 0
+facture_soldee: true
+id: imp_pQnMzOiyU2
+id_dossier: '35852'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46845
+numero_dossier: 50856
+payer_id: cont_aUH4MC3DTJ
+payeur_civilite: ''
+payeur_email: arhzafian2@gmail.com
+payeur_nom: ARHZAF
+payeur_prenom: Soufiane
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ARHZAF
+proprietaire_prenom: Soufiane
+ref_piece: FA240607 46845
+reference: '50856'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 179.17
+total_ttc: 215
+type: impaye
+updated_at: '2026-06-24T16:31:32.994Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240607_46845/standard/FA240607 46845 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: DRAP

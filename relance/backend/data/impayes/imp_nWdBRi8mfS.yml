@@ -1,0 +1,49 @@
+adresse_bien: 384 avenue de Fabron  le Mont Fleuri
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_vcNQQtxKkH
+created_at: '2026-06-24T16:30:53.026Z'
+date_echeance: '2026-03-04'
+date_import: '2026-07-09T07:05:05.794Z'
+date_piece: '2026-02-25'
+donneur_ordre_id: null
+donneur_ordre_nom: EMI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_nWdBRi8mfS
+id_dossier: '41271'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50517
+numero_dossier: 55277
+payer_id: cont_vcNQQtxKkH
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: EMI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: EMI
+proprietaire_prenom: null
+ref_piece: FA260225 50517
+reference: '55277'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:30:53.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260225_50517/standard/FA260225 50517
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

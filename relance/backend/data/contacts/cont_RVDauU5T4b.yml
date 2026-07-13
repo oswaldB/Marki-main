@@ -1,0 +1,29 @@
+$loki: 5244
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:22.574Z'
+email: tom.rune37@gmail.com
+id: cont_RVDauU5T4b
+impaye_ids:
+  - imp_U6zBh01UDa
+is_blacklisted: false
+meta:
+  created: 1783580700234
+  revision: 0
+  version: 0
+nom: RUNE
+prenom: Tom Axel
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:22.340Z'

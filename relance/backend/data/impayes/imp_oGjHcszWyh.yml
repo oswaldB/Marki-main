@@ -1,0 +1,49 @@
+adresse_bien: 11 rue Saint-michel
+apporteur_id: cont_rxtGcrWd4S
+apporteur_nom: TRANSAC FRANCE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_p0R7DFZsEC
+created_at: '2026-06-24T16:31:48.041Z'
+date_echeance: '2023-11-02'
+date_import: '2026-07-09T07:05:11.059Z'
+date_piece: '2023-11-02'
+donneur_ordre_id: null
+donneur_ordre_nom: SABRIANTHO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_oGjHcszWyh
+id_dossier: '32073'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45497
+numero_dossier: 49070
+payer_id: cont_p0R7DFZsEC
+payeur_civilite: ''
+payeur_email: henry.baudet@yahoo.fr
+payeur_nom: SABRIANTHO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SABRIANTHO
+proprietaire_prenom: null
+ref_piece: FA231031 45497
+reference: '49070'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 100
+total_ttc: 120
+type: impaye
+updated_at: '2026-06-24T16:31:48.041Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231031_45497/standard/FA231031 45497
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

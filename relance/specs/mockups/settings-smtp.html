@@ -68,10 +68,6 @@
               <i class="fas fa-shield-alt text-slate-400 w-5"></i>
               <span class="text-sm text-slate-600" x-text="profil.securite.toUpperCase()"></span>
             </div>
-            <div class="flex items-center gap-3">
-              <i class="fas fa-paper-plane text-slate-400 w-5"></i>
-              <span class="text-sm text-slate-600" x-text="profil.emailsEnvoyes + ' emails envoyés'"></span>
-            </div>
           </div>
           
           <div class="px-6 py-4 border-t border-slate-100 bg-slate-50 rounded-b-xl flex items-center justify-between">
@@ -198,9 +194,9 @@ function settingsSmtpPage() {
     toast: { show: false, type: 'success', title: '', message: '' },
     
     profils: [
-      { id: 1, nom: 'SMTP Principal', email: 'noreply@marki.fr', serveur: 'smtp.marki.fr', port: 587, securite: 'tls', emailsEnvoyes: 12547, actif: true },
-      { id: 2, nom: 'SMTP Secondaire', email: 'relances@marki.fr', serveur: 'smtp2.marki.fr', port: 587, securite: 'tls', emailsEnvoyes: 3421, actif: true },
-      { id: 3, nom: 'SMTP Backup', email: 'backup@marki.fr', serveur: 'backup.marki.fr', port: 465, securite: 'ssl', emailsEnvoyes: 0, actif: false }
+      { id: 1, nom: 'SMTP Principal', email: 'noreply@marki.fr', serveur: 'smtp.marki.fr', port: 587, securite: 'tls', actif: true },
+      { id: 2, nom: 'SMTP Secondaire', email: 'relances@marki.fr', serveur: 'smtp2.marki.fr', port: 587, securite: 'tls', actif: true },
+      { id: 3, nom: 'SMTP Backup', email: 'backup@marki.fr', serveur: 'backup.marki.fr', port: 465, securite: 'ssl', actif: false }
     ],
     
     init() {},
@@ -236,7 +232,7 @@ function settingsSmtpPage() {
       this.profils.push({
         id: newId,
         ...this.newProfil,
-        emailsEnvoyes: 0
+        actif: false
       });
       this.newProfil = { nom: '', email: '', serveur: '', port: '', securite: 'tls', username: '', password: '', actif: true };
       this.showNewProfilForm = false;

@@ -1,0 +1,49 @@
+adresse_bien: 16 avenue Clément Ader
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_qVbgUfs9GA
+created_at: '2026-06-24T16:31:44.967Z'
+date_echeance: '2023-12-18'
+date_import: '2026-07-09T07:05:10.748Z'
+date_piece: '2023-12-18'
+donneur_ordre_id: null
+donneur_ordre_nom: COPROPRIETE 16 RUE CLEMENT ADER
+donneur_ordre_prenom: 'BOLLON '
+email_index: 0
+facture_soldee: true
+id: imp_AzAIJCuMDZ
+id_dossier: '32466'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45809
+numero_dossier: 49463
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: COPROPRIETE 16 RUE CLEMENT ADER
+proprietaire_prenom: 'BOLLON '
+ref_piece: FA231218 45809
+reference: '49463'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1000
+total_ttc: 1200
+type: impaye
+updated_at: '2026-06-24T16:31:44.967Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231218_45809/standard/FA231218 45809
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

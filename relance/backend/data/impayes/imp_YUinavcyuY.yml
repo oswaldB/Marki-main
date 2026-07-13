@@ -1,0 +1,49 @@
+adresse_bien: 98 rue de Roquebillière
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_DiUhxp4vo7
+created_at: '2026-06-24T16:31:40.943Z'
+date_echeance: '2024-02-22'
+date_import: '2026-07-09T07:05:10.347Z'
+date_piece: '2024-02-22'
+donneur_ordre_id: null
+donneur_ordre_nom: ROUDIERE
+donneur_ordre_prenom: Josiane
+email_index: 0
+facture_soldee: true
+id: imp_YUinavcyuY
+id_dossier: '32955'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46171
+numero_dossier: 49952
+payer_id: cont_DiUhxp4vo7
+payeur_civilite: ''
+payeur_email: vscribot@yahoo.fr
+payeur_nom: ROUDIERE
+payeur_prenom: Josiane
+payeur_telephone: '0625827496'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROUDIERE
+proprietaire_prenom: Josiane
+ref_piece: FA240222 46171
+reference: '49952'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:31:40.943Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240222_46171/standard/FA240222 46171
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

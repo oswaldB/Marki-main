@@ -1,0 +1,49 @@
+adresse_bien: 24 boulevard du Maréchal Joffre Le Bonaparte
+apporteur_id: cont_Mjawl6xUKi
+apporteur_nom: ENGEL VÖLKERS
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_ECRGk8CYsy
+created_at: '2026-06-24T16:31:30.054Z'
+date_echeance: '2024-07-16'
+date_import: '2026-07-09T07:05:09.492Z'
+date_piece: '2024-07-16'
+donneur_ordre_id: null
+donneur_ordre_nom: PERLICH
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_w4rAAPG2yY
+id_dossier: '36150'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47062
+numero_dossier: 51154
+payer_id: cont_ECRGk8CYsy
+payeur_civilite: ''
+payeur_email: perleh@gmx.de
+payeur_nom: PERLICH
+payeur_prenom: ''
+payeur_telephone: ninaperlich@gmailcom
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PERLICH
+proprietaire_prenom: null
+ref_piece: FA240716 47062
+reference: '51154'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:30.054Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240716_47062/standard/FA240716 47062
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

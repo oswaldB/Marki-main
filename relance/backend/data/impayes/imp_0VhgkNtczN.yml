@@ -1,0 +1,49 @@
+adresse_bien: 20 ter Prom Mal Leclerc de Hauteclocque Le Rosemary
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_AxdQ6BECe8
+created_at: '2026-06-24T16:30:46.932Z'
+date_echeance: '2026-06-12'
+date_import: '2026-07-09T07:05:05.182Z'
+date_piece: '2026-06-05'
+donneur_ordre_id: null
+donneur_ordre_nom: SOLOMON - NOWOSAD
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_0VhgkNtczN
+id_dossier: '41907'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51085
+numero_dossier: 55913
+payer_id: cont_AxdQ6BECe8
+payeur_civilite: ''
+payeur_email: nowosad.remi@gmail.com
+payeur_nom: SOLOMON - NOWOSAD
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SOLOMON - NOWOSAD
+proprietaire_prenom: null
+ref_piece: FA260605 51085
+reference: '55913'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:30:46.932Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260605_51085/standard/FA260605 51085 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

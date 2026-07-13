@@ -1,0 +1,49 @@
+adresse_bien: 126 Promenade Val du Careï Le Saint Vincent
+apporteur_id: cont_Kl8PBkhOa2
+apporteur_nom: LAFORET Menton Pieta
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "09/09 relance mail prop + copie agence\r\n\r\nrelance mail prop + 2 mails agence le 18/09\r\n\r\nrelance 04/11\r\n\r\nrelance 21/11\r\n\r\n12/12 relance prop + mails\r\n\r\n12/01 relance prop via comptabilité\r\n\r\n03/02 la prop nous envoie 2 chèques pour paiement en 2 fois ( si on a toujours pas reçu on relance) et quand on a reçu les règlements on envoie la facture acquittée ainsi que la totalité des rappports.\r\n\r\nNous avons reçu les 2 chèques"
+contact_relance_id: cont_R8MHoGPe0b
+created_at: '2026-06-24T16:31:06.912Z'
+date_echeance: '2025-07-25'
+date_import: '2026-07-09T07:05:07.094Z'
+date_piece: '2025-07-25'
+donneur_ordre_id: null
+donneur_ordre_nom: NEZAMTEHRANI - LEGROS
+donneur_ordre_prenom: Arezoo et Julien
+email_index: 0
+facture_soldee: true
+id: imp_2srt7JF6Ky
+id_dossier: '39929'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49294
+numero_dossier: 53935
+payer_id: cont_R8MHoGPe0b
+payeur_civilite: ''
+payeur_email: arezou.nezame62@gmail.com
+payeur_nom: NEZAMTEHRANI - LEGROS
+payeur_prenom: Arezoo et Julien
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: NEZAMTEHRANI - LEGROS
+proprietaire_prenom: Arezoo et Julien
+ref_piece: FA250725 49294
+reference: '53935'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:06.912Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250725_49294/standard/FA250725 49294
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

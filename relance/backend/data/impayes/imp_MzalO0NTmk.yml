@@ -1,0 +1,49 @@
+adresse_bien: 213 avenue Aristide Briand Villa Bella Donna
+apporteur_id: cont_98qyheyUph
+apporteur_nom: AGENCE MENTON IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_HEoqtdrGgH
+created_at: '2026-06-24T16:31:30.025Z'
+date_echeance: '2024-07-17'
+date_import: '2026-07-09T07:05:09.490Z'
+date_piece: '2024-07-17'
+donneur_ordre_id: null
+donneur_ordre_nom: VENTRELLA
+donneur_ordre_prenom: Cosimo
+email_index: 0
+facture_soldee: true
+id: imp_MzalO0NTmk
+id_dossier: '36166'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47077
+numero_dossier: 51170
+payer_id: cont_98qyheyUph
+payeur_civilite: ''
+payeur_email: info@menton-immo.com
+payeur_nom: AGENCE MENTON IMMO
+payeur_prenom: ''
+payeur_telephone: '0607637016'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: VENTRELLA
+proprietaire_prenom: Cosimo
+ref_piece: FA240717 47077
+reference: '51170'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:30.025Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240717_47077/standard/FA240717 47077
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

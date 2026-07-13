@@ -1,0 +1,49 @@
+adresse_bien: 12 rue Penchienatti
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:54.055Z'
+date_echeance: '2023-08-07'
+date_import: '2026-07-09T07:05:11.598Z'
+date_piece: '2023-08-07'
+donneur_ordre_id: null
+donneur_ordre_nom: MAYOLINI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Vz5GOa0hKO
+id_dossier: '29429'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44940
+numero_dossier: 48415
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: MAYOLINI
+proprietaire_prenom: null
+ref_piece: FA230807 44940
+reference: '48415'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:54.055Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230807_44940/standard/FA230807 44940 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

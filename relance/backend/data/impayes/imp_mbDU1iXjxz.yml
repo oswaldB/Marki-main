@@ -1,0 +1,49 @@
+adresse_bien: ''
+apporteur_id: cont_jyiRXarEkG
+apporteur_nom: EXIM EXPLOITATION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: ''
+commentaire_piece: "4811 Gare antibes\r\n4779 PN 8\r\n4753 PN 16\r\n"
+contact_relance_id: cont_jyiRXarEkG
+created_at: '2026-06-24T16:31:13.989Z'
+date_echeance: '2025-03-31'
+date_import: '2026-07-09T07:05:07.810Z'
+date_piece: '2025-03-31'
+donneur_ordre_id: null
+donneur_ordre_nom: EXIM EXPLOITATION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_mbDU1iXjxz
+id_dossier: '39050'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48621
+numero_dossier: 53056
+payer_id: cont_jyiRXarEkG
+payeur_civilite: ''
+payeur_email: key.account@exim.fr
+payeur_nom: EXIM EXPLOITATION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SNCF
+proprietaire_prenom: null
+ref_piece: FA250331 48621
+reference: '53056'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1230.07
+total_ttc: 1476.08
+type: impaye
+updated_at: '2026-06-24T16:31:13.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250331_48621/standard/FA250331 48621 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ''

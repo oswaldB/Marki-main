@@ -1,0 +1,49 @@
+adresse_bien: 41 camin de l'Arieta Parc Ophelia
+apporteur_id: cont_OdGGwFKYqJ
+apporteur_nom: SPECIAL IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_JegGECxfzr
+created_at: '2026-06-24T16:31:18.022Z'
+date_echeance: '2025-02-03'
+date_import: '2026-07-09T07:05:08.212Z'
+date_piece: '2025-02-03'
+donneur_ordre_id: null
+donneur_ordre_nom: CORDIER
+donneur_ordre_prenom: 'Sandrine '
+email_index: 0
+facture_soldee: true
+id: imp_WyMvfneuuq
+id_dossier: '38592'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48239
+numero_dossier: 52598
+payer_id: cont_JegGECxfzr
+payeur_civilite: ''
+payeur_email: sandrc@hotmail.fr
+payeur_nom: CORDIER
+payeur_prenom: 'Sandrine '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CORDIER
+proprietaire_prenom: 'Sandrine '
+ref_piece: FA250203 48239
+reference: '52598'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:18.022Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250203_48239/standard/FA250203 48239
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

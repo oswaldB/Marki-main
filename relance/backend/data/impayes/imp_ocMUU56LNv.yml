@@ -1,0 +1,49 @@
+adresse_bien: 9 avenue Georges V Résidence du Parc
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_F8M0sDANwx
+created_at: '2026-06-24T16:31:18.022Z'
+date_echeance: '2025-02-03'
+date_import: '2026-07-09T07:05:08.209Z'
+date_piece: '2025-02-03'
+donneur_ordre_id: null
+donneur_ordre_nom: 'GIRONE '
+donneur_ordre_prenom: 'Maxime '
+email_index: 0
+facture_soldee: true
+id: imp_ocMUU56LNv
+id_dossier: '38588'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48234
+numero_dossier: 52594
+payer_id: cont_F8M0sDANwx
+payeur_civilite: ''
+payeur_email: maxime.girone@gmail.com
+payeur_nom: 'GIRONE '
+payeur_prenom: 'Maxime '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'GIRONE '
+proprietaire_prenom: 'Maxime '
+ref_piece: FA250131 48234
+reference: '52594'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:18.022Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250131_48234/standard/FA250131 48234
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

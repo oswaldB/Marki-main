@@ -1,0 +1,49 @@
+adresse_bien: 12 avenue Edouard Brown-Séquard Le Paradisio
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_UVMROUYOWS
+created_at: '2026-06-24T16:30:59.938Z'
+date_echeance: '2025-11-17'
+date_import: '2026-07-09T07:05:06.458Z'
+date_piece: '2025-11-10'
+donneur_ordre_id: null
+donneur_ordre_nom: HERZ
+donneur_ordre_prenom: Bernard
+email_index: 0
+facture_soldee: true
+id: imp_dXAGWc3bl0
+id_dossier: '40626'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49916
+numero_dossier: 54632
+payer_id: cont_Nh1fOoyJMJ
+payeur_civilite: ''
+payeur_email: info@tissinie.com
+payeur_nom: GESTION IMMOBILIERE TISSINIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: HERZ
+proprietaire_prenom: Bernard
+ref_piece: FA251110 49916
+reference: '54632'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:30:59.938Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251110_49916/standard/FA251110 49916
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

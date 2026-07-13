@@ -1,0 +1,49 @@
+adresse_bien: 11 avenue Gloria Le Gloria Magnan
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_JAv7e2AVqI
+created_at: '2026-06-24T16:31:27.912Z'
+date_echeance: '2024-09-02'
+date_import: '2026-07-09T07:05:09.185Z'
+date_piece: '2024-09-02'
+donneur_ordre_id: null
+donneur_ordre_nom: OPTI GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_c9e5oRNVOA
+id_dossier: '36416'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47277
+numero_dossier: 51420
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MUSSO
+proprietaire_prenom: Patrick
+ref_piece: FA240823 47277
+reference: '51420'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 141.67
+total_ttc: 170
+type: impaye
+updated_at: '2026-06-24T16:31:27.912Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240823_47277/standard/FA240823 47277
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

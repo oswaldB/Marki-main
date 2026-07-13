@@ -1,0 +1,49 @@
+adresse_bien: 532 route des Ciappes  Les Orangers des Ciappes
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_sHNwou4dlw
+created_at: '2026-06-24T16:31:24.990Z'
+date_echeance: '2024-10-07'
+date_import: '2026-07-09T07:05:08.896Z'
+date_piece: '2024-10-07'
+donneur_ordre_id: null
+donneur_ordre_nom: DE GAYARDON DE FENOYL
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_VYBMzKcGKL
+id_dossier: '37750'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47575
+numero_dossier: 51756
+payer_id: cont_sHNwou4dlw
+payeur_civilite: ''
+payeur_email: mariechristinedefenoyl@gmail.com
+payeur_nom: DE GAYARDON DE FENOYL
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DE GAYARDON DE FENOYL
+proprietaire_prenom: null
+ref_piece: FA241007 47575
+reference: '51756'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:24.990Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241007_47575/standard/FA241007 47575
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

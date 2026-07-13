@@ -1,0 +1,49 @@
+adresse_bien: 14 rue Lepante
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "le 09/09 renvoi facture \r\n\r\nrelance 01/10"
+contact_relance_id: cont_AU7HCux33Q
+created_at: '2026-06-24T16:31:16.963Z'
+date_echeance: '2025-02-14'
+date_import: '2026-07-09T07:05:08.074Z'
+date_piece: '2025-02-14'
+donneur_ordre_id: null
+donneur_ordre_nom: DREUX
+donneur_ordre_prenom: Maxime
+email_index: 0
+facture_soldee: true
+id: imp_t6p6Dhbq9q
+id_dossier: '38720'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48341
+numero_dossier: 52726
+payer_id: cont_AU7HCux33Q
+payeur_civilite: ''
+payeur_email: negropatrick06@gmail.com
+payeur_nom: SARL NICOPAT
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: DREUX
+proprietaire_prenom: Maxime
+ref_piece: FA250214 48341
+reference: '52726'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 91.67
+total_ttc: 110
+type: impaye
+updated_at: '2026-06-24T16:31:16.963Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250214_48341/standard/FA250214 48341
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 16 avenue Docteur Emile Roux VILLA SAVERIA
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:29.056Z'
+date_echeance: '2024-08-01'
+date_import: '2026-07-09T07:05:09.367Z'
+date_piece: '2024-08-01'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_FcopRPASvD
+id_dossier: '36290'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47084
+numero_dossier: 51294
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: AUBERT
+proprietaire_prenom: Thibault
+ref_piece: FA240718 47084
+reference: '51294'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 86.67
+total_ttc: 104
+type: impaye
+updated_at: '2026-06-24T16:31:29.056Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240718_47084/standard/FA240718 47084 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

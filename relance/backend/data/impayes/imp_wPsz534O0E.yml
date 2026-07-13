@@ -1,0 +1,49 @@
+adresse_bien: 37 rue Clément Roassal Résidence Opéra Bâtiment A
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:54.953Z'
+date_echeance: '2023-08-02'
+date_import: '2026-07-09T07:05:11.657Z'
+date_piece: '2023-08-02'
+donneur_ordre_id: null
+donneur_ordre_nom: CAZADE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_wPsz534O0E
+id_dossier: '29217'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44909
+numero_dossier: 48203
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: CAZADE
+proprietaire_prenom: null
+ref_piece: FA230802 44909
+reference: '48203'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2064.15
+total_ttc: 2476.98
+type: impaye
+updated_at: '2026-06-24T16:31:54.953Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230802_44909/standard/FA230802 44909 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

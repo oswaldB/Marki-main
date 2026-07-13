@@ -1,0 +1,49 @@
+adresse_bien: 32 avenue du Pic Martin
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06590'
+commentaire_piece: ''
+contact_relance_id: cont_N877H8yeBE
+created_at: '2026-06-24T16:30:57.876Z'
+date_echeance: '2025-12-17'
+date_import: '2026-07-09T07:05:06.249Z'
+date_piece: '2025-12-10'
+donneur_ordre_id: null
+donneur_ordre_nom: 'SCI MAISON BELLEVUE '
+donneur_ordre_prenom: Mr SAELID Cato
+email_index: 0
+facture_soldee: true
+id: imp_ZOMU1hgmce
+id_dossier: '40785'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50109
+numero_dossier: 54791
+payer_id: cont_N877H8yeBE
+payeur_civilite: ''
+payeur_email: cato@otc.no
+payeur_nom: 'SCI MAISON BELLEVUE '
+payeur_prenom: Mr SAELID Cato
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'SCI MAISON BELLEVUE '
+proprietaire_prenom: Mr SAELID Cato
+ref_piece: FA251210 50109
+reference: '54791'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 666.67
+total_ttc: 800
+type: impaye
+updated_at: '2026-06-24T16:30:57.876Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251210_50109/standard/FA251210 50109
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: THÉOULE-SUR-MER

@@ -1,0 +1,49 @@
+adresse_bien: 29 avenue de Sospel La Roseraie
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_rjt1aBQ9F7
+created_at: '2026-06-24T16:31:26.975Z'
+date_echeance: '2024-09-13'
+date_import: '2026-07-09T07:05:09.110Z'
+date_piece: '2024-09-13'
+donneur_ordre_id: null
+donneur_ordre_nom: LLOPIS
+donneur_ordre_prenom: Eric
+email_index: 0
+facture_soldee: true
+id: imp_6Ns6ZQNFTP
+id_dossier: '37583'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47423
+numero_dossier: 51589
+payer_id: cont_rjt1aBQ9F7
+payeur_civilite: ''
+payeur_email: eric.llopis@gmail.com
+payeur_nom: LLOPIS
+payeur_prenom: Eric
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LLOPIS
+proprietaire_prenom: Eric
+ref_piece: FA240913 47423
+reference: '51589'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:26.975Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240913_47423/standard/FA240913 47423
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 340 allée des Lauriers Domaine des Gardettes
+apporteur_id: cont_yxNIr5KYwN
+apporteur_nom: PERALDI
+apporteur_prenom: Olivia
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06570'
+commentaire_piece: "relance 29/12\r\n\r\nrelance 13/01 mai du notaire via comptabilité\r\n\r\n02/02 relance à nouveau\r\n\r\n10/02 j'ai eu l'assistante de peraldi au tel elle lui transfère le message et elle va payer normalement \r\n\r\n17/04 relance\r\n\r\n27/04 relance agence "
+contact_relance_id: cont_yxNIr5KYwN
+created_at: '2026-06-24T16:30:58.983Z'
+date_echeance: '2025-11-28'
+date_import: '2026-07-09T07:05:06.396Z'
+date_piece: '2025-11-21'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI GUACAMOLE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_HQZqYBSLPg
+id_dossier: '40674'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49984
+numero_dossier: 54680
+payer_id: cont_yxNIr5KYwN
+payeur_civilite: ''
+payeur_email: peraldi@cabinetperaldi.fr
+payeur_nom: PERALDI
+payeur_prenom: Olivia
+payeur_telephone: perso 0610011623
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SCI GUACAMOLE
+proprietaire_prenom: null
+ref_piece: FA251121 49984
+reference: '54680'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 473.33
+total_ttc: 568
+type: impaye
+updated_at: '2026-06-24T16:30:58.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251121_49984/standard/FA251121 49984
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SAINT-PAUL-DE-VENCE

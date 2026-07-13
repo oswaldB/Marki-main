@@ -1,0 +1,49 @@
+adresse_bien: 13 boulevard de Cessole
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: listing
+contact_relance_id: cont_kyTCccB8zw
+created_at: '2026-06-24T16:31:01.877Z'
+date_echeance: '2025-10-24'
+date_import: '2026-07-09T07:05:06.607Z'
+date_piece: '2025-10-17'
+donneur_ordre_id: null
+donneur_ordre_nom: PAVAGEAU
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_gdEdcnj7CI
+id_dossier: '40482'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49759
+numero_dossier: 54488
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PAVAGEAU
+proprietaire_prenom: null
+ref_piece: FA251017 49759
+reference: '54488'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:01.877Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251017_49759/standard/FA251017 49759
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

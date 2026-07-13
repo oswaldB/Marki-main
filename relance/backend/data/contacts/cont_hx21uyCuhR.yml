@@ -1,0 +1,35 @@
+$loki: 527
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:38.731Z'
+email: yvangrimaz@cabinet-grimaz.com
+id: cont_hx21uyCuhR
+impaye_ids:
+  - imp_6w3b4MPHu2
+  - imp_mq7UF5g2sN
+  - imp_IpP5kjtZ93
+  - imp_kVwT8ZKAA0
+  - imp_fPso9zGGYl
+  - imp_XV5zu7deY4
+  - imp_C1zaWQhQkj
+is_blacklisted: false
+meta:
+  created: 1783580698564
+  revision: 0
+  version: 0
+nom: GRIMAZ
+prenom: Yvan
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:38.376Z'

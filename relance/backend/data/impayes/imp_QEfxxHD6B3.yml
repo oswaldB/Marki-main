@@ -1,0 +1,49 @@
+adresse_bien: 15 avenue des Acacias San Pedro
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_P4tDOeCBic
+created_at: '2026-06-24T16:30:51.989Z'
+date_echeance: '2026-03-18'
+date_import: '2026-07-09T07:05:05.695Z'
+date_piece: '2026-03-11'
+donneur_ordre_id: null
+donneur_ordre_nom: CARAVIELLO
+donneur_ordre_prenom: Madeleine
+email_index: 0
+facture_soldee: true
+id: imp_QEfxxHD6B3
+id_dossier: '41336'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50583
+numero_dossier: 55342
+payer_id: cont_P4tDOeCBic
+payeur_civilite: ''
+payeur_email: madeleine.caraviello@orange.fr
+payeur_nom: CARAVIELLO
+payeur_prenom: Madeleine
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CARAVIELLO
+proprietaire_prenom: Madeleine
+ref_piece: FA260311 50583
+reference: '55342'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:30:51.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260311_50583/standard/FA260311 50583 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

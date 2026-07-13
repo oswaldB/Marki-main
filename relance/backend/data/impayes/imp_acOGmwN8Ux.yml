@@ -1,0 +1,49 @@
+adresse_bien: 79 avenue de Sospel Les Jumelles
+apporteur_id: cont_TWnVoCvWHW
+apporteur_nom: 'EASY MENTON SYNDIC '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "MODIF EDD 79 AVENUE DE SOSPEL\r\n2 LOCAUX\r\n5 APPRTS\r\n1 MANSARDE\r\nPAS DE TANTIEMES NI CHARGES SP2CIALES"
+contact_relance_id: cont_ekok7fGBOS
+created_at: '2026-06-24T16:31:26.018Z'
+date_echeance: '2024-09-20'
+date_import: '2026-07-09T07:05:09.013Z'
+date_piece: '2024-09-20'
+donneur_ordre_id: null
+donneur_ordre_nom: LES DEUX JUMELLES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_acOGmwN8Ux
+id_dossier: '37633'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47476
+numero_dossier: 51639
+payer_id: cont_TWnVoCvWHW
+payeur_civilite: ''
+payeur_email: menton1@easy-menton.fr
+payeur_nom: 'EASY MENTON SYNDIC '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LES DEUX JUMELLES
+proprietaire_prenom: null
+ref_piece: FA240920 47476
+reference: '51639'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1612.5
+total_ttc: 1935
+type: impaye
+updated_at: '2026-06-24T16:31:26.018Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240920_47476/standard/FA240920 47476
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

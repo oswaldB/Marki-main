@@ -1,0 +1,32 @@
+$loki: 1668
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:49.655Z'
+email: secretariat.flo6@gmail.com
+id: cont_RUcIa4m5YG
+impaye_ids:
+  - imp_TwlgeF4Xzm
+  - imp_y6xkpAU9bB
+  - imp_22lJM6VHKA
+  - imp_zAN7xEdKzb
+is_blacklisted: false
+meta:
+  created: 1783580699007
+  revision: 0
+  version: 0
+nom: VICIANA
+prenom: Florian
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0670389821'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:49.326Z'

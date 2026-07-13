@@ -1,0 +1,49 @@
+adresse_bien: 137 cours du Centenaire Le Saint Christophe
+apporteur_id: cont_nGbYMncL3T
+apporteur_nom: CABINET TRABAUD ACQUARONE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "Copropriété : \r\nSDC LE SAINT CHRISTOPHE 137 Cours du Centenaire 06500 Menton\r\nObjet : \r\nPack diganostic pour vente loge"
+contact_relance_id: cont_HqUTfu1M6O
+created_at: '2026-06-24T16:30:54.986Z'
+date_echeance: '2026-01-29'
+date_import: '2026-07-09T07:05:06.026Z'
+date_piece: '2026-01-22'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC LE SAINT CHRISTOPHE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_JKzh0R8ySt
+id_dossier: '41001'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50335
+numero_dossier: 55007
+payer_id: cont_HqUTfu1M6O
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET TRABAUD DE CLERCK
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SDC LE SAINT CHRISTOPHE
+proprietaire_prenom: null
+ref_piece: FA260122 50335
+reference: '55007'
+reste_a_payer: 279
+sequence_id: null
+statut: non_payee
+total_ht: 232.5
+total_ttc: 279
+type: impaye
+updated_at: '2026-06-24T16:30:54.986Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260122_50335/standard/FA260122 50335
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

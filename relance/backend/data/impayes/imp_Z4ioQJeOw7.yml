@@ -1,0 +1,49 @@
+adresse_bien: 8 rue Balatchano
+apporteur_id: cont_RIHSLFwvrN
+apporteur_nom: FONDATION DE NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "DPE avec mention \r\n\r\nlocaux\r\n\r\n8 rue Balatchano \r\net\r\n3 rue Blatchano\r\nNice"
+contact_relance_id: cont_6tnSA4ueSK
+created_at: '2026-06-24T16:31:12.892Z'
+date_echeance: '2025-04-15'
+date_import: '2026-07-09T07:05:07.676Z'
+date_piece: '2025-04-15'
+donneur_ordre_id: null
+donneur_ordre_nom: FONDATION DE NICE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Z4ioQJeOw7
+id_dossier: '39185'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48717
+numero_dossier: 53191
+payer_id: cont_RIHSLFwvrN
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: FONDATION DE NICE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FONDATION DE NICE
+proprietaire_prenom: null
+ref_piece: FA250415 48717
+reference: '53191'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 675
+total_ttc: 810
+type: impaye
+updated_at: '2026-06-24T16:31:12.892Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250415_48717/standard/FA250415 48717
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

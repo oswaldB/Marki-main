@@ -1,0 +1,49 @@
+adresse_bien: 14bis boulevard de Montréal
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_Q3raQDxQNN
+created_at: '2026-06-24T16:31:19.977Z'
+date_echeance: '2025-01-06'
+date_import: '2026-07-09T07:05:08.378Z'
+date_piece: '2025-01-06'
+donneur_ordre_id: null
+donneur_ordre_nom: BOULAY
+donneur_ordre_prenom: Sophie
+email_index: 0
+facture_soldee: true
+id: imp_yHD83EuW0R
+id_dossier: '38282'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47999
+numero_dossier: 52288
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BOULAY
+proprietaire_prenom: Sophie
+ref_piece: FA241220 47999
+reference: '52288'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 50
+total_ttc: 60
+type: impaye
+updated_at: '2026-06-24T16:31:19.977Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA241220_47999/standard/FA241220 47999
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

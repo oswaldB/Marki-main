@@ -1,0 +1,49 @@
+adresse_bien: 2 rue des Soeurs Munet Le Constellation
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_926qLzrl4E
+created_at: '2026-06-24T16:30:50.025Z'
+date_echeance: '2026-04-17'
+date_import: '2026-07-09T07:05:05.526Z'
+date_piece: '2026-04-10'
+donneur_ordre_id: null
+donneur_ordre_nom: MILANDRI
+donneur_ordre_prenom: Beatrice
+email_index: 0
+facture_soldee: true
+id: imp_lGGDgxpyzB
+id_dossier: '41524'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50760
+numero_dossier: 55530
+payer_id: cont_926qLzrl4E
+payeur_civilite: ''
+payeur_email: omeridien74@gmail.com
+payeur_nom: MILANDRI
+payeur_prenom: Beatrice
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MILANDRI
+proprietaire_prenom: Beatrice
+ref_piece: FA260410 50760
+reference: '55530'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:30:50.025Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260410_50760/standard/FA260410 50760
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

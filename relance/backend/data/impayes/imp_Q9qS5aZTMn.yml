@@ -1,0 +1,49 @@
+adresse_bien: 35 boulevard de Riquier
+apporteur_id: cont_ikdewjsyjG
+apporteur_nom: 'MAISON FAMILIALE DE PROVENCE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: N°2025 801195
+contact_relance_id: cont_ikdewjsyjG
+created_at: '2026-06-24T16:30:58.912Z'
+date_echeance: '2025-12-03'
+date_import: '2026-07-09T07:05:06.370Z'
+date_piece: '2025-11-26'
+donneur_ordre_id: null
+donneur_ordre_nom: 'MAISON FAMILIALE DE PROVENCE '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Q9qS5aZTMn
+id_dossier: '40732'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50016
+numero_dossier: 54738
+payer_id: cont_ikdewjsyjG
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: 'MAISON FAMILIALE DE PROVENCE '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'MAISON FAMILIALE DE PROVENCE '
+proprietaire_prenom: null
+ref_piece: FA251126 50016
+reference: '54738'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 225
+total_ttc: 270
+type: impaye
+updated_at: '2026-06-24T16:30:58.912Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251126_50016/standard/FA251126 50016
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

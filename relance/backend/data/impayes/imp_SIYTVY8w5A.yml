@@ -1,0 +1,49 @@
+adresse_bien: 53 boulevard Guynemer Kristal Palace
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_iCfN7NHYAX
+created_at: '2026-06-24T16:31:16.068Z'
+date_echeance: '2025-02-26'
+date_import: '2026-07-09T07:05:08.026Z'
+date_piece: '2025-02-26'
+donneur_ordre_id: null
+donneur_ordre_nom: LAFORET Beausoleil ARAMIS Immobilier
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_SIYTVY8w5A
+id_dossier: '38655'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48405
+numero_dossier: 52661
+payer_id: cont_YXYNM2lJX6
+payeur_civilite: ''
+payeur_email: beausoleil@laforet.com
+payeur_nom: LAFORET Beausoleil ARAMIS Immobilier
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'LASSARA '
+proprietaire_prenom: 'William '
+ref_piece: FA250226 48405
+reference: '52661'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 258.33
+total_ttc: 310
+type: impaye
+updated_at: '2026-06-24T16:31:16.068Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250226_48405/standard/FA250226 48405
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

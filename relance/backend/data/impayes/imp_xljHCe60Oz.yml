@@ -1,0 +1,49 @@
+adresse_bien: 1 rue des Combattants en Afrique du Nord
+apporteur_id: cont_EaS6XKnlrw
+apporteur_nom: 'REXEL FRANCE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "Bon Commande\r\nPO-IMMOB 6382\r\n"
+contact_relance_id: cont_GS91YU6xx9
+created_at: '2026-06-24T16:31:28.998Z'
+date_echeance: '2024-08-05'
+date_import: '2026-07-09T07:05:09.333Z'
+date_piece: '2024-08-05'
+donneur_ordre_id: null
+donneur_ordre_nom: 'REXEL FRANCE '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_xljHCe60Oz
+id_dossier: '36296'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47189
+numero_dossier: 51300
+payer_id: cont_EaS6XKnlrw
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: 'REXEL FRANCE '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'REXEL FRANCE '
+proprietaire_prenom: null
+ref_piece: FA240805 47189
+reference: '51300'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2112.5
+total_ttc: 2535
+type: impaye
+updated_at: '2026-06-24T16:31:28.998Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240805_47189/standard/FA240805 47189 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 7 rue d'Alsace Lorraine
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "09/09 relance mail prop \r\n\r\n04/11 relance prop "
+contact_relance_id: cont_MmDXahPGMx
+created_at: '2026-06-24T16:31:06.023Z'
+date_echeance: '2025-08-01'
+date_import: '2026-07-09T07:05:07.020Z'
+date_piece: '2025-08-01'
+donneur_ordre_id: null
+donneur_ordre_nom: DESETRE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_t1pCEH1WzI
+id_dossier: '39966'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49321
+numero_dossier: 53972
+payer_id: cont_MmDXahPGMx
+payeur_civilite: ''
+payeur_email: 'kdesetres@hotmail.com '
+payeur_nom: DESETRE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DESETRE
+proprietaire_prenom: null
+ref_piece: FA250801 49321
+reference: '53972'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:06.023Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250801_49321/standard/FA250801 49321 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 7 rue de la Source La Mascotte
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_LAFN8dUECJ
+created_at: '2026-06-24T16:31:37.993Z'
+date_echeance: '2024-03-29'
+date_import: '2026-07-09T07:05:10.130Z'
+date_piece: '2024-03-29'
+donneur_ordre_id: null
+donneur_ordre_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_u767eA3E8y
+id_dossier: '34289'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46376
+numero_dossier: 50288
+payer_id: cont_9KF7R3DCug
+payeur_civilite: ''
+payeur_email: info@republique-beausoleil.com
+payeur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SACCHETTI
+proprietaire_prenom: Roberto
+ref_piece: FA240329 46376
+reference: '50288'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 87.5
+total_ttc: 105
+type: impaye
+updated_at: '2026-06-24T16:31:37.993Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240329_46376/standard/FA240329 46376 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

@@ -1,0 +1,41 @@
+$loki: 6623
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:35.593Z'
+email: gerardpatrin@yahoo.com
+id: cont_m6Qd7FuFhK
+impaye_ids:
+  - imp_HK14TFHbu1
+  - imp_Chr9BBQi6c
+  - imp_f2mKeoLaoS
+  - imp_rcLcINVyQN
+is_blacklisted: false
+meta:
+  created: 1783580700693
+  revision: 1
+  updated: 1783580712517
+  version: 0
+nom: SCI LA LORRAINE
+prenom: ''
+relance_ids:
+  - rel_ForQBxqOPY
+  - rel_jWtm5LnBxE
+  - rel_aq6Tqa26ZM
+  - rel_DZuGVeE3oh
+  - rel_FdfLBhC12e
+  - rel_FO16VkZyMW
+  - rel_NMy6QJC72b
+  - rel_ftHY7f22jc
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:35.346Z'

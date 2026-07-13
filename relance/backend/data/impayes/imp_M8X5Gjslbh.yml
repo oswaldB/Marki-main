@@ -1,0 +1,49 @@
+adresse_bien: 11 avenue Bieckert Résidence Carabacel Entrée A
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_8Rg2MTmLHO
+created_at: '2026-06-24T16:31:39.051Z'
+date_echeance: '2024-03-19'
+date_import: '2026-07-09T07:05:10.229Z'
+date_piece: '2024-03-19'
+donneur_ordre_id: null
+donneur_ordre_nom: GROUPE QUENTIN BAYARD
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_M8X5Gjslbh
+id_dossier: '34162'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46327
+numero_dossier: 50161
+payer_id: cont_8Rg2MTmLHO
+payeur_civilite: ''
+payeur_email: castillo.quentin@gmail.com
+payeur_nom: GROUPE QUENTIN BAYARD
+payeur_prenom: ''
+payeur_telephone: '0621145023'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GROUPE QUENTIN BAYARD
+proprietaire_prenom: null
+ref_piece: FA240319 46327
+reference: '50161'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:39.051Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240319_46327/standard/FA240319 46327 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

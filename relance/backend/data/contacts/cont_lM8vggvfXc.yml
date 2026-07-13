@@ -1,0 +1,39 @@
+$loki: 6800
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-07-01T22:00:22.851Z'
+email: jr_fournier@hotmail.fr
+id: cont_lM8vggvfXc
+impaye_ids:
+  - imp_VllHtQm1B7
+is_blacklisted: false
+meta:
+  created: 1783580700746
+  revision: 1
+  updated: 1783580718428
+  version: 0
+nom: FOURNIER
+prenom: Jean-Robert
+relance_ids:
+  - rel_UodVwKPLtz
+  - rel_ZPH1h1oIne
+  - rel_XRPPdzPc2u
+  - rel_SJWnHd1NXD
+  - rel_pblfARMzST
+  - rel_I5i4rrKGyq
+  - rel_2uDJXbzdBI
+  - rel_mYfCLuBBZh
+  - rel_AAz3KeOsDa
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:36.384Z'

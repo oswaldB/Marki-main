@@ -1,0 +1,49 @@
+adresse_bien: 17 avenue Louis Gallet Little Palace
+apporteur_id: cont_8XdLpRrBLk
+apporteur_nom: ARTHAUD IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06160'
+commentaire_piece: ''
+contact_relance_id: cont_PRQjpH7Ub8
+created_at: '2026-06-24T16:31:08.997Z'
+date_echeance: '2025-06-20'
+date_import: '2026-07-09T07:05:07.323Z'
+date_piece: '2025-06-20'
+donneur_ordre_id: null
+donneur_ordre_nom: SATGE
+donneur_ordre_prenom: Maxime
+email_index: 0
+facture_soldee: true
+id: imp_phSvRfjvna
+id_dossier: '39664'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49078
+numero_dossier: 53670
+payer_id: cont_PRQjpH7Ub8
+payeur_civilite: ''
+payeur_email: maximesatge@gmail.com
+payeur_nom: SATGE
+payeur_prenom: Maxime
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SATGE
+proprietaire_prenom: Maxime
+ref_piece: FA250620 49078
+reference: '53670'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:08.997Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250620_49078/standard/FA250620 49078 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

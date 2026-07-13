@@ -1,0 +1,49 @@
+adresse_bien: 183 avenue Aristide Briand
+apporteur_id: cont_1oBO3iDNCv
+apporteur_nom: AGENCE DU COMMERCE
+apporteur_prenom: SAS AZUR RIVIERA COMMERCE
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "Mme HUREL Nathalie\r\n\r\nLocal\r\n\r\n183 av Aristide Briand\r\n06190 RCM"
+contact_relance_id: cont_4P1rcqIxrQ
+created_at: '2026-06-24T16:31:08.997Z'
+date_echeance: '2025-06-23'
+date_import: '2026-07-09T07:05:07.322Z'
+date_piece: '2025-06-23'
+donneur_ordre_id: null
+donneur_ordre_nom: HUREL
+donneur_ordre_prenom: Nathalie
+email_index: 0
+facture_soldee: true
+id: imp_k6KG7rNXLl
+id_dossier: '39676'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49090
+numero_dossier: 53682
+payer_id: cont_4P1rcqIxrQ
+payeur_civilite: ''
+payeur_email: nathaliehurel0307@orange.fr
+payeur_nom: HUREL
+payeur_prenom: Nathalie
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: HUREL
+proprietaire_prenom: Nathalie
+ref_piece: FA250623 49090
+reference: '53682'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 455.83
+total_ttc: 547
+type: impaye
+updated_at: '2026-06-24T16:31:08.997Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250623_49090/standard/FA250623 49090 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

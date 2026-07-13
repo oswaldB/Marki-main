@@ -1,0 +1,49 @@
+adresse_bien: 52 boulevard Carnot Le Floréal
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_D8fdlp33FD
+created_at: '2026-06-24T16:30:48.924Z'
+date_echeance: '2026-05-18'
+date_import: '2026-07-09T07:05:05.384Z'
+date_piece: '2026-05-11'
+donneur_ordre_id: null
+donneur_ordre_nom: PERRET
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_tAEN4NUOtH
+id_dossier: '41723'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50915
+numero_dossier: 55729
+payer_id: cont_5owmFecKf0
+payeur_civilite: ''
+payeur_email: contact@richerimmobilier.com
+payeur_nom: RICHER IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PERRET
+proprietaire_prenom: null
+ref_piece: FA260511 50915
+reference: '55729'
+reste_a_payer: 204
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 170
+total_ttc: 204
+type: impaye
+updated_at: '2026-06-24T16:33:33.279Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260511_50915/standard/FA260511 50915 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 10 rue Morgan
+apporteur_id: cont_Ectq4iFTH5
+apporteur_nom: LAFORET Menton
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_iGOFRvYi2P
+created_at: '2026-06-24T16:31:34.970Z'
+date_echeance: '2024-05-14'
+date_import: '2026-07-09T07:05:09.881Z'
+date_piece: '2024-05-14'
+donneur_ordre_id: null
+donneur_ordre_nom: MARTINERIE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_7C1nSvDUnW
+id_dossier: '34650'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46667
+numero_dossier: 50649
+payer_id: cont_iGOFRvYi2P
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: MARTINERIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MARTINERIE
+proprietaire_prenom: null
+ref_piece: FA240514 46667
+reference: '50649'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:34.970Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240514_46667/standard/FA240514 46667 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

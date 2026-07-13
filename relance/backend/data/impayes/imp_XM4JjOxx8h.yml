@@ -1,0 +1,49 @@
+adresse_bien: 7 chemin des Myrtes Stella Maris
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_tiXUNLsTvH
+created_at: '2026-06-24T16:31:55.075Z'
+date_echeance: '2023-07-27'
+date_import: '2026-07-09T07:05:11.718Z'
+date_piece: '2023-07-27'
+donneur_ordre_id: null
+donneur_ordre_nom: FILIPPI
+donneur_ordre_prenom: Jérôme
+email_index: 0
+facture_soldee: true
+id: imp_XM4JjOxx8h
+id_dossier: '29341'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44856
+numero_dossier: 48327
+payer_id: cont_tiXUNLsTvH
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: FILIPPI
+payeur_prenom: Jérôme
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FILIPPI
+proprietaire_prenom: Jérôme
+ref_piece: FA230727 44856
+reference: '48327'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:31:55.075Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juillet/FA230727_44856/standard/FA230727 44856
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

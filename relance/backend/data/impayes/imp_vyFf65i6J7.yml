@@ -1,0 +1,49 @@
+adresse_bien: 55 avenue Henri Matisse
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_WY5lAuBWnv
+created_at: '2026-06-24T16:31:24.899Z'
+date_echeance: '2024-10-16'
+date_import: '2026-07-09T07:05:08.853Z'
+date_piece: '2024-10-16'
+donneur_ordre_id: null
+donneur_ordre_nom: 'LIMOUSIN /AUVIEUX '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_vyFf65i6J7
+id_dossier: '37807'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47632
+numero_dossier: 51813
+payer_id: cont_WY5lAuBWnv
+payeur_civilite: ''
+payeur_email: deborah.limousin@gmail.com
+payeur_nom: 'LIMOUSIN /AUVIEUX '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'LIMOUSIN /AUVIEUX '
+proprietaire_prenom: null
+ref_piece: FA241016 47632
+reference: '51813'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:31:24.899Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241016_47632/standard/FA241016 47632
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

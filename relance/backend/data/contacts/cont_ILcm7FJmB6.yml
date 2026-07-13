@@ -1,0 +1,31 @@
+$loki: 5672
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:27.545Z'
+email: manetti.josephine@gmail.com
+id: cont_ILcm7FJmB6
+impaye_ids:
+  - imp_mfscVTk9JE
+  - imp_Q8vfmBBHH6
+  - imp_6vNGBGkx8B
+is_blacklisted: false
+meta:
+  created: 1783580700395
+  revision: 0
+  version: 0
+nom: MARCHAL
+prenom: Marc
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:26.344Z'

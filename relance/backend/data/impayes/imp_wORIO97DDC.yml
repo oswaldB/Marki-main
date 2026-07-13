@@ -1,0 +1,49 @@
+adresse_bien: 11 rue du Louvre Résidence du Louvre
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_jmfbndsDua
+created_at: '2026-06-24T16:30:47.899Z'
+date_echeance: '2026-06-02'
+date_import: '2026-07-09T07:05:05.286Z'
+date_piece: '2026-05-26'
+donneur_ordre_id: null
+donneur_ordre_nom: GLASS
+donneur_ordre_prenom: Brigitte et Gilbert
+email_index: 0
+facture_soldee: true
+id: imp_wORIO97DDC
+id_dossier: '41596'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51009
+numero_dossier: 55602
+payer_id: cont_jmfbndsDua
+payeur_civilite: ''
+payeur_email: gilbertglass@sfr.fr
+payeur_nom: GLASS
+payeur_prenom: Brigitte et Gilbert
+payeur_telephone: 0615 42 05 26 Mme
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GLASS
+proprietaire_prenom: Brigitte et Gilbert
+ref_piece: FA260526 51009
+reference: '55602'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:30:47.899Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260526_51009/standard/FA260526 51009 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

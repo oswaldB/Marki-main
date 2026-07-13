@@ -1,0 +1,49 @@
+adresse_bien: 39bis avenue Aimé Martin Les Jardins d'Aurélia
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_aGEIIyctfi
+created_at: '2026-06-24T16:31:22.906Z'
+date_echeance: '2024-11-14'
+date_import: '2026-07-09T07:05:08.652Z'
+date_piece: '2024-11-14'
+donneur_ordre_id: null
+donneur_ordre_nom: BOISTEL
+donneur_ordre_prenom: Bernard
+email_index: 0
+facture_soldee: true
+id: imp_dHwl5Vfo9k
+id_dossier: '38015'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47791
+numero_dossier: 52021
+payer_id: cont_aGEIIyctfi
+payeur_civilite: ''
+payeur_email: boistel.bernard@gmail.com
+payeur_nom: BOISTEL
+payeur_prenom: Bernard
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BOISTEL
+proprietaire_prenom: Bernard
+ref_piece: FA241114 47791
+reference: '52021'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:22.906Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241114_47791/standard/FA241114 47791
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

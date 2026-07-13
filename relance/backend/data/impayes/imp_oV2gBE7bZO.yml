@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue de la République
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_Xcc1KDE0ok
+created_at: '2026-06-24T16:31:13.952Z'
+date_echeance: '2025-04-02'
+date_import: '2026-07-09T07:05:07.777Z'
+date_piece: '2025-04-02'
+donneur_ordre_id: null
+donneur_ordre_nom: EL OUESLATI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_oV2gBE7bZO
+id_dossier: '39072'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48634
+numero_dossier: 53078
+payer_id: cont_Xcc1KDE0ok
+payeur_civilite: ''
+payeur_email: jamel.eloueslati@icloud.com
+payeur_nom: EL OUESLATI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: EL OUESLATI
+proprietaire_prenom: null
+ref_piece: FA250402 48634
+reference: '53078'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:13.952Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250402_48634/standard/FA250402 48634
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

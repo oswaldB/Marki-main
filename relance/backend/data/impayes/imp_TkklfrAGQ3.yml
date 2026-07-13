@@ -1,0 +1,49 @@
+adresse_bien: 10 bis avenue d'Alsace Le Carina
+apporteur_id: cont_YXYNM2lJX6
+apporteur_nom: LAFORET Beausoleil ARAMIS Immobilier
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_Oa2KimV0in
+created_at: '2026-06-24T16:30:46.933Z'
+date_echeance: '2026-06-12'
+date_import: '2026-07-09T07:05:05.185Z'
+date_piece: '2026-06-05'
+donneur_ordre_id: null
+donneur_ordre_nom: BERMOND-GONNET
+donneur_ordre_prenom: Bernard
+email_index: 0
+facture_soldee: true
+id: imp_TkklfrAGQ3
+id_dossier: '41914'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51080
+numero_dossier: 55920
+payer_id: cont_Oa2KimV0in
+payeur_civilite: ''
+payeur_email: bernard.bermond-gonnet@wanadoo.fr
+payeur_nom: BERMOND-GONNET
+payeur_prenom: Bernard
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BERMOND-GONNET
+proprietaire_prenom: Bernard
+ref_piece: FA260605 51080
+reference: '55920'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-30T13:50:01.701Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260605_51080/standard/FA260605 51080 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

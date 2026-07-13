@@ -1,0 +1,49 @@
+adresse_bien: 139 rue de France
+apporteur_id: cont_HKy4C2gxUH
+apporteur_nom: ARTHURIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_ZuKwm9nJ59
+created_at: '2026-06-24T16:31:18.022Z'
+date_echeance: '2025-02-03'
+date_import: '2026-07-09T07:05:08.214Z'
+date_piece: '2025-02-03'
+donneur_ordre_id: null
+donneur_ordre_nom: 'GUTIERREZ ET DELLI-CARPINI '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jDxNmZhGDG
+id_dossier: '38593'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48240
+numero_dossier: 52599
+payer_id: cont_ZuKwm9nJ59
+payeur_civilite: ''
+payeur_email: claudiaguti505@gmail.com
+payeur_nom: 'GUTIERREZ ET DELLI-CARPINI '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'GUTIERREZ ET DELLI-CARPINI '
+proprietaire_prenom: null
+ref_piece: FA250203 48240
+reference: '52599'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:18.022Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250203_48240/standard/FA250203 48240
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

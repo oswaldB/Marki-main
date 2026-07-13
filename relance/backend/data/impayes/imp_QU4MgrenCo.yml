@@ -1,0 +1,49 @@
+adresse_bien: 28 rue Tonduti de l'Escarène
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "Réf. 1772998 - 3018 - CREATION CLE REPARTITION ASCENSEUR\r\nImm: 3018 SDC 28 T ESCARENE \r\nCréation d'une catégorie de répartition Ascenseur concernant 8 lots "
+contact_relance_id: cont_qVbgUfs9GA
+created_at: '2026-06-24T16:30:54.986Z'
+date_echeance: '2026-01-30'
+date_import: '2026-07-09T07:05:06.019Z'
+date_piece: '2026-01-23'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC 28 T ESCARENE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_QU4MgrenCo
+id_dossier: '41048'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50341
+numero_dossier: 55054
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC 28 T ESCARENE
+proprietaire_prenom: null
+ref_piece: FA260123 50341
+reference: '55054'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 725
+total_ttc: 870
+type: impaye
+updated_at: '2026-06-24T16:30:54.986Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260123_50341/standard/FA260123 50341
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

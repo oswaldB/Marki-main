@@ -1,0 +1,49 @@
+adresse_bien: 103 avenue Henry Dunant Les Acacias Bâtiment C
+apporteur_id: cont_ggRBNbA6TG
+apporteur_nom: API NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_6jKbkNaQlQ
+created_at: '2026-06-24T16:30:53.026Z'
+date_echeance: '2026-02-27'
+date_import: '2026-07-09T07:05:05.798Z'
+date_piece: '2026-02-20'
+donneur_ordre_id: null
+donneur_ordre_nom: LUKACEVIC
+donneur_ordre_prenom: Anthony
+email_index: 0
+facture_soldee: true
+id: imp_XjREYBpWFZ
+id_dossier: '41247'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50503
+numero_dossier: 55253
+payer_id: cont_6jKbkNaQlQ
+payeur_civilite: ''
+payeur_email: anthony.lukacevic@gmail.com
+payeur_nom: LUKACEVIC
+payeur_prenom: Anthony
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LUKACEVIC
+proprietaire_prenom: Anthony
+ref_piece: FA260220 50503
+reference: '55253'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:30:53.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260220_50503/standard/FA260220 50503
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

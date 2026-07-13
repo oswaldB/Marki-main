@@ -1,0 +1,49 @@
+adresse_bien: 16 rue Pie-François Toesca LE MAGELLAN
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:31:36.904Z'
+date_echeance: '2024-04-17'
+date_import: '2026-07-09T07:05:09.998Z'
+date_piece: '2024-04-17'
+donneur_ordre_id: null
+donneur_ordre_nom: MEYNAUD
+donneur_ordre_prenom: Franck
+email_index: 0
+facture_soldee: true
+id: imp_D2S8vDZgLi
+id_dossier: '32430'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46507
+numero_dossier: 49427
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MEYNAUD
+proprietaire_prenom: Franck
+ref_piece: FA240417 46507
+reference: '49427'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 3048.1
+total_ttc: 3657.72
+type: impaye
+updated_at: '2026-06-24T16:31:36.904Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240417_46507/standard/FA240417 46507
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

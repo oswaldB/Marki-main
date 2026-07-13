@@ -1,0 +1,49 @@
+adresse_bien: 14 rue Arson
+apporteur_id: cont_aFSXWA9ETI
+apporteur_nom: SAINT ROCH IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "13/01 relance agence via comptabilité\r\n"
+contact_relance_id: cont_aD3ZglfLat
+created_at: '2026-06-24T16:30:58.940Z'
+date_echeance: '2025-12-02'
+date_import: '2026-07-09T07:05:06.381Z'
+date_piece: '2025-11-25'
+donneur_ordre_id: null
+donneur_ordre_nom: MARI
+donneur_ordre_prenom: Edouard
+email_index: 0
+facture_soldee: true
+id: imp_W7AcIeXO5T
+id_dossier: '40710'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49993
+numero_dossier: 54716
+payer_id: cont_aFSXWA9ETI
+payeur_civilite: ''
+payeur_email: info@saintrochimmobilier.com
+payeur_nom: SAINT ROCH IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MARI
+proprietaire_prenom: Edouard
+ref_piece: FA251125 49993
+reference: '54716'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 329.17
+total_ttc: 395
+type: impaye
+updated_at: '2026-06-24T16:30:58.940Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251125_49993/standard/FA251125 49993
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

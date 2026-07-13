@@ -1,0 +1,49 @@
+adresse_bien: 838 chemin de la Turbie Le Mas d'Angeline
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_WNxHPR6xiC
+created_at: '2026-06-24T16:30:49.061Z'
+date_echeance: '2026-05-05'
+date_import: '2026-07-09T07:05:05.433Z'
+date_piece: '2026-04-28'
+donneur_ordre_id: null
+donneur_ordre_nom: CHRISTMANN
+donneur_ordre_prenom: Ludovic
+email_index: 0
+facture_soldee: true
+id: imp_BgzFYjFek6
+id_dossier: '41668'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50852
+numero_dossier: 55674
+payer_id: cont_WNxHPR6xiC
+payeur_civilite: ''
+payeur_email: lemasdangeline@gmail.com
+payeur_nom: CHRISTMANN
+payeur_prenom: Ludovic
+payeur_telephone: '0782075701'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CHRISTMANN
+proprietaire_prenom: Ludovic
+ref_piece: FA260428 50852
+reference: '55674'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:30:49.061Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260428_50852/standard/FA260428 50852
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

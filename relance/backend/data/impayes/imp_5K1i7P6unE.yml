@@ -1,0 +1,49 @@
+adresse_bien: 4 avenue du Parc Ferber
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_JVnfYPyJnX
+created_at: '2026-06-24T16:31:23.011Z'
+date_echeance: '2024-11-07'
+date_import: '2026-07-09T07:05:08.705Z'
+date_piece: '2024-11-07'
+donneur_ordre_id: null
+donneur_ordre_nom: MANCUSO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_5K1i7P6unE
+id_dossier: '37961'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47754
+numero_dossier: 51967
+payer_id: cont_Nh1fOoyJMJ
+payeur_civilite: ''
+payeur_email: info@tissinie.com
+payeur_nom: GESTION IMMOBILIERE TISSINIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MANCUSO
+proprietaire_prenom: null
+ref_piece: FA241107 47754
+reference: '51967'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 95.83
+total_ttc: 115
+type: impaye
+updated_at: '2026-06-24T16:31:23.011Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241107_47754/standard/FA241107 47754
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

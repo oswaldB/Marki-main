@@ -1,0 +1,49 @@
+adresse_bien: 8 avenue Edouard VII Les Daturas
+apporteur_id: cont_B5O5PwvrWy
+apporteur_nom: 'CICCIONI '
+apporteur_prenom: Alexandra
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_KIWfKKS7HJ
+created_at: '2026-06-24T16:30:45.928Z'
+date_echeance: '2026-06-30'
+date_import: '2026-07-09T07:05:05.071Z'
+date_piece: '2026-06-23'
+donneur_ordre_id: null
+donneur_ordre_nom: DELLA TORRE - TRANCHERO
+donneur_ordre_prenom: 'Concetta - Andrea '
+email_index: 0
+facture_soldee: true
+id: imp_1BbAcsS0MX
+id_dossier: '42005'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51173
+numero_dossier: 56011
+payer_id: cont_KIWfKKS7HJ
+payeur_civilite: ''
+payeur_email: andrea.tranchero@gmail.com
+payeur_nom: DELLA TORRE - TRANCHERO
+payeur_prenom: 'Concetta - Andrea '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DELLA TORRE - TRANCHERO
+proprietaire_prenom: 'Concetta - Andrea '
+ref_piece: FA260623 51173
+reference: '56011'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 186.67
+total_ttc: 224
+type: impaye
+updated_at: '2026-07-01T07:50:00.293Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260623_51173/standard/FA260623 51173 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

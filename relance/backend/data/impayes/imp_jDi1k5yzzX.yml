@@ -1,0 +1,49 @@
+adresse_bien: 15 rue Saint Sebastien
+apporteur_id: cont_AvZjNGS1n4
+apporteur_nom: PRADO IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06410'
+commentaire_piece: "INDIVISION BEL ROUSTAN\r\n15 rue Saint Sébastien\r\n06410 Biot\r\n"
+contact_relance_id: cont_AvZjNGS1n4
+created_at: '2026-06-24T16:31:21.024Z'
+date_echeance: '2024-12-12'
+date_import: '2026-07-09T07:05:08.512Z'
+date_piece: '2024-12-12'
+donneur_ordre_id: null
+donneur_ordre_nom: PRADO IMMOBILIER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jDi1k5yzzX
+id_dossier: '38209'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47950
+numero_dossier: 52215
+payer_id: cont_AvZjNGS1n4
+payeur_civilite: ''
+payeur_email: 'contact@pradoimmobilier.com '
+payeur_nom: PRADO IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: ROUSTAN / BEL
+proprietaire_prenom: null
+ref_piece: FA241212 47950
+reference: '52215'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 625
+total_ttc: 750
+type: impaye
+updated_at: '2026-06-24T16:31:21.024Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241212_47950/standard/FA241212 47950
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BIOT

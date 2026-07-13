@@ -1,0 +1,49 @@
+adresse_bien: 229 avenue de Fabron Les Glycines
+apporteur_id: cont_IFgP8EaydS
+apporteur_nom: EASY IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_1lgA8wDTTD
+created_at: '2026-06-29T22:00:17.093Z'
+date_echeance: '2026-07-06'
+date_import: '2026-07-09T07:05:12.216Z'
+date_piece: '2026-06-29'
+donneur_ordre_id: null
+donneur_ordre_nom: BALLESTRA
+donneur_ordre_prenom: Domenica
+email_index: 0
+facture_soldee: true
+id: imp_4YyxsBbiKJ
+id_dossier: '42056'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51209
+numero_dossier: 56062
+payer_id: cont_1lgA8wDTTD
+payeur_civilite: ''
+payeur_email: joce.ballestra@orange.fr
+payeur_nom: BALLESTRA
+payeur_prenom: Domenica
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BALLESTRA
+proprietaire_prenom: Domenica
+ref_piece: FA260629 51209
+reference: '56062'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-30T22:00:29.948Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260629_51209/standard/FA260629 51209 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 2 rue des Poiriers AQUAVERDE Bâtiment C
+apporteur_id: cont_ikdewjsyjG
+apporteur_nom: 'MAISON FAMILIALE DE PROVENCE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06670'
+commentaire_piece: ''
+contact_relance_id: cont_ikdewjsyjG
+created_at: '2026-06-24T16:31:03.973Z'
+date_echeance: '2025-09-22'
+date_import: '2026-07-09T07:05:06.850Z'
+date_piece: '2025-09-15'
+donneur_ordre_id: null
+donneur_ordre_nom: 'MAISON FAMILIALE DE PROVENCE '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_spRceZKFvy
+id_dossier: '40157'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49522
+numero_dossier: 54163
+payer_id: cont_ikdewjsyjG
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: 'MAISON FAMILIALE DE PROVENCE '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'MAISON FAMILIALE DE PROVENCE '
+proprietaire_prenom: null
+ref_piece: FA250915 49522
+reference: '54163'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 345
+total_ttc: 414
+type: impaye
+updated_at: '2026-06-24T16:31:03.973Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250915_49522/standard/FA250915 49522
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: SAINT-MARTIN-DU-VAR

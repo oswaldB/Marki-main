@@ -1,0 +1,49 @@
+adresse_bien: 788 route du col des Banquettes  Chemin des Allinies
+apporteur_id: cont_upLxDb1T7b
+apporteur_nom: GETRIM VICAT
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06440'
+commentaire_piece: ''
+contact_relance_id: cont_kx2R8Zcg2K
+created_at: '2026-06-24T16:31:03.010Z'
+date_echeance: '2025-10-07'
+date_import: '2026-07-09T07:05:06.755Z'
+date_piece: '2025-09-30'
+donneur_ordre_id: null
+donneur_ordre_nom: SA VICAT
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_TiWkJi2Bgt
+id_dossier: '40295'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49619
+numero_dossier: 54301
+payer_id: cont_kx2R8Zcg2K
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SA VICAT
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SA VICAT
+proprietaire_prenom: null
+ref_piece: FA250930 49619
+reference: '54301'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 879.33
+total_ttc: 1055.2
+type: impaye
+updated_at: '2026-06-24T16:31:03.010Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250930_49619/standard/FA250930 49619
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: PEILLE

@@ -1,0 +1,49 @@
+adresse_bien: 160 avenue de la Plage  Le Jad
+apporteur_id: cont_MWRlRnS8ne
+apporteur_nom: AZUR INVEST
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_Bam7RBqxla
+created_at: '2026-06-24T16:31:09.985Z'
+date_echeance: '2025-06-03'
+date_import: '2026-07-09T07:05:07.428Z'
+date_piece: '2025-06-03'
+donneur_ordre_id: null
+donneur_ordre_nom: SAPPA - LEFAOU
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_HUr69iYOuc
+id_dossier: '39505'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48968
+numero_dossier: 53511
+payer_id: cont_Bam7RBqxla
+payeur_civilite: ''
+payeur_email: christophe.lefaou78@gmail.com
+payeur_nom: SAPPA - LEFAOU
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SAPPA - LEFAOU
+proprietaire_prenom: null
+ref_piece: FA250530 48968
+reference: '53511'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:09.985Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250530_48968/standard/FA250530 48968 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

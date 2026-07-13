@@ -1,0 +1,13 @@
+id: smtp_test
+nom: "Test SMTP"
+host: smtp.test.com
+port: 587
+secure: false
+username: test@example.com
+password: testpass
+email_from: test@example.com
+signature_html: "<br><p>Signature test</p>"
+imapHost: imap.test.com
+imapPort: 993
+imapUsername: test@example.com
+imapPassword: testpass

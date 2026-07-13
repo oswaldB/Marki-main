@@ -1,0 +1,31 @@
+$loki: 3157
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:03.578Z'
+email: marofauque@orange.fr
+id: cont_oG6DQ818bk
+impaye_ids:
+  - imp_yH6usRKR58
+  - imp_CQoMRXJm53
+  - imp_5I09zan7Sk
+is_blacklisted: false
+meta:
+  created: 1783580699548
+  revision: 0
+  version: 0
+nom: INDIVISION ROGEZ LEROY
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:03.332Z'

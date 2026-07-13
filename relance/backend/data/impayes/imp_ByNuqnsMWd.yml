@@ -1,0 +1,49 @@
+adresse_bien: 48 avenue Giacobi
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_mgW0ghnE7d
+created_at: '2026-06-24T16:30:58.882Z'
+date_echeance: '2025-12-03'
+date_import: '2026-07-09T07:05:06.352Z'
+date_piece: '2025-11-26'
+donneur_ordre_id: null
+donneur_ordre_nom: 'PONS '
+donneur_ordre_prenom: Magali
+email_index: 0
+facture_soldee: true
+id: imp_ByNuqnsMWd
+id_dossier: '40667'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50009
+numero_dossier: 54673
+payer_id: cont_mgW0ghnE7d
+payeur_civilite: ''
+payeur_email: magalipons1506@gmail.com
+payeur_nom: 'PONS '
+payeur_prenom: Magali
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'PONS '
+proprietaire_prenom: Magali
+ref_piece: FA251126 50009
+reference: '54673'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 275
+total_ttc: 330
+type: impaye
+updated_at: '2026-06-24T16:30:58.882Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251126_50009/standard/FA251126 50009
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

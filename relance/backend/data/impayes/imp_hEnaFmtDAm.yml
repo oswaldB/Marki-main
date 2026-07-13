@@ -1,0 +1,49 @@
+adresse_bien: 83 avenue Maréchal Lyautey
+apporteur_id: cont_NqGv1EnAKG
+apporteur_nom: ABYLA BOSSE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_6JW0C9pd2Y
+created_at: '2026-06-24T16:31:26.901Z'
+date_echeance: '2024-09-18'
+date_import: '2026-07-09T07:05:09.051Z'
+date_piece: '2024-09-18'
+donneur_ordre_id: null
+donneur_ordre_nom: CHIODO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_hEnaFmtDAm
+id_dossier: '37605'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47441
+numero_dossier: 51611
+payer_id: cont_6JW0C9pd2Y
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CHIODO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CHIODO
+proprietaire_prenom: null
+ref_piece: FA240918 47441
+reference: '51611'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:31:26.901Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240918_47441/standard/FA240918 47441
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

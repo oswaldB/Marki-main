@@ -1,0 +1,49 @@
+adresse_bien: 55 avenue Jean de Noailles
+apporteur_id: cont_4JK8LxsuQ5
+apporteur_nom: HABISOL SARL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06400'
+commentaire_piece: ''
+contact_relance_id: cont_9M1huT41MG
+created_at: '2026-06-24T16:31:13.989Z'
+date_echeance: '2025-03-27'
+date_import: '2026-07-09T07:05:07.790Z'
+date_piece: '2025-03-27'
+donneur_ordre_id: null
+donneur_ordre_nom: VILJANEN
+donneur_ordre_prenom: Liisa
+email_index: 0
+facture_soldee: true
+id: imp_G1uf9Gx6Md
+id_dossier: '39030'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48600
+numero_dossier: 53036
+payer_id: cont_9M1huT41MG
+payeur_civilite: ''
+payeur_email: viljalii@gmail.com
+payeur_nom: VILJANEN
+payeur_prenom: Liisa
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: VILJANEN
+proprietaire_prenom: Liisa
+ref_piece: FA250327 48600
+reference: '53036'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:13.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250327_48600/standard/FA250327 48600 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: CANNES

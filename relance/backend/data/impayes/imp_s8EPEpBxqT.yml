@@ -1,0 +1,49 @@
+adresse_bien: 183 avenue Aristide Briand Maison Raider
+apporteur_id: cont_Kl8PBkhOa2
+apporteur_nom: LAFORET Menton Pieta
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_md88QAmAS2
+created_at: '2026-06-24T16:30:48.896Z'
+date_echeance: '2026-05-18'
+date_import: '2026-07-09T07:05:05.367Z'
+date_piece: '2026-05-11'
+donneur_ordre_id: null
+donneur_ordre_nom: MORAND DUMOULIN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_s8EPEpBxqT
+id_dossier: '41711'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50917
+numero_dossier: 55717
+payer_id: cont_r6PUjDOJHB
+payeur_civilite: ''
+payeur_email: contact@locationgestion.com
+payeur_nom: OPTI GESTION
+payeur_prenom: ''
+payeur_telephone: '0786983173'
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: MORAND DUMOULIN
+proprietaire_prenom: null
+ref_piece: FA260511 50917
+reference: '55717'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 202.71
+total_ttc: 243.25
+type: impaye
+updated_at: '2026-06-24T16:30:48.896Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260511_50917/standard/FA260511 50917 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

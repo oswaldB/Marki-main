@@ -1,0 +1,49 @@
+adresse_bien: 5 rue Thuret
+apporteur_id: cont_AvZjNGS1n4
+apporteur_nom: PRADO IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:57.927Z'
+date_echeance: '2023-06-15'
+date_import: '2026-07-09T07:05:11.964Z'
+date_piece: '2023-06-15'
+donneur_ordre_id: null
+donneur_ordre_nom: 'INDIVISION ROUSTAN '
+donneur_ordre_prenom: chez Prado Immobilier
+email_index: 0
+facture_soldee: true
+id: imp_u3brVtEZmL
+id_dossier: '29038'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44610
+numero_dossier: 48024
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: 'INDIVISION ROUSTAN '
+proprietaire_prenom: chez Prado Immobilier
+ref_piece: FA230615 44610
+reference: '48024'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:57.927Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juin/FA230615_44610/standard/FA230615 44610 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

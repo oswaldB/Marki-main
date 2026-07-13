@@ -1,0 +1,49 @@
+adresse_bien: 173 avenue de la Plage Les Jardins du Cap
+apporteur_id: cont_cFjIPWR9lP
+apporteur_nom: SUD FINANCES CONSEIL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_GGkJ9dpMXi
+created_at: '2026-06-24T16:31:04.003Z'
+date_echeance: '2025-09-19'
+date_import: '2026-07-09T07:05:06.854Z'
+date_piece: '2025-09-12'
+donneur_ordre_id: null
+donneur_ordre_nom: TRUBELIN
+donneur_ordre_prenom: Karima-Eddy
+email_index: 0
+facture_soldee: true
+id: imp_H2KIFiWkSU
+id_dossier: '40213'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49517
+numero_dossier: 54219
+payer_id: cont_GGkJ9dpMXi
+payeur_civilite: ''
+payeur_email: eddy.brubelin@srf.fr
+payeur_nom: TRUBELIN
+payeur_prenom: Karima-Eddy
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: TRUBELIN
+proprietaire_prenom: Karima-Eddy
+ref_piece: FA250912 49517
+reference: '54219'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 153.33
+total_ttc: 184
+type: impaye
+updated_at: '2026-06-24T16:31:04.003Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250912_49517/standard/FA250912 49517
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

@@ -1,0 +1,49 @@
+adresse_bien: 11 avenue Jean Medecin
+apporteur_id: cont_xfSDVx7VTP
+apporteur_nom: ENGEL VÖLKERS
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_UgNsTyRoCq
+created_at: '2026-06-24T16:31:05.958Z'
+date_echeance: '2025-08-08'
+date_import: '2026-07-09T07:05:07.001Z'
+date_piece: '2025-08-08'
+donneur_ordre_id: null
+donneur_ordre_nom: YAHUI
+donneur_ordre_prenom: Du
+email_index: 0
+facture_soldee: true
+id: imp_mfFDue9R62
+id_dossier: '40020'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49358
+numero_dossier: 54026
+payer_id: cont_UgNsTyRoCq
+payeur_civilite: ''
+payeur_email: 82584099@qq.com
+payeur_nom: YAHUI
+payeur_prenom: Du
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: YAHUI
+proprietaire_prenom: Du
+ref_piece: FA250808 49358
+reference: '54026'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 225
+total_ttc: 270
+type: impaye
+updated_at: '2026-06-24T16:31:05.958Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250808_49358/standard/FA250808 49358 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue Fanny Fanny Beauséjour
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_zV76Y7Fa1E
+created_at: '2026-06-24T16:31:45.000Z'
+date_echeance: '2023-12-14'
+date_import: '2026-07-09T07:05:10.760Z'
+date_piece: '2023-12-14'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL NICE GESTION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Imnl2gK3I7
+id_dossier: '32442'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45786
+numero_dossier: 49439
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DROCOURT ET FAESSEL
+proprietaire_prenom: null
+ref_piece: FA231214 45786
+reference: '49439'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 79.17
+total_ttc: 95
+type: impaye
+updated_at: '2026-06-24T16:31:45.000Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231214_45786/standard/FA231214 45786
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

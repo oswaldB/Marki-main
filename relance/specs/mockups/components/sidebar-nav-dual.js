@@ -44,6 +44,9 @@ class SidebarNavDual extends HTMLElement {
             if (this.url.includes('tantiem')) this.activeRail = 'tantiem';
             else if (this.url.includes('commande')) this.activeRail = 'commande';
             else if (this.url.includes('regie')) this.activeRail = 'regie';
+            else if (this.url.includes('commissions')) this.activeRail = 'commissions';
+            else if (this.url.includes('agenda-optimise')) this.activeRail = 'agenda-optimise';
+            else if (this.url.includes('portail')) this.activeRail = 'portail';
             else this.activeRail = 'relance';
             
             // Auto-expand sections based on URL
@@ -107,11 +110,47 @@ class SidebarNavDual extends HTMLElement {
           <button 
             @click="switchApp('regie')"
             :class="activeRail === 'regie' ? 'bg-white shadow-md ring-2 ring-amber-200' : 'hover:bg-white hover:shadow-sm'"
-            class="flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200"
+            class="flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200 mb-2"
             title="Régie totale"
           >
             <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-amber-500">
               <span class="text-white font-bold text-xs">RT</span>
+            </div>
+          </button>
+          
+          <!-- App 5 : Commissions transparentes -->
+          <button 
+            @click="switchApp('commissions')"
+            :class="activeRail === 'commissions' ? 'bg-white shadow-md ring-2 ring-orange-200' : 'hover:bg-white hover:shadow-sm'"
+            class="flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200 mb-2"
+            title="Commissions transparentes"
+          >
+            <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-orange-500">
+              <span class="text-white font-bold text-xs">CT</span>
+            </div>
+          </button>
+          
+          <!-- App 6 : Agenda optimisé -->
+          <button 
+            @click="switchApp('agenda-optimise')"
+            :class="activeRail === 'agenda-optimise' ? 'bg-white shadow-md ring-2 ring-cyan-200' : 'hover:bg-white hover:shadow-sm'"
+            class="flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200 mb-2"
+            title="Agenda optimisé"
+          >
+            <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-cyan-500">
+              <span class="text-white font-bold text-xs">AO</span>
+            </div>
+          </button>
+          
+          <!-- App 7 : Portail client -->
+          <button 
+            @click="switchApp('portail')"
+            :class="activeRail === 'portail' ? 'bg-white shadow-md ring-2 ring-indigo-200' : 'hover:bg-white hover:shadow-sm'"
+            class="flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200"
+            title="Portail client"
+          >
+            <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-indigo-500">
+              <span class="text-white font-bold text-xs">PC</span>
             </div>
           </button>
           
@@ -162,6 +201,33 @@ class SidebarNavDual extends HTMLElement {
                   <span class="text-amber-600 font-bold text-xs">RT</span>
                 </div>
                 <span class="text-sm font-semibold text-gray-900">Régie totale</span>
+              </div>
+            </template>
+            
+            <template x-if="activeRail === 'commissions'">
+              <div class="flex items-center gap-2.5">
+                <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-orange-100">
+                  <span class="text-orange-600 font-bold text-xs">CT</span>
+                </div>
+                <span class="text-sm font-semibold text-gray-900">Commissions transparentes</span>
+              </div>
+            </template>
+            
+            <template x-if="activeRail === 'agenda-optimise'">
+              <div class="flex items-center gap-2.5">
+                <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-cyan-100">
+                  <span class="text-cyan-600 font-bold text-xs">AO</span>
+                </div>
+                <span class="text-sm font-semibold text-gray-900">Agenda optimisé</span>
+              </div>
+            </template>
+            
+            <template x-if="activeRail === 'portail'">
+              <div class="flex items-center gap-2.5">
+                <div class="flex h-7 w-7 items-center justify-center rounded-lg bg-indigo-100">
+                  <span class="text-indigo-600 font-bold text-xs">PC</span>
+                </div>
+                <span class="text-sm font-semibold text-gray-900">Portail client</span>
               </div>
             </template>
           </div>
@@ -431,6 +497,45 @@ class SidebarNavDual extends HTMLElement {
                     <span class="text-amber-600 font-bold text-sm">RT</span>
                   </div>
                   <p class="text-sm font-medium text-gray-900 mb-1">Régie totale</p>
+                  <p class="text-xs text-gray-400">ne fait pas partie de vos abonnements</p>
+                </div>
+              </div>
+            </template>
+            
+            <!-- Commissions transparentes Menu -->
+            <template x-if="activeRail === 'commissions'">
+              <div class="flex h-full items-center justify-center px-4">
+                <div class="text-center">
+                  <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-orange-100 flex items-center justify-center">
+                    <span class="text-orange-600 font-bold text-sm">CT</span>
+                  </div>
+                  <p class="text-sm font-medium text-gray-900 mb-1">Commissions transparentes</p>
+                  <p class="text-xs text-gray-400">ne fait pas partie de vos abonnements</p>
+                </div>
+              </div>
+            </template>
+            
+            <!-- Agenda optimisé Menu -->
+            <template x-if="activeRail === 'agenda-optimise'">
+              <div class="flex h-full items-center justify-center px-4">
+                <div class="text-center">
+                  <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-cyan-100 flex items-center justify-center">
+                    <span class="text-cyan-600 font-bold text-sm">AO</span>
+                  </div>
+                  <p class="text-sm font-medium text-gray-900 mb-1">Agenda optimisé</p>
+                  <p class="text-xs text-gray-400">ne fait pas partie de vos abonnements</p>
+                </div>
+              </div>
+            </template>
+            
+            <!-- Portail client Menu -->
+            <template x-if="activeRail === 'portail'">
+              <div class="flex h-full items-center justify-center px-4">
+                <div class="text-center">
+                  <div class="w-12 h-12 mx-auto mb-3 rounded-xl bg-indigo-100 flex items-center justify-center">
+                    <span class="text-indigo-600 font-bold text-sm">PC</span>
+                  </div>
+                  <p class="text-sm font-medium text-gray-900 mb-1">Portail client</p>
                   <p class="text-xs text-gray-400">ne fait pas partie de vos abonnements</p>
                 </div>
               </div>

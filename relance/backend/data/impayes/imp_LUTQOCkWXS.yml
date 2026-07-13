@@ -1,0 +1,49 @@
+adresse_bien: 29 boulevard de la Turbie Le Mer des Monts
+apporteur_id: cont_Q0jadWIlqE
+apporteur_nom: JLR IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: Geste commercial MW
+contact_relance_id: cont_Q0jadWIlqE
+created_at: '2026-06-24T16:31:02.877Z'
+date_echeance: '2025-10-13'
+date_import: '2026-07-09T07:05:06.696Z'
+date_piece: '2025-10-06'
+donneur_ordre_id: null
+donneur_ordre_nom: JLR IMMO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_LUTQOCkWXS
+id_dossier: '40337'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49666
+numero_dossier: 54343
+payer_id: cont_Q0jadWIlqE
+payeur_civilite: ''
+payeur_email: agence@jlrimmo.com
+payeur_nom: JLR IMMO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: JLR IMMO
+proprietaire_prenom: null
+ref_piece: FA251006 49666
+reference: '54343'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 75
+total_ttc: 90
+type: impaye
+updated_at: '2026-06-24T16:31:02.877Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251006_49666/standard/FA251006 49666
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

@@ -1,0 +1,49 @@
+adresse_bien: 4 place du Cap
+apporteur_id: cont_1oBO3iDNCv
+apporteur_nom: AGENCE DU COMMERCE
+apporteur_prenom: SAS AZUR RIVIERA COMMERCE
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "13/01 relance agence via comptabilité\r\n\r\nretour même jour du client, \r\npour payer, demande la Facture à modifier :\r\nSARL ELENA \r\n16 AVENUE CARNOT \r\n06500 MENTON \r\net à renvoyer a Monsieur MARI\r\n\r\nrelance 02/02\r\n\r\nrelance de suivi le 09/02\r\n\r\n24/02 prop a appelé elle s'est faite relancé par les avocats elle ne veut pas payer \r\nj'ai appelé dans la foulée Eliott j'attend qu'il me rappelle\r\n24/02 va être payé aujourd'hui j'ai eu eliott au tel \r\n\r\n10/03 relance eliott car toujours pas payé\r\n\r\n"
+contact_relance_id: cont_1oBO3iDNCv
+created_at: '2026-06-24T16:30:51.931Z'
+date_echeance: '2026-03-25'
+date_import: '2026-07-09T07:05:05.674Z'
+date_piece: '2026-03-18'
+donneur_ordre_id: null
+donneur_ordre_nom: MOLLEA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_w10LMtWJ3H
+id_dossier: '40754'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50639
+numero_dossier: 54760
+payer_id: cont_1oBO3iDNCv
+payeur_civilite: ''
+payeur_email: agenceducommerce@orange.fr
+payeur_nom: AGENCE DU COMMERCE
+payeur_prenom: SAS AZUR RIVIERA COMMERCE
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MOLLEA
+proprietaire_prenom: null
+ref_piece: FA260318 50639
+reference: '54760'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: -112.5
+total_ttc: -135
+type: impaye
+updated_at: '2026-06-24T16:30:51.931Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260318_50639/standard/FA260318 50639 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

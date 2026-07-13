@@ -1,0 +1,60 @@
+$loki: 2666
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:59.529Z'
+email: gestion@progedi.com
+id: cont_KipSPsu7Mu
+impaye_ids:
+  - imp_xkSoKEvMG2
+  - imp_XfwiNb8Y7a
+  - imp_nmKP4PMfat
+  - imp_18O6q2EDn1
+  - imp_S4n9zlUzvM
+  - imp_wXfhnvq8SL
+  - imp_RWgXLexvV2
+  - imp_wCw3iP4kVl
+  - imp_mQtfU6kJKO
+  - imp_jwkNXexZRk
+  - imp_O9Qb6SvQVQ
+  - imp_86SBhZrqOI
+  - imp_CIJeRWQfdu
+  - imp_A7f5VAtHJL
+  - imp_z90lspXVYU
+  - imp_1uHfMG3X14
+  - imp_gaQ6YHVDaM
+  - imp_FuMffsYTCF
+  - imp_Es9BmCJD89
+  - imp_5cCtxHppIa
+  - imp_OBsWwouBq1
+  - imp_lFnvfVhCGB
+  - imp_OXvSvxGjTO
+  - imp_GXbbjngbk1
+  - imp_MXvvlheJUN
+  - imp_tjsJ7Eo9O9
+  - imp_ngv1Mc2r9i
+  - imp_DKoiml4hMe
+  - imp_lV4PC7rCTc
+  - imp_giGNpMmsuz
+  - imp_8vwratIRqC
+  - imp_c1wDGD8aX8
+is_blacklisted: false
+meta:
+  created: 1783580699338
+  revision: 0
+  version: 0
+nom: TAVAREZ
+prenom: Rosalie
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:58.374Z'

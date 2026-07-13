@@ -1,0 +1,49 @@
+adresse_bien: 43 rue de la Buffa
+apporteur_id: cont_muCvRR89fr
+apporteur_nom: IMMOBILIERE NICOISE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_yc8KvFtdoE
+created_at: '2026-06-24T16:30:46.868Z'
+date_echeance: '2026-06-17'
+date_import: '2026-07-09T07:05:05.148Z'
+date_piece: '2026-06-10'
+donneur_ordre_id: null
+donneur_ordre_nom: IND CIAUDO/GINESTIE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_CBDMe7cWd1
+id_dossier: '41943'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51104
+numero_dossier: 55949
+payer_id: cont_muCvRR89fr
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: IMMOBILIERE NICOISE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: IND CIAUDO/GINESTIE
+proprietaire_prenom: null
+ref_piece: FA260610 51104
+reference: '55949'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 337.5
+total_ttc: 405
+type: impaye
+updated_at: '2026-06-24T16:30:46.868Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260610_51104/standard/FA260610 51104 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

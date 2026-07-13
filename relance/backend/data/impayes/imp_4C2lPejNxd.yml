@@ -1,0 +1,49 @@
+adresse_bien: 176 route de Turin Le Castel d'Azur
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_kL7pafymb5
+created_at: '2026-06-24T16:31:22.026Z'
+date_echeance: '2024-11-22'
+date_import: '2026-07-09T07:05:08.620Z'
+date_piece: '2024-11-22'
+donneur_ordre_id: null
+donneur_ordre_nom: CAPSHIDA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_4C2lPejNxd
+id_dossier: '38071'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47838
+numero_dossier: 52077
+payer_id: cont_kL7pafymb5
+payeur_civilite: ''
+payeur_email: jpsrenovation06@gmail.com
+payeur_nom: CAPSHIDA
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAPSHIDA
+proprietaire_prenom: null
+ref_piece: FA241122 47838
+reference: '52077'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:22.026Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241122_47838/standard/FA241122 47838
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

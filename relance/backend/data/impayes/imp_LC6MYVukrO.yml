@@ -1,0 +1,49 @@
+adresse_bien: 3 boulevard Carabacel
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_cE2YSqFSe1
+created_at: '2026-06-24T16:31:25.901Z'
+date_echeance: '2024-09-27'
+date_import: '2026-07-09T07:05:08.942Z'
+date_piece: '2024-09-27'
+donneur_ordre_id: null
+donneur_ordre_nom: PONCELET
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_LC6MYVukrO
+id_dossier: '37694'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47534
+numero_dossier: 51700
+payer_id: cont_cE2YSqFSe1
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: PONCELET
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PONCELET
+proprietaire_prenom: null
+ref_piece: FA240927 47534
+reference: '51700'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:25.901Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240927_47534/standard/FA240927 47534
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

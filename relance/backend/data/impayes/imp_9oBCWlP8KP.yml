@@ -1,0 +1,49 @@
+adresse_bien: 25 promenade des Anglais Le Mediterranée
+apporteur_id: cont_hKExnMDFAP
+apporteur_nom: AGENCE 107 PROMENADE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "relance mail 04/11\r\n\r\nrelance 21/11"
+contact_relance_id: cont_QL8wWPFtmR
+created_at: '2026-06-24T16:31:04.880Z'
+date_echeance: '2025-09-12'
+date_import: '2026-07-09T07:05:06.889Z'
+date_piece: '2025-09-05'
+donneur_ordre_id: null
+donneur_ordre_nom: GUIDOTTI
+donneur_ordre_prenom: Paolo
+email_index: 0
+facture_soldee: true
+id: imp_9oBCWlP8KP
+id_dossier: '40146'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49466
+numero_dossier: 54152
+payer_id: cont_hKExnMDFAP
+payeur_civilite: ''
+payeur_email: jennifer.veglia@maison-massena.fr
+payeur_nom: AGENCE 107 PROMENADE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: GUIDOTTI
+proprietaire_prenom: Paolo
+ref_piece: FA250905 49466
+reference: '54152'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 329.17
+total_ttc: 395
+type: impaye
+updated_at: '2026-06-24T16:31:04.880Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250905_49466/standard/FA250905 49466
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

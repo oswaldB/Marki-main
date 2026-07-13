@@ -1,0 +1,49 @@
+adresse_bien: 330 avenue Guillaume 1er de Provence La coquille bleue Bâtiment
+apporteur_id: cont_mSwEw9rkRW
+apporteur_nom: 'EASY MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_t3R3o1KzzL
+created_at: '2026-06-24T16:31:33.965Z'
+date_echeance: '2024-05-27'
+date_import: '2026-07-09T07:05:09.804Z'
+date_piece: '2024-05-27'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI LES ARC DES SERRES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_f2o0fXcp25
+id_dossier: '35726'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46739
+numero_dossier: 50730
+payer_id: cont_t3R3o1KzzL
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SCI LES ARC DES SERRES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI LES ARC DES SERRES
+proprietaire_prenom: null
+ref_piece: FA240527 46739
+reference: '50730'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:31:33.965Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240527_46739/standard/FA240527 46739 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

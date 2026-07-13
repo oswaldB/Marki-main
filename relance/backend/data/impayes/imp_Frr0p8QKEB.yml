@@ -1,0 +1,49 @@
+adresse_bien: 6 rue du Bastion
+apporteur_id: cont_dntkuJ727m
+apporteur_nom: 'WRETMAN MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_fQvnAxILdK
+created_at: '2026-06-24T16:31:18.022Z'
+date_echeance: '2025-02-03'
+date_import: '2026-07-09T07:05:08.211Z'
+date_piece: '2025-02-03'
+donneur_ordre_id: null
+donneur_ordre_nom: CARAMELLI
+donneur_ordre_prenom: Andrea
+email_index: 0
+facture_soldee: true
+id: imp_Frr0p8QKEB
+id_dossier: '38575'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48222
+numero_dossier: 52581
+payer_id: cont_fQvnAxILdK
+payeur_civilite: ''
+payeur_email: 'andrewcaramelli@gmail.com '
+payeur_nom: CARAMELLI
+payeur_prenom: Andrea
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CARAMELLI
+proprietaire_prenom: Andrea
+ref_piece: FA250131 48222
+reference: '52581'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 473.33
+total_ttc: 568
+type: impaye
+updated_at: '2026-06-24T16:31:18.022Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250131_48222/standard/FA250131 48222
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

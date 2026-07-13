@@ -1,0 +1,49 @@
+adresse_bien: 39 ter boulevard de Cimiez Riviera Palace
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "LISTING 27/01\r\n\r\n08/04 relance "
+contact_relance_id: cont_D8fdlp33FD
+created_at: '2026-06-24T16:30:56.010Z'
+date_echeance: '2026-01-14'
+date_import: '2026-07-09T07:05:06.115Z'
+date_piece: '2026-01-07'
+donneur_ordre_id: null
+donneur_ordre_nom: CASTELLA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_N7dJGjEtTB
+id_dossier: '40951'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50243
+numero_dossier: 54957
+payer_id: cont_5owmFecKf0
+payeur_civilite: ''
+payeur_email: contact@richerimmobilier.com
+payeur_nom: RICHER IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: CASTELLA
+proprietaire_prenom: null
+ref_piece: FA260107 50243
+reference: '54957'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:30:56.010Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260107_50243/standard/FA260107 50243
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

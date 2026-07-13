@@ -1,0 +1,49 @@
+adresse_bien: 8 rue Henry Bennett
+apporteur_id: cont_yic6N4w5Fp
+apporteur_nom: AGENCE DE ROQUEBRUNE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_oHaGyJjazn
+created_at: '2026-06-24T16:31:56.071Z'
+date_echeance: '2023-07-11'
+date_import: '2026-07-09T07:05:11.812Z'
+date_piece: '2023-07-11'
+donneur_ordre_id: null
+donneur_ordre_nom: AICARDI
+donneur_ordre_prenom: Rosalba
+email_index: 0
+facture_soldee: true
+id: imp_EAFnVQl7nT
+id_dossier: '29228'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44761
+numero_dossier: 48214
+payer_id: cont_oHaGyJjazn
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: AICARDI
+payeur_prenom: Rosalba
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: AICARDI
+proprietaire_prenom: Rosalba
+ref_piece: FA230711 44761
+reference: '48214'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:56.071Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juillet/FA230711_44761/standard/FA230711 44761
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

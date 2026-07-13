@@ -1,0 +1,49 @@
+adresse_bien: 19 avenue du Mont Alban Les Deux Rois
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_nhx0xstY7B
+created_at: '2026-06-24T16:31:46.983Z'
+date_echeance: '2023-11-22'
+date_import: '2026-07-09T07:05:10.919Z'
+date_piece: '2023-11-22'
+donneur_ordre_id: null
+donneur_ordre_nom: ASSOULINE
+donneur_ordre_prenom: Maréva
+email_index: 0
+facture_soldee: true
+id: imp_ilBJh4XAR8
+id_dossier: '32277'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45641
+numero_dossier: 49274
+payer_id: cont_nhx0xstY7B
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ASSOULINE
+payeur_prenom: Maréva
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ASSOULINE
+proprietaire_prenom: Maréva
+ref_piece: FA231122 45641
+reference: '49274'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:46.983Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231122_45641/standard/FA231122 45641
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

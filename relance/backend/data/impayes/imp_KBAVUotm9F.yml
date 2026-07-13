@@ -1,0 +1,49 @@
+adresse_bien: 4-6 boulevard du Val Claret
+apporteur_id: cont_gszi3ULfaG
+apporteur_nom: AIA GROUPE ALLIANCE GESTION ANTIBES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: cont_hiBh7VBtpf
+created_at: '2026-06-24T16:31:36.968Z'
+date_echeance: '2024-04-16'
+date_import: '2026-07-09T07:05:10.026Z'
+date_piece: '2024-04-16'
+donneur_ordre_id: null
+donneur_ordre_nom: 'COPROPRIETE 4-6 VAL CLARET '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_KBAVUotm9F
+id_dossier: '34424'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46494
+numero_dossier: 50423
+payer_id: cont_gszi3ULfaG
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: AIA GROUPE ALLIANCE GESTION ANTIBES
+payeur_prenom: ''
+payeur_telephone: '0614310039'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'COPROPRIETE 4-6 VAL CLARET '
+proprietaire_prenom: null
+ref_piece: FA240416 46494
+reference: '50423'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 262.5
+total_ttc: 315
+type: impaye
+updated_at: '2026-06-24T16:31:36.968Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240416_46494/standard/FA240416 46494
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

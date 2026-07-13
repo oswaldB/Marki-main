@@ -1,0 +1,49 @@
+adresse_bien: 4 rue Père Auguste Valensin Palais New-York
+apporteur_id: cont_V9XmAKW4D7
+apporteur_nom: HATON IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_V9XmAKW4D7
+created_at: '2026-06-24T16:31:45.000Z'
+date_echeance: '2023-12-14'
+date_import: '2026-07-09T07:05:10.758Z'
+date_piece: '2023-12-14'
+donneur_ordre_id: null
+donneur_ordre_nom: KUZMIN
+donneur_ordre_prenom: Regina
+email_index: 0
+facture_soldee: true
+id: imp_pcM0pRHTQN
+id_dossier: '32437'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45781
+numero_dossier: 49434
+payer_id: cont_V9XmAKW4D7
+payeur_civilite: ''
+payeur_email: agence@haton-immobilier.com
+payeur_nom: HATON IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: 06 51 01 10 57
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: KUZMIN
+proprietaire_prenom: Regina
+ref_piece: FA231214 45781
+reference: '49434'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:45.000Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231214_45781/standard/FA231214 45781
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

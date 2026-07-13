@@ -1,0 +1,49 @@
+adresse_bien: 26 rue de la Buffa
+apporteur_id: cont_VqDFyeLGQl
+apporteur_nom: 'WRETMAN NICE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_WhYQgf8yQx
+created_at: '2026-06-24T16:31:35.001Z'
+date_echeance: '2024-05-10'
+date_import: '2026-07-09T07:05:09.891Z'
+date_piece: '2024-05-10'
+donneur_ordre_id: null
+donneur_ordre_nom: DELIN
+donneur_ordre_prenom: Pia
+email_index: 0
+facture_soldee: true
+id: imp_K41CtFzcxu
+id_dossier: '34618'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46642
+numero_dossier: 50617
+payer_id: cont_WhYQgf8yQx
+payeur_civilite: ''
+payeur_email: delinpia@gmail.com
+payeur_nom: DELIN
+payeur_prenom: Pia
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DELIN
+proprietaire_prenom: Pia
+ref_piece: FA240510 46642
+reference: '50617'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:35.001Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240510_46642/standard/FA240510 46642 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

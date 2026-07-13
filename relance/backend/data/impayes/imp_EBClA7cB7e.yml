@@ -1,0 +1,49 @@
+adresse_bien: 3 rue d'Alsace Lorraine
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "SOCIETE CIVILE ALSACE LORRAINE\r\n3 rue d'Alsace Lorraine\r\n06000 NICE"
+contact_relance_id: cont_iHdWAEgEj9
+created_at: '2026-06-24T16:31:07.911Z'
+date_echeance: '2025-07-11'
+date_import: '2026-07-09T07:05:07.177Z'
+date_piece: '2025-07-11'
+donneur_ordre_id: null
+donneur_ordre_nom: SC ALSACE LORRAINE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_EBClA7cB7e
+id_dossier: '39835'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49212
+numero_dossier: 53841
+payer_id: cont_iHdWAEgEj9
+payeur_civilite: ''
+payeur_email: pbraka@wanadoo.fr
+payeur_nom: SC ALSACE LORRAINE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SC ALSACE LORRAINE
+proprietaire_prenom: null
+ref_piece: FA250711 49212
+reference: '53841'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 333.33
+total_ttc: 400
+type: impaye
+updated_at: '2026-06-24T16:31:07.911Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250711_49212/standard/FA250711 49212
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

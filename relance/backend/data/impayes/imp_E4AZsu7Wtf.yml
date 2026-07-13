@@ -1,0 +1,49 @@
+adresse_bien: 11 avenue Victor Hugo Le Monte Cristo
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "PAIEMENT NOTAIRE ACCORD KARINE\r\n\r\n25/02 notaire nous indique que succession est toujours en cours mais facture sera réglée prochainement\r\n\r\n10/03 relance par mail notaire \r\n\r\n27/03 relance mail notaire\r\n\r\n16/04 relance notaire\r\n\r\n27/04 office notarial au tel ce jour, c'est plus Mme Cuncu mais Mme meier qui s'occupe du dossier donc changement de personne dans dossier, signature toujours pas faite, dans l'attente, elle nous tient informé par mail dès qu'il y a du nouveau"
+contact_relance_id: cont_hyhsHPWe1R
+created_at: '2026-06-24T16:31:17.994Z'
+date_echeance: '2025-02-04'
+date_import: '2026-07-09T07:05:08.200Z'
+date_piece: '2025-02-04'
+donneur_ordre_id: null
+donneur_ordre_nom: SUCCESSION TORDI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_E4AZsu7Wtf
+id_dossier: '38602'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48248
+numero_dossier: 52608
+payer_id: cont_vLHAkA4HMc
+payeur_civilite: ''
+payeur_email: charbonnier@notaires.fr
+payeur_nom: CHARBONNIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SUCCESSION TORDI
+proprietaire_prenom: null
+ref_piece: FA250204 48248
+reference: '52608'
+reste_a_payer: 245
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:17.994Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250204_48248/standard/FA250204 48248
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

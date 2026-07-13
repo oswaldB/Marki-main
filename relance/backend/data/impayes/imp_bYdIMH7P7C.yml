@@ -1,0 +1,49 @@
+adresse_bien: 1 rue Honoré Hugo Hôtel du Couvent Bâtiment Couvent
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "Site : Hôtel du Couvent\r\n1 rue Honoré Hugo\r\n06300 NICE\r\n\r\nObjet : Mise à jour des DPE après réception des consommations"
+contact_relance_id: cont_yiq13Cuvwg
+created_at: '2026-06-24T16:30:48.044Z'
+date_echeance: '2026-05-25'
+date_import: '2026-07-09T07:05:05.331Z'
+date_piece: '2026-05-18'
+donneur_ordre_id: null
+donneur_ordre_nom: SAS HOTEL DU COUVENT
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_bYdIMH7P7C
+id_dossier: '41793'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50945
+numero_dossier: 55799
+payer_id: cont_yiq13Cuvwg
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SAS HOTEL DU COUVENT
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SAS HOTEL DU COUVENT
+proprietaire_prenom: null
+ref_piece: FA260518 50945
+reference: '55799'
+reste_a_payer: 1200
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 1000
+total_ttc: 1200
+type: impaye
+updated_at: '2026-06-24T16:33:33.227Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260518_50945/standard/FA260518 50945 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

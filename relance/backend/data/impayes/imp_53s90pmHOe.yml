@@ -1,0 +1,49 @@
+adresse_bien: 4 Ruelle du Ruisseau
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_6pgH8eaab3
+created_at: '2026-06-24T16:30:57.876Z'
+date_echeance: '2025-12-17'
+date_import: '2026-07-09T07:05:06.261Z'
+date_piece: '2025-12-10'
+donneur_ordre_id: null
+donneur_ordre_nom: CARPENTIER
+donneur_ordre_prenom: Loïc
+email_index: 0
+facture_soldee: true
+id: imp_53s90pmHOe
+id_dossier: '40814'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50112
+numero_dossier: 54820
+payer_id: cont_6pgH8eaab3
+payeur_civilite: ''
+payeur_email: loic.carpentier06300@gmail.com
+payeur_nom: CARPENTIER
+payeur_prenom: Loïc
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CARPENTIER
+proprietaire_prenom: Loïc
+ref_piece: FA251210 50112
+reference: '54820'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 230.42
+total_ttc: 276.5
+type: impaye
+updated_at: '2026-06-24T16:30:57.876Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251210_50112/standard/FA251210 50112
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

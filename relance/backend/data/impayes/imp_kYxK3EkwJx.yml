@@ -1,0 +1,49 @@
+adresse_bien: 15 avenue Hugues Savorani Le San Marco
+apporteur_id: cont_Kl8PBkhOa2
+apporteur_nom: LAFORET Menton Pieta
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_FCE0GzDIA1
+created_at: '2026-06-24T16:30:56.909Z'
+date_echeance: '2026-01-05'
+date_import: '2026-07-09T07:05:06.186Z'
+date_piece: '2025-12-29'
+donneur_ordre_id: null
+donneur_ordre_nom: INDIVISION CELLINI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_kYxK3EkwJx
+id_dossier: '40902'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50191
+numero_dossier: 54908
+payer_id: cont_FCE0GzDIA1
+payeur_civilite: ''
+payeur_email: cecile.cellini@laposte.net
+payeur_nom: INDIVISION CELLINI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: INDIVISION CELLINI
+proprietaire_prenom: null
+ref_piece: FA251229 50191
+reference: '54908'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 219
+total_ttc: 262.8
+type: impaye
+updated_at: '2026-06-24T16:30:56.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251229_50191/standard/FA251229 50191
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

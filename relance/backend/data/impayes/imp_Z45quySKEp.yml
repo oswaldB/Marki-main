@@ -1,0 +1,49 @@
+adresse_bien: 14 boulevard Docteur Charles Barnier Elisabeth Bâtiment
+apporteur_id: cont_11gO16DxFH
+apporteur_nom: 3G IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '83000'
+commentaire_piece: ''
+contact_relance_id: cont_ozcOiRUaXT
+created_at: '2026-06-24T16:31:37.062Z'
+date_echeance: '2024-04-09'
+date_import: '2026-07-09T07:05:10.067Z'
+date_piece: '2024-04-09'
+donneur_ordre_id: null
+donneur_ordre_nom: SV SCAVARDA N°006 811 2027
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Z45quySKEp
+id_dossier: '34371'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46446
+numero_dossier: 50370
+payer_id: cont_ozcOiRUaXT
+payeur_civilite: ''
+payeur_email: contact@expertiseetsynergies.com
+payeur_nom: EXPERTISE ET SYNERGIES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SV SCAVARDA N°006 811 2027
+proprietaire_prenom: null
+ref_piece: FA240409 46446
+reference: '50370'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 500
+total_ttc: 600
+type: impaye
+updated_at: '2026-06-24T16:31:37.062Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240409_46446/standard/FA240409 46446
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: TOULON

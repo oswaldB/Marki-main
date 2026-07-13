@@ -1,0 +1,49 @@
+adresse_bien: 15 rue Saint Sebastien
+apporteur_id: cont_AvZjNGS1n4
+apporteur_nom: PRADO IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06410'
+commentaire_piece: ''
+contact_relance_id: cont_AvZjNGS1n4
+created_at: '2026-06-24T16:31:42.984Z'
+date_echeance: '2024-01-26'
+date_import: '2026-07-09T07:05:10.554Z'
+date_piece: '2024-01-26'
+donneur_ordre_id: null
+donneur_ordre_nom: 'INDIVISION ROUSTAN BEL '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_CUAYZZLNaQ
+id_dossier: '32750'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45996
+numero_dossier: 49747
+payer_id: cont_AvZjNGS1n4
+payeur_civilite: ''
+payeur_email: 'contact@pradoimmobilier.com '
+payeur_nom: PRADO IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'INDIVISION ROUSTAN BEL '
+proprietaire_prenom: null
+ref_piece: FA240126 45996
+reference: '49747'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 318.75
+total_ttc: 382.5
+type: impaye
+updated_at: '2026-06-24T16:31:42.984Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240126_45996/standard/FA240126 45996
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BIOT

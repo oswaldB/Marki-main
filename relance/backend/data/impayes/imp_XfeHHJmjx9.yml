@@ -1,0 +1,49 @@
+adresse_bien: 5 bis rue Cros de Capeu Impérial Gambetta Bâtiment B
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: LISTING 27/01
+contact_relance_id: cont_zWLan9R7kt
+created_at: '2026-06-24T16:30:55.974Z'
+date_echeance: '2026-01-20'
+date_import: '2026-07-09T07:05:06.112Z'
+date_piece: '2026-01-13'
+donneur_ordre_id: null
+donneur_ordre_nom: BELLONE
+donneur_ordre_prenom: Angela
+email_index: 0
+facture_soldee: true
+id: imp_XfeHHJmjx9
+id_dossier: '40979'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50264
+numero_dossier: 54985
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BELLONE
+proprietaire_prenom: Angela
+ref_piece: FA260113 50264
+reference: '54985'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 172.5
+total_ttc: 207
+type: impaye
+updated_at: '2026-06-24T16:30:55.974Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260113_50264/standard/FA260113 50264
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

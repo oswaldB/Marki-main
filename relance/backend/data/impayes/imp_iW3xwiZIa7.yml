@@ -1,0 +1,49 @@
+adresse_bien: 64 avenue du Trois Septembre Le Cyrano
+apporteur_id: cont_axwCVxbA8C
+apporteur_nom: CABINET CAIRO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: "LE CYRANO \r\n64 AV DU 3 SEPTEMBRE\r\n06320 CAP D'AIL\r\n\r\n1 bâtiment\r\n30 lots principaux"
+contact_relance_id: cont_axwCVxbA8C
+created_at: '2026-06-24T16:30:53.958Z'
+date_echeance: '2026-02-17'
+date_import: '2026-07-09T07:05:05.888Z'
+date_piece: '2026-02-10'
+donneur_ordre_id: null
+donneur_ordre_nom: CABINET CAIRO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_iW3xwiZIa7
+id_dossier: '40573'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50448
+numero_dossier: 54579
+payer_id: cont_axwCVxbA8C
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET CAIRO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC LE CYRANO
+proprietaire_prenom: null
+ref_piece: FA260210 50448
+reference: '54579'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2916.67
+total_ttc: 3500
+type: impaye
+updated_at: '2026-06-24T16:30:53.958Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260210_50448/standard/FA260210 50448
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

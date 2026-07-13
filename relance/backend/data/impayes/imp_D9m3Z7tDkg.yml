@@ -1,0 +1,49 @@
+adresse_bien: 7 rue Gustave Deloye
+apporteur_id: cont_7fSSEHVoU1
+apporteur_nom: GAGNIER
+apporteur_prenom: Denise
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_DpCDNKeCtb
+created_at: '2026-06-24T16:30:59.878Z'
+date_echeance: '2025-11-21'
+date_import: '2026-07-09T07:05:06.446Z'
+date_piece: '2025-11-14'
+donneur_ordre_id: null
+donneur_ordre_nom: GAGNIER
+donneur_ordre_prenom: Yann
+email_index: 0
+facture_soldee: true
+id: imp_D9m3Z7tDkg
+id_dossier: '40645'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49939
+numero_dossier: 54651
+payer_id: cont_DpCDNKeCtb
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: GAGNIER
+payeur_prenom: Yann
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GAGNIER
+proprietaire_prenom: Yann
+ref_piece: FA251114 49939
+reference: '54651'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 206.67
+total_ttc: 248
+type: impaye
+updated_at: '2026-06-24T16:30:59.878Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251114_49939/standard/FA251114 49939
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

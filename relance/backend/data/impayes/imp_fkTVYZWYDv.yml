@@ -1,0 +1,49 @@
+adresse_bien: 1 bis avenue du Puits Villa la Margelle
+apporteur_id: cont_wZfTW0LsIx
+apporteur_nom: PELLEGINO-GARCIN
+apporteur_prenom: Stéphanie
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_AUuc7D5hp5
+created_at: '2026-06-24T16:30:57.876Z'
+date_echeance: '2025-12-19'
+date_import: '2026-07-09T07:05:06.267Z'
+date_piece: '2025-12-12'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC VILLA LA MARGELLE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_fkTVYZWYDv
+id_dossier: '40851'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50125
+numero_dossier: 54857
+payer_id: cont_wZfTW0LsIx
+payeur_civilite: ''
+payeur_email: stephanie.pellegrino@06113.notaires.fr
+payeur_nom: PELLEGINO-GARCIN
+payeur_prenom: Stéphanie
+payeur_telephone: '0638198154'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SDC VILLA LA MARGELLE
+proprietaire_prenom: null
+ref_piece: FA251212 50125
+reference: '54857'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:30:57.876Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251212_50125/standard/FA251212 50125
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,31 @@
+$loki: 20
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:34.182Z'
+email: roquebrune.06075@notaires.fr
+id: cont_wbFG0CPFuM
+impaye_ids:
+  - imp_EEbD2y1wa8
+  - imp_OAANCsGWEa
+  - imp_tMqDTVY3QK
+is_blacklisted: false
+meta:
+  created: 1783580698340
+  revision: 0
+  version: 0
+nom: 'TRAN '
+prenom: Damien
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:33.287Z'

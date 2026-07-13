@@ -1,0 +1,49 @@
+adresse_bien: 4 rue du Mont Agel
+apporteur_id: cont_Q0jadWIlqE
+apporteur_nom: JLR IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_bfw0rCDWgv
+created_at: '2026-06-24T16:31:45.980Z'
+date_echeance: '2023-12-06'
+date_import: '2026-07-09T07:05:10.841Z'
+date_piece: '2023-12-06'
+donneur_ordre_id: null
+donneur_ordre_nom: BENOIT
+donneur_ordre_prenom: Anna Maria et Dominique
+email_index: 0
+facture_soldee: true
+id: imp_DO3PD7r2jx
+id_dossier: '32380'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45734
+numero_dossier: 49377
+payer_id: cont_bfw0rCDWgv
+payeur_civilite: ''
+payeur_email: dominique.benoit06@orange.fr
+payeur_nom: BENOIT
+payeur_prenom: Anna Maria et Dominique
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BENOIT
+proprietaire_prenom: Anna Maria et Dominique
+ref_piece: FA231206 45734
+reference: '49377'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 258.33
+total_ttc: 310
+type: impaye
+updated_at: '2026-06-24T16:31:45.980Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231206_45734/standard/FA231206 45734
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

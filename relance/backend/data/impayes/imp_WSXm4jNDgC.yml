@@ -1,0 +1,49 @@
+adresse_bien: 12-14 rue Morgan Le Center Palace
+apporteur_id: cont_mSwEw9rkRW
+apporteur_nom: 'EASY MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_HO9oXz1ACH
+created_at: '2026-06-24T16:31:07.879Z'
+date_echeance: '2025-07-18'
+date_import: '2026-07-09T07:05:07.161Z'
+date_piece: '2025-07-18'
+donneur_ordre_id: null
+donneur_ordre_nom: ROSTAGNO
+donneur_ordre_prenom: Veronique
+email_index: 0
+facture_soldee: true
+id: imp_WSXm4jNDgC
+id_dossier: '39864'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49234
+numero_dossier: 53870
+payer_id: cont_HO9oXz1ACH
+payeur_civilite: ''
+payeur_email: veroniquerostagno@orange.fr
+payeur_nom: ROSTAGNO
+payeur_prenom: Veronique
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROSTAGNO
+proprietaire_prenom: Veronique
+ref_piece: FA250718 49234
+reference: '53870'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:07.879Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250718_49234/standard/FA250718 49234
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 3 rue Jean Canavèse
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_DofWsWooin
+created_at: '2026-06-24T16:31:40.943Z'
+date_echeance: '2024-02-22'
+date_import: '2026-07-09T07:05:10.351Z'
+date_piece: '2024-02-22'
+donneur_ordre_id: null
+donneur_ordre_nom: FAGET
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_8FhrYlDbTG
+id_dossier: '32954'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46170
+numero_dossier: 49951
+payer_id: cont_DofWsWooin
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: FAGET
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FAGET
+proprietaire_prenom: null
+ref_piece: FA240222 46170
+reference: '49951'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.67
+total_ttc: 230
+type: impaye
+updated_at: '2026-06-24T16:31:40.943Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240222_46170/standard/FA240222 46170
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

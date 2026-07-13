@@ -1,0 +1,49 @@
+adresse_bien: 130 rue Max Jacob Les Hauts d'Antibes Bât Les Lys B6
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: "05/05 erreur d'apporteur d'affaire et de payeur : pas laforet nice mais nice gestion\r\nchangement ce jour"
+contact_relance_id: cont_Zswd51C3GJ
+created_at: '2026-06-24T16:30:49.935Z'
+date_echeance: '2026-04-24'
+date_import: '2026-07-09T07:05:05.473Z'
+date_piece: '2026-04-17'
+donneur_ordre_id: null
+donneur_ordre_nom: BOURQUIN
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_x6ND01OuFD
+id_dossier: '41583'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50796
+numero_dossier: 55589
+payer_id: cont_thtsY8Ekxe
+payeur_civilite: ''
+payeur_email: nicegestion@laforet.com
+payeur_nom: SARL NICE GESTION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BOURQUIN
+proprietaire_prenom: null
+ref_piece: FA260417 50796
+reference: '55589'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 153.33
+total_ttc: 184
+type: impaye
+updated_at: '2026-06-24T16:30:49.935Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260417_50796/standard/FA260417 50796
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

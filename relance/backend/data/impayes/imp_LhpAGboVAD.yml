@@ -1,0 +1,49 @@
+adresse_bien: 5 rue Penchienatti
+apporteur_id: cont_jO6Cep4oVa
+apporteur_nom: LAFORET NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_nFncXRnXHh
+created_at: '2026-06-24T16:31:46.909Z'
+date_echeance: '2023-11-24'
+date_import: '2026-07-09T07:05:10.895Z'
+date_piece: '2023-11-24'
+donneur_ordre_id: null
+donneur_ordre_nom: SPERANZA
+donneur_ordre_prenom: Jessica
+email_index: 0
+facture_soldee: true
+id: imp_LhpAGboVAD
+id_dossier: '32315'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45672
+numero_dossier: 49312
+payer_id: cont_nFncXRnXHh
+payeur_civilite: ''
+payeur_email: jessie.speranza@gmail.com
+payeur_nom: SPERANZA
+payeur_prenom: Jessica
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SPERANZA
+proprietaire_prenom: Jessica
+ref_piece: FA231124 45672
+reference: '49312'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:31:46.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/novembre/FA231124_45672/standard/FA231124 45672
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

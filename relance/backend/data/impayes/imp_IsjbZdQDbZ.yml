@@ -1,0 +1,49 @@
+adresse_bien: 33 avenue du Général de Gaulle Costa Plana
+apporteur_id: cont_6KB3jgW9oc
+apporteur_nom: PROGEDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: LISTING 27/01
+contact_relance_id: cont_6KB3jgW9oc
+created_at: '2026-06-24T16:30:56.071Z'
+date_echeance: '2026-01-13'
+date_import: '2026-07-09T07:05:06.144Z'
+date_piece: '2026-01-06'
+donneur_ordre_id: null
+donneur_ordre_nom: PERNET
+donneur_ordre_prenom: Eddy
+email_index: 0
+facture_soldee: true
+id: imp_IsjbZdQDbZ
+id_dossier: '40911'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50226
+numero_dossier: 54917
+payer_id: cont_6KB3jgW9oc
+payeur_civilite: ''
+payeur_email: accueil@progedi.com
+payeur_nom: PROGEDI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: PERNET
+proprietaire_prenom: Eddy
+ref_piece: FA260106 50226
+reference: '54917'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:30:56.071Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260106_50226/standard/FA260106 50226
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: CAP-D'AIL

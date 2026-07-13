@@ -1,0 +1,49 @@
+adresse_bien: 28 rue Edouard Dalmas Coeur Opaline
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_cdYm2Dsunk
+created_at: '2026-06-24T16:30:49.991Z'
+date_echeance: '2026-04-22'
+date_import: '2026-07-09T07:05:05.504Z'
+date_piece: '2026-04-15'
+donneur_ordre_id: null
+donneur_ordre_nom: CARLO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_A0y8X8jDKX
+id_dossier: '41579'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50777
+numero_dossier: 55585
+payer_id: cont_cdYm2Dsunk
+payeur_civilite: ''
+payeur_email: nccarlo55@gmail.com
+payeur_nom: CARLO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CARLO
+proprietaire_prenom: null
+ref_piece: FA260415 50777
+reference: '55585'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:30:49.991Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260415_50777/standard/FA260415 50777
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

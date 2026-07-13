@@ -1,0 +1,49 @@
+adresse_bien: 64 avenue Denis Semeria
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: "Diagnostic locatifs (complément)\r\n64 Avenue Denis Semeria\r\n06300 Nice\r\n"
+contact_relance_id: cont_5EomRBmhIU
+created_at: '2026-06-24T16:31:10.990Z'
+date_echeance: '2025-05-15'
+date_import: '2026-07-09T07:05:07.505Z'
+date_piece: '2025-05-15'
+donneur_ordre_id: null
+donneur_ordre_nom: BOULVERT
+donneur_ordre_prenom: Renaud
+email_index: 0
+facture_soldee: true
+id: imp_fPgMkFI649
+id_dossier: '39424'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48903
+numero_dossier: 53430
+payer_id: cont_5EomRBmhIU
+payeur_civilite: ''
+payeur_email: reno20121984@hotmail.com
+payeur_nom: BOULVERT
+payeur_prenom: Renaud
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BOULVERT
+proprietaire_prenom: Renaud
+ref_piece: FA250515 48903
+reference: '53430'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 107.33
+total_ttc: 128.8
+type: impaye
+updated_at: '2026-06-24T16:31:10.990Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250515_48903/standard/FA250515 48903 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

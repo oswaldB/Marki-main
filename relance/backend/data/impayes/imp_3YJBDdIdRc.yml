@@ -1,0 +1,49 @@
+adresse_bien: 11 rue Cros de Capeu  Les Bleuets
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:31:42.984Z'
+date_echeance: '2024-01-26'
+date_import: '2026-07-09T07:05:10.564Z'
+date_piece: '2024-01-26'
+donneur_ordre_id: null
+donneur_ordre_nom: SNEXI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_3YJBDdIdRc
+id_dossier: '32673'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45994
+numero_dossier: 49670
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: LUQUET
+proprietaire_prenom: 'Nathalie '
+ref_piece: FA240126 45994
+reference: '49670'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 3997
+total_ttc: 4796.4
+type: impaye
+updated_at: '2026-06-24T16:31:42.984Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240126_45994/standard/FA240126 45994
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

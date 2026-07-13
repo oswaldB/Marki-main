@@ -1,0 +1,49 @@
+adresse_bien: 34 rue Pasteur Maison Pistonatto
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: "02/07 : relance 2\r\n\r\n11/06 : échange tél. avec client + renvoi facture par mail"
+contact_relance_id: cont_7i9e66vSDP
+created_at: '2026-06-24T16:31:11.025Z'
+date_echeance: '2025-05-14'
+date_import: '2026-07-09T07:05:07.524Z'
+date_piece: '2025-05-14'
+donneur_ordre_id: null
+donneur_ordre_nom: OHAYON
+donneur_ordre_prenom: Olivier
+email_index: 0
+facture_soldee: true
+id: imp_NMrI9u6pjS
+id_dossier: '39379'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48874
+numero_dossier: 53385
+payer_id: cont_7i9e66vSDP
+payeur_civilite: ''
+payeur_email: olivier.ohayon@gmail.com
+payeur_nom: OHAYON
+payeur_prenom: Olivier
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: OHAYON
+proprietaire_prenom: Olivier
+ref_piece: FA250514 48874
+reference: '53385'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 125
+total_ttc: 150
+type: impaye
+updated_at: '2026-06-24T16:31:11.025Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mai/FA250514_48874/standard/FA250514 48874 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

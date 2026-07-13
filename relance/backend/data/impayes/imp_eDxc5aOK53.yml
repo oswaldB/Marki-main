@@ -1,0 +1,49 @@
+adresse_bien: 11 rue Amiral de Grasse
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_F2EWW6X9yz
+created_at: '2026-06-24T16:31:18.953Z'
+date_echeance: '2025-01-21'
+date_import: '2026-07-09T07:05:08.272Z'
+date_piece: '2025-01-21'
+donneur_ordre_id: null
+donneur_ordre_nom: DUCCINI
+donneur_ordre_prenom: Brigitte
+email_index: 0
+facture_soldee: true
+id: imp_eDxc5aOK53
+id_dossier: '38504'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48155
+numero_dossier: 52510
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DUCCINI
+proprietaire_prenom: Brigitte
+ref_piece: FA250121 48155
+reference: '52510'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 100
+total_ttc: 120
+type: impaye
+updated_at: '2026-06-24T16:31:18.953Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250121_48155/standard/FA250121 48155
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

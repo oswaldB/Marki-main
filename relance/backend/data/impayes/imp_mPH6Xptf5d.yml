@@ -1,0 +1,49 @@
+adresse_bien: 39 boulevard Stalingrad
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_3RGj0ZRvj9
+created_at: '2026-06-24T16:30:59.908Z'
+date_echeance: '2025-11-20'
+date_import: '2026-07-09T07:05:06.447Z'
+date_piece: '2025-11-13'
+donneur_ordre_id: null
+donneur_ordre_nom: BLETRY
+donneur_ordre_prenom: Axel
+email_index: 0
+facture_soldee: true
+id: imp_mPH6Xptf5d
+id_dossier: '40612'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49925
+numero_dossier: 54618
+payer_id: cont_3RGj0ZRvj9
+payeur_civilite: ''
+payeur_email: axel.bletry@skema.edu
+payeur_nom: BLETRY
+payeur_prenom: Axel
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BLETRY
+proprietaire_prenom: Axel
+ref_piece: FA251113 49925
+reference: '54618'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:30:59.908Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251113_49925/standard/FA251113 49925
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 8 allée du 8 Mai 1945 Les Bruyères
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_KvBUIFwswr
+created_at: '2026-06-24T16:30:53.898Z'
+date_echeance: '2026-02-20'
+date_import: '2026-07-09T07:05:05.837Z'
+date_piece: '2026-02-13'
+donneur_ordre_id: null
+donneur_ordre_nom: DEBIAGE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jHcnAfgDUV
+id_dossier: '41121'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50471
+numero_dossier: 55127
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DEBIAGE
+proprietaire_prenom: null
+ref_piece: FA260213 50471
+reference: '55127'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:30:53.898Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260213_50471/standard/FA260213 50471
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

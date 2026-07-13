@@ -1,0 +1,49 @@
+adresse_bien: 108 110 promenade Val du Carei Villa Paladio
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Coi4MKngh4
+created_at: '2026-06-24T16:31:31.970Z'
+date_echeance: '2024-06-21'
+date_import: '2026-07-09T07:05:09.623Z'
+date_piece: '2024-06-21'
+donneur_ordre_id: null
+donneur_ordre_nom: IAD QUERMENT
+donneur_ordre_prenom: Aurélie
+email_index: 0
+facture_soldee: true
+id: imp_EN1lfKJPrT
+id_dossier: '35966'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46913
+numero_dossier: 50970
+payer_id: cont_Coi4MKngh4
+payeur_civilite: ''
+payeur_email: office.06055@notaires.fr
+payeur_nom: VIAL
+payeur_prenom: Florence
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: PEREZ
+proprietaire_prenom: null
+ref_piece: FA240621 46913
+reference: '50970'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 104.17
+total_ttc: 125
+type: impaye
+updated_at: '2026-06-24T16:31:31.970Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240621_46913/standard/FA240621 46913 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

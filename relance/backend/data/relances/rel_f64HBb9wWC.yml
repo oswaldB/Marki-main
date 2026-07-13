@@ -1,0 +1,86 @@
+bcc: null
+cc: null
+clicks: 0
+contact_id: cont_9rNs4mDZGu
+corps: >
+  <p>Bonjour Monsieur Jean Pierre LETURNIER,</p>
+
+  <p><br></p>
+
+  <p>Malgré notre rappel du <strong>21/06/2026</strong>, votre facture
+  <strong>n°50014 (</strong> lors de nos prestations au <strong>14 rue Defly,
+  06000 NICE - dossier 54737)</strong> reste à ce jour impayée.</p>
+
+  <p><br></p>
+
+  <table style="border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Facture</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Échéance</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Montant total</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Reste à payer</p></th>
+        <th style="border: 1px solid #ccc; padding: 8px;"><p>Télécharger la facture</p></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>50014</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>03/12/2025</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>370 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p>370 €</p></td>
+        <td style="border: 1px solid #ccc; padding: 8px;"><p><a href="https://adti.markidiags.com/redirect-pdf/BEMAYqz6IP">Télécharger</a></p></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><a
+  href="https://paiement.systempay.fr/vads-site/EXIM?vads_amount=370&amp;vads_order_id=50014&amp;vads_cust_id=54737&amp;vads_cust_last_name=LETURNIER&amp;vads_cust_first_name=Jean
+  Pierre&amp;vads_cust_email=dumas.francine@neuf.fr&amp;vads_cust_cell_phone=">Paiement
+  sécurisé en ligne en carte bleue</a></p>
+
+  <p><br></p>
+
+  <p>Ou par virement bancaire :</p>
+
+  <p>IBAN : <code>FR76 1460 7003 5370 1217 0161 406</code> — BIC :
+  <code>CCBPFRPPMAR</code> — Titulaire : <strong>ADTI - EX'IM AZUR</strong></p>
+
+  <p><br></p>
+
+  <p>Ou par chèque à l'ordre de <strong>ADTI - EX'IM AZUR</strong> — 40 avenue
+  des Diables Bleus, 06300 Nice</p>
+
+  <p><br></p>
+
+  <p>Nous vous remercions de procéder au règlement sous <strong>5 jours</strong>
+  afin d'éviter l'application des pénalités légales de retard.</p>
+
+  <p><br></p>
+
+  <p>Cordialement,</p>
+
+  <p><strong>L'équipe de comptabilité</strong></p>
+corps_html: null
+date_creation: '2026-06-25T16:22:56.503Z'
+date_envoi: '2026-07-02T08:01:52.456Z'
+date_ouverture: null
+derniere_erreur: null
+derniere_tentative: null
+email_index: 3
+erreur_count: 0
+id: rel_f64HBb9wWC
+impaye_ids:
+  - imp_BEMAYqz6IP
+manuelle: false
+message_id: null
+objet: 'EX''IM - Dossier 54737 - Relance n°1 : Facture 50014 impayée'
+ouvert: false
+planifiee_le: null
+scenario: single
+sequence_id: seq_zgPKAlVH65
+smtp_profile_id: smtp_YPsNANpWhC
+statut: Envoyée
+type: relance
+updated_at: '2026-07-02T08:01:52.456Z'
+valide: true

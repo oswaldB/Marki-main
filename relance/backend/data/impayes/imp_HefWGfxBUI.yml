@@ -1,0 +1,49 @@
+adresse_bien: 66/70 avenue des Alliès Nausicaa
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_dRQGks3dWX
+created_at: '2026-06-24T16:31:18.022Z'
+date_echeance: '2025-02-03'
+date_import: '2026-07-09T07:05:08.208Z'
+date_piece: '2025-02-03'
+donneur_ordre_id: null
+donneur_ordre_nom: LANDRA
+donneur_ordre_prenom: Alain
+email_index: 0
+facture_soldee: true
+id: imp_HefWGfxBUI
+id_dossier: '38581'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48228
+numero_dossier: 52587
+payer_id: cont_dRQGks3dWX
+payeur_civilite: ''
+payeur_email: alainlandra@live.fr
+payeur_nom: LANDRA
+payeur_prenom: Alain
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LANDRA
+proprietaire_prenom: Alain
+ref_piece: FA250131 48228
+reference: '52587'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 153.33
+total_ttc: 184
+type: impaye
+updated_at: '2026-06-24T16:31:18.022Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250131_48228/standard/FA250131 48228
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

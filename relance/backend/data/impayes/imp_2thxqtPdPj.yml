@@ -1,0 +1,49 @@
+adresse_bien: 5 rue de Lépante
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_CrQnkA9yHf
+created_at: '2026-06-24T16:30:56.962Z'
+date_echeance: '2025-12-31'
+date_import: '2026-07-09T07:05:06.201Z'
+date_piece: '2025-12-24'
+donneur_ordre_id: null
+donneur_ordre_nom: SAS LAKBI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_2thxqtPdPj
+id_dossier: '40901'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50181
+numero_dossier: 54907
+payer_id: cont_CrQnkA9yHf
+payeur_civilite: ''
+payeur_email: sami8306@outlook.fr
+payeur_nom: SAS LAKBI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SAS LAKBI
+proprietaire_prenom: null
+ref_piece: FA251224 50181
+reference: '54907'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 337.5
+total_ttc: 405
+type: impaye
+updated_at: '2026-06-24T16:30:56.962Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251224_50181/standard/FA251224 50181
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

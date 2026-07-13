@@ -1,0 +1,49 @@
+adresse_bien: 114 chemin de Fontvieille Le Fontvieille
+apporteur_id: cont_XfMiq6mNPd
+apporteur_nom: HAKKASAN
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06320'
+commentaire_piece: ''
+contact_relance_id: cont_3gau2HFTNl
+created_at: '2026-06-24T16:31:19.925Z'
+date_echeance: '2025-01-09'
+date_import: '2026-07-09T07:05:08.356Z'
+date_piece: '2025-01-09'
+donneur_ordre_id: null
+donneur_ordre_nom: 'POGGI '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_HABxxBbJYA
+id_dossier: '38403'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48075
+numero_dossier: 52409
+payer_id: cont_3gau2HFTNl
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: 'POGGI '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'POGGI '
+proprietaire_prenom: null
+ref_piece: FA250109 48075
+reference: '52409'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:19.925Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250109_48075/standard/FA250109 48075
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: LA TURBIE

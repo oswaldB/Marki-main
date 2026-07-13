@@ -1,0 +1,49 @@
+adresse_bien: 17 boulevard de la République
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_9KF7R3DCug
+created_at: '2026-06-24T16:31:43.076Z'
+date_echeance: '2024-01-22'
+date_import: '2026-07-09T07:05:10.595Z'
+date_piece: '2024-01-22'
+donneur_ordre_id: null
+donneur_ordre_nom: 'AUDA '
+donneur_ordre_prenom: presentée Mme RAPAIRE
+email_index: 0
+facture_soldee: true
+id: imp_pXwtPyTdGD
+id_dossier: '32687'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45962
+numero_dossier: 49684
+payer_id: cont_9KF7R3DCug
+payeur_civilite: ''
+payeur_email: info@republique-beausoleil.com
+payeur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'AUDA '
+proprietaire_prenom: presentée Mme RAPAIRE
+ref_piece: FA240122 45962
+reference: '49684'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 87.5
+total_ttc: 105
+type: impaye
+updated_at: '2026-06-24T16:31:43.076Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240122_45962/standard/FA240122 45962
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

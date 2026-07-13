@@ -1,0 +1,49 @@
+adresse_bien: 74 boulevard du Mont Boron Le Centaura
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: RUFFINI
+contact_relance_id: cont_LCd95CjGCu
+created_at: '2026-06-24T16:31:03.909Z'
+date_echeance: '2025-09-29'
+date_import: '2026-07-09T07:05:06.816Z'
+date_piece: '2025-09-22'
+donneur_ordre_id: null
+donneur_ordre_nom: MURRIS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_vAHAcMxR8G
+id_dossier: '40274'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49567
+numero_dossier: 54280
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: MURRIS
+proprietaire_prenom: null
+ref_piece: FA250922 49567
+reference: '54280'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 76.67
+total_ttc: 92
+type: impaye
+updated_at: '2026-06-24T16:31:03.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250922_49567/standard/FA250922 49567
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

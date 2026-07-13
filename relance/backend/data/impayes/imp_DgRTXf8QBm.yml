@@ -1,0 +1,49 @@
+adresse_bien: 12 rue Pietra Scritta Villa Regina
+apporteur_id: cont_ik7wYDqsCh
+apporteur_nom: 'ALEXANDRA CICCIONI REAL ESTATE '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_KCqbIUAcFv
+created_at: '2026-06-24T16:31:13.887Z'
+date_echeance: '2025-04-03'
+date_import: '2026-07-09T07:05:07.755Z'
+date_piece: '2025-04-03'
+donneur_ordre_id: null
+donneur_ordre_nom: CHAPOTOT
+donneur_ordre_prenom: Jacques et Yvette
+email_index: 0
+facture_soldee: true
+id: imp_DgRTXf8QBm
+id_dossier: '39090'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48650
+numero_dossier: 53096
+payer_id: cont_KCqbIUAcFv
+payeur_civilite: ''
+payeur_email: chapotot.jacques@wanadoo.fr
+payeur_nom: CHAPOTOT
+payeur_prenom: Jacques et Yvette
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CHAPOTOT
+proprietaire_prenom: Jacques et Yvette
+ref_piece: FA250403 48650
+reference: '53096'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 225
+total_ttc: 270
+type: impaye
+updated_at: '2026-06-24T16:31:13.887Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250403_48650/standard/FA250403 48650
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 13 rue Penchienatti
+apporteur_id: cont_pGFtZDN2KH
+apporteur_nom: CABINET LAMORTE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_BL3YUKNmJA
+created_at: '2026-06-24T16:30:49.935Z'
+date_echeance: '2026-04-28'
+date_import: '2026-07-09T07:05:05.481Z'
+date_piece: '2026-04-21'
+donneur_ordre_id: null
+donneur_ordre_nom: OBRY
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_6RtBLeKPBf
+id_dossier: '41584'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50812
+numero_dossier: 55590
+payer_id: cont_BL3YUKNmJA
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: OBRY
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: OBRY
+proprietaire_prenom: null
+ref_piece: FA260421 50812
+reference: '55590'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: -283.33
+total_ttc: -340
+type: impaye
+updated_at: '2026-06-24T16:30:49.935Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260421_50812/standard/FA260421 50812
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

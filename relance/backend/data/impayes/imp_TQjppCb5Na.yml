@@ -1,0 +1,49 @@
+adresse_bien: 140 avenue Delphine Villa Vanadis
+apporteur_id: cont_Q0jadWIlqE
+apporteur_nom: JLR IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_xD7F9PO0VR
+created_at: '2026-06-24T16:31:36.968Z'
+date_echeance: '2024-04-16'
+date_import: '2026-07-09T07:05:10.024Z'
+date_piece: '2024-04-16'
+donneur_ordre_id: null
+donneur_ordre_nom: BLUE LIT INVEST SA
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_TQjppCb5Na
+id_dossier: '34423'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46493
+numero_dossier: 50422
+payer_id: cont_xD7F9PO0VR
+payeur_civilite: ''
+payeur_email: torchsed1@virgilio.it
+payeur_nom: BLUE LIT INVEST SA
+payeur_prenom: ''
+payeur_telephone: '00393482650388'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BLUE LIT INVEST SA
+proprietaire_prenom: null
+ref_piece: FA240416 46493
+reference: '50422'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 232.5
+total_ttc: 279
+type: impaye
+updated_at: '2026-06-24T16:31:36.968Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/avril/FA240416_46493/standard/FA240416 46493
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

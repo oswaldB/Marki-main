@@ -1,0 +1,49 @@
+adresse_bien: 39 avenue des Acacias Le Castel Castagna
+apporteur_id: cont_axwCVxbA8C
+apporteur_nom: CABINET CAIRO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "Copropriété : CASTEL CASTAGNA\r\n39 avenue des Accacias \r\n06500 Menton\r\n\r\nObjet : travaux étanchéité des toitures terrasses des bâtiments A – B - C – D \r\nRebouchage des sondages à planifier avec un étancheur\r\n\r\n"
+contact_relance_id: cont_axwCVxbA8C
+created_at: '2026-06-24T16:31:01.876Z'
+date_echeance: '2025-10-24'
+date_import: '2026-07-09T07:05:06.597Z'
+date_piece: '2025-10-17'
+donneur_ordre_id: null
+donneur_ordre_nom: 'COPROPRIETE LE CASTEL CASTAGNA '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_LQOXfbnl84
+id_dossier: '40364'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49762
+numero_dossier: 54370
+payer_id: cont_axwCVxbA8C
+payeur_civilite: ''
+payeur_email: contact@syndictdac.fr
+payeur_nom: CABINET CAIRO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: 'COPROPRIETE LE CASTEL CASTAGNA '
+proprietaire_prenom: null
+ref_piece: FA251017 49762
+reference: '54370'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 2175
+total_ttc: 2610
+type: impaye
+updated_at: '2026-06-24T16:31:01.876Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251017_49762/standard/FA251017 49762
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

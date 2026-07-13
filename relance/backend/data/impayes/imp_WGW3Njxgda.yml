@@ -1,0 +1,49 @@
+adresse_bien: 51 avenue Reine Victoria  Résidence Victoria
+apporteur_id: cont_IaofzkIGB9
+apporteur_nom: BENAMOU & GHIOLDI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: "SARL PFM RAYGOT\r\n\r\n51 Avenue Reine Victoria\r\n06000 NICE\r\n\r\n01/04 RELANCE COMPTA\r\nbenamou relance le client, nous sommes en copie du mail \r\n\r\n17/04\r\nbenamou relance encore une fois de son côté aussi\r\n\r\n27/04 tel + mail \r\nnormalement le virement devrait être effectué dans la semaine"
+contact_relance_id: cont_B7zURiFFWd
+created_at: '2026-06-24T16:30:53.027Z'
+date_echeance: '2026-02-27'
+date_import: '2026-07-09T07:05:05.804Z'
+date_piece: '2026-02-20'
+donneur_ordre_id: null
+donneur_ordre_nom: SARL PFM RAYGOT
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_WGW3Njxgda
+id_dossier: '41257'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50499
+numero_dossier: 55263
+payer_id: cont_B7zURiFFWd
+payeur_civilite: ''
+payeur_email: raygot.pfm@gmail.com
+payeur_nom: SARL PFM RAYGOT
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SARL PFM RAYGOT
+proprietaire_prenom: null
+ref_piece: FA260220 50499
+reference: '55263'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 352.5
+total_ttc: 423
+type: impaye
+updated_at: '2026-06-24T16:30:53.027Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260220_50499/standard/FA260220 50499
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

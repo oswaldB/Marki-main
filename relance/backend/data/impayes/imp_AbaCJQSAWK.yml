@@ -1,0 +1,49 @@
+adresse_bien: 20 avenue du Banastron Anny Résidence
+apporteur_id: cont_nGbYMncL3T
+apporteur_nom: CABINET TRABAUD ACQUARONE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:43.014Z'
+date_echeance: '2024-01-26'
+date_import: '2026-07-09T07:05:10.568Z'
+date_piece: '2024-01-26'
+donneur_ordre_id: null
+donneur_ordre_nom: SDC ANNY RESIDENCE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_AbaCJQSAWK
+id_dossier: '32756'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46001
+numero_dossier: 49753
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SDC ANNY RESIDENCE
+proprietaire_prenom: null
+ref_piece: FA240126 46001
+reference: '49753'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1266.67
+total_ttc: 1520
+type: impaye
+updated_at: '2026-06-24T16:31:43.014Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240126_46001/standard/FA240126 46001
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

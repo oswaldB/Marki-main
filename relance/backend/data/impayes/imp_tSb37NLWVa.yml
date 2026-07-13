@@ -1,0 +1,49 @@
+adresse_bien: 83 boulevard de la Madeleine Le François Villon II
+apporteur_id: cont_HKy4C2gxUH
+apporteur_nom: ARTHURIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:51.075Z'
+date_echeance: '2023-09-15'
+date_import: '2026-07-09T07:05:11.359Z'
+date_piece: '2023-09-15'
+donneur_ordre_id: null
+donneur_ordre_nom: GOUHOURY
+donneur_ordre_prenom: 'Delphine '
+email_index: 0
+facture_soldee: true
+id: imp_tSb37NLWVa
+id_dossier: '30729'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45201
+numero_dossier: 48719
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: GOUHOURY
+proprietaire_prenom: 'Delphine '
+ref_piece: FA230915 45201
+reference: '48719'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:31:51.075Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/septembre/FA230915_45201/standard/FA230915 45201
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

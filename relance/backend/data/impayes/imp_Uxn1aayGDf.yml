@@ -1,0 +1,49 @@
+adresse_bien: 2 chemin de la Noix Princess Palace
+apporteur_id: cont_9KF7R3DCug
+apporteur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_9KF7R3DCug
+created_at: '2026-06-24T16:31:28.964Z'
+date_echeance: '2024-08-09'
+date_import: '2026-07-09T07:05:09.313Z'
+date_piece: '2024-08-09'
+donneur_ordre_id: null
+donneur_ordre_nom: GOUNY
+donneur_ordre_prenom: René
+email_index: 0
+facture_soldee: true
+id: imp_Uxn1aayGDf
+id_dossier: '36339'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47220
+numero_dossier: 51343
+payer_id: cont_9KF7R3DCug
+payeur_civilite: ''
+payeur_email: info@republique-beausoleil.com
+payeur_nom: 'REPUBLIQUE IMMOBILIER BEAUSOLEIL '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: GOUNY
+proprietaire_prenom: René
+ref_piece: FA240809 47220
+reference: '51343'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:28.964Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/aout/FA240809_47220/standard/FA240809 47220 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

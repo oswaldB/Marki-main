@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Gutenberg
+apporteur_id: cont_yqBBhH2hK0
+apporteur_nom: VEALYS 06 PORT
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_xA7tADm5CX
+created_at: '2026-06-24T16:31:27.099Z'
+date_echeance: '2024-09-05'
+date_import: '2026-07-09T07:05:09.172Z'
+date_piece: '2024-09-05'
+donneur_ordre_id: null
+donneur_ordre_nom: PACCIELLO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_jZkP38ezZe
+id_dossier: '37498'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47345
+numero_dossier: 51504
+payer_id: cont_xA7tADm5CX
+payeur_civilite: ''
+payeur_email: passuello@wanadoo.fr
+payeur_nom: PACCIELLO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PACCIELLO
+proprietaire_prenom: null
+ref_piece: FA240905 47345
+reference: '51504'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 70.83
+total_ttc: 85
+type: impaye
+updated_at: '2026-06-24T16:31:27.099Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240905_47345/standard/FA240905 47345
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

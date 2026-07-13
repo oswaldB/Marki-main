@@ -1,0 +1,65 @@
+$loki: 46
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:34.182Z'
+email: domusimmobilier@century21.fr
+id: cont_kyTCccB8zw
+impaye_ids:
+  - imp_EBnhoQCn2X
+  - imp_9GFYDlMbdO
+  - imp_FBDsF3gBIS
+  - imp_gdEdcnj7CI
+  - imp_HkwX7vseln
+  - imp_0dTpUXFDyg
+  - imp_E1rXVCNM9E
+  - imp_MxZa1cBBbB
+  - imp_jTD1CEudJM
+  - imp_s1jdypNMam
+  - imp_lH7nMFkVX4
+  - imp_bzjcBUkzYz
+  - imp_PR2VJHkQP7
+  - imp_8DfrKNT43L
+  - imp_bUI24LJOaS
+  - imp_48KpOrENRK
+  - imp_2kTxNzHHTm
+  - imp_PcboARs9eR
+  - imp_nBncTWz36b
+  - imp_PfBlrTa7HO
+  - imp_KLW4eeqsxR
+  - imp_ehmqwBg9Rr
+  - imp_hl25e0WbPv
+  - imp_mjgXoslWjn
+  - imp_8agMvgicWQ
+  - imp_rwasXjX4s1
+  - imp_WTbfUP5VDB
+  - imp_dgomI4AG74
+  - imp_1ZBgoirODw
+  - imp_0TdWSsDmMT
+  - imp_6Dn20PENG5
+  - imp_gm3dDC0SDQ
+  - imp_FuaOIaANT1
+  - imp_YFF2RKGwaK
+  - imp_sZ1BUpjBXK
+  - imp_dcA6DA7jNt
+  - imp_rpe5hEwggv
+is_blacklisted: false
+meta:
+  created: 1783580698350
+  revision: 0
+  version: 0
+nom: CENTURY 21 DOMUS Nice
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:33.287Z'

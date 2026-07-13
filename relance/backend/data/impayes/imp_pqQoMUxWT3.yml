@@ -1,0 +1,49 @@
+adresse_bien: 15 chemin du Barbe
+apporteur_id: cont_8XdLpRrBLk
+apporteur_nom: ARTHAUD IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06690'
+commentaire_piece: ''
+contact_relance_id: cont_sAs2Chco9n
+created_at: '2026-06-24T16:31:32.904Z'
+date_echeance: '2024-06-13'
+date_import: '2026-07-09T07:05:09.685Z'
+date_piece: '2024-06-13'
+donneur_ordre_id: null
+donneur_ordre_nom: FABRE
+donneur_ordre_prenom: Marion
+email_index: 0
+facture_soldee: true
+id: imp_pqQoMUxWT3
+id_dossier: '35906'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46876
+numero_dossier: 50910
+payer_id: cont_sAs2Chco9n
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: FABRE
+payeur_prenom: Marion
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FABRE
+proprietaire_prenom: Marion
+ref_piece: FA240613 46876
+reference: '50910'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 161.25
+total_ttc: 193.5
+type: impaye
+updated_at: '2026-06-24T16:31:32.904Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juin/FA240613_46876/standard/FA240613 46876 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: TOURRETTE-LEVENS

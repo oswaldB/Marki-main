@@ -1,0 +1,51 @@
+adresse_bien: 7 chemin des Myrtes Stella Maris Bâtiment E (box)
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: >-
+  21/07 : appel M. MEUNIER => en congés, vu avec Mme HERMOVILLA => renvoi
+  facture chrystele@financiere-investissement.fr
+contact_relance_id: cont_kklo2hk7tD
+created_at: '2026-06-24T16:31:08.884Z'
+date_echeance: '2025-06-26'
+date_import: '2026-07-09T07:05:07.277Z'
+date_piece: '2025-06-26'
+donneur_ordre_id: null
+donneur_ordre_nom: MEUNIER
+donneur_ordre_prenom: Jean Marc
+email_index: 0
+facture_soldee: true
+id: imp_JvFYrlg5BU
+id_dossier: '39703'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49108
+numero_dossier: 53709
+payer_id: cont_kklo2hk7tD
+payeur_civilite: ''
+payeur_email: jmmeunier1967@gmail.com
+payeur_nom: MEUNIER
+payeur_prenom: Jean Marc
+payeur_telephone: '0760358216'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MEUNIER
+proprietaire_prenom: Jean Marc
+ref_piece: FA250626 49108
+reference: '53709'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 62.5
+total_ttc: 75
+type: impaye
+updated_at: '2026-06-24T16:31:08.884Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250626_49108/standard/FA250626 49108 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

@@ -1,0 +1,32 @@
+$loki: 1594
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:49.521Z'
+email: jeromesamama@gmail.com
+id: cont_HOZzNX6XNg
+impaye_ids:
+  - imp_rrzspm8gmq
+  - imp_xqnCqhgq1G
+  - imp_6XW2h3fE1i
+  - imp_23dSmLUaPs
+is_blacklisted: false
+meta:
+  created: 1783580698972
+  revision: 0
+  version: 0
+nom: SAMAMA
+prenom: Jerôme
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:48.328Z'

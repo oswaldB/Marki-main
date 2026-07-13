@@ -1,0 +1,49 @@
+adresse_bien: 21 boulevard Marinoni Les Bananiers II
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_G1e4RlBJAe
+created_at: '2026-06-24T16:30:48.969Z'
+date_echeance: '2026-05-13'
+date_import: '2026-07-09T07:05:05.395Z'
+date_piece: '2026-05-06'
+donneur_ordre_id: null
+donneur_ordre_nom: GALTIER D'AURIAC
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_nwXDImG9fM
+id_dossier: '41672'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50901
+numero_dossier: 55678
+payer_id: cont_OfbVwp7BHg
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: GALTIER D'AURIAC
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GALTIER D'AURIAC
+proprietaire_prenom: null
+ref_piece: FA260506 50901
+reference: '55678'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: -483.33
+total_ttc: -580
+type: impaye
+updated_at: '2026-06-24T16:30:48.969Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260506_50901/standard/FA260506 50901 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

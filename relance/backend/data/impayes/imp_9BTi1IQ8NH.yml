@@ -1,0 +1,49 @@
+adresse_bien: 329 route de Bellet
+apporteur_id: cont_HKy4C2gxUH
+apporteur_nom: ARTHURIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:56.071Z'
+date_echeance: '2023-07-11'
+date_import: '2026-07-09T07:05:11.813Z'
+date_piece: '2023-07-11'
+donneur_ordre_id: null
+donneur_ordre_nom: BAGNINI
+donneur_ordre_prenom: Caroline
+email_index: 0
+facture_soldee: true
+id: imp_9BTi1IQ8NH
+id_dossier: '29226'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44760
+numero_dossier: 48212
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: BAGNINI
+proprietaire_prenom: Caroline
+ref_piece: FA230711 44760
+reference: '48212'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:31:56.071Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juillet/FA230711_44760/standard/FA230711 44760
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

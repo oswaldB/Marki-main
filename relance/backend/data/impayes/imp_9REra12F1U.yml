@@ -1,0 +1,49 @@
+adresse_bien: 57 avenue Henri Matisse Les Terrasses de Saint Augustin Bâtiment I
+apporteur_id: cont_F47dfC6qeF
+apporteur_nom: AGENCE DU PORT
+apporteur_prenom: 'Cabinet Salomon '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_F47dfC6qeF
+created_at: '2026-06-24T16:31:20.035Z'
+date_echeance: '2024-12-30'
+date_import: '2026-07-09T07:05:08.397Z'
+date_piece: '2024-12-30'
+donneur_ordre_id: null
+donneur_ordre_nom: AGENCE DU PORT
+donneur_ordre_prenom: 'Cabinet Salomon '
+email_index: 0
+facture_soldee: true
+id: imp_9REra12F1U
+id_dossier: '38316'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48024
+numero_dossier: 52322
+payer_id: cont_F47dfC6qeF
+payeur_civilite: ''
+payeur_email: sophiesalomon@sarl-adp.fr
+payeur_nom: AGENCE DU PORT
+payeur_prenom: 'Cabinet Salomon '
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: Vaillant
+proprietaire_prenom: Pierre
+ref_piece: FA241230 48024
+reference: '52322'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 141.67
+total_ttc: 170
+type: impaye
+updated_at: '2026-06-24T16:31:20.035Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/decembre/FA241230_48024/standard/FA241230 48024
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 8 avenue du Pigautier Les Bruyeres
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:01.039Z'
+date_echeance: '2025-10-28'
+date_import: '2026-07-09T07:05:06.580Z'
+date_piece: '2025-10-21'
+donneur_ordre_id: null
+donneur_ordre_nom: BRAIDY
+donneur_ordre_prenom: Nadine
+email_index: 0
+facture_soldee: true
+id: imp_P7VthZdXVE
+id_dossier: '40425'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49783
+numero_dossier: 54431
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BRAIDY
+proprietaire_prenom: Nadine
+ref_piece: FA251021 49783
+reference: '54431'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:01.039Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251021_49783/standard/FA251021 49783
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

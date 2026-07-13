@@ -1,0 +1,49 @@
+adresse_bien: 9 avenue des Roches Choisies Villa Palatines
+apporteur_id: cont_ejqZ49Mscp
+apporteur_nom: GRANDJEAN
+apporteur_prenom: Olivier
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_prdG26Ak7E
+created_at: '2026-06-24T16:30:57.989Z'
+date_echeance: '2025-12-09'
+date_import: '2026-07-09T07:05:06.305Z'
+date_piece: '2025-12-02'
+donneur_ordre_id: null
+donneur_ordre_nom: SOLOVEVA
+donneur_ordre_prenom: Galina
+email_index: 0
+facture_soldee: true
+id: imp_JZHc9CRJv7
+id_dossier: '40766'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50063
+numero_dossier: 54772
+payer_id: cont_prdG26Ak7E
+payeur_civilite: ''
+payeur_email: galina_020@mail.ru
+payeur_nom: SOLOVEVA
+payeur_prenom: Galina
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SOLOVEVA
+proprietaire_prenom: Galina
+ref_piece: FA251202 50063
+reference: '54772'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 200
+total_ttc: 240
+type: impaye
+updated_at: '2026-06-24T16:30:57.989Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251202_50063/standard/FA251202 50063
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

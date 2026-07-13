@@ -1,0 +1,30 @@
+$loki: 1953
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:52.565Z'
+email: null
+id: cont_ziokCFjDxx
+impaye_ids:
+  - imp_73Paxbts7C
+  - imp_Y0COCQt83L
+is_blacklisted: false
+meta:
+  created: 1783580699112
+  revision: 0
+  version: 0
+nom: GIRARD
+prenom: Bernard
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:52.323Z'

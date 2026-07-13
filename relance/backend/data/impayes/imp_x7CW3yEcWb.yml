@@ -1,0 +1,49 @@
+adresse_bien: 18 boulevard Mantéga-Righi Bâtiment
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: "18 BD MANTEGA RIGHI\r\n06100 NICE\r\n\r\n3 lots principaux\r\n\r\n(Maison - 2 lots non concernés)\r\n\r\nPAIEMENT RECU LE 09/02/26 DE 1400 € "
+contact_relance_id: cont_Ao5AzoEM7J
+created_at: '2026-06-24T16:30:56.909Z'
+date_echeance: '2025-12-31'
+date_import: '2026-07-09T07:05:06.181Z'
+date_piece: '2025-12-24'
+donneur_ordre_id: null
+donneur_ordre_nom: CITYA NICE IMMOBILIER
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_x7CW3yEcWb
+id_dossier: '40492'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50185
+numero_dossier: 54498
+payer_id: cont_qVbgUfs9GA
+payeur_civilite: ''
+payeur_email: mguichard@citya.com
+payeur_nom: CITYA NICE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: COPROPRIETE 18 MANTEGA RIGHI
+proprietaire_prenom: null
+ref_piece: FA251224 50185
+reference: '54498'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 933.33
+total_ttc: 1120
+type: impaye
+updated_at: '2026-06-24T16:30:56.909Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251224_50185/standard/FA251224 50185
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

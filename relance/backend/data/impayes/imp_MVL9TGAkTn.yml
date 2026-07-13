@@ -1,0 +1,49 @@
+adresse_bien: 6 avenue de France Le Beach
+apporteur_id: cont_irhpRzLL3A
+apporteur_nom: MICHAEL DANIELS ESTATES
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_e99ocAlRYa
+created_at: '2026-06-24T16:31:24.990Z'
+date_echeance: '2024-10-08'
+date_import: '2026-07-09T07:05:08.893Z'
+date_piece: '2024-10-08'
+donneur_ordre_id: null
+donneur_ordre_nom: JRE RENT ME FRANCE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_MVL9TGAkTn
+id_dossier: '37759'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47581
+numero_dossier: 51765
+payer_id: cont_e99ocAlRYa
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: JRE RENT ME FRANCE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: JRE RENT ME FRANCE
+proprietaire_prenom: null
+ref_piece: FA241008 47581
+reference: '51765'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:24.990Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241008_47581/standard/FA241008 47581
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

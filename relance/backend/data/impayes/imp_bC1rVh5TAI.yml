@@ -1,0 +1,49 @@
+adresse_bien: 1461 avenue Notre-Dame de Vie
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06250'
+commentaire_piece: "1461 avenue Notre Dame de Vie\r\n06250 MOUGINS"
+contact_relance_id: cont_sA4Xu0ZOQX
+created_at: '2026-06-24T16:31:02.048Z'
+date_echeance: '2025-10-14'
+date_import: '2026-07-09T07:05:06.681Z'
+date_piece: '2025-10-07'
+donneur_ordre_id: null
+donneur_ordre_nom: CAMPANA
+donneur_ordre_prenom: Claudine
+email_index: 0
+facture_soldee: true
+id: imp_bC1rVh5TAI
+id_dossier: '40359'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49685
+numero_dossier: 54365
+payer_id: cont_sA4Xu0ZOQX
+payeur_civilite: ''
+payeur_email: campanaclaudine@gmail.com
+payeur_nom: CAMPANA
+payeur_prenom: Claudine
+payeur_telephone: '0614138843'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAMPANA
+proprietaire_prenom: Claudine
+ref_piece: FA251007 49685
+reference: '54365'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 395.83
+total_ttc: 475
+type: impaye
+updated_at: '2026-06-24T16:31:02.048Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251007_49685/standard/FA251007 49685
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MOUGINS

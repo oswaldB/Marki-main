@@ -1,0 +1,49 @@
+adresse_bien: ''
+apporteur_id: cont_sfpCiuiAJC
+apporteur_nom: SAS EXIM EXPLOITATION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: ''
+commentaire_piece: '6727 Diagnostic HAP - PCD Cannes Marchandises '
+contact_relance_id: cont_uEe1kqasth
+created_at: '2026-06-24T16:30:47.899Z'
+date_echeance: '2026-06-03'
+date_import: '2026-07-09T07:05:05.279Z'
+date_piece: '2026-05-27'
+donneur_ordre_id: null
+donneur_ordre_nom: SAS EXIM EXPLOITATION
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_HUaKl1Sigr
+id_dossier: '41863'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51011
+numero_dossier: 55869
+payer_id: cont_sfpCiuiAJC
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SAS EXIM EXPLOITATION
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: SNCF
+proprietaire_prenom: null
+ref_piece: FA260527 51011
+reference: '55869'
+reste_a_payer: 645.11
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 537.59
+total_ttc: 645.11
+type: impaye
+updated_at: '2026-06-24T16:33:33.227Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mai/FA260527_51011/standard/FA260527 51011 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ''

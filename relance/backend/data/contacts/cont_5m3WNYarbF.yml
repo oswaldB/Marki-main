@@ -1,0 +1,30 @@
+$loki: 6071
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:30.588Z'
+email: claudio.sandretti@inwind.it
+id: cont_5m3WNYarbF
+impaye_ids:
+  - imp_VMJeKZd7wO
+  - imp_QAsFSsglJz
+is_blacklisted: false
+meta:
+  created: 1783580700528
+  revision: 0
+  version: 0
+nom: SANDRETTI
+prenom: Claudio
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:29.416Z'

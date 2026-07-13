@@ -1,0 +1,49 @@
+adresse_bien: 23 rue Mattoni
+apporteur_id: cont_dntkuJ727m
+apporteur_nom: 'WRETMAN MENTON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_KxTiQ9uPlL
+created_at: '2026-06-24T16:31:13.064Z'
+date_echeance: '2025-04-08'
+date_import: '2026-07-09T07:05:07.745Z'
+date_piece: '2025-04-08'
+donneur_ordre_id: null
+donneur_ordre_nom: PARRAVICINI
+donneur_ordre_prenom: Maria
+email_index: 0
+facture_soldee: true
+id: imp_XBUkWVpBwV
+id_dossier: '39132'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48678
+numero_dossier: 53138
+payer_id: cont_KxTiQ9uPlL
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: PARRAVICINI
+payeur_prenom: Maria
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: PARRAVICINI
+proprietaire_prenom: Maria
+ref_piece: FA250408 48678
+reference: '53138'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 283.33
+total_ttc: 340
+type: impaye
+updated_at: '2026-06-24T16:31:13.064Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250408_48678/standard/FA250408 48678
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

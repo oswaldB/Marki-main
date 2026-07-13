@@ -1,0 +1,47 @@
+$loki: 1295
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:46.512Z'
+email: ca.perard@hakkasan.immo
+id: cont_aphNL83I9z
+impaye_ids:
+  - imp_fruU00dper
+  - imp_xNFfzL8kCA
+  - imp_224PTuJs4Y
+  - imp_hd9OqudMlV
+  - imp_VvsKL6dhtY
+  - imp_HQooAb2zz5
+  - imp_jqfgwv1Ngr
+  - imp_mrebFquDFY
+  - imp_zZBkI1ykig
+  - imp_hOfmvUAfnd
+  - imp_F6LZQsmqkb
+  - imp_gcf1koYBly
+  - imp_rhxpFrhVSN
+  - imp_oVkKFCBp1Z
+  - imp_xZLlLxbD43
+  - imp_RSxlQxMOc1
+  - imp_NLanjJlN6r
+  - imp_8DHyaE1chA
+  - imp_aEG5NjCQK6
+is_blacklisted: false
+meta:
+  created: 1783580698864
+  revision: 0
+  version: 0
+nom: PERARD
+prenom: Charles Albert
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:45.361Z'

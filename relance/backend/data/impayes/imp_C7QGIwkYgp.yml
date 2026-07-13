@@ -1,0 +1,49 @@
+adresse_bien: 1 avenue de la Pinède Le Cap Soleil
+apporteur_id: cont_98qyheyUph
+apporteur_nom: AGENCE MENTON IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: "gratuit facture à annuler\r\n"
+contact_relance_id: cont_d0Fxcpp23E
+created_at: '2026-06-24T16:31:41.073Z'
+date_echeance: '2024-02-16'
+date_import: '2026-07-09T07:05:10.407Z'
+date_piece: '2024-02-16'
+donneur_ordre_id: null
+donneur_ordre_nom: MONTANERA
+donneur_ordre_prenom: Nelly
+email_index: 0
+facture_soldee: true
+id: imp_C7QGIwkYgp
+id_dossier: '32929'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46144
+numero_dossier: 49926
+payer_id: cont_d0Fxcpp23E
+payeur_civilite: ''
+payeur_email: menton-immo@wanadoo.fr
+payeur_nom: MONTANERA
+payeur_prenom: Nelly
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MONTANERA
+proprietaire_prenom: Nelly
+ref_piece: FA240216 46144
+reference: '49926'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 0
+total_ttc: 0
+type: impaye
+updated_at: '2026-06-24T16:31:41.073Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/fevrier/FA240216_46144/standard/FA240216 46144
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

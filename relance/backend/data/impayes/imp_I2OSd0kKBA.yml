@@ -1,0 +1,49 @@
+adresse_bien: 92 boulevard Beau Rivage Prolongé
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: cont_bevd8ejBzD
+created_at: '2026-06-24T16:31:40.005Z'
+date_echeance: '2024-03-04'
+date_import: '2026-07-09T07:05:10.298Z'
+date_piece: '2024-03-04'
+donneur_ordre_id: null
+donneur_ordre_nom: ROMEO
+donneur_ordre_prenom: Mélanie
+email_index: 0
+facture_soldee: true
+id: imp_I2OSd0kKBA
+id_dossier: '33016'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46223
+numero_dossier: 50013
+payer_id: cont_bevd8ejBzD
+payeur_civilite: ''
+payeur_email: claudia.flo@hotmail.fr
+payeur_nom: ROMEO
+payeur_prenom: Mélanie
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROMEO
+proprietaire_prenom: Mélanie
+ref_piece: FA240229 46223
+reference: '50013'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:40.005Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240229_46223/standard/FA240229 46223 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

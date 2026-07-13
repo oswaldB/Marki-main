@@ -1,0 +1,49 @@
+adresse_bien: 26 rue Verdi
+apporteur_id: cont_J7D5vQCcws
+apporteur_nom: CENTURY 21 OPTIMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "PALAIS MIREILLE\r\n\r\n26 rue Verdi\r\n06000 NICE\r\n\r\n\r\n1 bât. / 13 logts"
+contact_relance_id: cont_ItxpVPIJyV
+created_at: '2026-06-24T16:31:09.885Z'
+date_echeance: '2025-06-11'
+date_import: '2026-07-09T07:05:07.379Z'
+date_piece: '2025-06-11'
+donneur_ordre_id: null
+donneur_ordre_nom: 'Copropriété PALAIS MIREILLE '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_IUzErz9Npz
+id_dossier: '39568'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49025
+numero_dossier: 53574
+payer_id: cont_ItxpVPIJyV
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: 'Copropriété PALAIS MIREILLE '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'Copropriété PALAIS MIREILLE '
+proprietaire_prenom: null
+ref_piece: FA250611 49025
+reference: '53574'
+reste_a_payer: 948.5
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 1129.17
+total_ttc: 1355
+type: impaye
+updated_at: '2026-06-24T16:33:34.276Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250611_49025/standard/FA250611 49025 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

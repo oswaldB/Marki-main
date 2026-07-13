@@ -1,0 +1,49 @@
+adresse_bien: 3 rue Jeanne d'Arc
+apporteur_id: cont_11gO16DxFH
+apporteur_nom: 3G IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06380'
+commentaire_piece: "SV ALLAVENA JEAN N° 0068030685\r\n\r\n3 rue Jeanne d'Arc\r\n06380 SOSPEL "
+contact_relance_id: cont_ozcOiRUaXT
+created_at: '2026-06-24T16:30:46.933Z'
+date_echeance: '2026-06-08'
+date_import: '2026-07-09T07:05:05.168Z'
+date_piece: '2026-06-01'
+donneur_ordre_id: null
+donneur_ordre_nom: SV ALLAVENA JEAN N°0068030685
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_HrOZd1gGkJ
+id_dossier: '41846'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51062
+numero_dossier: 55852
+payer_id: cont_ozcOiRUaXT
+payeur_civilite: ''
+payeur_email: contact@expertiseetsynergies.com
+payeur_nom: EXPERTISE ET SYNERGIES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: SV ALLAVENA JEAN N°0068030685
+proprietaire_prenom: null
+ref_piece: FA260602 51062
+reference: '55852'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 368.33
+total_ttc: 442
+type: impaye
+updated_at: '2026-06-26T09:50:00.540Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260602_51062/standard/FA260602 51062 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: SOSPEL

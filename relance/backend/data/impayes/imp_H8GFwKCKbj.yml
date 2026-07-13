@@ -1,0 +1,49 @@
+adresse_bien: 17 avenue Notre Dame de Bon Voyage
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_A9uoubiuv4
+created_at: '2026-06-24T16:30:59.908Z'
+date_echeance: '2025-11-19'
+date_import: '2026-07-09T07:05:06.453Z'
+date_piece: '2025-11-12'
+donneur_ordre_id: null
+donneur_ordre_nom: NIER
+donneur_ordre_prenom: Jérémy
+email_index: 0
+facture_soldee: true
+id: imp_H8GFwKCKbj
+id_dossier: '40621'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49919
+numero_dossier: 54627
+payer_id: cont_A9uoubiuv4
+payeur_civilite: ''
+payeur_email: jeremy.nier@gmail.com
+payeur_nom: NIER
+payeur_prenom: Jérémy
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: NIER
+proprietaire_prenom: Jérémy
+ref_piece: FA251112 49919
+reference: '54627'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 208.33
+total_ttc: 250
+type: impaye
+updated_at: '2026-06-24T16:30:59.908Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251112_49919/standard/FA251112 49919
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

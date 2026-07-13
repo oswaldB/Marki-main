@@ -1,0 +1,49 @@
+adresse_bien: 240 route de la Colle
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06340'
+commentaire_piece: ''
+contact_relance_id: cont_VNVC1QeiUK
+created_at: '2026-06-24T16:31:05.958Z'
+date_echeance: '2025-08-19'
+date_import: '2026-07-09T07:05:06.993Z'
+date_piece: '2025-08-12'
+donneur_ordre_id: null
+donneur_ordre_nom: 'GREGORIO '
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_PWfC3MCR4Q
+id_dossier: '40026'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49366
+numero_dossier: 54032
+payer_id: cont_VNVC1QeiUK
+payeur_civilite: ''
+payeur_email: laurence.gregorio@orange.fr
+payeur_nom: 'GREGORIO '
+payeur_prenom: ''
+payeur_telephone: '0684480146'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'GREGORIO '
+proprietaire_prenom: null
+ref_piece: FA250812 49366
+reference: '54032'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:05.958Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250812_49366/standard/FA250812 49366 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: DRAP

@@ -1,0 +1,49 @@
+adresse_bien: 8 quai des Docks Le Neptune
+apporteur_id: cont_5owmFecKf0
+apporteur_nom: RICHER IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: null
+created_at: '2026-06-24T16:31:57.084Z'
+date_echeance: '2023-06-22'
+date_import: '2026-07-09T07:05:11.921Z'
+date_piece: '2023-06-22'
+donneur_ordre_id: null
+donneur_ordre_nom: BARTHELEMY
+donneur_ordre_prenom: Hubert
+email_index: 0
+facture_soldee: true
+id: imp_Ca6NRu8JBi
+id_dossier: '29089'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44651
+numero_dossier: 48075
+payer_id: null
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ''
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Autre
+proprietaire_id: null
+proprietaire_nom: BARTHELEMY
+proprietaire_prenom: Hubert
+ref_piece: FA230622 44651
+reference: '48075'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 163.33
+total_ttc: 196
+type: impaye
+updated_at: '2026-06-24T16:31:57.084Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juin/FA230622_44651/standard/FA230622 44651 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 15 Montee de la Chapelle Maison de village
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06610'
+commentaire_piece: "Contre visite DPE suite travaux \r\nfacture dans dossier du devis \r\net mise à jour termites et ERP\r\nPlomb ok négatif"
+contact_relance_id: cont_peDYPI0kCE
+created_at: '2026-06-24T16:31:12.999Z'
+date_echeance: '2025-04-10'
+date_import: '2026-07-09T07:05:07.716Z'
+date_piece: '2025-04-10'
+donneur_ordre_id: null
+donneur_ordre_nom: LE DEUNFF
+donneur_ordre_prenom: Erven
+email_index: 0
+facture_soldee: true
+id: imp_Xl1ZcQcpBz
+id_dossier: '39063'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48694
+numero_dossier: 53069
+payer_id: cont_peDYPI0kCE
+payeur_civilite: ''
+payeur_email: ervenld@gmail.com
+payeur_nom: LE DEUNFF
+payeur_prenom: Erven
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: LE DEUNFF
+proprietaire_prenom: Erven
+ref_piece: FA250410 48694
+reference: '53069'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 105
+total_ttc: 126
+type: impaye
+updated_at: '2026-06-24T16:31:12.999Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250410_48694/standard/FA250410 48694
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: LA GAUDE

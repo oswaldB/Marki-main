@@ -1,0 +1,49 @@
+adresse_bien: 4 avenue du Général de Gaulle
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06340'
+commentaire_piece: ''
+contact_relance_id: cont_wtvcmLIzhk
+created_at: '2026-06-24T16:31:46.080Z'
+date_echeance: '2023-12-01'
+date_import: '2026-07-09T07:05:10.882Z'
+date_piece: '2023-12-01'
+donneur_ordre_id: null
+donneur_ordre_nom: CAUVIN
+donneur_ordre_prenom: Nicole
+email_index: 0
+facture_soldee: true
+id: imp_DV2T5jHw66
+id_dossier: '32357'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45712
+numero_dossier: 49354
+payer_id: cont_wtvcmLIzhk
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CAUVIN
+payeur_prenom: Nicole
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAUVIN
+proprietaire_prenom: Nicole
+ref_piece: FA231201 45712
+reference: '49354'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 220.42
+total_ttc: 264.5
+type: impaye
+updated_at: '2026-06-24T16:31:46.080Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231201_45712/standard/FA231201 45712
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: DRAP

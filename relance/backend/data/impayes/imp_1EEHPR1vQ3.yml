@@ -1,0 +1,49 @@
+adresse_bien: 22 24 promenade Maréchal Leclerc de Hauteclocque L'Ambassador
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_ZYIdPrjEDH
+created_at: '2026-06-24T16:30:51.898Z'
+date_echeance: '2026-03-30'
+date_import: '2026-07-09T07:05:05.650Z'
+date_piece: '2026-03-23'
+donneur_ordre_id: null
+donneur_ordre_nom: GORNES
+donneur_ordre_prenom: Patrice
+email_index: 0
+facture_soldee: true
+id: imp_1EEHPR1vQ3
+id_dossier: '41424'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50660
+numero_dossier: 55430
+payer_id: cont_ZYIdPrjEDH
+payeur_civilite: ''
+payeur_email: pgornes06@gmail.com
+payeur_nom: GORNES
+payeur_prenom: Patrice
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GORNES
+proprietaire_prenom: Patrice
+ref_piece: FA260323 50660
+reference: '55430'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 183.33
+total_ttc: 220
+type: impaye
+updated_at: '2026-06-24T16:30:51.898Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260323_50660/standard/FA260323 50660 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

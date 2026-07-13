@@ -1,0 +1,49 @@
+adresse_bien: 15 impasse Bel Air
+apporteur_id: cont_iACFspdy3O
+apporteur_nom: 'PARNASSE IMMOBILIER CAGNES '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06600'
+commentaire_piece: ''
+contact_relance_id: cont_gLEynQKgXa
+created_at: '2026-06-24T16:30:49.935Z'
+date_echeance: '2026-04-24'
+date_import: '2026-07-09T07:05:05.485Z'
+date_piece: '2026-04-17'
+donneur_ordre_id: null
+donneur_ordre_nom: BENAGLIA BOURGEOIS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Zfhj2QpjC1
+id_dossier: '41523'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50795
+numero_dossier: 55529
+payer_id: cont_gLEynQKgXa
+payeur_civilite: ''
+payeur_email: benagliabourgeois@gmail.com
+payeur_nom: BENAGLIA BOURGEOIS
+payeur_prenom: ''
+payeur_telephone: '0615175207'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BENAGLIA BOURGEOIS
+proprietaire_prenom: null
+ref_piece: FA260417 50795
+reference: '55529'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 1000
+total_ttc: 1200
+type: impaye
+updated_at: '2026-06-24T16:30:49.935Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260417_50795/standard/FA260417 50795
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ANTIBES

@@ -1,0 +1,49 @@
+adresse_bien: 165 chemin Lintier Les Arcades
+apporteur_id: cont_OdGGwFKYqJ
+apporteur_nom: SPECIAL IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06220'
+commentaire_piece: "Matthias 28/11/24 : renvoi facture à aurélie\r\nRelance mail aurelie 09/09/25\r\n\r\n\r\n23/02 RELANCE AURELIE COMPTA\r\n"
+contact_relance_id: cont_IGIi9qDYyD
+created_at: '2026-06-24T16:31:54.055Z'
+date_echeance: '2023-08-07'
+date_import: '2026-07-09T07:05:11.608Z'
+date_piece: '2023-08-07'
+donneur_ordre_id: null
+donneur_ordre_nom: DENEUX
+donneur_ordre_prenom: Natacha
+email_index: 0
+facture_soldee: true
+id: imp_cm9XneQI4z
+id_dossier: '29366'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44879
+numero_dossier: 48352
+payer_id: cont_OdGGwFKYqJ
+payeur_civilite: ''
+payeur_email: bienvenue@specialimmo.com
+payeur_nom: SPECIAL IMMO
+payeur_prenom: ''
+payeur_telephone: '0621001036'
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DENEUX
+proprietaire_prenom: Natacha
+ref_piece: FA230731 44879
+reference: '48352'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 80
+total_ttc: 96
+type: impaye
+updated_at: '2026-06-24T16:31:54.055Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/aout/FA230731_44879/standard/FA230731 44879 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: VALLAURIS

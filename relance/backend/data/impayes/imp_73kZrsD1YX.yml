@@ -1,0 +1,49 @@
+adresse_bien: 13 avenue du Professeur Langevin Jardins d'Azur
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_K1J95vh17j
+created_at: '2026-06-24T16:31:22.055Z'
+date_echeance: '2024-11-21'
+date_import: '2026-07-09T07:05:08.634Z'
+date_piece: '2024-11-21'
+donneur_ordre_id: null
+donneur_ordre_nom: CAISSE AUTONOME DES RETRAITES
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_73kZrsD1YX
+id_dossier: '38060'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47829
+numero_dossier: 52066
+payer_id: cont_OHlZ3trACx
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CAISSE AUTONOME DES RETRAITES
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAISSE AUTONOME DES RETRAITES
+proprietaire_prenom: null
+ref_piece: FA241121 47829
+reference: '52066'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 454.17
+total_ttc: 545
+type: impaye
+updated_at: '2026-06-24T16:31:22.055Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241121_47829/standard/FA241121 47829
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

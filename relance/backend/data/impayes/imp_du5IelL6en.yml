@@ -1,0 +1,49 @@
+adresse_bien: 52 rue Beaumont
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_dMXFa914zq
+created_at: '2026-06-24T16:31:23.011Z'
+date_echeance: '2024-11-08'
+date_import: '2026-07-09T07:05:08.707Z'
+date_piece: '2024-11-08'
+donneur_ordre_id: null
+donneur_ordre_nom: SALOMON - LOUVEAU
+donneur_ordre_prenom: 'Michele '
+email_index: 0
+facture_soldee: true
+id: imp_du5IelL6en
+id_dossier: '37978'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47764
+numero_dossier: 51984
+payer_id: cont_dMXFa914zq
+payeur_civilite: ''
+payeur_email: michelesalomon@wanadoo.fr
+payeur_nom: SALOMON - LOUVEAU
+payeur_prenom: 'Michele '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SALOMON - LOUVEAU
+proprietaire_prenom: 'Michele '
+ref_piece: FA241108 47764
+reference: '51984'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 153.33
+total_ttc: 184
+type: impaye
+updated_at: '2026-06-24T16:31:23.011Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/novembre/FA241108_47764/standard/FA241108 47764
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

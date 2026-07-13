@@ -1,0 +1,49 @@
+adresse_bien: 160bis avenue Henry Dunant
+apporteur_id: cont_zV6qTmqE9T
+apporteur_nom: BORNE ET DELAUNAY
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_M5UTePZEMF
+created_at: '2026-06-24T16:31:35.079Z'
+date_echeance: '2024-05-02'
+date_import: '2026-07-09T07:05:09.914Z'
+date_piece: '2024-05-02'
+donneur_ordre_id: null
+donneur_ordre_nom: FABIANS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_0cJB9RNx1e
+id_dossier: '34510'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46562
+numero_dossier: 50509
+payer_id: cont_M5UTePZEMF
+payeur_civilite: ''
+payeur_email: fabians.j@free.fr
+payeur_nom: FABIANS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FABIANS
+proprietaire_prenom: null
+ref_piece: FA240425 46562
+reference: '50509'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:35.079Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mai/FA240425_46562/standard/FA240425 46562 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

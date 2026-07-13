@@ -1,0 +1,31 @@
+$loki: 6224
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:32.548Z'
+email: null
+id: cont_GPNKTpbqy6
+impaye_ids:
+  - imp_LZeZDAsYpM
+  - imp_Xdq4eyhNvn
+  - imp_kmJpGMPpzn
+is_blacklisted: false
+meta:
+  created: 1783580700573
+  revision: 0
+  version: 0
+nom: SAS JP
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:01:31.351Z'

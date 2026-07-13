@@ -1,0 +1,49 @@
+adresse_bien: 10 rue Chanoine Rance-Bourrey
+apporteur_id: cont_Nh1fOoyJMJ
+apporteur_nom: GESTION IMMOBILIERE TISSINIE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_Nh1fOoyJMJ
+created_at: '2026-06-24T16:31:03.942Z'
+date_echeance: '2025-09-23'
+date_import: '2026-07-09T07:05:06.842Z'
+date_piece: '2025-09-16'
+donneur_ordre_id: null
+donneur_ordre_nom: GESTION IMMOBILIERE TISSINIE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_GBFTTTctGR
+id_dossier: '39968'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49533
+numero_dossier: 53974
+payer_id: cont_Nh1fOoyJMJ
+payeur_civilite: ''
+payeur_email: info@tissinie.com
+payeur_nom: GESTION IMMOBILIERE TISSINIE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: HERZ
+proprietaire_prenom: Bernard
+ref_piece: FA250916 49533
+reference: '53974'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 112.5
+total_ttc: 135
+type: impaye
+updated_at: '2026-06-24T16:31:03.942Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/septembre/FA250916_49533/standard/FA250916 49533
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

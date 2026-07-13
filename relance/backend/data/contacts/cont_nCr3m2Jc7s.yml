@@ -1,0 +1,40 @@
+$loki: 3682
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:08.559Z'
+email: ponouck@sfr.fr
+id: cont_nCr3m2Jc7s
+impaye_ids:
+  - imp_lol21sOkKb
+  - imp_HOA4gMDPRY
+  - imp_nP9D73b9eC
+is_blacklisted: false
+meta:
+  created: 1783580699754
+  revision: 1
+  updated: 1783580712576
+  version: 0
+nom: GILLET
+prenom: ''
+relance_ids:
+  - rel_RJXlIv9T9D
+  - rel_b66xDnS7d5
+  - rel_D1NmAxJxJr
+  - rel_snN46KMbAf
+  - rel_j2M3qa5B3Q
+  - rel_AdHgmO5EBy
+  - rel_j62P37gAkP
+  - rel_MJyR9AD50c
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:07.374Z'

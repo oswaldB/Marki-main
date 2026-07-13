@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Jean Bonfante
+apporteur_id: cont_aFSXWA9ETI
+apporteur_nom: SAINT ROCH IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_nm6W7EbE7V
+created_at: '2026-06-24T16:31:10.017Z'
+date_echeance: '2025-06-03'
+date_import: '2026-07-09T07:05:07.432Z'
+date_piece: '2025-06-03'
+donneur_ordre_id: null
+donneur_ordre_nom: ZACHER
+donneur_ordre_prenom: Marie Claude
+email_index: 0
+facture_soldee: true
+id: imp_owep7yHQnu
+id_dossier: '39518'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48980
+numero_dossier: 53524
+payer_id: cont_nm6W7EbE7V
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ZACHER
+payeur_prenom: Marie Claude
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ZACHER
+proprietaire_prenom: Marie Claude
+ref_piece: FA250603 48980
+reference: '53524'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 250
+total_ttc: 300
+type: impaye
+updated_at: '2026-06-24T16:31:10.017Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250603_48980/standard/FA250603 48980 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

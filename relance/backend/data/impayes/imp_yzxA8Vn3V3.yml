@@ -1,0 +1,49 @@
+adresse_bien: 88 boulevard Pape Jean XXIII Côté Est Bâtiment B
+apporteur_id: cont_thtsY8Ekxe
+apporteur_nom: SARL NICE GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_5URqMvWxii
+created_at: '2026-06-24T16:31:26.018Z'
+date_echeance: '2024-09-20'
+date_import: '2026-07-09T07:05:09.004Z'
+date_piece: '2024-09-20'
+donneur_ordre_id: null
+donneur_ordre_nom: BAUS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_yzxA8Vn3V3
+id_dossier: '37629'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47472
+numero_dossier: 51635
+payer_id: cont_5URqMvWxii
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BAUS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BAUS
+proprietaire_prenom: null
+ref_piece: FA240920 47472
+reference: '51635'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 95.83
+total_ttc: 115
+type: impaye
+updated_at: '2026-06-24T16:31:26.018Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240920_47472/standard/FA240920 47472
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

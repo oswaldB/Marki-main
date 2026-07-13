@@ -1,0 +1,49 @@
+adresse_bien: 163 /165 avenue Louis Pasteur Le Colorado
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_1au4tKxmvJ
+created_at: '2026-06-24T16:31:12.927Z'
+date_echeance: '2025-04-14'
+date_import: '2026-07-09T07:05:07.683Z'
+date_piece: '2025-04-14'
+donneur_ordre_id: null
+donneur_ordre_nom: ROS
+donneur_ordre_prenom: Thérèse
+email_index: 0
+facture_soldee: true
+id: imp_aVUVeyE7uu
+id_dossier: '39165'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48702
+numero_dossier: 53171
+payer_id: cont_1au4tKxmvJ
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: ROS
+payeur_prenom: Thérèse
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ROS
+proprietaire_prenom: Thérèse
+ref_piece: FA250414 48702
+reference: '53171'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.67
+total_ttc: 230
+type: impaye
+updated_at: '2026-06-24T16:31:12.927Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/avril/FA250414_48702/standard/FA250414 48702
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

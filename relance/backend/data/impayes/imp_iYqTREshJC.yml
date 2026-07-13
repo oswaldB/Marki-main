@@ -1,0 +1,49 @@
+adresse_bien: 91 bis route du Val des Castagnins
+apporteur_id: cont_cFjIPWR9lP
+apporteur_nom: SUD FINANCES CONSEIL
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: "relance 29/12\r\n\r\n13/01 relance agence via comptabilité\r\nleanne a envoyer facture au prop par mail pour paye"
+contact_relance_id: cont_K1rXa9oXQh
+created_at: '2026-06-24T16:30:57.953Z'
+date_echeance: '2025-12-12'
+date_import: '2026-07-09T07:05:06.290Z'
+date_piece: '2025-12-05'
+donneur_ordre_id: null
+donneur_ordre_nom: DE BROUWER
+donneur_ordre_prenom: Thomas
+email_index: 0
+facture_soldee: true
+id: imp_iYqTREshJC
+id_dossier: '40792'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50086
+numero_dossier: 54798
+payer_id: cont_K1rXa9oXQh
+payeur_civilite: ''
+payeur_email: tdebrouwer@me.com
+payeur_nom: DE BROUWER
+payeur_prenom: Thomas
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: DE BROUWER
+proprietaire_prenom: Thomas
+ref_piece: FA251205 50086
+reference: '54798'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 379.17
+total_ttc: 455
+type: impaye
+updated_at: '2026-06-24T16:30:57.953Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/decembre/FA251205_50086/standard/FA251205 50086
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

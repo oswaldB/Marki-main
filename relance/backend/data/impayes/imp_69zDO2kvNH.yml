@@ -1,0 +1,49 @@
+adresse_bien: 11 impasse du Poivrier
+apporteur_id: cont_WFx4dRqnfJ
+apporteur_nom: MENDES IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06240'
+commentaire_piece: ''
+contact_relance_id: cont_lYIlFyurJj
+created_at: '2026-06-24T16:30:54.023Z'
+date_echeance: '2026-02-10'
+date_import: '2026-07-09T07:05:05.944Z'
+date_piece: '2026-02-03'
+donneur_ordre_id: null
+donneur_ordre_nom: INDIVISION MARQUET
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_69zDO2kvNH
+id_dossier: '41095'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50413
+numero_dossier: 55101
+payer_id: cont_lYIlFyurJj
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: INDIVISION MARQUET
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: INDIVISION MARQUET
+proprietaire_prenom: null
+ref_piece: FA260203 50413
+reference: '55101'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 277.5
+total_ttc: 333
+type: impaye
+updated_at: '2026-06-24T16:30:54.023Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/fevrier/FA260203_50413/standard/FA260203 50413
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAUSOLEIL

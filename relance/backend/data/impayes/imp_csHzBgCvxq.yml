@@ -1,0 +1,49 @@
+adresse_bien: 61 Porte de France Espace 2000
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_e1TspJ2CY4
+created_at: '2026-06-24T16:30:49.905Z'
+date_echeance: '2026-04-30'
+date_import: '2026-07-09T07:05:05.457Z'
+date_piece: '2026-04-23'
+donneur_ordre_id: null
+donneur_ordre_nom: MORINIELLO
+donneur_ordre_prenom: Dario
+email_index: 0
+facture_soldee: true
+id: imp_csHzBgCvxq
+id_dossier: '41608'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50830
+numero_dossier: 55614
+payer_id: cont_e1TspJ2CY4
+payeur_civilite: ''
+payeur_email: dario.moriniello@gmail.com
+payeur_nom: MORINIELLO
+payeur_prenom: Dario
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MORINIELLO
+proprietaire_prenom: Dario
+ref_piece: FA260423 50830
+reference: '55614'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 204.17
+total_ttc: 245
+type: impaye
+updated_at: '2026-06-24T16:30:49.905Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/avril/FA260423_50830/standard/FA260423 50830
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

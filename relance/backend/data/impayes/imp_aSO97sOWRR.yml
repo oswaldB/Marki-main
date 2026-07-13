@@ -1,0 +1,49 @@
+adresse_bien: 12 avenue Edouard VII Le France Palace
+apporteur_id: cont_98qyheyUph
+apporteur_nom: AGENCE MENTON IMMO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_CpqHXvlNca
+created_at: '2026-06-24T16:31:49.065Z'
+date_echeance: '2023-10-18'
+date_import: '2026-07-09T07:05:11.150Z'
+date_piece: '2023-10-18'
+donneur_ordre_id: null
+donneur_ordre_nom: CAYRE
+donneur_ordre_prenom: Marie - Aline
+email_index: 0
+facture_soldee: true
+id: imp_aSO97sOWRR
+id_dossier: '31978'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45418
+numero_dossier: 48975
+payer_id: cont_CpqHXvlNca
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: CAYRE
+payeur_prenom: Marie - Aline
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAYRE
+proprietaire_prenom: Marie - Aline
+ref_piece: FA231018 45418
+reference: '48975'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 233.33
+total_ttc: 280
+type: impaye
+updated_at: '2026-06-24T16:31:49.065Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/octobre/FA231018_45418/standard/FA231018 45418
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

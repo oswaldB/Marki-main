@@ -1,0 +1,44 @@
+$loki: 18
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:34.182Z'
+email: franco.bucceri@notaires.fr
+id: cont_ozesiVMiDn
+impaye_ids:
+  - imp_0n13EzDwzj
+  - imp_ImT8XFfZtg
+  - imp_K8RVIwnwDA
+  - imp_svdtRBRlar
+  - imp_W5u4j7XRAf
+  - imp_PqbbmpTOJE
+  - imp_tgHjUvNcTF
+  - imp_2RZ6WnUdfU
+  - imp_vrD4RJHaRi
+  - imp_sNtUHf71z1
+  - imp_gHv8a5SHEE
+  - imp_PH4HCzXz7e
+  - imp_pgUe6c2Dbk
+  - imp_q0a47N64Vn
+  - imp_CHkuSAJ9IH
+  - imp_ysC6GDwWWC
+is_blacklisted: false
+meta:
+  created: 1783580698338
+  revision: 0
+  version: 0
+nom: 'BUCCERI '
+prenom: Franco
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0497033416'
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:33.287Z'

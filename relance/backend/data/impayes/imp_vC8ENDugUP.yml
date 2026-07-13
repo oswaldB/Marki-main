@@ -1,0 +1,49 @@
+adresse_bien: 26 allée des Mésanges Collet Darbousson
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06330'
+commentaire_piece: ''
+contact_relance_id: cont_WKjiDXIBp8
+created_at: '2026-06-25T09:07:58.993Z'
+date_echeance: '2026-07-02'
+date_import: '2026-07-09T07:05:12.182Z'
+date_piece: '2026-06-25'
+donneur_ordre_id: null
+donneur_ordre_nom: RIUDAVETZ
+donneur_ordre_prenom: Edwige
+email_index: 0
+facture_soldee: true
+id: imp_vC8ENDugUP
+id_dossier: '42020'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51188
+numero_dossier: 56026
+payer_id: cont_WKjiDXIBp8
+payeur_civilite: ''
+payeur_email: vernetmp27@gmail.com
+payeur_nom: RIUDAVETZ
+payeur_prenom: Edwige
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: RIUDAVETZ
+proprietaire_prenom: Edwige
+ref_piece: FA260625 51188
+reference: '56026'
+reste_a_payer: 0
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 717.5
+total_ttc: 861
+type: impaye
+updated_at: '2026-06-26T22:00:25.397Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juin/FA260625_51188/standard/FA260625 51188 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEFORT-LES-PINS

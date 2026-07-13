@@ -1,0 +1,49 @@
+adresse_bien: 1 Promenade Reine Astrid Chateau Saint Louis
+apporteur_id: cont_Ox5nQXCdkv
+apporteur_nom: 'DAT IMMOBILIER '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_Ox5nQXCdkv
+created_at: '2026-06-24T16:31:25.057Z'
+date_echeance: '2024-10-02'
+date_import: '2026-07-09T07:05:08.933Z'
+date_piece: '2024-10-02'
+donneur_ordre_id: null
+donneur_ordre_nom: BALOCCO
+donneur_ordre_prenom: Ezio
+email_index: 0
+facture_soldee: true
+id: imp_qWaYbXF6Or
+id_dossier: '37732'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47564
+numero_dossier: 51738
+payer_id: cont_Ox5nQXCdkv
+payeur_civilite: ''
+payeur_email: contact@dat-immobilier.com
+payeur_nom: 'DAT IMMOBILIER '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BALOCCO
+proprietaire_prenom: Ezio
+ref_piece: FA241002 47564
+reference: '51738'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 133.33
+total_ttc: 160
+type: impaye
+updated_at: '2026-06-24T16:31:25.057Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/octobre/FA241002_47564/standard/FA241002 47564
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

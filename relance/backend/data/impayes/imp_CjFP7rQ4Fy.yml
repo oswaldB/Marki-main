@@ -1,0 +1,49 @@
+adresse_bien: 2 avenue Liserb  Villa Louise
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: "pour un F2 sis\r\n2 avenue Liserb\r\n06000 NICE"
+contact_relance_id: cont_DzzMU4qxtB
+created_at: '2026-06-24T16:31:02.877Z'
+date_echeance: '2025-10-13'
+date_import: '2026-07-09T07:05:06.708Z'
+date_piece: '2025-10-06'
+donneur_ordre_id: null
+donneur_ordre_nom: BAUDET
+donneur_ordre_prenom: Luc
+email_index: 0
+facture_soldee: true
+id: imp_CjFP7rQ4Fy
+id_dossier: '40376'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49662
+numero_dossier: 54382
+payer_id: cont_DzzMU4qxtB
+payeur_civilite: ''
+payeur_email: luc@clos-des-centenaires.com
+payeur_nom: BAUDET
+payeur_prenom: Luc
+payeur_telephone: '0662416630'
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BAUDET
+proprietaire_prenom: Luc
+ref_piece: FA251006 49662
+reference: '54382'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 308.33
+total_ttc: 370
+type: impaye
+updated_at: '2026-06-24T16:31:02.877Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251006_49662/standard/FA251006 49662
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

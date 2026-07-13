@@ -1,0 +1,49 @@
+adresse_bien: 7 rue Cavendish Les Jumeaux
+apporteur_id: cont_ggRBNbA6TG
+apporteur_nom: API NICE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: "11/06 : message tél. + mail\r\nRetour agence :\r\n \"Biens actuellement en vente\r\n1 offre et en attente de signature d’un compromis pour le studio Boysleve\r\nPour les deux autres, actuellement en vente et en attente de clients\"\r\n\r\n27/05 : envoi listing impayés\r\n\r\n01/10 relance\r\n\r\nretour agence le 04/11 :  le bien est en vente, pas de compromis en cours pour le moment\r\n\r\nrelance 29/12\r\n\r\n10/03 relance agence pour savoir la situation \r\nvisite en cours sur ce bien, ils espèrent le vendre rapidement \r\n\r\n27/04 relance pour savoir si la vente a bouti"
+contact_relance_id: cont_KB93lxh6tn
+created_at: '2026-06-24T16:31:15.957Z'
+date_echeance: '2025-03-06'
+date_import: '2026-07-09T07:05:07.974Z'
+date_piece: '2025-03-06'
+donneur_ordre_id: null
+donneur_ordre_nom: BONFANTI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_HQY9VhbgWE
+id_dossier: '38860'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48457
+numero_dossier: 52866
+payer_id: cont_ggRBNbA6TG
+payeur_civilite: ''
+payeur_email: api06950@gmail.com
+payeur_nom: API NICE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BONFANTI
+proprietaire_prenom: null
+ref_piece: FA250306 48457
+reference: '52866'
+reste_a_payer: 196
+sequence_id: seq_xsqjGJ4mw3
+statut: non_payee
+total_ht: 163.33
+total_ttc: 196
+type: impaye
+updated_at: '2026-06-24T16:33:34.309Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250306_48457/standard/FA250306 48457 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

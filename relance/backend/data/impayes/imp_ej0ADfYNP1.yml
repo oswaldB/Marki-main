@@ -1,0 +1,49 @@
+adresse_bien: 68 avenue de la Lanterne
+apporteur_id: cont_CDLW84mN2c
+apporteur_nom: PARNASSE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06200'
+commentaire_piece: ''
+contact_relance_id: cont_CDLW84mN2c
+created_at: '2026-06-24T16:31:42.092Z'
+date_echeance: '2024-01-31'
+date_import: '2026-07-09T07:05:10.507Z'
+date_piece: '2024-01-31'
+donneur_ordre_id: null
+donneur_ordre_nom: FONTI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_ej0ADfYNP1
+id_dossier: '32727'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46021
+numero_dossier: 49724
+payer_id: cont_CDLW84mN2c
+payeur_civilite: ''
+payeur_email: immo.parnasse@wanadoo.fr
+payeur_nom: PARNASSE IMMOBILIER
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: FONTI
+proprietaire_prenom: null
+ref_piece: FA240131 46021
+reference: '49724'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 23.33
+total_ttc: 28
+type: impaye
+updated_at: '2026-06-24T16:31:42.092Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/janvier/FA240131_46021/standard/FA240131 46021
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 42 boulevard Général Louis Delfino
+apporteur_id: cont_0nPZpkqDTq
+apporteur_nom: CABINET GRIMAZ
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_dtKABN1zdR
+created_at: '2026-06-24T16:31:05.958Z'
+date_echeance: '2025-08-20'
+date_import: '2026-07-09T07:05:06.994Z'
+date_piece: '2025-08-13'
+donneur_ordre_id: null
+donneur_ordre_nom: WILCZYNSKI
+donneur_ordre_prenom: Sylvie
+email_index: 0
+facture_soldee: true
+id: imp_GHaWOly4SN
+id_dossier: '40038'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49374
+numero_dossier: 54044
+payer_id: cont_dtKABN1zdR
+payeur_civilite: ''
+payeur_email: wilczynski.sylvie2@gmail..com
+payeur_nom: WILCZYNSKI
+payeur_prenom: Sylvie
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: WILCZYNSKI
+proprietaire_prenom: Sylvie
+ref_piece: FA250814 49374
+reference: '54044'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 358.33
+total_ttc: 430
+type: impaye
+updated_at: '2026-06-24T16:31:05.958Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250814_49374/standard/FA250814 49374 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

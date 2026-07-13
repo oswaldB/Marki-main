@@ -1,0 +1,31 @@
+$loki: 4017
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:26:11.566Z'
+email: nicole.scavini@monaco.mc
+id: cont_xbrpuaUfwD
+impaye_ids:
+  - imp_2QWhr1zFeS
+  - imp_pHB2YWZFIg
+  - imp_L98QSPfV8q
+is_blacklisted: false
+meta:
+  created: 1783580699857
+  revision: 0
+  version: 0
+nom: SCAVINI
+prenom: Gabriel
+relance_ids: []
+societe: null
+statut: actif
+telephone: null
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:01:11.336Z'

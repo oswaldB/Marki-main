@@ -1,0 +1,49 @@
+adresse_bien: 2 rue Guyau
+apporteur_id: cont_r6PUjDOJHB
+apporteur_nom: OPTI GESTION
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_kGRv2JmIdU
+created_at: '2026-07-07T22:00:52.353Z'
+date_echeance: '2026-07-14'
+date_import: '2026-07-09T07:05:12.303Z'
+date_piece: '2026-07-07'
+donneur_ordre_id: null
+donneur_ordre_nom: ABECASSIS
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: false
+id: imp_Fi9YGPvF7U
+id_dossier: '42106'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51263
+numero_dossier: 56112
+payer_id: cont_kGRv2JmIdU
+payeur_civilite: ''
+payeur_email: abecassis.f@gmail.com
+payeur_nom: ABECASSIS
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: ABECASSIS
+proprietaire_prenom: null
+ref_piece: FA260707 51263
+reference: '56112'
+reste_a_payer: 515
+sequence_id: seq_zgPKAlVH65
+statut: non_payee
+total_ht: 429.17
+total_ttc: 515
+type: impaye
+updated_at: '2026-07-08T22:02:31.262Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juillet/FA260707_51263/standard/FA260707 51263
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

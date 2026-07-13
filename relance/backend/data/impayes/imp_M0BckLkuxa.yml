@@ -1,0 +1,49 @@
+adresse_bien: 5  rue Gioffredo
+apporteur_id: cont_5HWNOkQNNh
+apporteur_nom: COPROPRIETE 5 RUE GIOFFREDO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: '15/10 relance facture cabinet + notaire par mail '
+contact_relance_id: cont_5HWNOkQNNh
+created_at: '2026-06-24T16:31:14.021Z'
+date_echeance: '2025-03-26'
+date_import: '2026-07-09T07:05:07.817Z'
+date_piece: '2025-03-26'
+donneur_ordre_id: null
+donneur_ordre_nom: COPROPRIETE 5 RUE GIOFFREDO
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_M0BckLkuxa
+id_dossier: '17873'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48591
+numero_dossier: 37856
+payer_id: cont_5HWNOkQNNh
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: COPROPRIETE 5 RUE GIOFFREDO
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: COPROPRIETE 5 RUE GIOFFREDO
+proprietaire_prenom: null
+ref_piece: FA250326 48591
+reference: '37856'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:14.021Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/mars/FA250326_48591/standard/FA250326 48591 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

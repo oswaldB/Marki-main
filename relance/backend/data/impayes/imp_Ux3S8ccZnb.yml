@@ -1,0 +1,49 @@
+adresse_bien: 1 rue Honoré Hugo Hôtel du Couvent Bâtiment Couvent
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_yiq13Cuvwg
+created_at: '2026-06-24T16:31:19.977Z'
+date_echeance: '2025-01-08'
+date_import: '2026-07-09T07:05:08.382Z'
+date_piece: '2025-01-08'
+donneur_ordre_id: null
+donneur_ordre_nom: SAS HOTEL DU COUVENT
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_Ux3S8ccZnb
+id_dossier: '38366'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48062
+numero_dossier: 52372
+payer_id: cont_yiq13Cuvwg
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SAS HOTEL DU COUVENT
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SAS HOTEL DU COUVENT
+proprietaire_prenom: null
+ref_piece: FA250108 48062
+reference: '52372'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 4000
+total_ttc: 4800
+type: impaye
+updated_at: '2026-06-24T16:31:19.977Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/janvier/FA250108_48062/standard/FA250108 48062
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

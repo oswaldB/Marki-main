@@ -1,0 +1,49 @@
+adresse_bien: 28 rue Partouneaux Bâtiment
+apporteur_id: cont_rxtGcrWd4S
+apporteur_nom: TRANSAC FRANCE
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_wbQt2hPvAI
+created_at: '2026-06-24T16:31:27.099Z'
+date_echeance: '2024-09-04'
+date_import: '2026-07-09T07:05:09.174Z'
+date_piece: '2024-09-04'
+donneur_ordre_id: null
+donneur_ordre_nom: BACCHELLI
+donneur_ordre_prenom: Christian
+email_index: 0
+facture_soldee: true
+id: imp_ZZjts9j3CE
+id_dossier: '37491'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47339
+numero_dossier: 51497
+payer_id: cont_wbQt2hPvAI
+payeur_civilite: ''
+payeur_email: chriscalibur@free.fr
+payeur_nom: BACCHELLI
+payeur_prenom: Christian
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BACCHELLI
+proprietaire_prenom: Christian
+ref_piece: FA240904 47339
+reference: '51497'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 183.33
+total_ttc: 220
+type: impaye
+updated_at: '2026-06-24T16:31:27.099Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/septembre/FA240904_47339/standard/FA240904 47339
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

@@ -1,0 +1,49 @@
+adresse_bien: 216 route de Turin Les Gazelles
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06300'
+commentaire_piece: ''
+contact_relance_id: cont_2zkP3UCTn9
+created_at: '2026-06-24T16:31:09.885Z'
+date_echeance: '2025-06-11'
+date_import: '2026-07-09T07:05:07.382Z'
+date_piece: '2025-06-11'
+donneur_ordre_id: null
+donneur_ordre_nom: TEMAM
+donneur_ordre_prenom: Jean Louis
+email_index: 0
+facture_soldee: true
+id: imp_kMeuBcHMHy
+id_dossier: '39593'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49034
+numero_dossier: 53599
+payer_id: cont_2zkP3UCTn9
+payeur_civilite: ''
+payeur_email: papeterie.temam@orange.fr
+payeur_nom: TEMAM
+payeur_prenom: Jean Louis
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: TEMAM
+proprietaire_prenom: Jean Louis
+ref_piece: FA250611 49034
+reference: '53599'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 166.67
+total_ttc: 200
+type: impaye
+updated_at: '2026-06-24T16:31:09.885Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250611_49034/standard/FA250611 49034 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

@@ -1,0 +1,49 @@
+adresse_bien: 13 boulevard de Cessole
+apporteur_id: cont_kyTCccB8zw
+apporteur_nom: CENTURY 21 DOMUS Nice
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06100'
+commentaire_piece: ''
+contact_relance_id: cont_kyTCccB8zw
+created_at: '2026-06-24T16:31:00.879Z'
+date_echeance: '2025-11-07'
+date_import: '2026-07-09T07:05:06.521Z'
+date_piece: '2025-10-31'
+donneur_ordre_id: null
+donneur_ordre_nom: REYNIER
+donneur_ordre_prenom: Francoise
+email_index: 0
+facture_soldee: true
+id: imp_9GFYDlMbdO
+id_dossier: '40578'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49869
+numero_dossier: 54584
+payer_id: cont_kyTCccB8zw
+payeur_civilite: ''
+payeur_email: domusimmobilier@century21.fr
+payeur_nom: CENTURY 21 DOMUS Nice
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: REYNIER
+proprietaire_prenom: Francoise
+ref_piece: FA251031 49869
+reference: '54584'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:00.879Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/octobre/FA251031_49869/standard/FA251031 49869
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

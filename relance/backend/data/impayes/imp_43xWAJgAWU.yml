@@ -1,0 +1,49 @@
+adresse_bien: 1 rue de la Paix
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06360'
+commentaire_piece: ''
+contact_relance_id: cont_WWyJV3SFrk
+created_at: '2026-06-24T16:31:06.912Z'
+date_echeance: '2025-07-24'
+date_import: '2026-07-09T07:05:07.083Z'
+date_piece: '2025-07-24'
+donneur_ordre_id: null
+donneur_ordre_nom: 'BALLANGER '
+donneur_ordre_prenom: Jean-Marie
+email_index: 0
+facture_soldee: true
+id: imp_43xWAJgAWU
+id_dossier: '39911'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49277
+numero_dossier: 53917
+payer_id: cont_WWyJV3SFrk
+payeur_civilite: ''
+payeur_email: qualj06@gmail.com
+payeur_nom: 'BALLANGER '
+payeur_prenom: Jean-Marie
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: 'BALLANGER '
+proprietaire_prenom: Jean-Marie
+ref_piece: FA250724 49277
+reference: '53917'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 155.83
+total_ttc: 187
+type: impaye
+updated_at: '2026-06-24T16:31:06.912Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juillet/FA250724_49277/standard/FA250724 49277
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ÈZE

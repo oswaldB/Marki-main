@@ -1,0 +1,49 @@
+adresse_bien: 5 rue Gauthier Vignal Les Mouettes
+apporteur_id: cont_40nIbAsM2y
+apporteur_nom: SNEXI
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06310'
+commentaire_piece: ''
+contact_relance_id: cont_9VdK8Yk7II
+created_at: '2026-06-24T16:31:30.947Z'
+date_echeance: '2024-07-09'
+date_import: '2026-07-09T07:05:09.532Z'
+date_piece: '2024-07-09'
+donneur_ordre_id: null
+donneur_ordre_nom: BURYAK
+donneur_ordre_prenom: Igor
+email_index: 0
+facture_soldee: true
+id: imp_4H0SSfcmDq
+id_dossier: '34615'
+is_blacklisted: false
+montant_total: 0
+nfacture: 47020
+numero_dossier: 50614
+payer_id: cont_40nIbAsM2y
+payeur_civilite: ''
+payeur_email: jbarthe@snexi.fr
+payeur_nom: SNEXI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: BURYAK
+proprietaire_prenom: Igor
+ref_piece: FA240709 47020
+reference: '50614'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 4546.2
+total_ttc: 5455.44
+type: impaye
+updated_at: '2026-06-24T16:31:30.947Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/juillet/FA240709_47020/standard/FA240709 47020
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: BEAULIEU-SUR-MER

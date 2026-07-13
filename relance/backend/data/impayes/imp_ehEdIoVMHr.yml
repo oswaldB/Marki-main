@@ -1,0 +1,49 @@
+adresse_bien: 3 avenue Notre-Dame Le Notre Dame
+apporteur_id: cont_qVbgUfs9GA
+apporteur_nom: CITYA NICE IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_B3D3lIMHzP
+created_at: '2026-06-24T16:31:39.975Z'
+date_echeance: '2024-03-07'
+date_import: '2026-07-09T07:05:10.282Z'
+date_piece: '2024-03-07'
+donneur_ordre_id: null
+donneur_ordre_nom: GRISON
+donneur_ordre_prenom: Nathalie
+email_index: 0
+facture_soldee: true
+id: imp_ehEdIoVMHr
+id_dossier: '34081'
+is_blacklisted: false
+montant_total: 0
+nfacture: 46266
+numero_dossier: 50080
+payer_id: cont_B3D3lIMHzP
+payeur_civilite: ''
+payeur_email: grisn002@gmail.com
+payeur_nom: GRISON
+payeur_prenom: Nathalie
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GRISON
+proprietaire_prenom: Nathalie
+ref_piece: FA240307 46266
+reference: '50080'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:39.975Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2024/mars/FA240307_46266/standard/FA240307 46266 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

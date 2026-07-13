@@ -1,0 +1,49 @@
+adresse_bien: route du parc souvenir  Résidence Monti
+apporteur_id: cont_A0jsgezz8M
+apporteur_nom: SUD EST IMMOBILIER
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_4nO8yWppLW
+created_at: '2026-06-24T16:31:44.968Z'
+date_echeance: '2023-12-18'
+date_import: '2026-07-09T07:05:10.754Z'
+date_piece: '2023-12-18'
+donneur_ordre_id: null
+donneur_ordre_nom: SCI LES HAMEAUX DU MONTI
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_WKqDVV5LGc
+id_dossier: '32469'
+is_blacklisted: false
+montant_total: 0
+nfacture: 45811
+numero_dossier: 49466
+payer_id: cont_4nO8yWppLW
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: SCI LES HAMEAUX DU MONTI
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: SCI LES HAMEAUX DU MONTI
+proprietaire_prenom: null
+ref_piece: FA231218 45811
+reference: '49466'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:31:44.968Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/decembre/FA231218_45811/standard/FA231218 45811
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

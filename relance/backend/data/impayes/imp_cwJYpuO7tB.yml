@@ -1,0 +1,49 @@
+adresse_bien: 85 avenue des Orchidées
+apporteur_id: cont_fGccEJsxMf
+apporteur_nom: LAFORET Roquebrune Cap Martin
+apporteur_prenom: 'Seaside Immobilier '
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_Yvw199iCwD
+created_at: '2026-06-24T16:30:50.981Z'
+date_echeance: '2026-04-07'
+date_import: '2026-07-09T07:05:05.586Z'
+date_piece: '2026-03-31'
+donneur_ordre_id: null
+donneur_ordre_nom: BROUSSE
+donneur_ordre_prenom: 'Liliane '
+email_index: 0
+facture_soldee: true
+id: imp_cwJYpuO7tB
+id_dossier: '41478'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50707
+numero_dossier: 55484
+payer_id: cont_Yvw199iCwD
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: BROUSSE
+payeur_prenom: 'Liliane '
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: BROUSSE
+proprietaire_prenom: 'Liliane '
+ref_piece: FA260331 50707
+reference: '55484'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 212.5
+total_ttc: 255
+type: impaye
+updated_at: '2026-06-24T16:30:50.981Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/mars/FA260331_50707/standard/FA260331 50707 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

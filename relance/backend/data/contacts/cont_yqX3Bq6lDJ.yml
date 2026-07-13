@@ -1,0 +1,29 @@
+$loki: 368
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:37.552Z'
+email: guy.lutrand@orange.fr
+id: cont_yqX3Bq6lDJ
+impaye_ids:
+  - imp_Rz3zFHWhmF
+is_blacklisted: false
+meta:
+  created: 1783580698491
+  revision: 0
+  version: 0
+nom: SCI MANONIC
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0608091722'
+type: contact
+type_personne: M
+updated_at: '2026-07-09T02:00:36.540Z'

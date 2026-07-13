@@ -1,0 +1,49 @@
+adresse_bien: 18 avenue Thiers
+apporteur_id: null
+apporteur_nom: null
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_4rHS9GUzyQ
+created_at: '2026-06-24T16:31:04.995Z'
+date_echeance: '2025-09-05'
+date_import: '2026-07-09T07:05:06.939Z'
+date_piece: '2025-08-29'
+donneur_ordre_id: null
+donneur_ordre_nom: MANCINI
+donneur_ordre_prenom: Martine
+email_index: 0
+facture_soldee: true
+id: imp_WErl9eRk65
+id_dossier: '40121'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49436
+numero_dossier: 54127
+payer_id: cont_4rHS9GUzyQ
+payeur_civilite: ''
+payeur_email: bianca.mancini@hotmail.fr
+payeur_nom: MANCINI
+payeur_prenom: Martine
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: MANCINI
+proprietaire_prenom: Martine
+ref_piece: FA250901 49436
+reference: '54127'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.67
+total_ttc: 230
+type: impaye
+updated_at: '2026-06-24T16:31:04.995Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/aout/FA250901_49436/standard/FA250901 49436 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: NICE

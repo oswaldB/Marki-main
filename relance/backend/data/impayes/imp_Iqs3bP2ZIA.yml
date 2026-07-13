@@ -1,0 +1,49 @@
+adresse_bien: 62 avenue Jean Jaurès Sole Mio
+apporteur_id: cont_vDXaZDdXRE
+apporteur_nom: DESTINATION RIVIERA
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06190'
+commentaire_piece: ''
+contact_relance_id: cont_7q5mMTljKU
+created_at: '2026-07-06T22:01:41.766Z'
+date_echeance: '2026-07-13'
+date_import: '2026-07-09T07:05:12.290Z'
+date_piece: '2026-07-06'
+donneur_ordre_id: null
+donneur_ordre_nom: CHARRIERE
+donneur_ordre_prenom: Francoise
+email_index: 0
+facture_soldee: true
+id: imp_Iqs3bP2ZIA
+id_dossier: '42089'
+is_blacklisted: false
+montant_total: 0
+nfacture: 51249
+numero_dossier: 56095
+payer_id: cont_7q5mMTljKU
+payeur_civilite: ''
+payeur_email: francoise.charriere@hotmail.com
+payeur_nom: CHARRIERE
+payeur_prenom: Francoise
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CHARRIERE
+proprietaire_prenom: Francoise
+ref_piece: FA260706 51249
+reference: '56095'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 264.58
+total_ttc: 317.5
+type: impaye
+updated_at: '2026-07-07T22:00:52.354Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/juillet/FA260706_51249/standard/FA260706 51249
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: ROQUEBRUNE-CAP-MARTIN

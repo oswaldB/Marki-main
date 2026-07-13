@@ -1,0 +1,49 @@
+adresse_bien: 131 boulevard de la Madeleine Carré 131
+apporteur_id: cont_lKyCEvLzZh
+apporteur_nom: 'FONCIA RIVIERA ARSON '
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_dd7JZHcTNi
+created_at: '2026-06-24T16:30:54.986Z'
+date_echeance: '2026-02-02'
+date_import: '2026-07-09T07:05:06.024Z'
+date_piece: '2026-01-26'
+donneur_ordre_id: null
+donneur_ordre_nom: DUPONT
+donneur_ordre_prenom: Marie Chrstine
+email_index: 0
+facture_soldee: true
+id: imp_7B7JXwgaKh
+id_dossier: '41065'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50350
+numero_dossier: 55071
+payer_id: cont_lKyCEvLzZh
+payeur_civilite: ''
+payeur_email: ''
+payeur_nom: 'FONCIA RIVIERA ARSON '
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Apporteur d'affaire
+proprietaire_id: null
+proprietaire_nom: DUPONT
+proprietaire_prenom: Marie Chrstine
+ref_piece: FA260126 50350
+reference: '55071'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 200
+total_ttc: 240
+type: impaye
+updated_at: '2026-06-24T16:30:54.986Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2026/janvier/FA260126_50350/standard/FA260126 50350
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE

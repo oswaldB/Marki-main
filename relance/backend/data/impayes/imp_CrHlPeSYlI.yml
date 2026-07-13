@@ -1,0 +1,49 @@
+adresse_bien: 19 avenue de la Madone
+apporteur_id: cont_F9a1C2QFwv
+apporteur_nom: Agence L&SO
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_5THM09n3VR
+created_at: '2026-06-24T16:31:09.033Z'
+date_echeance: '2025-06-18'
+date_import: '2026-07-09T07:05:07.345Z'
+date_piece: '2025-06-18'
+donneur_ordre_id: null
+donneur_ordre_nom: FRILANDOE
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_CrHlPeSYlI
+id_dossier: '39644'
+is_blacklisted: false
+montant_total: 0
+nfacture: 49063
+numero_dossier: 53650
+payer_id: cont_5THM09n3VR
+payeur_civilite: ''
+payeur_email: dede.motar06500@gmail.com
+payeur_nom: FRILANDOE
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FRILANDOE
+proprietaire_prenom: null
+ref_piece: FA250618 49063
+reference: '53650'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 281.25
+total_ttc: 337.5
+type: impaye
+updated_at: '2026-06-24T16:31:09.033Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/juin/FA250618_49063/standard/FA250618 49063 (GCO
+  PI FA).pdf
+url_pdf_token: null
+ville: MENTON

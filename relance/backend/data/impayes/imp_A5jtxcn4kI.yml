@@ -1,0 +1,49 @@
+adresse_bien: 30 bis rue de la République
+apporteur_id: cont_vCAOy10UIf
+apporteur_nom: IMMOBILTREND
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_yIGD1Bb5IJ
+created_at: '2026-06-24T16:31:17.957Z'
+date_echeance: '2025-02-05'
+date_import: '2026-07-09T07:05:08.186Z'
+date_piece: '2025-02-05'
+donneur_ordre_id: null
+donneur_ordre_nom: GIAMBARELLA / TARABUSI
+donneur_ordre_prenom: Adèle et Mauro
+email_index: 0
+facture_soldee: true
+id: imp_A5jtxcn4kI
+id_dossier: '38619'
+is_blacklisted: false
+montant_total: 0
+nfacture: 48263
+numero_dossier: 52625
+payer_id: cont_yIGD1Bb5IJ
+payeur_civilite: ''
+payeur_email: tarabusi53@gmail.com
+payeur_nom: GIAMBARELLA / TARABUSI
+payeur_prenom: Adèle et Mauro
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: GIAMBARELLA / TARABUSI
+proprietaire_prenom: Adèle et Mauro
+ref_piece: FA250205 48263
+reference: '52625'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 163.33
+total_ttc: 196
+type: impaye
+updated_at: '2026-06-24T16:31:17.957Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/fevrier/FA250205_48263/standard/FA250205 48263
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

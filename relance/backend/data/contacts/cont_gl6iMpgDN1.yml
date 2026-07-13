@@ -1,0 +1,32 @@
+$loki: 385
+activite_societe: null
+adresse_code_postal: null
+adresse_pays: France
+adresse_rue: null
+adresse_ville: null
+blacklist_date: null
+blacklist_motif: null
+civilite: null
+code: null
+created_at: '2026-06-24T16:25:37.552Z'
+email: jolrem@orange.fr
+id: cont_gl6iMpgDN1
+impaye_ids:
+  - imp_BNoWxvNMmx
+  - imp_UWqHElKGSb
+  - imp_dtv7NnHudE
+  - imp_YTXb0wIT7D
+is_blacklisted: false
+meta:
+  created: 1783580698499
+  revision: 0
+  version: 0
+nom: BEACCI
+prenom: ''
+relance_ids: []
+societe: null
+statut: actif
+telephone: '0612102980'
+type: contact
+type_personne: P
+updated_at: '2026-07-09T02:00:36.540Z'

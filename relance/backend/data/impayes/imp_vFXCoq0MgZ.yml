@@ -1,0 +1,49 @@
+adresse_bien: 11 avenue de Verdun Le Jardin des Muses
+apporteur_id: cont_Kl8PBkhOa2
+apporteur_nom: LAFORET Menton Pieta
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06500'
+commentaire_piece: ''
+contact_relance_id: cont_VzMMx4SHvv
+created_at: '2026-06-24T16:30:58.881Z'
+date_echeance: '2025-12-05'
+date_import: '2026-07-09T07:05:06.356Z'
+date_piece: '2025-11-28'
+donneur_ordre_id: null
+donneur_ordre_nom: CAFIERO
+donneur_ordre_prenom: Valentino
+email_index: 0
+facture_soldee: true
+id: imp_vFXCoq0MgZ
+id_dossier: '40724'
+is_blacklisted: false
+montant_total: 0
+nfacture: 50032
+numero_dossier: 54730
+payer_id: cont_VzMMx4SHvv
+payeur_civilite: ''
+payeur_email: carramba79@gmail.com
+payeur_nom: CAFIERO
+payeur_prenom: Valentino
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: CAFIERO
+proprietaire_prenom: Valentino
+ref_piece: FA251128 50032
+reference: '54730'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 191.25
+total_ttc: 229.5
+type: impaye
+updated_at: '2026-06-24T16:30:58.881Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2025/novembre/FA251128_50032/standard/FA251128 50032
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: MENTON

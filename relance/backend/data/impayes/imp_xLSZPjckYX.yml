@@ -1,0 +1,49 @@
+adresse_bien: 10 rue Cronstadt
+apporteur_id: cont_ZWQdOGjmD6
+apporteur_nom: FY INVEST
+apporteur_prenom: null
+apporteur_societe: null
+blacklist_date: null
+blacklist_motif: null
+code_postal: '06000'
+commentaire_piece: ''
+contact_relance_id: cont_ZWQdOGjmD6
+created_at: '2026-06-24T16:31:55.916Z'
+date_echeance: '2023-07-20'
+date_import: '2026-07-09T07:05:11.741Z'
+date_piece: '2023-07-20'
+donneur_ordre_id: null
+donneur_ordre_nom: FY INVEST
+donneur_ordre_prenom: null
+email_index: 0
+facture_soldee: true
+id: imp_xLSZPjckYX
+id_dossier: '29277'
+is_blacklisted: false
+montant_total: 0
+nfacture: 44804
+numero_dossier: 48263
+payer_id: cont_ZWQdOGjmD6
+payeur_civilite: ''
+payeur_email: yohann.angelo@fy-invest.fr
+payeur_nom: FY INVEST
+payeur_prenom: ''
+payeur_telephone: ''
+payeur_type: Propriétaire
+proprietaire_id: null
+proprietaire_nom: FY INVEST
+proprietaire_prenom: null
+ref_piece: FA230720 44804
+reference: '48263'
+reste_a_payer: 0
+sequence_id: null
+statut: non_payee
+total_ht: 29.17
+total_ttc: 35
+type: impaye
+updated_at: '2026-06-24T16:31:55.916Z'
+url_pdf: >-
+  /ADN/Reporting/Gco/Piece/2023/juillet/FA230720_44804/standard/FA230720 44804
+  (GCO PI FA).pdf
+url_pdf_token: null
+ville: NICE
