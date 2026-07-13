@@ -9,17 +9,25 @@
 
 ## Phase 1: Setup & Structure
 
-- [ ] Créer la structure `app/frontend/` avec tous les dossiers
-- [ ] Setup `index.html` racine avec redirection vers `/login/`
-- [ ] Template de base (layout commun: header, nav, etc.)
-- [ ] Composants Alpine.js réutilisables
+- [x] Créer la structure `frontend/` avec tous les dossiers
+- [x] Setup `index.html` racine avec redirection vers `/frontend/login/`
+- [x] Template de base (layout commun: header, nav, etc.)
+- [x] Composants Alpine.js réutilisables
+
+**Fichiers créés:**
+- `index.html` - Redirection racine
+- `frontend/login/index.html` - Page de connexion
+- `frontend/components/sidebar-nav-dual.js` - Navigation sidebar
+- `frontend/components/utils.js` - Fonctions utilitaires (formatMoney, etc.)
+- `frontend/components/template-authenticated.html` - Template pages auth
+- `frontend/README.md` - Documentation structure
 
 ---
 
 ## Phase 2: Frontend - Écrans (20 écrans)
 
 ### Auth
-- [ ] `login/index.html` - Page de connexion
+- [x] `login/index.html` - Page de connexion
 
 ### Dashboard
 - [ ] `dashboard/index.html` - Tableau de bord
