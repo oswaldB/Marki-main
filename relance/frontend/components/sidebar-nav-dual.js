@@ -37,8 +37,9 @@ class SidebarNavDual extends HTMLElement {
         
         <!-- Logo -->
         <div class="h-16 flex items-center justify-center border-b border-slate-100">
-          <a href="../dashboard/" class="w-10 h-10 flex items-center justify-center rounded-lg bg-sky-100">
-            <span class="text-xl font-bold text-sky-600">M</span>
+          <a href="../dashboard/" class="w-10 h-10 flex items-center justify-center">
+            <img src="./marki-logo.png" alt="Marki" class="w-8 h-8 object-contain"
+                 onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=text-xl font-bold text-sky-600>M</span>'">
           </a>
         </div>
         
