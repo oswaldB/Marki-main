@@ -4,6 +4,8 @@
   "description": "Backend Flat-Files YAML pour ADTI Relances",
   "main": "lib/flat-file-db.js",
   "scripts": {
+    "start": "node api-server.js",
+    "dev": "node api-server.js",
     "migrate": "node scripts/migrate-from-parse.js",
     "init-admin": "node scripts/init-admin.js",
     "create-user": "node scripts/create-user.js",
