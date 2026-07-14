@@ -91,7 +91,7 @@ curl -X POST \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"motif": "Litige en cours"}' \
-  "http://adti.api2.markidiags.com/api/impayes/imp_001/suspend"
+  "https://dev.markidiags.com/api/impayes/imp_001/suspend"
 ```
 
 ### Entry Data

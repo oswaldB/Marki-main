@@ -1,0 +1,29 @@
+objectId: HDY1vFDX25
+externe_id: '9356'
+source: db_externe
+nom: STECK
+prenom: Jean-François
+type_personne: P
+email: immo.parnasse@wanadoo.fr
+createdAt: '2026-06-24T16:25:38.731Z'
+updatedAt: '2026-07-14T02:00:47.818Z'
+entreprise:
+  objectId: CDLW84mN2c
+  externe_id: '1414'
+  source: db_externe
+  nom: PARNASSE IMMOBILIER
+  prenom: null
+  type_personne: M
+  email: immo.parnasse@wanadoo.fr
+  createdAt: '2026-06-24T16:25:34.182Z'
+  updatedAt: '2026-07-14T02:00:42.739Z'
+  telephone: null
+  blacklistedAt: '2026-06-29T12:49:49.534Z'
+  isBlacklisted: true
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+lastSyncAt: '2026-07-14T02:00:41.421Z'

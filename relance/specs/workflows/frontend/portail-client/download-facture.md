@@ -48,7 +48,7 @@ Télécharger le PDF facture
 **Response:**
 ```json
 {
-  "url": "https://adti.api2.markidiags.com/api/pdf/imp_abc123?sig=a1b2c3...&expires=1720692000",
+  "url": "https://dev.markidiags.com/api/pdf/imp_abc123?sig=a1b2c3...&expires=1720692000",
   "expires": 1720692000
 }
 ```

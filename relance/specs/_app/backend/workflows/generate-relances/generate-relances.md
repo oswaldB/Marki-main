@@ -226,7 +226,7 @@ POST /api/relances/generate
 # cURL
 curl -X POST \
   -H "Authorization: Bearer $TOKEN" \
-  "http://adti.api2.markidiags.com/api/relances/generate"
+  "https://dev.markidiags.com/api/relances/generate"
 ```
 
 ### Cron

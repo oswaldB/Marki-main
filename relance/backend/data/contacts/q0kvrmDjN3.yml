@@ -1,0 +1,27 @@
+objectId: q0kvrmDjN3
+externe_id: '9765'
+source: db_externe
+nom: PAPILLARD
+prenom: Arnaud
+type_personne: P
+email: contact@azureval.com
+createdAt: '2026-06-24T16:25:39.552Z'
+updatedAt: '2026-07-14T02:00:48.014Z'
+entreprise:
+  objectId: Se0opwz7sM
+  externe_id: '1677'
+  source: db_externe
+  nom: AZUREVAL
+  prenom: null
+  type_personne: M
+  email: contact@azureval.com
+  telephone: 0493445283
+  createdAt: '2026-06-24T16:25:34.520Z'
+  updatedAt: '2026-07-14T02:00:43.001Z'
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+lastSyncAt: '2026-07-14T02:00:41.421Z'

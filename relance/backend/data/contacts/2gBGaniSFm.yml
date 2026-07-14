@@ -1,0 +1,27 @@
+objectId: 2gBGaniSFm
+externe_id: '10114'
+source: db_externe
+nom: BERETONNI
+prenom: Patrick
+type_personne: P
+createdAt: '2026-06-24T16:25:39.552Z'
+updatedAt: '2026-07-14T02:00:48.015Z'
+entreprise:
+  objectId: iFl9ufNQqc
+  externe_id: '6184'
+  source: db_externe
+  nom: VILLEFRANCHE Real Estate
+  prenom: ARTHURIMMO
+  type_personne: M
+  email: go@villefranche-realestate.fr
+  createdAt: '2026-06-24T16:25:37.552Z'
+  updatedAt: '2026-07-14T02:00:46.055Z'
+  telephone: null
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+email: null
+lastSyncAt: '2026-07-14T02:00:41.421Z'

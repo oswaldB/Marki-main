@@ -14,11 +14,9 @@
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
-    "dotenv": "^16.3.1",
     "js-yaml": "^4.1.0",
     "jsonwebtoken": "^9.0.3",
     "lokijs": "^1.5.12",
-    "parse": "^4.2.0",
     "proper-lockfile": "^4.1.2"
   }
 }

@@ -80,7 +80,7 @@ POST /api/auth/login
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{"email": "user@example.com", "password": "*****"}' \
-  "http://adti.api2.markidiags.com/api/auth/login"
+  "https://dev.markidiags.com/api/auth/login"
 ```
 
 ### Entry Data

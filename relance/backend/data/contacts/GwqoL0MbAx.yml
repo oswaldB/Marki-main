@@ -1,0 +1,27 @@
+objectId: GwqoL0MbAx
+externe_id: '14621'
+source: db_externe
+nom: DOMBERGER
+prenom: Michel
+type_personne: P
+email: md@princesse-immobilier.com
+createdAt: '2026-06-24T16:25:42.554Z'
+updatedAt: '2026-07-14T02:00:51.031Z'
+entreprise:
+  objectId: GZ5Gvl3VRt
+  externe_id: '7645'
+  source: db_externe
+  nom: PRINCESSE IMMOBILIER
+  prenom: null
+  type_personne: M
+  email: md@princesse-immobilier.com
+  createdAt: '2026-06-24T16:25:37.724Z'
+  updatedAt: '2026-07-14T02:00:46.835Z'
+  telephone: null
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+lastSyncAt: '2026-07-14T02:00:41.421Z'

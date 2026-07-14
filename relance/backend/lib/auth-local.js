@@ -11,7 +11,7 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 // Configuration
-const JWT_SECRET = process.env.JWT_SECRET || crypto.randomBytes(64).toString('hex');
+const JWT_SECRET = 'Unlivable1-Subsector8-Stinging5-Truffle8-Composer4-Repeater8';
 const JWT_EXPIRES = '15m';
 const REFRESH_EXPIRES_DAYS = 7;
 
@@ -34,15 +34,15 @@ class AuthLocal {
   }
 
   /**
-   * Authentification : vérifie username/password et retourne un token JWT
+   * Authentification : vérifie email/password et retourne un token JWT
    * @param {FlatFileDB} db - Instance de la base
-   * @param {string} username - Identifiant de l'utilisateur (texte libre)
+   * @param {string} email - Email de l'utilisateur
    * @param {string} password - Mot de passe en clair
    * @returns {object|null} - { token, user } ou null si échec
    */
-  static async login(db, username, password) {
-    // Cherche par username (identifiant unique, texte libre)
-    const users = await db.search('users', { username });
+  static async login(db, email, password) {
+    // Cherche par email
+    const users = await db.search('users', { email: email.toLowerCase().trim() });
     const user = users[0];
 
     if (!user || !user.is_active) {

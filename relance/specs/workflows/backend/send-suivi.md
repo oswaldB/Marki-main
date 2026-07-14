@@ -141,7 +141,7 @@ curl -X POST \
   -d '{
     "suiviIds": ["suiv_abc123", "suivi_def456"]
   }' \
-  "http://adti.api2.markidiags.com/api/suivis/send"
+  "https://dev.markidiags.com/api/suivis/send"
 ```
 
 ### Cron (tous les jours à 9h)

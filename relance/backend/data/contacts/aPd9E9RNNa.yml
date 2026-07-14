@@ -1,0 +1,27 @@
+objectId: aPd9E9RNNa
+externe_id: '12140'
+source: db_externe
+nom: STUBBS
+prenom: Stephanie
+type_personne: P
+email: stubbs@azurinvestimmo.com
+createdAt: '2026-06-24T16:25:40.737Z'
+updatedAt: '2026-07-14T02:00:49.819Z'
+entreprise:
+  objectId: MWRlRnS8ne
+  externe_id: '1536'
+  source: db_externe
+  nom: AZUR INVEST
+  prenom: null
+  type_personne: M
+  email: contact@azurinvestimmo.com
+  createdAt: '2026-06-24T16:25:34.183Z'
+  updatedAt: '2026-07-14T02:00:42.739Z'
+  telephone: null
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+lastSyncAt: '2026-07-14T02:00:41.421Z'

@@ -1,0 +1,27 @@
+objectId: 0caHpnc5Gz
+externe_id: '9999'
+source: db_externe
+nom: CHAISAZ
+prenom: Pascal
+type_personne: P
+email: pchaisaz@gmail.com
+createdAt: '2026-06-24T16:25:39.552Z'
+updatedAt: '2026-07-14T02:00:48.014Z'
+entreprise:
+  objectId: UgRzSoAkFJ
+  externe_id: '3318'
+  source: db_externe
+  nom: MIRAGE ESTATE
+  prenom: null
+  type_personne: M
+  email: info@mirageestate.com
+  telephone: 0677303096
+  createdAt: '2026-06-24T16:25:35.550Z'
+  updatedAt: '2026-07-14T02:00:43.995Z'
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+lastSyncAt: '2026-07-14T02:00:41.421Z'

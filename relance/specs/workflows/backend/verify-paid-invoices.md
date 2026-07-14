@@ -126,7 +126,7 @@ curl -X POST \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"trigger": "manual"}' \
-  "http://adti.api2.markidiags.com/functions/verifyPaidInvoicesNow"
+  "https://dev.markidiags.com/api/functions/verifyPaidInvoicesNow"
 ```
 
 ### Cron (quotidien)

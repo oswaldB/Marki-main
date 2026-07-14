@@ -1,0 +1,25 @@
+objectId: f5XwBCuE0P
+externe_id: '8908'
+source: db_externe
+nom: ANGE
+prenom: Sandrine
+type_personne: P
+createdAt: '2026-06-24T16:25:38.557Z'
+updatedAt: '2026-07-14T02:00:47.056Z'
+entreprise:
+  objectId: wf3hfOASOl
+  externe_id: '1287'
+  source: db_externe
+  nom: GAUTRY
+  prenom: null
+  type_personne: P
+  email: etude.gautry@notaires.fr
+  createdAt: '2026-06-24T16:25:34.182Z'
+  updatedAt: '2026-07-14T02:00:42.739Z'
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+lastSyncAt: '2026-07-14T02:00:41.421Z'

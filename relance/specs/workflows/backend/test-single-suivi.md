@@ -148,7 +148,7 @@ curl -X POST \
     "emailIndex": 0,
     "scenarioType": "suivi_agence"
   }' \
-  "http://adti.api2.markidiags.com/api/test/suivi"
+  "https://dev.markidiags.com/api/test/suivi"
 ```
 
 ### Entry Data

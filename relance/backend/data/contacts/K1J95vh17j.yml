@@ -1,0 +1,31 @@
+objectId: K1J95vh17j
+externe_id: '9536'
+source: db_externe
+nom: GIULIANO
+prenom: Marc
+type_personne: P
+email: mgiuliano@caisses-sociales.mc
+createdAt: '2026-06-24T16:25:38.731Z'
+updatedAt: '2026-07-14T02:00:47.818Z'
+entreprise:
+  objectId: OHlZ3trACx
+  externe_id: '1526'
+  source: db_externe
+  nom: CAISSE AUTONOME DES RETRAITES
+  prenom: null
+  type_personne: M
+  createdAt: '2026-06-24T16:25:34.183Z'
+  updatedAt: '2026-07-14T02:00:42.739Z'
+  email: null
+  telephone: null
+  blacklistedAt: '2026-06-29T12:50:03.550Z'
+  isBlacklisted: true
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+blacklistedAt: '2026-07-02T14:51:29.538Z'
+isBlacklisted: true
+lastSyncAt: '2026-07-14T02:00:41.421Z'

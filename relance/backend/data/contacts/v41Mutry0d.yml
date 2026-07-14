@@ -1,0 +1,27 @@
+objectId: v41Mutry0d
+externe_id: '10179'
+source: db_externe
+nom: DUBOIS
+prenom: Mireille
+type_personne: P
+email: deloye.immobilier@orange.fr
+createdAt: '2026-06-24T16:25:39.721Z'
+updatedAt: '2026-07-14T02:00:48.827Z'
+entreprise:
+  objectId: 9L5OJ8EZOM
+  externe_id: '8554'
+  source: db_externe
+  nom: AGENCE DELOYE
+  prenom: null
+  type_personne: M
+  email: deloye.immobilier@orange.fr
+  createdAt: '2026-06-24T16:25:38.557Z'
+  updatedAt: '2026-07-14T02:00:47.056Z'
+  telephone: null
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+lastSyncAt: '2026-07-14T02:00:41.421Z'

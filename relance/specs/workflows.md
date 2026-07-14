@@ -353,7 +353,7 @@ Le backend utilise une **Flat Files Database** avec les principes suivants :
 
 ```
 # API Backend (proxy)
-/api/*  http://localhost:3000/api/:splat  200
+/api/*  https://dev.markidiags.com/api/:splat  200
 
 # Routes SPA
 /dashboard      /index.html   200

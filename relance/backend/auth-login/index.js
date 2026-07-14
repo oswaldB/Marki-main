@@ -6,8 +6,7 @@
 
 const fs = require('fs').promises;
 const path = require('path');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const AuthLocal = require('../lib/auth-local.js');
 
 // Répertoire des logs
 const LOG_DIR = path.join(__dirname, 'logs');
@@ -55,14 +54,10 @@ async function login(input, db) {
   const normalizedEmail = email.toLowerCase().trim();
 
   try {
-    // Étape 2: Recherche utilisateur
-    const users = db.collections.users.find({
-      email: normalizedEmail
-    });
+    // Étape 2-5: Authentification via AuthLocal
+    const result = await AuthLocal.login(db, normalizedEmail, password);
 
-    const user = users[0];
-
-    if (!user || !user.is_active) {
+    if (!result) {
       await log('warn', 'Authentication failed', { 
         email: normalizedEmail, 
         reason: 'invalid_credentials' 
@@ -73,58 +68,15 @@ async function login(input, db) {
       };
     }
 
-    // Étape 3: Vérification mot de passe
-    const isValidPassword = await bcrypt.compare(password, user.password_hash);
-
-    if (!isValidPassword) {
-      await log('warn', 'Authentication failed', { 
-        email: normalizedEmail, 
-        userId: user.id,
-        reason: 'invalid_password' 
-      });
-      return {
-        status: 401,
-        error: 'Identifiants invalides'
-      };
-    }
-
-    // Étape 4: Génération JWT
-    const JWT_SECRET = process.env.JWT_SECRET || 'marki-dev-secret-change-in-production';
-    
-    const token = jwt.sign(
-      { 
-        userId: user.id, 
-        email: user.email, 
-        role: user.role 
-      },
-      JWT_SECRET,
-      { expiresIn: '7d' }
-    );
-
     await log('info', 'Login successful', { 
-      userId: user.id, 
-      role: user.role 
+      userId: result.user.id, 
+      role: result.user.role 
     });
-
-    // Étape 5: Mise à jour last_login
-    user.last_login = new Date().toISOString();
-    user.login_count = (user.login_count || 0) + 1;
-    
-    // Sauvegarder dans la collection (pas besoin de persister en YAML pour ce champ)
-    db.collections.users.update(user);
 
     // Retourner succès
     return {
       status: 200,
-      data: {
-        token,
-        user: {
-          id: user.id,
-          username: user.username,
-          email: user.email,
-          role: user.role
-        }
-      }
+      data: result
     };
 
   } catch (err) {

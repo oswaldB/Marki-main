@@ -1,0 +1,27 @@
+objectId: PQB44Ml2K8
+externe_id: '9976'
+source: db_externe
+nom: 'FERNANDEZ SEMERIA '
+prenom: 'Olivier '
+type_personne: P
+email: fernandezlmi@hotmail.com
+createdAt: '2026-06-24T16:25:39.552Z'
+updatedAt: '2026-07-14T02:00:48.015Z'
+entreprise:
+  objectId: lDP9VJ9ene
+  externe_id: '2364'
+  source: db_externe
+  nom: AGENCE LMI ARTHURIMMO
+  prenom: null
+  type_personne: M
+  email: contact@agence-lmi.com
+  createdAt: '2026-06-24T16:25:34.684Z'
+  updatedAt: '2026-07-14T02:00:43.815Z'
+  telephone: null
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+lastSyncAt: '2026-07-14T02:00:41.421Z'

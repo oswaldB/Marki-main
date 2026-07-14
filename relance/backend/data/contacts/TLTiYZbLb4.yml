@@ -1,0 +1,27 @@
+objectId: TLTiYZbLb4
+externe_id: '15670'
+source: db_externe
+nom: HENG
+prenom: Paulina
+type_personne: P
+email: pauliina.heng@habisol.com
+createdAt: '2026-06-24T16:25:42.723Z'
+updatedAt: '2026-07-14T02:00:51.821Z'
+entreprise:
+  objectId: 4JK8LxsuQ5
+  externe_id: '1707'
+  source: db_externe
+  nom: HABISOL SARL
+  prenom: null
+  type_personne: M
+  createdAt: '2026-06-24T16:25:34.520Z'
+  updatedAt: '2026-07-14T02:00:43.001Z'
+  email: null
+  telephone: null
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+lastSyncAt: '2026-07-14T02:00:41.421Z'

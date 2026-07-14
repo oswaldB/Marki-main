@@ -1,0 +1,28 @@
+objectId: ERSYdC4k2Q
+externe_id: '9883'
+source: db_externe
+nom: DAMILANO
+prenom: Marie Luce
+type_personne: P
+email: mldamilano@citya.com
+telephone: 0689269200
+createdAt: '2026-06-24T16:25:39.552Z'
+updatedAt: '2026-07-14T02:00:48.014Z'
+entreprise:
+  objectId: qVbgUfs9GA
+  externe_id: '1753'
+  source: db_externe
+  nom: CITYA NICE IMMOBILIER
+  prenom: null
+  type_personne: M
+  email: mguichard@citya.com
+  createdAt: '2026-06-24T16:25:34.520Z'
+  updatedAt: '2026-07-14T02:00:43.001Z'
+  telephone: null
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+lastSyncAt: '2026-07-14T02:00:41.421Z'

@@ -6,7 +6,6 @@
 const http = require('http');
 const url = require('url');
 const path = require('path');
-require('dotenv').config({ path: path.join(__dirname, '.env') });
 
 // Initialiser la DB
 const FlatFileDB = require('./lib/flat-file-db');
@@ -15,7 +14,7 @@ const db = new FlatFileDB(path.join(__dirname, 'data'));
 // Importer les workflows
 const authLogin = require('./auth-login');
 
-const PORT = process.env.API_PORT || 3001;
+const PORT = 5000;
 
 // Parser le body JSON
 const parseBody = (req) => {

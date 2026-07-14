@@ -67,7 +67,7 @@ Le fichier `_redirects` redirige toutes les routes vers `index.html` :
 
 ```
 # API (proxy vers backend)
-/api/*  http://localhost:3000/api/:splat  200
+/api/*  https://dev.markidiags.com/api/:splat  200
 
 # SPA routes
 /dashboard      /index.html   200

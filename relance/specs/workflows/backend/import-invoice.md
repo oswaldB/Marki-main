@@ -254,7 +254,7 @@ POST /api/import/invoices
 # cURL
 curl -X POST \
   -H "Authorization: Bearer $TOKEN" \
-  "http://adti.api2.markidiags.com/api/import/invoices"
+  "https://dev.markidiags.com/api/import/invoices"
 ```
 
 ### Cron (toutes les heures)

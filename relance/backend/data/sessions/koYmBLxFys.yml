@@ -1,0 +1,20 @@
+objectId: koYmBLxFys
+sessionToken: r:a410b0040cf960ebc1c986eb9b96f832
+user:
+  objectId: e0MKM1MR7L
+  username: manon
+  createdAt: '2026-03-16T13:52:26.404Z'
+  updatedAt: '2026-03-16T13:52:56.694Z'
+  ACL:
+    e0MKM1MR7L:
+      read: true
+      write: true
+  __type: Object
+  className: _User
+createdWith:
+  action: login
+  authProvider: password
+expiresAt: '2027-04-13T14:11:38.482Z'
+installationId: f25eb756-47cd-41c4-8ceb-316160d89b65
+createdAt: '2026-04-13T14:11:38.482Z'
+updatedAt: '2026-04-13T14:11:38.482Z'

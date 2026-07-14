@@ -1,0 +1,26 @@
+objectId: vHFrQUZmy8
+externe_id: '9381'
+source: db_externe
+nom: ARNAUD
+prenom: Stéphanie
+type_personne: P
+email: acta@notaires.fr
+createdAt: '2026-06-24T16:25:38.731Z'
+updatedAt: '2026-07-14T02:00:47.818Z'
+entreprise:
+  objectId: jaFCih08ag
+  externe_id: '1423'
+  source: db_externe
+  nom: ACTA
+  prenom: null
+  type_personne: P
+  email: acta@notaires.fr
+  createdAt: '2026-06-24T16:25:34.182Z'
+  updatedAt: '2026-07-14T02:00:42.739Z'
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+lastSyncAt: '2026-07-14T02:00:41.421Z'

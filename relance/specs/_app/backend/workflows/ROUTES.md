@@ -184,27 +184,27 @@ Ce document liste toutes les routes API disponibles pour appeler les workflows b
 
 ```bash
 # Login (sans auth)
-curl -X POST http://adti.api2.markidiags.com/api/auth/login \
+curl -X POST https://dev.markidiags.com/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email":"user@example.com","password":"secret"}'
 
 # Appel authentifié
-curl -X POST http://adti.api2.markidiags.com/api/relances/generate \
+curl -X POST https://dev.markidiags.com/api/relances/generate \
   -H "Authorization: Bearer $TOKEN"
 
 # Générer un token contact (publique - lien magique)
-curl -X POST http://adti.api2.markidiags.com/api/tokens/contact \
+curl -X POST https://dev.markidiags.com/api/tokens/contact \
   -H "Content-Type: application/json" \
   -d '{"contactId":"cont_abc123"}'
 
 # Régénérer les relances d'un contact
-curl -X POST http://adti.api2.markidiags.com/api/relances/regenerate \
+curl -X POST https://dev.markidiags.com/api/relances/regenerate \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"contactId":"cont_abc123","reason":"manual"}'
 
 # Vérifier les factures payées
-curl -X POST http://adti.api2.markidiags.com/api/verify/paid-invoices \
+curl -X POST https://dev.markidiags.com/api/verify/paid-invoices \
   -H "Authorization: Bearer $TOKEN"
 ```
 

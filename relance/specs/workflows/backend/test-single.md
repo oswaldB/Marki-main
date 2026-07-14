@@ -146,7 +146,7 @@ curl -X POST \
     "emailIndex": 0,
     "scenarioType": "multiple"
   }' \
-  "http://adti.api2.markidiags.com/api/test/relance"
+  "https://dev.markidiags.com/api/test/relance"
 ```
 
 ### Entry Data

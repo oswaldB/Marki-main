@@ -121,7 +121,7 @@ POST /api/emails/send
 # cURL
 curl -X POST \
   -H "Authorization: Bearer $TOKEN" \
-  "http://adti.api2.markidiags.com/api/emails/send"
+  "https://dev.markidiags.com/api/emails/send"
 ```
 
 ### Cron

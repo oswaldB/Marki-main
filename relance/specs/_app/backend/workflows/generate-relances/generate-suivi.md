@@ -174,7 +174,7 @@ POST /api/suivis/generate
 # cURL
 curl -X POST \
   -H "Authorization: Bearer $TOKEN" \
-  "http://adti.api2.markidiags.com/api/suivis/generate"
+  "https://dev.markidiags.com/api/suivis/generate"
 ```
 
 ### Cron

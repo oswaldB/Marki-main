@@ -1,0 +1,27 @@
+objectId: 93tznUjbrW
+externe_id: '12292'
+source: db_externe
+nom: BARBERA
+prenom: 'Lucien '
+type_personne: P
+email: lucien@ecb-barbera.fr
+createdAt: '2026-06-24T16:25:40.737Z'
+updatedAt: '2026-07-14T02:00:49.819Z'
+entreprise:
+  objectId: c7nQ6jqoM3
+  externe_id: '10388'
+  source: db_externe
+  nom: BARBERA GESTION PATRIMOINE
+  prenom: null
+  type_personne: M
+  createdAt: '2026-06-24T16:25:39.721Z'
+  updatedAt: '2026-07-14T02:00:48.827Z'
+  email: null
+  telephone: null
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+lastSyncAt: '2026-07-14T02:00:41.421Z'

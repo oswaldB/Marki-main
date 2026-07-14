@@ -1,0 +1,27 @@
+objectId: ahi596AP0X
+externe_id: '9729'
+source: db_externe
+nom: POWILEWICZ
+prenom: Anne
+type_personne: P
+createdAt: '2026-06-24T16:25:39.552Z'
+updatedAt: '2026-07-14T02:00:48.014Z'
+entreprise:
+  objectId: r6PUjDOJHB
+  externe_id: '1647'
+  source: db_externe
+  nom: OPTI GESTION
+  prenom: null
+  type_personne: M
+  email: contact@locationgestion.com
+  telephone: 0786983173
+  createdAt: '2026-06-24T16:25:34.520Z'
+  updatedAt: '2026-07-14T02:00:43.001Z'
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+email: null
+lastSyncAt: '2026-07-14T02:00:41.421Z'

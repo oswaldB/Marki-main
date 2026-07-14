@@ -1,0 +1,28 @@
+objectId: c07rSOIw4J
+externe_id: '9913'
+source: db_externe
+nom: CARON
+prenom: Philippe
+type_personne: P
+email: philippe@caron-immobilier.fr
+telephone: 0613859413
+createdAt: '2026-06-24T16:25:39.552Z'
+updatedAt: '2026-07-14T02:00:48.015Z'
+entreprise:
+  objectId: MyutVJwsSf
+  externe_id: '1768'
+  source: db_externe
+  nom: VISTA IMMOBILIER
+  prenom: null
+  type_personne: M
+  email: agence@vista-immobilier.com
+  createdAt: '2026-06-24T16:25:34.520Z'
+  updatedAt: '2026-07-14T02:00:43.001Z'
+  telephone: null
+  lastSyncAt: '2026-07-14T02:00:41.421Z'
+  employes:
+    __type: Relation
+    className: Contact
+  __type: Object
+  className: Contact
+lastSyncAt: '2026-07-14T02:00:41.421Z'

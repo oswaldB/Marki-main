@@ -1,0 +1,20 @@
+objectId: 7qd5wpI9o3
+sessionToken: r:af4cbf206ac29bf5b4d9cc7201ccffcd
+user:
+  objectId: 8Do4NOiavE
+  username: oswald
+  createdAt: '2026-03-16T13:50:45.673Z'
+  updatedAt: '2026-03-31T15:44:00.286Z'
+  ACL:
+    8Do4NOiavE:
+      read: true
+      write: true
+  __type: Object
+  className: _User
+createdWith:
+  action: login
+  authProvider: password
+expiresAt: '2027-04-29T15:27:52.749Z'
+installationId: ca4c4616-3a26-4818-a28d-2990097ab9ca
+createdAt: '2026-04-29T15:27:52.749Z'
+updatedAt: '2026-04-29T15:27:52.749Z'

@@ -116,28 +116,28 @@ POST /api/sync/contacts
 # cURL - Synchronisation complète
 curl -X POST \
   -H "Authorization: Bearer $TOKEN" \
-  "http://adti.api2.markidiags.com/api/sync/contacts"
+  "https://dev.markidiags.com/api/sync/contacts"
 
 # cURL - Mode dryRun (simulation)
 curl -X POST \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"dryRun": true}' \
-  "http://adti.api2.markidiags.com/api/sync/contacts"
+  "https://dev.markidiags.com/api/sync/contacts"
 
 # cURL - Contact spécifique
 curl -X POST \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"contactId": "cont_abc123"}' \
-  "http://adti.api2.markidiags.com/api/sync/contacts"
+  "https://dev.markidiags.com/api/sync/contacts"
 
 # cURL - Depuis une date
 curl -X POST \
   -H "Authorization: Bearer $TOKEN" \
   -H "Content-Type: application/json" \
   -d '{"since": "2026-07-01T00:00:00.000Z"}' \
-  "http://adti.api2.markidiags.com/api/sync/contacts"
+  "https://dev.markidiags.com/api/sync/contacts"
 ```
 
 ### Cron (toutes les heures)

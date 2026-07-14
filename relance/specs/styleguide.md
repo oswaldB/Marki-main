@@ -31,7 +31,7 @@ Le routing est géré par un fichier `_redirects` à la racine du frontend.
 **Exemple de configuration (`_redirects`)**:
 ```
 # Routes API (proxy vers backend)
-/api/*  http://localhost:3000/api/:splat  200
+/api/*  https://dev.markidiags.com/api/:splat  200
 
 # Routes SPA (fallback vers index.html)
 /dashboard    /index.html   200

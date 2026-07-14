@@ -81,7 +81,7 @@ POST /functions/generateContactToken
 curl -X POST \
   -H "Content-Type: application/json" \
   -d '{"contactId": "cont_abc123"}' \
-  "http://adti.api2.markidiags.com/functions/generateContactToken"
+  "https://dev.markidiags.com/api/functions/generateContactToken"
 ```
 
 **Note**: Cette Cloud Function est publique (pas d'authentification requise) car elle est appelée depuis un lien email par un client non connecté.
