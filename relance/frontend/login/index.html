@@ -11,6 +11,9 @@
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   
+  <!-- Config -->
+  <script src="../config.js"></script>
+  
   <style>
     html { font-family: 'Inter', system-ui, sans-serif; }
   </style>
@@ -120,7 +123,8 @@
           this.error = '';
           
           try {
-            const response = await fetch('/api/auth/login', {
+            const apiUrl = (window.CONFIG?.API_BASE_URL || '') + '/api/auth/login';
+            const response = await fetch(apiUrl, {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(this.form)
@@ -129,7 +133,7 @@
             const data = await response.json();
             
             if (!response.ok) {
-              throw new Error(data.message || 'Identifiants incorrects');
+              throw new Error(data.error || 'Identifiants incorrects');
             }
             
             localStorage.setItem('marki_token', data.token);

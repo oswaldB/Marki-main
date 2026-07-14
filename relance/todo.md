@@ -30,8 +30,10 @@ Pour chaque écran:
 **Priorité:** Critique (bloquant pour tout le reste)
 
 **Backend:**
-- [ ] `backend/workflows/auth/auth-login.js` - Endpoint POST `/api/auth/login`
-- [ ] JWT token generation + validation middleware
+- [x] `backend/auth-login/index.js` - Endpoint POST `/api/auth/login`
+- [x] `backend/api-server.js` - Serveur HTTP minimal
+- [x] JWT token generation
+- [ ] Middleware de validation JWT (pour les autres routes)
 
 **Frontend:**
 - [x] `frontend/login/index.html` - Page de connexion
