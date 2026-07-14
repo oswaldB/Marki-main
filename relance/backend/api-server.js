@@ -17,13 +17,6 @@ const authLogin = require('./auth-login');
 
 const PORT = process.env.API_PORT || 3001;
 
-// CORS headers
-const setCORS = (res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-};
-
 // Parser le body JSON
 const parseBody = (req) => {
   return new Promise((resolve, reject) => {
@@ -40,11 +33,14 @@ const parseBody = (req) => {
 };
 
 const server = http.createServer(async (req, res) => {
-  setCORS(res);
+  // CORS - DOIT être défini AVANT toute réponse
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
-  // OPTIONS pour CORS preflight
+  // Preflight OPTIONS - répondre immédiatement
   if (req.method === 'OPTIONS') {
-    res.writeHead(200);
+    res.writeHead(204);
     res.end();
     return;
   }
@@ -54,7 +50,8 @@ const server = http.createServer(async (req, res) => {
 
   // Health check
   if (pathname === '/health' && req.method === 'GET') {
-    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.setHeader('Content-Type', 'application/json');
+    res.writeHead(200);
     res.end(JSON.stringify({ status: 'ok', timestamp: new Date().toISOString() }));
     return;
   }
@@ -64,17 +61,20 @@ const server = http.createServer(async (req, res) => {
     try {
       const body = await parseBody(req);
       const result = await authLogin.login(body, db);
-      res.writeHead(result.status, { 'Content-Type': 'application/json' });
+      res.setHeader('Content-Type', 'application/json');
+      res.writeHead(result.status);
       res.end(JSON.stringify(result.status === 200 ? result.data : { error: result.error }));
     } catch (err) {
-      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.setHeader('Content-Type', 'application/json');
+      res.writeHead(400);
       res.end(JSON.stringify({ error: 'Invalid request' }));
     }
     return;
   }
 
   // Route non trouvée
-  res.writeHead(404, { 'Content-Type': 'application/json' });
+  res.setHeader('Content-Type', 'application/json');
+  res.writeHead(404);
   res.end(JSON.stringify({ error: 'Not found' }));
 });
 
