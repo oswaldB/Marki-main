@@ -1,338 +1,457 @@
-# TODO - Développement App
+# TODO - Développement App (par Écran)
 
 ## Architecture
 - Alpine.js (pas de JS vanilla)
 - Tailwind CSS en CDN
 - Static pure (HTML + Alpine.js)
+- Backend: Node.js avec flat-file DB
 
 ---
 
-## Phase 1: Setup & Structure
+## ✅ Phase 1: Setup & Structure (TERMINÉ)
 
-- [x] Créer la structure `frontend/` avec tous les dossiers
-- [x] Setup `index.html` racine avec redirection vers `/frontend/login/`
-- [x] Template de base (layout commun: header, nav, etc.)
-- [x] Composants Alpine.js réutilisables
-
-**Fichiers créés:**
-- `index.html` - Redirection racine
-- `frontend/login/index.html` - Page de connexion
-- `frontend/components/sidebar-nav-dual.js` - Navigation sidebar
-- `frontend/components/utils.js` - Fonctions utilitaires (formatMoney, etc.)
-- `frontend/components/template-authenticated.html` - Template pages auth
-- `frontend/README.md` - Documentation structure
+- [x] Structure `frontend/` avec dossiers
+- [x] `index.html` racine → redirection login
+- [x] Composants: sidebar, utils, templates
+- [x] Logo et assets communs
 
 ---
 
-## Phase 2: Frontend - Écrans (20 écrans)
+## Phase 2: Développement par Écran
 
-### Auth
-- [x] `login/index.html` - Page de connexion
-
-### Dashboard
-- [ ] `dashboard/index.html` - Tableau de bord
-
-### Contacts
-- [ ] `contacts/index.html` - Liste des contacts
-
-### Impayés (4 écrans)
-- [ ] `impayes/index.html` - Liste des impayés
-- [ ] `impayes-detail/index.html` - Détail impayé (param: `?id=`)
-- [ ] `impayes-payeur/index.html` - Impayés par payeur (param: `?id=`)
-- [ ] `impayes-suspendus/index.html` - Impayés suspendus
-
-### Relances (3 écrans)
-- [ ] `relances/index.html` - Liste des relances
-- [ ] `relances-calendrier/index.html` - Calendrier
-- [ ] `relances-validation/index.html` - Validation
-
-### Séquences (3 écrans)
-- [ ] `sequences/index.html` - Liste des séquences
-- [ ] `sequences-relance-detail/index.html` - Détail séquence relance (param: `?id=`)
-- [ ] `sequences-suivi-detail/index.html` - Détail séquence suivi (param: `?id=`)
-
-### Paramètres (3 écrans)
-- [ ] `settings-smtp/index.html` - Profils SMTP
-- [ ] `settings-smtp-detail/index.html` - Détail SMTP (param: `?id=`)
-- [ ] `settings-utilisateurs/index.html` - Gestion utilisateurs
-
-### Autres (4 écrans)
-- [ ] `evenements/index.html` - Journal événements
-- [ ] `smart-marki/index.html` - Assistant IA
-- [ ] `portail-client/index.html` - Portail client (param: `?token=`)
-- [ ] `portail-mission/index.html` - Portail mission (param: `?token=`)
+Pour chaque écran:
+1. Créer le backend (API endpoints)
+2. Créer le frontend (HTML + Alpine.js)
+3. Tester l'intégration
 
 ---
 
-## Phase 3: Frontend - Workflows (par écran)
+### Écran 1: Login
+**Priorité:** Critique (bloquant pour tout le reste)
 
-### contacts/ (9 workflows)
-- [ ] `close-detail-slideover.md`
-- [ ] `export-data.md`
-- [ ] `initial-load.md`
-- [ ] `pagination-next.md`
-- [ ] `pagination-prev.md`
-- [ ] `set-email-force.md`
-- [ ] `sort-by-date-impaye.md`
-- [ ] `sort-by-impayes.md`
-- [ ] `toggle-blacklist.md`
-- [ ] `toggle-dropdown.md`
-- [ ] `view-contact.md`
+**Backend:**
+- [ ] `backend/workflows/auth/auth-login.js` - Endpoint POST `/api/auth/login`
+- [ ] JWT token generation + validation middleware
 
-### dashboard/ (6 workflows)
-- [ ] `clear-events.md`
-- [ ] `initial-load.md`
-- [ ] `switch-view-card.md`
-- [ ] `switch-view-list.md`
-- [ ] `sync-data.md`
+**Frontend:**
+- [x] `frontend/login/index.html` - Page de connexion
+- [ ] Connecter au vrai endpoint API (actuellement mocké)
 
-### evenements/ (7 workflows)
-- [ ] `close-modal.md`
-- [ ] `filter-all.md`
-- [ ] `filter-unread.md`
-- [ ] `initial-load.md`
-- [ ] `mark-all-read.md`
-- [ ] `mark-as-read.md`
-- [ ] `open-event.md`
-
-### impayes/ (11 workflows)
-- [ ] `initial-load.md`
-- [ ] `open-detail.md`
-- [ ] `pagination-next.md`
-- [ ] `pagination-prev.md`
-- [ ] `save-note.md`
-- [ ] `sort-by-dossier.md`
-- [ ] `sort-by-montant.md`
-- [ ] `sort-by-numero.md`
-- [ ] `sort-by-payeur.md`
-- [ ] `sort-by-reste.md`
-- [ ] `suspend-facture.md`
-- [ ] `sync-data.md`
-- [ ] `unsuspend-facture.md`
-
-### impayes-detail/ (6 workflows)
-- [ ] `blacklist-facture.md`
-- [ ] `changer-sequence.md`
-- [ ] `initial-load.md`
-- [ ] `open-pdf.md`
-- [ ] `suspend-facture.md`
-- [ ] `unsuspend-facture.md`
-
-### impayes-payeur/ (7 workflows)
-- [ ] `close-detail.md`
-- [ ] `initial-load.md`
-- [ ] `open-detail.md`
-- [ ] `pagination-next.md`
-- [ ] `pagination-prev.md`
-- [ ] `save-note.md`
-- [ ] `sync-data.md`
-
-### impayes-suspendus/ (2 workflows)
-- [ ] `initial-load.md`
-- [ ] `reactivate-impaye.md`
-
-### login/ (2 workflows)
-- [ ] `auth-submit.md`
-- [ ] `initial-load.md`
-
-### portail-client/ (4 workflows)
-- [ ] `download-facture.md`
-- [ ] `initial-load.md`
-- [ ] `regler-facture.md`
-- [ ] `switch-tab-apporteur.md`
-- [ ] `switch-tab-factures.md`
-
-### portail-mission/ (4 workflows)
-- [ ] `download-facture.md`
-- [ ] `initial-load.md`
-- [ ] `logout.md`
-- [ ] `regler-facture.md`
-
-### relances/ (8 workflows)
-- [ ] `cancel-relance.md`
-- [ ] `close-modal.md`
-- [ ] `create-relance.md`
-- [ ] `edit-note.md`
-- [ ] `edit-relance.md`
-- [ ] `initial-load.md`
-- [ ] `new-relance.md`
-- [ ] `toggle-payeur.md`
-- [ ] `view-relance.md`
-
-### relances-calendrier/ (8 workflows)
-- [ ] `close-modal.md`
-- [ ] `go-today.md`
-- [ ] `initial-load.md`
-- [ ] `next-period.md`
-- [ ] `open-edit-relance.md`
-- [ ] `previous-period.md`
-- [ ] `save-edit.md`
-- [ ] `switch-view-month.md`
-- [ ] `switch-view-week.md`
-
-### relances-validation/ (9 workflows)
-- [ ] `blacklister-relance.md`
-- [ ] `deselect-relance.md`
-- [ ] `filter-all.md`
-- [ ] `filter-email.md`
-- [ ] `filter-today.md`
-- [ ] `initial-load.md`
-- [ ] `save-changes.md`
-- [ ] `select-relance.md`
-- [ ] `supprimer-relance.md`
-- [ ] `suspendre-relance.md`
-- [ ] `valider-relance.md`
-
-### sequences/ (7 workflows)
-- [ ] `close-modal.md`
-- [ ] `create-sequence.md`
-- [ ] `duplicate-sequence.md`
-- [ ] `filter-all.md`
-- [ ] `filter-relance.md`
-- [ ] `filter-suivi.md`
-- [ ] `initial-load.md`
-- [ ] `new-sequence.md`
-- [ ] `set-type-relance.md`
-
-### sequences-relance-detail/ (18 workflows)
-- [ ] `ajouter-email.md`
-- [ ] `copy-lien.md`
-- [ ] `copy-variable.md`
-- [ ] `initial-load.md`
-- [ ] `lancer-attribution.md`
-- [ ] `open-chatgpt.md`
-- [ ] `open-ia-modal.md`
-- [ ] `open-liens-paiement.md`
-- [ ] `sauvegarder.md`
-- [ ] `select-scenario-broker.md`
-- [ ] `select-scenario-impayes-broker.md`
-- [ ] `select-scenario-multiple.md`
-- [ ] `select-scenario-single.md`
-- [ ] `supprimer-email.md`
-- [ ] `supprimer-groupe.md`
-- [ ] `tester-email.md`
-- [ ] `toggle-attribution-auto.md`
-- [ ] `toggle-email.md`
-- [ ] `toggle-publication.md`
-- [ ] `toggle-scenario-active.md`
-- [ ] `toggle-validation.md`
-
-### sequences-suivi-detail/ (14 workflows)
-- [ ] `ajouter-email.md`
-- [ ] `initial-load.md`
-- [ ] `open-ia-modal.md`
-- [ ] `sauvegarder.md`
-- [ ] `select-heure.md`
-- [ ] `select-jour-mois.md`
-- [ ] `select-jour-semaine.md`
-- [ ] `select-scenario-multiple.md`
-- [ ] `select-scenario-single.md`
-- [ ] `set-frequence-hebdomadaire.md`
-- [ ] `set-frequence-mensuel.md`
-- [ ] `set-frequence-quotidien.md`
-- [ ] `supprimer-email.md`
-- [ ] `tester-email.md`
-- [ ] `toggle-collapse.md`
-- [ ] `toggle-publication.md`
-- [ ] `toggle-validation.md`
-
-### settings-smtp/ (8 workflows)
-- [ ] `close-delete-modal.md`
-- [ ] `confirm-delete.md`
-- [ ] `create-profil.md`
-- [ ] `delete-profil.md`
-- [ ] `edit-profil.md`
-- [ ] `initial-load.md`
-- [ ] `new-profil.md`
-- [ ] `test-profil.md`
-
-### settings-smtp-detail/ (4 workflows)
-- [ ] `initial-load.md`
-- [ ] `save-changes.md`
-- [ ] `tester-connexion.md`
-- [ ] `toggle-password.md`
-
-### settings-utilisateurs/ (5 workflows)
-- [ ] `create-user.md`
-- [ ] `edit-user.md`
-- [ ] `initial-load.md`
-- [ ] `open-add-user.md`
-- [ ] `update-user.md`
-
-### smart-marki/ (7 workflows)
-- [ ] `apply-insight.md`
-- [ ] `close-insight.md`
-- [ ] `dismiss-insight.md`
-- [ ] `initial-load.md`
-- [ ] `mark-all-read.md`
-- [ ] `open-insight.md`
+**Workflows:**
+- [ ] `auth-submit` - Soumission formulaire
+- [ ] `initial-load` - Vérifier si déjà connecté
 
 ---
 
-## Phase 4: Backend (29 workflows)
+### Écran 2: Dashboard
+**Priorité:** Haute (premier écran post-login)
 
-### Auth
-- [ ] `auth/auth-login.js` + test
+**Backend:**
+- [ ] `backend/workflows/dashboard/get-dashboard-data.js` - KPIs, événements, top débiteurs
+- [ ] `backend/workflows/events/get-events.js` - Liste événements
+- [ ] `backend/workflows/sync/sync-data.js` - Synchronisation ADTI
 
-### Cleanup
-- [ ] `cleanup/cleanup-all-relances-contact-blackliste.js` + test
-- [ ] `cleanup/cleanup-all-relances-paid-impayes.js` + test
-- [ ] `cleanup/cleanup-orphan-relances.js` + test
-- [ ] `cleanup/cleanup-relances-contact-blackliste.js` + test
+**Frontend:**
+- [ ] `frontend/dashboard/index.html` - Tableau de bord complet
 
-### Contacts
-- [ ] `contacts/sync-contacts.js` + test
-- [ ] `contacts/contacts-blacklist.js` + test
-
-### Generate-relances
-- [ ] `generate-relances/generate-contact-token.js` + test
-- [ ] `generate-relances/generate-pdf-links.js` + test
-- [ ] `generate-relances/generate-relances.js` + test
-- [ ] `generate-relances/generate-suivi.js` + test
-
-### Impayes
-- [ ] `impayes/get-contact-impayes.js` + test
-- [ ] `impayes/impayes-suspend.js` + test
-- [ ] `impayes/impayes-unsuspend.js` + test
-- [ ] `impayes/verify-paid-invoices.js` + test
-
-### Import
-- [ ] `import/import-invoice.js` + test
-
-### Portail-client
-- [ ] `portail-client/portail-client.js` + test
-
-### Regenerate-relances
-- [ ] `regenerate-relances/regenerate-relances-contact.js` + test
-- [ ] `regenerate-relances/regenerate-relances-with-status.js` + test
-
-### Send-emails
-- [ ] `send-emails/send-emails.js` + test
-- [ ] `send-emails/send-suivi.js` + test
-- [ ] `send-emails/test-single.js` + test
-- [ ] `send-emails/test-single-suivi.js` + test
-
-### Sequences
-- [ ] `sequences/appliquer-regles-attribution.js` + test
-
-### Users-management
-- [ ] `users-management/users-management.js` + test
+**Workflows:**
+- [ ] `initial-load` - Charger KPIs et graphiques
+- [ ] `sync-data` - Bouton synchroniser
+- [ ] `clear-events` - Effacer événements
+- [ ] `switch-view-card/list` - Toggle top débiteurs
 
 ---
 
-## Phase 5: Intégration & Tests
+### Écran 3: Contacts
+**Priorité:** Haute (données de base)
 
-- [ ] Test end-to-end des workflows critiques
-- [ ] Validation des routes API
-- [ ] Test des portails (client/mission)
-- [ ] Vérification responsive
+**Backend:**
+- [ ] `backend/workflows/contacts/get-contacts.js` - Liste paginée
+- [ ] `backend/workflows/contacts/sync-contacts.js` - Sync ADTI
+- [ ] `backend/workflows/contacts/update-contact.js` - Update (email, blacklist)
+
+**Frontend:**
+- [ ] `frontend/contacts/index.html` - Liste avec filtres
+
+**Workflows:**
+- [ ] `initial-load` - Charger liste
+- [ ] `pagination-next/prev` - Pagination
+- [ ] `sort-by-*` - Tris (date impayé, nb impayés)
+- [ ] `toggle-blacklist` - Blacklister contact
+- [ ] `set-email-force` - Forcer email
+- [ ] `view-contact` - Voir détail (slideover)
+- [ ] `export-data` - Export CSV
+
+---
+
+### Écran 4: Impayés (Liste)
+**Priorité:** Haute (core business)
+
+**Backend:**
+- [ ] `backend/workflows/impayes/get-impayes.js` - Liste factures impayées
+- [ ] `backend/workflows/impayes/save-note.js` - Sauvegarder note
+
+**Frontend:**
+- [ ] `frontend/impayes/index.html` - Liste des impayés
+
+**Workflows:**
+- [ ] `initial-load` - Charger impayés
+- [ ] `pagination-next/prev` - Pagination
+- [ ] `sort-by-*` - Tris (dossier, montant, payeur, etc.)
+- [ ] `save-note` - Ajouter note
+- [ ] `open-detail` - Ouvrir détail
+- [ ] `suspend/unsuspend-facture` - Suspendre facture
+
+---
+
+### Écran 5: Impayés Détail
+**Priorité:** Haute
+
+**Backend:**
+- [ ] `backend/workflows/impayes/get-impaye-detail.js` - Détail facture
+- [ ] `backend/workflows/impayes/impayes-suspend.js` - Suspendre
+- [ ] `backend/workflows/impayes/impayes-unsuspend.js` - Désuspendre
+
+**Frontend:**
+- [ ] `frontend/impayes-detail/index.html` - Détail facture (?id=)
+
+**Workflows:**
+- [ ] `initial-load` - Charger détail
+- [ ] `suspend/unsuspend-facture` - Toggle suspension
+- [ ] `blacklist-facture` - Blacklister
+- [ ] `changer-sequence` - Changer séquence
+- [ ] `open-pdf` - Voir PDF
+
+---
+
+### Écran 6: Impayés par Payeur
+**Priorité:** Moyenne
+
+**Backend:**
+- [ ] `backend/workflows/impayes/get-contact-impayes.js` - Impayés d'un contact
+
+**Frontend:**
+- [ ] `frontend/impayes-payeur/index.html` - Vue payeur (?id=)
+
+**Workflows:**
+- [ ] `initial-load` - Charger impayés du payeur
+- [ ] `pagination-next/prev` - Pagination
+- [ ] `save-note` - Note sur payeur
+- [ ] `open-detail` - Voir facture
+
+---
+
+### Écran 7: Impayés Suspendus
+**Priorité:** Moyenne
+
+**Backend:**
+- [ ] `backend/workflows/impayes/get-suspended-impayes.js` - Liste suspendus
+
+**Frontend:**
+- [ ] `frontend/impayes-suspendus/index.html` - Liste suspendus
+
+**Workflows:**
+- [ ] `initial-load` - Charger suspendus
+- [ ] `reactivate-impaye` - Réactiver
+
+---
+
+### Écran 8: Relances (Liste)
+**Priorité:** Haute (core business)
+
+**Backend:**
+- [ ] `backend/workflows/generate-relances/generate-relances.js` - Générer relances
+- [ ] `backend/workflows/relances/get-relances.js` - Liste relances
+- [ ] `backend/workflows/relances/update-relance.js` - Update statut/note
+
+**Frontend:**
+- [ ] `frontend/relances/index.html` - Liste relances
+
+**Workflows:**
+- [ ] `initial-load` - Charger relances
+- [ ] `create-relance` - Créer nouvelle
+- [ ] `edit-relance` - Modifier
+- [ ] `cancel-relance` - Annuler
+- [ ] `edit-note` - Modifier note
+- [ ] `toggle-payeur` - Toggle vue par payeur
+- [ ] `view-relance` - Voir détail
+
+---
+
+### Écran 9: Relances Calendrier
+**Priorité:** Moyenne
+
+**Backend:**
+- [ ] `backend/workflows/relances/get-relances-calendar.js` - Relances par date
+
+**Frontend:**
+- [ ] `frontend/relances-calendrier/index.html` - Vue calendrier
+
+**Workflows:**
+- [ ] `initial-load` - Charger calendrier
+- [ ] `next/previous-period` - Navigation mois/semaine
+- [ ] `go-today` - Aller à aujourd'hui
+- [ ] `switch-view-month/week` - Toggle vue
+- [ ] `open-edit-relance` - Éditer depuis calendrier
+- [ ] `save-edit` - Sauver modifications
+
+---
+
+### Écran 10: Relances Validation
+**Priorité:** Haute (workflow métier important)
+
+**Backend:**
+- [ ] `backend/workflows/relances/validate-relance.js` - Valider relance
+- [ ] `backend/workflows/relances/bulk-update.js` - Actions massives
+
+**Frontend:**
+- [ ] `frontend/relances-validation/index.html` - Validation en masse
+
+**Workflows:**
+- [ ] `initial-load` - Charger relances à valider
+- [ ] `filter-*` - Filtres (all, email, today)
+- [ ] `select/deselect-relance` - Sélection
+- [ ] `valider-relance` - Valider
+- [ ] `blacklister-relance` - Blacklister
+- [ ] `suspendre-relance` - Suspendre
+- [ ] `supprimer-relance` - Supprimer
+- [ ] `save-changes` - Sauver modifications
+
+---
+
+### Écran 11: Séquences (Liste)
+**Priorité:** Moyenne
+
+**Backend:**
+- [ ] `backend/workflows/sequences/get-sequences.js` - Liste séquences
+- [ ] `backend/workflows/sequences/create-sequence.js` - Créer
+- [ ] `backend/workflows/sequences/update-sequence.js` - Modifier
+
+**Frontend:**
+- [ ] `frontend/sequences/index.html` - Liste séquences
+
+**Workflows:**
+- [ ] `initial-load` - Charger séquences
+- [ ] `filter-*` - Filtres (all, relance, suivi)
+- [ ] `create-sequence` - Créer nouvelle
+- [ ] `duplicate-sequence` - Dupliquer
+- [ ] `set-type-relance` - Changer type
+
+---
+
+### Écran 12: Séquences Détail (Relance)
+**Priorité:** Moyenne (complexe)
+
+**Backend:**
+- [ ] `backend/workflows/sequences/get-sequence-detail.js` - Détail séquence
+- [ ] `backend/workflows/sequences/save-sequence.js` - Sauvegarder
+- [ ] `backend/workflows/sequences/appliquer-regles-attribution.js` - Attribution auto
+
+**Frontend:**
+- [ ] `frontend/sequences-relance-detail/index.html` - Configuration relance (?id=)
+
+**Workflows:**
+- [ ] `initial-load` - Charger configuration
+- [ ] `sauvegarder` - Sauver
+- [ ] `ajouter/supprimer-email` - Gérer emails
+- [ ] `toggle-*` - Toggles (attribution, validation, publication, etc.)
+- [ ] `select-scenario-*` - Sélection scénarios
+- [ ] `lancer-attribution` - Lancer attribution
+- [ ] `tester-email` - Tester email
+- [ ] `open-*` - Ouvrir modaux (ChatGPT, IA, liens)
+- [ ] `copy-*` - Copier lien/variable
+
+---
+
+### Écran 13: Séquences Détail (Suivi)
+**Priorité:** Moyenne
+
+**Backend:**
+- [ ] `backend/workflows/sequences/get-sequence-suivi.js` - Détail suivi
+
+**Frontend:**
+- [ ] `frontend/sequences-suivi-detail/index.html` - Configuration suivi (?id=)
+
+**Workflows:**
+- [ ] `initial-load` - Charger configuration
+- [ ] `sauvegarder` - Sauvegarder
+- [ ] `set-frequence-*` - Fréquences (quotidien, hebdo, mensuel)
+- [ ] `select-*` - Sélections (heure, jour)
+- [ ] `ajouter/supprimer-email` - Gérer emails
+- [ ] `tester-email` - Tester
+
+---
+
+### Écran 14: Événements
+**Priorité:** Basse
+
+**Backend:**
+- [ ] `backend/workflows/events/get-events.js` - Liste événements
+- [ ] `backend/workflows/events/mark-read.js` - Marquer comme lu
+
+**Frontend:**
+- [ ] `frontend/evenements/index.html` - Journal événements
+
+**Workflows:**
+- [ ] `initial-load` - Charger événements
+- [ ] `filter-*` - Filtres (all, unread)
+- [ ] `mark-as-read` - Marquer lu
+- [ ] `mark-all-read` - Tout marquer lu
+- [ ] `open-event` - Voir détail
+
+---
+
+### Écran 15: Smart Marki (IA)
+**Priorité:** Basse (feature avancée)
+
+**Backend:**
+- [ ] `backend/workflows/smart-marki/get-insights.js` - Recommandations IA
+
+**Frontend:**
+- [ ] `frontend/smart-marki/index.html` - Assistant IA
+
+**Workflows:**
+- [ ] `initial-load` - Charger insights
+- [ ] `open/close-insight` - Voir détail
+- [ ] `apply-insight` - Appliquer recommandation
+- [ ] `dismiss-insight` - Ignorer
+
+---
+
+### Écran 16: Settings SMTP (Liste)
+**Priorité:** Moyenne
+
+**Backend:**
+- [ ] `backend/workflows/smtp/get-smtp-profiles.js` - Liste profils
+- [ ] `backend/workflows/smtp/create-update-profile.js` - CRUD
+
+**Frontend:**
+- [ ] `frontend/settings-smtp/index.html` - Liste profils SMTP
+
+**Workflows:**
+- [ ] `initial-load` - Charger profils
+- [ ] `create/edit/delete-profil` - CRUD
+- [ ] `test-profil` - Tester connexion
+
+---
+
+### Écran 17: Settings SMTP Détail
+**Priorité:** Moyenne
+
+**Backend:**
+- [ ] `backend/workflows/smtp/test-smtp-connection.js` - Test connexion
+
+**Frontend:**
+- [ ] `frontend/settings-smtp-detail/index.html` - Configuration profil (?id=)
+
+**Workflows:**
+- [ ] `initial-load` - Charger profil
+- [ ] `save-changes` - Sauver
+- [ ] `tester-connexion` - Tester
+- [ ] `toggle-password` - Show/hide password
+
+---
+
+### Écran 18: Settings Utilisateurs
+**Priorité:** Haute (admin)
+
+**Backend:**
+- [ ] `backend/workflows/users/get-users.js` - Liste utilisateurs
+- [ ] `backend/workflows/users/create-user.js` - Créer
+- [ ] `backend/workflows/users/update-user.js` - Modifier
+
+**Frontend:**
+- [ ] `frontend/settings-utilisateurs/index.html` - Gestion utilisateurs
+
+**Workflows:**
+- [ ] `initial-load` - Charger utilisateurs
+- [ ] `open-add-user` - Ouvrir modal création
+- [ ] `create-user` - Créer
+- [ ] `edit/update-user` - Modifier
+
+---
+
+### Écran 19: Portail Client
+**Priorité:** Haute (externe)
+
+**Backend:**
+- [ ] `backend/workflows/portail-client/validate-token.js` - Validation token
+- [ ] `backend/workflows/portail-client/get-factures.js` - Factures client
+- [ ] `backend/workflows/portail-client/get-portail-data.js` - Données portail
+
+**Frontend:**
+- [ ] `frontend/portail-client/index.html` - Portail client (?token=)
+
+**Workflows:**
+- [ ] `initial-load` - Valider token + charger données
+- [ ] `switch-tab-*` - Onglets (factures, apporteur)
+- [ ] `download-facture` - Télécharger PDF
+- [ ] `regler-facture` - Payer (redirection)
+
+---
+
+### Écran 20: Portail Mission
+**Priorité:** Haute (externe)
+
+**Backend:**
+- [ ] `backend/workflows/portail-mission/get-mission-data.js` - Données mission
+
+**Frontend:**
+- [ ] `frontend/portail-mission/index.html` - Portail mission (?token=)
+
+**Workflows:**
+- [ ] `initial-load` - Charger données
+- [ ] `logout` - Déconnexion
+- [ ] `download-facture` - Télécharger
+- [ ] `regler-facture` - Payer
+
+---
+
+## Phase 3: Workflows Backend Additionnels (Non liés à un écran)
+
+### Import & Synchronisation
+- [ ] `backend/workflows/import/import-invoice.js` - Import factures ADTI
+- [ ] `backend/workflows/cleanup/*.js` - Cleanup jobs (orphan, blacklist, etc.)
+
+### Génération & Envoi
+- [ ] `backend/workflows/generate-relances/generate-pdf-links.js` - Générer liens PDF
+- [ ] `backend/workflows/generate-relances/generate-contact-token.js` - Tokens portail
+- [ ] `backend/workflows/generate-relances/generate-suivi.js` - Générer suivis
+
+### Vérification & Regénération
+- [ ] `backend/workflows/impayes/verify-paid-invoices.js` - Vérifier paiements
+- [ ] `backend/workflows/regenerate-relances/*.js` - Régénération
+
+### Envoi Emails
+- [ ] `backend/workflows/send-emails/send-emails.js` - Envoi relances
+- [ ] `backend/workflows/send-emails/send-suivi.js` - Envoi suivis
+- [ ] `backend/workflows/send-emails/test-single.js` - Test single email
+
+---
+
+## Phase 4: Intégration & Tests Finaux
+
+- [ ] Tests end-to-end critiques (login → dashboard → relances)
+- [ ] Tests portails (client/mission)
+- [ ] Tests responsives tous écrans
 - [ ] Audit accessibilité
+- [ ] Documentation API
 
 ---
 
 ## Notes
 
-- Les specs sont dans `specs/_app/`
-- Les workflows frontend sont dans `specs/_app/frontend/{ecran}/workflows/`
-- Les workflows backend sont dans `specs/_app/backend/workflows/`
-- Chaque workflow a un fichier `-test.md` associé pour les scénarios de validation
+**Structure fichiers:**
+- Frontend: `frontend/{ecran}/index.html`
+- Backend: `backend/workflows/{domaine}/{workflow}.js`
+- Specs: `specs/_app/frontend/{ecran}/workflows/{workflow}.md`
+
+**Priorité de développement suggérée:**
+1. Login (backend auth)
+2. Dashboard (lecture seule, bon pour tester)
+3. Contacts (CRUD simple)
+4. Impayés (core métier)
+5. Relances (core métier)
+6. Séquences (config)
+7. Portails (externes)
+8. Le reste
