@@ -26,22 +26,39 @@ Pour chaque écran:
 
 ---
 
-### Écran 1: Login
+### Écran 1: Login ✅ TERMINÉ
 **Priorité:** Critique (bloquant pour tout le reste)
 
 **Backend:**
 - [x] `backend/auth-login/index.js` - Endpoint POST `/api/auth/login`
-- [x] `backend/api-server.js` - Serveur HTTP minimal
+- [x] `backend/api-server.js` - Serveur HTTP minimal (port 3001)
 - [x] JWT token generation
-- [ ] Middleware de validation JWT (pour les autres routes)
+- [x] Logging des tentatives
 
 **Frontend:**
 - [x] `frontend/login/index.html` - Page de connexion
-- [ ] Connecter au vrai endpoint API (actuellement mocké)
+- [x] `frontend/config.js` - Configuration API URL
+- [x] Connecté au vrai endpoint API
 
 **Workflows:**
-- [ ] `auth-submit` - Soumission formulaire
-- [ ] `initial-load` - Vérifier si déjà connecté
+- [x] `auth-submit` - Soumission formulaire avec validation
+- [x] `initial-load` - Vérification token existant
+
+**Test:**
+```bash
+# Terminal 1 - Démarrer le backend
+cd backend && npm start
+
+# Terminal 2 - Ouvrir le frontend
+open http://localhost:3000/frontend/login/
+# ou servir le dossier relance/ avec un serveur static
+```
+
+**Identifiants par défaut:**
+- Email: `admin@adti.fr`
+- Mot de passe: `admin123`
+
+---
 
 ---
 
