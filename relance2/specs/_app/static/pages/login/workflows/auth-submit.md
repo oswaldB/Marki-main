@@ -1,0 +1,160 @@
+# Workflow : Soumission authentification
+
+## Écran
+`login.html`
+
+## Élément déclencheur
+Formulaire de connexion (submit)
+
+## Action
+Soumettre les identifiants utilisateur pour authentification
+
+## Logs (console.log) - OBLIGATOIRE
+
+| Checkpoint | Instruction console.log |
+|------------|------------------------|
+| `form-submit` | `console.log('[WORKFLOW.login-auth-submit] START: Soumission formulaire login')` |
+| `validation-start` | `console.log('[WORKFLOW.login-auth-submit] STEP: Validation champs (email, password)')` |
+| `validation-pass` | `console.log('[WORKFLOW.login-auth-submit] STEP: ✅ Validation réussie')` |
+| `validation-fail` | `console.log('[WORKFLOW.login-auth-submit] ERROR: ❌ Champs vides')` |
+| `api-call-start` | `console.log('[WORKFLOW.login-auth-submit] STEP: Appel API POST /api/auth/login avec email:', email)` |
+| `api-response-received` | `console.log('[WORKFLOW.login-auth-submit] DATA: Réponse API reçue, status:', response.status)` |
+| `api-error` | `console.error('[WORKFLOW.login-auth-submit] ERROR: Échec API -', error.message)` |
+| `token-received` | `console.log('[WORKFLOW.login-auth-submit] SUCCESS: Token reçu, user:', user.username)` |
+| `store-update` | `console.log('[WORKFLOW.login-auth-submit] STEP: Mise à jour store Alpine ($store.auth)')` |
+| `localstorage-save` | `console.log('[WORKFLOW.login-auth-submit] STEP: Token sauvegardé dans localStorage')` |
+| `redirect-dashboard` | `console.log('[WORKFLOW.login-auth-submit] STEP: Redirection vers /dashboard')` |
+| `loading-complete` | `console.log('[WORKFLOW.login-auth-submit] END: Formulaire traité, loading=false')` |
+
+## Description
+- Récupère email et mot de passe saisis
+- Valide le format de l'email
+- Appelle l'API d'authentification SQLite
+- Redirige vers `/dashboard` en cas de succès
+- Affiche message d'erreur en cas d'échec
+
+## Data Model
+**Page Function:** `loginPage()`
+
+**Stores Alpine.js:**
+- $store.auth
+- $store.ui
+
+**Données:**
+- `form`
+
+**États UI:**
+- `loading`
+- `error`
+
+## State Changes
+
+**Modifications:**
+- `loading` → `true` → `false`
+- `error` ← message si échec
+
+## API Calls
+
+**POST /api/auth/login**
+
+```javascript
+// Requête
+POST /api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@marki.fr",
+  "password": "votre-mot-de-passe"
+}
+
+// Réponse 200
+{
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "user": {
+    "id": "user_xxx",
+    "username": "admin",
+    "email": "admin@marki.fr",
+    "role": "admin"
+  }
+}
+
+// Réponse 401
+{
+  "error": "Identifiants invalides"
+}
+```
+
+## Organisation des fichiers
+
+```
+frontend/
+└── app/
+    └── login/
+        ├── index.html
+        ├── components/
+        │   └── (composants partagés)
+        └── js/
+            └── auth-submit.js
+```
+
+### Fichier workflow
+- **JS** : `frontend/app/login/js/auth-submit.js`
+
+```javascript
+// frontend/app/login/js/auth-submit.js
+export async function authSubmit(email, password) {
+  const response = await fetch('/api/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  });
+  
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.error || 'Échec de connexion');
+  }
+  
+  return await response.json();
+}
+```
+
+## Implementation
+
+```javascript
+async handleLogin() {
+  // 1. Validate form
+  if (!this.form.email || !this.form.password) {
+    this.error = 'Veuillez remplir tous les champs';
+    return;
+  }
+  
+  // 2. Set loading
+  this.loading = true;
+  this.error = null;
+  
+  try {
+    // 3. Call auth API
+    const data = await authSubmit(this.form.email, this.form.password);
+    
+    // 4. Store auth data
+    Alpine.store('auth').token = data.token;
+    Alpine.store('auth').user = data.user;
+    Alpine.store('auth').isAuthenticated = true;
+    
+    // 5. Persist token
+    localStorage.setItem('token', data.token);
+    
+    // 6. Redirect
+    window.location.href = '/dashboard';
+    
+  } catch (error) {
+    this.error = error.message;
+  } finally {
+    this.loading = false;
+  }
+}
+```
+
+## Navigation
+- **Cible** : `/dashboard`
+- **Condition** : Authentification réussie
