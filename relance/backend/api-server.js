@@ -1,20 +1,13 @@
 /**
- * Serveur API minimal pour Marki
- * Routes pour les workflows backend
+ * Serveur API Marki - Routes SQLite
+ * Serveur HTTP minimal avec routes CRUD complètes
  */
 
 const http = require('http');
 const url = require('url');
-const path = require('path');
+const { handleRequest } = require('./routes/api-routes');
 
-// Initialiser la DB
-const FlatFileDB = require('./lib/flat-file-db');
-const db = new FlatFileDB(path.join(__dirname, 'data'));
-
-// Importer les workflows
-const authLogin = require('./auth-login');
-
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // Parser le body JSON
 const parseBody = (req) => {
@@ -55,19 +48,9 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // Auth Login - POST /api/auth/login
-  if (pathname === '/api/auth/login' && req.method === 'POST') {
-    try {
-      const body = await parseBody(req);
-      const result = await authLogin.login(body, db);
-      res.setHeader('Content-Type', 'application/json');
-      res.writeHead(result.status);
-      res.end(JSON.stringify(result.status === 200 ? result.data : { error: result.error }));
-    } catch (err) {
-      res.setHeader('Content-Type', 'application/json');
-      res.writeHead(400);
-      res.end(JSON.stringify({ error: 'Invalid request' }));
-    }
+  // Déléguer toutes les routes API
+  if (pathname.startsWith('/api/')) {
+    await handleRequest(req, res);
     return;
   }
 
@@ -80,7 +63,7 @@ const server = http.createServer(async (req, res) => {
 server.listen(PORT, () => {
   console.log(`✅ API Server running on http://localhost:${PORT}`);
   console.log(`📍 Health check: http://localhost:${PORT}/health`);
-  console.log(`🔐 Auth login: POST http://localhost:${PORT}/api/auth/login`);
+  console.log(`📖 Routes API disponibles sous /api/*`);
 });
 
 module.exports = server;

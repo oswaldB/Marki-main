@@ -42,7 +42,16 @@ class AuthLocal {
    */
   static async login(db, email, password) {
     // Cherche par email
-    const users = await db.search('users', { email: email.toLowerCase().trim() });
+    let users;
+    if (typeof db.getUserByEmail === 'function') {
+      // SQLiteDB - méthode directe
+      const user = db.getUserByEmail(email.toLowerCase().trim());
+      users = user ? [user] : [];
+    } else {
+      // Ancien FlatFileDB
+      const result = await db.search('users', { email: email.toLowerCase().trim() });
+      users = Array.isArray(result) ? result : (result.data || []);
+    }
     const user = users[0];
 
     if (!user || !user.is_active) {
@@ -132,8 +141,16 @@ class AuthLocal {
    * @param {function} callback - Fonction à exécuter
    */
   static async asAdmin(db, callback) {
-    const admin = await db.search('users', { role: 'admin', is_active: true });
-    if (admin.length === 0) {
+    let admins;
+    if (typeof db.search === 'function' && db.search.toString().includes('return { data')) {
+      // SQLiteDB format
+      const result = db.search('users', { where: { role: 'admin', is_active: 1 } });
+      admins = result.data || [];
+    } else {
+      // Ancien format
+      admins = await db.search('users', { role: 'admin', is_active: true });
+    }
+    if (admins.length === 0) {
       throw new Error('Aucun admin trouvé dans la base');
     }
 
@@ -210,7 +227,7 @@ class AuthLocal {
 
     // Vérifier l'ancien mot de passe (sauf si admin qui change pour un autre)
     const currentUser = this.getCurrentUser();
-    if (currentUser.sub !== userId && !this.isAdmin()) {
+    if (!currentUser || (currentUser.sub !== userId && !this.isAdmin())) {
       throw new Error('Permission refusée');
     }
 
@@ -255,12 +272,19 @@ class AuthLocal {
    * Nettoie les sessions expirées
    */
   static async cleanupSessions(db) {
-    const now = new Date().toISOString();
-    const sessions = await db.search('sessions', {});
-    
-    for (const session of sessions) {
-      if (session.expires_at < now) {
-        await db.delete('sessions', session.id);
+    if (typeof db.deleteExpiredSessions === 'function') {
+      // SQLiteDB
+      db.deleteExpiredSessions();
+    } else {
+      // Ancien format
+      const now = new Date().toISOString();
+      const sessions = await db.search('sessions', {});
+      const sessionsArray = Array.isArray(sessions) ? sessions : (sessions.data || []);
+      
+      for (const session of sessionsArray) {
+        if (session.expires_at < now) {
+          await db.delete('sessions', session.id);
+        }
       }
     }
   }

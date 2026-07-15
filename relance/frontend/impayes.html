@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impayés | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body x-data="impayesPage()" x-init="init()" x-cloak>
+
+<!-- Auth Check -->
+<script>
+  if (!localStorage.getItem('marki_token')) {
+    window.location.href = '/login.html';
+  }
+</script>
+
+<!-- Sidebar -->
+<sidebar-nav-dual page="impayes"></sidebar-nav-dual>
+
+<!-- Main Content -->
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  
+  <!-- Header -->
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <h1 class="text-base font-semibold text-slate-700">Impayés</h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500">Gestion des factures impayées</span>
+    </div>
+    
+    <div class="flex items-center gap-3">
+      <button class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-white bg-sky-500 rounded-lg hover:bg-sky-600 transition-all">
+        <i class="fas fa-plus"></i>
+        <span>Nouvelle relance</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="p-6">
+    
+    <!-- Loading -->
+    <template x-if="loading">
+      <div class="space-y-4">
+        <div class="h-12 bg-slate-200 rounded-lg animate-pulse"></div>
+        <div class="h-64 bg-slate-200 rounded-lg animate-pulse"></div>
+      </div>
+    </template>
+    
+    <!-- Content -->
+    <template x-if="!loading">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+          <h3 class="font-semibold text-slate-900">Liste des impayés</h3>
+          <div class="flex items-center gap-2">
+            <input type="text" placeholder="Rechercher..." class="px-3 py-1.5 text-sm border border-slate-200 rounded-lg focus:outline-none focus:border-sky-500">
+          </div>
+        </div>
+        
+        <div class="divide-y divide-slate-100">
+          <template x-for="impaye in impayes" :key="impaye.id">
+            <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/50 transition-colors">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-sm" x-text="impaye.initials"></div>
+                <div>
+                  <p class="font-medium text-slate-900" x-text="impaye.client"></p>
+                  <p class="text-sm text-slate-500" x-text="'Facture ' + impaye.facture + ' - ' + impaye.date"></p>
+                </div>
+              </div>
+              <div class="flex items-center gap-6">
+                <span class="font-semibold text-slate-900" x-text="formatMoney(impaye.montant)"></span>
+                <span class="px-2.5 py-1 text-xs font-medium rounded-full"
+                      :class="{
+                        'bg-slate-100 text-slate-600': impaye.statut === 'en_attente',
+                        'bg-sky-100 text-sky-700': impaye.statut === 'relance_envoyee',
+                        'bg-green-100 text-green-700': impaye.statut === 'paye'
+                      }"
+                      x-text="impaye.statutLabel"></span>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </template>
+    
+  </main>
+</div>
+
+<script>
+function impayesPage() {
+  return {
+    loading: true,
+    impayes: [
+      { id: 1, client: 'ACME Corp', initials: 'AC', facture: 'F-2024-0123', date: '15/01/2024', montant: 45230, statut: 'relance_envoyee', statutLabel: 'Relance envoyée' },
+      { id: 2, client: 'TechStart SARL', initials: 'TS', facture: 'F-2024-0115', date: '10/01/2024', montant: 28150, statut: 'en_attente', statutLabel: 'En attente' },
+      { id: 3, client: 'BuildPlus SA', initials: 'BP', facture: 'F-2024-0108', date: '05/01/2024', montant: 18900, statut: 'relance_envoyee', statutLabel: 'Relance envoyée' },
+      { id: 4, client: 'Digital Agency', initials: 'DA', facture: 'F-2024-0095', date: '28/12/2023', montant: 12500, statut: 'en_attente', statutLabel: 'En attente' },
+      { id: 5, client: 'Consulting Pro', initials: 'CP', facture: 'F-2024-0089', date: '20/12/2023', montant: 9800, statut: 'relance_envoyee', statutLabel: 'Relance envoyée' }
+    ],
+    
+    async init() {
+      await new Promise(r => setTimeout(r, 500));
+      this.loading = false;
+    },
+    
+    formatMoney(amount) {
+      return new Intl.NumberFormat('fr-FR', {
+        style: 'currency',
+        currency: 'EUR'
+      }).format(amount);
+    }
+  }
+}
+</script>
+
+</body>
+</html>

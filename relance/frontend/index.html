@@ -1,52 +1,19 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marki - Relances</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-        }
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-        .status {
-            background: rgba(255,255,255,0.1);
-            padding: 1rem 2rem;
-            border-radius: 8px;
-            backdrop-filter: blur(10px);
-        }
-        .status code {
-            font-family: 'Monaco', 'Consolas', monospace;
-            font-size: 0.9rem;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marki - Gestion des relances</title>
+  <script>
+    // Redirection automatique vers login
+    if (localStorage.getItem('marki_token')) {
+      window.location.href = '/dashboard.html';
+    } else {
+      window.location.href = '/login.html';
+    }
+  </script>
 </head>
 <body>
-    <h1>🚀 Marki</h1>
-    <p>Gestion des relances commerciales</p>
-    <div class="status">
-        <code>Frontend statique en ligne</code>
-    </div>
+  <p>Redirection en cours...</p>
 </body>
 </html>
