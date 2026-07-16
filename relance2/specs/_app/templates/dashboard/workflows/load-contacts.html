@@ -1,0 +1,27 @@
+<!-- templates/dashboard/workflows/load-contacts.html -->
+
+loadContacts: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'loadContacts' });
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { endpoint: '/api/contacts' });
+        
+        const response = await fetch('/api/contacts', {
+        headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+        
+        this.contacts = await response.json();
+        
+        log.debug('DATA_LOADED', { count: this.contacts.length });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        throw error;
+    }
+}

@@ -1,67 +1,29 @@
 <!-- templates/dashboard/workflows/initial-load.html -->
-<!-- Mega-function: Chargement initial du dashboard -->
 
 initialLoad: async function() {
     const workflowId = crypto.randomUUID();
-    const startTime = Date.now();
-    
-    log.info('WORKFLOW_START', { 
-        workflowId,
-        workflow: 'initialLoad',
-        page: 'dashboard'
-    });
+    log.info('WORKFLOW_START', { workflowId, workflow: 'initialLoad' });
     
     this.loading = true;
     this.error = null;
     
     try {
-        // Étape 1: Vérification auth
-        const token = localStorage.getItem('token');
-        if (!token) {
-            log.warn('AUTH_MISSING');
-            window.location.href = '/login';
-            return;
-        }
-        log.debug('AUTH_VERIFIED');
+        // Chargement parallèle des données
+        await Promise.all([
+            this.loadImpayes(),
+            this.loadRelances(),
+            this.loadContacts(),
+            this.loadEvents()
+        ]);
         
-        // Étape 2: Chargement stats
-        log.debug('API_CALL_START', { endpoint: '/api/dashboard/stats' });
+        // Calcul des stats côté frontend
+        this.calculateStats();
         
-        const responseStats = await fetch('/api/dashboard/stats', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        
-        if (responseStats.ok) {
-            const statsData = await responseStats.json();
-            this.stats = statsData;
-            log.debug('STATS_LOADED', this.stats);
-        }
-        
-        // Étape 3: Chargement événements
-        log.debug('API_CALL_START', { endpoint: '/api/events' });
-        
-        const responseEvents = await fetch('/api/events?limit=5', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        
-        if (responseEvents.ok) {
-            const eventsData = await responseEvents.json();
-            this.events = eventsData;
-            log.debug('EVENTS_LOADED', { count: this.events.length });
-        }
-        
-        log.info('WORKFLOW_SUCCESS', { 
-            workflowId,
-            duration: Date.now() - startTime
-        });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
         
     } catch (error) {
         this.error = error.message;
-        log.error('WORKFLOW_ERROR', {
-            workflowId,
-            error: error.message,
-            stack: error.stack
-        });
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
     } finally {
         this.loading = false;
     }
