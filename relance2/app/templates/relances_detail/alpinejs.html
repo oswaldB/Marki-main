@@ -1,0 +1,52 @@
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('relancesDetail', () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
+            
+            // UI State
+            loading: false,
+            error: null,
+            
+            // Data
+            relance: null,
+            
+            // Helpers
+            formatDate(dateStr) {
+                if (!dateStr) return '-';
+                const date = new Date(dateStr);
+                return new Intl.DateTimeFormat('fr-FR', { 
+                    day: '2-digit', 
+                    month: '2-digit', 
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                }).format(date);
+            },
+            
+            getRelanceIdFromUrl() {
+                const path = window.location.pathname;
+                const match = path.match(/\/relances\/([^\/]+)/);
+                return match ? match[1] : null;
+            },
+            
+            // =====================================================
+            // 2. INIT (EN PREMIER)
+            // =====================================================
+            {% include 'relances_detail/workflows/workflow-init.html' %},
+            
+            // =====================================================
+            // 3. WORKFLOWS
+            // =====================================================
+            {% include 'relances_detail/workflows/initial-load.html' %}
+        }));
+    });
+</script>

@@ -1,0 +1,33 @@
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('impayesReparer', () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
+            
+            // UI State
+            loading: false,
+            error: null,
+            
+            // Data
+            impayes: [],
+            
+            // =====================================================
+            // 2. INIT (EN PREMIER)
+            // =====================================================
+            {% include 'impayes_reparer/workflows/workflow-init.html' %},
+            
+            // =====================================================
+            // 3. WORKFLOWS
+            // =====================================================
+            {% include 'impayes_reparer/workflows/view-reparer.html' %}
+        }));
+    });
+</script>

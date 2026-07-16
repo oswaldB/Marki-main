@@ -1,0 +1,65 @@
+{% extends 'layouts/layout_app.html' %}
+
+{% block page_title %}Impayés par Payeur{% endblock %}
+{% block active_page %}impayes-payeur{% endblock %}
+
+{% block content %}
+<div x-data="impayesPayeur" x-init="init()" x-cloak class="space-y-6">
+    
+    <!-- Header -->
+    <div class="bg-white rounded-xl border border-slate-200 p-6">
+        <div class="flex items-center justify-between">
+            <div>
+                <h1 class="text-2xl font-bold text-slate-900" x-text="payeur?.nom + ' ' + payeur?.prenom"></h1>
+                <p class="text-slate-500 mt-1" x-text="payeur?.email"></p>
+            </div>
+            <div class="text-right">
+                <div class="text-3xl font-bold text-sky-600" x-text="formatMoney(totalImpayes)"></div>
+                <div class="text-sm text-slate-500">Total impayé</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Loading -->
+    <div x-show="loading" class="bg-white rounded-xl border border-slate-200 p-8">
+        <div class="flex items-center justify-center gap-3 text-slate-500">
+            <i class="fas fa-circle-notch fa-spin text-xl"></i>
+            <span>Chargement...</span>
+        </div>
+    </div>
+    
+    <!-- Table -->
+    <div x-show="!loading" class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+        <table class="w-full text-sm text-left">
+            <thead class="bg-slate-50 text-slate-600 font-medium">
+                <tr>
+                    <th class="px-6 py-3">N° Facture</th>
+                    <th class="px-6 py-3">Date Échéance</th>
+                    <th class="px-6 py-3">Montant TTC</th>
+                    <th class="px-6 py-3">Reste à payer</th>
+                    <th class="px-6 py-3">Statut</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+                <template x-for="impaye in impayes" :key="impaye.id">
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-6 py-4 font-medium text-slate-900" x-text="impaye.nfacture"></td>
+                        <td class="px-6 py-4 text-slate-600" x-text="formatDate(impaye.date_echeance)"></td>
+                        <td class="px-6 py-4 text-slate-600" x-text="formatMoney(impaye.montant_ttc)"></td>
+                        <td class="px-6 py-4 font-medium text-red-600" x-text="formatMoney(impaye.reste_a_payer)"></td>
+                        <td class="px-6 py-4">
+                            <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full"
+                                  :class="impaye.statut === 'impaye' ? 'bg-amber-100 text-amber-700' : 'bg-emerald-100 text-emerald-700'"
+                                  x-text="impaye.statut === 'impaye' ? 'Impayé' : 'Payé'"></span>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+{% include 'impayes_payeur/alpinejs.html' %}
+{% endblock %}

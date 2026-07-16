@@ -1,0 +1,50 @@
+{% extends 'layouts/layout_app.html' %}
+
+{% block page_title %}Réparer Impayés{% endblock %}
+{% block active_page %}impayes-reparer{% endblock %}
+
+{% block content %}
+<div x-data="impayesReparer" x-init="init()" x-cloak class="space-y-6">
+    
+    <!-- Header -->
+    <div class="flex items-center justify-between">
+        <div>
+            <h1 class="text-2xl font-bold text-slate-900">Réparer Impayés</h1>
+            <p class="text-slate-500 mt-1">Factures nécessitant une correction</p>
+        </div>
+    </div>
+    
+    <!-- Info -->
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-6">
+        <div class="flex items-start gap-4">
+            <i class="fas fa-exclamation-triangle text-amber-500 text-xl mt-1"></i>
+            <div>
+                <h3 class="font-semibold text-amber-900">Factures à réparer</h3>
+                <p class="text-amber-700 mt-1">Cette page liste les impayés avec des incohérences détectées (montants, dates, ou liens manquants).</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Table -->
+    <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+        <table class="w-full text-sm text-left">
+            <thead class="bg-slate-50 text-slate-600 font-medium">
+                <tr>
+                    <th class="px-6 py-3">N° Facture</th>
+                    <th class="px-6 py-3">Problème</th>
+                    <th class="px-6 py-3">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+                <tr class="text-center text-slate-500">
+                    <td class="px-6 py-8" colspan="3">Aucune facture à réparer</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+{% include 'impayes_reparer/alpinejs.html' %}
+{% endblock %}

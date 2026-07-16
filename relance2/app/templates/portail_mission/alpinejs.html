@@ -1,0 +1,48 @@
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('portailMission', () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
+            
+            // UI State
+            loading: false,
+            error: null,
+            
+            // Data
+            mission: null,
+            documents: [],
+            
+            // Helpers
+            formatDate(dateStr) {
+                if (!dateStr) return '-';
+                const date = new Date(dateStr);
+                return new Intl.DateTimeFormat('fr-FR', { 
+                    day: '2-digit', 
+                    month: '2-digit', 
+                    year: 'numeric'
+                }).format(date);
+            },
+            
+            // =====================================================
+            // 2. INIT (EN PREMIER)
+            // =====================================================
+            {% include 'portail_mission/workflows/workflow-init.html' %},
+            
+            // =====================================================
+            // 3. WORKFLOWS
+            // =====================================================
+            {% include 'portail_mission/workflows/initial-load.html' %},
+            {% include 'portail_mission/workflows/logout.html' %},
+            {% include 'portail_mission/workflows/regler-facture.html' %},
+            {% include 'portail_mission/workflows/download-facture.html' %}
+        }));
+    });
+</script>

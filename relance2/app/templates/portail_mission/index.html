@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portail Mission - Marki</title>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-50">
+    <div x-data="portailMission" x-init="init()" x-cloak>
+        
+        <!-- Header -->
+        <header class="bg-white border-b border-slate-200">
+            <div class="max-w-6xl mx-auto px-6 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <div class="w-10 h-10 bg-sky-500 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">M</span>
+                        </div>
+                        <div>
+                            <h1 class="font-semibold text-slate-900">Portail Mission</h1>
+                            <p class="text-sm text-slate-500" x-text="mission?.nom || 'Mission'"</p>
+                        </div>
+                    </div>
+                    <button @click="logout()" class="text-slate-500 hover:text-slate-700">
+                        <i class="fas fa-sign-out-alt"></i> Déconnexion
+                    </button>
+                </div>
+            </div>
+        </header>
+        
+        <!-- Main Content -->
+        <main class="max-w-6xl mx-auto px-6 py-8">
+            
+            <!-- Loading -->
+            <div x-show="loading" class="flex items-center justify-center py-12">
+                <i class="fas fa-circle-notch fa-spin text-2xl text-sky-500"></i>
+            </div>
+            
+            <!-- Content -->
+            <div x-show="!loading" class="space-y-6">
+                
+                <!-- Mission Info -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6">
+                    <h2 class="text-lg font-semibold text-slate-900 mb-4">Mission</h2>
+                    <div class="space-y-2">
+                        <div><span class="text-slate-500">Référence:</span> <span x-text="mission?.reference"</span></div>
+                        <div><span class="text-slate-500">Date début:</span> <span x-text="formatDate(mission?.date_debut)"</span></div>
+                        <div><span class="text-slate-500">Date fin:</span> <span x-text="formatDate(mission?.date_fin)"</span></div>
+                    </div>
+                </div>
+                
+                <!-- Documents -->
+                <div class="bg-white rounded-xl border border-slate-200 p-6">
+                    <h2 class="text-lg font-semibold text-slate-900 mb-4">Documents</h2>
+                    <div class="space-y-3">
+                        <template x-for="doc in documents" :key="doc.id">
+                            <div class="flex items-center justify-between p-4 bg-slate-50 rounded-lg">
+                                <div class="flex items-center gap-3">
+                                    <i class="fas fa-file text-slate-400"></i>
+                                    <span x-text="doc.nom"</span>
+                                </div>
+                                <button @click="downloadFacture(doc)" class="text-sky-600 hover:text-sky-700 text-sm">
+                                    <i class="fas fa-download"></i>
+                                </button>
+                            </div>
+                        </template>
+                        <div x-show="documents.length === 0" class="text-center text-slate-500 py-8">
+                            Aucun document
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    {% include 'portail_mission/alpinejs.html' %}
+</body>
+</html>
