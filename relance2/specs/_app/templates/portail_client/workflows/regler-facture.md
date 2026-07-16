@@ -36,9 +36,11 @@ Rediriger vers le lien de paiement externe (Stripe, PayPal, etc.)
 
 ## API Calls
 
-**Pas d'appel API** - Traitement côté client uniquement
+**GET /api/portail/data** - Récupère les données du portail incluant les impayés avec leurs liens de paiement
 
-**Configuration** (déjà créée dans `/backend/data/payment_links/`) :
+**Note** : Le lien de paiement (`lien_paiement`) est stocké dans la table `impayes` et retourné par l'API pour chaque facture.
+
+**Pas d'appel API supplémentaire** - Le lien est déjà disponible dans les données de la facture.
 
 Table `payment_links` :
 ```javascript
@@ -87,39 +89,33 @@ export function reglerFacture() {
 
 ```javascript
 async reglerFacture(facture) {
+  const workflowId = crypto.randomUUID();
+  log.info('WORKFLOW_START', { workflowId, workflow: 'reglerFacture', factureId: facture.id });
+  
   try {
-    // 1. Get payment config (from store or API)
-    const config = Alpine.store('config').paymentLink;
-    if (!config?.template) {
-      throw new Error('Configuration de paiement non disponible');
+    // Le lien de paiement est directement disponible dans les données de la facture
+    const lienPaiement = facture.lien_paiement;
+    
+    if (!lienPaiement) {
+      log.error('WORKFLOW_ERROR', { workflowId, error: 'Lien de paiement non disponible' });
+      Alpine.store('ui').addToast('Lien de paiement non disponible pour cette facture', 'error');
+      return;
     }
     
-    // 2. Prepare replacement values
-    const values = {
-      '[[MONTANT]]': Math.round(facture.montant_ttc * 100), // centimes
-      '[[REFERENCE]]': encodeURIComponent(facture.nfacture),
-      '[[EMAIL]]': encodeURIComponent(this.client.email),
-      '[[NOM_CLIENT]]': encodeURIComponent(`${this.client.prenom} ${this.client.nom}`),
-      '[[ID_FACTURE]]': facture.id
-    };
-    
-    // 3. Replace variables in template
-    let paymentUrl = config.template;
-    for (const [variable, value] of Object.entries(values)) {
-      paymentUrl = paymentUrl.replaceAll(variable, value);
-    }
-    
-    // 4. Validate URL
+    // Validation de l'URL
     try {
-      new URL(paymentUrl);
+      new URL(lienPaiement);
     } catch {
       throw new Error('URL de paiement invalide');
     }
     
-    // 5. Redirect to payment
-    window.location.href = paymentUrl;
+    log.info('WORKFLOW_SUCCESS', { workflowId, factureId: facture.id, redirectUrl: lienPaiement });
+    
+    // Redirection vers le lien de paiement externe
+    window.location.href = lienPaiement;
     
   } catch (error) {
+    log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
     Alpine.store('ui').addToast(error.message, 'error');
   }
 }
@@ -127,7 +123,7 @@ async reglerFacture(facture) {
 
 ## Notes
 
-- **Configuration à créer** : Une table `payment_links` ou un champ dans les settings globaux pour stocker le template
-- **Sécurité** : Les variables sont encodées avec `encodeURIComponent` pour éviter les injections
-- **Montant** : Généralement envoyé en centimes (multiplié par 100) pour les passerelles de paiement
-- **Fallback** : Si pas de config, afficher un message invitant à contacter l'entreprise
+- Le champ `lien_paiement` est stocké dans la table `impayes` et retourné par `GET /api/portail/data`
+- Le lien est généré/géré côté backend (Stripe, PayPal, etc.)
+- Le frontend utilise simplement ce lien pour rediriger l'utilisateur
+- Pas de construction d'URL côté frontend - utilisation directe du lien stocké

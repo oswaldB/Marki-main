@@ -39,10 +39,11 @@
 - **Méthode**: `POST /functions/generatePdfLink` (Cloud Function)
 - **Note**: Le PDF est généré via une Cloud Function, pas une route API classique. C'est correct ainsi.
 
-### Paiement Facture
-- **Workflow**: `portail_client/workflows/regler-facture.md`
-- **Méthode**: Pas d'appel API - utilisation du `lien_paiement` (template de config)
-- **Note**: Le lien de paiement est construit côté client à partir du template stocké en config.
+### Paiement Facture - CORRIGÉ
+- **Workflows**: `portail_client/workflows/regler-facture.md` et `portail_mission/workflows/regler-facture.md`
+- **Champ utilisé**: `lien_paiement` (stocké dans la table `impayes`)
+- **Méthode**: Récupération directe depuis les données de l'impayé retournées par `GET /api/portail/data`
+- **Note**: Le lien est généré/géré côté backend (Stripe, PayPal, etc.) et stocké dans le champ `lien_paiement` de la table `impayes`. Le frontend utilise simplement ce lien pour rediriger l'utilisateur.
 
 **Pas de routes à créer pour le portail** - Les workflows utilisent déjà les bonnes méthodes.
 
@@ -57,7 +58,7 @@
 | `/api/test/relance` | POST | Test email relance | ✅ Workflow backend |
 | `/api/test/suivi` | POST | Test email suivi | ✅ Workflow backend |
 | `/functions/generatePdfLink` | POST | Générer lien PDF | ✅ Cloud Function |
-| `lien_paiement` (config) | - | Paiement externe | ✅ Config frontend |
+| `impayes.lien_paiement` | champ | Paiement externe | ✅ Champ DB |
 
 ---
 
@@ -68,7 +69,7 @@
 Tous les workflows frontend utilisent correctement :
 - Routes CRUD standards existantes
 - Cloud Functions pour les cas spécifiques (PDF)
-- Configuration frontend pour les liens externes (paiement)
+- Champs de base de données (lien_paiement dans impayes)
 - Workflows backend pour les opérations complexes (test email)
 
 ---
@@ -79,4 +80,5 @@ Tous les workflows frontend utilisent correctement :
 2. `sequences_relance_detail/workflows/tester-email.md` - ✅ Utilise POST /api/test/relance
 3. `sequences_suivi_detail/workflows/tester-email.md` - ✅ Utilise POST /api/test/suivi
 4. `portail_client/workflows/download-facture.md` - ✅ Utilise /functions/generatePdfLink
-5. `portail_client/workflows/regler-facture.md` - ✅ Utilise lien_paiement (config)
+5. `portail_client/workflows/regler-facture.md` - ✅ Utilise impayes.lien_paiement
+6. `portail_mission/workflows/regler-facture.md` - ✅ Utilise impayes.lien_paiement
