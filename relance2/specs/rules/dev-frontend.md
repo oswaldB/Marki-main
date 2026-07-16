@@ -22,9 +22,9 @@ app/static/pages/
         └── action-2.js
 ```
 
-### Store Pattern
+### Store Pattern (Alpine.store)
 
-Chaque page DOIT avoir son propre store Alpine.js dans `store/store.js`:
+Chaque page DOIT avoir son propre **store global Alpine.js** dans `store/store.js`, enregistré via `Alpine.store()` :
 
 ```javascript
 // store/store.js
@@ -56,23 +56,34 @@ export function createStore() {
     }
   };
 }
+
+// Fonction d'initialisation à appeler dans la page
+export function initStore() {
+  document.addEventListener('alpine:init', () => {
+    Alpine.store('page', createStore());
+  });
+}
 ```
 
 Initialisation dans la page HTML:
 
 ```html
 <script type="module">
-  import { createStore } from './store/store.js';
-  
-  document.addEventListener('alpine:init', () => {
-    Alpine.data('pageStore', createStore);
-  });
+  import { initStore } from './store/store.js';
+  initStore();
 </script>
 
-<div x-data="pageStore">
-  ...
+<!-- Accès au store global via $store -->
+<div x-data>
+  <span x-text="$store.page.itemCount"></span>
+  <button @click="$store.page.loadData()">Charger</button>
 </div>
 ```
+
+**Pourquoi Alpine.store() et pas Alpine.data() :**
+- `Alpine.store()` = **store global** accessible partout (`$store.page`)
+- `Alpine.data()` = **composant local** isolé par instance
+- Les stores globaux permettent de partager l'état entre composants sans props drilling
 
 ## Workflows Frontend
 
@@ -84,9 +95,13 @@ Les workflows sont dans le dossier `workflows/` de chaque page.
 
 ### Structure d'un workflow
 
+Les workflows reçoivent le store Alpine en paramètre et utilisent ses méthodes :
+
 ```javascript
 // workflows/save-data.js
-export async function saveDataWorkflow(store, payload) {
+export async function saveDataWorkflow(payload) {
+  const store = Alpine.store('page');
+  
   log.info('WORKFLOW_START', { 
     workflow: 'save-data',
     payload: sanitizePayload(payload) 
@@ -106,7 +121,7 @@ export async function saveDataWorkflow(store, payload) {
     });
     log.debug('API_CALL_COMPLETE', { status: response.status });
     
-    // Étape 3: Mise à jour du store
+    // Étape 3: Mise à jour du store via ses méthodes
     log.debug('STORE_UPDATE_START');
     store.updateData(await response.json());
     log.debug('STORE_UPDATE_COMPLETE');
@@ -125,16 +140,27 @@ export async function saveDataWorkflow(store, payload) {
 }
 ```
 
-### Binding HTML
+### Binding HTML avec le store
 
 ```html
+<!-- Accès direct au store global via $store -->
+<div x-data>
+  <span x-text="$store.page.itemCount"></span> items
+  <button 
+    @click="$store.page.loadData()"
+    :disabled="$store.page.loading"
+  >
+    Charger
+  </button>
+</div>
+
 <!-- Bouton avec workflow -->
 <button 
   @click="async () => {
     const { saveDataWorkflow } = await import('./workflows/save-data.js');
-    await saveDataWorkflow($store, { id: 123 });
+    await saveDataWorkflow({ id: 123 });
   }"
-  :disabled="loading"
+  :disabled="$store.page.loading"
 >
   Sauvegarder
 </button>
@@ -236,14 +262,16 @@ const log = {
 ### Pattern de log dans chaque workflow
 
 ```javascript
-export async function workflowName(store, params) {
+export async function workflowName(params) {
   const workflowId = crypto.randomUUID();
+  const store = Alpine.store('page');
   
   log.info('WORKFLOW_INIT', {
     workflowId,
     workflow: 'workflowName',
     timestamp: Date.now(),
-    params: sanitizeForLog(params)
+    params: sanitizeForLog(params),
+    storeState: { itemCount: store.itemCount }
   });
   
   try {
@@ -260,7 +288,7 @@ export async function workflowName(store, params) {
       workflowId,
       error: error.message,
       stack: error.stack,
-      context: { /* état actuel */ }
+      storeState: { /* état actuel du store */ }
     });
     throw error;
   }
@@ -295,8 +323,10 @@ const template = await fetch('/templates/comp.html');
 
 ## Checklist avant commit
 
-- [ ] Chaque page a son store.js dédié
+- [ ] Chaque page a son store.js dédié enregistré via `Alpine.store('page', ...)`
+- [ ] Le store est accessible via `$store.page` dans les templates
 - [ ] Chaque bouton a son workflow associé
+- [ ] Les workflows accèdent au store via `Alpine.store('page')`
 - [ ] Pas de Jinja2 dans les fichiers frontend
 - [ ] Les web components utilisent light shadow
 - [ ] Les logs couvrent tous les workflows et étapes
