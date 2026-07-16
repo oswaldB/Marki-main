@@ -1,0 +1,73 @@
+<!-- templates/relances_validation/alpinejs.html -->
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('relancesValidation', () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES
+            // =====================================================
+            
+            // UI State
+            loading: false,
+            error: null,
+            showSuspendModal: false,
+            
+            // Data
+            relances: [],
+            selectedRelance: null,
+            
+            // Filters
+            searchQuery: '',
+            filterType: 'all',
+            filterToday: false,
+            
+            // Forms
+            editForm: { destinataire: '', date: '', objet: '', corps: '' },
+            suspendForm: { motif: '', detail: '' },
+            
+            // Getters calculés
+            get filteredRelances() {
+                const today = new Date().toLocaleDateString('fr-FR');
+                return this.relances.filter(r => {
+                    const matchesSearch = !this.searchQuery || 
+                        r.payeur?.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                        r.objet?.toLowerCase().includes(this.searchQuery.toLowerCase());
+                    const matchesType = this.filterType === 'all' || r.type === this.filterType;
+                    const matchesToday = !this.filterToday || r.dateProgrammee === today;
+                    return matchesSearch && matchesType && matchesToday;
+                });
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
+            {% include 'relances_validation/workflows/initial-load.html' %},
+            {% include 'relances_validation/workflows/filter-all.html' %},
+            {% include 'relances_validation/workflows/filter-email.html' %},
+            {% include 'relances_validation/workflows/filter-today.html' %},
+            {% include 'relances_validation/workflows/select-relance.html' %},
+            {% include 'relances_validation/workflows/deselect-relance.html' %},
+            {% include 'relances_validation/workflows/valider-relance.html' %},
+            {% include 'relances_validation/workflows/supprimer-relance.html' %},
+            {% include 'relances_validation/workflows/blacklister-relance.html' %},
+            {% include 'relances_validation/workflows/suspendre-relance.html' %},
+            {% include 'relances_validation/workflows/save-changes.html' %},
+            
+            // =====================================================
+            // 3. INIT
+            // =====================================================
+            {% include 'relances_validation/workflows/workflow-init.html' %},
+            
+            // Helpers
+            formatMoney(amount) {
+                return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(amount);
+            }
+        }));
+    });
+</script>

@@ -1,0 +1,16 @@
+<!-- templates/sequences_relance_detail/workflows/copy-variable.html -->
+
+copyVariable: async function(variable) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'copyVariable', variable });
+    
+    try {
+        await navigator.clipboard.writeText(variable);
+        
+        log.debug('CLIPBOARD_WRITE', { variable });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

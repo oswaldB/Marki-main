@@ -1,0 +1,178 @@
+<!-- templates/smart_marki/index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Marki | Marki</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body x-data="smartMarki" x-init="init()" class="bg-slate-50">
+
+    <div class="md:ml-[284px] min-h-screen">
+        
+        <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6">
+            <div>
+                <h1 class="text-lg font-semibold text-slate-800">Smart Marki</h1>
+                <p class="text-xs text-slate-500">Insights et recommandations IA</p>
+            </div>
+            
+            <button @click="markAllRead()" class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm">
+                <i class="fas fa-check-double mr-1"></i>Tout marquer comme lu
+            </button>
+        </header>
+
+        <main class="p-6">
+            <!-- Stats -->
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="bg-white rounded-xl border border-slate-200 p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-violet-100 flex items-center justify-center">
+                            <i class="fas fa-brain text-violet-600"></i>
+                        </div>
+                        
+                        <div>
+                            <p class="text-2xl font-bold text-slate-800" x-text="insights.length"></p>
+                            <p class="text-xs text-slate-500">Insights</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl border border-slate-200 p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center">
+                            <i class="fas fa-lightbulb text-amber-600"></i>
+                        </div>
+                        
+                        <div>
+                            <p class="text-2xl font-bold text-slate-800" x-text="insights.filter(i => !i.lu).length"></p>
+                            <p class="text-xs text-slate-500">Nouveaux</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl border border-slate-200 p-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
+                            <i class="fas fa-check-circle text-emerald-600"></i>
+                        </div>
+                        
+                        <div>
+                            <p class="text-2xl font-bold text-slate-800" x-text="insights.filter(i => i.applique).length"></p>
+                            <p class="text-xs text-slate-500">Appliqués</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Insights List -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="px-6 py-4 border-b border-slate-100 bg-slate-50/50">
+                    <h2 class="text-sm font-semibold text-slate-800">Recommandations récentes</h2>
+                </div>
+                
+                <div class="divide-y divide-slate-100">
+                    <template x-for="(insight, index) in insights" :key="insight.id">
+                        <div class="p-6 hover:bg-slate-50 transition-colors"
+                            :class="{ 'bg-slate-50/50': insight.lu, 'bg-amber-50/30': !insight.lu && insight.type === 'warning' }"
+                        >
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full flex items-center justify-center"
+                                    :class="{
+                                        'bg-violet-100 text-violet-600': insight.type === 'suggestion',
+                                        'bg-amber-100 text-amber-600': insight.type === 'warning',
+                                        'bg-sky-100 text-sky-600': insight.type === 'info'
+                                    }"
+                                >
+                                    <i class="fas" :class="{
+                                        'fa-lightbulb': insight.type === 'suggestion',
+                                        'fa-exclamation-triangle': insight.type === 'warning',
+                                        'fa-info-circle': insight.type === 'info'
+                                    }"></i>
+                                </div>
+                                
+                                <div class="flex-1">
+                                    <div class="flex items-start justify-between">
+                                        <div>
+                                            <h3 class="text-sm font-semibold text-slate-800" x-text="insight.titre"></h3>
+                                            <p class="text-sm text-slate-600 mt-1" x-text="insight.description"></p>
+                                            
+                                            <div class="flex items-center gap-4 mt-3 text-xs text-slate-400">
+                                                <span x-text="insight.date"></span>
+                                                <span x-text="insight.impact"></span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="flex items-center gap-2 ml-4">
+                                            <button @click="openInsight(insight)" class="p-2 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg">
+                                                <i class="fas fa-eye"></i>
+                                            </button>
+                                            
+                                            <button @click="applyInsight(insight)" x-show="!insight.applique"
+                                                class="px-3 py-1.5 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-xs"
+                                                :disabled="applying === insight.id"
+                                            >
+                                                <span x-text="applying === insight.id ? 'Application...' : 'Appliquer'"></span>
+                                            </button>
+                                            
+                                            <button @click="dismissInsight(insight)" class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg">
+                                                <i class="fas fa-times"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <div x-show="insights.length === 0" class="p-12 text-center">
+                        <i class="fas fa-brain text-4xl text-slate-300 mb-3"></i>
+                        <p class="text-slate-500">Aucun insight pour le moment</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Insight Detail -->
+    <div x-show="showDetailModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-500/75" @click="closeInsight()"></div>
+        
+        <div class="relative bg-white rounded-xl shadow-xl max-w-lg w-full">
+            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-slate-900" x-text="selectedInsight?.titre"></h3>
+                
+                <button @click="closeInsight()" class="text-slate-400 hover:text-slate-600">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="px-6 py-6">
+                <div class="prose prose-sm max-w-none">
+                    <p x-text="selectedInsight?.description"></p>
+                    
+                    <div class="mt-4 p-4 bg-slate-50 rounded-lg">
+                        <h4 class="text-xs font-semibold text-slate-500 uppercase mb-2">Recommandation</h4>
+                        <p class="text-sm text-slate-700" x-text="selectedInsight?.recommandation"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="px-6 py-4 border-t border-slate-100 bg-slate-50 flex items-center justify-end gap-2">
+                <button @click="closeInsight()" class="px-4 py-2 text-slate-700 hover:bg-slate-200 rounded-lg text-sm">Fermer</button>
+                
+                <button @click="applyInsight(selectedInsight); closeInsight();" x-show="!selectedInsight?.applique"
+                    class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm"
+                >
+                    Appliquer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {% include 'smart_marki/alpinejs.html' %}
+
+</body>
+</html>

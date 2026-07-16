@@ -1,0 +1,14 @@
+<!-- templates/sequences_suivi_detail/workflows/select-heure.html -->
+
+selectHeure: async function(heure) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'selectHeure', heure });
+    
+    try {
+        this.form.heure = heure;
+        log.debug('STATE_UPDATE', { heure });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

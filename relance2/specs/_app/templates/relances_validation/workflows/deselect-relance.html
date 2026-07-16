@@ -1,0 +1,17 @@
+<!-- templates/relances_validation/workflows/deselect-relance.html -->
+
+deselectRelance: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'deselectRelance' });
+    
+    try {
+        this.selectedRelance = null;
+        this.editForm = { destinataire: '', date: '', objet: '', corps: '' };
+        
+        log.debug('STATE_UPDATE', { selectedRelance: null });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

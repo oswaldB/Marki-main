@@ -1,0 +1,14 @@
+<!-- templates/sequences_suivi_detail/workflows/set-frequence-hebdomadaire.html -->
+
+setFrequenceHebdomadaire: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'setFrequenceHebdomadaire' });
+    
+    try {
+        this.form.frequence = 'hebdomadaire';
+        log.debug('STATE_UPDATE', { frequence: 'hebdomadaire' });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

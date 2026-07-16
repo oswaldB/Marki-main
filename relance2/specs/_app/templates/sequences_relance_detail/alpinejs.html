@@ -1,0 +1,69 @@
+<!-- templates/sequences_relance_detail/alpinejs.html -->
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('sequencesRelanceDetail', () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES
+            // =====================================================
+            
+            // UI State
+            loading: false,
+            saving: false,
+            error: null,
+            
+            // Data
+            sequence: null,
+            sequenceId: null,
+            
+            // Form
+            form: {
+                nom: '',
+                scenario: 'single',
+                validationActive: false,
+                attributionAuto: false,
+                etapes: []
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
+            {% include 'sequences_relance_detail/workflows/initial-load.html' %},
+            {% include 'sequences_relance_detail/workflows/select-scenario-single.html' %},
+            {% include 'sequences_relance_detail/workflows/select-scenario-multiple.html' %},
+            {% include 'sequences_relance_detail/workflows/select-scenario-broker.html' %},
+            {% include 'sequences_relance_detail/workflows/toggle-validation.html' %},
+            {% include 'sequences_relance_detail/workflows/toggle-attribution-auto.html' %},
+            {% include 'sequences_relance_detail/workflows/toggle-publication.html' %},
+            {% include 'sequences_relance_detail/workflows/ajouter-email.html' %},
+            {% include 'sequences_relance_detail/workflows/supprimer-email.html' %},
+            {% include 'sequences_relance_detail/workflows/toggle-email.html' %},
+            {% include 'sequences_relance_detail/workflows/tester-email.html' %},
+            {% include 'sequences_relance_detail/workflows/sauvegarder.html' %},
+            {% include 'sequences_relance_detail/workflows/lancer-attribution.html' %},
+            {% include 'sequences_relance_detail/workflows/open-ia-modal.html' %},
+            {% include 'sequences_relance_detail/workflows/open-liens-paiement.html' %},
+            {% include 'sequences_relance_detail/workflows/copy-variable.html' %},
+            {% include 'sequences_relance_detail/workflows/copy-lien.html' %},
+            {% include 'sequences_relance_detail/workflows/open-chatgpt.html' %},
+            {% include 'sequences_relance_detail/workflows/select-scenario-impayes-broker.html' %},
+            {% include 'sequences_relance_detail/workflows/supprimer-groupe.html' %},
+            
+            // =====================================================
+            // 3. INIT
+            // =====================================================
+            {% include 'sequences_relance_detail/workflows/workflow-init.html' %},
+            
+            // Helpers
+            actionChanged(index) {
+                log.debug('ACTION_CHANGED', { index, action: this.form.etapes[index]?.action });
+            }
+        }));
+    });
+</script>

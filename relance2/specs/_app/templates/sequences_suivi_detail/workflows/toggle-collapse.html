@@ -1,0 +1,17 @@
+<!-- templates/sequences_suivi_detail/workflows/toggle-collapse.html -->
+
+toggleCollapse: async function(index) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'toggleCollapse', index });
+    
+    try {
+        const etape = this.form.etapes[index];
+        etape.collapsed = !etape.collapsed;
+        
+        log.debug('STATE_UPDATE', { index, collapsed: etape.collapsed });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

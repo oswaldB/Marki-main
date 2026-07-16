@@ -1,0 +1,41 @@
+<!-- templates/smart_marki/workflows/open-insight.html -->
+
+openInsight: async function(insight) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'openInsight', insightId: insight?.id });
+    
+    this.loading = true;
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { endpoint: `/api/insights/${insight.id}/read` });
+        
+        const response = await fetch(`/api/insights/${insight.id}/read`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+        
+        // Update local state
+        const idx = this.insights.findIndex(i => i.id === insight.id);
+        if (idx !== -1) {
+            this.insights[idx].lu = true;
+        }
+        
+        this.selectedInsight = { ...insight, lu: true };
+        this.showDetailModal = true;
+        
+        log.debug('STATE_UPDATE', { insightId: insight.id, lu: true });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        // Still show modal even if marking as read fails
+        this.selectedInsight = insight;
+        this.showDetailModal = true;
+        log.warn('WORKFLOW_WARNING', { workflowId, error: error.message, action: 'show_modal_anyway' });
+    } finally {
+        this.loading = false;
+    }
+}

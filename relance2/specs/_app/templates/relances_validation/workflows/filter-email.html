@@ -1,0 +1,17 @@
+<!-- templates/relances_validation/workflows/filter-email.html -->
+
+filterEmail: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'filterEmail' });
+    
+    try {
+        this.filterType = 'email';
+        this.filterToday = false;
+        
+        log.debug('STATE_UPDATE', { filterType: 'email' });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

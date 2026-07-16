@@ -1,0 +1,14 @@
+<!-- templates/sequences_relance_detail/workflows/toggle-attribution-auto.html -->
+
+toggleAttributionAuto: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'toggleAttributionAuto' });
+    
+    try {
+        this.form.attributionAuto = !this.form.attributionAuto;
+        log.debug('STATE_UPDATE', { attributionAuto: this.form.attributionAuto });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

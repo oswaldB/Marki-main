@@ -1,0 +1,14 @@
+<!-- templates/sequences_relance_detail/workflows/select-scenario-multiple.html -->
+
+selectScenarioMultiple: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'selectScenarioMultiple' });
+    
+    try {
+        this.form.scenario = 'multiple';
+        log.debug('STATE_UPDATE', { scenario: 'multiple' });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

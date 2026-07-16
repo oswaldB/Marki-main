@@ -1,0 +1,16 @@
+<!-- templates/relances_calendrier/workflows/switch-view-month.html -->
+
+switchViewMonth: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'switchViewMonth' });
+    
+    try {
+        this.viewMode = 'month';
+        
+        log.debug('STATE_UPDATE', { viewMode: 'month' });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

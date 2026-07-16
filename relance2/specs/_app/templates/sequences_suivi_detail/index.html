@@ -1,0 +1,117 @@
+<!-- templates/sequences_suivi_detail/index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détail Séquence Suivi | Marki</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body x-data="sequencesSuiviDetail" x-init="init()" class="bg-slate-50">
+
+    <div class="md:ml-[284px] min-h-screen">
+        
+        <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6">
+            <div class="flex items-center gap-3">
+                <a href="/sequences" class="text-slate-500 hover:text-slate-700">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <h1 class="text-lg font-semibold text-slate-800">Séquence Suivi <span x-text="sequence?.nom"></span></h1>
+            </div>
+            
+            <div class="flex items-center gap-2">
+                <button @click="togglePublication()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm"
+                    x-text="sequence?.publiee ? 'Dépublier' : 'Publier'">
+                </button>
+                <button @click="sauvegarder()" class="px-4 py-2 bg-white border border-slate-200 hover:bg-slate-50 rounded-lg text-sm" :disabled="saving">
+                    <i class="fas fa-save mr-1"></i><span x-text="saving ? 'Sauvegarde...' : 'Sauvegarder'"></span>
+                </button>
+            </div>
+        </header>
+
+        <main class="p-6">
+            <!-- Config Panel -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 mb-6">
+                <div class="grid grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-xs font-medium text-slate-500 uppercase mb-1">Nom</label>
+                        <input type="text" x-model="form.nom" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-slate-500 uppercase mb-1">Scénario</label>
+                        <select x-model="form.scenario" @change="selectScenario(form.scenario)" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                            <option value="single">Facture unique</option>
+                            <option value="multiple">Plusieurs factures</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" x-model="form.validationActive" @change="toggleValidation()" class="rounded border-slate-300 text-sky-500">
+                            <span class="text-sm text-slate-700">Validation</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <!-- Fréquence -->
+                <div class="mt-4 pt-4 border-t border-slate-100">
+                    <label class="block text-xs font-medium text-slate-500 uppercase mb-2">Fréquence</label>
+                    <div class="flex items-center gap-3">
+                        <button @click="setFrequenceQuotidien()" :class="form.frequence === 'quotidien' ? 'bg-sky-500 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg text-sm">Quotidien</button>
+                        <button @click="setFrequenceHebdomadaire()" :class="form.frequence === 'hebdomadaire' ? 'bg-sky-500 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg text-sm">Hebdomadaire</button>
+                        <button @click="setFrequenceMensuel()" :class="form.frequence === 'mensuel' ? 'bg-sky-500 text-white' : 'bg-slate-100 text-slate-700'" class="px-3 py-1.5 rounded-lg text-sm">Mensuel</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Étapes -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                <div class="px-6 py-4 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
+                    <h2 class="text-sm font-semibold text-slate-800">Étapes de la séquence</h2>
+                    <button @click="ajouterEmail()" class="px-3 py-1.5 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-xs" :disabled="saving">
+                        <i class="fas fa-plus mr-1"></i>Ajouter étape
+                    </button>
+                </div>
+                
+                <div class="divide-y divide-slate-100">
+                    <template x-for="(etape, index) in form.etapes" :key="index">
+                        <div class="p-4 hover:bg-slate-50">
+                            <div class="flex items-start gap-4">
+                                <div class="w-8 h-8 rounded-lg bg-sky-100 flex items-center justify-center text-xs font-bold text-sky-600" x-text="index + 1"></div>
+                                <div class="flex-1 grid grid-cols-4 gap-4">
+                                    <div>
+                                        <label class="block text-xs text-slate-500 mb-1">Délai</label>
+                                        <input type="text" x-model="etape.delai" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs text-slate-500 mb-1">Action</label>
+                                        <select x-model="etape.action" @change="actionChanged(index)" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+                                            <option value="email">Email</option>
+                                            <option value="courrier">Courrier</option>
+                                            <option value="telephone">Téléphone</option>
+                                            <option value="email_ia">Email IA</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-span-2">
+                                        <label class="block text-xs text-slate-500 mb-1">Contenu</label>
+                                        <div class="flex items-center gap-2">
+                                            <input type="text" x-model="etape.objet" class="flex-1 px-3 py-2 border border-slate-200 rounded-lg text-sm" placeholder="Objet de l'email...">
+                                            <button @click="toggleEmail(index)" x-show="etape.action === 'email_ia'" class="p-2 text-slate-400 hover:text-sky-600"><i class="fas fa-robot"></i></button>
+                                            <button @click="testerEmail(index)" class="p-2 text-slate-400 hover:text-sky-600"><i class="fas fa-play"></i></button>
+                                            <button @click="supprimerEmail(index)" class="p-2 text-slate-400 hover:text-red-600"><i class="fas fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {% include 'sequences_suivi_detail/alpinejs.html' %}
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+<!-- templates/sequences_suivi_detail/workflows/select-jour-mois.html -->
+
+selectJourMois: async function(jour) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'selectJourMois', jour });
+    
+    try {
+        this.form.jourMois = jour;
+        log.debug('STATE_UPDATE', { jourMois: jour });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

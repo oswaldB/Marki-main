@@ -1,0 +1,42 @@
+<!-- templates/smart_marki/alpinejs.html -->
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('smartMarki', () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES
+            // =====================================================
+            
+            // UI State
+            loading: false,
+            applying: null,
+            error: null,
+            showDetailModal: false,
+            
+            // Data
+            insights: [],
+            selectedInsight: null,
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
+            {% include 'smart_marki/workflows/initial-load.html' %},
+            {% include 'smart_marki/workflows/open-insight.html' %},
+            {% include 'smart_marki/workflows/close-insight.html' %},
+            {% include 'smart_marki/workflows/apply-insight.html' %},
+            {% include 'smart_marki/workflows/dismiss-insight.html' %},
+            {% include 'smart_marki/workflows/mark-all-read.html' %},
+            
+            // =====================================================
+            // 3. INIT
+            // =====================================================
+            {% include 'smart_marki/workflows/workflow-init.html' %}
+        }));
+    });
+</script>

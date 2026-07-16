@@ -1,0 +1,20 @@
+<!-- templates/relances_calendrier/workflows/next-period.html -->
+
+nextPeriod: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'nextPeriod' });
+    
+    try {
+        if (this.viewMode === 'month') {
+            this.currentDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 1);
+        } else {
+            this.currentDate = new Date(this.currentDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+        }
+        
+        log.debug('STATE_UPDATE', { newDate: this.currentDate });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

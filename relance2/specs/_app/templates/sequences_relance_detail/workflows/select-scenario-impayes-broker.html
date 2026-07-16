@@ -1,0 +1,16 @@
+<!-- templates/sequences_relance_detail/workflows/select-scenario-impayes-broker.html -->
+
+selectScenarioImpayesBroker: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'selectScenarioImpayesBroker' });
+    
+    try {
+        this.form.scenario = 'impayes_broker';
+        
+        log.debug('STATE_UPDATE', { scenario: 'impayes_broker' });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

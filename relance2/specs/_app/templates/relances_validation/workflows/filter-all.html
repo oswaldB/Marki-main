@@ -1,0 +1,17 @@
+<!-- templates/relances_validation/workflows/filter-all.html -->
+
+filterAll: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'filterAll' });
+    
+    try {
+        this.filterType = 'all';
+        this.filterToday = false;
+        
+        log.debug('STATE_UPDATE', { filterType: 'all', filterToday: false });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

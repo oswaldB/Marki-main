@@ -1,0 +1,15 @@
+<!-- templates/sequences_relance_detail/workflows/workflow-init.html -->
+
+init: function() {
+    log.info('PAGE_INIT', { page: 'sequences_relance_detail' });
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    this.sequenceId = urlParams.get('id');
+    
+    if (!this.sequenceId) {
+        this.error = 'ID de séquence manquant';
+        return;
+    }
+    
+    this.initialLoad();
+}

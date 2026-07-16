@@ -1,0 +1,17 @@
+<!-- templates/sequences/workflows/close-modal.html -->
+
+closeModal: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'closeModal' });
+    
+    try {
+        this.showNewSequenceModal = false;
+        this.newSequence = { nom: '', type: 'relance', description: '' };
+        
+        log.debug('STATE_UPDATE', { showNewSequenceModal: false });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

@@ -1,0 +1,39 @@
+<!-- templates/sequences_relance_detail/workflows/initial-load.html -->
+
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'initialLoad', sequenceId: this.sequenceId });
+    
+    this.loading = true;
+    this.error = null;
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { endpoint: `/api/sequences/${this.sequenceId}` });
+        
+        const response = await fetch(`/api/sequences/${this.sequenceId}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+        
+        const data = await response.json();
+        this.sequence = data;
+        this.form = {
+            nom: data.nom || '',
+            scenario: data.scenario || 'single',
+            validationActive: data.validationActive || false,
+            attributionAuto: data.attributionAuto || false,
+            etapes: data.etapes || []
+        };
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, etapesCount: data.etapes?.length });
+        
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    } finally {
+        this.loading = false;
+    }
+}

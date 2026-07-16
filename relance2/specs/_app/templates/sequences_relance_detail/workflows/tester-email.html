@@ -1,0 +1,36 @@
+<!-- templates/sequences_relance_detail/workflows/tester-email.html -->
+
+testerEmail: async function(index) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'testerEmail', index });
+    
+    this.loading = true;
+    
+    try {
+        const token = localStorage.getItem('token');
+        const etape = this.form.etapes[index];
+        
+        log.debug('API_CALL_START', { endpoint: `/api/sequences/${this.sequenceId}/tester` });
+        
+        const response = await fetch(`/api/sequences/${this.sequenceId}/tester`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ etapeIndex: index, etape })
+        });
+        
+        if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+        
+        alert('Email de test envoyé !');
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    } finally {
+        this.loading = false;
+    }
+}

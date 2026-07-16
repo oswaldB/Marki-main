@@ -1,0 +1,16 @@
+<!-- templates/relances_calendrier/workflows/switch-view-week.html -->
+
+switchViewWeek: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'switchViewWeek' });
+    
+    try {
+        this.viewMode = 'week';
+        
+        log.debug('STATE_UPDATE', { viewMode: 'week' });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

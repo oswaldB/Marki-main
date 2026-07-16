@@ -1,0 +1,17 @@
+<!-- templates/relances_validation/workflows/filter-today.html -->
+
+filterToday: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'filterToday' });
+    
+    try {
+        this.filterToday = true;
+        this.filterType = 'all';
+        
+        log.debug('STATE_UPDATE', { filterToday: true });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

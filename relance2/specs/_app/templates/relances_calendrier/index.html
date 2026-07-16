@@ -1,0 +1,181 @@
+<!-- templates/relances_calendrier/index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier Relances | Marki</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { font-family: 'Inter', system-ui, sans-serif; }
+        [x-cloak] { display: none !important; }
+        .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+        .week-grid { display: grid; grid-template-columns: 80px repeat(7, 1fr); }
+        .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+        .scrollbar-thin::-webkit-scrollbar-track { background: #f1f5f9; }
+        .scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    </style>
+</head>
+<body x-data="relancesCalendrier" x-init="init()">
+
+    <!-- Sidebar -->
+    <div class="md:ml-[284px] min-h-screen bg-slate-50">
+        <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+            <div class="flex items-center gap-3">
+                <h1 class="text-base font-semibold text-slate-700">Calendrier des Relances</h1>
+                <span class="text-slate-400">/</span>
+                <span class="text-sm text-slate-500" x-text="currentMonthLabel"></span>
+            </div>
+            
+            <div class="flex items-center gap-2">
+                <button @click="previousPeriod()" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button @click="goToToday()" class="px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-lg border border-slate-200">
+                    Aujourd'hui
+                </button>
+                <button @click="nextPeriod()" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </header>
+
+        <main class="p-6">
+            <!-- Toolbar -->
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 mb-6">
+                <div class="flex flex-wrap items-center gap-4">
+                    <div class="relative flex-1 min-w-[200px] max-w-sm">
+                        <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                        <input type="text" x-model="searchQuery" placeholder="Rechercher un payeur..."
+                            class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+                    </div>
+                    
+                    <select x-model="filterStatut" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                        <option value="">Tous les statuts</option>
+                        <option value="a-envoyer">À envoyer</option>
+                        <option value="envoyee">Envoyées</option>
+                    </select>
+                    
+                    <select x-model="filterType" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                        <option value="">Tous les types</option>
+                        <option value="email">Email</option>
+                        <option value="courrier">Courrier</option>
+                        <option value="telephone">Téléphone</option>
+                    </select>
+                    
+                    <div class="flex-1"></div>
+                    
+                    <!-- View Switcher -->
+                    <div class="flex items-center bg-slate-100 rounded-lg p-1">
+                        <button @click="viewMode = 'month'"
+                            :class="viewMode === 'month' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500'"
+                            class="px-3 py-1.5 rounded-md text-sm font-medium transition-all flex items-center gap-1.5">
+                            <i class="fas fa-calendar-alt"></i> Mois
+                        </button>
+                        <button @click="viewMode = 'week'"
+                            :class="viewMode === 'week' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500'"
+                            class="px-3 py-1.5 rounded-md text-sm font-medium transition-all flex items-center gap-1.5">
+                            <i class="fas fa-columns"></i> Semaine
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vue Mois -->
+            <template x-if="viewMode === 'month'">
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="grid grid-cols-7 border-b border-slate-200">
+                        <template x-for="day in ['Lun','Mar','Mer','Jeu','Ven','Sam','Dim']">
+                            <div class="py-2 text-center text-sm font-medium text-slate-500 border-r border-slate-100 last:border-r-0" x-text="day"></div>
+                        </template>
+                    </div>
+                    
+                    <div class="calendar-grid">
+                        <template x-for="(day, index) in calendarDays" :key="index">
+                            <div class="min-h-[120px] border-r border-b border-slate-100 p-2 relative"
+                                :class="{ 'bg-slate-50': !day.currentMonth, 'bg-sky-50': day.isToday }">
+                                <span class="text-sm font-medium w-7 h-7 flex items-center justify-center rounded-full"
+                                    :class="{ 'text-slate-400': !day.currentMonth, 'bg-sky-500 text-white': day.isToday }"
+                                    x-text="day.dayNumber">
+                                </span>
+                                
+                                <div class="mt-1 space-y-1 max-h-[80px] overflow-y-auto scrollbar-thin">
+                                    <template x-for="relance in day.relances" :key="relance.id">
+                                        <button @click="openEditRelance(relance)"
+                                            class="w-full text-left px-2 py-1 text-xs rounded truncate"
+                                            :class="relance.statut === 'a-envoyer' ? 'bg-blue-50 border border-dashed border-blue-500 text-blue-700' : 'bg-blue-50 border border-blue-500 text-blue-700'">
+                                            <i class="fas fa-paper-plane mr-1"></i>
+                                            <span x-text="relance.payeur?.substring(0, 15)"></span>
+                                        </button>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+            
+            <!-- Vue Semaine -->
+            <template x-if="viewMode === 'week'">
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="week-grid border-b border-slate-200">
+                        <div class="py-2 px-2 text-sm font-medium text-slate-500 border-r border-slate-100"></div>
+                        <template x-for="day in weekDays">
+                            <div class="py-2 text-center text-sm font-medium border-r border-slate-100 last:border-r-0"
+                                :class="day.isToday ? 'bg-sky-50 text-sky-600' : 'text-slate-500'">
+                                <div x-text="day.shortName"></div>
+                                <div x-text="day.dayNumber" class="text-lg"></div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </main>
+    </div>
+
+    <!-- Modal Edit Relance -->
+    <div x-show="showEditModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-slate-500/75" @click="closeModal()"></div>
+        
+        <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full">
+            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+                <h3 class="text-lg font-semibold text-slate-900">Modifier la relance</h3>
+                <button @click="closeModal()" class="text-slate-400 hover:text-slate-600">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="px-6 py-6 space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1.5">Date d'envoi</label>
+                    <input type="date" x-model="editForm.date" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1.5">Destinataire</label>
+                    <input type="text" x-model="editForm.destinataire" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1.5">Objet</label>
+                    <input type="text" x-model="editForm.objet" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                </div>
+            </div>
+            
+            <div class="px-6 py-4 border-t border-slate-100 bg-slate-50 flex items-center justify-end gap-2">
+                <button @click="closeModal()" class="px-4 py-2 text-slate-700 hover:bg-slate-200 rounded-lg text-sm font-medium">
+                    Annuler
+                </button>
+                <button @click="saveEdit()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">
+                    <i class="fas fa-save mr-1"></i>Enregistrer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    {% include 'relances_calendrier/alpinejs.html' %}
+
+</body>
+</html>

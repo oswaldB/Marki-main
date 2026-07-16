@@ -1,0 +1,16 @@
+<!-- templates/relances_calendrier/workflows/go-today.html -->
+
+goToToday: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'goToToday' });
+    
+    try {
+        this.currentDate = new Date();
+        
+        log.debug('STATE_UPDATE', { currentDate: this.currentDate });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

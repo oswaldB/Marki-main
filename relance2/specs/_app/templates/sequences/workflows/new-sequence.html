@@ -1,0 +1,17 @@
+<!-- templates/sequences/workflows/new-sequence.html -->
+
+newSequence: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'newSequence' });
+    
+    try {
+        this.newSequence = { nom: '', type: 'relance', description: '' };
+        this.showNewSequenceModal = true;
+        
+        log.debug('STATE_UPDATE', { showNewSequenceModal: true });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

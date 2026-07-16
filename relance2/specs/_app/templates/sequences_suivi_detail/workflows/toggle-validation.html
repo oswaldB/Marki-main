@@ -1,0 +1,14 @@
+<!-- templates/sequences_suivi_detail/workflows/toggle-validation.html -->
+
+toggleValidation: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'toggleValidation' });
+    
+    try {
+        this.form.validationActive = !this.form.validationActive;
+        log.debug('STATE_UPDATE', { validationActive: this.form.validationActive });
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

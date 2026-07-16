@@ -1,0 +1,70 @@
+<!-- templates/sequences_suivi_detail/alpinejs.html -->
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('sequencesSuiviDetail', () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES
+            // =====================================================
+            
+            // UI State
+            loading: false,
+            saving: false,
+            error: null,
+            
+            // Data
+            sequence: null,
+            sequenceId: null,
+            
+            // Form
+            form: {
+                nom: '',
+                scenario: 'single',
+                validationActive: false,
+                frequence: 'mensuel',
+                etapes: [],
+                jourSemaine: 'lundi',
+                jourMois: 1,
+                heure: 9
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
+            {% include 'sequences_suivi_detail/workflows/initial-load.html' %},
+            {% include 'sequences_suivi_detail/workflows/select-scenario-single.html' %},
+            {% include 'sequences_suivi_detail/workflows/select-scenario-multiple.html' %},
+            {% include 'sequences_suivi_detail/workflows/toggle-validation.html' %},
+            {% include 'sequences_suivi_detail/workflows/toggle-publication.html' %},
+            {% include 'sequences_suivi_detail/workflows/ajouter-email.html' %},
+            {% include 'sequences_suivi_detail/workflows/supprimer-email.html' %},
+            {% include 'sequences_suivi_detail/workflows/toggle-email.html' %},
+            {% include 'sequences_suivi_detail/workflows/tester-email.html' %},
+            {% include 'sequences_suivi_detail/workflows/sauvegarder.html' %},
+            {% include 'sequences_suivi_detail/workflows/set-frequence-quotidien.html' %},
+            {% include 'sequences_suivi_detail/workflows/set-frequence-hebdomadaire.html' %},
+            {% include 'sequences_suivi_detail/workflows/set-frequence-mensuel.html' %},
+            {% include 'sequences_suivi_detail/workflows/select-jour-semaine.html' %},
+            {% include 'sequences_suivi_detail/workflows/select-jour-mois.html' %},
+            {% include 'sequences_suivi_detail/workflows/select-heure.html' %},
+            {% include 'sequences_suivi_detail/workflows/toggle-collapse.html' %},
+            {% include 'sequences_suivi_detail/workflows/open-ia-modal.html' %},
+            
+            // =====================================================
+            // 3. INIT
+            // =====================================================
+            {% include 'sequences_suivi_detail/workflows/workflow-init.html' %},
+            
+            // Helpers
+            actionChanged(index) {
+                log.debug('ACTION_CHANGED', { index, action: this.form.etapes[index]?.action });
+            }
+        }));
+    });
+</script>

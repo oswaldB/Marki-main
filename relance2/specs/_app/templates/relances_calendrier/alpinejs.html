@@ -1,0 +1,128 @@
+<!-- templates/relances_calendrier/alpinejs.html -->
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('relancesCalendrier', () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES
+            // =====================================================
+            
+            // UI State
+            loading: false,
+            error: null,
+            showEditModal: false,
+            
+            // Calendar State
+            currentDate: new Date(),
+            viewMode: 'month',
+            searchQuery: '',
+            filterStatut: '',
+            filterType: '',
+            
+            // Data
+            relances: [],
+            selectedRelance: null,
+            editForm: { date: '', destinataire: '', objet: '', corps: '' },
+            
+            // Constants
+            timeSlots: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+            dayNames: ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'],
+            
+            // Getters calculés
+            get currentMonthLabel() {
+                const months = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+                return months[this.currentDate.getMonth()] + ' ' + this.currentDate.getFullYear();
+            },
+            
+            get calendarDays() {
+                const year = this.currentDate.getFullYear();
+                const month = this.currentDate.getMonth();
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const daysInMonth = lastDay.getDate();
+                const startDayOfWeek = firstDay.getDay() || 7;
+                const days = [];
+                const today = new Date();
+                
+                // Previous month days
+                for (let i = 1; i < startDayOfWeek; i++) {
+                    const prevDate = new Date(year, month, -startDayOfWeek + i + 1);
+                    days.push({ date: prevDate, dayNumber: prevDate.getDate(), currentMonth: false, isToday: false, relances: [] });
+                }
+                
+                // Current month days
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const date = new Date(year, month, i);
+                    const dateStr = date.toISOString().split('T')[0];
+                    days.push({
+                        date: date,
+                        dayNumber: i,
+                        currentMonth: true,
+                        isToday: date.toDateString() === today.toDateString(),
+                        relances: this.getRelancesForDate(dateStr)
+                    });
+                }
+                
+                return days;
+            },
+            
+            get weekDays() {
+                const startOfWeek = new Date(this.currentDate);
+                const day = startOfWeek.getDay();
+                const diff = startOfWeek.getDate() - day + (day === 0 ? -6 : 1);
+                startOfWeek.setDate(diff);
+                const days = [];
+                const today = new Date();
+                
+                for (let i = 0; i < 7; i++) {
+                    const date = new Date(startOfWeek);
+                    date.setDate(startOfWeek.getDate() + i);
+                    const dateStr = date.toISOString().split('T')[0];
+                    days.push({
+                        date: date,
+                        shortName: this.dayNames[i],
+                        dayNumber: date.getDate(),
+                        isToday: date.toDateString() === today.toDateString(),
+                        relances: this.getRelancesForDate(dateStr)
+                    });
+                }
+                return days;
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
+            {% include 'relances_calendrier/workflows/initial-load.html' %},
+            {% include 'relances_calendrier/workflows/previous-period.html' %},
+            {% include 'relances_calendrier/workflows/next-period.html' %},
+            {% include 'relances_calendrier/workflows/go-today.html' %},
+            {% include 'relances_calendrier/workflows/switch-view-month.html' %},
+            {% include 'relances_calendrier/workflows/switch-view-week.html' %},
+            {% include 'relances_calendrier/workflows/open-edit-relance.html' %},
+            {% include 'relances_calendrier/workflows/save-edit.html' %},
+            {% include 'relances_calendrier/workflows/close-modal.html' %},
+            
+            // =====================================================
+            // 3. INIT
+            // =====================================================
+            {% include 'relances_calendrier/workflows/workflow-init.html' %},
+            
+            // Helpers
+            getRelancesForDate(dateStr) {
+                return this.relances.filter(r => {
+                    if (r.date !== dateStr) return false;
+                    const matchesSearch = !this.searchQuery || r.payeur?.toLowerCase().includes(this.searchQuery.toLowerCase());
+                    const matchesStatut = !this.filterStatut || r.statut === this.filterStatut;
+                    const matchesType = !this.filterType || r.type === this.filterType;
+                    return matchesSearch && matchesStatut && matchesType;
+                });
+            }
+        }));
+    });
+</script>

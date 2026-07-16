@@ -1,0 +1,42 @@
+<!-- templates/sequences_suivi_detail/workflows/sauvegarder.html -->
+
+sauvegarder: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'sauvegarder', sequenceId: this.sequenceId });
+    
+    this.saving = true;
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('VALIDATION_START', { form: this.form });
+        
+        if (!this.form.nom) {
+            throw new Error('Nom de la séquence requis');
+        }
+        
+        log.debug('API_CALL_START', { endpoint: `/api/sequences/${this.sequenceId}` });
+        
+        const response = await fetch(`/api/sequences/${this.sequenceId}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(this.form)
+        });
+        
+        if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+        
+        const updated = await response.json();
+        this.sequence = { ...this.sequence, ...updated };
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    } finally {
+        this.saving = false;
+    }
+}
