@@ -198,6 +198,88 @@
 - ❌ filter-unread
 - ❌ open-event
 
+### Settings (1/1 workflows) ✅
+- ✅ initial-load (simple page menu)
+
+### Settings SMTP (5/7 workflows) ⚠️
+- ✅ initial-load
+- ✅ create-profil
+- ✅ delete-profil
+- ✅ edit-profil
+- ✅ test-profil
+- ❌ close-delete-modal
+- ❌ confirm-delete
+
+### Settings SMTP Detail (5/4 workflows) ✅
+- ✅ initial-load
+- ✅ save-changes
+- ✅ tester-connexion
+- ✅ toggle-password
+- ✅ workflow-init
+
+### Settings Utilisateurs (5/5 workflows) ✅
+- ✅ initial-load
+- ✅ open-add-user
+- ✅ edit-user
+- ✅ update-user
+- ✅ workflow-init
+
+### Relances Calendrier (1/9 workflows) ❌
+- ✅ initial-load (placeholder)
+- ❌ close-modal
+- ❌ go-today
+- ❌ next-period
+- ❌ previous-period
+- ❌ open-edit-relance
+- ❌ save-edit
+- ❌ switch-view-month
+- ❌ switch-view-week
+
+### Relances Validation (6/10 workflows) ⚠️
+- ✅ initial-load
+- ✅ valider-relance
+- ✅ supprimer-relance
+- ✅ select-relance
+- ✅ deselect-relance
+- ✅ valider-selection
+- ❌ filter-all
+- ❌ filter-email
+- ❌ filter-today
+- ❌ save-changes
+
+### Impayes Detail (2/5 workflows) ⚠️
+- ✅ initial-load
+- ✅ workflow-init
+- ❌ open-pdf
+- ❌ suspend-facture
+- ❌ unsuspend-facture
+- ❌ blacklist-facture
+- ❌ changer-sequence
+
+---
+
+### Résumé Workflows
+
+| Page | Specs | Implémentés | Taux |
+|------|-------|-------------|------|
+| Login | 2 | 2 | 100% ✅ |
+| Dashboard | 6 | 2 | 33% ⚠️ |
+| Impayés | 11 | 6 | 55% ⚠️ |
+| Contacts | 12 | 5 | 42% ⚠️ |
+| Relances | 7 | 5 | 71% ⚠️ |
+| Séquences | 7 | 5 | 71% ⚠️ |
+| Événements | 6 | 3 | 50% ⚠️ |
+| Settings | 1 | 1 | 100% ✅ |
+| Settings SMTP | 7 | 5 | 71% ⚠️ |
+| Settings SMTP Detail | 4 | 5 | 125% ✅ |
+| Settings Utilisateurs | 5 | 5 | 100% ✅ |
+| Relances Calendrier | 9 | 1 | 11% ❌ |
+| Relances Validation | 10 | 6 | 60% ⚠️ |
+| Impayes Detail | 5 | 2 | 40% ⚠️ |
+| **TOTAL** | **92** | **53** | **58%** |
+
+**Note**: Seuls les workflows essentiels sont implémentés. Les workflows avancés (modals complexes, filtres spécifiques) sont en attente.
+
 ---
 
 ## Partie 4: Routes Backend
