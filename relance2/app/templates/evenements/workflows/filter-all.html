@@ -1,0 +1,15 @@
+// Workflow: Filter all events
+filterAll: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'filterAll' });
+    
+    try {
+        // Reset filter to show all
+        this.filterRead = 'all';
+        this.applyFilters();
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, filter: 'all' });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

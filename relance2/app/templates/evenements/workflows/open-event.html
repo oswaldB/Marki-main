@@ -1,0 +1,14 @@
+// Workflow: Open event detail modal
+openEvent: function(event) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'openEvent', eventId: event.id });
+    
+    try {
+        this.selectedEvent = event;
+        this.showDetailModal = true;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, eventId: event.id });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

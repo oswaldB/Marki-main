@@ -1,0 +1,31 @@
+// Workflow: Blacklister contact from relance
+blacklisterRelance: async function(relance) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'blacklisterRelance', relanceId: relance.id });
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        // Blacklist the contact
+        const response = await fetch(`/api/contacts/${relance.contact_id}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                is_blacklisted: 1,
+                blacklist_motif: 'Blacklisté depuis validation relances'
+            })
+        });
+        
+        if (!response.ok) throw new Error('Erreur lors du blacklist');
+        
+        // Refresh list
+        await this.initialLoad();
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, relanceId: relance.id });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, relanceId: relance.id, error: error.message });
+    }
+}

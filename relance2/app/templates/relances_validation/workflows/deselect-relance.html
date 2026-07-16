@@ -1,0 +1,13 @@
+// Workflow: Deselect relance
+deselectRelance: function(relance) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'deselectRelance', relanceId: relance.id });
+    
+    try {
+        this.selectedRelances = this.selectedRelances.filter(r => r.id !== relance.id);
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, relanceId: relance.id });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

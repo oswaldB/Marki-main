@@ -1,0 +1,14 @@
+// Workflow: View relance details
+viewRelance: function(relance) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'viewRelance', relanceId: relance.id });
+    
+    try {
+        this.selectedRelance = relance;
+        this.showDetailModal = true;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, relanceId: relance.id });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

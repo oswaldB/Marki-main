@@ -1,0 +1,29 @@
+// Workflow: Cancel relance
+cancelRelance: async function(relance) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'cancelRelance', relanceId: relance.id });
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/relances/${relance.id}`, method: 'PUT' });
+        
+        const response = await fetch(`/api/relances/${relance.id}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ statut: 'annulee' })
+        });
+        
+        if (!response.ok) throw new Error('Erreur lors de l\'annulation');
+        
+        // Update local state
+        relance.statut = 'annulee';
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, relanceId: relance.id });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, relanceId: relance.id, error: error.message });
+    }
+}
