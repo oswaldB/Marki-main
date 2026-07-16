@@ -12,6 +12,8 @@ from .portail import bp as portail_bp
 
 
 from .workflow import bp as workflow_bp
+from .tokens import bp as tokens_bp
+from .import_data import bp as import_bp
 
 
 def register_blueprints(app):
@@ -26,3 +28,5 @@ def register_blueprints(app):
     app.register_blueprint(settings_bp, url_prefix='/api/settings')
     app.register_blueprint(portail_bp, url_prefix='/api/portail')
     app.register_blueprint(workflow_bp)
+    app.register_blueprint(tokens_bp, url_prefix='/api/tokens')
+    app.register_blueprint(import_bp, url_prefix='/api/import')
