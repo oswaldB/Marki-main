@@ -46,30 +46,29 @@ Basculer le statut blacklist d'un contact
 
 ## API Calls
 
-**POST /api/contacts/:id/blacklist**
+**PUT /api/contacts/:id**
 
 ```javascript
 // Requête
-POST /api/contacts/cont_xxx/blacklist
+PUT /api/contacts/cont_xxx
 Authorization: Bearer {token}
 Content-Type: application/json
 
 {
-  "motif": "Client ne souhaite plus être relancé"
+  "is_blacklisted": true,
+  "blacklist_motif": "Client ne souhaite plus être relancé"
 }
 
 // Réponse 200
 {
-  "contact": {
-    "id": "cont_xxx",
-    "is_blacklisted": 1,
-    "blacklist_date": "2026-07-14T15:30:00Z",
-    "blacklist_motif": "Client ne souhaite plus être relancé"
-  },
-  "action": "blacklisté",
-  "relances_annulees": 3
+  "id": "cont_xxx",
+  "is_blacklisted": 1,
+  "blacklist_date": "2026-07-14T15:30:00Z",
+  "blacklist_motif": "Client ne souhaite plus être relancé"
 }
 ```
+
+**Note:** Utilise la route CRUD PUT générique, pas une route spécifique `/blacklist`.
 
 ## Organisation des fichiers
 
@@ -94,22 +93,29 @@ frontend/
 
 ```javascript
 // frontend/app/contacts/js/toggle-blacklist.js
-export function toggleBlacklist(contactId) {
-  return fetch(`/api/contacts/${contactId}/blacklist`, {
-    method: 'POST',
+export function toggleBlacklist(contactId, currentStatus) {
+  const workflowId = crypto.randomUUID();
+  log.info('WORKFLOW_START', { workflowId, workflow: 'toggleBlacklist', contactId });
+  
+  return fetch(`/api/contacts/${contactId}`, {
+    method: 'PUT',
     headers: {
       'Authorization': `Bearer ${Alpine.store('auth').token}`,
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      motif: 'Blacklist manuelle'
+      is_blacklisted: !currentStatus,
+      blacklist_motif: currentStatus ? null : 'Blacklist manuelle'
     })
   })
   .then(r => r.json())
   .then(data => {
-    // Mettre à jour le contact dans le store
-    Alpine.store('contacts').updateContact(data.contact);
+    log.info('WORKFLOW_SUCCESS', { workflowId, contactId, newStatus: data.is_blacklisted });
     return data;
+  })
+  .catch(error => {
+    log.error('WORKFLOW_ERROR', { workflowId, contactId, error: error.message });
+    throw error;
   });
 }
 ```
@@ -118,24 +124,44 @@ export function toggleBlacklist(contactId) {
 
 ```javascript
 toggleBlacklist(contact) {
-  // 1. Appel API
-  fetch(`/api/contacts/${contact.id}/blacklist`, {
-    method: 'POST',
+  const workflowId = crypto.randomUUID();
+  log.info('WORKFLOW_START', { workflowId, workflow: 'toggleBlacklist', contactId: contact.id });
+  
+  // 1. Optimistic update
+  const previousStatus = contact.is_blacklisted;
+  contact.is_blacklisted = !previousStatus;
+  
+  // 2. Appel API PUT sur la route CRUD
+  fetch(`/api/contacts/${contact.id}`, {
+    method: 'PUT',
     headers: {
       'Authorization': `Bearer ${this.token}`,
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ motif: 'Blacklist manuelle' })
+    body: JSON.stringify({ 
+      is_blacklisted: contact.is_blacklisted,
+      blacklist_motif: contact.is_blacklisted ? 'Blacklist manuelle' : null
+    })
   })
-  .then(res => res.json())
+  .then(res => {
+    if (!res.ok) throw new Error('Erreur serveur');
+    return res.json();
+  })
   .then(data => {
-    // 2. Mettre à jour le contact localement
-    contact.is_blacklisted = data.contact.is_blacklisted;
-    contact.blacklist_date = data.contact.blacklist_date;
-    contact.blacklist_motif = data.contact.blacklist_motif;
+    // 3. Mettre à jour avec les données reçues
+    contact.blacklist_date = data.blacklist_date;
+    contact.blacklist_motif = data.blacklist_motif;
     
-    // 3. Afficher notification
-    this.showNotification(`Contact ${data.action}`);
+    log.info('WORKFLOW_SUCCESS', { workflowId, contactId: contact.id, is_blacklisted: data.is_blacklisted });
+    this.showNotification(`Contact ${contact.is_blacklisted ? 'blacklisté' : 'déblacklisté'}`);
+  })
+  .catch(error => {
+    // 4. Rollback en cas d'erreur
+    contact.is_blacklisted = previousStatus;
+    log.error('WORKFLOW_ERROR', { workflowId, contactId: contact.id, error: error.message });
+    this.showNotification('Erreur lors de la mise à jour', 'error');
   });
 }
 ```
+
+**Note importante:** Utilise `PUT /api/contacts/:id` (route CRUD générique) et non pas `POST /api/contacts/:id/blacklist` (route inexistante).

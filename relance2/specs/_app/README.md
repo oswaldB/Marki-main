@@ -1,7 +1,7 @@
-# _app/ - Shadow App Specifications
+# _app/ - Spécifications de l'Application Marki
 
 **Dossier** : `specs/_app/`  
-**Description** : Spécifications de l'application Marki
+**Description** : Spécifications complètes de l'application Flask (`app/`)
 
 **Statut**: ✅ À jour - Juillet 2024
 
@@ -9,7 +9,7 @@
 
 ## Principe
 
-Structure des spécifications pour le développement de l'application Flask (`app/`).
+Structure des spécifications pour le développement de l'application Marki.
 
 Chaque composant de l'application est documenté ici avant d'être implémenté.
 
@@ -42,45 +42,23 @@ specs/_app/
 │   ├── users.md
 │   └── workflow.md
 │
-├── layouts/                            ← Layouts et composants
+├── layouts/                            ← Layouts
 │   ├── README.md
-│   ├── layout_app.md                   ← Layout standard avec nav
-│   ├── layout_portail.md               ← Layout portails clients
-│   └── components/                     ← Composants réutilisables
+│   ├── layout_app.md                 ← Layout standard avec nav
+│   ├── layout_portail.md             ← Layout portails clients
+│   └── components/                   ← Web Components
 │       ├── sidebar-nav-dual.js
 │       └── sidebar-nav-dual.md
 │
-├── templates/                          ← Templates Jinja2 + Alpine.js (23 pages)
-│   ├── login/
-│   │   ├── index.html
-│   │   ├── alpinejs.html
-│   │   └── workflows/
-│   ├── dashboard/
-│   │   ├── index.html
-│   │   ├── alpinejs.html
-│   │   └── workflows/
-│   ├── impayes/
-│   ├── impayes_detail/
-│   ├── contacts/
-│   ├── relances/
-│   ├── relances_detail/
-│   ├── relances_calendrier/
-│   ├── relances_validation/
-│   ├── sequences/
-│   ├── sequences_relance_detail/
-│   ├── sequences_suivi_detail/
-│   ├── evenements/
-│   ├── settings/
-│   ├── settings_smtp/
-│   ├── settings_smtp_detail/
-│   ├── settings_utilisateurs/
-│   ├── portail_client/
-│   ├── portail_mission/
-│   └── smart_marki/
-│
-└── static/                             ← Ressources statiques uniquement
-    └── css/
-        └── app.md
+└── templates/                          ← Templates Jinja2 + Alpine.js
+    ├── [page]/
+    │   ├── index.md                    ← Spec du template HTML
+    │   ├── alpinejs.md                 ← Spec de la logique Alpine.js
+    │   ├── mockups/
+    │   │   └── [page].html             ← Mockup de référence
+    │   └── workflows/
+    │       └── [workflow].md           ← Specs des workflows frontend
+    └── ...
 ```
 
 ---
@@ -92,7 +70,7 @@ specs/_app/
 Chaque page suit le pattern **Props → Init → Workflows**:
 
 ```html
-<!-- templates/xxx/alpinejs.html -->
+<!-- templates/[page]/alpinejs.html -->
 <script>
 Alpine.data('pageName', () => ({
     // 1. PROPS RÉACTIVES (state)
@@ -102,12 +80,15 @@ Alpine.data('pageName', () => ({
     // Getters calculés
     get filteredItems() { return ... },
     
+    // Helpers
+    formatDate(date) { return ... },
+    
     // 2. INIT (en premier)
-    {% include 'xxx/workflows/workflow-init.html' %},
+    {% include '[page]/workflows/initial-load.html' %},
     
     // 3. WORKFLOWS (méthodes async)
-    {% include 'xxx/workflows/initial-load.html' %},
-    {% include 'xxx/workflows/action-xxx.html' %},
+    {% include '[page]/workflows/workflow-1.html' %},
+    {% include '[page]/workflows/workflow-2.html' %},
 }));
 </script>
 ```
@@ -138,7 +119,7 @@ Alpine.data('pageName', () => ({
 
 ## Conventions
 
-### Fichiers `.md`
+### Fichiers `.md` (Spécifications)
 
 Contiennent :
 - Description du composant
@@ -146,12 +127,18 @@ Contiennent :
 - API et paramètres
 - Checkpoints pour workflows
 
-### Fichiers `.html`
+### Structure d'une page
 
-Templates Jinja2 avec Alpine.js :
-- `index.html` : Structure HTML
-- `alpinejs.html` : Logique JavaScript
-- `workflows/*.html` : Mega-functions
+```
+specs/_app/templates/[page]/
+├── index.md                    ← Spécification du template HTML
+├── alpinejs.md                 ← Spécification de l'initialisation
+├── mockups/
+│   └── [page].html             ← Mockup de référence (copié depuis specs/mockups/)
+└── workflows/
+    ├── initial-load.md           ← Spécification du workflow
+    └── [workflow].md             ← Spécifications des autres workflows
+```
 
 ### Fichiers Routes
 
@@ -171,7 +158,7 @@ Les éléments suivants ont été supprimés car obsolètes :
 |---------|--------|------|
 | `static/pages/` | Migré vers `templates/` | Juillet 2024 |
 | `*/store/store.md` | Architecture remplacée | Juillet 2024 |
-| `static/components/` | Déplacé vers `layouts/components/` | Juillet 2024 |
+| `*/workflows/*.html` | Remplacés par les spécifications validées | Juillet 2024 |
 
 ---
 

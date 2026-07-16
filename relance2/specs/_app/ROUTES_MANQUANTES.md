@@ -1,68 +1,80 @@
-# Routes API - Audit Corrigé
+# Routes API - Vérification Finale
 
 **Date**: 2024-07-16  
-**Status**: ✅ Toutes les routes sont cohérentes - Aucune route manquante critique
+**Status**: ⚠️ Routes manquantes identifiées - Workflows frontend à corriger
 
 ---
 
-## ✅ Corrections Apportées
+## ❌ Routes INEXISTANTES - Workflows à corriger
 
-### ❌ `/api/dashboard/stats` - SUPPRIMÉ
-- **Ancienne croyance**: Route manquante pour les stats du dashboard
-- **Réalité**: Le dashboard calcule ses statistiques **côté frontend** à partir des données brutes
-- **Action**: Références supprimées de `contacts/workflows/initial-load.md` et `impayes/workflows/initial-load.md`
-- **Pattern correct**: Charger données brutes → Calculer stats dans getters Alpine.js
+### 1. `/api/contacts/:id/blacklist` (POST)
+- **Référencé dans**: `contacts/workflows/toggle-blacklist.md`
+- **Route réelle**: `PUT /api/contacts/:id` avec body `{blacklist: true/false}`
+- **Action**: Corriger le workflow pour utiliser PUT
 
-### ❌ `/api/settings` - SUPPRIMÉ  
-- **Ancienne croyance**: Route manquante pour paramètres globaux
-- **Réalité**: La page Settings est un **menu de navigation uniquement**, sans données
-- **Action**: Workflow `settings/initial-load.md` corrigé - plus d'appel API
-- **Pattern correct**: Chaque sous-page charge ses propres données (utilisateurs, smtp, etc.)
+### 2. `/api/sequences/:id/publier` (POST)
+- **Référencé dans**: `sequences_relance_detail/workflows/toggle-publication.md`
+- **Route réelle**: `PUT /api/sequences/:id` avec body `{active: true/false}`
+- **Action**: Corriger le workflow pour utiliser PUT
 
-### ❌ `/api/events/mark-read` - CORRIGÉ
-- **Ancienne croyance**: Route POST manquante
-- **Réalité**: Action **frontend uniquement** - met à jour le state local
-- **Action**: Workflow `evenements/mark-all-read.md` corrigé - plus d'appel API
-- **Pattern correct**: `this.events = this.events.map(e => ({...e, lu: true}))`
+### 3. `/api/sequences/:id/validation` (POST)
+- **Référencé dans**: `sequences_relance_detail/workflows/toggle-validation.md`
+- **Route réelle**: `PUT /api/sequences/:id` avec body `{validation: true/false}`
+- **Action**: Corriger le workflow pour utiliser PUT
 
----
+### 4. `/api/sequences/:id/tester` (POST)
+- **Référencé dans**: `sequences_*_detail/workflows/tester-email.md`
+- **Route réelle**: AUCUNE - Tester un email doit passer par un workflow backend
+- **Action**: Utiliser `POST /api/workflows/test-email-sequence` ou créer cette route
 
-## ✅ Routes EXISTANTES (Confirmées)
+### 5. `/api/portail/factures/:id/pdf` (GET)
+- **Référencé dans**: `portail_client/workflows/download-facture.md`
+- **Route réelle**: AUCUNE dans portail.md
+- **Action**: Nécessite création route ou changement d'approche
 
-Toutes les routes utilisées par les workflows frontend existent dans `routes/`:
-
-### Auth
-- `GET /api/auth/me` - Vérification session
-- `POST /api/auth/login` - Connexion
-
-### CRUD de base
-- `GET/POST/PUT/DELETE /api/impayes`, `/api/contacts`, `/api/relances`, `/api/sequences`, `/api/users`, `/api/smtp-profiles`
-
-### Workflows métier
-- `POST /api/workflows/*` - Tous les workflows backend complexes
-
-### Portail
-- `GET/POST /api/portail/*` - Routes portail client/mission
+### 6. `/api/portail/factures/:id/payer` (POST)
+- **Référencé dans**: `portail_client/workflows/regler-facture.md`
+- **Route réelle**: AUCUNE dans portail.md
+- **Action**: Nécessite création route ou changement d'approche
 
 ---
 
-## 📋 Architecture Validée
+## ✅ Correction Immédiate - Pattern CRUD
 
-| Type | Exemple | Implémentation |
-|------|---------|----------------|
-| **State local** | Tri, pagination, filtres | Alpine.js getters |
-| **CRUD simple** | Modifier statut impayé | `PUT /api/impayes/{id}` |
-| **Calcul stats** | Dashboard KPIs | Frontend (reducer sur données brutes) |
-| **Batch update** | Mark all read | Frontend (map sur array) |
-| **Logique métier** | Générer relances | `POST /api/workflows/*` |
+Les workflows suivants doivent être mis à jour :
+
+| Workflow | Ancien Endpoint | Nouveau Endpoint | Méthode |
+|----------|-----------------|------------------|---------|
+| toggle-blacklist | `/api/contacts/:id/blacklist` | `/api/contacts/:id` | PUT |
+| toggle-publication | `/api/sequences/:id/publier` | `/api/sequences/:id` | PUT |
+| toggle-validation | `/api/sequences/:id/validation` | `/api/sequences/:id` | PUT |
 
 ---
 
-## ✅ Conclusion
+## 🔧 Routes à Créer (si nécessaire)
 
-**Aucune route manquante**. Tous les workflows frontend utilisent:
-- Soit des routes CRUD standards existantes
-- Soit des routes `/api/workflows/*` pour la logique métier
-- Soit du calcul frontend pur (pas besoin d'API)
+| Endpoint | Méthode | Usage | Priorité |
+|----------|---------|-------|----------|
+| `/api/workflows/test-email-sequence` | POST | Tester un email de séquence | 🟡 Moyenne |
+| `/api/portail/factures/:id/pdf` | GET | Télécharger PDF facture | 🔴 Haute |
+| `/api/portail/factures/:id/payer` | POST | Redirection paiement | 🔴 Haute |
 
-Le fichier `ROUTES_MANQUANTES.md` original contenait des erreurs d'analyse qui ont été corrigées ci-dessus.
+---
+
+## ✅ Routes CRUD Existantes (à utiliser)
+
+```
+PUT /api/contacts/:id       ← Pour blacklist
+PUT /api/sequences/:id      ← Pour publication/validation
+PUT /api/impayes/:id          ← Pour suspendre/réactiver
+PUT /api/smtp-profiles/:id    ← Pour modifier profil SMTP
+PUT /api/users/:id            ← Pour modifier utilisateur
+```
+
+---
+
+## Notes
+
+- Les routes PUT existantes permettent de modifier n'importe quel champ
+- Les workflows frontend doivent utiliser ces routes CRUD génériques
+- Les routes spécifiques comme `/publier`, `/blacklist` n'existent pas
