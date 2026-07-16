@@ -7,9 +7,9 @@ Ils utilisent le système de templating Jinja2 et Tailwind CSS.
 
 ## Layouts Disponibles
 
-### 1. Layout Standard (`layout_standard.md`)
+### 1. Layout App Standard (`layout_app.md`)
 
-**Usage**: Pages d'administration internes
+**Usage**: Pages d'administration internes avec navigation dual (rail + menu)
 
 ```
 Pages concernées:
@@ -24,10 +24,12 @@ Pages concernées:
 ```
 
 **Caractéristiques**:
-- ✅ Sidebar de navigation (284px)
-- ✅ Header sticky avec titre de page
+- ✅ Sidebar dual (64px rail + 220px menu)
+- ✅ Navigation par application (Relance, Tantiem, etc.)
 - ❌ Pas de footer
 - Authentification JWT classique
+
+**Composant**: `sidebar-nav-dual.js`
 
 ### 2. Layout Portail (`layout_portail.md`)
 
