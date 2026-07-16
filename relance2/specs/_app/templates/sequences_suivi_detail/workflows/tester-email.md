@@ -120,15 +120,19 @@ export function testerEmail() {
 
 ```javascript
 async testerEmail(idx) {
-  // 1. Set testing state
+  const workflowId = crypto.randomUUID();
+  log.info('WORKFLOW_START', { workflowId, workflow: 'testerEmail', emailIndex: idx });
+  
   this.envoiEnCours = true;
   this.currentEmailIndex = idx;
   
   try {
-    // 2. Call workflow backend test-single-suivi
     const response = await fetch('/api/test/suivi', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      },
       body: JSON.stringify({
         sequenceId: this.sequence.id,
         testEmail: this.testEmailConfig.destinataire,
@@ -138,10 +142,12 @@ async testerEmail(idx) {
       })
     });
     
+    if (!response.ok) throw new Error('Erreur serveur');
+    
     const data = await response.json();
     
-    // 3. Handle response
     if (data.status === 200 && data.data?.emailSent) {
+      log.info('WORKFLOW_SUCCESS', { workflowId, to: data.data.to });
       Alpine.store('ui').addToast(
         `Email de test envoyé à ${data.data.to}`, 
         'success'
@@ -151,9 +157,9 @@ async testerEmail(idx) {
     }
     
   } catch (error) {
+    log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
     Alpine.store('ui').addToast(error.message, 'error');
   } finally {
-    // 4. Reset state
     this.envoiEnCours = false;
   }
 }

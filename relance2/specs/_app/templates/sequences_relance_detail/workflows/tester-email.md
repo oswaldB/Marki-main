@@ -50,19 +50,26 @@ Envoie un email de test pour vérifier le rendu sans impact sur les destinataire
 
 ## API Calls
 
-**Workflow backend** : `test-single`
+**POST /api/test/relance**
 
-| Méthode | Endpoint | Body | Description |
-|---------|----------|------|-------------|
-| `POST` | `/api/workflows/test-single/execute` | `{ email_index: number, scenario: string, destinataire: string, payeur_id: string }` | Envoie un email de test avec le scénario sélectionné |
+```javascript
+const response = await fetch('/api/test/relance', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${this.token}`
+  },
+  body: JSON.stringify({
+    sequenceId: this.sequence.id,
+    testEmail: this.testEmail,
+    payeurId: this.selectedPayeur.id,
+    emailIndex: this.emailIndex,
+    scenarioType: this.selectedScenario
+  })
+});
 
-**Données envoyées** :
-- `email_index` (number) : Index de l'email à tester dans la séquence
-- `scenario` (string) : Format du scénario ('single', 'multiple', 'broker', 'both')
-- `destinataire` (string) : Adresse email de test
-- `payeur_id` (string) : ID du payeur pour récupérer les variables
-
-**Réponse** : `{ success: boolean, sent: boolean, preview?: object, error?: string }`
+// Response: { status: 200, data: { emailSent: true, to: "...", messageId: "..." } }
+```
 
 
 
@@ -97,38 +104,47 @@ export function testerEmail() {
 ## Implementation
 
 ```javascript
-async testConnection() {
-  // 1. Set testing state
+async testerEmail(emailIndex) {
+  const workflowId = crypto.randomUUID();
+  log.info('WORKFLOW_START', { workflowId, workflow: 'testerEmail', emailIndex });
+  
   this.testing = true;
   this.testResult = null;
   
   try {
-    // 2. Call test API
-    const response = await fetch('/api/test', {
+    const response = await fetch('/api/test/relance', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.testData)
+      headers: { 
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.token}`
+      },
+      body: JSON.stringify({
+        sequenceId: this.sequence.id,
+        testEmail: this.testEmail,
+        payeurId: this.selectedPayeur.id,
+        emailIndex: emailIndex,
+        scenarioType: this.selectedScenario
+      })
     });
+    
+    if (!response.ok) throw new Error('Erreur serveur');
     
     const data = await response.json();
     
-    // 3. Store result
     this.testResult = {
-      success: data.success,
-      message: data.success ? 'Test réussi' : data.error?.message
+      success: data.data?.emailSent,
+      message: data.data?.emailSent ? 'Email envoyé avec succès' : 'Échec de l\'envoi'
     };
     
-    // 4. Notify
-    Alpine.store('ui').addToast(
-      this.testResult.message,
-      data.success ? 'success' : 'error'
-    );
+    log.info('WORKFLOW_SUCCESS', { workflowId, emailSent: data.data?.emailSent });
+    Alpine.store('ui').addToast(this.testResult.message, 'success');
     
   } catch (error) {
+    log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
     this.testResult = { success: false, message: error.message };
     Alpine.store('ui').addToast(error.message, 'error');
   } finally {
     this.testing = false;
   }
 }
-``
+```
