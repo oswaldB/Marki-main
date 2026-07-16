@@ -28,7 +28,7 @@ def create_app():
     
     @app.route('/dashboard')
     def dashboard_page():
-        return render_template('layouts/layout_app.html', page_title='Dashboard', active_page='dashboard')
+        return render_template('dashboard/index.html', page_title='Dashboard', active_page='dashboard')
     
     @app.route('/impayes')
     def impayes_page():
