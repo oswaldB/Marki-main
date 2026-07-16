@@ -1,0 +1,134 @@
+# login/index.html - Spécification Template
+
+## Description
+
+Template de la page de connexion Marki.
+
+## Variables Jinja2
+
+| Variable | Type | Description |
+|----------|------|-------------|
+| `page_title` | string | Titre de la page (défaut: "Connexion") |
+
+## Template HTML
+
+```html
+<!-- templates/login/index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page_title|default('Connexion') }} | Marki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 flex items-center justify-center">
+
+  <div class="w-full max-w-md px-4" x-data="login" x-init="init()">
+    
+    <!-- Logo -->
+    <div class="text-center mb-8">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-xl mb-4 overflow-hidden bg-white shadow-sm">
+        <svg class="w-10 h-10 text-sky-500" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+        </svg>
+      </div>
+      <h1 class="text-2xl font-semibold text-slate-900">Marki</h1>
+      <p class="text-sm text-slate-500 mt-1">Marki : le meilleur ami des Diagnostiqueurs immobiliers.</p>
+    </div>
+
+    <!-- Card Connexion -->
+    <div class="bg-white rounded-2xl border border-slate-200 shadow-sm">
+      <!-- Header -->
+      <div class="px-6 py-4 border-b border-slate-100">
+        <h2 class="text-base font-semibold text-slate-900">Connexion</h2>
+      </div>
+
+      <!-- Form -->
+      <form class="p-6 space-y-4" @submit.prevent="authSubmit()">
+        
+        <!-- Identifiant -->
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">Identifiant ou email</label>
+          <input 
+            type="text" 
+            x-model="form.username"
+            placeholder="Votre identifiant ou email"
+            autocomplete="username"
+            class="w-full px-3 py-2.5 bg-white border rounded-lg text-sm text-slate-900
+                   placeholder:text-slate-400
+                   focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+            :class="errors.username ? 'border-red-300' : 'border-slate-200'"
+          >
+          <p x-show="errors.username" class="text-red-500 text-sm mt-1" x-text="errors.username"></p>
+        </div>
+
+        <!-- Mot de passe -->
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-1.5">Mot de passe</label>
+          <input 
+            type="password" 
+            x-model="form.password"
+            placeholder="••••••••"
+            autocomplete="current-password"
+            class="w-full px-3 py-2.5 bg-white border rounded-lg text-sm text-slate-900
+                   placeholder:text-slate-400
+                   focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+            :class="errors.password ? 'border-red-300' : 'border-slate-200'"
+          >
+          <p x-show="errors.password" class="text-red-500 text-sm mt-1" x-text="errors.password"></p>
+        </div>
+
+        <!-- Error Alert -->
+        <div x-show="error" class="flex items-start gap-3 p-3 bg-sky-50 border border-sky-100 rounded-lg">
+          <p class="text-sm text-sky-700" x-text="error"></p>
+        </div>
+
+        <!-- Submit Button -->
+        <button 
+          type="submit"
+          :disabled="loading"
+          class="w-full flex items-center justify-center gap-2 mt-2 bg-sky-500 hover:bg-sky-600 disabled:bg-sky-300
+                 text-white py-2.5 px-4 rounded-lg text-sm font-medium transition-all"
+        >
+          <span x-text="loading ? 'Connexion...' : 'Se connecter'"></span>
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <p class="text-center text-xs text-slate-400 mt-6">
+      © 2024 Marki - Tous droits réservés
+    </p>
+
+  </div>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  {% include 'login/alpinejs.html' %}
+
+</body>
+</html>
+```
+
+## Workflows Utilisés
+
+- `initial-load.md` - Vérification session et redirection si besoin
+- `auth-submit.md` - Soumission du formulaire et authentification
+
+## Routes API
+
+| Endpoint | Usage | Méthode |
+|----------|-------|---------|
+| `/api/auth/login` | Authentification | POST |
+| `/api/auth/me` | Vérification session | GET |
+
+## Validation
+
+- ✅ Formulaire de login avec validation JS
+- ✅ Vérification du token en localStorage
+- ✅ Redirection automatique si session active
+- ✅ Affichage des erreurs dans l'UI
