@@ -10,7 +10,7 @@
 | Catégorie | _app (Specs) | app (Implémenté) | Taux |
 |-----------|-------------|------------------|------|
 | Pages templates | 23 | 23 | 100% ✅ |
-| Workflows frontend | ~180 | ~139 | 77% ⚠️ |
+| Workflows frontend | ~180 | ~170 | 94% ✅ |
 | Routes backend | 13 | 11 | 85% ⚠️ |
 | Workflows backend | 25 | 5 | 20% ❌ |
 
@@ -20,12 +20,12 @@
 
 | Page | index.html | alpinejs.html | Workflows Specs | Workflows App | Statut |
 |------|-----------|---------------|-----------------|---------------|--------|
-| contacts | ✅ | ✅ | 12 | 6 | ✅ |
-| dashboard | ✅ | ✅ | 6 | 4 | ✅ |
+| contacts | ✅ | ✅ | 12 | 6 | ⚠️ |
+| dashboard | ✅ | ✅ | 6 | 4 | ⚠️ |
 | evenements | ✅ | ✅ | 6 | 7 | ✅ |
-| impayes | ✅ | ✅ | 11 | 9 | ✅ |
+| impayes | ✅ | ✅ | 11 | 9 | ⚠️ |
 | impayes_detail | ✅ | ✅ | 5 | 6 | ✅ |
-| impayes_payeur | ✅ | ✅ | 6 | 2 | ✅ |
+| impayes_payeur | ✅ | ✅ | 6 | 2 | ⚠️ |
 | impayes_reparer | ✅ | ✅ | 1 | 2 | ✅ |
 | impayes_suspendus | ✅ | ✅ | 2 | 3 | ✅ |
 | login | ✅ | ✅ | 2 | 3 | ✅ |
@@ -36,19 +36,51 @@
 | relances_detail | ✅ | ✅ | 1 | 2 | ✅ |
 | relances_validation | ✅ | ✅ | 11 | 12 | ✅ |
 | sequences | ✅ | ✅ | 7 | 8 | ✅ |
-| sequences_relance_detail | ✅ | ✅ | 21 | 8 | ⚠️ |
-| sequences_suivi_detail | ✅ | ✅ | 17 | 4 | ⚠️ |
+| **sequences_relance_detail** | ✅ | ✅ | **21** | **21** | **✅ COMPLET** |
+| **sequences_suivi_detail** | ✅ | ✅ | **17** | **19** | **✅ COMPLET** |
 | settings | ✅ | ❌ | 1 | 1 | ⚠️ |
 | settings_smtp | ✅ | ✅ | 7 | 8 | ✅ |
 | settings_smtp_detail | ✅ | ✅ | 4 | 5 | ✅ |
 | settings_utilisateurs | ✅ | ✅ | 5 | 6 | ✅ |
-| smart_marki | ✅ | ✅ | 6 | 4 | ⚠️ |
+| **smart_marki** | ✅ | ✅ | **6** | **7** | **✅ COMPLET** |
 
 **Total: 23/23 pages implémentées (100%)** ✅
 
+**Workflows frontend: ~170/180 implémentés (94%)** ✅
+
 ---
 
-## Partie 2: Routes Backend
+## Partie 2: Workflows Complétés Récemment
+
+### ✅ Sequences Relance Detail (21/21 workflows)
+Tous les workflows sont maintenant implémentés:
+- initial-load, sauvegarder, ajouter-email, supprimer-email
+- tester-email, toggle-publication, toggle-validation
+- **copy-lien, copy-variable, lancer-attribution**
+- **open-chatgpt, open-ia-modal, open-liens-paiement**
+- **select-scenario-single, select-scenario-multiple**
+- **select-scenario-broker, select-scenario-impayes-broker**
+- **supprimer-groupe, toggle-attribution-auto, toggle-email**
+- **toggle-scenario-active**
+
+### ✅ Sequences Suivi Detail (19/17 workflows)
+Tous les workflows sont implémentés (+2 extras):
+- initial-load, sauvegarder
+- **ajouter-email, open-ia-modal**
+- **select-heure, select-jour-mois, select-jour-semaine**
+- **select-scenario-single, select-scenario-multiple**
+- **set-frequence-quotidien, set-frequence-hebdomadaire, set-frequence-mensuel**
+- **supprimer-email, tester-email**
+- **toggle-collapse, toggle-publication, toggle-validation**
+
+### ✅ Smart Marki (7/6 workflows)
+Tous les workflows sont implémentés (+1 extra):
+- initial-load, apply-insight, dismiss-insight
+- **close-insight, mark-all-read, open-insight**
+
+---
+
+## Partie 3: Routes Backend
 
 | Fichier Spec | Fichier App | Statut |
 |--------------|-------------|--------|
@@ -70,7 +102,7 @@
 
 ---
 
-## Partie 3: Workflows Backend
+## Partie 4: Workflows Backend
 
 | Fichier Spec | Fichier App | Statut |
 |--------------|-------------|--------|
@@ -99,7 +131,7 @@
 
 ---
 
-## Partie 4: Composants et Layouts
+## Partie 5: Composants et Layouts
 
 | Composant | Specs | App | Statut |
 |-----------|-------|-----|--------|
@@ -113,69 +145,28 @@
 
 ### ✅ Points Forts
 1. **Toutes les pages frontend sont créées** (23/23)
-2. **Toutes les pages ont leurs templates** (index.html + alpinejs.html)
-3. **Workflows essentiels en place** (139 workflows frontend)
+2. **Workflows frontend quasi-complets** (170/180 ~ 94%)
+3. **Pages complexes complétées** (sequences_relance_detail, sequences_suivi_detail, smart_marki)
 4. **Routes principales fonctionnelles** (CRUD complet)
 
 ### ⚠️ Points à Compléter
 1. **Workflows backend avancés** (20/25 manquants)
    - Génération suivi
    - Regénération relances
-   - Scénarios complexes
+   - Scénarios complexes (broker, both)
 2. **Routes manquantes** (tokens, import_data)
 3. **Layout portail** non implémenté
 
 ### ❌ Non Implémenté
 - Portail layout complet
-- Workflows avancés (broker, both, etc.)
+- Workflows backend avancés
 - Tests automatisés
 
 ---
 
-**Score Global**: 75% - Application fonctionnelle, workflows backend à compléter
+**Score Global**: 85% - Application très fonctionnelle, workflows backend à compléter
 
-
-## Partie 5: Vérification Détaillée des Workflows Manquants
-
-### Sequences Relance Detail (21 specs vs 8 app)
-Specs manquants:
-  - ❌ copy-lien
-  - ❌ copy-variable
-  - ❌ lancer-attribution
-  - ❌ open-chatgpt
-  - ❌ open-ia-modal
-  - ❌ open-liens-paiement
-  - ❌ select-scenario-broker
-  - ❌ select-scenario-impayes-broker
-  - ❌ select-scenario-multiple
-  - ❌ select-scenario-single
-  - ❌ supprimer-groupe
-  - ❌ toggle-attribution-auto
-  - ❌ toggle-email
-  - ❌ toggle-scenario-active
-
-
-### Sequences Suivi Detail (17 specs vs 4 app)
-Specs manquants:
-  - ❌ ajouter-email
-  - ❌ open-ia-modal
-  - ❌ select-heure
-  - ❌ select-jour-mois
-  - ❌ select-jour-semaine
-  - ❌ select-scenario-multiple
-  - ❌ select-scenario-single
-  - ❌ set-frequence-hebdomadaire
-  - ❌ set-frequence-mensuel
-  - ❌ set-frequence-quotidien
-  - ❌ supprimer-email
-  - ❌ tester-email
-  - ❌ toggle-collapse
-  - ❌ toggle-publication
-  - ❌ toggle-validation
-
-
-### Smart Marki (6 specs vs 4 app)
-Specs manquants:
-  - ❌ close-insight
-  - ❌ mark-all-read
-  - ❌ open-insight
+**Prochaines priorités**:
+1. Routes backend manquantes (tokens, import_data)
+2. Workflows backend avancés
+3. Layout portail
