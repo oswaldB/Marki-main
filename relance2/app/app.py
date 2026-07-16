@@ -2,6 +2,7 @@ from flask import Flask, render_template, send_from_directory
 import os
 from .db import init_app as init_db
 from .routes import register_blueprints
+from .middleware_logger import init_logging
 
 def create_app():
     app = Flask(__name__, template_folder='templates', static_folder='static')
@@ -9,6 +10,9 @@ def create_app():
     
     # Initialize database
     init_db(app)
+    
+    # Initialize logging middleware
+    init_logging(app)
     
     # Register blueprints
     register_blueprints(app)
