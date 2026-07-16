@@ -1,0 +1,30 @@
+// Workflow: Chargement initial
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'initialLoad' });
+    
+    this.loading = true;
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/contacts' });
+        
+        const response = await fetch('/api/contacts', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error('Erreur chargement contacts');
+        
+        const data = await response.json();
+        this.contacts = data.contacts || [];
+        this.applyFilters();
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, count: this.contacts.length });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        this.error = error.message;
+    } finally {
+        this.loading = false;
+    }
+}

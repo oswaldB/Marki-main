@@ -1,0 +1,130 @@
+{% extends 'layouts/layout_app.html' %}
+
+{% block page_title %}Impayés{% endblock %}
+{% block active_page %}impayes{% endblock %}
+
+{% block header_right %}
+<a href="/impayes-payeur" class="flex items-center gap-2 px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium transition-all">
+    <i class="fas fa-users"></i>
+    <span>Vue par payeur</span>
+</a>
+<button 
+    @click="syncData()" 
+    :disabled="syncing"
+    class="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-sky-400 text-white rounded-lg text-sm font-medium transition-all"
+>
+    <i :class="syncing ? 'fas fa-circle-notch fa-spin' : 'fas fa-sync-alt'"></i>
+    <span x-text="syncing ? 'Synchronisation...' : 'Synchroniser'"></span>
+</button>
+{% endblock %}
+
+{% block content %}
+<div x-data="impayes" x-init="init()" x-cloak class="space-y-6">
+    
+    <!-- Filtres -->
+    <div class="bg-white rounded-xl border border-slate-200 p-4">
+        <div class="flex flex-wrap items-center gap-4">
+            <div class="relative flex-1 min-w-[240px] max-w-md">
+                <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                <input 
+                    type="text" 
+                    x-model="searchQuery"
+                    @input="applyFilters()"
+                    placeholder="Rechercher N° facture, payeur..."
+                    class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+                >
+            </div>
+        </div>
+    </div>
+    
+    <!-- Loading -->
+    <div x-show="loading" class="bg-white rounded-xl border border-slate-200 p-8">
+        <div class="flex items-center justify-center gap-3 text-slate-500">
+            <i class="fas fa-circle-notch fa-spin text-xl"></i>
+            <span>Chargement...</span>
+        </div>
+    </div>
+    
+    <!-- Table -->
+    <div x-show="!loading" class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+        <table class="w-full text-sm text-left">
+            <thead class="bg-slate-50 text-slate-600 font-medium">
+                <tr>
+                    <th @click="sortBy('nfacture')" class="px-6 py-3 cursor-pointer hover:bg-slate-100">
+                        <div class="flex items-center gap-1">
+                            N° Facture
+                            <i class="fas text-xs" :class="sortColumn === 'nfacture' ? (sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort text-slate-300'"></i>
+                        </div>
+                    </th>
+                    <th @click="sortBy('contact_nom')" class="px-6 py-3 cursor-pointer hover:bg-slate-100">
+                        <div class="flex items-center gap-1">
+                            Payeur
+                            <i class="fas text-xs" :class="sortColumn === 'contact_nom' ? (sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort text-slate-300'"></i>
+                        </div>
+                    </th>
+                    <th @click="sortBy('date_echeance')" class="px-6 py-3 cursor-pointer hover:bg-slate-100">
+                        <div class="flex items-center gap-1">
+                            Échéance
+                            <i class="fas text-xs" :class="sortColumn === 'date_echeance' ? (sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort text-slate-300'"></i>
+                        </div>
+                    </th>
+                    <th @click="sortBy('reste_a_payer')" class="px-6 py-3 cursor-pointer hover:bg-slate-100 text-right">
+                        <div class="flex items-center justify-end gap-1">
+                            Reste à payer
+                            <i class="fas text-xs" :class="sortColumn === 'reste_a_payer' ? (sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort text-slate-300'"></i>
+                        </div>
+                    </th>
+                    <th class="px-6 py-3">Statut</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+                <template x-for="impaye in paginatedImpayes" :key="impaye.id">
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-6 py-4 font-medium text-slate-900" x-text="impaye.nfacture"></td>
+                        <td class="px-6 py-4 text-slate-600" x-text="impaye.contact_nom || '-'"></td>
+                        <td class="px-6 py-4 text-slate-600" x-text="formatDate(impaye.date_echeance)"></td>
+                        <td class="px-6 py-4 text-right font-medium text-slate-900" x-text="formatMoney(impaye.reste_a_payer)"></td>
+                        <td class="px-6 py-4">
+                            <span 
+                                class="inline-flex px-2 py-1 text-xs font-medium rounded-full"
+                                :class="impaye.suspendu ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700'"
+                                x-text="impaye.suspendu ? 'Suspendu' : 'Impayé'"
+                            ></span>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        
+        <!-- Pagination -->
+        <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-sm text-slate-500">
+                <span x-text="filteredImpayes.length"></span> impayés
+            </span>
+            <div class="flex items-center gap-2">
+                <button 
+                    @click="prevPage()" 
+                    :disabled="currentPage === 1"
+                    class="px-3 py-1 border border-slate-200 rounded-lg text-sm hover:bg-slate-50 disabled:opacity-50"
+                >
+                    Précédent
+                </button>
+                <span class="text-sm text-slate-600">
+                    Page <span x-text="currentPage"></span> / <span x-text="totalPages"></span>
+                </span>
+                <button 
+                    @click="nextPage()" 
+                    :disabled="currentPage === totalPages"
+                    class="px-3 py-1 border border-slate-200 rounded-lg text-sm hover:bg-slate-50 disabled:opacity-50"
+                >
+                    Suivant
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+{% include 'impayes/alpinejs.html' %}
+{% endblock %}

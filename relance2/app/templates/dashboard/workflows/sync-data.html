@@ -1,0 +1,52 @@
+// Workflow: Synchronisation des données
+syncData: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { workflowId, workflow: 'syncData', page: 'dashboard' });
+    
+    this.syncing = true;
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        // Recharger les stats
+        log.debug('SYNC_START', { workflowId });
+        
+        const response = await fetch('/api/dashboard/stats', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error('Erreur synchronisation');
+        
+        const data = await response.json();
+        this.stats = data;
+        
+        // Recharger les événements
+        const eventsResponse = await fetch('/api/dashboard/recent', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (eventsResponse.ok) {
+            const eventsData = await eventsResponse.json();
+            this.recentEvents = eventsData.events || [];
+        }
+        
+        const duration = Date.now() - startTime;
+        log.info('WORKFLOW_SUCCESS', { workflowId, duration });
+        
+        // Notification
+        if (typeof Alpine !== 'undefined' && Alpine.store('ui')) {
+            Alpine.store('ui').addToast('Données synchronisées', 'success');
+        }
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        
+        if (typeof Alpine !== 'undefined' && Alpine.store('ui')) {
+            Alpine.store('ui').addToast(error.message, 'error');
+        }
+    } finally {
+        this.syncing = false;
+    }
+}

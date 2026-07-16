@@ -1,0 +1,54 @@
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('contacts', () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
+            
+            loading: true,
+            error: null,
+            
+            contacts: [],
+            filteredContacts: [],
+            
+            searchQuery: '',
+            filterType: '',
+            
+            currentPage: 1,
+            perPage: 20,
+            
+            sortColumn: 'nom',
+            sortDirection: 'asc',
+            
+            get totalPages() {
+                return Math.ceil(this.filteredContacts.length / this.perPage) || 1;
+            },
+            
+            get paginatedContacts() {
+                const start = (this.currentPage - 1) * this.perPage;
+                return this.filteredContacts.slice(start, start + this.perPage);
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
+            {% include 'contacts/workflows/initial-load.html' %},
+            {% include 'contacts/workflows/pagination-next.html' %},
+            {% include 'contacts/workflows/pagination-prev.html' %},
+            {% include 'contacts/workflows/export-data.html' %},
+            {% include 'contacts/workflows/sort-by-impayes.html' %},
+            
+            // =====================================================
+            // 3. INIT
+            // =====================================================
+            {% include 'contacts/workflows/workflow-init.html' %}
+        }));
+    });
+</script>

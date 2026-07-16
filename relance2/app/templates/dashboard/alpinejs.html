@@ -1,0 +1,60 @@
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('dashboard', () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
+            
+            // UI State
+            loading: true,
+            syncing: false,
+            error: null,
+            
+            // Data
+            stats: {
+                impayes_count: 0,
+                impayes_total: 0,
+                contacts_count: 0,
+                relances_count: 0,
+                events_unread: 0
+            },
+            recentEvents: [],
+            
+            // Helpers
+            formatMoney(amount) {
+                return new Intl.NumberFormat('fr-FR', { 
+                    style: 'currency', 
+                    currency: 'EUR' 
+                }).format(amount || 0);
+            },
+            
+            formatDate(dateStr) {
+                if (!dateStr) return '-';
+                return new Date(dateStr).toLocaleDateString('fr-FR', {
+                    day: 'numeric',
+                    month: 'short',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
+            {% include 'dashboard/workflows/initial-load.html' %},
+            {% include 'dashboard/workflows/sync-data.html' %},
+            
+            // =====================================================
+            // 3. INIT
+            // =====================================================
+            {% include 'dashboard/workflows/workflow-init.html' %}
+        }));
+    });
+</script>

@@ -1,0 +1,49 @@
+// Workflow: Chargement initial
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { workflowId, workflow: 'initialLoad', page: 'dashboard' });
+    
+    this.loading = true;
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        // Charger les stats
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/dashboard/stats' });
+        
+        const statsResponse = await fetch('/api/dashboard/stats', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!statsResponse.ok) throw new Error('Erreur chargement stats');
+        
+        const statsData = await statsResponse.json();
+        this.stats = statsData;
+        
+        log.debug('API_CALL_COMPLETE', { workflowId, stats: statsData });
+        
+        // Charger les événements récents
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/dashboard/recent' });
+        
+        const eventsResponse = await fetch('/api/dashboard/recent', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (eventsResponse.ok) {
+            const eventsData = await eventsResponse.json();
+            this.recentEvents = eventsData.events || [];
+            log.debug('API_CALL_COMPLETE', { workflowId, eventsCount: this.recentEvents.length });
+        }
+        
+        const duration = Date.now() - startTime;
+        log.info('WORKFLOW_SUCCESS', { workflowId, duration });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        this.error = error.message;
+    } finally {
+        this.loading = false;
+    }
+}
