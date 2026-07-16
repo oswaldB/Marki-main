@@ -1,0 +1,83 @@
+<!-- templates/impayes_reparer/workflows/initial-load.html -->
+<!-- Mega-function: Chargement initial des impayés à réparer -->
+
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'initialLoad',
+        page: 'impayes_reparer'
+    });
+    
+    this.loading = true;
+    this.error = null;
+    
+    try {
+        // Étape 1: Affichage spinner
+        log.debug('LOADING_SHOWN');
+        
+        // Étape 2: Vérification auth
+        const token = localStorage.getItem('token');
+        if (!token) {
+            log.warn('AUTH_MISSING');
+            window.location.href = '/login';
+            return;
+        }
+        log.debug('AUTH_VERIFIED');
+        
+        // Étape 3: Appel API
+        log.debug('API_CALL_START', { 
+            endpoint: '/api/impayes',
+            params: { statut: 'impaye_a_reparer' }
+        });
+        
+        const response = await fetch('/api/impayes?statut=impaye_a_reparer', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { status: response.status });
+        
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        // Étape 4: Traitement des données
+        log.debug('DATA_PROCESSING_START', { count: data.length });
+        
+        this.impayesAReparer = data.map(impaye => {
+            let probleme = [];
+            if (!impaye.payer_id) probleme.push('Payeur manquant');
+            if (!impaye.numero_dossier) probleme.push('Dossier manquant');
+            
+            return {
+                ...impaye,
+                probleme: probleme.join(' + ') || 'Problème non identifié'
+            };
+        });
+        
+        log.debug('DATA_PROCESSED', { 
+            count: this.impayesAReparer.length 
+        });
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime,
+            count: this.impayesAReparer.length
+        });
+        
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message,
+            stack: error.stack
+        });
+    } finally {
+        this.loading = false;
+        log.debug('LOADING_COMPLETE');
+    }
+}

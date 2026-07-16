@@ -1,0 +1,49 @@
+<!-- templates/impayes_reparer/workflows/view-reparer.html -->
+<!-- Mega-function: Afficher/mettre à jour la vue des impayés à réparer -->
+
+viewReparer: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'viewReparer',
+        count: this.impayesAReparer.length
+    });
+    
+    try {
+        // Rafraîchir les données si nécessaire
+        if (this.impayesAReparer.length === 0) {
+            log.debug('NO_DATA_REFRESH_NEEDED');
+            log.info('WORKFLOW_SUCCESS', { 
+                workflowId,
+                duration: Date.now() - startTime,
+                action: 'view_only'
+            });
+            return;
+        }
+        
+        log.debug('DATA_LOADED', { count: this.impayesAReparer.length });
+        
+        // Log de l'état final
+        log.debug('STATE_APPLIED', { 
+            impayesAReparer: this.impayesAReparer.length,
+            loading: this.loading,
+            error: this.error
+        });
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime,
+            count: this.impayesAReparer.length
+        });
+        
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message,
+            stack: error.stack
+        });
+    }
+}

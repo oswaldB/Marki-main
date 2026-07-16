@@ -1,0 +1,37 @@
+<!-- templates/impayes_reparer/workflows/workflow-init.html -->
+<!-- État initial et méthodes de base pour la page impayes-reparer -->
+
+// Propriétés d'état réactives
+loading: false,
+error: null,
+impayesAReparer: [],
+
+// Initialisation du composant
+init: function() {
+    log.info('PAGE_INIT', { 
+        page: 'impayes_reparer'
+    });
+    
+    // Charger les données au démarrage
+    this.initialLoad();
+},
+
+// Méthode utilitaire: Formater les montants
+formatMoney: function(amount) {
+    return new Intl.NumberFormat('fr-FR', { 
+        style: 'currency', 
+        currency: 'EUR',
+        minimumFractionDigits: 2
+    }).format(amount);
+},
+
+// Méthode utilitaire: Formater les dates
+formatDate: function(dateStr) {
+    if (!dateStr) return '-';
+    const date = new Date(dateStr);
+    return new Intl.DateTimeFormat('fr-FR', { 
+        day: '2-digit', 
+        month: '2-digit', 
+        year: 'numeric' 
+    }).format(date);
+}

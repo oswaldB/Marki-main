@@ -1,0 +1,22 @@
+<!-- templates/impayes_reparer/alpinejs.html -->
+<!-- Initialisation Alpine.js avec includes des workflows -->
+<script>
+    // Logger global pour la page
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('impayesReparer', () => ({
+            // État initial (depuis workflow-init.html)
+            {% include 'impayes_reparer/workflows/workflow-init.html' %},
+            
+            // Workflows (mega-functions)
+            {% include 'impayes_reparer/workflows/initial-load.html' %},
+            {% include 'impayes_reparer/workflows/view-reparer.html' %}
+        }));
+    });
+</script>
