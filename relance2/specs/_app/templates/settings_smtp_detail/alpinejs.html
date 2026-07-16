@@ -1,6 +1,7 @@
 <!-- templates/settings_smtp_detail/alpinejs.html -->
-<!-- Initialisation Alpine.js avec includes des workflows -->
+<!-- Initialisation Alpine.js - NOUVEAU PATTERN: Props → Workflows → Init -->
 <script>
+    // Logger global pour la page
     const log = {
         debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
         info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
@@ -10,11 +11,40 @@
 
     document.addEventListener('alpine:init', () => {
         Alpine.data('settingsSmtpDetail', () => ({
-            {% include 'settings_smtp_detail/workflows/workflow-init.html' %},
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
+            
+            // UI State
+            loading: false,
+            saving: false,
+            testing: false,
+            error: null,
+            
+            // Data
+            profil: {
+                nom: '',
+                email: '',
+                serveur: '',
+                port: 587,
+                password: ''
+            },
+            isNew: false,
+            profilId: null,
+            showPassword: false,
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
             {% include 'settings_smtp_detail/workflows/initial-load.html' %},
             {% include 'settings_smtp_detail/workflows/save-changes.html' %},
             {% include 'settings_smtp_detail/workflows/tester-connexion.html' %},
-            {% include 'settings_smtp_detail/workflows/toggle-password.html' %}
+            {% include 'settings_smtp_detail/workflows/toggle-password.html' %},
+            
+            // =====================================================
+            // 3. INIT (en dernier)
+            // =====================================================
+            {% include 'settings_smtp_detail/workflows/workflow-init.html' %}
         }));
     });
 </script>

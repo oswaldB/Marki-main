@@ -1,22 +1,7 @@
 <!-- templates/impayes_payeur/workflows/workflow-init.html -->
-<!-- État initial -->
+<!-- Fonction init() uniquement - Les props sont dans alpinejs.html -->
 
-loading: false,
-error: null,
-impayes: [],
-currentPage: 1,
-itemsPerPage: 10,
-payeurId: null,
-
-get totalPages() {
-    return Math.ceil(this.impayes.length / this.itemsPerPage) || 1;
-},
-
-get paginatedImpayes() {
-    const start = (this.currentPage - 1) * this.itemsPerPage;
-    return this.impayes.slice(start, start + this.itemsPerPage);
-},
-
+// Initialisation du composant
 init: function() {
     log.info('PAGE_INIT', { page: 'impayes_payeur' });
     
@@ -29,8 +14,4 @@ init: function() {
     }
     
     this.initialLoad();
-},
-
-formatMoney: function(amount) {
-    return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(amount);
 }

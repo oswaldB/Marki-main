@@ -1,5 +1,5 @@
 <!-- templates/dashboard/alpinejs.html -->
-<!-- Initialisation Alpine.js avec includes des workflows -->
+<!-- Initialisation Alpine.js - NOUVEAU PATTERN: Props → Workflows → Init -->
 <script>
     // Logger global pour la page
     const log = {
@@ -11,16 +11,63 @@
 
     document.addEventListener('alpine:init', () => {
         Alpine.data('dashboard', () => ({
-            // État initial (depuis workflow-init.html)
-            {% include 'dashboard/workflows/workflow-init.html' %},
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
             
-            // Workflows (mega-functions)
+            // UI State
+            loading: false,
+            error: null,
+            
+            // Data
+            stats: {
+                impayes: 0,
+                relances: 0,
+                montant_total: 0
+            },
+            events: [],
+            viewMode: 'card',
+            
+            // Getters calculés
+            get itemCount() {
+                return this.events.length;
+            },
+            
+            // Helpers
+            formatMoney(amount) {
+                return new Intl.NumberFormat('fr-FR', { 
+                    style: 'currency', 
+                    currency: 'EUR',
+                    minimumFractionDigits: 2
+                }).format(amount);
+            },
+            
+            formatDate(dateStr) {
+                if (!dateStr) return '-';
+                const date = new Date(dateStr);
+                return new Intl.DateTimeFormat('fr-FR', { 
+                    day: '2-digit', 
+                    month: '2-digit', 
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                }).format(date);
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
             {% include 'dashboard/workflows/initial-load.html' %},
             {% include 'dashboard/workflows/sync-data.html' %},
             {% include 'dashboard/workflows/clear-events.html' %},
             {% include 'dashboard/workflows/switch-view-card.html' %},
             {% include 'dashboard/workflows/switch-view-list.html' %},
-            {% include 'dashboard/workflows/refresh-stats.html' %}
+            {% include 'dashboard/workflows/refresh-stats.html' %},
+            
+            // =====================================================
+            // 3. INIT (en dernier)
+            // =====================================================
+            {% include 'dashboard/workflows/workflow-init.html' %}
         }));
     });
 </script>

@@ -1,6 +1,7 @@
 <!-- templates/impayes_payeur/alpinejs.html -->
-<!-- Initialisation Alpine.js avec includes des workflows -->
+<!-- Initialisation Alpine.js - NOUVEAU PATTERN: Props → Workflows → Init -->
 <script>
+    // Logger global pour la page
     const log = {
         debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
         info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
@@ -10,12 +11,51 @@
 
     document.addEventListener('alpine:init', () => {
         Alpine.data('impayesPayeur', () => ({
-            {% include 'impayes_payeur/workflows/workflow-init.html' %},
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
+            
+            // UI State
+            loading: false,
+            error: null,
+            
+            // Data
+            impayes: [],
+            currentPage: 1,
+            itemsPerPage: 10,
+            payeurId: null,
+            
+            // Getters calculés
+            get totalPages() {
+                return Math.ceil(this.impayes.length / this.itemsPerPage) || 1;
+            },
+            
+            get paginatedImpayes() {
+                const start = (this.currentPage - 1) * this.itemsPerPage;
+                return this.impayes.slice(start, start + this.itemsPerPage);
+            },
+            
+            // Helpers
+            formatMoney(amount) {
+                return new Intl.NumberFormat('fr-FR', { 
+                    style: 'currency', 
+                    currency: 'EUR' 
+                }).format(amount);
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
             {% include 'impayes_payeur/workflows/initial-load.html' %},
             {% include 'impayes_payeur/workflows/pagination-next.html' %},
             {% include 'impayes_payeur/workflows/pagination-prev.html' %},
             {% include 'impayes_payeur/workflows/open-detail.html' %},
-            {% include 'impayes_payeur/workflows/sync-data.html' %}
+            {% include 'impayes_payeur/workflows/sync-data.html' %},
+            
+            // =====================================================
+            // 3. INIT (en dernier)
+            // =====================================================
+            {% include 'impayes_payeur/workflows/workflow-init.html' %}
         }));
     });
 </script>

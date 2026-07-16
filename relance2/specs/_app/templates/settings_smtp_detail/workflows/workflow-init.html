@@ -1,21 +1,7 @@
 <!-- templates/settings_smtp_detail/workflows/workflow-init.html -->
-<!-- État initial -->
+<!-- Fonction init() uniquement - Les props sont dans alpinejs.html -->
 
-loading: false,
-saving: false,
-testing: false,
-error: null,
-profil: {
-    nom: '',
-    email: '',
-    serveur: '',
-    port: 587,
-    password: ''
-},
-isNew: false,
-profilId: null,
-showPassword: false,
-
+// Initialisation du composant
 init: function() {
     log.info('PAGE_INIT', { page: 'settings_smtp_detail' });
     

@@ -1,5 +1,5 @@
 <!-- templates/portail_mission/alpinejs.html -->
-<!-- Initialisation Alpine.js avec includes des workflows -->
+<!-- Initialisation Alpine.js - NOUVEAU PATTERN: Props → Workflows → Init -->
 <script>
     // Logger global pour la page
     const log = {
@@ -11,14 +11,30 @@
 
     document.addEventListener('alpine:init', () => {
         Alpine.data('portailMission', () => ({
-            // État initial (depuis workflow-init.html)
-            {% include 'portail_mission/workflows/workflow-init.html' %},
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
             
-            // Workflows (mega-functions)
+            // UI State
+            loading: false,
+            error: null,
+            
+            // Data
+            mission: null,
+            token: null,
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
             {% include 'portail_mission/workflows/initial-load.html' %},
             {% include 'portail_mission/workflows/download-facture.html' %},
             {% include 'portail_mission/workflows/regler-facture.html' %},
-            {% include 'portail_mission/workflows/logout.html' %}
+            {% include 'portail_mission/workflows/logout.html' %},
+            
+            // =====================================================
+            // 3. INIT (en dernier)
+            // =====================================================
+            {% include 'portail_mission/workflows/workflow-init.html' %}
         }));
     });
 </script>

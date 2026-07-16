@@ -1,17 +1,9 @@
 <!-- templates/portail_mission/workflows/workflow-init.html -->
-<!-- État initial et méthodes de base pour la page portail-mission -->
-
-// Propriétés d'état réactives
-loading: false,
-error: null,
-mission: null,
-token: null,
+<!-- Fonction init() uniquement - Les props sont dans alpinejs.html -->
 
 // Initialisation du composant
 init: function() {
-    log.info('PAGE_INIT', { 
-        page: 'portail_mission'
-    });
+    log.info('PAGE_INIT', { page: 'portail_mission' });
     
     // Récupérer le token de l'URL ou localStorage
     const urlParams = new URLSearchParams(window.location.search);

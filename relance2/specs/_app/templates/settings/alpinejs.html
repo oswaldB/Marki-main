@@ -1,5 +1,5 @@
 <!-- templates/settings/alpinejs.html -->
-<!-- Initialisation Alpine.js avec includes des workflows -->
+<!-- Initialisation Alpine.js - NOUVEAU PATTERN: Props → Workflows → Init -->
 <script>
     // Logger global pour la page
     const log = {
@@ -11,11 +11,26 @@
 
     document.addEventListener('alpine:init', () => {
         Alpine.data('settings', () => ({
-            // État initial (depuis workflow-init.html)
-            {% include 'settings/workflows/workflow-init.html' %},
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
             
-            // Workflows (mega-functions)
-            {% include 'settings/workflows/initial-load.html' %}
+            // UI State
+            loading: false,
+            error: null,
+            
+            // Data
+            settings: {},
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
+            {% include 'settings/workflows/initial-load.html' %},
+            
+            // =====================================================
+            // 3. INIT (en dernier)
+            // =====================================================
+            {% include 'settings/workflows/workflow-init.html' %}
         }));
     });
 </script>

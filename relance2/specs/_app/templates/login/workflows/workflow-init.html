@@ -1,21 +1,5 @@
 <!-- templates/login/workflows/workflow-init.html -->
-<!-- État initial et méthodes de base pour la page login -->
-
-// Propriétés d'état réactives
-form: {
-    username: '',
-    password: ''
-},
-
-// Erreurs de validation
-errors: {
-    username: null,
-    password: null
-},
-
-// UI state
-loading: false,
-error: null,
+<!-- Fonction init() uniquement - Les props sont dans alpinejs.html -->
 
 // Initialisation du composant
 init: function() {
@@ -24,60 +8,11 @@ init: function() {
         hasToken: !!localStorage.getItem('token')
     });
     
-    // Vérifie si déjà connecté
+    // Vérifie si déjà un token
     const token = localStorage.getItem('token');
     if (token) {
+        // Redirection vers dashboard
         log.info('AUTH_REDIRECT', { reason: 'token_exists' });
         window.location.href = '/dashboard';
     }
-},
-
-// Méthode utilitaire: Valider le formulaire
-validate: function() {
-    log.debug('VALIDATION_START', { 
-        username: this.form.username,
-        password: this.form.password ? '***' : null
-    });
-    
-    this.errors = { username: null, password: null };
-    let valid = true;
-    
-    if (!this.form.username) {
-        this.errors.username = 'Email ou identifiant requis';
-        log.debug('VALIDATION_ERROR', { field: 'username', error: this.errors.username });
-        valid = false;
-    }
-    
-    if (!this.form.password) {
-        this.errors.password = 'Mot de passe requis';
-        log.debug('VALIDATION_ERROR', { field: 'password', error: this.errors.password });
-        valid = false;
-    }
-    
-    if (valid) {
-        log.debug('VALIDATION_SUCCESS');
-    }
-    
-    return valid;
-},
-
-// Méthode utilitaire: Réinitialiser les erreurs
-clearErrors: function() {
-    this.errors = { username: null, password: null };
-    this.error = null;
-    log.debug('ERRORS_CLEARED');
-},
-
-// Méthode utilitaire: Sauvegarder token et rediriger
-loginSuccess: function(token, user) {
-    log.info('LOGIN_SUCCESS', { 
-        user: user.username || user.email,
-        redirect: '/dashboard'
-    });
-    
-    localStorage.setItem('token', token);
-    log.debug('TOKEN_SAVED');
-    
-    window.location.href = '/dashboard';
-    log.debug('REDIRECT_INITIATED', { target: '/dashboard' });
 }

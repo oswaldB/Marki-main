@@ -1,5 +1,5 @@
 <!-- templates/impayes/alpinejs.html -->
-<!-- Initialisation Alpine.js avec includes des workflows -->
+<!-- Initialisation Alpine.js - NOUVEAU PATTERN: Props → Workflows → Init -->
 <script>
     // Logger global pour la page
     const log = {
@@ -11,10 +11,70 @@
 
     document.addEventListener('alpine:init', () => {
         Alpine.data('impayes', () => ({
-            // État initial (depuis workflow-init.html)
-            {% include 'impayes/workflows/workflow-init.html' %},
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
             
-            // Workflows (mega-functions)
+            // UI State
+            loading: false,
+            error: null,
+            
+            // Data
+            impayes: [],
+            currentPage: 1,
+            itemsPerPage: 20,
+            sortColumn: 'date_echeance',
+            sortDirection: 'desc',
+            filters: {
+                search: '',
+                statut: ''
+            },
+            
+            // Getters calculés
+            get filteredImpayes() {
+                let result = this.impayes;
+                
+                if (this.filters.search) {
+                    const search = this.filters.search.toLowerCase();
+                    result = result.filter(i => 
+                        i.nfacture?.toLowerCase().includes(search) ||
+                        i.payeur_nom?.toLowerCase().includes(search)
+                    );
+                }
+                
+                if (this.filters.statut) {
+                    result = result.filter(i => i.statut === this.filters.statut);
+                }
+                
+                return result;
+            },
+            
+            get totalPages() {
+                return Math.ceil(this.filteredImpayes.length / this.itemsPerPage) || 1;
+            },
+            
+            get paginatedImpayes() {
+                const start = (this.currentPage - 1) * this.itemsPerPage;
+                const end = start + this.itemsPerPage;
+                return this.filteredImpayes.slice(start, end);
+            },
+            
+            // Helpers
+            formatMoney(amount) {
+                return new Intl.NumberFormat('fr-FR', { 
+                    style: 'currency', 
+                    currency: 'EUR' 
+                }).format(amount);
+            },
+            
+            formatDate(dateStr) {
+                if (!dateStr) return '-';
+                return new Date(dateStr).toLocaleDateString('fr-FR');
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
             {% include 'impayes/workflows/initial-load.html' %},
             {% include 'impayes/workflows/pagination-next.html' %},
             {% include 'impayes/workflows/pagination-prev.html' %},
@@ -26,7 +86,12 @@
             {% include 'impayes/workflows/open-detail.html' %},
             {% include 'impayes/workflows/suspend-facture.html' %},
             {% include 'impayes/workflows/unsuspend-facture.html' %},
-            {% include 'impayes/workflows/sync-data.html' %}
+            {% include 'impayes/workflows/sync-data.html' %},
+            
+            // =====================================================
+            // 3. INIT (en dernier)
+            // =====================================================
+            {% include 'impayes/workflows/workflow-init.html' %}
         }));
     });
 </script>

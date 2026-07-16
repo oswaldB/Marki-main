@@ -1,49 +1,5 @@
 <!-- templates/impayes/workflows/workflow-init.html -->
-<!-- État initial et méthodes de base pour la page impayes -->
-
-// Propriétés d'état réactives
-loading: false,
-error: null,
-impayes: [],
-currentPage: 1,
-itemsPerPage: 20,
-sortColumn: 'date_echeance',
-sortDirection: 'desc',
-filters: {
-    search: '',
-    statut: ''
-},
-
-// Getters calculés
-get filteredImpayes() {
-    let result = this.impayes;
-    
-    // Filtre recherche
-    if (this.filters.search) {
-        const search = this.filters.search.toLowerCase();
-        result = result.filter(i => 
-            i.nfacture?.toLowerCase().includes(search) ||
-            i.payeur_nom?.toLowerCase().includes(search)
-        );
-    }
-    
-    // Filtre statut
-    if (this.filters.statut) {
-        result = result.filter(i => i.statut === this.filters.statut);
-    }
-    
-    return result;
-},
-
-get totalPages() {
-    return Math.ceil(this.filteredImpayes.length / this.itemsPerPage) || 1;
-},
-
-get paginatedImpayes() {
-    const start = (this.currentPage - 1) * this.itemsPerPage;
-    const end = start + this.itemsPerPage;
-    return this.filteredImpayes.slice(start, end);
-},
+<!-- Fonction init() uniquement - Les props sont dans alpinejs.html -->
 
 // Initialisation du composant
 init: function() {
@@ -53,17 +9,4 @@ init: function() {
     });
     
     this.initialLoad();
-},
-
-// Méthodes utilitaires
-formatMoney: function(amount) {
-    return new Intl.NumberFormat('fr-FR', { 
-        style: 'currency', 
-        currency: 'EUR'
-    }).format(amount);
-},
-
-formatDate: function(dateStr) {
-    if (!dateStr) return '-';
-    return new Date(dateStr).toLocaleDateString('fr-FR');
 }

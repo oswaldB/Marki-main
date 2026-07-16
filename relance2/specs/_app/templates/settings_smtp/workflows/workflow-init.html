@@ -1,10 +1,7 @@
 <!-- templates/settings_smtp/workflows/workflow-init.html -->
-<!-- État initial -->
+<!-- Fonction init() uniquement - Les props sont dans alpinejs.html -->
 
-loading: false,
-error: null,
-profils: [],
-
+// Initialisation du composant
 init: function() {
     log.info('PAGE_INIT', { page: 'settings_smtp' });
     this.initialLoad();

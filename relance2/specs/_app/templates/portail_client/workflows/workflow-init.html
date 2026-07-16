@@ -1,13 +1,7 @@
 <!-- templates/portail_client/workflows/workflow-init.html -->
-<!-- État initial -->
+<!-- Fonction init() uniquement - Les props sont dans alpinejs.html -->
 
-loading: false,
-error: null,
-client: null,
-factures: [],
-activeTab: 'factures',
-token: null,
-
+// Initialisation du composant
 init: function() {
     log.info('PAGE_INIT', { page: 'portail_client' });
     
@@ -21,13 +15,4 @@ init: function() {
     
     localStorage.setItem('client_token', this.token);
     this.initialLoad();
-},
-
-formatMoney: function(amount) {
-    return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(amount);
-},
-
-formatDate: function(dateStr) {
-    if (!dateStr) return '-';
-    return new Date(dateStr).toLocaleDateString('fr-FR');
 }

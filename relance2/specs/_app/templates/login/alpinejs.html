@@ -1,5 +1,5 @@
 <!-- templates/login/alpinejs.html -->
-<!-- Initialisation Alpine.js avec includes des workflows -->
+<!-- Initialisation Alpine.js - NOUVEAU PATTERN: Props → Workflows → Init -->
 <script>
     // Logger global pour la page
     const log = {
@@ -11,12 +11,36 @@
 
     document.addEventListener('alpine:init', () => {
         Alpine.data('login', () => ({
-            // État initial (depuis workflow-init.html)
-            {% include 'login/workflows/workflow-init.html' %},
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
             
-            // Workflows (mega-functions)
+            // UI State
+            loading: false,
+            error: null,
+            
+            // Form data
+            form: {
+                username: '',
+                password: ''
+            },
+            
+            // Validation errors
+            errors: {
+                username: null,
+                password: null
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS (méthodes qui utilisent les props)
+            // =====================================================
             {% include 'login/workflows/initial-load.html' %},
-            {% include 'login/workflows/auth-submit.html' %}
+            {% include 'login/workflows/auth-submit.html' %},
+            
+            // =====================================================
+            // 3. INIT (doit être en dernier car dépend des props et workflows)
+            // =====================================================
+            {% include 'login/workflows/workflow-init.html' %}
         }));
     });
 </script>

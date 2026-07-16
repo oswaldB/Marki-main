@@ -1,10 +1,5 @@
 <!-- templates/impayes_suspendus/workflows/workflow-init.html -->
-<!-- État initial et méthodes de base pour la page impayes-suspendus -->
-
-// Propriétés d'état réactives
-loading: false,
-error: null,
-impayesSuspendus: [],
+<!-- Fonction init() uniquement - Les props sont dans alpinejs.html -->
 
 // Initialisation du composant
 init: function() {
@@ -14,24 +9,4 @@ init: function() {
     
     // Charger les données au démarrage
     this.initialLoad();
-},
-
-// Méthode utilitaire: Formater les montants
-formatMoney: function(amount) {
-    return new Intl.NumberFormat('fr-FR', { 
-        style: 'currency', 
-        currency: 'EUR',
-        minimumFractionDigits: 2
-    }).format(amount);
-},
-
-// Méthode utilitaire: Formater les dates
-formatDate: function(dateStr) {
-    if (!dateStr) return '-';
-    const date = new Date(dateStr);
-    return new Intl.DateTimeFormat('fr-FR', { 
-        day: '2-digit', 
-        month: '2-digit', 
-        year: 'numeric' 
-    }).format(date);
 }

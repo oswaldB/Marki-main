@@ -1,5 +1,5 @@
 <!-- templates/impayes_suspendus/alpinejs.html -->
-<!-- Initialisation Alpine.js avec includes des workflows -->
+<!-- Initialisation Alpine.js - NOUVEAU PATTERN: Props → Workflows → Init -->
 <script>
     // Logger global pour la page
     const log = {
@@ -11,12 +11,46 @@
 
     document.addEventListener('alpine:init', () => {
         Alpine.data('impayesSuspendus', () => ({
-            // État initial (depuis workflow-init.html)
-            {% include 'impayes_suspendus/workflows/workflow-init.html' %},
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
             
-            // Workflows (mega-functions)
+            // UI State
+            loading: false,
+            error: null,
+            
+            // Data
+            impayesSuspendus: [],
+            
+            // Helpers
+            formatMoney(amount) {
+                return new Intl.NumberFormat('fr-FR', { 
+                    style: 'currency', 
+                    currency: 'EUR',
+                    minimumFractionDigits: 2
+                }).format(amount);
+            },
+            
+            formatDate(dateStr) {
+                if (!dateStr) return '-';
+                const date = new Date(dateStr);
+                return new Intl.DateTimeFormat('fr-FR', { 
+                    day: '2-digit', 
+                    month: '2-digit', 
+                    year: 'numeric' 
+                }).format(date);
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
             {% include 'impayes_suspendus/workflows/initial-load.html' %},
-            {% include 'impayes_suspendus/workflows/reactivate-impaye.html' %}
+            {% include 'impayes_suspendus/workflows/reactivate-impaye.html' %},
+            
+            // =====================================================
+            // 3. INIT (en dernier)
+            // =====================================================
+            {% include 'impayes_suspendus/workflows/workflow-init.html' %}
         }));
     });
 </script>

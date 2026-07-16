@@ -1,10 +1,7 @@
 <!-- templates/contacts/workflows/workflow-init.html -->
-<!-- État initial -->
+<!-- Fonction init() uniquement - Les props sont dans alpinejs.html -->
 
-loading: false,
-error: null,
-contacts: [],
-
+// Initialisation du composant
 init: function() {
     log.info('PAGE_INIT', { page: 'contacts' });
     this.initialLoad();

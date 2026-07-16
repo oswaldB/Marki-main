@@ -1,6 +1,7 @@
 <!-- templates/contacts/alpinejs.html -->
-<!-- Initialisation Alpine.js avec includes des workflows -->
+<!-- Initialisation Alpine.js - NOUVEAU PATTERN: Props → Workflows → Init -->
 <script>
+    // Logger global pour la page
     const log = {
         debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
         info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
@@ -10,9 +11,33 @@
 
     document.addEventListener('alpine:init', () => {
         Alpine.data('contacts', () => ({
-            {% include 'contacts/workflows/workflow-init.html' %},
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
+            
+            // UI State
+            loading: false,
+            error: null,
+            
+            // Data
+            contacts: [],
+            
+            // Helpers
+            formatDate(dateStr) {
+                if (!dateStr) return '-';
+                return new Date(dateStr).toLocaleDateString('fr-FR');
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
             {% include 'contacts/workflows/initial-load.html' %},
-            {% include 'contacts/workflows/toggle-blacklist.html' %}
+            {% include 'contacts/workflows/toggle-blacklist.html' %},
+            
+            // =====================================================
+            // 3. INIT (en dernier)
+            // =====================================================
+            {% include 'contacts/workflows/workflow-init.html' %}
         }));
     });
 </script>
