@@ -1,201 +1,124 @@
-# Workflow Backend : Blacklister un Contact
+# Workflow Backend : Contacts Blacklist
 
 ## Objectifs
-- Blacklister un contact
-- Annuler les relances futures si blacklist
+- Basculer le statut blacklist d'un contact
+- Mettre à jour les relances associées si nécessaire
+- Logger l'action
 
-## Process (méga-fonction)
-
-La méga-fonction `blacklistContact()` exécute les étapes suivantes :
-
-### Étape 1 : Validation
-- Vérifier présence `motif` (requis)
-
-### Étape 2 : Vérification contact
-- Lire contact par `id`
-- Vérifier existence
-- Vérifier `is_blacklisted === false` (pas déjà blacklisté)
-
-### Étape 3 : Blacklist
-- Mettre à jour : `is_blacklisted = true`, `blacklist_motif`, `blacklist_date`
-
-### Étape 4 : Annulation relances
-- Query relances avec `statut === 'pret pour envoi'` pour ce contact
-- Mettre à jour : `statut = 'annulee'`
-- Logger chaque annulation
-
-## Data Model
-
-### Collection: `contacts`
-**Stockage:** `/backend/data/contacts/{id}.yml`
-
-| Champ | Type | Description |
-|-------|------|-------------|
-| `id` | string | Identifiant unique (ex: `cont_00jPOdYCRP`) |
-| `nom` | string | Nom du contact |
-| `prenom` | string | Prénom du contact |
-| `civilite` | string\|null | Civilité (M, Mme, etc.) |
-| `email` | string\|null | Email principal |
-| `telephone` | string\|null | Numéro de téléphone |
-| `societe` | string\|null | Nom de la société |
-| `activite_societe` | string\|null | Activité de la société |
-| `code` | string\|null | Code client interne |
-| `adresse_rue` | string\|null | Rue |
-| `adresse_code_postal` | string\|null | Code postal |
-| `adresse_ville` | string\|null | Ville |
-| `adresse_pays` | string\|null | Pays (défaut: France) |
-| `type_personne` | ContactTypePersonne | `P` (physique), `M` (morale) |
-| `is_blacklisted` | boolean | Blacklisté ou non |
-| `blacklist_date` | ISO date\|null | Date du blacklist |
-| `blacklist_motif` | string\|null | Motif du blacklist (requis) |
-| `statut` | ContactStatut | `actif` |
-| `impaye_ids` | string[] | IDs des impayés liés |
-| `relance_ids` | string[] | IDs des relances liées |
-| `created_at` | ISO date | Date de création |
-| `updated_at` | ISO date | Date de modification |
-| `type` | string | `contact` |
-
-### Collection: `relances`
-**Stockage:** `/backend/data/relances/{id}.yml`
-
-| Champ | Type | Description |
-|-------|------|-------------|
-| `id` | string | Identifiant (ex: `rel_0AnbUjTVKD`) |
-| `contact_id` | string | ID du contact destinataire |
-| `impaye_ids` | string[] | IDs des impayés concernés |
-| `sequence_id` | string | ID de la séquence utilisée |
-| `smtp_profile_id` | string\|null | ID du profil SMTP utilisé |
-| `objet` | string | Objet de l'email |
-| `corps` | string | Contenu HTML de l'email |
-| `statut` | RelanceStatut | `brouillon`, `pret pour envoi`, `Envoyée`, `annulee` |
-| `manuelle` | boolean | Relance manuelle ou auto |
-| `valide` | boolean | Validée ou non |
-| `scenario` | RelanceScenario | `single`, `multiple`, `broker`, `both` |
-| `planifiee_le` | ISO date\|null | Date d'envoi planifiée |
-| `date_creation` | ISO date | Date de création |
-| `date_envoi` | ISO date\|null | Date d'envoi effective |
-| `email_index` | number | Index de l'email dans la séquence |
-| `clicks` | number | Nombre de clics sur les liens |
-| `ouvert` | number | Nombre de fois que l'email a été ouvert |
-| `date_ouverture` | ISO date\|null | Date d'ouverture |
-| `bcc` | string\|null | Destinataires en copie cachée |
-| `cc` | string\|null | Destinataires en copie |
-| `corps_html` | string\|null | Version alternative du corps |
-| `type` | string | `relance` |
-
----
-
-## Organisation des fichiers
-
-```
-/backend/
-├── contacts-blacklist/
-│   ├── index.js              # Point d'entrée du workflow
-│   ├── specs/
-│   │   └── spec.md           # Documentation du workflow
-│   └── logs/                 # Logs quotidiens (JSON Lines)
-│       └── YYYY-MM-DD.log
-```
-
-**Chemin complet:** `/backend/contacts-blacklist/`
-
----
-
-## Start
-
-### Route
-```bash
-POST /api/contacts/{id}/blacklist
-```
-
-### Entry Data
-- `motif`: string (requis)
+## Base de données
+- **SQLite** : `backend/data/marki.db`
+- **Tables** : `contacts`, `relances`, `impayes`
 
 ## Process
 
-### index.js
-**Objectif :** Construire une mega fonction qui encapsule tout le workflow.
+### Étape 1 : Vérification Contact
+Récupérer le contact et vérifier s'il existe.
 
-#### Operations
+### Étape 2 : Toggle Blacklist
+Basculer `is_blacklisted` entre 0 et 1.
 
-**Initialisation logging**
+### Étape 3 : Mise à jour Relances (si blacklist)
+Si mise en blacklist : annuler les relances en cours.
+
+### Étape 4 : Logger
+Enregistrer l'action dans les logs.
+
+---
+
+## Data Models SQLite
+
+### Table `contacts`
+
+| Colonne | Type | Description |
+|---------|------|-------------|
+| `id` | TEXT | Identifiant (cont_xxx) |
+| `is_blacklisted` | INTEGER | 0 ou 1 |
+| `blacklist_date` | TEXT | Date de mise en blacklist |
+| `blacklist_motif` | TEXT | Motif de blacklist |
+
+### Table `relances`
+
+| Colonne | Type | Description |
+|---------|------|-------------|
+| `id` | TEXT | Identifiant (rel_xxx) |
+| `contact_id` | TEXT | ID contact |
+| `statut` | TEXT | Statut de la relance |
+
+---
+
+## Code Workflow (SQLite)
+
+### Initialisation
 ```javascript
-const fs = require('fs').promises;
-const path = require('path');
-const LOG_DIR = path.join(__dirname, '..', 'logs', 'contacts-blacklist');
+const SQLiteDB = require('../lib/sqlite-db');
+const db = new SQLiteDB();
+```
 
-async function log(level, message, data = {}) {
-  await fs.mkdir(LOG_DIR, { recursive: true });
-  const entry = {
-    timestamp: new Date().toISOString(),
-    level,
-    message,
-    data,
-    workflow: 'contacts-blacklist'
+### Toggle Blacklist
+```javascript
+async function toggleBlacklist(contactId, motif = null) {
+  const contact = db.read('contacts', contactId);
+  
+  if (!contact) {
+    throw new Error('Contact non trouvé');
+  }
+  
+  const nouvelEtat = !contact.is_blacklisted;
+  
+  const updates = {
+    is_blacklisted: nouvelEtat ? 1 : 0,
+    blacklist_date: nouvelEtat ? new Date().toISOString() : null,
+    blacklist_motif: nouvelEtat ? motif : null
   };
-  const file = path.join(LOG_DIR, `${new Date().toISOString()}.log`); 
-  await fs.appendFile(file, JSON.stringify(entry) + '\n');
+  
+  db.update('contacts', contactId, updates);
+  
+  // Si blacklisté, annuler les relances en cours
+  if (nouvelEtat) {
+    db.run(`
+      UPDATE relances 
+      SET statut = 'annulee', updated_at = CURRENT_TIMESTAMP
+      WHERE contact_id = ? 
+        AND statut IN ('brouillon', 'pret pour envoi', 'planifiee')
+    `, [contactId]);
+  }
+  
+  return {
+    id: contactId,
+    is_blacklisted: nouvelEtat,
+    action: nouvelEtat ? 'blacklisté' : 'retiré de la blacklist'
+  };
 }
 ```
 
-**Process**
-```javascript
-// 1. Validation
-if (!req.body.motif || req.body.motif.trim() === '') {
-  await log('warn', 'Validation failed', { reason: 'missing_motif' });
-  return { status: 400, error: "Motif requis" };
-}
+---
 
-// 2. Vérifier que le contact existe
-const contact = await db.read('contacts', req.params.id);
-if (!contact) {
-  await log('warn', 'Contact not found', { contactId: req.params.id });
-  return { status: 404, error: "Contact non trouvé" };
-}
+## Route API
 
-// 3. Vérifier que le contact n'est pas déjà blacklisté
-if (contact.is_blacklisted) {
-  await log('warn', 'Contact already blacklisted', { contactId: contact.id });
-  return { status: 409, error: "Contact déjà blacklisté" };
-}
+```bash
+POST /api/contacts/:id/blacklist
 
-await log('info', 'Contact read', { contactId: contact.id });
-
-// 4. Blacklister le contact
-await db.update('contacts', contact.id, {
-  is_blacklisted: true,
-  blacklist_motif: req.body.motif,
-  blacklist_date: new Date().toISOString()
-});
-await log('info', 'Contact blacklisted', { contactId: contact.id, motif: req.body.motif });
-
-// 5. Annuler les relances futures
-const relances = db.query('relances')
-  .where('contact_id').eq(contact.id)
-  .where('statut').eq('pret pour envoi')
-  .data();
-
-await log('info', 'Cancelling pending relances', { contactId: contact.id, count: relances.length });
-
-for (const relance of relances) {
-  await db.update('relances', relance.id, { statut: 'annulee' });
-  await log('info', 'Relance cancelled', { relanceId: relance.id, reason: 'contact_blacklisted' });
-}
+# cURL
+curl -X POST \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"motif": "Client ne souhaite plus être relancé"}' \
+  "http://localhost:5000/api/contacts/cont_xxx/blacklist"
 ```
 
-#### Output
-```javascript
+---
+
+## Output
+
+```json
 {
-  "status": 200,
-  "data": { contact }
+  "contact": {
+    "id": "cont_xxx",
+    "is_blacklisted": 1,
+    "blacklist_date": "2026-07-14T15:30:00Z",
+    "blacklist_motif": "Client ne souhaite plus être relancé"
+  },
+  "action": "blacklisté",
+  "relances_annulees": 3
 }
 ```
-
-## Error Handling
-
-| Code | Description |
-|------|-------------|
-| 400 | Motif manquant |
-| 404 | Contact non trouvé |
-| 409 | Contact déjà blacklisté |
-| 500 | Erreur serveur |

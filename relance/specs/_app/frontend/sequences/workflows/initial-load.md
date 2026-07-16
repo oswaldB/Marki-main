@@ -63,3 +63,8 @@ Charger les séquences de relance et de suivi avec leurs métadonnées (nombre d
 ## Mockups de référence
 
 - `specs/mockups/sequences.html`
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

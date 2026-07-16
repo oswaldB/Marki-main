@@ -12,7 +12,7 @@ Réactiver une facture impayée suspendue
 ## Description
 - Réinitialise les champs de suspension dans la table `impayes`
 - La facture redevient visible dans la liste normale
-- Conserve l'historique dans `suspension_date` et `suspension_motif` (optionnel)
+- Conserve l'historique dans `blacklist_date` et `blacklist_motif` (optionnel)
 
 ## Data Model
 
@@ -22,7 +22,7 @@ Réactiver une facture impayée suspendue
 - `impaye` - impayé en cours de visualisation
 
 **Champs modifiés dans `impayes`:**
-- `is_suspended` ← `false`
+- `is_blacklisted` ← `false`
 - `updated_at` ← date actuelle
 
 **États UI:**
@@ -112,5 +112,5 @@ async unsuspendFacture(id) {
 ## Notes
 
 - La réactivation rend la facture visible dans la liste normale
-- Les champs `suspension_date` et `suspension_motif` peuvent être conservés pour audit
+- Les champs `blacklist_date` et `blacklist_motif` peuvent être conservés pour audit
 - Voir workflow `suspend-facture` pour suspendre

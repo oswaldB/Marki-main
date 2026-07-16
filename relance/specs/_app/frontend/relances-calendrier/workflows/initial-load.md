@@ -34,8 +34,7 @@ Charger les relances programmées pour le mois courant et générer la vue calen
  */
 
 /**
- * @action Récupérer les relances du mois via GET /api/relances
- * @checkpoint relances-fetched, relances du mois reçues
+ * @action Récupérer les relances du mois via GET /api/relances * @checkpoint relances-fetched, relances du mois reçues
  * 
  * **Approche** : Récupération de toutes les relances puis filtrage côté client
  * car le CRUD ne supporte pas les opérateurs de comparaison (?date_gte= n'existe pas).
@@ -67,3 +66,8 @@ Charger les relances programmées pour le mois courant et générer la vue calen
 ## Mockups de référence
 
 - `specs/mockups/relances-calendrier.html`
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

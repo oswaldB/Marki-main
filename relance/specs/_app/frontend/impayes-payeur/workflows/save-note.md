@@ -191,7 +191,7 @@ get sortedNotes() {
 ## Exemple YAML stocké
 
 ```yaml
-# contacts/contact_001.yml
+# contacts/contact_001 (SQLite)
 id: "contact_001"
 type: "contact"
 nom: "Dupont"

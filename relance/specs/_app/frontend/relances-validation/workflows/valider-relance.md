@@ -11,7 +11,7 @@ Approuver l'envoi d'une relance
 
 ## Description
 - Marque la relance comme validée
-- Déclenche l'envoi (immédiat ou programmé)
+- Change le statut en `pret pour envoi`
 - Retire de la liste à valider
 
 ## Data Model
@@ -38,17 +38,23 @@ Approuver l'envoi d'une relance
 
 ## API Calls
 
-**`PUT /api/relances/:id`** - Met à jour la relance avec `valide=true`
+**POST /api/relances/:id/validate**
 
-**Payload:**
-```json
+```javascript
+// Requête
+POST /api/relances/rel_xxx/validate
+Authorization: Bearer {token}
+
+// Réponse 200
 {
-  "valide": true,
-  "updated_at": "2026-07-12T10:00:00Z"
+  "message": "Relance validée",
+  "relance": {
+    "id": "rel_xxx",
+    "statut": "pret pour envoi",
+    "valide": 1
+  }
 }
 ```
-
-**Response:** `ApiResponse<Relance>`
 
 ## Organisation des fichiers
 
@@ -65,16 +71,22 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/relances-validation/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
 
 ### Fichier workflow
 - **JS** : `frontend/app/relances-validation/js/valider-relance.js`
-- **Export** : Fonction utilisable dans `index.html`
 
 ```javascript
 // frontend/app/relances-validation/js/valider-relance.js
-export function validerRelance() {
-  // Implementation du workflow
+export async function validerRelance(relanceId) {
+  const response = await fetch(`/api/relances/${relanceId}/validate`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${Alpine.store('auth').token}`,
+      'Content-Type': 'application/json'
+    }
+  });
+  
+  return await response.json();
 }
 ```
 
@@ -82,30 +94,14 @@ export function validerRelance() {
 
 ```javascript
 async validerRelance(id) {
-  // 1. Set loading
   this.loading = true;
   
   try {
-    // 2. Call API to validate
-    const response = await fetch(`/api/relances/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        valide: true,
-        updated_at: new Date().toISOString()
-      })
-    });
+    const data = await validerRelance(id);
     
-    const data = await response.json();
-    
-    if (!data.success) {
-      throw new Error(data.error?.message || 'Erreur lors de la validation');
-    }
-    
-    // 3. Remove from validation list
+    // Remove from validation list
     this.relancesAValider = this.relancesAValider.filter(item => item.id !== id);
     
-    // 4. Notify
     Alpine.store('ui').addToast('Relance validée', 'success');
     
   } catch (error) {

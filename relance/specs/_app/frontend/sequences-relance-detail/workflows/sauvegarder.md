@@ -50,7 +50,7 @@ Enregistrer les modifications de la séquence
 |---------|----------|------|-------------|
 | `PUT` | `/api/sequences/:id` | `{ nom, validationObligatoire, emails, reglesAttribution }` | Met à jour la séquence complète avec ses emails |
 
-**Données sauvegardées** (persistées via flat-file-db) :
+**Données sauvegardées** (persistées via SQLite) :
 - `sequence.nom` : Nom de la séquence
 - `sequence.validationObligatoire` : Booléen
 - `sequence.emails[]` : Tableau des emails avec leurs scénarios

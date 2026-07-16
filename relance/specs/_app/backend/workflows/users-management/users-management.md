@@ -1,138 +1,82 @@
 # Workflow Backend : Gestion Utilisateurs
 
 ## Objectifs
-- CRUD des utilisateurs
-- Réinitialisation mot de passe
+- CRUD utilisateurs
+- Gestion des rôles et permissions
 
-## Process (méga-fonction)
+## Base de données
+- **SQLite** : `backend/data/marki.db`
+- **Table** : `users`
 
-### CRUD
-La méga-fonction gère :
-- **Create** : Hasher password (bcrypt coût 12), générer `id`, créer avec ACL
-- **Read/List** : Query utilisateurs avec filtre rôle si besoin
-- **Update** : Mettre à jour champs, hasher nouveau password si fourni
-- **Delete** : Supprimer utilisateur par `id`
+## Data Models SQLite
 
-### Reset Password
-La méga-fonction `resetPassword()` :
-1. Lire utilisateur par `id`
-2. Vérifier existence
-3. Hasher `new_password` (bcrypt coût 12)
-4. Mettre à jour `password_hash`
+### Table `users`
 
-## Data Model
+| Colonne | Type | Description |
+|---------|------|-------------|
+| `id` | TEXT | Identifiant (user_xxx) |
+| `username` | TEXT | Nom d'utilisateur (unique) |
+| `email` | TEXT | Email |
+| `password_hash` | TEXT | Hash bcrypt |
+| `role` | TEXT | `admin` ou `user` |
+| `is_active` | INTEGER | 0 ou 1 |
+| `login_count` | INTEGER | Nombre de connexions |
+| `last_login` | TEXT | Dernière connexion |
 
-### Collection: `users`
-**Stockage:** `/backend/data/users/{id}.yml`
+## Opérations
 
-| Champ | Type | Description |
-|-------|------|-------------|
-| `id` | string | Identifiant unique (ex: `user_1783582411041`) |
-| `username` | string | Nom d'utilisateur (unique) |
-| `email` | string | Email de connexion (unique) |
-| `password_hash` | string | **Hash bcrypt du mot de passe** (coût 12) |
-| `role` | UserRole | `admin`, `user`, `client` |
-| `is_active` | boolean | Compte actif ou désactivé |
-| `login_count` | number | Nombre de connexions |
-| `last_login` | ISO date\|null | Date de dernière connexion |
-| `_acl` | ACL\|null | Permissions d'accès |
-| `_acl.owner` | string | Propriétaire du document |
-| `_acl.created_by` | string | Créateur du document |
-| `_acl.created_at` | ISO date | Date de création ACL |
-| `_acl.updated_at` | ISO date | Date modif ACL |
-| `_acl.permissions` | Permissions | Droits par rôle |
-| `_acl.permissions.admin` | string[] | `['read', 'write', 'delete']` |
-| `_acl.permissions.user` | string[] | `['read']` ou `[]` |
-| `created_at` | ISO date | Date de création |
-| `updated_at` | ISO date | Date de modification |
-
-
----
-
-## Organisation des fichiers
-
-```
-/backend/
-├── users-management/
-│   ├── index.js              # Point d'entrée du workflow
-│   ├── specs/
-│   │   └── spec.md           # Documentation du workflow
-│   └── logs/                 # Logs quotidiens (JSON Lines)
-│       └── YYYY-MM-DD.log
-```
-
-**Chemin complet:** `/backend/users-management/`
-
----
-
-## Start
-
-### Route
-```bash
-GET /api/users
-POST /api/users
-POST /api/users/{id}/reset-password
-```
-
-## Process
-
-### index.js
-**Objectif :** Construire une mega fonction qui encapsule tout le workflow.
-
-#### Operations
-
-**Initialisation logging**
-```javascript
-const fs = require('fs').promises;
-const path = require('path');
-const LOG_DIR = path.join(__dirname, '..', 'logs', 'users-management');
-
-async function log(level, message, data = {}) {
-  await fs.mkdir(LOG_DIR, { recursive: true });
-  const entry = {
-    timestamp: new Date().toISOString(),
-    level,
-    message,
-    data,
-    workflow: 'users-management'
-  };
-  const file = path.join(LOG_DIR, `${new Date().toISOString().split('T')[0]}.log`);
-  await fs.appendFile(file, JSON.stringify(entry) + '\n');
-}
-```
-
-#### Création
+### Créer Utilisateur
 ```javascript
 const bcrypt = require('bcrypt');
 
-const passwordHash = await bcrypt.hash(req.body.password, 12);
-
-const user = await db.create('users', {
-  id: `user_${Date.now()}`,
-  ...req.body,
-  password_hash: passwordHash
-});
-await log('info', 'User created', { userId: user.id, email: user.email, role: user.role });
+async function createUser(data) {
+  const id = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  const passwordHash = await bcrypt.hash(data.password, 10);
+  
+  const user = db.create('users', {
+    id,
+    username: data.username,
+    email: data.email.toLowerCase().trim(),
+    password_hash: passwordHash,
+    role: data.role || 'user',
+    is_active: 1,
+    login_count: 0,
+    created_at: new Date().toISOString(),
+    updated_at: new Date().toISOString()
+  });
+  
+  return user;
+}
 ```
 
-#### Reset Password
+### Modifier Utilisateur
 ```javascript
-const user = await db.read('users', req.params.id);
-if (!user) {
-  await log('error', 'User not found', { userId: req.params.id });
-  return { status: 404, error: "Utilisateur non trouvé" };
+async function updateUser(id, data) {
+  const updates = { ...data };
+  delete updates.id;
+  delete updates.password_hash;
+  
+  db.update('users', id, updates);
+  return db.read('users', id);
 }
-
-const newHash = await bcrypt.hash(req.body.new_password, 12);
-
-await db.update('users', user.id, { password_hash: newHash });
-await log('info', 'Password reset', { userId: user.id, email: user.email });
 ```
 
-#### Output
+### Réinitialiser Mot de Passe
 ```javascript
-{
-  "status": 201,
-  "data": { user }
+async function resetPassword(userId, newPassword) {
+  const passwordHash = await bcrypt.hash(newPassword, 10);
+  db.update('users', userId, { password_hash: passwordHash });
+  return true;
 }
+```
+
+## Routes API
+
+```bash
+GET    /api/users              # Liste
+GET    /api/users/:id          # Détail
+POST   /api/users              # Créer (admin)
+PUT    /api/users/:id          # Modifier
+DELETE /api/users/:id          # Désactiver (admin)
+POST   /api/users/:id/reset-password  # Reset password (admin)
 ```

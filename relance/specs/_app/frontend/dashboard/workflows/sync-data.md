@@ -91,7 +91,7 @@ La synchronisation appelle les backend workflows dans l'ordre suivant :
 
 | Endpoint | Méthode | Description |
 |----------|---------|-------------|
-| `POST /api/workflows/import-invoices` | POST | Étape 1: Import des factures |
+| `POST /api/import/invoices` | POST | Étape 1: Import des factures |
 | `POST /api/workflows/verify-paid-invoices` | POST | Étape 2: Vérification des paiements |
 | `POST /api/workflows/regels-attribution` | POST | Étape 3: Attribution des règlements |
 | `POST /api/events` | POST | Étape 4: Création de l'event de fin |

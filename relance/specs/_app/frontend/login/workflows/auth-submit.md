@@ -12,7 +12,7 @@ Soumettre les identifiants utilisateur pour authentification
 ## Description
 - Récupère email et mot de passe saisis
 - Valide le format de l'email
-- Appelle l'API d'authentification
+- Appelle l'API d'authentification SQLite
 - Redirige vers `/dashboard` en cas de succès
 - Affiche message d'erreur en cas d'échec
 
@@ -38,31 +38,35 @@ Soumettre les identifiants utilisateur pour authentification
 
 ## API Calls
 
-**Endpoint:** `POST /api/auth/login`
+**POST /api/auth/login**
 
-**Payload:**
-```json
+```javascript
+// Requête
+POST /api/auth/login
+Content-Type: application/json
+
 {
-  "username": "string",
-  "password": "string"
+  "email": "admin@marki.fr",
+  "password": "votre-mot-de-passe"
 }
-```
 
-**Response:**
-```json
+// Réponse 200
 {
-  "success": true,
-  "data": {
-    "token": "jwt_token_here",
-    "user": {
-      "id": "user_001",
-      "username": "string",
-      "name": "string",
-      "role": "admin|user"
-    }
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "user": {
+    "id": "user_xxx",
+    "username": "admin",
+    "email": "admin@marki.fr",
+    "role": "admin"
   }
 }
+
+// Réponse 401
+{
+  "error": "Identifiants invalides"
+}
 ```
+
 ## Organisation des fichiers
 
 ```
@@ -76,18 +80,24 @@ frontend/
             └── auth-submit.js
 ```
 
-### Fichier principal
-- **HTML** : `frontend/app/login/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
-
 ### Fichier workflow
 - **JS** : `frontend/app/login/js/auth-submit.js`
-- **Export** : Fonction utilisable dans `index.html`
 
 ```javascript
 // frontend/app/login/js/auth-submit.js
-export function authSubmit() {
-  // Implementation du workflow
+export async function authSubmit(email, password) {
+  const response = await fetch('/api/auth/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password })
+  });
+  
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.error || 'Échec de connexion');
+  }
+  
+  return await response.json();
 }
 ```
 
@@ -96,7 +106,7 @@ export function authSubmit() {
 ```javascript
 async handleLogin() {
   // 1. Validate form
-  if (!this.form.username || !this.form.password) {
+  if (!this.form.email || !this.form.password) {
     this.error = 'Veuillez remplir tous les champs';
     return;
   }
@@ -107,25 +117,15 @@ async handleLogin() {
   
   try {
     // 3. Call auth API
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.form)
-    });
-    
-    const data = await response.json();
-    
-    if (!data.success) {
-      throw new Error(data.error?.message || 'Échec de connexion');
-    }
+    const data = await authSubmit(this.form.email, this.form.password);
     
     // 4. Store auth data
-    Alpine.store('auth').token = data.data.token;
-    Alpine.store('auth').user = data.data.user;
+    Alpine.store('auth').token = data.token;
+    Alpine.store('auth').user = data.user;
     Alpine.store('auth').isAuthenticated = true;
     
     // 5. Persist token
-    localStorage.setItem('token', data.data.token);
+    localStorage.setItem('token', data.token);
     
     // 6. Redirect
     window.location.href = '/dashboard';
@@ -136,7 +136,7 @@ async handleLogin() {
     this.loading = false;
   }
 }
-``
+```
 
 ## Navigation
 - **Cible** : `/dashboard`

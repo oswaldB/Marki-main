@@ -54,3 +54,8 @@ Charger les informations complètes d'un profil SMTP, son historique d'envoi et 
 ## Mockups de référence
 
 - `specs/mockups/settings-smtp-detail.html`
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

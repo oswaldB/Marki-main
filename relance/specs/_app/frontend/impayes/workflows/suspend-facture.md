@@ -10,9 +10,10 @@ Bouton avec `@click="suspendFacture(facture)"`
 Suspendre une facture impayée (la masquer temporairement)
 
 ## Description
-- Met à jour les champs de suspension dans la table `impayes`
-- La facture reste en base mais est masquée dans la liste (filtre `is_suspended=false`)
+- Met à jour les champs de suspension dans la table `impayes` SQLite
+- La facture reste en base mais est masquée dans la liste (filtre `is_blacklisted=0`)
 - Le motif de suspension est enregistré
+- Annule les relances en cours pour ce contact
 
 ## Data Model
 
@@ -21,10 +22,10 @@ Suspendre une facture impayée (la masquer temporairement)
 **Données:**
 - `impayes` - liste des impayés
 
-**Champs modifiés dans `impayes`:**
-- `is_suspended` ← `true`
-- `suspension_date` ← date actuelle (ISO)
-- `suspension_motif` ← motif saisi par l'utilisateur
+**Champs modifiés dans `impayes` (SQLite):**
+- `is_blacklisted` ← `1`
+- `blacklist_date` ← date actuelle (ISO)
+- `blacklist_motif` ← motif saisi par l'utilisateur
 
 **États UI:**
 - `loading`
@@ -35,27 +36,30 @@ Suspendre une facture impayée (la masquer temporairement)
 ## State Changes
 
 **Modifications:**
-- `impayes[n].is_suspended` ← `true`
-- `impayes[n].suspension_date` ← date
-- `impayes[n].suspension_motif` ← texte
+- `impayes[n].is_blacklisted` ← `1`
+- `impayes[n].blacklist_date` ← date
+- `impayes[n].blacklist_motif` ← texte
 
 ## API Calls
 
-**Endpoint:** `PUT /api/impayes/:id`
+**POST /api/impayes/:id/suspend**
 
-**Payload:**
-```json
+```javascript
+// Requête
+POST /api/impayes/imp_xxx/suspend
+Authorization: Bearer {token}
+Content-Type: application/json
+
 {
-  "is_suspended": true,
-  "suspension_date": "2026-07-10T15:30:00Z",
-  "suspension_motif": "string",
-  "updated_at": "2026-07-10T15:30:00Z"
+  "motif": "Client en vacances"
+}
+
+// Réponse 200
+{
+  "message": "Impayé suspendu et relances annulées",
+  "relances_annulees": 2
 }
 ```
-
-**Table:** `impayes`
-
-**Response:** `ApiResponse<Impaye>`
 
 ## Organisation des fichiers
 
@@ -73,8 +77,17 @@ frontend/
 
 ```javascript
 // frontend/app/impayes/js/suspend-facture.js
-export function suspendFacture() {
-  // Implementation du workflow
+export async function suspendFacture(impayeId, motif) {
+  const response = await fetch(`/api/impayes/${impayeId}/suspend`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${Alpine.store('auth').token}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ motif })
+  });
+  
+  return await response.json();
 }
 ```
 
@@ -82,41 +95,23 @@ export function suspendFacture() {
 
 ```javascript
 async suspendFacture(id, motif) {
-  // 1. Set loading
   this.loading = true;
   
   try {
-    // 2. Call API
-    const response = await fetch(`/api/impayes/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        is_suspended: true,
-        suspension_date: new Date().toISOString(),
-        suspension_motif: motif,
-        updated_at: new Date().toISOString()
-      })
-    });
+    const data = await suspendFacture(id, motif);
     
-    const data = await response.json();
-    
-    if (!data.success) {
-      throw new Error(data.error?.message);
-    }
-    
-    // 3. Update local
+    // Update local
     const index = this.impayes.findIndex(item => item.id === id);
     if (index !== -1) {
-      this.impayes[index].is_suspended = true;
-      this.impayes[index].suspension_date = data.data.suspension_date;
-      this.impayes[index].suspension_motif = motif;
+      this.impayes[index].is_blacklisted = 1;
+      this.impayes[index].blacklist_date = new Date().toISOString();
+      this.impayes[index].blacklist_motif = motif;
     }
     
-    // 4. Close modal
+    // Close modal
     this.showSuspendModal = false;
     this.suspensionMotif = '';
     
-    // 5. Notify
     Alpine.store('ui').addToast('Facture suspendue', 'success');
     
   } catch (error) {
@@ -130,5 +125,6 @@ async suspendFacture(id, motif) {
 ## Notes
 
 - La suspension est **logique** (pas de suppression physique)
-- Les impayés suspendus sont filtrés par défaut dans la liste (`is_suspended=false`)
+- Les impayés suspendus sont filtrés par défaut dans la liste (`is_blacklisted=0`)
+- Les relances en cours sont automatiquement annulées
 - Voir workflow `unsuspend-facture` pour réactiver

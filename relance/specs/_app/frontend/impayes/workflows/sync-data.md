@@ -40,7 +40,7 @@ Synchroniser les données impayés depuis la source externe (ADTI)
 
 ## API Calls
 
-**Endpoint:** `POST /api/workflows/import-invoices`
+**Endpoint:** `POST /api/import/invoices`
 
 **Description:** Déclenche le workflow backend d'import des factures
 

@@ -52,8 +52,8 @@ Quand on ouvre le détail d'un impayé **actif** (`is_suspended: false`) :
 **Pas d'appel API supplémentaire** - Les données sont déjà chargées dans `impayes[]`
 
 **Note:** Si besoin de données complémentaires (historique complet, relances liées), appeler :
-- `GET /api/impayes/:id` - Détail complet
-- `GET /api/relances?impaye_ids=:id` - Relances liées
+- `GET /api/impayes?facture_soldee=0&statut=impaye
+- `GET /api/relancesimpaye_ids=:id` - Relances liées
 
 ## Organisation des fichiers
 

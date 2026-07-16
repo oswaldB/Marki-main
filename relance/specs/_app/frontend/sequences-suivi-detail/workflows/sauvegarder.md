@@ -56,7 +56,7 @@ Enregistrer les modifications de la séquence de suivi
 |---------|----------|------|-------------|
 | `PUT` | `/api/sequences/:id` | `{ nom, validationObligatoire, emails, type_suivi }` | Met à jour la séquence de suivi avec ses emails |
 
-**Données sauvegardées** (persistées via flat-file-db dans la table "suivi") :
+**Données sauvegardées** (persistées via SQLite dans la table "suivi") :
 - `sequence.nom` : Nom de la séquence de suivi
 - `sequence.validationObligatoire` : Booléen
 - `sequence.type_suivi` : Type de suivi (formation, audit, etc.)

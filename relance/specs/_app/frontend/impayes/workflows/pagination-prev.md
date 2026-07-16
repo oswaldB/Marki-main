@@ -35,12 +35,12 @@ Naviguer vers la page précédente du tableau
 
 ## API Calls
 
-**Endpoint:** `GET /api/impayes?facture_soldee=false&skip=:skip&limit=25`
+**Endpoint:** `GET /api/impayes?facture_soldee=0&statut=impaye
 
 **Query Params:**
 - `skip` = `(currentPage - 2) * 25` (offset, car on recule d'une page)
 - `limit` = `25` (fixe)
-- Filtres actifs (optionnels): `is_suspended`, `payer_id`, etc.
+- Filtres actifs (optionnels): `is_blacklisted`, `payer_id`, etc.
 
 **Table:** `impayes`
 

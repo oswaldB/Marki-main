@@ -49,3 +49,8 @@ Charger la liste des profils SMTP avec leur statut et statistiques d'envoi.
 ## Mockups de référence
 
 - `specs/mockups/settings-smtp.html`
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

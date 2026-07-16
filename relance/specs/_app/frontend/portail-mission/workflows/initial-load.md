@@ -49,14 +49,14 @@ Charger les informations d'une facture/impayé spécifique pour le portail clien
  */
 
 /**
- * @action Récupérer les détails de l'impayé via GET /api/impayes/:id
+ * @action Récupérer les détails de l'impayé via GET /api/impayes?facture_soldee=0&statut=impaye
  * @checkpoint impaye-fetched, informations de la facture reçues
  * 
  * **Condition** : Seulement si token valide
  */
 
 /**
- * @action Récupérer les informations du payeur via GET /api/contacts/:payer_id
+ * @action Récupérer les informations du payeur via GET /api/contacts?statut=actif&limit=50
  * @checkpoint contact-fetched, informations du client reçues
  */
 
@@ -75,3 +75,8 @@ Charger les informations d'une facture/impayé spécifique pour le portail clien
 
 - `specs/mockups/portail-mission.html` - Écran de la facture/mission
 - `specs/mockups/portail-client-dead-token.html` - Écran lien expiré (réutilisable)
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

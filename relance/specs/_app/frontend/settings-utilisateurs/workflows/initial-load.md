@@ -60,3 +60,8 @@ Charger la liste des utilisateurs avec leurs rôles, statut et dernière connexi
 ## Mockups de référence
 
 - `specs/mockups/settings-utilisateurs.html`
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

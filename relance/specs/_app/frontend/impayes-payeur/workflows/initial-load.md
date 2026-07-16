@@ -33,8 +33,8 @@ Charger la vue groupée des impayés par payeur avec les factures associées et 
  * @checkpoint data-fetched, impayés et contacts reçus côté client
  * 
  * **Approche full frontend** (pas de route API dédiée) :
- * 1. `GET /api/impayes` - Liste tous les impayés non soldés
- * 2. `GET /api/contacts` - Liste tous les contacts (payeurs)
+ * 1. `GET /api/impayes?facture_soldee=0&statut=impaye
+ * 2. `GET /api/contacts?statut=actif&limit=50
  * 
  * **Traitement côté client** :
  * - Grouper les impayés par `payer_id`
@@ -66,3 +66,8 @@ Charger la vue groupée des impayés par payeur avec les factures associées et 
 ## Mockups de référence
 
 - `specs/mockups/impayes-payeur.html`
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

@@ -29,7 +29,7 @@ Charger la liste des factures mises en attente (suspendues) avec leurs motifs et
  */
 
 /**
- * @action Récupérer les factures suspendues via GET /api/impayes?is_suspended=true
+ * @action Récupérer les factures suspendues via GET /api/impayes?facture_soldee=0&statut=impaye
  * @checkpoint suspendus-fetched, liste des factures en attente reçue
  * 
  * **Approche** : Utilise le CRUD avec filtre sur `is_suspended=true`
@@ -41,7 +41,7 @@ Charger la liste des factures mises en attente (suspendues) avec leurs motifs et
  * @checkpoint motifs-extracted, options de filtrage calculées côté client
  * 
  * **Note** : Pas de table `suspension-motifs`. Les motifs sont extraits 
- * des champs `suspension_motif` des factures suspendues elles-mêmes.
+ * des champs `blacklist_motif` des factures suspendues elles-mêmes.
  */
 
 /**
@@ -58,3 +58,8 @@ Charger la liste des factures mises en attente (suspendues) avec leurs motifs et
 ## Mockups de référence
 
 - `specs/mockups/impayes-suspendus.html`
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

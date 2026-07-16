@@ -24,12 +24,12 @@ Charger toutes les données du dashboard : KPIs calculés côté frontend, graph
  */
 
 /**
- * @action Récupérer les impayés via GET /api/impayes?status=unpaid
+ * @action Récupérer les impayés via GET /api/impayes?facture_soldee=0&statut=impaye
  * @checkpoint impayes-fetched, liste des impayés reçue
  */
 
 /**
- * @action Récupérer les relances via GET /api/relances?date=today
+ * @action Récupérer les relances via GET /api/relancesdate=today
  * @checkpoint relances-fetched, relances du jour reçues
  */
 
@@ -44,7 +44,7 @@ Charger toutes les données du dashboard : KPIs calculés côté frontend, graph
  */
 
 /**
- * @action Récupérer les nouvelles factures via GET /api/impayes?is_new=true
+ * @action Récupérer les nouvelles factures via GET /api/impayes?facture_soldee=0&statut=impaye
  * @checkpoint new-invoices-fetched, factures depuis dernière synchro reçues
  */
 
@@ -130,14 +130,14 @@ Calcul côté frontend à partir des impayés :
 
 | Endpoint | Description |
 |----------|-------------|
-| `GET /api/impayes?status=unpaid` | Tous les impayés actifs (pour KPIs, ancienneté, graphique, top débiteurs) |
-| `GET /api/impayes?is_new=true` | Nouvelles factures depuis dernière synchro |
-| `GET /api/relances?date=today` | Relances envoyées aujourd'hui |
+| `GET /api/impayes?facture_soldee=0&statut=impaye
+| `GET /api/impayes?facture_soldee=0&statut=impaye
+| `GET /api/relancesdate=today` | Relances envoyées aujourd'hui |
 | `GET /api/events?limit=10` | Événements récents |
 
 ## Structure des données
 
-### Impayé (backend flat-file-db)
+### Impayé (backend SQLite)
 ```javascript
 {
   id: string,

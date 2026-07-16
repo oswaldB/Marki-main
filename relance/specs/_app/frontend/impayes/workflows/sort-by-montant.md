@@ -38,7 +38,7 @@ Trier le tableau par montant total de facture
 
 ## API Calls
 
-**Endpoint:** `GET /api/impayes?facture_soldee=false&sort=montant_total&order=desc&limit=25&skip=0`
+**Endpoint:** `GET /api/impayes?facture_soldee=0&statut=impaye
 
 **Query Params:**
 - `sort` = `montant_total`
@@ -49,7 +49,7 @@ Trier le tableau par montant total de facture
 
 **Table:** `impayes`
 
-**Backend (LokiJS):**
+**Backend (SQLite):**
 ```javascript
 db.query('impayes')
   .where({ facture_soldee: false })
@@ -147,5 +147,5 @@ async loadData() {
 
 - **Tri par défaut décroissant** pour les montants (plus grand en premier)
 - **Avec pagination, le tri doit se faire côté backend** - sinon on ne trie que les 25 éléments affichés
-- LokiJS supporte le tri via `simplesort()`
+- SQLite supporte le tri via `simplesort()`
 - Le tri reset toujours à la page 1 (logique UX)

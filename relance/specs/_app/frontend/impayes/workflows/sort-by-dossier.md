@@ -38,7 +38,7 @@ Trier le tableau par numéro de dossier
 
 ## API Calls
 
-**Endpoint:** `GET /api/impayes?facture_soldee=false&sort=numero_dossier&order=asc&limit=25&skip=0`
+**Endpoint:** `GET /api/impayes?facture_soldee=0&statut=impaye
 
 **Query Params:**
 - `sort` = nom de la colonne à trier (`numero_dossier`, `montant_total`, `reste_a_payer`, `date_echeance`, etc.)
@@ -49,7 +49,7 @@ Trier le tableau par numéro de dossier
 
 **Table:** `impayes`
 
-**Backend (LokiJS):**
+**Backend (SQLite):**
 ```javascript
 db.query('impayes')
   .where({ facture_soldee: false })
@@ -157,6 +157,6 @@ async loadData() {
 ## Notes
 
 - **Avec pagination, le tri doit se faire côté backend** - sinon on ne trie que les 25 éléments affichés
-- LokiJS supporte le tri via `simplesort()`
+- SQLite supporte le tri via `simplesort()`
 - Le tri reset toujours à la page 1 (logique UX)
 - Voir aussi `sort-by-montant.md`, `sort-by-numero.md`, `sort-by-payeur.md`, `sort-by-reste.md`

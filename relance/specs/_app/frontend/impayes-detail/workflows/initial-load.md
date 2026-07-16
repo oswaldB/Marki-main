@@ -29,17 +29,17 @@ Charger les informations complètes d'un impayé, son historique de relances et 
  */
 
 /**
- * @action Récupérer l'impayé via GET /api/impayes/:id
+ * @action Récupérer l'impayé via GET /api/impayes?facture_soldee=0&statut=impaye
  * @checkpoint impaye-fetched, données complètes reçues (table 'impayes')
  */
 
 /**
- * @action Récupérer le payeur via GET /api/contacts/:payer_id si payer_id existe
+ * @action Récupérer le payeur via GET /api/contacts?statut=actif&limit=50
  * @checkpoint payer-fetched, informations du payeur complétées
  */
 
 /**
- * @action Récupérer les relances via GET /api/relances?impaye_ids=:id
+ * @action Récupérer les relances via GET /api/relancesimpaye_ids=:id
  * @checkpoint relances-fetched, relances liées à l'impayé reçues (table 'relances')
  */
 
@@ -58,9 +58,9 @@ Charger les informations complètes d'un impayé, son historique de relances et 
 
 | Endpoint | Table | Description |
 |----------|-------|-------------|
-| `GET /api/impayes/:id` | `impayes` | Détail de l'impayé |
-| `GET /api/contacts/:id` | `contacts` | Infos du payeur (si nécessaire) |
-| `GET /api/relances?impaye_ids=:id` | `relances` | Relances liées |
+| `GET /api/impayes?facture_soldee=0&statut=impaye
+| `GET /api/contacts?statut=actif&limit=50
+| `GET /api/relancesimpaye_ids=:id` | `relances` | Relances liées |
 
 ## Notes
 

@@ -49,3 +49,8 @@ Initialiser la page de login, vérifier si une session existe déjà (token loca
 ## Mockups de référence
 
 - `specs/mockups/login.html`
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

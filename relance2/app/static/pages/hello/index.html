@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marki - Hello World</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      html { font-family: 'Inter', system-ui, sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-50 flex items-center justify-center">
+    <div class="w-full max-w-md px-4">
+
+        <!-- Logo + Tagline -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-xl mb-4 overflow-hidden">
+                <img src="/static/marki-logo.png" alt="Marki" class="w-full h-full object-contain">
+            </div>
+            <h1 class="text-2xl font-semibold text-slate-900">Marki</h1>
+            <p class="text-sm text-slate-500 mt-1">Gestion des relances clients</p>
+        </div>
+
+        <!-- Hello World Card -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm">
+            <!-- Header -->
+            <div class="px-6 py-4 border-b border-slate-100">
+                <h2 class="text-base font-semibold text-slate-900">Hello World!</h2>
+            </div>
+
+            <!-- Body -->
+            <div class="p-6">
+                <div class="text-5xl mb-4 text-center">👋</div>
+
+                <!-- API Status -->
+                <div id="api-status" class="p-4 bg-slate-50 border border-slate-200 rounded-lg">
+                    <p class="text-slate-600 text-sm">Chargement de l'API...</p>
+                </div>
+
+                <!-- Actions -->
+                <div class="mt-6 flex gap-3 justify-center">
+                    <button onclick="fetchApiStatus()"
+                            class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium transition-all">
+                        Rafraîchir API
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <p class="text-center text-xs text-slate-400 mt-6">
+            © 2024 Marki - Tous droits réservés
+        </p>
+    </div>
+
+    <script>
+        async function fetchApiStatus() {
+            const statusDiv = document.getElementById('api-status');
+            statusDiv.innerHTML = '<p class="text-slate-600 text-sm">⏳ Chargement...</p>';
+
+            try {
+                const response = await fetch('/api/hello');
+                const data = await response.json();
+                statusDiv.innerHTML = `
+                    <div class="text-sky-600">
+                        <p class="font-semibold">✓ API Connectée</p>
+                        <p class="text-slate-600 text-sm mt-1">${data.message}</p>
+                        <p class="text-xs text-slate-400 mt-1">Status: ${data.status}</p>
+                    </div>
+                `;
+            } catch (error) {
+                statusDiv.innerHTML = `
+                    <div class="text-red-600">
+                        <p class="font-semibold">✗ Erreur API</p>
+                        <p class="text-slate-600 text-sm">${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Charger au démarrage
+        fetchApiStatus();
+    </script>
+</body>
+</html>

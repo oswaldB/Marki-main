@@ -47,7 +47,7 @@ Charger les informations du client, ses factures impayées et options de paiemen
  */
 
 /**
- * @action Récupérer les factures via GET /api/impayes?payer_id=:id&facture_soldee=false
+ * @action Récupérer les factures via GET /api/impayes?facture_soldee=0&statut=impaye
  * @checkpoint factures-fetched, factures impayées du client reçues
  * 
  * **Condition** : Seulement si token valide
@@ -73,3 +73,8 @@ Charger les informations du client, ses factures impayées et options de paiemen
 
 - `specs/mockups/portail-client.html` - Écran principal du portail client
 - `specs/mockups/portail-client-dead-token.html` - Écran lien temporaire expiré (token invalide)
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

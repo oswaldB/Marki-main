@@ -57,3 +57,8 @@ Charger les détails complets d'une séquence de suivi : étapes éducatives, mo
 ## Mockups de référence
 
 - `specs/mockups/sequences-suivi-detail.html`
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

@@ -29,13 +29,15 @@ Charger la liste des factures impayées avec pagination, filtres par défaut et 
  */
 
 /**
- * @action Récupérer les impayés via GET /api/impayes?facture_soldee=false&page=1&limit=25
- * @checkpoint impayes-fetched, tableau d'impayés reçu (collection 'impayes' existante)
+ * @action Récupérer les impayés via GET /api/impayes?facture_soldee=0&statut=impaye
+ * @checkpoint impayes-fetched, tableau d'impayés reçu
+ * @api GET /api/impayes?facture_soldee=0&statut=impaye
+ * @response { impayes: [...] }
  */
 
 /**
  * @action Calculer les statistiques côté frontend depuis les impayés chargés
- * @checkpoint stats-calculated, compteurs total/aReparer calculés (pas d'endpoint /api/impayes/stats)
+ * @checkpoint stats-calculated, compteurs total/aReparer calculés
  */
 
 /**
@@ -56,6 +58,22 @@ Charger la liste des factures impayées avec pagination, filtres par défaut et 
 
 ## API Calls
 
-| Endpoint | Table | Description |
-|----------|-------|-------------|
-| `GET /api/impayes?facture_soldee=false&page=1&limit=25` | `impayes` | Liste des impayés (factures non soldées) |
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|
+| GET | `/api/impayes?facture_soldee=0&statut=impaye` | Liste des impayés non soldés |
+| GET | `/api/dashboard/stats` | Statistiques globales |
+
+## Paramètres de requête
+
+| Paramètre | Type | Défaut | Description |
+|-----------|------|--------|-------------|
+| `facture_soldee` | integer | - | 0 pour impayés, 1 pour soldés |
+| `statut` | string | - | `impaye`, `paye`, `annule` |
+| `order_by` | string | `date_echeance` | Colonne de tri |
+| `order` | string | `ASC` | `ASC` ou `DESC` |
+| `limit` | integer | 50 | Nombre de résultats |
+| `offset` | integer | 0 | Décalage pagination |
+
+## Mockups de référence
+
+- `specs/mockups/impayes.html`

@@ -38,7 +38,7 @@ Trier le tableau par nom de payeur
 
 ## API Calls
 
-**Endpoint:** `GET /api/impayes?facture_soldee=false&sort=payeur_nom&order=asc&limit=25&skip=0`
+**Endpoint:** `GET /api/impayes?facture_soldee=0&statut=impaye
 
 **Query Params:**
 - `sort` = `payeur_nom`
@@ -49,7 +49,7 @@ Trier le tableau par nom de payeur
 
 **Table:** `impayes`
 
-**Backend (LokiJS):**
+**Backend (SQLite):**
 ```javascript
 db.query('impayes')
   .where({ facture_soldee: false })
@@ -147,5 +147,5 @@ async loadData() {
 
 - **Tri alphabétique** sur le champ dénormalisé `payeur_nom`
 - **Avec pagination, le tri doit se faire côté backend** - sinon on ne trie que les 25 éléments affichés
-- LokiJS supporte le tri via `simplesort()`
+- SQLite supporte le tri via `simplesort()`
 - Le tri reset toujours à la page 1 (logique UX)

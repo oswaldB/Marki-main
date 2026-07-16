@@ -11,10 +11,10 @@ Basculer le statut blacklist d'un contact
 
 ## Description
 - Ajoute ou retire de la blacklist
-- Désactive/active les relances
+- Annule les relances en cours si blacklisté
 
 ## Data Model
-**Page Function:** `contactsPage()`
+**Page Function:** `contactsPage()``
 
 **Stores Alpine.js:**
 - $store.ui
@@ -41,13 +41,35 @@ Basculer le statut blacklist d'un contact
 ## State Changes
 
 **Modifications:**
-- `showContactModal` modifié
+- `contact.is_blacklisted` modifié
+- Relances annulées si blacklisté
 
 ## API Calls
 
-**Pas d'appel API** - Action côté client uniquement
+**POST /api/contacts/:id/blacklist**
 
-+> faux il faut modifier la base de données regarde le /home/ubuntu/marki/relance\specs/data-models.md.
+```javascript
+// Requête
+POST /api/contacts/cont_xxx/blacklist
+Authorization: Bearer {token}
+Content-Type: application/json
+
+{
+  "motif": "Client ne souhaite plus être relancé"
+}
+
+// Réponse 200
+{
+  "contact": {
+    "id": "cont_xxx",
+    "is_blacklisted": 1,
+    "blacklist_date": "2026-07-14T15:30:00Z",
+    "blacklist_motif": "Client ne souhaite plus être relancé"
+  },
+  "action": "blacklisté",
+  "relances_annulees": 3
+}
+```
 
 ## Organisation des fichiers
 
@@ -72,23 +94,48 @@ frontend/
 
 ```javascript
 // frontend/app/contacts/js/toggle-blacklist.js
-export function toggleBlacklist() {
-  // Implementation du workflow
+export function toggleBlacklist(contactId) {
+  return fetch(`/api/contacts/${contactId}/blacklist`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${Alpine.store('auth').token}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      motif: 'Blacklist manuelle'
+    })
+  })
+  .then(r => r.json())
+  .then(data => {
+    // Mettre à jour le contact dans le store
+    Alpine.store('contacts').updateContact(data.contact);
+    return data;
+  });
 }
 ```
 
 ## Implementation
 
 ```javascript
-toggleItem() {
-  // 1. Toggle boolean state
-  this.showModal = !this.showModal;
-  // OR
-  this.isExpanded = !this.isExpanded;
-  
-  // 2. If opening, prepare data
-  if (this.showModal) {
-    this.prepareModalData();
-  }
+toggleBlacklist(contact) {
+  // 1. Appel API
+  fetch(`/api/contacts/${contact.id}/blacklist`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${this.token}`,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ motif: 'Blacklist manuelle' })
+  })
+  .then(res => res.json())
+  .then(data => {
+    // 2. Mettre à jour le contact localement
+    contact.is_blacklisted = data.contact.is_blacklisted;
+    contact.blacklist_date = data.contact.blacklist_date;
+    contact.blacklist_motif = data.contact.blacklist_motif;
+    
+    // 3. Afficher notification
+    this.showNotification(`Contact ${data.action}`);
+  });
 }
-``
+```

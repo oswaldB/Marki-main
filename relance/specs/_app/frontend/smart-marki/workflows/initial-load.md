@@ -62,3 +62,8 @@ Charger les suggestions générées par l'IA, les statistiques d'utilisation et 
 ## Mockups de référence
 
 - `specs/mockups/smart-marki.html`
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

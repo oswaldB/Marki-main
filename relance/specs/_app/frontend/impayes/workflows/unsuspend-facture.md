@@ -10,9 +10,9 @@ Bouton avec `@click="unsuspendFacture(facture)"`
 Réactiver une facture impayée suspendue
 
 ## Description
-- Réinitialise les champs de suspension dans la table `impayes`
+- Réinitialise les champs de suspension dans la table `impayes` SQLite
 - La facture redevient visible dans la liste normale
-- Conserve l'historique dans `suspension_date` et `suspension_motif` (optionnel)
+- Régénère les relances si séquence attribuée
 
 ## Data Model
 
@@ -21,9 +21,10 @@ Réactiver une facture impayée suspendue
 **Données:**
 - `impayes` - liste des impayés
 
-**Champs modifiés dans `impayes`:**
-- `is_suspended` ← `false`
-- `updated_at` ← date actuelle
+**Champs modifiés dans `impayes` (SQLite):**
+- `is_blacklisted` ← `0`
+- `blacklist_date` ← `null`
+- `blacklist_motif` ← `null`
 
 **États UI:**
 - `loading`
@@ -32,23 +33,23 @@ Réactiver une facture impayée suspendue
 ## State Changes
 
 **Modifications:**
-- `impayes[n].is_suspended` ← `false`
+- `impayes[n].is_blacklisted` ← `0`
 
 ## API Calls
 
-**Endpoint:** `PUT /api/impayes/:id`
+**POST /api/impayes/:id/unsuspend**
 
-**Payload:**
-```json
+```javascript
+// Requête
+POST /api/impayes/imp_xxx/unsuspend
+Authorization: Bearer {token}
+
+// Réponse 200
 {
-  "is_suspended": false,
-  "updated_at": "2026-07-10T15:30:00Z"
+  "message": "Impayé réactivé",
+  "relances_crees": 1
 }
 ```
-
-**Table:** `impayes`
-
-**Response:** `ApiResponse<Impaye>`
 
 ## Organisation des fichiers
 
@@ -66,8 +67,15 @@ frontend/
 
 ```javascript
 // frontend/app/impayes/js/unsuspend-facture.js
-export function unsuspendFacture() {
-  // Implementation du workflow
+export async function unsuspendFacture(impayeId) {
+  const response = await fetch(`/api/impayes/${impayeId}/unsuspend`, {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${Alpine.store('auth').token}`
+    }
+  });
+  
+  return await response.json();
 }
 ```
 
@@ -75,33 +83,19 @@ export function unsuspendFacture() {
 
 ```javascript
 async unsuspendFacture(id) {
-  // 1. Set loading
   this.loading = true;
   
   try {
-    // 2. Call API
-    const response = await fetch(`/api/impayes/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        is_suspended: false,
-        updated_at: new Date().toISOString()
-      })
-    });
+    const data = await unsuspendFacture(id);
     
-    const data = await response.json();
-    
-    if (!data.success) {
-      throw new Error(data.error?.message);
-    }
-    
-    // 3. Update local
+    // Update local
     const index = this.impayes.findIndex(item => item.id === id);
     if (index !== -1) {
-      this.impayes[index].is_suspended = false;
+      this.impayes[index].is_blacklisted = 0;
+      this.impayes[index].blacklist_date = null;
+      this.impayes[index].blacklist_motif = null;
     }
     
-    // 4. Notify
     Alpine.store('ui').addToast('Facture réactivée', 'success');
     
   } catch (error) {
@@ -115,5 +109,5 @@ async unsuspendFacture(id) {
 ## Notes
 
 - La réactivation rend la facture visible dans la liste normale
-- Les champs `suspension_date` et `suspension_motif` peuvent être conservés pour audit
+- Les relances sont régénérées automatiquement si une séquence est attribuée
 - Voir workflow `suspend-facture` pour suspendre

@@ -29,7 +29,7 @@ Charger la liste des relances avec leur statut, payeur associé, et options de f
  */
 
 /**
- * @action Récupérer les données via GET /api/relances, GET /api/contacts, GET /api/impayes
+ * @action Récupérer les données via GET /api/relances GET /api/contacts?statut=actif&limit=50
  * @checkpoint data-fetched, relances, contacts et impayes reçus
  * 
  * **Approche** : 3 appels API nécessaires car le mockup affiche:
@@ -67,3 +67,8 @@ Charger la liste des relances avec leur statut, payeur associé, et options de f
 ## Mockups de référence
 
 - `specs/mockups/relances.html`
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

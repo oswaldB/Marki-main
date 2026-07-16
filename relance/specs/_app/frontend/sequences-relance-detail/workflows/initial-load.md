@@ -67,3 +67,8 @@ Charger les détails complets d'une séquence de relance : étapes, modèles d'e
 ## Mockups de référence
 
 - `specs/mockups/sequences-relance-detail.html`
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|

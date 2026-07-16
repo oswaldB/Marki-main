@@ -29,7 +29,7 @@ Charger les relances en statut 'à valider' permettant leur revue et approbation
  */
 
 /**
- * @action Récupérer les relances à valider via GET /api/relances?valide=false&statut=pret%20pour%20envoi
+ * @action Récupérer les relances à valider via GET /api/relancesvalide=false&statut=pret%20pour%20envoi
  * @checkpoint relances-fetched, relances en attente de validation reçues
  * 
  * **Filtre** : `valide=false` (boolean) ET `statut=pret pour envoi`.
@@ -63,3 +63,8 @@ Charger les relances en statut 'à valider' permettant leur revue et approbation
 ## Mockups de référence
 
 - `specs/mockups/relances-validation.html`
+
+## API Calls
+
+| Méthode | Endpoint | Description |
+|---------|----------|-------------|
