@@ -1,0 +1,19 @@
+<!-- templates/impayes/workflows/pagination-prev.html -->
+<!-- Mega-function: Page précédente -->
+
+paginationPrev: async function() {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'paginationPrev',
+        currentPage: this.currentPage
+    });
+    
+    if (this.currentPage > 1) {
+        this.currentPage--;
+        log.debug('PAGE_CHANGED', { newPage: this.currentPage });
+    }
+    
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+}

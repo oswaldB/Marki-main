@@ -1,0 +1,11 @@
+<!-- templates/impayes_payeur/workflows/open-detail.html -->
+<!-- Mega-function: Ouvrir détail -->
+
+openDetail: async function(id) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'openDetail', impayeId: id });
+    
+    window.location.href = `/impayes-detail?id=${id}`;
+    
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+}

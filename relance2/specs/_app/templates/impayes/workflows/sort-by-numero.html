@@ -1,0 +1,22 @@
+<!-- templates/impayes/workflows/sort-by-numero.html -->
+<!-- Mega-function: Trier par numéro de facture -->
+
+sortByNumero: async function() {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'sortByNumero'
+    });
+    
+    this.sortDirection = this.sortColumn === 'nfacture' && this.sortDirection === 'asc' ? 'desc' : 'asc';
+    this.sortColumn = 'nfacture';
+    
+    this.impayes.sort((a, b) => {
+        const comparison = a.nfacture.localeCompare(b.nfacture);
+        return this.sortDirection === 'asc' ? comparison : -comparison;
+    });
+    
+    log.debug('SORT_APPLIED', { column: this.sortColumn, direction: this.sortDirection });
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+}

@@ -1,0 +1,20 @@
+<!-- templates/impayes_detail/alpinejs.html -->
+<!-- Initialisation Alpine.js avec includes des workflows -->
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('impayesDetail', () => ({
+            {% include 'impayes_detail/workflows/workflow-init.html' %},
+            {% include 'impayes_detail/workflows/initial-load.html' %},
+            {% include 'impayes_detail/workflows/open-pdf.html' %},
+            {% include 'impayes_detail/workflows/suspend-facture.html' %},
+            {% include 'impayes_detail/workflows/unsuspend-facture.html' %}
+        }));
+    });
+</script>

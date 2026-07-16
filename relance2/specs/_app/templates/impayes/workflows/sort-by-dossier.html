@@ -1,0 +1,24 @@
+<!-- templates/impayes/workflows/sort-by-dossier.html -->
+<!-- Mega-function: Trier par numéro de dossier -->
+
+sortByDossier: async function() {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'sortByDossier'
+    });
+    
+    this.sortDirection = this.sortColumn === 'numero_dossier' && this.sortDirection === 'asc' ? 'desc' : 'asc';
+    this.sortColumn = 'numero_dossier';
+    
+    this.impayes.sort((a, b) => {
+        const valA = a.numero_dossier || '';
+        const valB = b.numero_dossier || '';
+        const comparison = valA.localeCompare(valB);
+        return this.sortDirection === 'asc' ? comparison : -comparison;
+    });
+    
+    log.debug('SORT_APPLIED', { column: this.sortColumn, direction: this.sortDirection });
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+}

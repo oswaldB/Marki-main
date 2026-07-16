@@ -1,0 +1,56 @@
+<!-- templates/impayes/workflows/unsuspend-facture.html -->
+<!-- Mega-function: Réactiver une facture suspendue -->
+
+unsuspendFacture: async function(id) {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'unsuspendFacture',
+        impayeId: id
+    });
+    
+    if (!confirm('Réactiver cette facture ? Elle sera à nouveau incluse dans les relances.')) {
+        log.info('WORKFLOW_CANCELLED', { workflowId });
+        return;
+    }
+    
+    this.loading = true;
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { endpoint: `/api/impayes/${id}/reactiver` });
+        
+        const response = await fetch(`/api/impayes/${id}/reactiver`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { status: response.status });
+        
+        if (!response.ok) {
+            throw new Error('Erreur lors de la réactivation');
+        }
+        
+        // Mise à jour locale
+        const impaye = this.impayes.find(i => i.id === id);
+        if (impaye) {
+            impaye.statut = 'impaye';
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime
+        });
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    } finally {
+        this.loading = false;
+    }
+}

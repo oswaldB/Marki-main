@@ -1,0 +1,31 @@
+<!-- templates/relances/workflows/cancel-relance.html -->
+<!-- Mega-function: Annuler relance -->
+
+cancelRelance: async function(id) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'cancelRelance', relanceId: id });
+    
+    if (!confirm('Annuler cette relance ?')) return;
+    
+    this.loading = true;
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        const response = await fetch(`/api/relances/${id}/annuler`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error('Erreur');
+        
+        this.relances = this.relances.filter(r => r.id !== id);
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    } finally {
+        this.loading = false;
+    }
+}

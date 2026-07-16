@@ -1,0 +1,19 @@
+<!-- templates/impayes/workflows/pagination-next.html -->
+<!-- Mega-function: Page suivante -->
+
+paginationNext: async function() {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'paginationNext',
+        currentPage: this.currentPage
+    });
+    
+    if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+        log.debug('PAGE_CHANGED', { newPage: this.currentPage });
+    }
+    
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+}

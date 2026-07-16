@@ -1,0 +1,11 @@
+<!-- templates/relances/workflows/workflow-init.html -->
+<!-- État initial -->
+
+loading: false,
+error: null,
+relances: [],
+
+init: function() {
+    log.info('PAGE_INIT', { page: 'relances' });
+    this.initialLoad();
+}

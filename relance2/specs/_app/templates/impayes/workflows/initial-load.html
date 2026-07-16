@@ -1,0 +1,57 @@
+<!-- templates/impayes/workflows/initial-load.html -->
+<!-- Mega-function: Chargement initial des impayés -->
+
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'initialLoad',
+        page: 'impayes'
+    });
+    
+    this.loading = true;
+    this.error = null;
+    
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            log.warn('AUTH_MISSING');
+            window.location.href = '/login';
+            return;
+        }
+        
+        log.debug('API_CALL_START', { endpoint: '/api/impayes' });
+        
+        const response = await fetch('/api/impayes', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { status: response.status });
+        
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
+        this.impayes = data;
+        
+        log.debug('DATA_LOADED', { count: this.impayes.length });
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime,
+            count: this.impayes.length
+        });
+        
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    } finally {
+        this.loading = false;
+    }
+}

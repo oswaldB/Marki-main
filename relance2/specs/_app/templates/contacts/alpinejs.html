@@ -1,0 +1,18 @@
+<!-- templates/contacts/alpinejs.html -->
+<!-- Initialisation Alpine.js avec includes des workflows -->
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('contacts', () => ({
+            {% include 'contacts/workflows/workflow-init.html' %},
+            {% include 'contacts/workflows/initial-load.html' %},
+            {% include 'contacts/workflows/toggle-blacklist.html' %}
+        }));
+    });
+</script>

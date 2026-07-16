@@ -1,0 +1,33 @@
+<!-- templates/impayes_payeur/workflows/initial-load.html -->
+<!-- Mega-function: Chargement -->
+
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'initialLoad', payeurId: this.payeurId });
+    
+    this.loading = true;
+    this.error = null;
+    
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = '/login';
+            return;
+        }
+        
+        const response = await fetch(`/api/contacts/${this.payeurId}/impayes`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error(`Erreur HTTP ${response.status}`);
+        
+        this.impayes = await response.json();
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, count: this.impayes.length });
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    } finally {
+        this.loading = false;
+    }
+}

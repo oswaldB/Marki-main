@@ -1,0 +1,11 @@
+<!-- templates/contacts/workflows/workflow-init.html -->
+<!-- État initial -->
+
+loading: false,
+error: null,
+contacts: [],
+
+init: function() {
+    log.info('PAGE_INIT', { page: 'contacts' });
+    this.initialLoad();
+}

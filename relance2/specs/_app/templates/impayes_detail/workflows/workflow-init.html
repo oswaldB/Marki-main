@@ -1,0 +1,30 @@
+<!-- templates/impayes_detail/workflows/workflow-init.html -->
+<!-- État initial -->
+
+loading: false,
+error: null,
+impaye: null,
+impayeId: null,
+
+init: function() {
+    log.info('PAGE_INIT', { page: 'impayes_detail' });
+    
+    const urlParams = new URLSearchParams(window.location.search);
+    this.impayeId = urlParams.get('id');
+    
+    if (!this.impayeId) {
+        this.error = 'ID manquant';
+        return;
+    }
+    
+    this.initialLoad();
+},
+
+formatMoney: function(amount) {
+    return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR' }).format(amount);
+},
+
+formatDate: function(dateStr) {
+    if (!dateStr) return '-';
+    return new Date(dateStr).toLocaleDateString('fr-FR');
+}

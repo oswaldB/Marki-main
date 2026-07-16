@@ -1,0 +1,24 @@
+<!-- templates/impayes/workflows/sort-by-payeur.html -->
+<!-- Mega-function: Trier par payeur -->
+
+sortByPayeur: async function() {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'sortByPayeur'
+    });
+    
+    this.sortDirection = this.sortColumn === 'payeur_nom' && this.sortDirection === 'asc' ? 'desc' : 'asc';
+    this.sortColumn = 'payeur_nom';
+    
+    this.impayes.sort((a, b) => {
+        const valA = a.payeur_nom || '';
+        const valB = b.payeur_nom || '';
+        const comparison = valA.localeCompare(valB);
+        return this.sortDirection === 'asc' ? comparison : -comparison;
+    });
+    
+    log.debug('SORT_APPLIED', { column: this.sortColumn, direction: this.sortDirection });
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+}

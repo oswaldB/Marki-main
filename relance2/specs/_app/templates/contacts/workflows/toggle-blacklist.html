@@ -1,0 +1,30 @@
+<!-- templates/contacts/workflows/toggle-blacklist.html -->
+<!-- Mega-function: Basculer blacklist -->
+
+toggleBlacklist: async function(id) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'toggleBlacklist', contactId: id });
+    
+    try {
+        const token = localStorage.getItem('token');
+        const contact = this.contacts.find(c => c.id === id);
+        
+        const newStatus = !contact.blacklist;
+        
+        const response = await fetch(`/api/contacts/${id}/blacklist`, {
+            method: 'POST',
+            headers: { 
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ blacklist: newStatus })
+        });
+        
+        if (!response.ok) throw new Error('Erreur');
+        
+        contact.blacklist = newStatus;
+        log.info('WORKFLOW_SUCCESS', { workflowId, newStatus });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}
