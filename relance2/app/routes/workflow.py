@@ -317,3 +317,50 @@ def unsuspend_impaye_endpoint(impaye_id):
     except Exception as e:
         print(f"[API.WORKFLOW] ERROR: {str(e)}")
         return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@bp.route('/test-suivi/<suivi_id>', methods=['POST'])
+def test_suivi_endpoint(suivi_id):
+    """Test single suivi email."""
+    print(f"[API.WORKFLOW] START: test-suivi/{suivi_id}")
+    
+    try:
+        from ..workflows import test_single_suivi
+        data = request.get_json()
+        result = test_single_suivi(suivi_id, data.get('test_address'))
+        print("[API.WORKFLOW] SUCCESS: test-suivi")
+        return jsonify({'success': True, 'data': result})
+    except Exception as e:
+        print(f"[API.WORKFLOW] ERROR: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@bp.route('/auth-login', methods=['POST'])
+def auth_login_endpoint():
+    """Auth login workflow."""
+    print("[API.WORKFLOW] START: auth-login")
+    
+    try:
+        from ..workflows import auth_login_workflow
+        data = request.get_json()
+        result = auth_login_workflow(data.get('username'), data.get('password'))
+        print("[API.WORKFLOW] SUCCESS: auth-login")
+        return jsonify(result)
+    except Exception as e:
+        print(f"[API.WORKFLOW] ERROR: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@bp.route('/cleanup-orphan', methods=['POST'])
+def cleanup_orphan_endpoint():
+    """Cleanup orphan relances."""
+    print("[API.WORKFLOW] START: cleanup-orphan")
+    
+    try:
+        from ..workflows import cleanup_orphan_relances
+        result = cleanup_orphan_relances()
+        print("[API.WORKFLOW] SUCCESS: cleanup-orphan")
+        return jsonify({'success': True, 'data': result})
+    except Exception as e:
+        print(f"[API.WORKFLOW] ERROR: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)}), 500

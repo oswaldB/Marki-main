@@ -23,6 +23,9 @@ from .contacts_blacklist import blacklist_contact, unblacklist_contact
 from .users_management import create_user, update_user, delete_user
 from .portail_client import get_portail_data, initiate_payment
 from .impayes_suspend import suspend_impaye, unsuspend_impaye
+from .test_single_suivi import test_single_suivi
+from .auth_login import auth_login_workflow, auth_logout_workflow, auth_me_workflow
+from .cleanup_orphan_relances import cleanup_orphan_relances
 
 __all__ = [
     'generate_relances',
@@ -50,5 +53,9 @@ __all__ = [
     'get_portail_data',
     'initiate_payment',
     'suspend_impaye',
-    'unsuspend_impaye'
+    'unsuspend_impaye',
+    'auth_login_workflow',
+    'auth_logout_workflow',
+    'auth_me_workflow',
+    'cleanup_orphan_relances'
 ]
