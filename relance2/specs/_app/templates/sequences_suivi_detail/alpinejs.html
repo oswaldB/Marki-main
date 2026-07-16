@@ -35,7 +35,12 @@
             },
             
             // =====================================================
-            // 2. WORKFLOWS
+            // 2. INIT (EN PREMIER)
+            // =====================================================
+            {% include 'sequences_suivi_detail/workflows/workflow-init.html' %},
+            
+            // =====================================================
+            // 3. WORKFLOWS
             // =====================================================
             {% include 'sequences_suivi_detail/workflows/initial-load.html' %},
             {% include 'sequences_suivi_detail/workflows/select-scenario-single.html' %},
@@ -55,11 +60,6 @@
             {% include 'sequences_suivi_detail/workflows/select-heure.html' %},
             {% include 'sequences_suivi_detail/workflows/toggle-collapse.html' %},
             {% include 'sequences_suivi_detail/workflows/open-ia-modal.html' %},
-            
-            // =====================================================
-            // 3. INIT
-            // =====================================================
-            {% include 'sequences_suivi_detail/workflows/workflow-init.html' %},
             
             // Helpers
             actionChanged(index) {

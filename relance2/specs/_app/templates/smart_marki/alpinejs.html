@@ -24,19 +24,19 @@
             selectedInsight: null,
             
             // =====================================================
-            // 2. WORKFLOWS
+            // 2. INIT (EN PREMIER)
+            // =====================================================
+            {% include 'smart_marki/workflows/workflow-init.html' %},
+            
+            // =====================================================
+            // 3. WORKFLOWS
             // =====================================================
             {% include 'smart_marki/workflows/initial-load.html' %},
             {% include 'smart_marki/workflows/open-insight.html' %},
             {% include 'smart_marki/workflows/close-insight.html' %},
             {% include 'smart_marki/workflows/apply-insight.html' %},
             {% include 'smart_marki/workflows/dismiss-insight.html' %},
-            {% include 'smart_marki/workflows/mark-all-read.html' %},
-            
-            // =====================================================
-            // 3. INIT
-            // =====================================================
-            {% include 'smart_marki/workflows/workflow-init.html' %}
+            {% include 'smart_marki/workflows/mark-all-read.html' %}
         }));
     });
 </script>

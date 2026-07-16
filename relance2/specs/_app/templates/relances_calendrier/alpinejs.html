@@ -96,7 +96,12 @@
             },
             
             // =====================================================
-            // 2. WORKFLOWS
+            // 2. INIT (EN PREMIER - charge les données)
+            // =====================================================
+            {% include 'relances_calendrier/workflows/workflow-init.html' %},
+            
+            // =====================================================
+            // 3. WORKFLOWS (utilisent les données initialisées)
             // =====================================================
             {% include 'relances_calendrier/workflows/initial-load.html' %},
             {% include 'relances_calendrier/workflows/previous-period.html' %},
@@ -107,11 +112,6 @@
             {% include 'relances_calendrier/workflows/open-edit-relance.html' %},
             {% include 'relances_calendrier/workflows/save-edit.html' %},
             {% include 'relances_calendrier/workflows/close-modal.html' %},
-            
-            // =====================================================
-            // 3. INIT
-            // =====================================================
-            {% include 'relances_calendrier/workflows/workflow-init.html' %},
             
             // Helpers
             getRelancesForDate(dateStr) {

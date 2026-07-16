@@ -45,7 +45,12 @@
             },
             
             // =====================================================
-            // 2. WORKFLOWS
+            // 2. INIT (EN PREMIER)
+            // =====================================================
+            {% include 'relances_validation/workflows/workflow-init.html' %},
+            
+            // =====================================================
+            // 3. WORKFLOWS
             // =====================================================
             {% include 'relances_validation/workflows/initial-load.html' %},
             {% include 'relances_validation/workflows/filter-all.html' %},
@@ -58,11 +63,6 @@
             {% include 'relances_validation/workflows/blacklister-relance.html' %},
             {% include 'relances_validation/workflows/suspendre-relance.html' %},
             {% include 'relances_validation/workflows/save-changes.html' %},
-            
-            // =====================================================
-            // 3. INIT
-            // =====================================================
-            {% include 'relances_validation/workflows/workflow-init.html' %},
             
             // Helpers
             formatMoney(amount) {

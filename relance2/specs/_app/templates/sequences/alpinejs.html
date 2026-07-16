@@ -38,7 +38,12 @@
             },
             
             // =====================================================
-            // 2. WORKFLOWS
+            // 2. INIT (EN PREMIER)
+            // =====================================================
+            {% include 'sequences/workflows/workflow-init.html' %},
+            
+            // =====================================================
+            // 3. WORKFLOWS
             // =====================================================
             {% include 'sequences/workflows/initial-load.html' %},
             {% include 'sequences/workflows/filter-all.html' %},
@@ -47,12 +52,7 @@
             {% include 'sequences/workflows/new-sequence.html' %},
             {% include 'sequences/workflows/create-sequence.html' %},
             {% include 'sequences/workflows/duplicate-sequence.html' %},
-            {% include 'sequences/workflows/close-modal.html' %},
-            
-            // =====================================================
-            // 3. INIT
-            // =====================================================
-            {% include 'sequences/workflows/workflow-init.html' %}
+            {% include 'sequences/workflows/close-modal.html' %}
         }));
     });
 </script>

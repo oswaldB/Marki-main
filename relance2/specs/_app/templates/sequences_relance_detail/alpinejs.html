@@ -32,7 +32,12 @@
             },
             
             // =====================================================
-            // 2. WORKFLOWS
+            // 2. INIT (EN PREMIER)
+            // =====================================================
+            {% include 'sequences_relance_detail/workflows/workflow-init.html' %},
+            
+            // =====================================================
+            // 3. WORKFLOWS
             // =====================================================
             {% include 'sequences_relance_detail/workflows/initial-load.html' %},
             {% include 'sequences_relance_detail/workflows/select-scenario-single.html' %},
@@ -54,11 +59,6 @@
             {% include 'sequences_relance_detail/workflows/open-chatgpt.html' %},
             {% include 'sequences_relance_detail/workflows/select-scenario-impayes-broker.html' %},
             {% include 'sequences_relance_detail/workflows/supprimer-groupe.html' %},
-            
-            // =====================================================
-            // 3. INIT
-            // =====================================================
-            {% include 'sequences_relance_detail/workflows/workflow-init.html' %},
             
             // Helpers
             actionChanged(index) {
