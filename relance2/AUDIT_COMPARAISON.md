@@ -15,7 +15,73 @@
 
 ---
 
-## Partie 1: Pages Implémentées vs Specs
+## Partie 1: Implémentations Réalisées (Détail)
+
+### Backend (10 routes + db.py)
+
+| Module | Fichier | Endpoints | Description |
+|--------|---------|-----------|-------------|
+| **Database** | `app/db.py` | get_db(), close_db(), init_db() | Connexion SQLite + création tables |
+| **Auth** | `app/routes/auth.py` | /api/auth/login, /api/auth/me, /api/auth/logout | Authentification JWT |
+| **Contacts** | `app/routes/contacts.py` | /api/contacts, /api/contacts/:id | CRUD contacts + blacklist |
+| **Impayés** | `app/routes/impayes.py` | /api/impayes, /api/impayes/:id | CRUD impayés + suspension |
+| **Relances** | `app/routes/relances.py` | /api/relances, /api/relances/:id | CRUD relances |
+| **Séquences** | `app/routes/sequences.py` | /api/sequences, /api/sequences/:id | CRUD séquences |
+| **Events** | `app/routes/events.py` | /api/events, /api/events/:id/read, /api/events/mark-all-read | Notifications |
+| **Dashboard** | `app/routes/dashboard.py` | /api/dashboard/stats, /api/dashboard/recent | Stats calculées |
+| **Settings** | `app/routes/settings.py` | /api/settings/smtp, /api/settings/users | SMTP + utilisateurs |
+| **Portail** | `app/routes/portail.py` | /api/portail/login, /api/portail/data | Portail client |
+
+**Total backend**: 10 modules Python, ~22 endpoints REST
+
+---
+
+### Frontend (15 pages complètes)
+
+| Page | Fichiers créés | Pattern | Features |
+|------|---------------|---------|----------|
+| **login** | index.html, alpinejs.html, 2 workflows | Props→Init→Workflows | Auth JWT, validation, redirect |
+| **dashboard** | index.html, alpinejs.html, 2 workflows | Props→Init→Workflows | Stats cards, activité récente, sync |
+| **impayes** | index.html, alpinejs.html, 6 workflows | Props→Init→Workflows | Liste, filtres, tri, pagination |
+| **contacts** | index.html, alpinejs.html, 5 workflows | Props→Init→Workflows | Liste, filtres, export CSV |
+| **relances** | index.html, alpinejs.html, 5 workflows | Props→Init→Workflows | Liste, valider, supprimer, pagination |
+| **sequences** | index.html, alpinejs.html, 5 workflows | Props→Init→Workflows | Liste, CRUD, duplication, pagination |
+| **evenements** | index.html, alpinejs.html, 3 workflows | Props→Init→Workflows | Liste, filtre lu/non-lu, mark-all-read |
+| **settings** | index.html | Simple | Menu navigation |
+| **settings_smtp** | index.html, alpinejs.html, 5 workflows | Props→Init→Workflows | Liste profils, CRUD, test connexion |
+| **settings_smtp_detail** | index.html, alpinejs.html, 5 workflows | Props→Init→Workflows | Formulaire édition/création |
+| **settings_utilisateurs** | index.html, alpinejs.html, 5 workflows | Props→Init→Workflows | Liste utilisateurs, toggle actif |
+| **relances_calendrier** | index.html | Simple | Placeholder calendrier |
+| **relances_validation** | index.html, alpinejs.html, 6 workflows | Props→Init→Workflows | Validation en masse, sélection |
+| **impayes_detail** | index.html, alpinejs.html, 2 workflows | Props→Init→Workflows | Fiche impayé, infos contact |
+
+**Total frontend**: 15 pages, ~82 fichiers (HTML + workflows)
+
+---
+
+### Composants Partagés
+
+| Composant | Fichier | Usage |
+|-----------|---------|-------|
+| **Sidebar Navigation** | `static/components/sidebar-nav-dual.js` | Toutes les pages app |
+| **Layout App** | `templates/layouts/layout_app.html` | Layout de base Jinja2 |
+
+---
+
+### Infrastructure
+
+| Fichier | Rôle |
+|---------|------|
+| `app/__init__.py` | Package Flask avec export create_app |
+| `app/__main__.py` | Point d'entrée `python -m app` |
+| `app/app.py` | Factory Flask, routes pages |
+| `wsgi.py` | Point d'entrée WSGI |
+| `run.py` | Script de lancement |
+| `console_fetch.py` | Script d'audit automatique |
+
+---
+
+## Partie 2: Pages Implémentées vs Specs (Synthèse)
 
 ### ✅ Pages Complètes (100% fonctionnelles)
 
@@ -52,7 +118,7 @@
 
 ---
 
-## Partie 2: Workflows - Specs vs Implémentés
+## Partie 3: Workflows - Specs vs Implémentés
 
 ### Login (2/2 workflows) ✅
 - ✅ initial-load
@@ -134,7 +200,7 @@
 
 ---
 
-## Partie 3: Routes Backend
+## Partie 4: Routes Backend
 
 ### Routes Implémentées (10/50+) ✅
 
@@ -174,7 +240,7 @@
 
 ---
 
-## Partie 4: Conformité au Pattern
+## Partie 5: Conformité au Pattern
 
 ### ✅ Pattern Respecté (toutes les pages)
 
@@ -213,7 +279,7 @@ const log = {
 
 ---
 
-## Partie 5: Incohérences Détectées et Corrigées
+## Partie 6: Incohérences Détectées et Corrigées
 
 ### 🚨 Problème 1: Nom de colonne `lu` vs `read`
 
