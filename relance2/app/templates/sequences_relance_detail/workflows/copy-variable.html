@@ -1,0 +1,14 @@
+// Workflow: Copy variable to clipboard
+copyVariable: function(variable) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'copyVariable', variable });
+    
+    try {
+        navigator.clipboard.writeText(variable);
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        this.showNotification && this.showNotification('Variable copiée !', 'success');
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

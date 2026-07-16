@@ -1,0 +1,29 @@
+// Workflow: Toggle scenario active status
+toggleScenarioActive: async function(scenario) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'toggleScenarioActive', scenario });
+    
+    try {
+        const token = localStorage.getItem('token');
+        const newValue = !this.scenarios[scenario]?.actif;
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/sequences/${this.sequence.id}/scenarios`, method: 'PUT' });
+        
+        const response = await fetch(`/api/sequences/${this.sequence.id}/scenarios`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ scenario, actif: newValue })
+        });
+        
+        if (!response.ok) throw new Error('Erreur lors du changement');
+        
+        this.scenarios[scenario].actif = newValue;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, scenario, newValue });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, scenario, error: error.message });
+    }
+}

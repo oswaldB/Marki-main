@@ -1,0 +1,13 @@
+// Workflow: Open payment links configuration
+openLiensPaiement: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'openLiensPaiement' });
+    
+    try {
+        this.showPaymentLinksModal = true;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

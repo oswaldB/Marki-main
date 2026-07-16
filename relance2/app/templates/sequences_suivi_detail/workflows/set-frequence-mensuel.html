@@ -1,0 +1,13 @@
+// Workflow: Set monthly frequency
+setFrequenceMensuel: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'setFrequenceMensuel' });
+    
+    try {
+        this.sequence.frequence = 'mensuel';
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, frequence: 'mensuel' });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

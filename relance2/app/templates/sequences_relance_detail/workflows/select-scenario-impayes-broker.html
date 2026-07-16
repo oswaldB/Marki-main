@@ -1,0 +1,13 @@
+// Workflow: Select impayes broker scenario
+selectScenarioImpayesBroker: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'selectScenarioImpayesBroker' });
+    
+    try {
+        this.selectedScenario = 'impayes_broker';
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, scenario: 'impayes_broker' });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

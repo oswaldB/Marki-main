@@ -1,0 +1,13 @@
+// Workflow: Toggle collapse section
+toggleCollapse: function(section) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'toggleCollapse', section });
+    
+    try {
+        this.collapsedSections[section] = !this.collapsedSections[section];
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, section, collapsed: this.collapsedSections[section] });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}
