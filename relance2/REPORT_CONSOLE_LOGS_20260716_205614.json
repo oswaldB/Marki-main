@@ -1,0 +1,1203 @@
+{
+  "timestamp": "2026-07-16T20:56:14.008677",
+  "base_url": "http://localhost:5000",
+  "total_pages": 13,
+  "pages": [
+    {
+      "page": "Login",
+      "path": "/login",
+      "url": "http://localhost:5000/login",
+      "status": 200,
+      "has_alpine": true,
+      "logs": {
+        "log": [
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"c86855ac-e16b-4268-8bcb-b2736a93f836\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:24.002341"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"c86855ac-e16b-4268-8bcb-b2736a93f836\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:24.012223"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"c86855ac-e16b-4268-8bcb-b2736a93f836\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:24.012487"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"3645c67c-e09f-4ceb-9461-f94b6d0be6d5\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:27.030877"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"3645c67c-e09f-4ceb-9461-f94b6d0be6d5\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:27.031585"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"3645c67c-e09f-4ceb-9461-f94b6d0be6d5\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:27.031858"
+          }
+        ],
+        "info": [],
+        "warn": [],
+        "error": [],
+        "debug": [],
+        "all": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:55:23.693436"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"c86855ac-e16b-4268-8bcb-b2736a93f836\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:24.002341"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"c86855ac-e16b-4268-8bcb-b2736a93f836\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:24.012223"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"c86855ac-e16b-4268-8bcb-b2736a93f836\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:24.012487"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"3645c67c-e09f-4ceb-9461-f94b6d0be6d5\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:27.030877"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"3645c67c-e09f-4ceb-9461-f94b6d0be6d5\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:27.031585"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"3645c67c-e09f-4ceb-9461-f94b6d0be6d5\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:27.031858"
+          }
+        ]
+      },
+      "summary": {
+        "total": 7,
+        "log": 6,
+        "info": 0,
+        "warn": 0,
+        "error": 0,
+        "debug": 0,
+        "workflow_logs": 4
+      },
+      "ok": true
+    },
+    {
+      "page": "Dashboard",
+      "path": "/dashboard",
+      "url": "http://localhost:5000/dashboard",
+      "status": 200,
+      "has_alpine": true,
+      "logs": {
+        "log": [],
+        "info": [],
+        "warn": [],
+        "error": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:27.328859"
+          }
+        ],
+        "debug": [],
+        "all": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:55:27.222519"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:27.328859"
+          }
+        ]
+      },
+      "summary": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "debug": 0,
+        "workflow_logs": 0
+      },
+      "ok": false
+    },
+    {
+      "page": "Impayés",
+      "path": "/impayes",
+      "url": "http://localhost:5000/impayes",
+      "status": 200,
+      "has_alpine": true,
+      "logs": {
+        "log": [],
+        "info": [],
+        "warn": [],
+        "error": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:31.237341"
+          }
+        ],
+        "debug": [],
+        "all": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:55:31.133761"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:31.237341"
+          }
+        ]
+      },
+      "summary": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "debug": 0,
+        "workflow_logs": 0
+      },
+      "ok": false
+    },
+    {
+      "page": "Contacts",
+      "path": "/contacts",
+      "url": "http://localhost:5000/contacts",
+      "status": 200,
+      "has_alpine": true,
+      "logs": {
+        "log": [],
+        "info": [],
+        "warn": [],
+        "error": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:35.184393"
+          }
+        ],
+        "debug": [],
+        "all": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:55:35.054269"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:35.184393"
+          }
+        ]
+      },
+      "summary": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "debug": 0,
+        "workflow_logs": 0
+      },
+      "ok": false
+    },
+    {
+      "page": "Relances",
+      "path": "/relances",
+      "url": "http://localhost:5000/relances",
+      "status": 200,
+      "has_alpine": true,
+      "logs": {
+        "log": [],
+        "info": [],
+        "warn": [],
+        "error": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:39.074018"
+          }
+        ],
+        "debug": [],
+        "all": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:55:38.958978"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:39.074018"
+          }
+        ]
+      },
+      "summary": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "debug": 0,
+        "workflow_logs": 0
+      },
+      "ok": false
+    },
+    {
+      "page": "Séquences",
+      "path": "/sequences",
+      "url": "http://localhost:5000/sequences",
+      "status": 200,
+      "has_alpine": true,
+      "logs": {
+        "log": [],
+        "info": [],
+        "warn": [],
+        "error": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:42.957363"
+          }
+        ],
+        "debug": [],
+        "all": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:55:42.850839"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:42.957363"
+          }
+        ]
+      },
+      "summary": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "debug": 0,
+        "workflow_logs": 0
+      },
+      "ok": false
+    },
+    {
+      "page": "Événements",
+      "path": "/evenements",
+      "url": "http://localhost:5000/evenements",
+      "status": 200,
+      "has_alpine": true,
+      "logs": {
+        "log": [],
+        "info": [],
+        "warn": [],
+        "error": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:46.834576"
+          }
+        ],
+        "debug": [],
+        "all": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:55:46.720026"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:46.834576"
+          }
+        ]
+      },
+      "summary": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "debug": 0,
+        "workflow_logs": 0
+      },
+      "ok": false
+    },
+    {
+      "page": "Paramètres",
+      "path": "/settings",
+      "url": "http://localhost:5000/settings",
+      "status": 200,
+      "has_alpine": true,
+      "logs": {
+        "log": [
+          {
+            "type": "log",
+            "text": "[INFO][PAGE_INIT] {page: settings}",
+            "location": "{'url': 'http://localhost:5000/settings', 'line': 99, 'column': 24, 'lineNumber': 99, 'columnNumber': 24}",
+            "time": "2026-07-16T20:55:50.743474"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][PAGE_INIT] {page: settings}",
+            "location": "{'url': 'http://localhost:5000/settings', 'line': 99, 'column': 24, 'lineNumber': 99, 'columnNumber': 24}",
+            "time": "2026-07-16T20:55:50.748915"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"59d5fca0-3091-4095-8dc4-4a02100271a1\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:50.874645"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"59d5fca0-3091-4095-8dc4-4a02100271a1\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:50.874885"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"59d5fca0-3091-4095-8dc4-4a02100271a1\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:50.875050"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"efeb535a-04f9-4fc6-b68a-e67b55408c1d\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:50.875213"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"efeb535a-04f9-4fc6-b68a-e67b55408c1d\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:50.875383"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"efeb535a-04f9-4fc6-b68a-e67b55408c1d\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:50.875521"
+          }
+        ],
+        "info": [],
+        "warn": [],
+        "error": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:50.724182"
+          }
+        ],
+        "debug": [],
+        "all": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:55:50.608049"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:50.724182"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][PAGE_INIT] {page: settings}",
+            "location": "{'url': 'http://localhost:5000/settings', 'line': 99, 'column': 24, 'lineNumber': 99, 'columnNumber': 24}",
+            "time": "2026-07-16T20:55:50.743474"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][PAGE_INIT] {page: settings}",
+            "location": "{'url': 'http://localhost:5000/settings', 'line': 99, 'column': 24, 'lineNumber': 99, 'columnNumber': 24}",
+            "time": "2026-07-16T20:55:50.748915"
+          },
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:55:50.784628"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"59d5fca0-3091-4095-8dc4-4a02100271a1\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:50.874645"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"59d5fca0-3091-4095-8dc4-4a02100271a1\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:50.874885"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"59d5fca0-3091-4095-8dc4-4a02100271a1\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:50.875050"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"efeb535a-04f9-4fc6-b68a-e67b55408c1d\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:50.875213"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"efeb535a-04f9-4fc6-b68a-e67b55408c1d\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:50.875383"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"efeb535a-04f9-4fc6-b68a-e67b55408c1d\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:50.875521"
+          }
+        ]
+      },
+      "summary": {
+        "total": 11,
+        "log": 8,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "debug": 0,
+        "workflow_logs": 4
+      },
+      "ok": false
+    },
+    {
+      "page": "SMTP",
+      "path": "/settings-smtp",
+      "url": "http://localhost:5000/settings-smtp",
+      "status": 200,
+      "has_alpine": true,
+      "logs": {
+        "log": [
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"5448041e-53e0-4fe4-989e-f8ab3c3b83fa\",\"workflow\":\"init\",\"page\":\"settings-smtp\"}",
+            "location": "{'url': 'http://localhost:5000/settings-smtp', 'line': 113, 'column': 39, 'lineNumber': 113, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.669915"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"5f763e54-1146-4216-9e5c-6b84cbda83af\",\"workflow\":\"init\",\"page\":\"settings-smtp\"}",
+            "location": "{'url': 'http://localhost:5000/settings-smtp', 'line': 113, 'column': 39, 'lineNumber': 113, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.678647"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"c23ab4d4-df74-413b-9bd9-97e0320e3721\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.776962"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"c23ab4d4-df74-413b-9bd9-97e0320e3721\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.777180"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"c23ab4d4-df74-413b-9bd9-97e0320e3721\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.777350"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"74353e26-1529-465b-b06e-2be37fd41913\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.777555"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"74353e26-1529-465b-b06e-2be37fd41913\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.777980"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"74353e26-1529-465b-b06e-2be37fd41913\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.778144"
+          }
+        ],
+        "info": [],
+        "warn": [],
+        "error": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:54.651622"
+          }
+        ],
+        "debug": [],
+        "all": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:55:54.546076"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:54.651622"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"5448041e-53e0-4fe4-989e-f8ab3c3b83fa\",\"workflow\":\"init\",\"page\":\"settings-smtp\"}",
+            "location": "{'url': 'http://localhost:5000/settings-smtp', 'line': 113, 'column': 39, 'lineNumber': 113, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.669915"
+          },
+          {
+            "type": "warning",
+            "text": "[WARN][AUTH_MISSING] {\"workflowId\":\"5448041e-53e0-4fe4-989e-f8ab3c3b83fa\"}",
+            "location": "{'url': 'http://localhost:5000/settings-smtp', 'line': 114, 'column': 39, 'lineNumber': 114, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.670165"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"5f763e54-1146-4216-9e5c-6b84cbda83af\",\"workflow\":\"init\",\"page\":\"settings-smtp\"}",
+            "location": "{'url': 'http://localhost:5000/settings-smtp', 'line': 113, 'column': 39, 'lineNumber': 113, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.678647"
+          },
+          {
+            "type": "warning",
+            "text": "[WARN][AUTH_MISSING] {\"workflowId\":\"5f763e54-1146-4216-9e5c-6b84cbda83af\"}",
+            "location": "{'url': 'http://localhost:5000/settings-smtp', 'line': 114, 'column': 39, 'lineNumber': 114, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.679110"
+          },
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:55:54.699292"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"c23ab4d4-df74-413b-9bd9-97e0320e3721\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.776962"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"c23ab4d4-df74-413b-9bd9-97e0320e3721\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.777180"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"c23ab4d4-df74-413b-9bd9-97e0320e3721\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.777350"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"74353e26-1529-465b-b06e-2be37fd41913\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.777555"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"74353e26-1529-465b-b06e-2be37fd41913\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.777980"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"74353e26-1529-465b-b06e-2be37fd41913\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:54.778144"
+          }
+        ]
+      },
+      "summary": {
+        "total": 13,
+        "log": 8,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "debug": 0,
+        "workflow_logs": 6
+      },
+      "ok": false
+    },
+    {
+      "page": "Utilisateurs",
+      "path": "/settings-utilisateurs",
+      "url": "http://localhost:5000/settings-utilisateurs",
+      "status": 200,
+      "has_alpine": true,
+      "logs": {
+        "log": [
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"a7c7ad2b-4e4e-4819-b12a-2969531fab10\",\"workflow\":\"init\",\"page\":\"settings-utilisateurs\"}",
+            "location": "{'url': 'http://localhost:5000/settings-utilisateurs', 'line': 115, 'column': 39, 'lineNumber': 115, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.614386"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"bf05f5d8-d929-4119-96ee-0a064623d349\",\"workflow\":\"init\",\"page\":\"settings-utilisateurs\"}",
+            "location": "{'url': 'http://localhost:5000/settings-utilisateurs', 'line': 115, 'column': 39, 'lineNumber': 115, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.617845"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"11374dc6-c86f-4ed6-b8bb-98dabe6a7790\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.742272"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"11374dc6-c86f-4ed6-b8bb-98dabe6a7790\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.742590"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"11374dc6-c86f-4ed6-b8bb-98dabe6a7790\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.742754"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"19c98443-3560-4360-a82f-e66f97785c4f\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.742907"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"19c98443-3560-4360-a82f-e66f97785c4f\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.743051"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"19c98443-3560-4360-a82f-e66f97785c4f\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.743505"
+          }
+        ],
+        "info": [],
+        "warn": [],
+        "error": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:58.592676"
+          }
+        ],
+        "debug": [],
+        "all": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:55:58.469052"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:55:58.592676"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"a7c7ad2b-4e4e-4819-b12a-2969531fab10\",\"workflow\":\"init\",\"page\":\"settings-utilisateurs\"}",
+            "location": "{'url': 'http://localhost:5000/settings-utilisateurs', 'line': 115, 'column': 39, 'lineNumber': 115, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.614386"
+          },
+          {
+            "type": "warning",
+            "text": "[WARN][AUTH_MISSING] {\"workflowId\":\"a7c7ad2b-4e4e-4819-b12a-2969531fab10\"}",
+            "location": "{'url': 'http://localhost:5000/settings-utilisateurs', 'line': 116, 'column': 39, 'lineNumber': 116, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.614646"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"bf05f5d8-d929-4119-96ee-0a064623d349\",\"workflow\":\"init\",\"page\":\"settings-utilisateurs\"}",
+            "location": "{'url': 'http://localhost:5000/settings-utilisateurs', 'line': 115, 'column': 39, 'lineNumber': 115, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.617845"
+          },
+          {
+            "type": "warning",
+            "text": "[WARN][AUTH_MISSING] {\"workflowId\":\"bf05f5d8-d929-4119-96ee-0a064623d349\"}",
+            "location": "{'url': 'http://localhost:5000/settings-utilisateurs', 'line': 116, 'column': 39, 'lineNumber': 116, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.618034"
+          },
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:55:58.651054"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"11374dc6-c86f-4ed6-b8bb-98dabe6a7790\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.742272"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"11374dc6-c86f-4ed6-b8bb-98dabe6a7790\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.742590"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"11374dc6-c86f-4ed6-b8bb-98dabe6a7790\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.742754"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"19c98443-3560-4360-a82f-e66f97785c4f\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.742907"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"19c98443-3560-4360-a82f-e66f97785c4f\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.743051"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"19c98443-3560-4360-a82f-e66f97785c4f\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:55:58.743505"
+          }
+        ]
+      },
+      "summary": {
+        "total": 13,
+        "log": 8,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "debug": 0,
+        "workflow_logs": 6
+      },
+      "ok": false
+    },
+    {
+      "page": "Calendrier",
+      "path": "/relances-calendrier",
+      "url": "http://localhost:5000/relances-calendrier",
+      "status": 200,
+      "has_alpine": true,
+      "logs": {
+        "log": [
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"bdbeebf8-bfd3-491d-9abb-3e8750349b0f\",\"workflow\":\"init\",\"page\":\"relances-calendrier\"}",
+            "location": "{'url': 'http://localhost:5000/relances-calendrier', 'line': 75, 'column': 39, 'lineNumber': 75, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.579235"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"d372ef43-cadd-441f-a2aa-f92865f412c6\",\"workflow\":\"init\",\"page\":\"relances-calendrier\"}",
+            "location": "{'url': 'http://localhost:5000/relances-calendrier', 'line': 75, 'column': 39, 'lineNumber': 75, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.583140"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"7c3b0ed0-5f94-4bbd-8d09-b95a1a545621\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.707231"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"7c3b0ed0-5f94-4bbd-8d09-b95a1a545621\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.707507"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"7c3b0ed0-5f94-4bbd-8d09-b95a1a545621\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.707655"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"ec2b2035-e692-46c9-9b9c-d43df219783b\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.707798"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"ec2b2035-e692-46c9-9b9c-d43df219783b\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.707938"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"ec2b2035-e692-46c9-9b9c-d43df219783b\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.708070"
+          }
+        ],
+        "info": [],
+        "warn": [],
+        "error": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:56:02.529272"
+          }
+        ],
+        "debug": [],
+        "all": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:56:02.401793"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:56:02.529272"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"bdbeebf8-bfd3-491d-9abb-3e8750349b0f\",\"workflow\":\"init\",\"page\":\"relances-calendrier\"}",
+            "location": "{'url': 'http://localhost:5000/relances-calendrier', 'line': 75, 'column': 39, 'lineNumber': 75, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.579235"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"d372ef43-cadd-441f-a2aa-f92865f412c6\",\"workflow\":\"init\",\"page\":\"relances-calendrier\"}",
+            "location": "{'url': 'http://localhost:5000/relances-calendrier', 'line': 75, 'column': 39, 'lineNumber': 75, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.583140"
+          },
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:56:02.618978"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"7c3b0ed0-5f94-4bbd-8d09-b95a1a545621\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.707231"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"7c3b0ed0-5f94-4bbd-8d09-b95a1a545621\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.707507"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"7c3b0ed0-5f94-4bbd-8d09-b95a1a545621\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.707655"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"ec2b2035-e692-46c9-9b9c-d43df219783b\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.707798"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"ec2b2035-e692-46c9-9b9c-d43df219783b\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.707938"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"ec2b2035-e692-46c9-9b9c-d43df219783b\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:02.708070"
+          }
+        ]
+      },
+      "summary": {
+        "total": 11,
+        "log": 8,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "debug": 0,
+        "workflow_logs": 6
+      },
+      "ok": false
+    },
+    {
+      "page": "Validation",
+      "path": "/relances-validation",
+      "url": "http://localhost:5000/relances-validation",
+      "status": 200,
+      "has_alpine": true,
+      "logs": {
+        "log": [
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"6f6ba295-d9a3-421b-8af8-1aa723f32c5e\",\"workflow\":\"init\",\"page\":\"relances-validation\"}",
+            "location": "{'url': 'http://localhost:5000/relances-validation', 'line': 110, 'column': 39, 'lineNumber': 110, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.538474"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"3f3d1ae3-9be3-4615-8172-cf81f5a731eb\",\"workflow\":\"init\",\"page\":\"relances-validation\"}",
+            "location": "{'url': 'http://localhost:5000/relances-validation', 'line': 110, 'column': 39, 'lineNumber': 110, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.539998"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"f7cf7a78-b40d-47f8-affd-8b39bba68322\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.661928"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"f7cf7a78-b40d-47f8-affd-8b39bba68322\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.662171"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"f7cf7a78-b40d-47f8-affd-8b39bba68322\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.662372"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"898e68f7-8c13-428a-9d74-2a48e5012e02\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.662602"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"898e68f7-8c13-428a-9d74-2a48e5012e02\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.662797"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"898e68f7-8c13-428a-9d74-2a48e5012e02\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.662953"
+          }
+        ],
+        "info": [],
+        "warn": [],
+        "error": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:56:06.519048"
+          }
+        ],
+        "debug": [],
+        "all": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:56:06.395763"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:56:06.519048"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"6f6ba295-d9a3-421b-8af8-1aa723f32c5e\",\"workflow\":\"init\",\"page\":\"relances-validation\"}",
+            "location": "{'url': 'http://localhost:5000/relances-validation', 'line': 110, 'column': 39, 'lineNumber': 110, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.538474"
+          },
+          {
+            "type": "warning",
+            "text": "[WARN][AUTH_MISSING] {\"workflowId\":\"6f6ba295-d9a3-421b-8af8-1aa723f32c5e\"}",
+            "location": "{'url': 'http://localhost:5000/relances-validation', 'line': 111, 'column': 39, 'lineNumber': 111, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.538737"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"3f3d1ae3-9be3-4615-8172-cf81f5a731eb\",\"workflow\":\"init\",\"page\":\"relances-validation\"}",
+            "location": "{'url': 'http://localhost:5000/relances-validation', 'line': 110, 'column': 39, 'lineNumber': 110, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.539998"
+          },
+          {
+            "type": "warning",
+            "text": "[WARN][AUTH_MISSING] {\"workflowId\":\"3f3d1ae3-9be3-4615-8172-cf81f5a731eb\"}",
+            "location": "{'url': 'http://localhost:5000/relances-validation', 'line': 111, 'column': 39, 'lineNumber': 111, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.540189"
+          },
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:56:06.572934"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"f7cf7a78-b40d-47f8-affd-8b39bba68322\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.661928"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"f7cf7a78-b40d-47f8-affd-8b39bba68322\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.662171"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"f7cf7a78-b40d-47f8-affd-8b39bba68322\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.662372"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"898e68f7-8c13-428a-9d74-2a48e5012e02\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.662602"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"898e68f7-8c13-428a-9d74-2a48e5012e02\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.662797"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"898e68f7-8c13-428a-9d74-2a48e5012e02\",\"result\":\"form-ready\"}",
+            "location": "{'url': 'http://localhost:5000/login', 'line': 98, 'column': 39, 'lineNumber': 98, 'columnNumber': 39}",
+            "time": "2026-07-16T20:56:06.662953"
+          }
+        ]
+      },
+      "summary": {
+        "total": 13,
+        "log": 8,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "debug": 0,
+        "workflow_logs": 6
+      },
+      "ok": false
+    },
+    {
+      "page": "Smart Marki",
+      "path": "/smart-marki",
+      "url": "http://localhost:5000/smart-marki",
+      "status": 200,
+      "has_alpine": true,
+      "logs": {
+        "log": [],
+        "info": [],
+        "warn": [],
+        "error": [
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:56:10.415708"
+          }
+        ],
+        "debug": [],
+        "all": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "location": "{'url': 'https://cdn.tailwindcss.com/', 'line': 63, 'column': 1710, 'lineNumber': 63, 'columnNumber': 1710}",
+            "time": "2026-07-16T20:56:10.312612"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "location": "{'url': 'http://localhost:5000/marki-logo.png', 'line': 0, 'column': 0, 'lineNumber': 0, 'columnNumber': 0}",
+            "time": "2026-07-16T20:56:10.415708"
+          }
+        ]
+      },
+      "summary": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "debug": 0,
+        "workflow_logs": 0
+      },
+      "ok": false
+    }
+  ]
+}

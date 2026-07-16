@@ -1,0 +1,296 @@
+================================================================================
+RAPPORT DES LOGS CONSOLE - MARKI
+================================================================================
+Généré le: 2026-07-16 20:56:14
+URL de base: http://localhost:5000
+Pages testées: 13
+================================================================================
+
+
+────────────────────────────────────────────────────────────────────────────────
+PAGE: Login
+URL: http://localhost:5000/login
+Status: 200
+────────────────────────────────────────────────────────────────────────────────
+
+STATISTIQUES:
+  - Total logs: 7
+  - Log: 6
+  - Info: 0
+  - Warn: 0
+  - Error: 0
+  - Workflow logs: 4
+  - Alpine.js: Oui
+
+🔄 LOGS WORKFLOW:
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"c86855ac-e16b-4268-8bcb-b2736a93f836","workflow":"init","page":"login"}
+  [LOG] [INFO][WORKFLOW_SUCCESS] {"workflowId":"c86855ac-e16b-4268-8bcb-b2736a93f836","result":"form-ready"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"3645c67c-e09f-4ceb-9461-f94b6d0be6d5","workflow":"init","page":"login"}
+  [LOG] [INFO][WORKFLOW_SUCCESS] {"workflowId":"3645c67c-e09f-4ceb-9461-f94b6d0be6d5","result":"form-ready"}
+
+
+────────────────────────────────────────────────────────────────────────────────
+PAGE: Dashboard
+URL: http://localhost:5000/dashboard
+Status: 200
+────────────────────────────────────────────────────────────────────────────────
+
+STATISTIQUES:
+  - Total logs: 2
+  - Log: 0
+  - Info: 0
+  - Warn: 0
+  - Error: 1
+  - Workflow logs: 0
+  - Alpine.js: Oui
+
+❌ ERREURS:
+  [2026-07-16T20:55:27.328859] Failed to load resource: the server responded with a status of 404 (NOT FOUND)
+
+
+────────────────────────────────────────────────────────────────────────────────
+PAGE: Impayés
+URL: http://localhost:5000/impayes
+Status: 200
+────────────────────────────────────────────────────────────────────────────────
+
+STATISTIQUES:
+  - Total logs: 2
+  - Log: 0
+  - Info: 0
+  - Warn: 0
+  - Error: 1
+  - Workflow logs: 0
+  - Alpine.js: Oui
+
+❌ ERREURS:
+  [2026-07-16T20:55:31.237341] Failed to load resource: the server responded with a status of 404 (NOT FOUND)
+
+
+────────────────────────────────────────────────────────────────────────────────
+PAGE: Contacts
+URL: http://localhost:5000/contacts
+Status: 200
+────────────────────────────────────────────────────────────────────────────────
+
+STATISTIQUES:
+  - Total logs: 2
+  - Log: 0
+  - Info: 0
+  - Warn: 0
+  - Error: 1
+  - Workflow logs: 0
+  - Alpine.js: Oui
+
+❌ ERREURS:
+  [2026-07-16T20:55:35.184393] Failed to load resource: the server responded with a status of 404 (NOT FOUND)
+
+
+────────────────────────────────────────────────────────────────────────────────
+PAGE: Relances
+URL: http://localhost:5000/relances
+Status: 200
+────────────────────────────────────────────────────────────────────────────────
+
+STATISTIQUES:
+  - Total logs: 2
+  - Log: 0
+  - Info: 0
+  - Warn: 0
+  - Error: 1
+  - Workflow logs: 0
+  - Alpine.js: Oui
+
+❌ ERREURS:
+  [2026-07-16T20:55:39.074018] Failed to load resource: the server responded with a status of 404 (NOT FOUND)
+
+
+────────────────────────────────────────────────────────────────────────────────
+PAGE: Séquences
+URL: http://localhost:5000/sequences
+Status: 200
+────────────────────────────────────────────────────────────────────────────────
+
+STATISTIQUES:
+  - Total logs: 2
+  - Log: 0
+  - Info: 0
+  - Warn: 0
+  - Error: 1
+  - Workflow logs: 0
+  - Alpine.js: Oui
+
+❌ ERREURS:
+  [2026-07-16T20:55:42.957363] Failed to load resource: the server responded with a status of 404 (NOT FOUND)
+
+
+────────────────────────────────────────────────────────────────────────────────
+PAGE: Événements
+URL: http://localhost:5000/evenements
+Status: 200
+────────────────────────────────────────────────────────────────────────────────
+
+STATISTIQUES:
+  - Total logs: 2
+  - Log: 0
+  - Info: 0
+  - Warn: 0
+  - Error: 1
+  - Workflow logs: 0
+  - Alpine.js: Oui
+
+❌ ERREURS:
+  [2026-07-16T20:55:46.834576] Failed to load resource: the server responded with a status of 404 (NOT FOUND)
+
+
+────────────────────────────────────────────────────────────────────────────────
+PAGE: Paramètres
+URL: http://localhost:5000/settings
+Status: 200
+────────────────────────────────────────────────────────────────────────────────
+
+STATISTIQUES:
+  - Total logs: 11
+  - Log: 8
+  - Info: 0
+  - Warn: 0
+  - Error: 1
+  - Workflow logs: 4
+  - Alpine.js: Oui
+
+🔄 LOGS WORKFLOW:
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"59d5fca0-3091-4095-8dc4-4a02100271a1","workflow":"init","page":"login"}
+  [LOG] [INFO][WORKFLOW_SUCCESS] {"workflowId":"59d5fca0-3091-4095-8dc4-4a02100271a1","result":"form-ready"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"efeb535a-04f9-4fc6-b68a-e67b55408c1d","workflow":"init","page":"login"}
+  [LOG] [INFO][WORKFLOW_SUCCESS] {"workflowId":"efeb535a-04f9-4fc6-b68a-e67b55408c1d","result":"form-ready"}
+
+❌ ERREURS:
+  [2026-07-16T20:55:50.724182] Failed to load resource: the server responded with a status of 404 (NOT FOUND)
+
+
+────────────────────────────────────────────────────────────────────────────────
+PAGE: SMTP
+URL: http://localhost:5000/settings-smtp
+Status: 200
+────────────────────────────────────────────────────────────────────────────────
+
+STATISTIQUES:
+  - Total logs: 13
+  - Log: 8
+  - Info: 0
+  - Warn: 0
+  - Error: 1
+  - Workflow logs: 6
+  - Alpine.js: Oui
+
+🔄 LOGS WORKFLOW:
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"5448041e-53e0-4fe4-989e-f8ab3c3b83fa","workflow":"init","page":"settings-smtp"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"5f763e54-1146-4216-9e5c-6b84cbda83af","workflow":"init","page":"settings-smtp"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"c23ab4d4-df74-413b-9bd9-97e0320e3721","workflow":"init","page":"login"}
+  [LOG] [INFO][WORKFLOW_SUCCESS] {"workflowId":"c23ab4d4-df74-413b-9bd9-97e0320e3721","result":"form-ready"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"74353e26-1529-465b-b06e-2be37fd41913","workflow":"init","page":"login"}
+  [LOG] [INFO][WORKFLOW_SUCCESS] {"workflowId":"74353e26-1529-465b-b06e-2be37fd41913","result":"form-ready"}
+
+❌ ERREURS:
+  [2026-07-16T20:55:54.651622] Failed to load resource: the server responded with a status of 404 (NOT FOUND)
+
+
+────────────────────────────────────────────────────────────────────────────────
+PAGE: Utilisateurs
+URL: http://localhost:5000/settings-utilisateurs
+Status: 200
+────────────────────────────────────────────────────────────────────────────────
+
+STATISTIQUES:
+  - Total logs: 13
+  - Log: 8
+  - Info: 0
+  - Warn: 0
+  - Error: 1
+  - Workflow logs: 6
+  - Alpine.js: Oui
+
+🔄 LOGS WORKFLOW:
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"a7c7ad2b-4e4e-4819-b12a-2969531fab10","workflow":"init","page":"settings-utilisateurs"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"bf05f5d8-d929-4119-96ee-0a064623d349","workflow":"init","page":"settings-utilisateurs"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"11374dc6-c86f-4ed6-b8bb-98dabe6a7790","workflow":"init","page":"login"}
+  [LOG] [INFO][WORKFLOW_SUCCESS] {"workflowId":"11374dc6-c86f-4ed6-b8bb-98dabe6a7790","result":"form-ready"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"19c98443-3560-4360-a82f-e66f97785c4f","workflow":"init","page":"login"}
+  [LOG] [INFO][WORKFLOW_SUCCESS] {"workflowId":"19c98443-3560-4360-a82f-e66f97785c4f","result":"form-ready"}
+
+❌ ERREURS:
+  [2026-07-16T20:55:58.592676] Failed to load resource: the server responded with a status of 404 (NOT FOUND)
+
+
+────────────────────────────────────────────────────────────────────────────────
+PAGE: Calendrier
+URL: http://localhost:5000/relances-calendrier
+Status: 200
+────────────────────────────────────────────────────────────────────────────────
+
+STATISTIQUES:
+  - Total logs: 11
+  - Log: 8
+  - Info: 0
+  - Warn: 0
+  - Error: 1
+  - Workflow logs: 6
+  - Alpine.js: Oui
+
+🔄 LOGS WORKFLOW:
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"bdbeebf8-bfd3-491d-9abb-3e8750349b0f","workflow":"init","page":"relances-calendrier"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"d372ef43-cadd-441f-a2aa-f92865f412c6","workflow":"init","page":"relances-calendrier"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"7c3b0ed0-5f94-4bbd-8d09-b95a1a545621","workflow":"init","page":"login"}
+  [LOG] [INFO][WORKFLOW_SUCCESS] {"workflowId":"7c3b0ed0-5f94-4bbd-8d09-b95a1a545621","result":"form-ready"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"ec2b2035-e692-46c9-9b9c-d43df219783b","workflow":"init","page":"login"}
+  [LOG] [INFO][WORKFLOW_SUCCESS] {"workflowId":"ec2b2035-e692-46c9-9b9c-d43df219783b","result":"form-ready"}
+
+❌ ERREURS:
+  [2026-07-16T20:56:02.529272] Failed to load resource: the server responded with a status of 404 (NOT FOUND)
+
+
+────────────────────────────────────────────────────────────────────────────────
+PAGE: Validation
+URL: http://localhost:5000/relances-validation
+Status: 200
+────────────────────────────────────────────────────────────────────────────────
+
+STATISTIQUES:
+  - Total logs: 13
+  - Log: 8
+  - Info: 0
+  - Warn: 0
+  - Error: 1
+  - Workflow logs: 6
+  - Alpine.js: Oui
+
+🔄 LOGS WORKFLOW:
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"6f6ba295-d9a3-421b-8af8-1aa723f32c5e","workflow":"init","page":"relances-validation"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"3f3d1ae3-9be3-4615-8172-cf81f5a731eb","workflow":"init","page":"relances-validation"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"f7cf7a78-b40d-47f8-affd-8b39bba68322","workflow":"init","page":"login"}
+  [LOG] [INFO][WORKFLOW_SUCCESS] {"workflowId":"f7cf7a78-b40d-47f8-affd-8b39bba68322","result":"form-ready"}
+  [LOG] [INFO][WORKFLOW_START] {"workflowId":"898e68f7-8c13-428a-9d74-2a48e5012e02","workflow":"init","page":"login"}
+  [LOG] [INFO][WORKFLOW_SUCCESS] {"workflowId":"898e68f7-8c13-428a-9d74-2a48e5012e02","result":"form-ready"}
+
+❌ ERREURS:
+  [2026-07-16T20:56:06.519048] Failed to load resource: the server responded with a status of 404 (NOT FOUND)
+
+
+────────────────────────────────────────────────────────────────────────────────
+PAGE: Smart Marki
+URL: http://localhost:5000/smart-marki
+Status: 200
+────────────────────────────────────────────────────────────────────────────────
+
+STATISTIQUES:
+  - Total logs: 2
+  - Log: 0
+  - Info: 0
+  - Warn: 0
+  - Error: 1
+  - Workflow logs: 0
+  - Alpine.js: Oui
+
+❌ ERREURS:
+  [2026-07-16T20:56:10.415708] Failed to load resource: the server responded with a status of 404 (NOT FOUND)
+
