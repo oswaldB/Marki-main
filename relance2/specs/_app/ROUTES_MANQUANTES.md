@@ -32,51 +32,51 @@
 
 ---
 
-## ❌ Routes RESTANTES à Créer (Portail)
+## ✅ Routes Portail - DÉJÀ CORRECTES
 
-| Endpoint | Méthode | Usage | Priorité | Fichier route |
-|----------|---------|-------|----------|---------------|
-| `/api/portail/factures/:id/pdf` | GET | Télécharger PDF facture | 🔴 Haute | `routes/portail.md` |
-| `/api/portail/factures/:id/payer` | POST | Redirection paiement | 🔴 Haute | `routes/portail.md` |
+### PDF Facture
+- **Workflow**: `portail_client/workflows/download-facture.md`
+- **Méthode**: `POST /functions/generatePdfLink` (Cloud Function)
+- **Note**: Le PDF est généré via une Cloud Function, pas une route API classique. C'est correct ainsi.
 
-**Note**: Ces routes sont référencées dans les workflows `portail_client` mais ne sont pas définies dans `routes/portail.md`.
+### Paiement Facture
+- **Workflow**: `portail_client/workflows/regler-facture.md`
+- **Méthode**: Pas d'appel API - utilisation du `lien_paiement` (template de config)
+- **Note**: Le lien de paiement est construit côté client à partir du template stocké en config.
 
----
-
-## ✅ Routes CRUD Existantes (Confirmées)
-
-```
-PUT /api/contacts/:id       ← Pour blacklist, modifier contact
-PUT /api/sequences/:id      ← Pour publication, validation (si besoin API)
-PUT /api/impayes/:id        ← Pour suspendre/réactiver
-PUT /api/smtp-profiles/:id  ← Pour modifier profil SMTP
-PUT /api/users/:id          ← Pour modifier utilisateur
-```
+**Pas de routes à créer pour le portail** - Les workflows utilisent déjà les bonnes méthodes.
 
 ---
 
-## ✅ Routes Workflows Existantes (Confirmées)
+## ✅ Récapitulatif Final
 
-```
-POST /api/test/relance      ← Workflow test-single (test email relance)
-POST /api/test/suivi        ← Workflow test-single-suivi (test email suivi)
-POST /api/workflow/*        ← Tous les workflows métier Python
-```
-
----
-
-## Conclusion
-
-✅ **Toutes les routes critiques existent.**
-
-- **4 workflows corrigés** pour utiliser les bonnes routes
-- **2 routes à créer** pour le portail client (PDF et paiement)
-- **0 route manquante critique** pour le fonctionnement de l'application
+| Endpoint | Méthode | Usage | Existe ? |
+|----------|---------|-------|----------|
+| `/api/contacts/:id` | PUT | Blacklist contact | ✅ Route CRUD |
+| `/api/sequences/:id` | PUT | Modification séquence | ✅ Route CRUD |
+| `/api/test/relance` | POST | Test email relance | ✅ Workflow backend |
+| `/api/test/suivi` | POST | Test email suivi | ✅ Workflow backend |
+| `/functions/generatePdfLink` | POST | Générer lien PDF | ✅ Cloud Function |
+| `lien_paiement` (config) | - | Paiement externe | ✅ Config frontend |
 
 ---
 
-## Fichiers Workflow Mis à Jour
+## ✅ Conclusion
 
-1. `contacts/workflows/toggle-blacklist.md` - Utilise PUT /api/contacts/:id
-2. `sequences_relance_detail/workflows/tester-email.md` - Utilise POST /api/test/relance
-3. `sequences_suivi_detail/workflows/tester-email.md` - Déjà correct (POST /api/test/suivi)
+**Aucune route manquante.**
+
+Tous les workflows frontend utilisent correctement :
+- Routes CRUD standards existantes
+- Cloud Functions pour les cas spécifiques (PDF)
+- Configuration frontend pour les liens externes (paiement)
+- Workflows backend pour les opérations complexes (test email)
+
+---
+
+## Fichiers Workflow Finalisés
+
+1. `contacts/workflows/toggle-blacklist.md` - ✅ Utilise PUT /api/contacts/:id
+2. `sequences_relance_detail/workflows/tester-email.md` - ✅ Utilise POST /api/test/relance
+3. `sequences_suivi_detail/workflows/tester-email.md` - ✅ Utilise POST /api/test/suivi
+4. `portail_client/workflows/download-facture.md` - ✅ Utilise /functions/generatePdfLink
+5. `portail_client/workflows/regler-facture.md` - ✅ Utilise lien_paiement (config)
