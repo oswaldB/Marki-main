@@ -11,6 +11,9 @@ from .settings import bp as settings_bp
 from .portail import bp as portail_bp
 
 
+from .workflow import bp as workflow_bp
+
+
 def register_blueprints(app):
     """Register all blueprints with Flask app."""
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
@@ -22,3 +25,4 @@ def register_blueprints(app):
     app.register_blueprint(dashboard_bp, url_prefix='/api/dashboard')
     app.register_blueprint(settings_bp, url_prefix='/api/settings')
     app.register_blueprint(portail_bp, url_prefix='/api/portail')
+    app.register_blueprint(workflow_bp)
