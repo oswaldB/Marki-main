@@ -65,6 +65,49 @@ export function initStore() {
 }
 ```
 
+### Chargement Alpine.js - À LA FIN DU BODY
+
+**OBLIGATOIRE:** Alpine.js doit être chargé à la **fin du `<body>`**, jamais dans le `<head>`:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- PAS d'Alpine ici -->
+  <title>Ma Page</title>
+</head>
+<body>
+  <!-- Contenu de la page -->
+  <div x-data>
+    <span x-text="$store.page.itemCount"></span>
+  </div>
+  
+  <!-- ✅ Alpine.js À LA FIN, avant </body> -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  
+  <!-- Ton module qui initialise le store -->
+  <script type="module">
+    import { initStore } from './store/store.js';
+    initStore();
+  </script>
+</body>
+</html>
+```
+
+**Pourquoi à la fin ?**
+- Le DOM est entièrement parsé avant qu'Alpine ne s'exécute
+- Évite les erreurs `cannot read property of null` sur des éléments non encore rendus
+- Meilleures performances de rendu initial
+- Pas besoin de `defer` si le script est déjà à la fin (mais `defer` est recommandé)
+
+**Anti-pattern INTERDIT:**
+```html
+<head>
+  <!-- ❌ INTERDIT - Alpine dans le head -->
+  <script src="alpinejs"></script>
+</head>
+```
+
 Initialisation dans la page HTML:
 
 ```html
@@ -323,6 +366,7 @@ const template = await fetch('/templates/comp.html');
 
 ## Checklist avant commit
 
+- [ ] Alpine.js est chargé à la **fin du body**, pas dans le head
 - [ ] Chaque page a son store.js dédié enregistré via `Alpine.store('page', ...)`
 - [ ] Le store est accessible via `$store.page` dans les templates
 - [ ] Chaque bouton a son workflow associé
