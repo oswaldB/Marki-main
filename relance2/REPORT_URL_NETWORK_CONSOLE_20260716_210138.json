@@ -1,0 +1,2080 @@
+{
+  "timestamp": "2026-07-16T21:01:38.841496",
+  "base_url": "http://localhost:5000",
+  "urls": [
+    {
+      "name": "Login",
+      "path": "/login",
+      "url": "http://localhost:5000/login",
+      "status": 200,
+      "console": {
+        "total": 7,
+        "log": 6,
+        "info": 0,
+        "warn": 0,
+        "error": 0,
+        "workflow": 4,
+        "all_logs": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:00:48.279202"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"4ddde23d-6057-4fc6-835b-4a9fe72343b6\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "time": "2026-07-16T21:00:48.399541"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"4ddde23d-6057-4fc6-835b-4a9fe72343b6\"}",
+            "time": "2026-07-16T21:00:48.401542"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"4ddde23d-6057-4fc6-835b-4a9fe72343b6\",\"result\":\"form-ready\"}",
+            "time": "2026-07-16T21:00:48.401823"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"28663de0-233b-494d-b82f-b100a6911ead\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "time": "2026-07-16T21:00:48.402076"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"28663de0-233b-494d-b82f-b100a6911ead\"}",
+            "time": "2026-07-16T21:00:48.402280"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"28663de0-233b-494d-b82f-b100a6911ead\",\"result\":\"form-ready\"}",
+            "time": "2026-07-16T21:00:48.402503"
+          }
+        ]
+      },
+      "network": {
+        "total_requests": 4,
+        "total_responses": 4,
+        "api_requests": 0,
+        "api_errors": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/login",
+            "resource_type": "document",
+            "time": "2026-07-16T21:00:48.117694"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:48.135655"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:48.136964"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:48.170998"
+          }
+        ],
+        "responses": [
+          {
+            "status": 200,
+            "url": "http://localhost:5000/login",
+            "time": "2026-07-16T21:00:48.128068"
+          },
+          {
+            "status": 302,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:00:48.170666"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:00:48.186003"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "time": "2026-07-16T21:00:48.225738"
+          }
+        ]
+      },
+      "page_errors": [],
+      "ok": true
+    },
+    {
+      "name": "Dashboard",
+      "path": "/dashboard",
+      "url": "http://localhost:5000/dashboard",
+      "status": 200,
+      "console": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "workflow": 0,
+        "all_logs": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:00:51.934574"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "time": "2026-07-16T21:00:52.051868"
+          }
+        ]
+      },
+      "network": {
+        "total_requests": 8,
+        "total_responses": 8,
+        "api_requests": 0,
+        "api_errors": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/dashboard",
+            "resource_type": "document",
+            "time": "2026-07-16T21:00:51.802692"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:51.819613"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "resource_type": "stylesheet",
+            "time": "2026-07-16T21:00:51.819763"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:51.819910"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:51.820255"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:51.846142"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/marki-logo.png",
+            "resource_type": "image",
+            "time": "2026-07-16T21:00:52.051204"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "resource_type": "font",
+            "time": "2026-07-16T21:00:52.065622"
+          }
+        ],
+        "responses": [
+          {
+            "status": 200,
+            "url": "http://localhost:5000/dashboard",
+            "time": "2026-07-16T21:00:51.808832"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "time": "2026-07-16T21:00:51.825920"
+          },
+          {
+            "status": 302,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:00:51.845780"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "time": "2026-07-16T21:00:51.875842"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "time": "2026-07-16T21:00:51.882708"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:00:51.951716"
+          },
+          {
+            "status": 404,
+            "url": "http://localhost:5000/marki-logo.png",
+            "time": "2026-07-16T21:00:52.051512"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "time": "2026-07-16T21:00:52.136811"
+          }
+        ]
+      },
+      "page_errors": [],
+      "ok": false
+    },
+    {
+      "name": "Impayes",
+      "path": "/impayes",
+      "url": "http://localhost:5000/impayes",
+      "status": 200,
+      "console": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "workflow": 0,
+        "all_logs": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:00:55.833435"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "time": "2026-07-16T21:00:55.949441"
+          }
+        ]
+      },
+      "network": {
+        "total_requests": 8,
+        "total_responses": 8,
+        "api_requests": 0,
+        "api_errors": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/impayes",
+            "resource_type": "document",
+            "time": "2026-07-16T21:00:55.694203"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:55.709984"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "resource_type": "stylesheet",
+            "time": "2026-07-16T21:00:55.710184"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:55.710353"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:55.710484"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:55.740718"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/marki-logo.png",
+            "resource_type": "image",
+            "time": "2026-07-16T21:00:55.949092"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "resource_type": "font",
+            "time": "2026-07-16T21:00:55.958787"
+          }
+        ],
+        "responses": [
+          {
+            "status": 200,
+            "url": "http://localhost:5000/impayes",
+            "time": "2026-07-16T21:00:55.699645"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "time": "2026-07-16T21:00:55.710691"
+          },
+          {
+            "status": 302,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:00:55.740369"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "time": "2026-07-16T21:00:55.768447"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "time": "2026-07-16T21:00:55.778348"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:00:55.849472"
+          },
+          {
+            "status": 404,
+            "url": "http://localhost:5000/marki-logo.png",
+            "time": "2026-07-16T21:00:55.949338"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "time": "2026-07-16T21:00:56.040040"
+          }
+        ]
+      },
+      "page_errors": [],
+      "ok": false
+    },
+    {
+      "name": "Contacts",
+      "path": "/contacts",
+      "url": "http://localhost:5000/contacts",
+      "status": 200,
+      "console": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "workflow": 0,
+        "all_logs": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:00:59.731947"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "time": "2026-07-16T21:00:59.847239"
+          }
+        ]
+      },
+      "network": {
+        "total_requests": 8,
+        "total_responses": 8,
+        "api_requests": 0,
+        "api_errors": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/contacts",
+            "resource_type": "document",
+            "time": "2026-07-16T21:00:59.604380"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:59.616897"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "resource_type": "stylesheet",
+            "time": "2026-07-16T21:00:59.617072"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:59.617196"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:59.617353"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "resource_type": "script",
+            "time": "2026-07-16T21:00:59.642632"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/marki-logo.png",
+            "resource_type": "image",
+            "time": "2026-07-16T21:00:59.846491"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "resource_type": "font",
+            "time": "2026-07-16T21:00:59.854219"
+          }
+        ],
+        "responses": [
+          {
+            "status": 200,
+            "url": "http://localhost:5000/contacts",
+            "time": "2026-07-16T21:00:59.608271"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "time": "2026-07-16T21:00:59.619984"
+          },
+          {
+            "status": 302,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:00:59.642265"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "time": "2026-07-16T21:00:59.671605"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "time": "2026-07-16T21:00:59.678428"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:00:59.747988"
+          },
+          {
+            "status": 404,
+            "url": "http://localhost:5000/marki-logo.png",
+            "time": "2026-07-16T21:00:59.847042"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "time": "2026-07-16T21:00:59.926818"
+          }
+        ]
+      },
+      "page_errors": [],
+      "ok": false
+    },
+    {
+      "name": "Relances",
+      "path": "/relances",
+      "url": "http://localhost:5000/relances",
+      "status": 200,
+      "console": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "workflow": 0,
+        "all_logs": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:03.609579"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "time": "2026-07-16T21:01:03.728479"
+          }
+        ]
+      },
+      "network": {
+        "total_requests": 8,
+        "total_responses": 8,
+        "api_requests": 0,
+        "api_errors": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/relances",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:03.487822"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:03.499383"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "resource_type": "stylesheet",
+            "time": "2026-07-16T21:01:03.499552"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:03.499740"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:03.499912"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:03.524457"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/marki-logo.png",
+            "resource_type": "image",
+            "time": "2026-07-16T21:01:03.726798"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:03.733934"
+          }
+        ],
+        "responses": [
+          {
+            "status": 200,
+            "url": "http://localhost:5000/relances",
+            "time": "2026-07-16T21:01:03.490954"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "time": "2026-07-16T21:01:03.501276"
+          },
+          {
+            "status": 302,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:03.524062"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "time": "2026-07-16T21:01:03.558067"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "time": "2026-07-16T21:01:03.610511"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:03.624816"
+          },
+          {
+            "status": 404,
+            "url": "http://localhost:5000/marki-logo.png",
+            "time": "2026-07-16T21:01:03.728295"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "time": "2026-07-16T21:01:03.808749"
+          }
+        ]
+      },
+      "page_errors": [],
+      "ok": false
+    },
+    {
+      "name": "Sequences",
+      "path": "/sequences",
+      "url": "http://localhost:5000/sequences",
+      "status": 200,
+      "console": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "workflow": 0,
+        "all_logs": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:07.519382"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "time": "2026-07-16T21:01:07.656769"
+          }
+        ]
+      },
+      "network": {
+        "total_requests": 8,
+        "total_responses": 8,
+        "api_requests": 0,
+        "api_errors": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/sequences",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:07.379006"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:07.392930"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "resource_type": "stylesheet",
+            "time": "2026-07-16T21:01:07.394693"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:07.394870"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:07.395002"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:07.419260"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/marki-logo.png",
+            "resource_type": "image",
+            "time": "2026-07-16T21:01:07.656276"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:07.665767"
+          }
+        ],
+        "responses": [
+          {
+            "status": 200,
+            "url": "http://localhost:5000/sequences",
+            "time": "2026-07-16T21:01:07.383070"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "time": "2026-07-16T21:01:07.397416"
+          },
+          {
+            "status": 302,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:07.418905"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "time": "2026-07-16T21:01:07.455262"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "time": "2026-07-16T21:01:07.520847"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:07.539164"
+          },
+          {
+            "status": 404,
+            "url": "http://localhost:5000/marki-logo.png",
+            "time": "2026-07-16T21:01:07.656629"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "time": "2026-07-16T21:01:07.747166"
+          }
+        ]
+      },
+      "page_errors": [],
+      "ok": false
+    },
+    {
+      "name": "Evenements",
+      "path": "/evenements",
+      "url": "http://localhost:5000/evenements",
+      "status": 200,
+      "console": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "workflow": 0,
+        "all_logs": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:11.433783"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "time": "2026-07-16T21:01:11.559162"
+          }
+        ]
+      },
+      "network": {
+        "total_requests": 8,
+        "total_responses": 8,
+        "api_requests": 0,
+        "api_errors": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/evenements",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:11.309719"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:11.322344"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "resource_type": "stylesheet",
+            "time": "2026-07-16T21:01:11.322584"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:11.323825"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:11.323985"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:11.349878"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/marki-logo.png",
+            "resource_type": "image",
+            "time": "2026-07-16T21:01:11.558819"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:11.568172"
+          }
+        ],
+        "responses": [
+          {
+            "status": 200,
+            "url": "http://localhost:5000/evenements",
+            "time": "2026-07-16T21:01:11.313216"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "time": "2026-07-16T21:01:11.325125"
+          },
+          {
+            "status": 302,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:11.349463"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "time": "2026-07-16T21:01:11.380879"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "time": "2026-07-16T21:01:11.434884"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:11.450430"
+          },
+          {
+            "status": 404,
+            "url": "http://localhost:5000/marki-logo.png",
+            "time": "2026-07-16T21:01:11.559039"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "time": "2026-07-16T21:01:11.645380"
+          }
+        ]
+      },
+      "page_errors": [],
+      "ok": false
+    },
+    {
+      "name": "Settings",
+      "path": "/settings",
+      "url": "http://localhost:5000/settings",
+      "status": 200,
+      "console": {
+        "total": 11,
+        "log": 8,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "workflow": 4,
+        "all_logs": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:15.343862"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "time": "2026-07-16T21:01:15.466801"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][PAGE_INIT] {page: settings}",
+            "time": "2026-07-16T21:01:15.485837"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][PAGE_INIT] {page: settings}",
+            "time": "2026-07-16T21:01:15.488761"
+          },
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:15.512644"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"d23ac709-1208-4201-9ae7-02e9d2b08383\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "time": "2026-07-16T21:01:15.613939"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"d23ac709-1208-4201-9ae7-02e9d2b08383\"}",
+            "time": "2026-07-16T21:01:15.614151"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"d23ac709-1208-4201-9ae7-02e9d2b08383\",\"result\":\"form-ready\"}",
+            "time": "2026-07-16T21:01:15.614292"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"9efa8462-819f-4d78-9c10-f41a1bd94a36\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "time": "2026-07-16T21:01:15.614607"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"9efa8462-819f-4d78-9c10-f41a1bd94a36\"}",
+            "time": "2026-07-16T21:01:15.614763"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"9efa8462-819f-4d78-9c10-f41a1bd94a36\",\"result\":\"form-ready\"}",
+            "time": "2026-07-16T21:01:15.614893"
+          }
+        ]
+      },
+      "network": {
+        "total_requests": 13,
+        "total_responses": 10,
+        "api_requests": 0,
+        "api_errors": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/settings",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:15.211836"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:15.226434"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "resource_type": "stylesheet",
+            "time": "2026-07-16T21:01:15.226658"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:15.226802"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:15.226924"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:15.251662"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/marki-logo.png",
+            "resource_type": "image",
+            "time": "2026-07-16T21:01:15.466449"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:15.479120"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/login",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:15.488537"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/login",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:15.489340"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.ttf",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:15.508029"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:15.508744"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:15.510699"
+          }
+        ],
+        "responses": [
+          {
+            "status": 200,
+            "url": "http://localhost:5000/settings",
+            "time": "2026-07-16T21:01:15.218929"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "time": "2026-07-16T21:01:15.230452"
+          },
+          {
+            "status": 302,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:15.250881"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "time": "2026-07-16T21:01:15.281899"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "time": "2026-07-16T21:01:15.290037"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:15.359472"
+          },
+          {
+            "status": 404,
+            "url": "http://localhost:5000/marki-logo.png",
+            "time": "2026-07-16T21:01:15.466677"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/login",
+            "time": "2026-07-16T21:01:15.495198"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:15.509718"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:15.511084"
+          }
+        ]
+      },
+      "page_errors": [],
+      "ok": false
+    },
+    {
+      "name": "Settings SMTP",
+      "path": "/settings-smtp",
+      "url": "http://localhost:5000/settings-smtp",
+      "status": 200,
+      "console": {
+        "total": 13,
+        "log": 8,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "workflow": 6,
+        "all_logs": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:19.292753"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "time": "2026-07-16T21:01:19.428770"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"8a31e19c-e084-4bc2-8f25-c9d536f5832d\",\"workflow\":\"init\",\"page\":\"settings-smtp\"}",
+            "time": "2026-07-16T21:01:19.445811"
+          },
+          {
+            "type": "warning",
+            "text": "[WARN][AUTH_MISSING] {\"workflowId\":\"8a31e19c-e084-4bc2-8f25-c9d536f5832d\"}",
+            "time": "2026-07-16T21:01:19.446178"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"dde53fa2-fd79-417d-84cb-f54ff549eb32\",\"workflow\":\"init\",\"page\":\"settings-smtp\"}",
+            "time": "2026-07-16T21:01:19.450242"
+          },
+          {
+            "type": "warning",
+            "text": "[WARN][AUTH_MISSING] {\"workflowId\":\"dde53fa2-fd79-417d-84cb-f54ff549eb32\"}",
+            "time": "2026-07-16T21:01:19.450476"
+          },
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:19.475258"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"e6e4aa61-58bb-42c5-a094-6b024701306a\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "time": "2026-07-16T21:01:19.567064"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"e6e4aa61-58bb-42c5-a094-6b024701306a\"}",
+            "time": "2026-07-16T21:01:19.567366"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"e6e4aa61-58bb-42c5-a094-6b024701306a\",\"result\":\"form-ready\"}",
+            "time": "2026-07-16T21:01:19.567551"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"9b2abf81-acd9-4cc8-8ca3-0c752e55fd00\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "time": "2026-07-16T21:01:19.567704"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"9b2abf81-acd9-4cc8-8ca3-0c752e55fd00\"}",
+            "time": "2026-07-16T21:01:19.567857"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"9b2abf81-acd9-4cc8-8ca3-0c752e55fd00\",\"result\":\"form-ready\"}",
+            "time": "2026-07-16T21:01:19.568069"
+          }
+        ]
+      },
+      "network": {
+        "total_requests": 13,
+        "total_responses": 10,
+        "api_requests": 0,
+        "api_errors": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/settings-smtp",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:19.141414"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:19.179640"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "resource_type": "stylesheet",
+            "time": "2026-07-16T21:01:19.179856"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:19.179994"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:19.180131"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:19.204408"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:19.408517"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/marki-logo.png",
+            "resource_type": "image",
+            "time": "2026-07-16T21:01:19.427768"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/login",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:19.449906"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/login",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:19.450716"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.ttf",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:19.469652"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:19.471689"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:19.473476"
+          }
+        ],
+        "responses": [
+          {
+            "status": 200,
+            "url": "http://localhost:5000/settings-smtp",
+            "time": "2026-07-16T21:01:19.164601"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "time": "2026-07-16T21:01:19.181671"
+          },
+          {
+            "status": 302,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:19.204065"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "time": "2026-07-16T21:01:19.227132"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "time": "2026-07-16T21:01:19.238213"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:19.307666"
+          },
+          {
+            "status": 404,
+            "url": "http://localhost:5000/marki-logo.png",
+            "time": "2026-07-16T21:01:19.428186"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/login",
+            "time": "2026-07-16T21:01:19.455659"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:19.472595"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:19.473735"
+          }
+        ]
+      },
+      "page_errors": [],
+      "ok": false
+    },
+    {
+      "name": "Settings Utilisateurs",
+      "path": "/settings-utilisateurs",
+      "url": "http://localhost:5000/settings-utilisateurs",
+      "status": 200,
+      "console": {
+        "total": 13,
+        "log": 8,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "workflow": 6,
+        "all_logs": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:23.230584"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "time": "2026-07-16T21:01:23.362147"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"60b18ccb-a1bc-49d0-a07d-a5bf453c00a3\",\"workflow\":\"init\",\"page\":\"settings-utilisateurs\"}",
+            "time": "2026-07-16T21:01:23.381360"
+          },
+          {
+            "type": "warning",
+            "text": "[WARN][AUTH_MISSING] {\"workflowId\":\"60b18ccb-a1bc-49d0-a07d-a5bf453c00a3\"}",
+            "time": "2026-07-16T21:01:23.381575"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"1a495f40-e19e-4866-941c-d2ac99afcd79\",\"workflow\":\"init\",\"page\":\"settings-utilisateurs\"}",
+            "time": "2026-07-16T21:01:23.386595"
+          },
+          {
+            "type": "warning",
+            "text": "[WARN][AUTH_MISSING] {\"workflowId\":\"1a495f40-e19e-4866-941c-d2ac99afcd79\"}",
+            "time": "2026-07-16T21:01:23.386746"
+          },
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:23.419718"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"802b4402-d2d0-449a-89ed-aaeb1e57305a\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "time": "2026-07-16T21:01:23.521674"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"802b4402-d2d0-449a-89ed-aaeb1e57305a\"}",
+            "time": "2026-07-16T21:01:23.521909"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"802b4402-d2d0-449a-89ed-aaeb1e57305a\",\"result\":\"form-ready\"}",
+            "time": "2026-07-16T21:01:23.522050"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"167fca42-33cb-43b8-8903-683d7bcdaf75\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "time": "2026-07-16T21:01:23.522683"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"167fca42-33cb-43b8-8903-683d7bcdaf75\"}",
+            "time": "2026-07-16T21:01:23.522848"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"167fca42-33cb-43b8-8903-683d7bcdaf75\",\"result\":\"form-ready\"}",
+            "time": "2026-07-16T21:01:23.522981"
+          }
+        ]
+      },
+      "network": {
+        "total_requests": 13,
+        "total_responses": 10,
+        "api_requests": 0,
+        "api_errors": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/settings-utilisateurs",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:23.094557"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:23.112628"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "resource_type": "stylesheet",
+            "time": "2026-07-16T21:01:23.112806"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:23.112934"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:23.113041"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:23.137256"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:23.343231"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/marki-logo.png",
+            "resource_type": "image",
+            "time": "2026-07-16T21:01:23.361796"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/login",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:23.386299"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/login",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:23.386921"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.ttf",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:23.410629"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:23.418262"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:23.418685"
+          }
+        ],
+        "responses": [
+          {
+            "status": 200,
+            "url": "http://localhost:5000/settings-utilisateurs",
+            "time": "2026-07-16T21:01:23.103389"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "time": "2026-07-16T21:01:23.113852"
+          },
+          {
+            "status": 302,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:23.136934"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "time": "2026-07-16T21:01:23.164082"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "time": "2026-07-16T21:01:23.172509"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:23.247444"
+          },
+          {
+            "status": 404,
+            "url": "http://localhost:5000/marki-logo.png",
+            "time": "2026-07-16T21:01:23.362017"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/login",
+            "time": "2026-07-16T21:01:23.391132"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:23.418512"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:23.418837"
+          }
+        ]
+      },
+      "page_errors": [],
+      "ok": false
+    },
+    {
+      "name": "Relances Calendrier",
+      "path": "/relances-calendrier",
+      "url": "http://localhost:5000/relances-calendrier",
+      "status": 200,
+      "console": {
+        "total": 11,
+        "log": 8,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "workflow": 6,
+        "all_logs": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:27.185302"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "time": "2026-07-16T21:01:27.313171"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"6b442da4-9bef-4d8c-836f-c7a3d1007c17\",\"workflow\":\"init\",\"page\":\"relances-calendrier\"}",
+            "time": "2026-07-16T21:01:27.342762"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"cebccbf3-c481-4f23-8c5e-6bbc1c44f1f5\",\"workflow\":\"init\",\"page\":\"relances-calendrier\"}",
+            "time": "2026-07-16T21:01:27.344662"
+          },
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:27.374954"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"9ebaa0f3-af3f-4517-a288-4028f1729fa2\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "time": "2026-07-16T21:01:27.469333"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"9ebaa0f3-af3f-4517-a288-4028f1729fa2\"}",
+            "time": "2026-07-16T21:01:27.469574"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"9ebaa0f3-af3f-4517-a288-4028f1729fa2\",\"result\":\"form-ready\"}",
+            "time": "2026-07-16T21:01:27.469719"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"65dcbc99-812c-46c6-98e5-b0dc8c1d32fb\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "time": "2026-07-16T21:01:27.469852"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"65dcbc99-812c-46c6-98e5-b0dc8c1d32fb\"}",
+            "time": "2026-07-16T21:01:27.469975"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"65dcbc99-812c-46c6-98e5-b0dc8c1d32fb\",\"result\":\"form-ready\"}",
+            "time": "2026-07-16T21:01:27.470092"
+          }
+        ]
+      },
+      "network": {
+        "total_requests": 13,
+        "total_responses": 10,
+        "api_requests": 0,
+        "api_errors": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/relances-calendrier",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:27.050309"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:27.064880"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "resource_type": "stylesheet",
+            "time": "2026-07-16T21:01:27.065116"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:27.065263"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:27.065418"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:27.097028"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:27.291465"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/marki-logo.png",
+            "resource_type": "image",
+            "time": "2026-07-16T21:01:27.312717"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/login",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:27.344416"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/login",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:27.347868"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.ttf",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:27.368089"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:27.371061"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:27.372020"
+          }
+        ],
+        "responses": [
+          {
+            "status": 200,
+            "url": "http://localhost:5000/relances-calendrier",
+            "time": "2026-07-16T21:01:27.055120"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "time": "2026-07-16T21:01:27.070190"
+          },
+          {
+            "status": 302,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:27.096782"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "time": "2026-07-16T21:01:27.127821"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "time": "2026-07-16T21:01:27.186201"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:27.200644"
+          },
+          {
+            "status": 404,
+            "url": "http://localhost:5000/marki-logo.png",
+            "time": "2026-07-16T21:01:27.313034"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/login",
+            "time": "2026-07-16T21:01:27.354222"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:27.371297"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:27.372369"
+          }
+        ]
+      },
+      "page_errors": [],
+      "ok": false
+    },
+    {
+      "name": "Relances Validation",
+      "path": "/relances-validation",
+      "url": "http://localhost:5000/relances-validation",
+      "status": 200,
+      "console": {
+        "total": 13,
+        "log": 8,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "workflow": 6,
+        "all_logs": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:31.145678"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "time": "2026-07-16T21:01:31.281112"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"56044baa-7669-4d1f-a00f-60cd47e2ea49\",\"workflow\":\"init\",\"page\":\"relances-validation\"}",
+            "time": "2026-07-16T21:01:31.297974"
+          },
+          {
+            "type": "warning",
+            "text": "[WARN][AUTH_MISSING] {\"workflowId\":\"56044baa-7669-4d1f-a00f-60cd47e2ea49\"}",
+            "time": "2026-07-16T21:01:31.298172"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"45f65505-f159-4828-aa88-eff76e7d56a9\",\"workflow\":\"init\",\"page\":\"relances-validation\"}",
+            "time": "2026-07-16T21:01:31.301032"
+          },
+          {
+            "type": "warning",
+            "text": "[WARN][AUTH_MISSING] {\"workflowId\":\"45f65505-f159-4828-aa88-eff76e7d56a9\"}",
+            "time": "2026-07-16T21:01:31.301190"
+          },
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:31.326701"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"d75eb148-8d10-4c99-9611-f3e03bb0e126\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "time": "2026-07-16T21:01:31.418573"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"d75eb148-8d10-4c99-9611-f3e03bb0e126\"}",
+            "time": "2026-07-16T21:01:31.418833"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"d75eb148-8d10-4c99-9611-f3e03bb0e126\",\"result\":\"form-ready\"}",
+            "time": "2026-07-16T21:01:31.418986"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_START] {\"workflowId\":\"bc643cd7-a680-47cd-985b-3c3a7caeac45\",\"workflow\":\"init\",\"page\":\"login\"}",
+            "time": "2026-07-16T21:01:31.419122"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][NO_TOKEN] {\"workflowId\":\"bc643cd7-a680-47cd-985b-3c3a7caeac45\"}",
+            "time": "2026-07-16T21:01:31.419450"
+          },
+          {
+            "type": "log",
+            "text": "[INFO][WORKFLOW_SUCCESS] {\"workflowId\":\"bc643cd7-a680-47cd-985b-3c3a7caeac45\",\"result\":\"form-ready\"}",
+            "time": "2026-07-16T21:01:31.420333"
+          }
+        ]
+      },
+      "network": {
+        "total_requests": 13,
+        "total_responses": 10,
+        "api_requests": 0,
+        "api_errors": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/relances-validation",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:31.001657"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:31.020241"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "resource_type": "stylesheet",
+            "time": "2026-07-16T21:01:31.020549"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:31.020708"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:31.021551"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:31.048024"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:31.264071"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/marki-logo.png",
+            "resource_type": "image",
+            "time": "2026-07-16T21:01:31.280774"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/login",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:31.300819"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/login",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:31.302522"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.ttf",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:31.323295"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:31.323742"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:31.324649"
+          }
+        ],
+        "responses": [
+          {
+            "status": 200,
+            "url": "http://localhost:5000/relances-validation",
+            "time": "2026-07-16T21:01:31.011227"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "time": "2026-07-16T21:01:31.025479"
+          },
+          {
+            "status": 302,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:31.047621"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "time": "2026-07-16T21:01:31.079630"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "time": "2026-07-16T21:01:31.086744"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:31.162731"
+          },
+          {
+            "status": 404,
+            "url": "http://localhost:5000/marki-logo.png",
+            "time": "2026-07-16T21:01:31.281018"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/login",
+            "time": "2026-07-16T21:01:31.304516"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:31.323942"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:31.325470"
+          }
+        ]
+      },
+      "page_errors": [],
+      "ok": false
+    },
+    {
+      "name": "Smart Marki",
+      "path": "/smart-marki",
+      "url": "http://localhost:5000/smart-marki",
+      "status": 200,
+      "console": {
+        "total": 2,
+        "log": 0,
+        "info": 0,
+        "warn": 0,
+        "error": 1,
+        "workflow": 0,
+        "all_logs": [
+          {
+            "type": "warning",
+            "text": "cdn.tailwindcss.com should not be used in production. To use Tailwind CSS in production, install it as a PostCSS plugin or use the Tailwind CLI: https://tailwindcss.com/docs/installation",
+            "time": "2026-07-16T21:01:35.110915"
+          },
+          {
+            "type": "error",
+            "text": "Failed to load resource: the server responded with a status of 404 (NOT FOUND)",
+            "time": "2026-07-16T21:01:35.234949"
+          }
+        ]
+      },
+      "network": {
+        "total_requests": 8,
+        "total_responses": 8,
+        "api_requests": 0,
+        "api_errors": 0,
+        "requests": [
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/smart-marki",
+            "resource_type": "document",
+            "time": "2026-07-16T21:01:34.974513"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:34.986481"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "resource_type": "stylesheet",
+            "time": "2026-07-16T21:01:34.986648"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:34.986858"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:34.987051"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "resource_type": "script",
+            "time": "2026-07-16T21:01:35.016159"
+          },
+          {
+            "method": "GET",
+            "url": "http://localhost:5000/marki-logo.png",
+            "resource_type": "image",
+            "time": "2026-07-16T21:01:35.234565"
+          },
+          {
+            "method": "GET",
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "resource_type": "font",
+            "time": "2026-07-16T21:01:35.244758"
+          }
+        ],
+        "responses": [
+          {
+            "status": 200,
+            "url": "http://localhost:5000/smart-marki",
+            "time": "2026-07-16T21:01:34.978230"
+          },
+          {
+            "status": 200,
+            "url": "http://localhost:5000/static/components/sidebar-nav-dual.js",
+            "time": "2026-07-16T21:01:34.991081"
+          },
+          {
+            "status": 302,
+            "url": "https://cdn.tailwindcss.com/",
+            "time": "2026-07-16T21:01:35.015840"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css",
+            "time": "2026-07-16T21:01:35.049898"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.tailwindcss.com/3.4.17",
+            "time": "2026-07-16T21:01:35.050305"
+          },
+          {
+            "status": 200,
+            "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js",
+            "time": "2026-07-16T21:01:35.130835"
+          },
+          {
+            "status": 404,
+            "url": "http://localhost:5000/marki-logo.png",
+            "time": "2026-07-16T21:01:35.234838"
+          },
+          {
+            "status": 200,
+            "url": "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/webfonts/fa-solid-900.woff2",
+            "time": "2026-07-16T21:01:35.320407"
+          }
+        ]
+      },
+      "page_errors": [],
+      "ok": false
+    }
+  ]
+}

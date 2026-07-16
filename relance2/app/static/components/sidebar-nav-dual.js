@@ -63,7 +63,7 @@ class SidebarNavDual extends HTMLElement {
           <!-- Logo Marki (statique, en haut) -->
           <div class="flex h-11 w-11 items-center justify-center rounded-xl mb-4" title="Marki">
             <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg">
-              <img src="./marki-logo.png" alt="Marki" class="h-full w-full object-contain">
+              <img src="/static/marki-logo.png" alt="Marki" class="h-full w-full object-contain">
             </div>
           </div>
           
