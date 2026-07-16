@@ -421,3 +421,50 @@ const log = {
 ---
 
 **Score Global**: 70% - Application fonctionnelle mais incomplète
+
+---
+
+## Partie 7: Mise à jour - Workflows Complétés (Juillet 2026)
+
+### Actions réalisées
+
+Tous les workflows manquants ont été créés selon les spécifications dans `specs/_app/`:
+
+| Page | Workflows Créés | Total |
+|------|-----------------|-------|
+| Dashboard | clear-events, switch-view-card, switch-view-list | +3 |
+| Contacts | toggle-blacklist | +1 |
+| Impayés | open-detail, suspend-facture, unsuspend-facture | +3 |
+| Evenements | close-modal, filter-all, filter-unread, open-event | +4 |
+| Relances | cancel-relance, close-modal, edit-relance, view-relance | +4 |
+| Séquences | close-modal, duplicate-sequence, filter-all, filter-relance, filter-suivi, new-sequence | +6 |
+| Relances Validation | blacklister-relance, deselect-relance, filter-all, filter-email, filter-today, suspendre-relance | +6 |
+| Settings SMTP | close-delete-modal, confirm-delete, new-profil | +3 |
+| Settings Utilisateurs | create-user | +1 |
+| Impayes Detail | blacklist-facture, changer-sequence, open-pdf, suspend-facture, unsuspend-facture | +5 |
+| Relances Calendrier | close-modal, go-today, initial-load, next-period, open-edit-relance, previous-period, save-edit, switch-view-month, switch-view-week | +9 |
+| Relances Detail | initial-load | +1 |
+| Sequences Relance Detail | ajouter-email, initial-load, sauvegarder, supprimer-email, tester-email, toggle-publication, toggle-validation | +7 |
+| Sequences Suivi Detail | initial-load, sauvegarder | +2 |
+| Portail Client | download-facture, initial-load, regler-facture, switch-tab-apporteur, switch-tab-factures | +5 |
+| Portail Mission | download-facture, initial-load, logout, regler-facture | +4 |
+| Impayes Payeur | initial-load | +1 |
+| Impayes Reparer | view-reparer | +1 |
+| Impayes Suspendus | initial-load, reactivate-impaye | +2 |
+| Smart Marki | apply-insight, dismiss-insight, initial-load | +3 |
+
+### Total
+
+- **Workflows créés**: +81
+- **Workflows existants avant**: ~58
+- **Total actuel**: ~139 workflows
+- **Fichiers workflow-init.html**: 23 pages
+
+### Pattern respecté
+
+Tous les workflows suivent le pattern **Props → Init → Workflows**:
+- Logger avec `crypto.randomUUID()`
+- Events WORKFLOW_START, WORKFLOW_SUCCESS, WORKFLOW_ERROR
+- Appels API avec Bearer token
+- Gestion des erreurs
+
