@@ -37,7 +37,7 @@ RE/TM/... = Icônes des applications Marki
 
 ## Composant Sidebar
 
-**Fichier**: `components/sidebar-nav-dual.js`
+**Fichier**: `static/components/sidebar-nav-dual.js` (servi à `/static/components/sidebar-nav-dual.js`)
 
 ### Rail d'Applications (64px)
 

@@ -29,7 +29,9 @@ Pages concernées:
 - ❌ Pas de footer
 - Authentification JWT classique
 
-**Composant**: `sidebar-nav-dual.js`
+**Composant**: `static/components/sidebar-nav-dual.js`
+
+**Note**: Le composant est servi depuis `/static/components/` dans l'application Flask.
 
 ### 2. Layout Portail (`layout_portail.md`)
 
