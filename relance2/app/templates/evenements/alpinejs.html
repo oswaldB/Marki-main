@@ -20,7 +20,7 @@
             
             get filteredEvents() {
                 if (this.filterRead === '') return this.events;
-                return this.events.filter(e => e.lu.toString() === this.filterRead);
+                return this.events.filter(e => e.read.toString() === this.filterRead);
             },
             
             formatDate(dateStr) {

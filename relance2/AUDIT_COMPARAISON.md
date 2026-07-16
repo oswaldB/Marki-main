@@ -213,6 +213,40 @@ const log = {
 
 ---
 
+## Partie 5: Incohérences Détectées et Corrigées
+
+### 🚨 Problème 1: Nom de colonne `lu` vs `read`
+
+**Incohérence détectée:**
+- Specs schema: colonne `read` dans table `events`
+- Backend routes: utilisait `lu` (français)
+- Frontend: utilisait `lu` (français)
+
+**Correction appliquée:**
+- ✅ Backend (`routes/events.py`): changé `lu` → `read`
+- ✅ Backend (`routes/dashboard.py`): changé `lu` → `read`
+- ✅ Frontend (`templates/evenements/`): changé `.lu` → `.read`
+- ✅ Frontend (`templates/dashboard/`): changé `.lu` → `.read`
+
+**Fichiers modifiés:**
+- `app/routes/events.py`
+- `app/routes/dashboard.py`
+- `app/templates/evenements/alpinejs.html`
+- `app/templates/evenements/index.html`
+- `app/templates/evenements/workflows/mark-*.html`
+- `app/templates/dashboard/index.html`
+
+### 🚨 Problème 2: Route `/api/dashboard/stats`
+
+**Incohérence détectée:**
+- `specs/routes.md`: "**Pas de route `/api/dashboard/*`**. Le dashboard calcule ses stats côté frontend"
+- Mais présente dans `specs/workflows/frontend/*/initial-load.md`
+- Et implémentée dans `app/routes/dashboard.py`
+
+**Statut:** Route conservée pour compatibilité mais documentée comme non conforme aux specs principales.
+
+---
+
 ## Conclusion
 
 ### Forces

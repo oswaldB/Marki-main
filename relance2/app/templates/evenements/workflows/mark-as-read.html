@@ -17,7 +17,7 @@ markAsRead: async function(id) {
         
         // Mettre à jour localement
         const event = this.events.find(e => e.id === id);
-        if (event) event.lu = 1;
+        if (event) event.read = 1;
         
         log.info('WORKFLOW_SUCCESS', { workflowId });
     } catch (error) {

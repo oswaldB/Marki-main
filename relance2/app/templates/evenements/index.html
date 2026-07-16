@@ -56,18 +56,18 @@
             <template x-for="event in filteredEvents" :key="event.id">
                 <div 
                     class="p-4 hover:bg-slate-50 transition-colors flex items-start gap-4"
-                    :class="event.lu ? '' : 'bg-sky-50/50'"
+                    :class="event.read ? '' : 'bg-sky-50/50'"
                 >
                     <div 
                         class="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                        :class="event.lu ? 'bg-slate-300' : 'bg-sky-500'"
+                        :class="event.read ? 'bg-slate-300' : 'bg-sky-500'"
                     ></div>
                     <div class="flex-1">
                         <p class="text-sm text-slate-900" x-text="event.message"></p>
                         <p class="text-xs text-slate-500 mt-1" x-text="formatDate(event.created_at)"></p>
                     </div>
                     <button 
-                        x-show="!event.lu"
+                        x-show="!event.read"
                         @click="markAsRead(event.id)"
                         class="text-sky-600 hover:text-sky-700 text-sm"
                     >

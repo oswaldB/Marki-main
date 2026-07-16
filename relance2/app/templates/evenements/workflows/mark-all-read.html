@@ -16,7 +16,7 @@ markAllRead: async function() {
         if (!response.ok) throw new Error('Erreur');
         
         // Mettre à jour localement
-        this.events.forEach(e => e.lu = 1);
+        this.events.forEach(e => e.read = 1);
         
         log.info('WORKFLOW_SUCCESS', { workflowId });
         

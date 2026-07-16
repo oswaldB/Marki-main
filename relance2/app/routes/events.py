@@ -23,7 +23,7 @@ def get_events():
     events = [dict(row) for row in cursor.fetchall()]
     
     # Count unread
-    cursor.execute("SELECT COUNT(*) FROM events WHERE lu = 0")
+    cursor.execute("SELECT COUNT(*) FROM events WHERE read = 0")
     unread_count = cursor.fetchone()[0]
     
     print(f"[API.EVENTS.LIST] SUCCESS: {len(events)} events, {unread_count} unread")
@@ -42,7 +42,7 @@ def mark_as_read(id):
     db = get_db()
     cursor = db.cursor()
     
-    cursor.execute("UPDATE events SET lu = 1 WHERE id = ?", (id,))
+    cursor.execute("UPDATE events SET read = 1 WHERE id = ?", (id,))
     db.commit()
     
     print("[API.EVENTS.READ] SUCCESS")
@@ -57,7 +57,7 @@ def mark_all_read():
     db = get_db()
     cursor = db.cursor()
     
-    cursor.execute("UPDATE events SET lu = 1 WHERE lu = 0")
+    cursor.execute("UPDATE events SET read = 1 WHERE read = 0")
     db.commit()
     
     print("[API.EVENTS.MARK_ALL_READ] SUCCESS")

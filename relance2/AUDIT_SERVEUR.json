@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-07-16T17:06:05.330883",
+  "timestamp": "2026-07-16T19:41:24.766015",
   "pages": [
     {
       "page": "Home",
@@ -205,9 +205,9 @@
     {
       "endpoint": "API Dashboard Stats",
       "url": "http://localhost:5000/api/dashboard/stats",
-      "http_code": "500",
-      "is_json": false,
-      "status": "ERROR"
+      "http_code": "200",
+      "is_json": true,
+      "status": "OK"
     }
   ]
 }
