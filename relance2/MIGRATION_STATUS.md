@@ -28,9 +28,24 @@ Fichiers créés:
 - `initialLoad()` - Vérifie si token existant
 - `authSubmit()` - Soumission formulaire de connexion
 
+### 2. Impayes-reparer ✅
+**Source:** `specs/_app/static/pages/impayes-reparer/`
+**Destination:** `specs/_app/templates/impayes_reparer/`
+
+Fichiers créés:
+- ✅ `templates/impayes_reparer/index.html` - Template principal
+- ✅ `templates/impayes_reparer/alpinejs.html` - Initialisation avec includes
+- ✅ `templates/impayes_reparer/workflows/workflow-init.html` - État initial
+- ✅ `templates/impayes_reparer/workflows/initial-load.html` - Workflow chargement
+- ✅ `templates/impayes_reparer/workflows/view-reparer.html` - Workflow affichage
+
+**Workflows:**
+- `initialLoad()` - Charge les impayés à réparer depuis l'API
+- `viewReparer()` - Affiche/met à jour la vue
+
 ---
 
-## Pages à Migrer ⏳ (22 restantes)
+## Pages à Migrer ⏳ (21 restantes)
 
 ### 2. Dashboard ⏳
 **Source:** `specs/_app/static/pages/dashboard/`
