@@ -1,0 +1,58 @@
+<!-- templates/machine_a_cafe/workflows/remplir-lait.html -->
+<!-- Mega-function: Remplissage du réservoir de lait -->
+
+remplirLait: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'remplirLait',
+        niveauAvant: this.niveauLait
+    });
+    
+    this.loading = true;
+    this.error = null;
+    this.status = '🥛 Remplissage du réservoir de lait...';
+    
+    try {
+        // Étape 1: Vérification
+        log.debug('VALIDATION_START', { niveauLait: this.niveauLait });
+        
+        if (this.niveauLait >= 100) {
+            log.warn('RESERVOIR_DEJA_PLEIN', { niveauLait: this.niveauLait });
+            this.status = 'ℹ️ Le réservoir de lait est déjà plein';
+            return;
+        }
+        
+        log.debug('VALIDATION_SUCCESS');
+        
+        // Étape 2: Remplissage
+        log.debug('REMPLISSAGE_START');
+        await this.simulerDelai(1800);
+        this.niveauLait = 100;
+        log.debug('REMPLISSAGE_COMPLETE', { niveauLait: this.niveauLait });
+        
+        // Étape 3: Finalisation
+        this.ajouterHistorique('Réservoir de lait rempli');
+        this.status = '✅ Réservoir de lait plein';
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime,
+            niveauFinal: this.niveauLait
+        });
+        
+    } catch (error) {
+        this.error = error.message;
+        this.status = '❌ Erreur: ' + error.message;
+        
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    } finally {
+        this.loading = false;
+        this.mettreAJourStatus();
+    }
+}

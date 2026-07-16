@@ -3,375 +3,333 @@
 ## Stack Technique
 
 - **Framework JS**: Alpine.js uniquement (pas de React, Vue, ou vanilla JS)
-- **Templating**: Pas de Jinja2 - uniquement HTML statique
-- **Web Components**: Light shadow DOM uniquement, avec Alpine.js à l'intérieur
+- **Templating**: **Jinja2 via Flask** - les pages sont des templates server-side rendus
+- **Architecture**: Templates Flask avec Alpine.js initialisé via includes
 
 ## Architecture par Page
 
 ### Structure d'une page
 
 ```
-app/static/pages/
-└── <page-name>/
-    ├── index.html          # Page HTML statique
-    ├── store/
-    │   └── store.js        # Store Alpine.js dédié
+app/templates/
+└── <nom-page>/
+    ├── index.html              # Template principal (structure HTML)
+    ├── alpinejs.html           # Initialisation Alpine.js avec includes workflows
     └── workflows/
-        ├── initial-load.js
-        ├── action-1.js
-        └── action-2.js
+        ├── workflow-init.html    # Fonction init() + état initial
+        ├── workflow-1.html       # Mega-function workflow 1
+        ├── workflow-2.html       # Mega-function workflow 2
+        └── ...
 ```
 
-### Store Pattern (Alpine.store)
+### Principe
 
-Chaque page DOIT avoir son propre **store global Alpine.js** dans `store/store.js`, enregistré via `Alpine.store()` :
+Les workflows sont des **mega-functions** définies dans des templates Jinja2, incluses dans un seul objet Alpine.js.
 
-```javascript
-// store/store.js
-export function createStore() {
-  return {
-    // État
-    data: [],
-    loading: false,
-    error: null,
-    
-    // Getters
-    get itemCount() {
-      return this.data.length;
-    },
-    
-    // Actions
-    async loadData() {
-      this.loading = true;
-      try {
-        const response = await fetch('/api/data');
-        this.data = await response.json();
-        log.info('DATA_LOADED', { count: this.data.length });
-      } catch (err) {
-        this.error = err.message;
-        log.error('DATA_LOAD_ERROR', { error: err.message });
-      } finally {
-        this.loading = false;
-      }
-    }
-  };
-}
+## Pattern Alpine.js avec Jinja2
 
-// Fonction d'initialisation à appeler dans la page
-export function initStore() {
-  document.addEventListener('alpine:init', () => {
-    Alpine.store('page', createStore());
-  });
-}
-```
-
-### Chargement Alpine.js - À LA FIN DU BODY
-
-**OBLIGATOIRE:** Alpine.js doit être chargé à la **fin du `<body>`**, jamais dans le `<head>`:
+### 1. index.html - Structure de la page
 
 ```html
+<!-- templates/nom-page/index.html -->
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- PAS d'Alpine ici -->
-  <title>Ma Page</title>
+    <title>Ma Page</title>
+    <!-- Tailwind CSS ou autre -->
+    <link rel="stylesheet" href="/static/css/app.css">
 </head>
 <body>
-  <!-- Contenu de la page -->
-  <div x-data>
-    <span x-text="$store.page.itemCount"></span>
-  </div>
-  
-  <!-- ✅ Alpine.js À LA FIN, avant </body> -->
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-  
-  <!-- Ton module qui initialise le store -->
-  <script type="module">
-    import { initStore } from './store/store.js';
-    initStore();
-  </script>
+    <!-- Contenu HTML avec directives Alpine -->
+    <div x-data="nomPage" x-init="init()">
+        <h1 x-text="title"></h1>
+        
+        <!-- Bouton qui appelle un workflow -->
+        <button @click="workflow1()" :disabled="loading">
+            Action 1
+        </button>
+        
+        <button @click="workflow2()" :disabled="loading">
+            Action 2
+        </button>
+        
+        <!-- Affichage état -->
+        <div x-show="loading">Chargement...</div>
+        <div x-show="error" x-text="error" class="text-red-500"></div>
+    </div>
+    
+    <!-- ✅ Alpine.js À LA FIN DU BODY -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Inclusion de l'initialisation -->
+    {% include 'nom-page/alpinejs.html' %}
 </body>
 </html>
 ```
 
-**Pourquoi à la fin ?**
-- Le DOM est entièrement parsé avant qu'Alpine ne s'exécute
-- Évite les erreurs `cannot read property of null` sur des éléments non encore rendus
-- Meilleures performances de rendu initial
-- Pas besoin de `defer` si le script est déjà à la fin (mais `defer` est recommandé)
-
-**Anti-pattern INTERDIT:**
-```html
-<head>
-  <!-- ❌ INTERDIT - Alpine dans le head -->
-  <script src="alpinejs"></script>
-</head>
-```
-
-Initialisation dans la page HTML:
+### 2. alpinejs.html - Initialisation avec includes
 
 ```html
-<script type="module">
-  import { initStore } from './store/store.js';
-  initStore();
+<!-- templates/nom-page/alpinejs.html -->
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('nomPage', () => ({
+            // État initial (depuis workflow-init.html)
+            {% include 'nom-page/workflows/workflow-init.html' %},
+            
+            // Workflows (mega-functions)
+            {% include 'nom-page/workflows/workflow-1.html' %},
+            {% include 'nom-page/workflows/workflow-2.html' %},
+            {% include 'nom-page/workflows/workflow-3.html' %}
+        }));
+    });
 </script>
-
-<!-- Accès au store global via $store -->
-<div x-data>
-  <span x-text="$store.page.itemCount"></span>
-  <button @click="$store.page.loadData()">Charger</button>
-</div>
 ```
 
-**Pourquoi Alpine.store() et pas Alpine.data() :**
-- `Alpine.store()` = **store global** accessible partout (`$store.page`)
-- `Alpine.data()` = **composant local** isolé par instance
-- Les stores globaux permettent de partager l'état entre composants sans props drilling
-
-## Workflows Frontend
-
-### Principe
-
-**Chaque bouton/interaction est associé à un workflow frontend dédié.**
-
-Les workflows sont dans le dossier `workflows/` de chaque page.
-
-### Structure d'un workflow
-
-Les workflows reçoivent le store Alpine en paramètre et utilisent ses méthodes :
-
-```javascript
-// workflows/save-data.js
-export async function saveDataWorkflow(payload) {
-  const store = Alpine.store('page');
-  
-  log.info('WORKFLOW_START', { 
-    workflow: 'save-data',
-    payload: sanitizePayload(payload) 
-  });
-  
-  try {
-    // Étape 1: Validation
-    log.debug('VALIDATION_START', { payload });
-    validatePayload(payload);
-    log.debug('VALIDATION_SUCCESS');
-    
-    // Étape 2: API call
-    log.debug('API_CALL_START', { endpoint: '/api/save' });
-    const response = await fetch('/api/save', {
-      method: 'POST',
-      body: JSON.stringify(payload)
-    });
-    log.debug('API_CALL_COMPLETE', { status: response.status });
-    
-    // Étape 3: Mise à jour du store via ses méthodes
-    log.debug('STORE_UPDATE_START');
-    store.updateData(await response.json());
-    log.debug('STORE_UPDATE_COMPLETE');
-    
-    log.info('WORKFLOW_SUCCESS', { workflow: 'save-data' });
-    return { success: true };
-    
-  } catch (error) {
-    log.error('WORKFLOW_ERROR', { 
-      workflow: 'save-data',
-      error: error.message,
-      stack: error.stack 
-    });
-    throw error;
-  }
-}
-```
-
-### Binding HTML avec le store
+### 3. workflows/workflow-init.html - État initial
 
 ```html
-<!-- Accès direct au store global via $store -->
-<div x-data>
-  <span x-text="$store.page.itemCount"></span> items
-  <button 
-    @click="$store.page.loadData()"
-    :disabled="$store.page.loading"
-  >
-    Charger
-  </button>
-</div>
+<!-- templates/nom-page/workflows/workflow-init.html -->
+// État initial du composant
+init: function() {
+    log.info('PAGE_INIT', { page: 'nomPage' });
+    this.loadInitialData();
+},
 
-<!-- Bouton avec workflow -->
-<button 
-  @click="async () => {
-    const { saveDataWorkflow } = await import('./workflows/save-data.js');
-    await saveDataWorkflow({ id: 123 });
-  }"
-  :disabled="$store.page.loading"
->
-  Sauvegarder
-</button>
-```
+// Propriétés réactives
+title: 'Ma Page',
+loading: false,
+error: null,
+data: [],
 
-## Web Components
+// Getter
+get itemCount() {
+    return this.data.length;
+},
 
-### Règles strictes
-
-1. **Light Shadow DOM uniquement** - pas de shadow DOM fermé
-2. **Pas de template externe** - le HTML est dans le return
-3. **Alpine.js obligatoire** à l'intérieur du composant
-
-### Pattern Web Component
-
-```javascript
-// components/my-component.js
-class MyComponent extends HTMLElement {
-  constructor() {
-    super();
-    // Light shadow uniquement
-    this.attachShadow({ mode: 'open' });
-  }
-  
-  connectedCallback() {
-    const data = this.getAttribute('data') || '{}';
-    
-    // HTML + Alpine.js inline
-    this.shadowRoot.innerHTML = `
-      <div x-data="{ 
-        items: ${data},
-        selected: null,
-        get selectedLabel() {
-          return this.selected?.label || 'Aucune sélection'
-        }
-      }">
-        <!-- Template directement dans le HTML -->
-        <template x-for="item in items" :key="item.id">
-          <div 
-            @click="selected = item; log.info('ITEM_SELECTED', { id: item.id })"
-            :class="{ 'selected': selected?.id === item.id }"
-          >
-            <span x-text="item.label"></span>
-          </div>
-        </template>
-        
-        <div class="selection-info">
-          <span x-text="selectedLabel"></span>
-        </div>
-        
-        <script>
-          // Logs exhaustifs obligatoires
-          console.log('[MyComponent] Mounted', { itemCount: items.length });
-        </script>
-      </div>
-    `;
-    
-    // Ré-exécuter Alpine sur le shadow DOM
-    if (window.Alpine) {
-      Alpine.initTree(this.shadowRoot);
+// Méthode utilitaire pour charger les données initiales
+loadInitialData: async function() {
+    this.loading = true;
+    try {
+        const response = await fetch('/api/data');
+        this.data = await response.json();
+        log.info('DATA_LOADED', { count: this.data.length });
+    } catch (err) {
+        this.error = err.message;
+        log.error('DATA_LOAD_ERROR', { error: err.message });
+    } finally {
+        this.loading = false;
     }
-  }
 }
-
-customElements.define('my-component', MyComponent);
 ```
 
-### Utilisation
+### 4. workflows/workflow-1.html - Mega-function workflow
 
 ```html
-<script type="module" src="./components/my-component.js"></script>
+<!-- templates/nom-page/workflows/workflow-1.html -->
+// Mega-function: Workflow de sauvegarde
+workflow1: async function() {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'workflow1',
+        page: 'nomPage'
+    });
+    
+    this.loading = true;
+    this.error = null;
+    
+    try {
+        // Étape 1: Validation
+        log.debug('VALIDATION_START');
+        if (!this.data || this.data.length === 0) {
+            throw new Error('Aucune donnée à sauvegarder');
+        }
+        log.debug('VALIDATION_SUCCESS');
+        
+        // Étape 2: Préparation
+        log.debug('PREPARATION_START', { itemCount: this.data.length });
+        const payload = this.preparePayload();
+        log.debug('PREPARATION_COMPLETE', { payload });
+        
+        // Étape 3: Appel API
+        log.debug('API_CALL_START', { endpoint: '/api/save', method: 'POST' });
+        const response = await fetch('/api/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        log.debug('API_CALL_COMPLETE', { status: response.status });
+        
+        // Étape 4: Traitement réponse
+        log.debug('RESPONSE_PROCESSING_START');
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || `HTTP ${response.status}`);
+        }
+        const result = await response.json();
+        log.debug('RESPONSE_PROCESSING_COMPLETE', { result });
+        
+        // Étape 5: Mise à jour état
+        log.debug('STATE_UPDATE_START');
+        this.data = result.data || this.data;
+        this.title = 'Sauvegardé !';
+        log.debug('STATE_UPDATE_COMPLETE');
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime 
+        });
+        
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message,
+            stack: error.stack
+        });
+    } finally {
+        this.loading = false;
+    }
+},
 
-<my-component data='[{"id":1,"label":"A"},{"id":2,"label":"B"}]'></my-component>
+// Méthode utilitaire pour ce workflow
+preparePayload: function() {
+    return {
+        items: this.data,
+        timestamp: Date.now()
+    };
+}
+```
+
+### 5. workflows/workflow-2.html - Autre exemple
+
+```html
+<!-- templates/nom-page/workflows/workflow-2.html -->
+// Mega-function: Workflow de suppression
+workflow2: async function(itemId) {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'workflow2',
+        itemId 
+    });
+    
+    if (!confirm('Confirmer la suppression ?')) {
+        log.info('WORKFLOW_CANCELLED', { workflowId, reason: 'user_cancel' });
+        return;
+    }
+    
+    this.loading = true;
+    
+    try {
+        log.debug('DELETE_START', { itemId });
+        const response = await fetch(`/api/items/${itemId}`, {
+            method: 'DELETE'
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Échec suppression: ${response.status}`);
+        }
+        
+        // Mise à jour locale
+        this.data = this.data.filter(item => item.id !== itemId);
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, itemId });
+        
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    } finally {
+        this.loading = false;
+    }
+}
+```
+
+## Route Flask correspondante
+
+```python
+# app/routes/nom_page.py
+from flask import Blueprint, render_template
+
+bp = Blueprint('nom_page', __name__)
+
+@bp.route('/nom-page')
+def nom_page():
+    return render_template('nom-page/index.html')
+```
+
+```python
+# app/app.py
+from flask import Flask
+from routes import nom_page
+
+app = Flask(__name__)
+app.register_blueprint(nom_page.bp)
 ```
 
 ## Génération Exhaustive des Logs
 
-### Obligatoire sur chaque page et workflow
+### Logger intégré dans chaque page
 
-```javascript
-// Logger dédié frontend
-const log = {
-  debug: (event, data) => console.log(`[DEBUG][${event}]`, data),
-  info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
-  warn: (event, data) => console.warn(`[WARN][${event}]`, data),
-  error: (event, data) => console.error(`[ERROR][${event}]`, data)
-};
-
-// Événements à logger obligatoirement:
-// - Initialisation du store
-// - Démarrage d'un workflow
-// - Chaque étape du workflow
-// - Appels API (requête + réponse)
-// - Modifications du DOM
-// - Erreurs (avec stack trace)
-// - Fin de workflow (succès/échec)
-```
-
-### Pattern de log dans chaque workflow
-
-```javascript
-export async function workflowName(params) {
-  const workflowId = crypto.randomUUID();
-  const store = Alpine.store('page');
-  
-  log.info('WORKFLOW_INIT', {
-    workflowId,
-    workflow: 'workflowName',
-    timestamp: Date.now(),
-    params: sanitizeForLog(params),
-    storeState: { itemCount: store.itemCount }
-  });
-  
-  try {
-    // ... étapes du workflow avec log à chaque étape ...
-    
-    log.info('WORKFLOW_COMPLETE', {
-      workflowId,
-      duration: Date.now() - startTime,
-      result: 'success'
-    });
-    
-  } catch (error) {
-    log.error('WORKFLOW_FAILED', {
-      workflowId,
-      error: error.message,
-      stack: error.stack,
-      storeState: { /* état actuel du store */ }
-    });
-    throw error;
-  }
-}
-```
-
-## Anti-patterns Interdits
-
-❌ **Jamais de Jinja2 côté client**:
 ```html
-<!-- INTERDIT -->
-<div>{{ server_data.value }}</div>
+<!-- Dans alpinejs.html, avant l'initialisation -->
+<script>
+    // Logger global pour la page
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+</script>
 ```
 
-❌ **Jamais de vanilla JS pour la réactivité**:
-```javascript
-// INTERDIT
-document.getElementById('btn').addEventListener('click', ...);
-```
+### Événements à logger obligatoirement
 
-❌ **Jamais de shadow DOM fermé**:
-```javascript
-// INTERDIT
-this.attachShadow({ mode: 'closed' });
-```
-
-❌ **Jamais de template externe pour les web components**:
-```javascript
-// INTERDIT - pas de fetch de template HTML
-const template = await fetch('/templates/comp.html');
-```
+Dans chaque workflow :
+- `WORKFLOW_START` - Début avec contexte
+- `VALIDATION_START/COMPLETE/ERROR` - Validation données
+- `API_CALL_START/COMPLETE` - Appels HTTP
+- `STATE_UPDATE_START/COMPLETE` - Modification état Alpine
+- `WORKFLOW_SUCCESS/ERROR` - Fin avec résultat
 
 ## Checklist avant commit
 
-- [ ] Alpine.js est chargé à la **fin du body**, pas dans le head
-- [ ] Chaque page a son store.js dédié enregistré via `Alpine.store('page', ...)`
-- [ ] Le store est accessible via `$store.page` dans les templates
-- [ ] Chaque bouton a son workflow associé
-- [ ] Les workflows accèdent au store via `Alpine.store('page')`
-- [ ] Pas de Jinja2 dans les fichiers frontend
-- [ ] Les web components utilisent light shadow
-- [ ] Les logs couvrent tous les workflows et étapes
-- [ ] Les imports de workflows sont dynamiques (lazy loading)
+- [ ] Structure `templates/nom-page/index.html` + `alpinejs.html` + `workflows/` respectée
+- [ ] Alpine.js chargé à la **fin du body** avec `defer`
+- [ ] `alpinejs.html` inclus après Alpine.js
+- [ ] Chaque workflow est une **mega-function** complète dans son template
+- [ ] Le workflow `workflow-init.html` contient `init()` et l'état initial
+- [ ] Les logs couvrent toutes les étapes du workflow
+- [ ] Pas de JavaScript inline dans `index.html` (tout est dans les workflows)
+
+## Anti-patterns Interdits
+
+❌ **Pas de JavaScript inline dans index.html**:
+```html
+<!-- INTERDIT -->
+<button @click="fetch('/api').then(...)">Go</button>
+```
+
+❌ **Pas de scripts en dehors des templates workflows**:
+```html
+<!-- INTERDIT -->
+<script src="./custom-script.js"></script>
+```
+
+❌ **Pas de x-data sans init()**:
+```html
+<!-- INTERDIT -->
+<div x-data="{ items: [] }">  <!-- Doit passer par alpinejs.html -->
+```
+
+❌ **Alpine.js dans le head**:
+```html
+<head>
+  <!-- INTERDIT -->
+  <script src="alpinejs"></script>
+</head>
+```

@@ -1,0 +1,82 @@
+<!-- templates/machine_a_cafe/workflows/faire-cappuccino.html -->
+<!-- Mega-function: Préparation d'un cappuccino -->
+
+faireCappuccino: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'faireCappuccino',
+        niveauEau: this.niveauEau,
+        niveauGrains: this.niveauGrains,
+        niveauLait: this.niveauLait
+    });
+    
+    this.loading = true;
+    this.error = null;
+    this.status = '🥛 Préparation de votre cappuccino...';
+    
+    try {
+        // Étape 1: Vérification des ressources
+        log.debug('VALIDATION_START', { 
+            niveauEau: this.niveauEau, 
+            niveauGrains: this.niveauGrains,
+            niveauLait: this.niveauLait
+        });
+        
+        if (this.niveauEau < 15) {
+            throw new Error('Niveau d\'eau insuffisant');
+        }
+        if (this.niveauGrains < 10) {
+            throw new Error('Niveau de grains insuffisant');
+        }
+        if (this.niveauLait < 20) {
+            throw new Error('Niveau de lait insuffisant');
+        }
+        
+        log.debug('VALIDATION_SUCCESS');
+        
+        // Étape 2: Mouture des grains
+        log.debug('MOUTURE_START');
+        await this.simulerDelai(1000);
+        this.niveauGrains -= 10;
+        log.debug('MOUTURE_COMPLETE', { niveauGrainsRestant: this.niveauGrains });
+        
+        // Étape 3: Infusion espresso
+        log.debug('INFUSION_START');
+        await this.simulerDelai(1500);
+        this.niveauEau -= 15;
+        log.debug('INFUSION_COMPLETE', { niveauEauRestant: this.niveauEau });
+        
+        // Étape 4: Préparation de la mousse de lait
+        log.debug('MOUSSE_START');
+        await this.simulerDelai(2000);
+        this.niveauLait -= 20;
+        log.debug('MOUSSE_COMPLETE', { niveauLaitRestant: this.niveauLait });
+        
+        // Étape 5: Finalisation
+        log.debug('FINALISATION_START');
+        this.ajouterHistorique('Cappuccino préparé');
+        this.status = '✅ Votre cappuccino est prêt !';
+        log.debug('FINALISATION_COMPLETE');
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime,
+            result: 'cappuccino_ready'
+        });
+        
+    } catch (error) {
+        this.error = error.message;
+        this.status = '❌ Erreur: ' + error.message;
+        
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    } finally {
+        this.loading = false;
+        this.mettreAJourStatus();
+    }
+}

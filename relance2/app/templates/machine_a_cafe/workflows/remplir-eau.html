@@ -1,0 +1,58 @@
+<!-- templates/machine_a_cafe/workflows/remplir-eau.html -->
+<!-- Mega-function: Remplissage du réservoir d'eau -->
+
+remplirEau: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'remplirEau',
+        niveauAvant: this.niveauEau
+    });
+    
+    this.loading = true;
+    this.error = null;
+    this.status = '💧 Remplissage du réservoir d\'eau...';
+    
+    try {
+        // Étape 1: Vérification
+        log.debug('VALIDATION_START', { niveauEau: this.niveauEau });
+        
+        if (this.niveauEau >= 100) {
+            log.warn('RESERVOIR_DEJA_PLEIN', { niveauEau: this.niveauEau });
+            this.status = 'ℹ️ Le réservoir d\'eau est déjà plein';
+            return;
+        }
+        
+        log.debug('VALIDATION_SUCCESS');
+        
+        // Étape 2: Remplissage
+        log.debug('REMPLISSAGE_START');
+        await this.simulerDelai(2000);
+        this.niveauEau = 100;
+        log.debug('REMPLISSAGE_COMPLETE', { niveauEau: this.niveauEau });
+        
+        // Étape 3: Finalisation
+        this.ajouterHistorique('Réservoir d\'eau rempli');
+        this.status = '✅ Réservoir d\'eau plein';
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime,
+            niveauFinal: this.niveauEau
+        });
+        
+    } catch (error) {
+        this.error = error.message;
+        this.status = '❌ Erreur: ' + error.message;
+        
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    } finally {
+        this.loading = false;
+        this.mettreAJourStatus();
+    }
+}

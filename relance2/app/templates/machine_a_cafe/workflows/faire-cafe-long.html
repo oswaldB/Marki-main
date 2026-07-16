@@ -1,0 +1,71 @@
+<!-- templates/machine_a_cafe/workflows/faire-cafe-long.html -->
+<!-- Mega-function: Préparation d'un café long -->
+
+faireCafeLong: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'faireCafeLong',
+        niveauEau: this.niveauEau,
+        niveauGrains: this.niveauGrains
+    });
+    
+    this.loading = true;
+    this.error = null;
+    this.status = '🍵 Préparation de votre café long...';
+    
+    try {
+        // Étape 1: Vérification des ressources
+        log.debug('VALIDATION_START', { 
+            niveauEau: this.niveauEau, 
+            niveauGrains: this.niveauGrains 
+        });
+        
+        if (this.niveauEau < 20) {
+            throw new Error('Niveau d\'eau insuffisant pour un café long');
+        }
+        if (this.niveauGrains < 15) {
+            throw new Error('Niveau de grains insuffisant');
+        }
+        
+        log.debug('VALIDATION_SUCCESS');
+        
+        // Étape 2: Mouture des grains
+        log.debug('MOUTURE_START');
+        await this.simulerDelai(1200);
+        this.niveauGrains -= 15;
+        log.debug('MOUTURE_COMPLETE', { niveauGrainsRestant: this.niveauGrains });
+        
+        // Étape 3: Infusion longue
+        log.debug('INFUSION_START', { type: 'longue', duree: '3s' });
+        await this.simulerDelai(3000);
+        this.niveauEau -= 20;
+        log.debug('INFUSION_COMPLETE', { niveauEauRestant: this.niveauEau });
+        
+        // Étape 4: Finalisation
+        log.debug('FINALISATION_START');
+        this.ajouterHistorique('Café long préparé');
+        this.status = '✅ Votre café long est prêt !';
+        log.debug('FINALISATION_COMPLETE');
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime,
+            result: 'cafe_long_ready'
+        });
+        
+    } catch (error) {
+        this.error = error.message;
+        this.status = '❌ Erreur: ' + error.message;
+        
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    } finally {
+        this.loading = false;
+        this.mettreAJourStatus();
+    }
+}
