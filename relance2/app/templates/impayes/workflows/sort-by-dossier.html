@@ -1,0 +1,26 @@
+// Workflow: Sort by dossier
+sortByDossier: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'sortByDossier' });
+    
+    try {
+        if (this.sortColumn === 'dossier') {
+            this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            this.sortColumn = 'dossier';
+            this.sortDirection = 'asc';
+        }
+        
+        this.filteredImpayes.sort((a, b) => {
+            const valA = (a.dossier || '').toLowerCase();
+            const valB = (b.dossier || '').toLowerCase();
+            return this.sortDirection === 'asc' 
+                ? valA.localeCompare(valB)
+                : valB.localeCompare(valA);
+        });
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, sortColumn: this.sortColumn });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

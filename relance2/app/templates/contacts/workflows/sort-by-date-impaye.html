@@ -1,0 +1,24 @@
+// Workflow: Sort contacts by impaye date
+sortByDateImpaye: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'sortByDateImpaye' });
+    
+    try {
+        if (this.sortColumn === 'date_impaye') {
+            this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            this.sortColumn = 'date_impaye';
+            this.sortDirection = 'desc';
+        }
+        
+        this.filteredContacts.sort((a, b) => {
+            const dateA = new Date(a.date_dernier_impaye || 0);
+            const dateB = new Date(b.date_dernier_impaye || 0);
+            return this.sortDirection === 'asc' ? dateA - dateB : dateB - dateA;
+        });
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, sortColumn: this.sortColumn, sortDirection: this.sortDirection });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

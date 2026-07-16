@@ -1,0 +1,14 @@
+// Workflow: Open detail panel
+openDetail: function(impaye) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'openDetail', impayeId: impaye.id });
+    
+    try {
+        this.selectedImpaye = impaye;
+        this.showDetailPanel = true;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, impayeId: impaye.id });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

@@ -1,0 +1,16 @@
+// Workflow: Pagination previous
+paginationPrev: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'paginationPrev' });
+    
+    try {
+        if (this.currentPage > 1) {
+            this.currentPage--;
+            this.applyFilters();
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, currentPage: this.currentPage });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

@@ -1,0 +1,17 @@
+// Workflow: Toggle dropdown menu
+toggleDropdown: function(contactId) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'toggleDropdown', contactId });
+    
+    try {
+        if (this.openDropdown === contactId) {
+            this.openDropdown = null;
+        } else {
+            this.openDropdown = contactId;
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, openDropdown: this.openDropdown });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

@@ -1,0 +1,26 @@
+// Workflow: Sort by payeur
+sortByPayeur: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'sortByPayeur' });
+    
+    try {
+        if (this.sortColumn === 'payeur_nom') {
+            this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            this.sortColumn = 'payeur_nom';
+            this.sortDirection = 'asc';
+        }
+        
+        this.filteredImpayes.sort((a, b) => {
+            const valA = (a.payeur_nom || '').toLowerCase();
+            const valB = (b.payeur_nom || '').toLowerCase();
+            return this.sortDirection === 'asc'
+                ? valA.localeCompare(valB)
+                : valB.localeCompare(valA);
+        });
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, sortColumn: this.sortColumn });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

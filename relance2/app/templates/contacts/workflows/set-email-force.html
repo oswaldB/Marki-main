@@ -1,0 +1,28 @@
+// Workflow: Set email force flag
+setEmailForce: async function(contact, force) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'setEmailForce', contactId: contact.id, force });
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/contacts/${contact.id}`, method: 'PUT' });
+        
+        const response = await fetch(`/api/contacts/${contact.id}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email_force: force })
+        });
+        
+        if (!response.ok) throw new Error('Erreur lors de la mise à jour');
+        
+        contact.email_force = force;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, contactId: contact.id });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, contactId: contact.id, error: error.message });
+    }
+}

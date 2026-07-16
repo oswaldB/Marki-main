@@ -58,7 +58,13 @@
             // =====================================================
             // 3. WORKFLOWS
             // =====================================================
-            {% include 'impayes_payeur/workflows/initial-load.html' %}
+            {% include 'impayes_payeur/workflows/initial-load.html' %},
+            {% include 'impayes_payeur/workflows/close-detail.html' %},
+            {% include 'impayes_payeur/workflows/open-detail.html' %},
+            {% include 'impayes_payeur/workflows/pagination-next.html' %},
+            {% include 'impayes_payeur/workflows/pagination-prev.html' %},
+            {% include 'impayes_payeur/workflows/save-note.html' %},
+            {% include 'impayes_payeur/workflows/sync-data.html' %}
         }));
     });
 </script>

@@ -1,0 +1,24 @@
+// Workflow: Sort by reste a payer
+sortByReste: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'sortByReste' });
+    
+    try {
+        if (this.sortColumn === 'reste_a_payer') {
+            this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+        } else {
+            this.sortColumn = 'reste_a_payer';
+            this.sortDirection = 'desc';
+        }
+        
+        this.filteredImpayes.sort((a, b) => {
+            const valA = parseFloat(a.reste_a_payer) || 0;
+            const valB = parseFloat(b.reste_a_payer) || 0;
+            return this.sortDirection === 'asc' ? valA - valB : valB - valA;
+        });
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, sortColumn: this.sortColumn });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}
