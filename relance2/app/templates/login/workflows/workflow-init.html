@@ -1,0 +1,40 @@
+// Fonction d'initialisation (doit être en dernier dans Alpine.data)
+init: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'init', page: 'login' });
+    
+    try {
+        // Vérifier si un token existe déjà
+        const token = localStorage.getItem('token');
+        
+        if (token) {
+            log.info('TOKEN_FOUND', { workflowId });
+            
+            // Vérifier la validité du token
+            const response = await fetch('/api/auth/me', {
+                headers: { 
+                    'Authorization': `Bearer ${token}` 
+                }
+            });
+            
+            if (response.ok) {
+                log.info('SESSION_VALID', { workflowId, redirect: '/dashboard' });
+                // Redirection automatique vers le dashboard
+                window.location.href = '/dashboard';
+                return;
+            } else {
+                log.warn('SESSION_INVALID', { workflowId, status: response.status });
+                // Token invalide, le supprimer
+                localStorage.removeItem('token');
+            }
+        } else {
+            log.info('NO_TOKEN', { workflowId });
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, result: 'form-ready' });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        // En cas d'erreur, on affiche quand même le formulaire
+    }
+}
