@@ -468,3 +468,82 @@ Tous les workflows suivent le pattern **Props → Init → Workflows**:
 - Appels API avec Bearer token
 - Gestion des erreurs
 
+
+---
+
+## Partie 8: Templates Complétés (Juillet 2026)
+
+### Pages créées (HTML + Alpine.js)
+
+Toutes les pages manquantes ont été créées avec leur structure complète:
+
+| Page | index.html | alpinejs.html | Workflows | Statut |
+|------|-----------|---------------|-----------|--------|
+| **impayes_payeur** | ✅ | ✅ | initial-load | ✅ Complet |
+| **impayes_suspendus** | ✅ | ✅ | initial-load, reactivate-impaye | ✅ Complet |
+| **impayes_reparer** | ✅ | ✅ | view-reparer | ✅ Complet |
+| **portail_client** | ✅ | ✅ | 5 workflows | ✅ Complet |
+| **portail_mission** | ✅ | ✅ | 4 workflows | ✅ Complet |
+| **relances_detail** | ✅ | ✅ | initial-load | ✅ Complet |
+| **sequences_relance_detail** | ✅ | ✅ | 7 workflows | ✅ Complet |
+| **sequences_suivi_detail** | ✅ | ✅ | initial-load, sauvegarder | ✅ Complet |
+| **smart_marki** | ✅ | ✅ | initial-load, apply-insight, dismiss-insight | ✅ Complet |
+
+### Structure de chaque page
+
+```
+templates/[page]/
+├── index.html              # Template Jinja2
+├── alpinejs.html           # Initialisation Alpine.js
+└── workflows/
+    ├── workflow-init.html  # Point d'entrée
+    └── [workflows].html    # Workflows spécifiques
+```
+
+### Pattern respecté partout
+
+**index.html:**
+```html
+{% extends 'layouts/layout_app.html' %}
+{% block content %}
+<div x-data="pageName" x-init="init()" x-cloak>
+    <!-- Content -->
+</div>
+{% endblock %}
+{% block page_scripts %}
+{% include 'page/alpinejs.html' %}
+{% endblock %}
+```
+
+**alpinejs.html:**
+```html
+<script>
+    const log = { debug, info, warn, error };
+    
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('pageName', () => ({
+            // 1. PROPS
+            loading: false,
+            
+            // 2. INIT
+            {% include 'workflows/workflow-init.html' %},
+            
+            // 3. WORKFLOWS
+            {% include 'workflows/workflow-name.html' %}
+        }));
+    });
+</script>
+```
+
+### Total actuel
+
+| Composant | Quantité |
+|-----------|----------|
+| Pages complètes | **23/23** |
+| Workflows | **139** |
+| Templates index.html | 23 |
+| Templates alpinejs.html | 23 |
+| Fichiers workflow-init | 23 |
+
+**Toutes les pages de specs/_app/templates/ sont maintenant implémentées!** ✅
+
