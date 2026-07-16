@@ -156,6 +156,18 @@
                     🥛 Lait
                 </button>
             </div>
+            
+            
+            <!-- Bouton tout remplir -->
+            <button 
+                @click="toutRemplir()"
+                :disabled="loading || (niveauEau >= 100 && niveauGrains >= 100 && niveauLait >= 100)"
+                class="w-full mt-3 p-3 bg-green-100 hover:bg-green-200 text-green-700 rounded-lg text-sm font-medium disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
+            >
+                <span class="mr-2">🔧</span>
+                <span>Tout remplir à 100%</span>
+                <span x-show="niveauEau >= 100 && niveauGrains >= 100 && niveauLait >= 100" class="ml-2 text-xs">(Déjà plein)</span>
+            </button>
         </div>
         
         

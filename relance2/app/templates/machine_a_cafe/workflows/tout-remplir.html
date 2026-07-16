@@ -1,0 +1,87 @@
+<!-- templates/machine_a_cafe/workflows/tout-remplir.html -->
+<!-- Mega-function: Remplir tous les réservoirs à 100% -->
+
+toutRemplir: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'toutRemplir',
+        niveauEauAvant: this.niveauEau,
+        niveauGrainsAvant: this.niveauGrains,
+        niveauLaitAvant: this.niveauLait
+    });
+    
+    this.loading = true;
+    this.error = null;
+    this.status = '🔧 Remplissage complet en cours...';
+    
+    try {
+        // Étape 1: Vérification
+        log.debug('VALIDATION_START', { 
+            niveauEau: this.niveauEau, 
+            niveauGrains: this.niveauGrains,
+            niveauLait: this.niveauLait
+        });
+        
+        const dejaPlein = this.niveauEau >= 100 && this.niveauGrains >= 100 && this.niveauLait >= 100;
+        if (dejaPlein) {
+            log.warn('TOUT_DEJA_PLEIN');
+            this.status = 'ℹ️ Tous les réservoirs sont déjà pleins';
+            return;
+        }
+        
+        log.debug('VALIDATION_SUCCESS');
+        
+        // Étape 2: Remplissage eau
+        if (this.niveauEau < 100) {
+            log.debug('REMPLISSAGE_EAU_START', { avant: this.niveauEau });
+            await this.simulerDelai(1000);
+            this.niveauEau = 100;
+            log.debug('REMPLISSAGE_EAU_COMPLETE');
+        }
+        
+        // Étape 3: Remplissage grains
+        if (this.niveauGrains < 100) {
+            log.debug('REMPLISSAGE_GRAINS_START', { avant: this.niveauGrains });
+            await this.simulerDelai(1000);
+            this.niveauGrains = 100;
+            log.debug('REMPLISSAGE_GRAINS_COMPLETE');
+        }
+        
+        // Étape 4: Remplissage lait
+        if (this.niveauLait < 100) {
+            log.debug('REMPLISSAGE_LAIT_START', { avant: this.niveauLait });
+            await this.simulerDelai(1000);
+            this.niveauLait = 100;
+            log.debug('REMPLISSAGE_LAIT_COMPLETE');
+        }
+        
+        // Étape 5: Finalisation
+        this.ajouterHistorique('Tous les réservoirs remplis (100%)');
+        this.status = '✅ Tous les réservoirs sont pleins !';
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime,
+            niveauxFinaux: {
+                eau: this.niveauEau,
+                grains: this.niveauGrains,
+                lait: this.niveauLait
+            }
+        });
+        
+    } catch (error) {
+        this.error = error.message;
+        this.status = '❌ Erreur: ' + error.message;
+        
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    } finally {
+        this.loading = false;
+        this.mettreAJourStatus();
+    }
+}
