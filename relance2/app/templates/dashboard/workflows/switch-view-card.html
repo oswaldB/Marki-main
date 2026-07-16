@@ -1,0 +1,17 @@
+// Workflow: Switch to card view
+switchViewCard: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'switchViewCard' });
+    
+    try {
+        // Change view mode
+        this.viewMode = 'card';
+        
+        // Persist preference in localStorage
+        localStorage.setItem('dashboard_view', 'card');
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, viewMode: 'card' });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

@@ -1,0 +1,35 @@
+// Workflow: Clear all events (mark as read)
+clearEvents: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'clearEvents' });
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/events/mark-all-read', method: 'POST' });
+        
+        const response = await fetch('/api/events/mark-all-read', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        if (!response.ok) throw new Error('Erreur lors du marquage');
+        
+        // Update local state - tous les events deviennent lus
+        this.events = this.events.map(event => ({
+            ...event,
+            read: true
+        }));
+        
+        // Reset unread counter
+        this.unreadCount = 0;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, updated: this.events.length });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

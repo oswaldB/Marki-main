@@ -1,0 +1,32 @@
+// Workflow: Open detail panel for impaye
+openDetail: function(impaye) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'openDetail', impayeId: impaye.id });
+    
+    try {
+        // Set selected item
+        this.selectedImpaye = impaye;
+        
+        // Show detail panel (slideover)
+        this.showDetailPanel = true;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, impayeId: impaye.id });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+},
+
+// Close detail panel
+closeDetail: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'closeDetail' });
+    
+    try {
+        this.showDetailPanel = false;
+        this.selectedImpaye = null;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}
