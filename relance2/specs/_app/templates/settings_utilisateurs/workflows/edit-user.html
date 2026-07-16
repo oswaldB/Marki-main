@@ -1,0 +1,15 @@
+<!-- templates/settings_utilisateurs/workflows/edit-user.html -->
+<!-- Mega-function: Éditer utilisateur -->
+
+editUser: async function(id) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'editUser', userId: id });
+    
+    const user = this.users.find(u => u.id === id);
+    if (user) {
+        user._editing = true;
+        log.debug('USER_EDITING_MODE', { userId: id });
+    }
+    
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+}

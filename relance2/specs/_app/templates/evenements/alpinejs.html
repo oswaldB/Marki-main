@@ -1,0 +1,21 @@
+<!-- templates/evenements/alpinejs.html -->
+<!-- Initialisation Alpine.js avec includes des workflows -->
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('evenements', () => ({
+            {% include 'evenements/workflows/workflow-init.html' %},
+            {% include 'evenements/workflows/initial-load.html' %},
+            {% include 'evenements/workflows/filter-all.html' %},
+            {% include 'evenements/workflows/filter-unread.html' %},
+            {% include 'evenements/workflows/mark-all-read.html' %},
+            {% include 'evenements/workflows/open-event.html' %}
+        }));
+    });
+</script>

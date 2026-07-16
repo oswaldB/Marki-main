@@ -1,0 +1,14 @@
+<!-- templates/evenements/workflows/open-event.html -->
+<!-- Mega-function: Ouvrir événement -->
+
+openEvent: async function(id) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'openEvent', eventId: id });
+    
+    const event = this.events.find(e => e.id === id);
+    if (event) {
+        event.lu = true;
+    }
+    
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+}

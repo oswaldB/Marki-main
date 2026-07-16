@@ -1,0 +1,12 @@
+<!-- templates/portail_client/workflows/switch-tab-apporteur.html -->
+<!-- Mega-function: Switch to apporteur tab -->
+
+switchTabApporteur: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'switchTabApporteur' });
+    
+    this.activeTab = 'apporteur';
+    
+    log.debug('TAB_CHANGED', { activeTab: this.activeTab });
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+}

@@ -1,0 +1,12 @@
+<!-- templates/evenements/workflows/filter-all.html -->
+<!-- Mega-function: Filtrer tous -->
+
+filterAll: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'filterAll' });
+    
+    this.filter = 'all';
+    log.debug('FILTER_CHANGED', { filter: this.filter });
+    
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+}

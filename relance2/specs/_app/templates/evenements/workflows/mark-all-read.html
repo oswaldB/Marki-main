@@ -1,0 +1,24 @@
+<!-- templates/evenements/workflows/mark-all-read.html -->
+<!-- Mega-function: Tout marquer comme lu -->
+
+markAllRead: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'markAllRead' });
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        const response = await fetch('/api/events/mark-all-read', {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error('Erreur');
+        
+        this.events.forEach(e => e.lu = true);
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

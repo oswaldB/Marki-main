@@ -1,0 +1,20 @@
+<!-- templates/settings_smtp_detail/alpinejs.html -->
+<!-- Initialisation Alpine.js avec includes des workflows -->
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('settingsSmtpDetail', () => ({
+            {% include 'settings_smtp_detail/workflows/workflow-init.html' %},
+            {% include 'settings_smtp_detail/workflows/initial-load.html' %},
+            {% include 'settings_smtp_detail/workflows/save-changes.html' %},
+            {% include 'settings_smtp_detail/workflows/tester-connexion.html' %},
+            {% include 'settings_smtp_detail/workflows/toggle-password.html' %}
+        }));
+    });
+</script>

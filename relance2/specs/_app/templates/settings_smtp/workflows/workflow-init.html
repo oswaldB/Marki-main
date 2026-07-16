@@ -1,0 +1,11 @@
+<!-- templates/settings_smtp/workflows/workflow-init.html -->
+<!-- État initial -->
+
+loading: false,
+error: null,
+profils: [],
+
+init: function() {
+    log.info('PAGE_INIT', { page: 'settings_smtp' });
+    this.initialLoad();
+}

@@ -1,0 +1,31 @@
+<!-- templates/portail_client/workflows/regler-facture.html -->
+<!-- Mega-function: Regler facture -->
+
+reglerFacture: async function(id) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'reglerFacture', factureId: id });
+    
+    this.loading = true;
+    
+    try {
+        const response = await fetch(`/api/portail/factures/${id}/payer`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${this.token}` }
+        });
+        
+        if (!response.ok) throw new Error('Erreur paiement');
+        
+        const data = await response.json();
+        
+        if (data.payment_url) {
+            window.location.href = data.payment_url;
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    } finally {
+        this.loading = false;
+    }
+}

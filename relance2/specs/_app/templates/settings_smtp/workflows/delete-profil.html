@@ -1,0 +1,31 @@
+<!-- templates/settings_smtp/workflows/delete-profil.html -->
+<!-- Mega-function: Supprimer profil -->
+
+deleteProfil: async function(id) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'deleteProfil', profilId: id });
+    
+    if (!confirm('Supprimer ce profil SMTP ?')) return;
+    
+    this.loading = true;
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        const response = await fetch(`/api/smtp-profiles/${id}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error('Erreur lors de la suppression');
+        
+        this.profils = this.profils.filter(p => p.id !== id);
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    } finally {
+        this.loading = false;
+    }
+}

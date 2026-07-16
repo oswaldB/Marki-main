@@ -1,0 +1,11 @@
+<!-- templates/settings_utilisateurs/workflows/workflow-init.html -->
+<!-- État initial -->
+
+loading: false,
+error: null,
+users: [],
+
+init: function() {
+    log.info('PAGE_INIT', { page: 'settings_utilisateurs' });
+    this.initialLoad();
+}

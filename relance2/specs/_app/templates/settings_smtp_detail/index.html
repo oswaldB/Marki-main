@@ -1,0 +1,98 @@
+<!-- templates/settings_smtp_detail/index.html -->
+<!-- Page Settings SMTP Detail - Template Jinja2 + Alpine.js -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détail SMTP | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body class="bg-slate-50">
+
+<sidebar-nav-dual page="settings"></sidebar-nav-dual>
+
+<div class="md:ml-[284px] min-h-screen bg-slate-50" x-data="settingsSmtpDetail" x-init="init()">
+  
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <h1 class="text-base font-semibold text-slate-700">Détail Profil SMTP</h1>
+    <a href="/settings-smtp" class="text-slate-600 hover:bg-slate-100 px-4 py-2 rounded-lg text-sm font-medium">
+      <i class="fas fa-arrow-left mr-2"></i>Retour
+    </a>
+  </header>
+
+  <main class="p-6 max-w-2xl">
+    
+    <template x-if="loading">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-8">
+        <div class="flex justify-center">
+          <i class="fas fa-spinner fa-spin text-slate-400 text-2xl"></i>
+        </div>
+      </div>
+    </template>
+
+    <template x-if="!loading">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <h2 class="text-lg font-semibold text-slate-800 mb-6" x-text="isNew ? 'Nouveau profil' : 'Modifier profil'"></h2>
+        
+        <form @submit.prevent="saveChanges()" class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Nom</label>
+            <input type="text" x-model="profil.nom" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Email</label>
+            <input type="email" x-model="profil.email" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Serveur SMTP</label>
+            <input type="text" x-model="profil.serveur" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Port</label>
+            <input type="number" x-model="profil.port" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500">
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1">Mot de passe</label>
+            <div class="relative">
+              <input :type="showPassword ? 'text' : 'password'" x-model="profil.password" class="w-full px-3 py-2 border border-slate-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-500 pr-10">
+              <button type="button" @click="togglePassword()" class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600">
+                <i :class="showPassword ? 'fas fa-eye-slash' : 'fas fa-eye'"></i>
+              </button>
+            </div>
+          </div>
+          
+          <div class="flex gap-3 pt-4">
+            <button type="submit" :disabled="saving" class="flex-1 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 disabled:opacity-50">
+              <span x-text="saving ? 'Enregistrement...' : 'Enregistrer'"></span>
+            </button>
+            <button type="button" @click="testerConnexion()" :disabled="testing" class="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 disabled:opacity-50">
+              <span x-text="testing ? 'Test...' : 'Tester'"></span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </template>
+
+    <div x-show="error" class="mt-6 p-4 bg-red-50 border border-red-200 rounded-xl">
+      <p class="text-red-600" x-text="error"></p>
+    </div>
+    
+  </main>
+</div>
+
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="/static/components/sidebar-nav-dual.js"></script>
+{% include 'settings_smtp_detail/alpinejs.html' %}
+
+</body>
+</html>
