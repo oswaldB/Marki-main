@@ -1,4 +1,4 @@
-// Workflow: Chargement initial
+// Workflow: Chargement initial des données brutes et calcul des KPIs
 initialLoad: async function() {
     const workflowId = crypto.randomUUID();
     const startTime = Date.now();
@@ -10,32 +10,79 @@ initialLoad: async function() {
     try {
         const token = localStorage.getItem('token');
         
-        // Charger les stats
-        log.debug('API_CALL_START', { workflowId, endpoint: '/api/dashboard/stats' });
+        // Charger les impayés (données brutes)
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/impayes' });
         
-        const statsResponse = await fetch('/api/dashboard/stats', {
+        const impayesResponse = await fetch('/api/impayes', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         
-        if (!statsResponse.ok) throw new Error('Erreur chargement stats');
+        if (!impayesResponse.ok) throw new Error('Erreur chargement impayés');
         
-        const statsData = await statsResponse.json();
-        this.stats = statsData;
+        const impayesData = await impayesResponse.json();
+        this.impayes = impayesData.data || [];
         
-        log.debug('API_CALL_COMPLETE', { workflowId, stats: statsData });
+        log.debug('API_CALL_COMPLETE', { workflowId, impayesCount: this.impayes.length });
+        
+        // Charger les relances (données brutes)
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/relances' });
+        
+        const relancesResponse = await fetch('/api/relances', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (relancesResponse.ok) {
+            const relancesData = await relancesResponse.json();
+            this.relances = relancesData.data || [];
+            log.debug('API_CALL_COMPLETE', { workflowId, relancesCount: this.relances.length });
+        }
+        
+        // Charger les contacts (pour le top débiteurs)
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/contacts' });
+        
+        const contactsResponse = await fetch('/api/contacts', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (contactsResponse.ok) {
+            const contactsData = await contactsResponse.json();
+            this.contacts = contactsData.data || [];
+            log.debug('API_CALL_COMPLETE', { workflowId, contactsCount: this.contacts.length });
+        }
         
         // Charger les événements récents
-        log.debug('API_CALL_START', { workflowId, endpoint: '/api/dashboard/recent' });
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/events' });
         
-        const eventsResponse = await fetch('/api/dashboard/recent', {
+        const eventsResponse = await fetch('/api/events?limit=10', {
             headers: { 'Authorization': `Bearer ${token}` }
         });
         
         if (eventsResponse.ok) {
             const eventsData = await eventsResponse.json();
-            this.recentEvents = eventsData.events || [];
+            this.recentEvents = eventsData.data || [];
             log.debug('API_CALL_COMPLETE', { workflowId, eventsCount: this.recentEvents.length });
         }
+        
+        // Charger le dernier event de synchro
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/events?type=sync&limit=1' });
+        
+        const syncResponse = await fetch('/api/events?type=sync&limit=1', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (syncResponse.ok) {
+            const syncData = await syncResponse.json();
+            if (syncData.data && syncData.data.length > 0) {
+                this.lastSyncTime = this.formatDate(syncData.data[0].created_at);
+            }
+        }
+        
+        // CALCUL DES KPIS CÔTÉ FRONTEND (selon les specs)
+        log.debug('CALCULATE_KPIS_START', { workflowId });
+        
+        this.calculateKPIs();
+        
+        log.debug('CALCULATE_KPIS_COMPLETE', { workflowId });
         
         const duration = Date.now() - startTime;
         log.info('WORKFLOW_SUCCESS', { workflowId, duration });
@@ -46,4 +93,104 @@ initialLoad: async function() {
     } finally {
         this.loading = false;
     }
+},
+
+// Calcul des KPIs côté frontend (selon specs)
+calculateKPIs: function() {
+    const now = new Date();
+    
+    // KPI 1: Factures en attente (reste_a_payer > 0)
+    const facturesEnAttente = this.impayes.filter(i => i.reste_a_payer > 0);
+    this.kpis.facturesEnAttente = facturesEnAttente.length;
+    
+    // KPI 2: Impayés actifs (statut = 'impaye' et reste_a_payer > 0)
+    const impayesActifs = this.impayes.filter(i => 
+        i.statut === 'impaye' && i.reste_a_payer > 0
+    );
+    this.kpis.impayesActifs = impayesActifs.length;
+    
+    // KPI 3: Montant total (sum de reste_a_payer)
+    this.kpis.montantTotal = this.impayes.reduce((sum, i) => sum + (i.reste_a_payer || 0), 0);
+    
+    // KPI 4: Relances du jour
+    const today = now.toISOString().split('T')[0];
+    this.kpis.relancesJour = this.relances.filter(r => {
+        if (!r.date_envoi) return false;
+        return r.date_envoi.startsWith(today);
+    }).length;
+    
+    // KPI 5: Taux de recouvrement (à calculer selon logique métier)
+    const montantPaye = this.impayes.reduce((sum, i) => 
+        sum + ((i.montant_total || 0) - (i.reste_a_payer || 0)), 0
+    );
+    const montantTotal = this.impayes.reduce((sum, i) => sum + (i.montant_total || 0), 0);
+    this.kpis.tauxRecouvrement = montantTotal > 0 ? Math.round((montantPaye / montantTotal) * 100) : 0;
+    
+    // KPIs Ancienneté (calcul des tranches)
+    this.kpis.anciennete = {
+        moins7j: 0, moins7jMontant: 0,
+        j8a30: 0, j8a30Montant: 0,
+        j31a60: 0, j31a60Montant: 0,
+        j60a120: 0, j60a120Montant: 0,
+        plus120j: 0, plus120jMontant: 0
+    };
+    
+    this.impayes.forEach(i => {
+        if (!i.date_echeance) return;
+        
+        const dateEcheance = new Date(i.date_echeance);
+        const daysDiff = Math.floor((now - dateEcheance) / (1000 * 60 * 60 * 24));
+        const montant = i.reste_a_payer || 0;
+        
+        if (daysDiff < 7) {
+            this.kpis.anciennete.moins7j++;
+            this.kpis.anciennete.moins7jMontant += montant;
+        } else if (daysDiff <= 30) {
+            this.kpis.anciennete.j8a30++;
+            this.kpis.anciennete.j8a30Montant += montant;
+        } else if (daysDiff <= 60) {
+            this.kpis.anciennete.j31a60++;
+            this.kpis.anciennete.j31a60Montant += montant;
+        } else if (daysDiff <= 120) {
+            this.kpis.anciennete.j60a120++;
+            this.kpis.anciennete.j60a120Montant += montant;
+        } else {
+            this.kpis.anciennete.plus120j++;
+            this.kpis.anciennete.plus120jMontant += montant;
+        }
+    });
+    
+    // Calcul Top Débiteurs (grouper par payer_id)
+    const debtorMap = {};
+    this.impayes.forEach(i => {
+        if (!i.payer_id) return;
+        
+        if (!debtorMap[i.payer_id]) {
+            const contact = this.contacts.find(c => c.id === i.payer_id);
+            debtorMap[i.payer_id] = {
+                id: i.payer_id,
+                name: contact ? `${contact.nom} ${contact.prenom || ''}`.trim() : 'Inconnu',
+                initials: contact ? (contact.prenom?.[0] || '') + (contact.nom?.[0] || '') : '??',
+                montant: 0,
+                jours: 0,
+                impayesCount: 0,
+                relance: 'R1' // Simplifié - à déterminer selon logique métier
+            };
+        }
+        
+        const debtor = debtorMap[i.payer_id];
+        debtor.montant += i.reste_a_payer || 0;
+        debtor.impayesCount++;
+        
+        // Jours de retard max
+        if (i.date_echeance) {
+            const days = Math.floor((now - new Date(i.date_echeance)) / (1000 * 60 * 60 * 24));
+            debtor.jours = Math.max(debtor.jours, days);
+        }
+    });
+    
+    // Trier par montant décroissant et limiter à 5
+    this.topDebtors = Object.values(debtorMap)
+        .sort((a, b) => b.montant - a.montant)
+        .slice(0, 5);
 }

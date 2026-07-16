@@ -7,7 +7,7 @@
     };
 
     document.addEventListener('alpine:init', () => {
-        Alpine.data('dashboard', () => ({
+        Alpine.data('dashboardPage', () => ({
             // =====================================================
             // 1. PROPS RÉACTIVES (STATE)
             // =====================================================
@@ -16,33 +16,59 @@
             loading: true,
             syncing: false,
             error: null,
+            lastSyncTime: null,
             
-            // Data
-            stats: {
-                impayes_count: 0,
-                impayes_total: 0,
-                contacts_count: 0,
-                relances_count: 0,
-                events_unread: 0
-            },
+            // Données brutes de la base
+            impayes: [],
+            relances: [],
+            contacts: [],
             recentEvents: [],
+            
+            // KPIs calculés côté frontend
+            kpis: {
+                facturesEnAttente: 0,
+                impayesActifs: 0,
+                montantTotal: 0,
+                relancesJour: 0,
+                tauxRecouvrement: 0,
+                anciennete: {
+                    moins7j: 0, moins7jMontant: 0,
+                    j8a30: 0, j8a30Montant: 0,
+                    j31a60: 0, j31a60Montant: 0,
+                    j60a120: 0, j60a120Montant: 0,
+                    plus120j: 0, plus120jMontant: 0
+                }
+            },
+            
+            // Top débiteurs calculés
+            topDebtors: [],
             
             // Helpers
             formatMoney(amount) {
                 return new Intl.NumberFormat('fr-FR', { 
                     style: 'currency', 
-                    currency: 'EUR' 
+                    currency: 'EUR',
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 0
                 }).format(amount || 0);
             },
             
             formatDate(dateStr) {
                 if (!dateStr) return '-';
-                return new Date(dateStr).toLocaleDateString('fr-FR', {
+                const date = new Date(dateStr);
+                return date.toLocaleDateString('fr-FR', {
                     day: 'numeric',
                     month: 'short',
                     hour: '2-digit',
                     minute: '2-digit'
                 });
+            },
+            
+            daysSince(dateStr) {
+                if (!dateStr) return 0;
+                const date = new Date(dateStr);
+                const now = new Date();
+                return Math.floor((now - date) / (1000 * 60 * 60 * 24));
             },
             
             // =====================================================

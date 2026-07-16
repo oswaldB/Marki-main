@@ -3,133 +3,350 @@
 {% block page_title %}Dashboard{% endblock %}
 {% block active_page %}dashboard{% endblock %}
 
+{% block header_title %}
+<div class="flex items-center gap-3">
+  <h1 class="text-base font-semibold text-slate-700">Dashboard</h1>
+  <span class="text-slate-400">/</span>
+  <span class="text-sm text-slate-500">Vue d'ensemble de l'activité</span>
+</div>
+{% endblock %}
+
 {% block header_right %}
+<!-- Dernière synchro -->
+<div class="text-right mr-4" x-show="lastSyncTime">
+  <p class="text-xs text-slate-400">Dernière synchro</p>
+  <p class="text-sm font-medium text-slate-600" x-text="lastSyncTime"></p>
+</div>
+
 <button 
-    @click="syncData()" 
-    :disabled="syncing"
-    class="flex items-center gap-2 px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg transition-colors"
+  @click="syncData()"
+  :disabled="syncing"
+  class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all disabled:opacity-50"
 >
-    <i class="fas fa-sync" :class="syncing ? 'fa-spin' : ''"></i>
-    <span x-text="syncing ? 'Synchronisation...' : 'Synchroniser'"></span>
+  <i x-show="!syncing" class="fas fa-sync-alt"></i>
+  <i x-show="syncing" class="fas fa-circle-notch fa-spin"></i>
+  <span x-text="syncing ? 'Synchronisation...' : 'Synchroniser'"></span>
 </button>
 {% endblock %}
 
 {% block content %}
-<div x-data="dashboard" x-init="init()" x-cloak>
-    
-    <!-- Loading State -->
-    <div x-show="loading" class="flex items-center justify-center py-12">
-        <div class="flex items-center gap-3 text-slate-500">
-            <i class="fas fa-circle-notch fa-spin text-xl"></i>
-            <span>Chargement...</span>
+<div x-data="dashboardPage" x-init="init()" x-cloak>
+  
+  <!-- Loading State -->
+  <template x-if="loading">
+    <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
+      <template x-for="i in 10" :key="i">
+        <div class="bg-white rounded-xl border border-slate-200 p-4 animate-pulse">
+          <div class="flex items-start gap-3">
+            <div class="w-10 h-10 bg-slate-200 rounded-lg"></div>
+            <div class="flex-1">
+              <div class="h-3 bg-slate-200 rounded w-2/3 mb-2"></div>
+              <div class="h-6 bg-slate-200 rounded w-1/2"></div>
+            </div>
+          </div>
         </div>
+      </template>
     </div>
-    
-    <!-- Content -->
-    <div x-show="!loading" class="space-y-6">
-        
-        <!-- Stats Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-            
-            <!-- Impayés Card -->
-            <div class="bg-white rounded-xl border border-slate-200 p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-lg bg-rose-100 flex items-center justify-center">
-                            <i class="fas fa-file-invoice-dollar text-rose-600"></i>
-                        </div>
-                        <span class="text-sm font-medium text-slate-600">Impayés</span>
-                    </div>
-                    <span class="text-2xl font-bold text-slate-900" x-text="stats.impayes_count || 0"></span>
-                </div>
-                <div class="text-sm text-slate-500">
-                    Total: <span class="font-medium text-slate-900" x-text="formatMoney(stats.impayes_total)"></span>
-                </div>
-            </div>
-            
-            <!-- Contacts Card -->
-            <div class="bg-white rounded-xl border border-slate-200 p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-lg bg-sky-100 flex items-center justify-center">
-                            <i class="fas fa-address-book text-sky-600"></i>
-                        </div>
-                        <span class="text-sm font-medium text-slate-600">Contacts</span>
-                    </div>
-                    <span class="text-2xl font-bold text-slate-900" x-text="stats.contacts_count || 0"></span>
-                </div>
-                <div class="text-sm text-slate-500">
-                    Dans la base
-                </div>
-            </div>
-            
-            <!-- Relances Card -->
-            <div class="bg-white rounded-xl border border-slate-200 p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-lg bg-amber-100 flex items-center justify-center">
-                            <i class="fas fa-paper-plane text-amber-600"></i>
-                        </div>
-                        <span class="text-sm font-medium text-slate-600">Relances</span>
-                    </div>
-                    <span class="text-2xl font-bold text-slate-900" x-text="stats.relances_count || 0"></span>
-                </div>
-                <div class="text-sm text-slate-500">
-                    En attente
-                </div>
-            </div>
-            
-            <!-- Events Card -->
-            <div class="bg-white rounded-xl border border-slate-200 p-6">
-                <div class="flex items-center justify-between mb-4">
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
-                            <i class="fas fa-bell text-emerald-600"></i>
-                        </div>
-                        <span class="text-sm font-medium text-slate-600">Notifications</span>
-                    </div>
-                    <span class="text-2xl font-bold text-slate-900" x-text="stats.events_unread || 0"></span>
-                </div>
-                <div class="text-sm text-slate-500">
-                    Non lues
-                </div>
-            </div>
+  </template>
+  
+  <!-- Error State -->
+  <template x-if="error">
+    <div class="bg-sky-50 border border-sky-100 rounded-xl p-4 mb-6">
+      <div class="flex items-start gap-3">
+        <i class="fas fa-exclamation-circle text-sky-500 mt-0.5"></i>
+        <div>
+          <p class="text-sm font-medium text-sky-800">Erreur de chargement</p>
+          <p class="text-sm text-sky-600 mt-1" x-text="error"></p>
+          <button @click="loadData()" class="mt-2 text-sm text-sky-700 hover:text-sky-800 underline">Réessayer</button>
         </div>
-        
-        <!-- Recent Activity -->
-        <div class="bg-white rounded-xl border border-slate-200">
-            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-                <h2 class="text-base font-semibold text-slate-900">Activité récente</h2>
-                <a href="/evenements" class="text-sm text-sky-600 hover:text-sky-700">Voir tout</a>
-            </div>
-            <div class="p-6">
-                <div x-show="recentEvents.length === 0" class="text-center py-8 text-slate-500">
-                    Aucune activité récente
-                </div>
-                <div x-show="recentEvents.length > 0" class="space-y-3">
-                    <template x-for="event in recentEvents" :key="event.id">
-                        <div class="flex items-start gap-3 p-3 rounded-lg hover:bg-slate-50 transition-colors">
-                            <div class="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center flex-shrink-0">
-                                <i class="fas fa-info text-xs text-slate-500"></i>
-                            </div>
-                            <div class="flex-1 min-w-0">
-                                <p class="text-sm text-slate-900" x-text="event.message"></p>
-                                <p class="text-xs text-slate-500 mt-0.5" x-text="formatDate(event.created_at)"></p>
-                            </div>
-                            <span 
-                                x-show="!event.read" 
-                                class="w-2 h-2 rounded-full bg-sky-500 flex-shrink-0"
-                            ></span>
-                        </div>
-                    </template>
-                </div>
-            </div>
-        </div>
-        
+      </div>
     </div>
+  </template>
+  
+  <!-- Content -->
+  <template x-if="!loading && !error">
+    <div class="space-y-6">
+      
+      <!-- KPI Row 1 -->
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        
+        <!-- KPI: Factures en attente -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-start gap-3 p-4">
+            <div class="p-2 rounded-lg bg-sky-50">
+              <i class="fas fa-file-invoice text-sky-500 text-lg"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-1">
+                <p class="text-xs text-slate-500 font-medium truncate">Factures en attente</p>
+                <i class="fas fa-info-circle text-slate-400 text-xs" title="Factures avec reste à payer > 0"></i>
+              </div>
+              <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.facturesEnAttente"></p>
+              <p class="text-xs text-slate-400 mt-1">reste à payer > 0</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- KPI: Impayés actifs -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-start gap-3 p-4">
+            <div class="p-2 rounded-lg bg-sky-100">
+              <i class="fas fa-exclamation-triangle text-sky-600 text-lg"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-1">
+                <p class="text-xs text-slate-500 font-medium truncate">Impayés actifs</p>
+                <i class="fas fa-info-circle text-slate-400 text-xs"></i>
+              </div>
+              <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.impayesActifs"></p>
+              <p class="text-xs text-slate-400 mt-1">en relance</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- KPI: Montant total -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-start gap-3 p-4">
+            <div class="p-2 rounded-lg bg-sky-200">
+              <i class="fas fa-euro-sign text-sky-700 text-lg"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-1">
+                <p class="text-xs text-slate-500 font-medium truncate">Montant total</p>
+                <i class="fas fa-info-circle text-slate-400 text-xs"></i>
+              </div>
+              <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="formatMoney(kpis.montantTotal)"></p>
+              <p class="text-xs text-slate-400 mt-1">DSO: 42 jours</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- KPI: Relances du jour -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-start gap-3 p-4">
+            <div class="p-2 rounded-lg bg-sky-50">
+              <i class="fas fa-envelope text-sky-500 text-lg"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-1">
+                <p class="text-xs text-slate-500 font-medium truncate">Relances du jour</p>
+                <i class="fas fa-info-circle text-slate-400 text-xs"></i>
+              </div>
+              <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.relancesJour"></p>
+              <p class="text-xs text-sky-600 mt-1 font-medium">8 réponses reçues</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- KPI: Taux recouvrement -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-start gap-3 p-4">
+            <div class="p-2 rounded-lg bg-sky-300">
+              <i class="fas fa-chart-pie text-sky-800 text-lg"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center gap-1">
+                <p class="text-xs text-slate-500 font-medium truncate">Taux recouvrement</p>
+                <i class="fas fa-info-circle text-slate-400 text-xs"></i>
+              </div>
+              <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.tauxRecouvrement + '%'"></p>
+              <p class="text-xs text-sky-600 mt-1 font-medium">+5% vs mois dernier</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- KPI Row 2: Ancienneté -->
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        
+        <!-- Ancienneté < 7j -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-start gap-3 p-4">
+            <div class="p-2 rounded-lg bg-sky-50">
+              <i class="fas fa-clock text-sky-400 text-lg"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs text-slate-500 font-medium">Moins de 7 jours</p>
+              <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.anciennete.moins7j"></p>
+              <p class="text-xs text-slate-400 mt-1" x-text="formatMoney(kpis.anciennete.moins7jMontant)"></p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Ancienneté 8-30j -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-start gap-3 p-4">
+            <div class="p-2 rounded-lg bg-sky-100">
+              <i class="fas fa-clock text-sky-500 text-lg"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs text-slate-500 font-medium">8 à 30 jours</p>
+              <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.anciennete.j8a30"></p>
+              <p class="text-xs text-slate-400 mt-1" x-text="formatMoney(kpis.anciennete.j8a30Montant)"></p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Ancienneté 31-60j -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-start gap-3 p-4">
+            <div class="p-2 rounded-lg bg-sky-200">
+              <i class="fas fa-clock text-sky-600 text-lg"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs text-slate-500 font-medium">31 à 60 jours</p>
+              <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.anciennete.j31a60"></p>
+              <p class="text-xs text-slate-400 mt-1" x-text="formatMoney(kpis.anciennete.j31a60Montant)"></p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Ancienneté 60-120j -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-start gap-3 p-4">
+            <div class="p-2 rounded-lg bg-sky-300">
+              <i class="fas fa-clock text-sky-700 text-lg"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs text-slate-500 font-medium">60 à 120 jours</p>
+              <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.anciennete.j60a120"></p>
+              <p class="text-xs text-slate-400 mt-1" x-text="formatMoney(kpis.anciennete.j60a120Montant)"></p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Ancienneté > 120j -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="flex items-start gap-3 p-4">
+            <div class="p-2 rounded-lg bg-sky-400">
+              <i class="fas fa-exclamation-triangle text-sky-900 text-lg"></i>
+            </div>
+            <div class="flex-1 min-w-0">
+              <p class="text-xs text-slate-500 font-medium">Plus de 120 jours</p>
+              <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.anciennete.plus120j"></p>
+              <p class="text-xs text-slate-400 mt-1" x-text="formatMoney(kpis.anciennete.plus120jMontant)"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Smart Marki Section -->
+      <div class="bg-gradient-to-r from-sky-500 to-sky-600 rounded-xl shadow-sm overflow-hidden" x-data="{ open: false }">
+        <div @click="open = !open" class="px-6 py-4 border-b border-white/10 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center overflow-hidden">
+              <img src="/static/marki-logo.png" alt="Marki" class="w-8 h-8 object-contain">
+            </div>
+            <div>
+              <h3 class="font-semibold text-white">Smart Marki</h3>
+              <p class="text-sm text-sky-100">Conseils et recommandations personnalisés</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3">
+            <span class="px-3 py-1 bg-white/20 text-white text-xs font-medium rounded-full">
+              <i class="fas fa-chart-line mr-1"></i>
+              Efficacité: 78%
+            </span>
+            <i class="fas fa-chevron-down text-white transition-transform" :class="open ? 'rotate-180' : ''"></i>
+          </div>
+        </div>
+        <div x-show="open" x-collapse class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Conseil 1 -->
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+            <div class="flex items-start gap-3">
+              <div class="p-2 rounded-lg bg-sky-400/20">
+                <i class="fas fa-lightbulb text-sky-300"></i>
+              </div>
+              <div>
+                <p class="font-medium text-white text-sm">Optimisez vos relances</p>
+                <p class="text-sm text-sky-100 mt-1">Vos relances R2 ont un taux de réponse de 45%. Envisagez d'ajouter une étape SMS entre R1 et R2.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Conseil 2 -->
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+            <div class="flex items-start gap-3">
+              <div class="p-2 rounded-lg bg-sky-400/20">
+                <i class="fas fa-exclamation-triangle text-sky-300"></i>
+              </div>
+              <div>
+                <p class="font-medium text-white text-sm">Attention aux délais</p>
+                <p class="text-sm text-sky-100 mt-1">3 clients dépassent les 120 jours d'ancienneté. Privilégiez un contact téléphonique direct.</p>
+              </div>
+            </div>
+          </div>
+          <!-- Conseil 3 -->
+          <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+            <div class="flex items-start gap-3">
+              <div class="p-2 rounded-lg bg-sky-400/20">
+                <i class="fas fa-trophy text-sky-300"></i>
+              </div>
+              <div>
+                <p class="font-medium text-white text-sm">Votre progression</p>
+                <p class="text-sm text-sky-100 mt-1">Vous avez récupéré +12% de créances ce mois-ci par rapport au mois dernier. Continuez ainsi !</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div x-show="open" x-collapse class="px-6 py-3 bg-white/5 border-t border-white/10">
+          <div class="flex items-center justify-between text-sm">
+            <span class="text-sky-200">
+              <i class="fas fa-sync-alt mr-1"></i>
+              Mise à jour il y a 2 heures
+            </span>
+            <a href="/smart-marki" class="text-white hover:text-sky-100 font-medium">
+              Voir tous les insights <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Events / Activité récente -->
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-history text-slate-400"></i>
+            <h3 class="font-semibold text-slate-900">Événements récents</h3>
+          </div>
+          <button @click="clearEvents()" class="text-xs text-slate-500 hover:text-slate-700">
+            Effacer tout
+          </button>
+        </div>
+        <div class="divide-y divide-slate-100 max-h-64 overflow-y-auto">
+          <template x-for="event in events" :key="event.id">
+            <div class="px-6 py-3 flex items-start gap-3 hover:bg-slate-50/50 transition-colors">
+              <div class="mt-0.5">
+                <div class="w-8 h-8 rounded-full flex items-center justify-center"
+                     :class="{
+                       'bg-sky-100 text-sky-600': event.type === 'sync',
+                       'bg-sky-200 text-sky-700': event.type === 'import',
+                       'bg-sky-300 text-sky-800': event.type === 'payment',
+                       'bg-sky-400 text-sky-900': event.type === 'relance',
+                       'bg-sky-500 text-white': event.type === 'alert'
+                     }">
+                  <i class="fas text-xs" :class="event.icon"></i>
+                </div>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-sm font-medium text-slate-900" x-text="event.title"></p>
+                <p class="text-sm text-slate-500" x-text="event.description"></p>
+                <p class="text-xs text-slate-400 mt-1" x-text="event.time"></p>
+              </div>
+            </div>
+          </template>
+          <div x-show="events.length === 0" class="px-6 py-8 text-center text-slate-400 text-sm">
+            Aucun événement récent
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </template>
 </div>
-{% endblock %}
 
 {% block page_scripts %}
+<script>
 {% include 'dashboard/alpinejs.html' %}
+</script>
+{% endblock %}
 {% endblock %}

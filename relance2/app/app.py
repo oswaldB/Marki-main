@@ -32,7 +32,7 @@ def create_app():
     
     @app.route('/impayes')
     def impayes_page():
-        return render_template('layouts/layout_app.html', page_title='Impayés', active_page='impayes')
+        return render_template('impayes/index.html', page_title='Impayés', active_page='impayes')
     
     @app.route('/impayes-payeur')
     def impayes_payeur_page():
@@ -44,15 +44,15 @@ def create_app():
     
     @app.route('/contacts')
     def contacts_page():
-        return render_template('layouts/layout_app.html', page_title='Contacts', active_page='contacts')
+        return render_template('contacts/index.html', page_title='Contacts', active_page='contacts')
     
     @app.route('/relances')
     def relances_page():
-        return render_template('layouts/layout_app.html', page_title='Relances', active_page='relances-liste')
+        return render_template('relances/index.html', page_title='Relances', active_page='relances-liste')
     
     @app.route('/sequences')
     def sequences_page():
-        return render_template('layouts/layout_app.html', page_title='Séquences', active_page='sequences')
+        return render_template('sequences/index.html', page_title='Séquences', active_page='sequences')
     
     @app.route('/sequences/<id>')
     def sequences_detail_page(id):
@@ -64,11 +64,11 @@ def create_app():
     
     @app.route('/evenements')
     def evenements_page():
-        return render_template('layouts/layout_app.html', page_title='Événements', active_page='evenements')
+        return render_template('evenements/index.html', page_title='Événements', active_page='evenements')
     
     @app.route('/smart-marki')
     def smart_marki_page():
-        return render_template('layouts/layout_app.html', page_title='Smart Marki', active_page='smart-marki')
+        return render_template('smart_marki/index.html', page_title='Smart Marki', active_page='smart-marki')
     
     @app.route('/settings')
     def settings_page():
