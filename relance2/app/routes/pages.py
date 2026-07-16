@@ -1,4 +1,4 @@
-from flask import Blueprint, send_from_directory, redirect
+from flask import Blueprint, send_from_directory, redirect, render_template
 import os
 
 bp = Blueprint('pages', __name__)
@@ -32,6 +32,13 @@ def dashboard_page():
     """Page tableau de bord"""
     print(f"[PAGES] GET /dashboard - Serving dashboard/index.html")
     return send_from_directory(os.path.join(STATIC_PAGES_DIR, 'dashboard'), 'index.html')
+
+
+@bp.route('/machine-a-cafe')
+def machine_a_cafe_page():
+    """Page Machine à Café (exemple template Jinja2 + Alpine.js)"""
+    print(f"[PAGES] GET /machine-a-cafe - Rendering machine_a_cafe/index.html")
+    return render_template('machine_a_cafe/index.html')
 
 
 @bp.route('/pages/<path:page_path>')
