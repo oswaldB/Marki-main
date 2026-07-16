@@ -46,6 +46,14 @@ def create_app():
     def sequences_page():
         return render_template('layouts/layout_app.html', page_title='Séquences', active_page='sequences')
     
+    @app.route('/sequences/<id>')
+    def sequences_detail_page(id):
+        return render_template('sequences_relance_detail/index.html', page_title='Détail Séquence', active_page='sequences', sequence_id=id)
+    
+    @app.route('/sequences/suivi/<id>')
+    def sequences_suivi_detail_page(id):
+        return render_template('sequences_suivi_detail/index.html', page_title='Détail Séquence Suivi', active_page='sequences', sequence_id=id)
+    
     @app.route('/evenements')
     def evenements_page():
         return render_template('layouts/layout_app.html', page_title='Événements', active_page='evenements')
