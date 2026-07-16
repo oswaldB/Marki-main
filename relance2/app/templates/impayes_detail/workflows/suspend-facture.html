@@ -1,0 +1,34 @@
+// Workflow: Suspend facture
+suspendFacture: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'suspendFacture' });
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/impayes/${this.impaye.id}`, method: 'PUT' });
+        
+        const response = await fetch(`/api/impayes/${this.impaye.id}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                suspendu: 1,
+                suspend_motif: 'Suspendu depuis détail'
+            })
+        });
+        
+        if (!response.ok) throw new Error('Erreur lors de la suspension');
+        
+        // Update local state
+        this.impaye.suspendu = 1;
+        this.impaye.suspend_motif = 'Suspendu depuis détail';
+        this.impaye.suspend_date = new Date().toISOString();
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

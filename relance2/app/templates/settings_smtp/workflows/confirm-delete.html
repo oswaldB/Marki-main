@@ -1,0 +1,30 @@
+// Workflow: Confirm and delete profile
+confirmDelete: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'confirmDelete', profileId: this.profileToDelete?.id });
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/settings/smtp/${this.profileToDelete.id}`, method: 'DELETE' });
+        
+        const response = await fetch(`/api/settings/smtp/${this.profileToDelete.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        });
+        
+        if (!response.ok) throw new Error('Erreur lors de la suppression');
+        
+        // Remove from local state
+        this.profiles = this.profiles.filter(p => p.id !== this.profileToDelete.id);
+        
+        this.showDeleteModal = false;
+        this.profileToDelete = null;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

@@ -1,0 +1,17 @@
+// Workflow: Open PDF for impaye
+openPdf: function(impaye) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'openPdf', impayeId: impaye.id });
+    
+    try {
+        if (impaye.url_pdf_token) {
+            window.open(`/api/impayes/${impaye.id}/pdf?token=${impaye.url_pdf_token}`, '_blank');
+        } else {
+            log.warn('PDF_NOT_AVAILABLE', { workflowId, impayeId: impaye.id });
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, impayeId: impaye.id });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}
