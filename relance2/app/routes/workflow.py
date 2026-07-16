@@ -19,7 +19,13 @@ from ..workflows import (
     regenerate_relances_with_status,
     test_smtp_profile,
     test_single_email,
-    test_single_suivi
+    test_single_suivi,
+    generate_pdf_links,
+    get_contact_impayes,
+    blacklist_contact,
+    unblacklist_contact,
+    suspend_impaye,
+    unsuspend_impaye
 )
 
 bp = Blueprint('workflow', __name__, url_prefix='/api/workflow')
@@ -220,6 +226,93 @@ def test_email_endpoint(email_id):
         data = request.get_json()
         result = test_single_email(email_id, data.get('test_address'))
         print("[API.WORKFLOW] SUCCESS: test-email")
+        return jsonify({'success': True, 'data': result})
+    except Exception as e:
+        print(f"[API.WORKFLOW] ERROR: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@bp.route('/generate-pdf-links', methods=['POST'])
+def generate_pdf_links_endpoint():
+    """Generate PDF download links."""
+    print("[API.WORKFLOW] START: generate-pdf-links")
+    
+    try:
+        data = request.get_json()
+        result = generate_pdf_links(data.get('impaye_ids'))
+        print("[API.WORKFLOW] SUCCESS: generate-pdf-links")
+        return jsonify({'success': True, 'data': result})
+    except Exception as e:
+        print(f"[API.WORKFLOW] ERROR: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@bp.route('/contact-impayes/<contact_id>', methods=['GET'])
+def get_contact_impayes_endpoint(contact_id):
+    """Get impayes for a contact."""
+    print(f"[API.WORKFLOW] START: contact-impayes/{contact_id}")
+    
+    try:
+        result = get_contact_impayes(contact_id)
+        print("[API.WORKFLOW] SUCCESS: contact-impayes")
+        return jsonify({'success': True, 'data': result})
+    except Exception as e:
+        print(f"[API.WORKFLOW] ERROR: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@bp.route('/blacklist/<contact_id>', methods=['POST'])
+def blacklist_contact_endpoint(contact_id):
+    """Blacklist a contact."""
+    print(f"[API.WORKFLOW] START: blacklist/{contact_id}")
+    
+    try:
+        data = request.get_json()
+        result = blacklist_contact(contact_id, data.get('motif'))
+        print("[API.WORKFLOW] SUCCESS: blacklist")
+        return jsonify({'success': True, 'data': result})
+    except Exception as e:
+        print(f"[API.WORKFLOW] ERROR: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@bp.route('/unblacklist/<contact_id>', methods=['POST'])
+def unblacklist_contact_endpoint(contact_id):
+    """Unblacklist a contact."""
+    print(f"[API.WORKFLOW] START: unblacklist/{contact_id}")
+    
+    try:
+        result = unblacklist_contact(contact_id)
+        print("[API.WORKFLOW] SUCCESS: unblacklist")
+        return jsonify({'success': True, 'data': result})
+    except Exception as e:
+        print(f"[API.WORKFLOW] ERROR: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@bp.route('/suspend-impaye/<impaye_id>', methods=['POST'])
+def suspend_impaye_endpoint(impaye_id):
+    """Suspend an impaye."""
+    print(f"[API.WORKFLOW] START: suspend-impaye/{impaye_id}")
+    
+    try:
+        data = request.get_json()
+        result = suspend_impaye(impaye_id, data.get('motif'))
+        print("[API.WORKFLOW] SUCCESS: suspend-impaye")
+        return jsonify({'success': True, 'data': result})
+    except Exception as e:
+        print(f"[API.WORKFLOW] ERROR: {str(e)}")
+        return jsonify({'success': False, 'error': str(e)}), 500
+
+
+@bp.route('/unsuspend-impaye/<impaye_id>', methods=['POST'])
+def unsuspend_impaye_endpoint(impaye_id):
+    """Unsuspend an impaye."""
+    print(f"[API.WORKFLOW] START: unsuspend-impaye/{impaye_id}")
+    
+    try:
+        result = unsuspend_impaye(impaye_id)
+        print("[API.WORKFLOW] SUCCESS: unsuspend-impaye")
         return jsonify({'success': True, 'data': result})
     except Exception as e:
         print(f"[API.WORKFLOW] ERROR: {str(e)}")

@@ -16,6 +16,13 @@ from .send_suivi import send_suivi
 from .sync_contacts import sync_contacts
 from .regenerate_relances import regenerate_relances_contact, regenerate_relances_with_status
 from .test_email import test_smtp_profile, test_single_email, test_single_suivi
+from .generate_contact_token import generate_contact_token
+from .generate_pdf_links import generate_pdf_links
+from .get_contact_impayes import get_contact_impayes
+from .contacts_blacklist import blacklist_contact, unblacklist_contact
+from .users_management import create_user, update_user, delete_user
+from .portail_client import get_portail_data, initiate_payment
+from .impayes_suspend import suspend_impaye, unsuspend_impaye
 
 __all__ = [
     'generate_relances',
@@ -31,5 +38,17 @@ __all__ = [
     'regenerate_relances_with_status',
     'test_smtp_profile',
     'test_single_email',
-    'test_single_suivi'
+    'test_single_suivi',
+    'generate_contact_token',
+    'generate_pdf_links',
+    'get_contact_impayes',
+    'blacklist_contact',
+    'unblacklist_contact',
+    'create_user',
+    'update_user',
+    'delete_user',
+    'get_portail_data',
+    'initiate_payment',
+    'suspend_impaye',
+    'unsuspend_impaye'
 ]
