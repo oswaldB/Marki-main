@@ -1,0 +1,29 @@
+// Workflow: Toggle publication status
+togglePublication: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'togglePublication' });
+    
+    try {
+        const token = localStorage.getItem('token');
+        const newStatus = !this.sequence.actif;
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/sequences/${this.sequence.id}`, method: 'PUT' });
+        
+        const response = await fetch(`/api/sequences/${this.sequence.id}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ actif: newStatus ? 1 : 0 })
+        });
+        
+        if (!response.ok) throw new Error('Erreur lors du changement de statut');
+        
+        this.sequence.actif = newStatus;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, newStatus });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

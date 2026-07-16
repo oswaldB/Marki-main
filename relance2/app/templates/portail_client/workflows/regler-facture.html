@@ -1,0 +1,30 @@
+// Workflow: Pay facture
+reglerFacture: async function(facture) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'reglerFacture', factureId: facture.id });
+    
+    try {
+        const token = localStorage.getItem('portail_token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/portail/pay`, method: 'POST' });
+        
+        const response = await fetch('/api/portail/pay', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ impaye_id: facture.id })
+        });
+        
+        if (!response.ok) throw new Error('Erreur lors du paiement');
+        
+        // Update local state
+        facture.statut = 'paye';
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, factureId: facture.id });
+        this.showNotification && this.showNotification('Paiement initié', 'success');
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, factureId: facture.id, error: error.message });
+    }
+}

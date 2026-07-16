@@ -1,0 +1,14 @@
+// Workflow: Open edit relance modal
+openEditRelance: function(relance) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'openEditRelance', relanceId: relance.id });
+    
+    try {
+        this.editingRelance = { ...relance };
+        this.showEditModal = true;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, relanceId: relance.id });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

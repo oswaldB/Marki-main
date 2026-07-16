@@ -1,0 +1,28 @@
+// Workflow: Initial load for portail client
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'initialLoad' });
+    
+    try {
+        const token = localStorage.getItem('portail_token');
+        const contactToken = this.getContactTokenFromUrl();
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/portail/data', method: 'GET' });
+        
+        const response = await fetch(`/api/portail/data?token=${contactToken}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error('Erreur chargement données');
+        
+        const data = await response.json();
+        this.contact = data.contact;
+        this.factures = data.factures || [];
+        this.impayes = data.impayes || [];
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, contactId: this.contact.id });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        this.error = error.message;
+    }
+}

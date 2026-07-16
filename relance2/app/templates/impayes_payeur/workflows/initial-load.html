@@ -1,0 +1,27 @@
+// Workflow: Initial load for payeur view
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'initialLoad' });
+    
+    try {
+        const token = localStorage.getItem('token');
+        const payeurId = this.getPayeurIdFromUrl();
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/contacts/${payeurId}/impayes`, method: 'GET' });
+        
+        const response = await fetch(`/api/contacts/${payeurId}/impayes`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error('Erreur chargement impayés du payeur');
+        
+        const data = await response.json();
+        this.payeur = data.contact;
+        this.impayes = data.impayes || [];
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, payeurId, count: this.impayes.length });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        this.error = error.message;
+    }
+}

@@ -1,0 +1,26 @@
+// Workflow: Initial load for relance detail
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'initialLoad' });
+    
+    try {
+        const token = localStorage.getItem('token');
+        const relanceId = this.getRelanceIdFromUrl(); // Assume this function exists
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/relances/${relanceId}`, method: 'GET' });
+        
+        const response = await fetch(`/api/relances/${relanceId}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error('Erreur chargement relance');
+        
+        const data = await response.json();
+        this.relance = data.relance;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, relanceId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        this.error = error.message;
+    }
+}

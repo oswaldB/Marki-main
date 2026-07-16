@@ -1,0 +1,25 @@
+// Workflow: Initial load for suspended impayes
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'initialLoad' });
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/impayes?suspendu=1', method: 'GET' });
+        
+        const response = await fetch('/api/impayes?suspendu=1', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error('Erreur chargement impayés suspendus');
+        
+        const data = await response.json();
+        this.impayes = data.impayes || [];
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, count: this.impayes.length });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        this.error = error.message;
+    }
+}

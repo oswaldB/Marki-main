@@ -1,0 +1,14 @@
+// Workflow: Switch to month view
+switchViewMonth: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'switchViewMonth' });
+    
+    try {
+        this.viewMode = 'month';
+        localStorage.setItem('calendar_view', 'month');
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, viewMode: 'month' });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

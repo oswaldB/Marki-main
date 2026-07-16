@@ -1,0 +1,14 @@
+// Workflow: Switch to week view
+switchViewWeek: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'switchViewWeek' });
+    
+    try {
+        this.viewMode = 'week';
+        localStorage.setItem('calendar_view', 'week');
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, viewMode: 'week' });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

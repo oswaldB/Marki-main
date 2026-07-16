@@ -1,0 +1,36 @@
+// Workflow: Add email to sequence
+ajouterEmail: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'ajouterEmail' });
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        const newEmail = {
+            sequence_id: this.sequence.id,
+            email_index: this.emails.length + 1,
+            delai: 7,
+            frequence: 'quotidien'
+        };
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/sequences/emails', method: 'POST' });
+        
+        const response = await fetch('/api/sequences/emails', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newEmail)
+        });
+        
+        if (!response.ok) throw new Error('Erreur lors de l\'ajout');
+        
+        const data = await response.json();
+        this.emails.push(data.email);
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, emailId: data.email.id });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}
