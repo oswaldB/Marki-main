@@ -23,20 +23,15 @@ Charger les paramètres globaux de l'application et afficher le menu de navigati
  */
 
 /**
- * @action Charger les paramètres globaux via GET /api/settings
- * @checkpoint settings-fetched, données reçues
- * @api GET /api/settings
- * @response { settings: {...} }
- */
-
-/**
  * @action Afficher le menu des paramètres
  * @checkpoint menu-rendered, liens disponibles
  */
 ```
 
-## Navigation disponible
+## API Calls
 
-- Utilisateurs → /settings/utilisateurs
-- Profils SMTP → /settings/smtp
-- Autres paramètres...
+**Pas d'appel API** - Cette page est un menu de navigation uniquement.
+
+Les données sont chargées par les sous-pages :
+- `/settings/utilisateurs` charge ses propres données via `/api/users`
+- `/settings/smtp` charge ses propres données via `/api/smtp-profiles`

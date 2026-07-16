@@ -36,14 +36,12 @@ Charger la liste complète des contacts avec leurs informations, statistiques et
  */
 
 /**
- * @action Récupérer les statistiques globales via GET /api/dashboard/stats
- * @checkpoint stats-fetched, totaux reçus
- * @api GET /api/dashboard/stats
- * @response { stats: { total_impayes, contacts_blacklistes, ... } }
+ * @action Calculer les statistiques globales côté frontend depuis les contacts chargés
+ * @checkpoint stats-calculated, totaux calculés (blacklistés, sans email, etc.)
  */
 
 /**
- * @action Stocker les données dans Alpine.store('contacts')
+ * @action Stocker les données dans le state Alpine
  * @checkpoint data-stored, contacts et stats disponibles
  */
 
@@ -63,7 +61,6 @@ Charger la liste complète des contacts avec leurs informations, statistiques et
 | Méthode | Endpoint | Description |
 |---------|----------|-------------|
 | GET | `/api/contacts?statut=actif&is_blacklisted=0&limit=50&offset=0` | Liste des contacts actifs |
-| GET | `/api/dashboard/stats` | Statistiques globales |
 
 ## Paramètres de requête
 

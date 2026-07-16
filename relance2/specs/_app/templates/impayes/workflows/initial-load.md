@@ -61,7 +61,6 @@ Charger la liste des factures impayées avec pagination, filtres par défaut et 
 | Méthode | Endpoint | Description |
 |---------|----------|-------------|
 | GET | `/api/impayes?facture_soldee=0&statut=impaye` | Liste des impayés non soldés |
-| GET | `/api/dashboard/stats` | Statistiques globales |
 
 ## Paramètres de requête
 

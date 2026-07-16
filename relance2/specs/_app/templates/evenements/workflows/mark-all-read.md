@@ -35,13 +35,9 @@ Marquer tous les événements de l'utilisateur comme lus
 
 ## API Calls
 
-**Endpoint:** `POST /api/events/mark-read`
+**Pas d'appel API** - Action frontend uniquement.
 
-**Payload:** Aucun (utilise l'utilisateur courant depuis le token)
-
-**Response:** `ApiResponse<{ updated: number }>`
-
-**Note:** L'API ne modifie que les events où `user_id = current_user` et `read = false`.
+**Logique:** Met à jour le state local Alpine.js directement.
 
 ## Organisation des fichiers
 
@@ -68,44 +64,27 @@ export function markAllRead() {
 
 ```javascript
 async markAllAsRead() {
-  // 1. Sauvegarder l'état précédent pour rollback
-  const previousEvents = [...this.events];
-  const previousUnreadCount = this.unreadCount;
-  
-  // 2. Optimistic update
-  this.events = this.events.map(event => ({
-    ...event,
-    read: true
-  }));
-  this.unreadCount = 0;
-  Alpine.store('ui').setUnreadCount(0);
+  const workflowId = crypto.randomUUID();
+  log.info('WORKFLOW_START', { workflowId, workflow: 'markAllAsRead' });
   
   try {
-    // 3. Call API
-    const response = await fetch('/api/events/mark-read', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+    // Mise à jour optimistic du state local
+    const updatedCount = this.events.filter(e => !e.lu).length;
+    
+    this.events = this.events.map(event => ({
+      ...event,
+      lu: true
+    }));
+    
+    log.debug('STATE_UPDATE', { 
+      eventsUpdated: updatedCount, 
+      allEventsNowRead: true 
     });
     
-    const data = await response.json();
-    
-    if (!data.success) {
-      throw new Error(data.error?.message);
-    }
-    
-    // 4. Toast de confirmation
-    const updatedCount = data.data?.updated || previousUnreadCount;
-    Alpine.store('ui').addToast(`${updatedCount} événement(s) marqué(s) comme lu(s)`, 'success');
+    log.info('WORKFLOW_SUCCESS', { workflowId, updatedCount });
     
   } catch (error) {
-    console.error('Erreur mark all as read:', error);
-    
-    // 5. Rollback
-    this.events = previousEvents;
-    this.unreadCount = previousUnreadCount;
-    Alpine.store('ui').setUnreadCount(previousUnreadCount);
-    
-    Alpine.store('ui').addToast('Erreur lors de la mise à jour', 'error');
+    log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
   }
 }
 ```
