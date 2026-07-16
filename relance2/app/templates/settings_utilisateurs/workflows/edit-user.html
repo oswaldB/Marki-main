@@ -1,0 +1,10 @@
+// Workflow: Éditer utilisateur
+editUser: function(id) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'editUser', userId: id });
+    
+    // Simple alert pour l'instant
+    alert('Édition utilisateur ' + id);
+    
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+}

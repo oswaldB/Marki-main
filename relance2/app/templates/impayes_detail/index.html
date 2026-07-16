@@ -1,0 +1,85 @@
+{% extends 'layouts/layout_app.html' %}
+
+{% block page_title %}Détail Impayé{% endblock %}
+{% block active_page %}impayes{% endblock %}
+
+{% block header_right %}
+<a href="/impayes" class="flex items-center gap-2 px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium transition-all">
+    <i class="fas fa-arrow-left"></i>
+    <span>Retour</span>
+</a>
+{% endblock %}
+
+{% block content %}
+<div x-data="impayesDetail" x-init="init()" x-cloak class="space-y-6">
+    
+    <!-- Loading -->
+    <div x-show="loading" class="bg-white rounded-xl border border-slate-200 p-8">
+        <div class="flex items-center justify-center gap-3 text-slate-500">
+            <i class="fas fa-circle-notch fa-spin text-xl"></i>
+            <span>Chargement...</span>
+        </div>
+    </div>
+    
+    <!-- Content -->
+    <div x-show="!loading" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Info Facture -->
+        <div class="bg-white rounded-xl border border-slate-200 p-6">
+            <h2 class="text-lg font-semibold text-slate-900 mb-4">Informations Facture</h2>
+            
+            <div class="space-y-3">
+                <div class="flex justify-between py-2 border-b border-slate-100">
+                    <span class="text-slate-500">N° Facture</span>
+                    <span class="font-medium text-slate-900" x-text="impaye.nfacture || '-'"></span>
+                </div>
+                <div class="flex justify-between py-2 border-b border-slate-100">
+                    <span class="text-slate-500">Date Facture</span>
+                    <span class="text-slate-900" x-text="formatDate(impaye.date_facture)"></span>
+                </div>
+                <div class="flex justify-between py-2 border-b border-slate-100">
+                    <span class="text-slate-500">Échéance</span>
+                    <span class="text-slate-900" x-text="formatDate(impaye.date_echeance)"></span>
+                </div>
+                <div class="flex justify-between py-2 border-b border-slate-100">
+                    <span class="text-slate-500">Montant TTC</span>
+                    <span class="font-medium text-slate-900" x-text="formatMoney(impaye.montant_ttc)"></span>
+                </div>
+                <div class="flex justify-between py-2 border-b border-slate-100">
+                    <span class="text-slate-500">Reste à payer</span>
+                    <span class="font-medium text-rose-600" x-text="formatMoney(impaye.reste_a_payer)"></span>
+                </div>
+                <div class="flex justify-between py-2">
+                    <span class="text-slate-500">Statut</span>
+                    <span class="inline-flex px-2 py-1 text-xs font-medium rounded-full" :class="impaye.suspendu ? 'bg-amber-100 text-amber-700' : 'bg-rose-100 text-rose-700'" x-text="impaye.suspendu ? 'Suspendu' : 'Impayé'"></span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact -->
+        <div class="bg-white rounded-xl border border-slate-200 p-6">
+            <h2 class="text-lg font-semibold text-slate-900 mb-4">Contact</h2>
+            
+            <div class="space-y-3">
+                <div class="flex justify-between py-2 border-b border-slate-100">
+                    <span class="text-slate-500">Nom</span>
+                    <span class="font-medium text-slate-900" x-text="impaye.contact_nom || '-'"></span>
+                </div>
+                <div class="flex justify-between py-2 border-b border-slate-100">
+                    <span class="text-slate-500">Email</span>
+                    <span class="text-slate-900" x-text="impaye.email || '-'"></span>
+                </div>
+                <div class="flex justify-between py-2">
+                    <span class="text-slate-500">Téléphone</span>
+                    <span class="text-slate-900" x-text="impaye.telephone || '-'"></span>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+{% include 'impayes_detail/alpinejs.html' %}
+{% endblock %}

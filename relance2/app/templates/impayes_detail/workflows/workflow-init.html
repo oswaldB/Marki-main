@@ -1,0 +1,30 @@
+// Fonction d'initialisation
+init: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'init', page: 'impayes-detail' });
+    
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            log.warn('AUTH_MISSING', { workflowId });
+            window.location.href = '/login';
+            return;
+        }
+        
+        // Extraire ID de l'URL
+        const path = window.location.pathname;
+        const match = path.match(/\/impayes\/([^/]+)/);
+        
+        if (match) {
+            this.impayeId = match[1];
+            await this.initialLoad();
+        } else {
+            log.error('NO_ID', { workflowId });
+            window.location.href = '/impayes';
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

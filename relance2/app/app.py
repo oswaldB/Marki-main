@@ -60,15 +60,27 @@ def create_app():
     
     @app.route('/settings-utilisateurs')
     def settings_users_page():
-        return render_template('layouts/layout_app.html', page_title='Utilisateurs', active_page='settings-utilisateurs')
+        return render_template('settings_utilisateurs/index.html', page_title='Utilisateurs', active_page='settings-utilisateurs')
     
     @app.route('/relances-calendrier')
     def relances_calendrier_page():
-        return render_template('layouts/layout_app.html', page_title='Calendrier', active_page='relances-calendrier')
+        return render_template('relances_calendrier/index.html', page_title='Calendrier', active_page='relances-calendrier')
     
     @app.route('/relances-validation')
     def relances_validation_page():
-        return render_template('layouts/layout_app.html', page_title='Validation', active_page='relances-validation')
+        return render_template('relances_validation/index.html', page_title='Validation', active_page='relances-validation')
+    
+    @app.route('/settings-smtp/new')
+    def settings_smtp_new_page():
+        return render_template('settings_smtp_detail/index.html', page_title='Nouveau Profil SMTP', active_page='settings-smtp')
+    
+    @app.route('/settings-smtp/<id>')
+    def settings_smtp_detail_page(id):
+        return render_template('settings_smtp_detail/index.html', page_title='Configuration SMTP', active_page='settings-smtp')
+    
+    @app.route('/impayes/<id>')
+    def impayes_detail_page(id):
+        return render_template('impayes_detail/index.html', page_title='Détail Impayé', active_page='impayes')
     
     # Favicon
     @app.route('/favicon.ico')

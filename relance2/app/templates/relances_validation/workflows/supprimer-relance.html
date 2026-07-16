@@ -1,0 +1,31 @@
+// Workflow: Supprimer relance
+supprimerRelance: async function(id) {
+    const workflowId = crypto.randomUUID();
+    
+    if (!confirm('Êtes-vous sûr ?')) {
+        log.info('WORKFLOW_CANCELLED', { workflowId });
+        return;
+    }
+    
+    log.info('WORKFLOW_START', { workflowId, workflow: 'supprimerRelance', relanceId: id });
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        const response = await fetch(`/api/relances/${id}`, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error('Erreur suppression');
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        await this.initialLoad();
+        
+        if (typeof Alpine !== 'undefined' && Alpine.store('ui')) {
+            Alpine.store('ui').addToast('Relance supprimée', 'success');
+        }
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

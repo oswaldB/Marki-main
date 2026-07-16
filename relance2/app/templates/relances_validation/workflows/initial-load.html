@@ -1,0 +1,31 @@
+// Workflow: Chargement initial
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'initialLoad' });
+    
+    this.loading = true;
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/relances' });
+        
+        const response = await fetch('/api/relances', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error('Erreur chargement relances');
+        
+        const data = await response.json();
+        // Filtrer uniquement les relances en attente
+        this.relances = (data.relances || []).filter(r => r.statut === 'en_attente');
+        this.selected = {};
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, count: this.relances.length });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        this.error = error.message;
+    } finally {
+        this.loading = false;
+    }
+}

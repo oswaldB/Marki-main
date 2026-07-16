@@ -1,0 +1,36 @@
+// Workflow: Mettre à jour utilisateur
+updateUser: async function(id, changes) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'updateUser', userId: id, changes });
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/settings/users/${id}` });
+        
+        const response = await fetch(`/api/settings/users/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(changes)
+        });
+        
+        if (!response.ok) throw new Error('Erreur mise à jour');
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+        // Recharger
+        await this.initialLoad();
+        
+        if (typeof Alpine !== 'undefined' && Alpine.store('ui')) {
+            Alpine.store('ui').addToast('Utilisateur mis à jour', 'success');
+        }
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        if (typeof Alpine !== 'undefined' && Alpine.store('ui')) {
+            Alpine.store('ui').addToast(error.message, 'error');
+        }
+    }
+}

@@ -1,0 +1,51 @@
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('settingsSmtpDetail', () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
+            
+            loading: true,
+            saving: false,
+            testing: false,
+            error: null,
+            
+            isEdit: false,
+            profilId: null,
+            
+            form: {
+                nom: '',
+                host: '',
+                port: 587,
+                secure: false,
+                username: '',
+                password: '',
+                from_email: '',
+                from_name: '',
+                actif: true
+            },
+            
+            showPassword: false,
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
+            {% include 'settings_smtp_detail/workflows/initial-load.html' %},
+            {% include 'settings_smtp_detail/workflows/save-changes.html' %},
+            {% include 'settings_smtp_detail/workflows/tester-connexion.html' %},
+            {% include 'settings_smtp_detail/workflows/toggle-password.html' %},
+            
+            // =====================================================
+            // 3. INIT
+            // =====================================================
+            {% include 'settings_smtp_detail/workflows/workflow-init.html' %}
+        }));
+    });
+</script>

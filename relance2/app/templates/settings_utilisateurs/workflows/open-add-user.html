@@ -1,0 +1,10 @@
+// Workflow: Ouvrir ajout utilisateur
+openAddUser: function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'openAddUser' });
+    
+    // Simple alert pour l'instant - à remplacer par modal
+    alert('Fonctionnalité à implémenter: création utilisateur');
+    
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+}

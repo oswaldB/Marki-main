@@ -1,0 +1,33 @@
+// Fonction d'initialisation
+init: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'init', page: 'settings-smtp-detail' });
+    
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            log.warn('AUTH_MISSING', { workflowId });
+            window.location.href = '/login';
+            return;
+        }
+        
+        // Détecter si édition ou création
+        const path = window.location.pathname;
+        const match = path.match(/\/settings-smtp\/([^/]+)/);
+        
+        if (match && match[1] !== 'new') {
+            this.isEdit = true;
+            this.profilId = match[1];
+            await this.initialLoad();
+        } else {
+            this.isEdit = false;
+            log.info('CREATE_MODE', { workflowId });
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    } finally {
+        this.loading = false;
+    }
+}

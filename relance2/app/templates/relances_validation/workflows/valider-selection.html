@@ -1,0 +1,37 @@
+// Workflow: Valider sélection
+validerSelection: async function() {
+    const workflowId = crypto.randomUUID();
+    const selectedIds = Object.entries(this.selected)
+        .filter(([_, v]) => v)
+        .map(([id, _]) => id);
+    
+    log.info('WORKFLOW_START', { workflowId, workflow: 'validerSelection', count: selectedIds.length });
+    
+    if (selectedIds.length === 0) return;
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        // Valider chaque relance
+        for (const id of selectedIds) {
+            await fetch(`/api/relances/${id}`, {
+                method: 'PUT',
+                headers: { 
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ statut: 'valide' })
+            });
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        this.selected = {};
+        await this.initialLoad();
+        
+        if (typeof Alpine !== 'undefined' && Alpine.store('ui')) {
+            Alpine.store('ui').addToast(`${selectedIds.length} relances validées`, 'success');
+        }
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+}

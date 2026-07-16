@@ -1,0 +1,29 @@
+// Workflow: Chargement initial
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'initialLoad', impayeId: this.impayeId });
+    
+    this.loading = true;
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/impayes/${this.impayeId}` });
+        
+        const response = await fetch(`/api/impayes/${this.impayeId}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error('Impayé non trouvé');
+        
+        const data = await response.json();
+        this.impaye = data;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        this.error = error.message;
+    } finally {
+        this.loading = false;
+    }
+}
