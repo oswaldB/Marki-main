@@ -34,6 +34,14 @@ def create_app():
     def impayes_page():
         return render_template('layouts/layout_app.html', page_title='Impayés', active_page='impayes')
     
+    @app.route('/impayes-payeur')
+    def impayes_payeur_page():
+        return render_template('impayes_payeur/index.html', page_title='Impayés par Payeur', active_page='impayes-payeur')
+    
+    @app.route('/impayes-suspendus')
+    def impayes_suspendus_page():
+        return render_template('impayes_suspendus/index.html', page_title='Impayés Suspendus', active_page='impayes-suspendus')
+    
     @app.route('/contacts')
     def contacts_page():
         return render_template('layouts/layout_app.html', page_title='Contacts', active_page='contacts')
