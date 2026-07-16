@@ -16,9 +16,9 @@ class SidebarNavDual extends HTMLElement {
           
           isActive(page) {
             if (page === this.current) return true;
-            if (page === 'impayes' && this.url.includes('impayes.html') && !this.url.includes('payeur') && !this.url.includes('suspendus')) return true;
+            if (page === 'impayes' && this.url.includes('/impayes') && !this.url.includes('payeur') && !this.url.includes('suspendus')) return true;
             if (page === 'impayes-payeur' && this.url.includes('impayes-payeur')) return true;
-            if (page === 'relances-liste' && this.url.includes('relances.html') && !this.url.includes('calendrier') && !this.url.includes('validation')) return true;
+            if (page === 'relances-liste' && this.url.includes('/relances') && !this.url.includes('calendrier') && !this.url.includes('validation')) return true;
             if (page === 'relances-calendrier' && this.url.includes('relances-calendrier')) return true;
             if (page === 'relances-validation' && this.url.includes('relances-validation')) return true;
             if (page === 'impayes-suspendus' && this.url.includes('impayes-suspendus')) return true;
@@ -159,7 +159,7 @@ class SidebarNavDual extends HTMLElement {
           
           <!-- Deconnexion -->
           <a 
-            href="./login.html"
+            href="/login"
             class="flex h-10 w-10 items-center justify-center rounded-xl text-gray-400 transition-all duration-200 hover:bg-white hover:shadow-sm hover:text-gray-600"
           >
             <i class="fas fa-sign-out-alt"></i>
@@ -242,7 +242,7 @@ class SidebarNavDual extends HTMLElement {
                 <div class="mb-2">
                   <div class="flex flex-col gap-0.5">
                     <a 
-                      href="./dashboard.html" 
+                      href="/dashboard" 
                       :class="isActive('dashboard') ? 'bg-sky-50 text-sky-600' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'"
                       class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150"
                     >
@@ -253,7 +253,7 @@ class SidebarNavDual extends HTMLElement {
                     </a>
                     
                     <a 
-                      href="./smart-marki.html" 
+                      href="/smart-marki" 
                       :class="isActive('smart-marki') ? 'bg-sky-50 text-sky-600' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'"
                       class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150"
                     >
@@ -265,7 +265,7 @@ class SidebarNavDual extends HTMLElement {
                     </a>
                     
                     <a 
-                      href="./evenements.html" 
+                      href="/evenements" 
                       :class="isActive('evenements') ? 'bg-sky-50 text-sky-600' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'"
                       class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150"
                     >
@@ -307,7 +307,7 @@ class SidebarNavDual extends HTMLElement {
                     :class="isActiveSection('impayes') ? 'border-sky-600' : ''"
                   >
                     <a 
-                      href="./impayes.html" 
+                      href="/impayes" 
                       :class="isActive('impayes') ? 'bg-sky-50 text-sky-600' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'"
                       class="relative flex items-center gap-2 rounded-md py-1.5 pl-3 pr-2.5 text-xs font-medium transition-all duration-150"
                     >
@@ -318,7 +318,7 @@ class SidebarNavDual extends HTMLElement {
                       Vue Liste
                     </a>
                     <a 
-                      href="./impayes-payeur.html" 
+                      href="/impayes-payeur" 
                       :class="isActive('impayes-payeur') ? 'bg-sky-50 text-sky-600' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'"
                       class="relative flex items-center gap-2 rounded-md py-1.5 pl-3 pr-2.5 text-xs font-medium transition-all duration-150"
                     >
@@ -329,7 +329,7 @@ class SidebarNavDual extends HTMLElement {
                       Par Payeur
                     </a>
                     <a 
-                      href="./impayes-suspendus.html" 
+                      href="/impayes-suspendus" 
                       :class="isActive('impayes-suspendus') ? 'bg-sky-50 text-sky-600' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'"
                       class="relative flex items-center gap-2 rounded-md py-1.5 pl-3 pr-2.5 text-xs font-medium transition-all duration-150"
                     >
@@ -371,7 +371,7 @@ class SidebarNavDual extends HTMLElement {
                     :class="isActiveSection('relances') ? 'border-sky-600' : ''"
                   >
                     <a 
-                      href="./relances.html" 
+                      href="/relances" 
                       :class="isActive('relances-liste') ? 'bg-sky-50 text-sky-600' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'"
                       class="relative flex items-center gap-2 rounded-md py-1.5 pl-3 pr-2.5 text-xs font-medium transition-all duration-150"
                     >
@@ -382,7 +382,7 @@ class SidebarNavDual extends HTMLElement {
                       Vue Liste
                     </a>
                     <a 
-                      href="./relances-calendrier.html" 
+                      href="/relances-calendrier" 
                       :class="isActive('relances-calendrier') ? 'bg-sky-50 text-sky-600' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'"
                       class="relative flex items-center gap-2 rounded-md py-1.5 pl-3 pr-2.5 text-xs font-medium transition-all duration-150"
                     >
@@ -393,7 +393,7 @@ class SidebarNavDual extends HTMLElement {
                       Calendrier
                     </a>
                     <a 
-                      href="./relances-validation.html" 
+                      href="/relances-validation" 
                       :class="isActive('relances-validation') ? 'bg-sky-50 text-sky-600' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'"
                       class="relative flex items-center gap-2 rounded-md py-1.5 pl-3 pr-2.5 text-xs font-medium transition-all duration-150"
                     >
@@ -410,7 +410,7 @@ class SidebarNavDual extends HTMLElement {
                 <div class="mb-2">
                   <div class="flex flex-col gap-0.5">
                     <a 
-                      href="./contacts.html" 
+                      href="/contacts" 
                       :class="isActive('contacts') ? 'bg-sky-50 text-sky-600' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'"
                       class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150"
                     >
@@ -427,7 +427,7 @@ class SidebarNavDual extends HTMLElement {
                   <div class="px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-400">Paramètres</div>
                   <div class="flex flex-col gap-0.5">
                     <a 
-                      href="./sequences.html" 
+                      href="/sequences" 
                       :class="isActive('sequences') ? 'bg-sky-50 text-sky-600' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'"
                       class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150"
                     >
@@ -438,7 +438,7 @@ class SidebarNavDual extends HTMLElement {
                     </a>
                     
                     <a 
-                      href="./settings-smtp.html" 
+                      href="/settings-smtp" 
                       :class="isActive('settings-smtp') ? 'bg-sky-50 text-sky-600' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'"
                       class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150"
                     >
@@ -449,7 +449,7 @@ class SidebarNavDual extends HTMLElement {
                     </a>
                     
                     <a 
-                      href="./settings-utilisateurs.html" 
+                      href="/settings-utilisateurs" 
                       :class="isActive('settings-utilisateurs') ? 'bg-sky-50 text-sky-600' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'"
                       class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150"
                     >
