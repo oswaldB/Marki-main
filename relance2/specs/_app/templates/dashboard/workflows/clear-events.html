@@ -1,0 +1,42 @@
+<!-- templates/dashboard/workflows/clear-events.html -->
+<!-- Mega-function: Vider les événements -->
+
+clearEvents: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'clearEvents'
+    });
+    
+    try {
+        log.debug('API_CALL_START', { endpoint: '/api/events/clear' });
+        
+        const token = localStorage.getItem('token');
+        const response = await fetch('/api/events/clear', {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { status: response.status });
+        
+        if (!response.ok) {
+            throw new Error('Erreur lors de la suppression');
+        }
+        
+        // Vider localement
+        this.events = [];
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime
+        });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    }
+}

@@ -1,0 +1,17 @@
+<!-- templates/settings/workflows/workflow-init.html -->
+<!-- État initial et méthodes de base pour la page settings -->
+
+// Propriétés d'état réactives
+loading: false,
+error: null,
+settings: {},
+
+// Initialisation du composant
+init: function() {
+    log.info('PAGE_INIT', { 
+        page: 'settings'
+    });
+    
+    // Charger les données au démarrage
+    this.initialLoad();
+}

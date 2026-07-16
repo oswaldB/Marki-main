@@ -1,0 +1,21 @@
+<!-- templates/relances_detail/alpinejs.html -->
+<!-- Initialisation Alpine.js avec includes des workflows -->
+<script>
+    // Logger global pour la page
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('relancesDetail', () => ({
+            // État initial (depuis workflow-init.html)
+            {% include 'relances_detail/workflows/workflow-init.html' %},
+            
+            // Workflows (mega-functions)
+            {% include 'relances_detail/workflows/initial-load.html' %}
+        }));
+    });
+</script>

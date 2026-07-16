@@ -1,0 +1,26 @@
+<!-- templates/dashboard/alpinejs.html -->
+<!-- Initialisation Alpine.js avec includes des workflows -->
+<script>
+    // Logger global pour la page
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('dashboard', () => ({
+            // État initial (depuis workflow-init.html)
+            {% include 'dashboard/workflows/workflow-init.html' %},
+            
+            // Workflows (mega-functions)
+            {% include 'dashboard/workflows/initial-load.html' %},
+            {% include 'dashboard/workflows/sync-data.html' %},
+            {% include 'dashboard/workflows/clear-events.html' %},
+            {% include 'dashboard/workflows/switch-view-card.html' %},
+            {% include 'dashboard/workflows/switch-view-list.html' %},
+            {% include 'dashboard/workflows/refresh-stats.html' %}
+        }));
+    });
+</script>

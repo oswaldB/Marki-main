@@ -1,0 +1,72 @@
+<!-- templates/settings/index.html -->
+<!-- Page Settings - Template Jinja2 + Alpine.js -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paramètres | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body class="bg-slate-50">
+
+<sidebar-nav-dual page="settings"></sidebar-nav-dual>
+
+<div class="md:ml-[284px] min-h-screen bg-slate-50" x-data="settings" x-init="init()">
+  
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center px-6 sticky top-0 z-40">
+    <h1 class="text-base font-semibold text-slate-700">Paramètres</h1>
+  </header>
+
+  <main class="p-6 max-w-4xl">
+    
+    <!-- Loading -->
+    <template x-if="loading">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-8">
+        <div class="flex justify-center">
+          <i class="fas fa-spinner fa-spin text-slate-400 text-2xl"></i>
+        </div>
+      </div>
+    </template>
+
+    <!-- Content -->
+    <template x-if="!loading">
+      <div class="space-y-6">
+        
+        <!-- Section générale -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+          <h2 class="text-lg font-semibold text-slate-800 mb-4">Paramètres généraux</h2>
+          <p class="text-sm text-slate-500">Configuration de l'application Marki.</p>
+        </div>
+        
+      </div>
+    </template>
+
+    <!-- Error -->
+    <div x-show="error" class="mt-6 p-4 bg-red-50 border border-red-200 rounded-xl">
+      <div class="flex items-start gap-3">
+        <i class="fas fa-exclamation-circle text-red-500 mt-0.5"></i>
+        <div>
+          <p class="font-medium text-red-800">Erreur</p>
+          <p class="text-sm text-red-600" x-text="error"></p>
+        </div>
+      </div>
+    </div>
+    
+  </main>
+</div>
+
+<!-- ✅ Alpine.js À LA FIN DU BODY -->
+<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script src="/static/components/sidebar-nav-dual.js"></script>
+
+<!-- Initialisation Alpine.js avec workflows -->
+{% include 'settings/alpinejs.html' %}
+
+</body>
+</html>

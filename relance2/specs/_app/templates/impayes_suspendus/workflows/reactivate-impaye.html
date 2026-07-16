@@ -1,0 +1,65 @@
+<!-- templates/impayes_suspendus/workflows/reactivate-impaye.html -->
+<!-- Mega-function: Réactiver un impayé suspendu -->
+
+reactivateImpaye: async function(id) {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'reactivateImpaye',
+        impayeId: id
+    });
+    
+    // Confirmation
+    if (!confirm('Réactiver cet impayé ? Il sera à nouveau inclus dans les relances.')) {
+        log.info('WORKFLOW_CANCELLED', { workflowId, reason: 'user_cancel' });
+        return;
+    }
+    
+    this.loading = true;
+    
+    try {
+        // Étape 1: Appel API
+        log.debug('API_CALL_START', { 
+            endpoint: `/api/impayes/${id}/reactiver`,
+            method: 'POST'
+        });
+        
+        const token = localStorage.getItem('token');
+        const response = await fetch(`/api/impayes/${id}/reactiver`, {
+            method: 'POST',
+            headers: { 
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            }
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { status: response.status });
+        
+        if (!response.ok) {
+            throw new Error('Erreur lors de la réactivation');
+        }
+        
+        // Étape 2: Mise à jour locale
+        log.debug('STATE_UPDATE_START');
+        this.impayesSuspendus = this.impayesSuspendus.filter(i => i.id !== id);
+        log.debug('STATE_UPDATE_COMPLETE', { remaining: this.impayesSuspendus.length });
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime,
+            impayeId: id
+        });
+        
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message,
+            stack: error.stack
+        });
+    } finally {
+        this.loading = false;
+    }
+}

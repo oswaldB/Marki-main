@@ -1,0 +1,38 @@
+<!-- templates/relances_detail/workflows/workflow-init.html -->
+<!-- État initial et méthodes de base pour la page relances-detail -->
+
+// Propriétés d'état réactives
+loading: false,
+error: null,
+relance: null,
+relanceId: null,
+
+// Initialisation du composant
+init: function() {
+    log.info('PAGE_INIT', { 
+        page: 'relances_detail'
+    });
+    
+    // Extraire l'ID de l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    this.relanceId = urlParams.get('id');
+    
+    if (!this.relanceId) {
+        this.error = 'ID de relance manquant';
+        return;
+    }
+    
+    // Charger les données
+    this.initialLoad();
+},
+
+// Méthode utilitaire: Formater les dates
+formatDate: function(dateStr) {
+    if (!dateStr) return '-';
+    const date = new Date(dateStr);
+    return new Intl.DateTimeFormat('fr-FR', { 
+        day: '2-digit', 
+        month: '2-digit', 
+        year: 'numeric' 
+    }).format(date);
+}

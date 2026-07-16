@@ -1,0 +1,57 @@
+<!-- templates/portail_mission/workflows/initial-load.html -->
+<!-- Mega-function: Chargement initial de la mission -->
+
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'initialLoad',
+        page: 'portail_mission'
+    });
+    
+    this.loading = true;
+    this.error = null;
+    
+    try {
+        // Étape 1: Appel API
+        log.debug('API_CALL_START', { 
+            endpoint: '/api/portail/mission'
+        });
+        
+        const response = await fetch('/api/portail/mission', {
+            headers: { 'Authorization': `Bearer ${this.token}` }
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { status: response.status });
+        
+        if (!response.ok) {
+            if (response.status === 401) {
+                localStorage.removeItem('mission_token');
+                throw new Error('Token invalide ou expiré');
+            }
+            throw new Error(`Erreur HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
+        this.mission = data;
+        
+        log.debug('DATA_LOADED', { missionNom: this.mission.nom });
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime
+        });
+        
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message,
+            stack: error.stack
+        });
+    } finally {
+        this.loading = false;
+    }
+}
