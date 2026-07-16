@@ -1,0 +1,9 @@
+// Workflow: Éditer profil
+editProfil: function(id) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'editProfil', profilId: id });
+    
+    window.location.href = `/settings-smtp/${id}`;
+    
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+}

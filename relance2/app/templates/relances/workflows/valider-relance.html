@@ -1,0 +1,37 @@
+// Workflow: Valider relance
+validerRelance: async function(id) {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'validerRelance', relanceId: id });
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/relances/${id}` });
+        
+        const response = await fetch(`/api/relances/${id}`, {
+            method: 'PUT',
+            headers: { 
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ statut: 'valide', valide_le: new Date().toISOString() })
+        });
+        
+        if (!response.ok) throw new Error('Erreur validation');
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+        // Recharger les données
+        await this.initialLoad();
+        
+        // Notification
+        if (typeof Alpine !== 'undefined' && Alpine.store('ui')) {
+            Alpine.store('ui').addToast('Relance validée', 'success');
+        }
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        if (typeof Alpine !== 'undefined' && Alpine.store('ui')) {
+            Alpine.store('ui').addToast(error.message, 'error');
+        }
+    }
+}

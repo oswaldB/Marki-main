@@ -1,0 +1,56 @@
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('relances', () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
+            
+            loading: true,
+            error: null,
+            
+            relances: [],
+            filteredRelances: [],
+            
+            searchQuery: '',
+            filterStatut: '',
+            
+            currentPage: 1,
+            perPage: 20,
+            
+            get totalPages() {
+                return Math.ceil(this.filteredRelances.length / this.perPage) || 1;
+            },
+            
+            get paginatedRelances() {
+                const start = (this.currentPage - 1) * this.perPage;
+                return this.filteredRelances.slice(start, start + this.perPage);
+            },
+            
+            formatDate(dateStr) {
+                if (!dateStr) return '-';
+                return new Date(dateStr).toLocaleDateString('fr-FR');
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
+            {% include 'relances/workflows/initial-load.html' %},
+            {% include 'relances/workflows/pagination-next.html' %},
+            {% include 'relances/workflows/pagination-prev.html' %},
+            {% include 'relances/workflows/valider-relance.html' %},
+            {% include 'relances/workflows/supprimer-relance.html' %},
+            
+            // =====================================================
+            // 3. INIT
+            // =====================================================
+            {% include 'relances/workflows/workflow-init.html' %}
+        }));
+    });
+</script>

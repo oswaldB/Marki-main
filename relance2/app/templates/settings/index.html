@@ -1,0 +1,70 @@
+{% extends 'layouts/layout_app.html' %}
+
+{% block page_title %}Paramètres{% endblock %}
+{% block active_page %}settings{% endblock %}
+
+{% block content %}
+<div x-data="settings" x-init="init()" x-cloak class="space-y-6">
+    
+    <!-- Menu Settings -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        
+        <!-- SMTP -->
+        <a href="/settings-smtp" class="bg-white rounded-xl border border-slate-200 p-6 hover:border-sky-300 hover:shadow-sm transition-all">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-lg bg-sky-100 flex items-center justify-center">
+                    <i class="fas fa-envelope text-sky-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-slate-900">Configuration SMTP</h3>
+                    <p class="text-sm text-slate-500">Gérer les profils d'envoi d'emails</p>
+                </div>
+            </div>
+        </a>
+        
+        <!-- Utilisateurs -->
+        <a href="/settings-utilisateurs" class="bg-white rounded-xl border border-slate-200 p-6 hover:border-sky-300 hover:shadow-sm transition-all">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-lg bg-violet-100 flex items-center justify-center">
+                    <i class="fas fa-users text-violet-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-slate-900">Utilisateurs</h3>
+                    <p class="text-sm text-slate-500">Gérer les accès utilisateurs</p>
+                </div>
+            </div>
+        </a>
+        
+        <!-- Séquences -->
+        <a href="/sequences" class="bg-white rounded-xl border border-slate-200 p-6 hover:border-sky-300 hover:shadow-sm transition-all">
+            <div class="flex items-center gap-4">
+                <div class="w-12 h-12 rounded-lg bg-emerald-100 flex items-center justify-center">
+                    <i class="fas fa-stream text-emerald-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-slate-900">Séquences</h3>
+                    <p class="text-sm text-slate-500">Configurer les séquences de relance</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+<script>
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('settings', () => ({
+            init() {
+                console.log('[INFO][PAGE_INIT]', { page: 'settings' });
+                
+                const token = localStorage.getItem('token');
+                if (!token) {
+                    window.location.href = '/login';
+                }
+            }
+        }));
+    });
+</script>
+{% endblock %}

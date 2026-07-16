@@ -1,0 +1,29 @@
+// Workflow: Chargement initial
+initialLoad: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { workflowId, workflow: 'initialLoad' });
+    
+    this.loading = true;
+    
+    try {
+        const token = localStorage.getItem('token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/settings/smtp' });
+        
+        const response = await fetch('/api/settings/smtp', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) throw new Error('Erreur chargement profils');
+        
+        const data = await response.json();
+        this.profiles = data.profiles || [];
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, count: this.profiles.length });
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+        this.error = error.message;
+    } finally {
+        this.loading = false;
+    }
+}

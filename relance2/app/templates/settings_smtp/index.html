@@ -1,0 +1,74 @@
+{% extends 'layouts/layout_app.html' %}
+
+{% block page_title %}Configuration SMTP{% endblock %}
+{% block active_page %}settings-smtp{% endblock %}
+
+{% block header_right %}
+<button @click="createProfil()" class="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium transition-all">
+    <i class="fas fa-plus"></i>
+    <span>Nouveau profil</span>
+</button>
+{% endblock %}
+
+{% block content %}
+<div x-data="settingsSmtp" x-init="init()" x-cloak class="space-y-6">
+    
+    <!-- Loading -->
+    <div x-show="loading" class="bg-white rounded-xl border border-slate-200 p-8">
+        <div class="flex items-center justify-center gap-3 text-slate-500">
+            <i class="fas fa-circle-notch fa-spin text-xl"></i>
+            <span>Chargement...</span>
+        </div>
+    </div>
+    
+    <!-- Liste -->
+    <div x-show="!loading" class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+        <table class="w-full text-sm text-left">
+            <thead class="bg-slate-50 text-slate-600 font-medium">
+                <tr>
+                    <th class="px-6 py-3">Nom</th>
+                    <th class="px-6 py-3">Serveur</th>
+                    <th class="px-6 py-3">Email</th>
+                    <th class="px-6 py-3">Statut</th>
+                    <th class="px-6 py-3 text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+                <template x-for="profil in profiles" :key="profil.id">
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-6 py-4 font-medium text-slate-900" x-text="profil.nom"></td>
+                        <td class="px-6 py-4 text-slate-600" x-text="profil.host + ':' + profil.port"></td>
+                        <td class="px-6 py-4 text-slate-600" x-text="profil.from_email"></td>
+                        <td class="px-6 py-4">
+                            <span 
+                                class="inline-flex px-2 py-1 text-xs font-medium rounded-full"
+                                :class="profil.actif ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-600'"
+                                x-text="profil.actif ? 'Actif' : 'Inactif'">
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <button @click="editProfil(profil.id)" class="text-sky-600 hover:text-sky-700 mr-3" title="Éditer">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button @click="testProfil(profil.id)" class="text-amber-600 hover:text-amber-700 mr-3" title="Tester">
+                                <i class="fas fa-vial"></i>
+                            </button>
+                            <button @click="deleteProfil(profil.id)" class="text-rose-600 hover:text-rose-700" title="Supprimer">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        
+        <div x-show="profiles.length === 0" class="p-8 text-center text-slate-500">
+            Aucun profil SMTP configuré
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+{% include 'settings_smtp/alpinejs.html' %}
+{% endblock %}

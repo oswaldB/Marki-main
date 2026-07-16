@@ -1,0 +1,123 @@
+{% extends 'layouts/layout_app.html' %}
+
+{% block page_title %}Séquences{% endblock %}
+{% block active_page %}sequences{% endblock %}
+
+{% block header_right %}
+<button @click="createSequence()" class="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium transition-all">
+    <i class="fas fa-plus"></i>
+    <span>Nouvelle séquence</span>
+</button>
+{% endblock %}
+
+{% block content %}
+<div x-data="sequences" x-init="init()" x-cloak class="space-y-6">
+    
+    <!-- Filtres -->
+    <div class="bg-white rounded-xl border border-slate-200 p-4">
+        <div class="flex flex-wrap items-center gap-4">
+            <div class="relative flex-1 min-w-[240px] max-w-md">
+                <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+                <input 
+                    type="text" 
+                    x-model="searchQuery"
+                    @input="applyFilters()"
+                    placeholder="Rechercher une séquence..."
+                    class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+                >
+            </div>
+            <select x-model="filterType" @change="applyFilters()" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                <option value="">Tous les types</option>
+                <option value="relance">Relance</option>
+                <option value="suivi">Suivi</option>
+            </select>
+        </div>
+    </div>
+    
+    <!-- Loading -->
+    <div x-show="loading" class="bg-white rounded-xl border border-slate-200 p-8">
+        <div class="flex items-center justify-center gap-3 text-slate-500">
+            <i class="fas fa-circle-notch fa-spin text-xl"></i>
+            <span>Chargement...</span>
+        </div>
+    </div>
+    
+    <!-- Table -->
+    <div x-show="!loading" class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+        <table class="w-full text-sm text-left">
+            <thead class="bg-slate-50 text-slate-600 font-medium">
+                <tr>
+                    <th class="px-6 py-3">Nom</th>
+                    <th class="px-6 py-3">Type</th>
+                    <th class="px-6 py-3">Niveau</th>
+                    <th class="px-6 py-3">Statut</th>
+                    <th class="px-6 py-3 text-right">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-100">
+                <template x-for="sequence in paginatedSequences" :key="sequence.id">
+                    <tr class="hover:bg-slate-50 transition-colors">
+                        <td class="px-6 py-4 font-medium text-slate-900" x-text="sequence.nom"></td>
+                        <td class="px-6 py-4">
+                            <span 
+                                class="inline-flex px-2 py-1 text-xs font-medium rounded-full"
+                                :class="sequence.type_sequence === 'relance' ? 'bg-sky-100 text-sky-700' : 'bg-violet-100 text-violet-700'"
+                                x-text="sequence.type_sequence === 'relance' ? 'Relance' : 'Suivi'"
+                            ></span>
+                        </td>
+                        <td class="px-6 py-4 text-slate-600" x-text="'Niveau ' + sequence.niveau"></td>
+                        <td class="px-6 py-4">
+                            <span 
+                                class="inline-flex px-2 py-1 text-xs font-medium rounded-full"
+                                :class="sequence.actif ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-100 text-slate-600'"
+                                x-text="sequence.actif ? 'Actif' : 'Inactif'"
+                            ></span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <button @click="editSequence(sequence.id)" class="text-sky-600 hover:text-sky-700 mr-3" title="Éditer">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button @click="duplicateSequence(sequence.id)" class="text-slate-600 hover:text-slate-700 mr-3" title="Dupliquer">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                            <button @click="deleteSequence(sequence.id)" class="text-rose-600 hover:text-rose-700" title="Supprimer">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                </template>
+            </tbody>
+        </table>
+        
+        <!-- Pagination -->
+        <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-between">
+            <span class="text-sm text-slate-500">
+                <span x-text="filteredSequences.length"></span> séquences
+            </span>
+            <div class="flex items-center gap-2">
+                <button 
+                    @click="prevPage()" 
+                    :disabled="currentPage === 1"
+                    class="px-3 py-1 border border-slate-200 rounded-lg text-sm hover:bg-slate-50 disabled:opacity-50"
+                >
+                    Précédent
+                </button>
+                <span class="text-sm text-slate-600">
+                    Page <span x-text="currentPage"></span> / <span x-text="totalPages"></span>
+                </span>
+                <button 
+                    @click="nextPage()" 
+                    :disabled="currentPage === totalPages"
+                    class="px-3 py-1 border border-slate-200 rounded-lg text-sm hover:bg-slate-50 disabled:opacity-50"
+                >
+                    Suivant
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+{% include 'sequences/alpinejs.html' %}
+{% endblock %}

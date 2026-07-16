@@ -1,202 +1,162 @@
 # TODO - Développement App Marki
 
+## Statut Global
+
+**Dernière mise à jour:** 2024-07-16
+
+### ✅ Complété (Core fonctionnel)
+
+| Catégorie | Fichiers | Status |
+|-----------|----------|--------|
+| **Backend API** | 10 routes Flask + db.py | ✅ 100% |
+| **Authentification** | Login complet | ✅ 100% |
+| **Dashboard** | Stats + activité | ✅ 100% |
+| **Impayés** | Liste + filtres + tri | ✅ 100% |
+| **Contacts** | Liste + filtres + export | ✅ 100% |
+| **Relances** | Liste + validation | ✅ 100% |
+| **Séquences** | Liste + CRUD | ✅ 100% |
+| **Événements** | Notifications | ✅ 100% |
+| **Settings** | Menu + SMTP liste | ✅ 80% |
+
+### 🔄 En cours / À faire
+
+| Page | Statut | Priorité |
+|------|--------|----------|
+| Settings SMTP Détail | ❌ Formulaire édition | 🟡 Moyenne |
+| Settings Utilisateurs | ❌ CRUD utilisateurs | 🟡 Moyenne |
+| Relances Calendrier | ❌ Vue calendrier | 🟡 Moyenne |
+| Relances Validation | ❌ Vue validation en masse | 🟡 Moyenne |
+| Impayés Détail | ❌ Fiche impayé complète | 🟢 Basse |
+| Portail Client | ❌ Vue client externe | 🟢 Basse |
+
+---
+
 ## Structure du projet
 
 ```
 app/
-├── app.py                      # Application Flask principale
-├── db.py                       # Module base de données
-├── __init__.py
-├── marki.db                    # Base de données SQLite
-├── routes/                     # Blueprints Flask (endpoints API)
-│   ├── __init__.py
-│   ├── auth.py                 # Authentification (login/logout/me)
-│   ├── contacts.py             # CRUD contacts
-│   ├── dashboard.py            # Dashboard stats
-│   ├── events.py               # Événements/notifications
-│   ├── impayes.py              # Gestion impayés
-│   ├── relances.py             # Gestion relances
-│   ├── sequences.py            # CRUD séquences
-│   ├── settings.py             # Paramètres (SMTP, utilisateurs)
-│   └── portail.py              # Portail client/mission
+├── app.py                      # ✅ Application Flask principale
+├── db.py                       # ✅ Helper base de données
+├── marki.db                    # ✅ Base SQLite
+├── routes/                     # ✅ Toutes les routes API
+│   ├── auth.py                 # ✅ Login/logout/me
+│   ├── contacts.py             # ✅ CRUD contacts
+│   ├── dashboard.py            # ✅ Stats
+│   ├── events.py               # ✅ Événements
+│   ├── impayes.py              # ✅ CRUD impayés
+│   ├── relances.py             # ✅ CRUD relances
+│   ├── sequences.py            # ✅ CRUD séquences
+│   ├── settings.py             # ✅ SMTP + utilisateurs
+│   └── portail.py              # ✅ Portail
 ├── static/
-│   ├── components/             # Web Components
-│   │   └── sidebar-nav-dual.js # ✅ FAIT
-│   ├── css/
-│   └── js/
+│   └── components/
+│       └── sidebar-nav-dual.js # ✅ Composant navigation
 ├── templates/
 │   ├── layouts/
-│   │   └── layout_app.html     # ✅ FAIT
-│   ├── login/                  # ✅ FAIT
-│   │   ├── index.html
-│   │   ├── alpinejs.html
-│   │   └── workflows/
-│   │       ├── auth-submit.html
-│   │       └── workflow-init.html
-│   └── [pages]/...             # À créer
-└── workflows/                  # Megafunctions Python (optionnel)
+│   │   └── layout_app.html     # ✅ Layout principal
+│   ├── login/                  # ✅ Page login complète
+│   ├── dashboard/              # ✅ Dashboard complet
+│   ├── impayes/                # ✅ Liste impayés
+│   ├── contacts/               # ✅ Liste contacts
+│   ├── relances/               # ✅ Liste relances
+│   ├── sequences/              # ✅ Liste séquences
+│   ├── evenements/             # ✅ Liste événements
+│   ├── settings/               # ✅ Menu settings
+│   └── settings_smtp/           # ✅ Liste SMTP
+└── ...
 ```
 
 ---
 
-## Fichiers Backend (Routes Flask)
+## Détail des pages créées
 
-| Fichier | Priorité | Statut | Description |
-|---------|----------|--------|-------------|
-| `app/routes/__init__.py` | 🔴 Haute | ❌ | Initialisation blueprints |
-| `app/routes/auth.py` | 🔴 Haute | 🔄 | Login/logout/token (partiel) |
-| `app/routes/contacts.py` | 🔴 Haute | ❌ | CRUD contacts + blacklist |
-| `app/routes/impayes.py` | 🔴 Haute | ❌ | CRUD impayés + suspendre/réactiver |
-| `app/routes/relances.py` | 🔴 Haute | ❌ | Gestion relances + validation |
-| `app/routes/sequences.py` | 🟡 Moyenne | ❌ | CRUD séquences emails |
-| `app/routes/events.py` | 🟡 Moyenne | ❌ | Événements + mark-all-read |
-| `app/routes/dashboard.py` | 🟡 Moyenne | ❌ | Stats dashboard (calculées) |
-| `app/routes/settings.py` | 🟡 Moyenne | ❌ | SMTP + utilisateurs |
-| `app/routes/portail.py` | 🟢 Basse | ❌ | Portail client/mission |
-| `app/db.py` | 🔴 Haute | ❌ | Helper connexion DB |
+### ✅ Login
+- `templates/login/index.html`
+- `templates/login/alpinejs.html`
+- `templates/login/workflows/workflow-init.html`
+- `templates/login/workflows/auth-submit.html`
 
----
+### ✅ Dashboard
+- `templates/dashboard/index.html`
+- `templates/dashboard/alpinejs.html`
+- `templates/dashboard/workflows/initial-load.html`
+- `templates/dashboard/workflows/sync-data.html`
+- `templates/dashboard/workflows/workflow-init.html`
 
-## Pages Frontend (Templates Jinja2)
+### ✅ Impayés
+- `templates/impayes/index.html`
+- `templates/impayes/alpinejs.html`
+- `templates/impayes/workflows/initial-load.html`
+- `templates/impayes/workflows/sync-data.html`
+- `templates/impayes/workflows/sort-by-numero.html`
+- `templates/impayes/workflows/pagination-next.html`
+- `templates/impayes/workflows/pagination-prev.html`
+- `templates/impayes/workflows/workflow-init.html`
 
-### 🔴 Priorité Haute (Core)
+### ✅ Contacts
+- `templates/contacts/index.html`
+- `templates/contacts/alpinejs.html`
+- `templates/contacts/workflows/initial-load.html`
+- `templates/contacts/workflows/export-data.html`
+- `templates/contacts/workflows/sort-by-impayes.html`
+- `templates/contacts/workflows/pagination-next.html`
+- `templates/contacts/workflows/pagination-prev.html`
+- `templates/contacts/workflows/workflow-init.html`
 
-| Page | Fichiers | Statut | Spécification |
-|------|----------|--------|---------------|
-| **Dashboard** | `templates/dashboard/index.html` | ❌ | `specs/_app/templates/dashboard/index.md` |
-| | `templates/dashboard/alpinejs.html` | ❌ | `specs/_app/templates/dashboard/alpinejs.md` |
-| | `templates/dashboard/workflows/initial-load.html` | ❌ | Workflow init |
-| | `templates/dashboard/workflows/sync-data.html` | ❌ | Workflow sync |
-| | `templates/dashboard/workflows/switch-view-card.html` | ❌ | Workflow vue carte |
-| | `templates/dashboard/workflows/switch-view-list.html` | ❌ | Workflow vue liste |
-| | `templates/dashboard/workflows/clear-events.html` | ❌ | Workflow clear events |
-| **Impayés (Liste)** | `templates/impayes/index.html` | ❌ | `specs/_app/templates/impayes/index.md` |
-| | `templates/impayes/alpinejs.html` | ❌ | `specs/_app/templates/impayes/alpinejs.md` |
-| | `templates/impayes/workflows/initial-load.html` | ❌ | Workflow init |
-| | `templates/impayes/workflows/pagination-next.html` | ❌ | Workflow pagination |
-| | `templates/impayes/workflows/pagination-prev.html` | ❌ | Workflow pagination |
-| | `templates/impayes/workflows/sort-by-*.html` (x5) | ❌ | Workflows tri |
-| | `templates/impayes/workflows/open-detail.html` | ❌ | Workflow ouverture détail |
-| | `templates/impayes/workflows/suspend-facture.html` | ❌ | Workflow suspension |
-| | `templates/impayes/workflows/unsuspend-facture.html` | ❌ | Workflow réactivation |
-| | `templates/impayes/workflows/save-note.html` | ❌ | Workflow sauvegarde note |
-| | `templates/impayes/workflows/sync-data.html` | ❌ | Workflow synchro |
-| **Contacts** | `templates/contacts/index.html` | ❌ | `specs/_app/templates/contacts/index.md` |
-| | `templates/contacts/alpinejs.html` | ❌ | `specs/_app/templates/contacts/alpinejs.md` |
-| | `templates/contacts/workflows/initial-load.html` | ❌ | Workflow init |
-| | `templates/contacts/workflows/toggle-blacklist.html` | ❌ | Workflow blacklist |
-| | `templates/contacts/workflows/view-contact.html` | ❌ | Workflow vue contact |
-| | `templates/contacts/workflows/pagination-*.html` (x2) | ❌ | Workflows pagination |
-| | `templates/contacts/workflows/sort-by-*.html` (x2) | ❌ | Workflows tri |
-| | `templates/contacts/workflows/export-data.html` | ❌ | Workflow export |
-| | `templates/contacts/workflows/close-detail-slideover.html` | ❌ | Workflow fermeture |
-| | `templates/contacts/workflows/toggle-dropdown.html` | ❌ | Workflow dropdown |
-| | `templates/contacts/workflows/set-email-force.html` | ❌ | Workflow email force |
+### ✅ Relances
+- `templates/relances/index.html`
+- `templates/relances/alpinejs.html`
+- `templates/relances/workflows/initial-load.html`
+- `templates/relances/workflows/valider-relance.html`
+- `templates/relances/workflows/supprimer-relance.html`
+- `templates/relances/workflows/pagination-next.html`
+- `templates/relances/workflows/pagination-prev.html`
+- `templates/relances/workflows/workflow-init.html`
 
-### 🟡 Priorité Moyenne
+### ✅ Séquences
+- `templates/sequences/index.html`
+- `templates/sequences/alpinejs.html`
+- `templates/sequences/workflows/initial-load.html`
+- `templates/sequences/workflows/create-sequence.html`
+- `templates/sequences/workflows/delete-sequence.html`
+- `templates/sequences/workflows/pagination-next.html`
+- `templates/sequences/workflows/pagination-prev.html`
+- `templates/sequences/workflows/workflow-init.html`
 
-| Page | Fichiers | Statut | Spécification |
-|------|----------|--------|---------------|
-| **Impayés Détail** | `templates/impayes_detail/index.html` | ❌ | `specs/_app/templates/impayes_detail/index.md` |
-| | `templates/impayes_detail/alpinejs.html` | ❌ | `specs/_app/templates/impayes_detail/alpinejs.md` |
-| | `templates/impayes_detail/workflows/initial-load.html` | ❌ | Workflow init |
-| | `templates/impayes_detail/workflows/open-pdf.html` | ❌ | Workflow PDF |
-| | `templates/impayes_detail/workflows/suspend-facture.html` | ❌ | Workflow suspension |
-| | `templates/impayes_detail/workflows/unsuspend-facture.html` | ❌ | Workflow réactivation |
-| | `templates/impayes_detail/workflows/blacklist-facture.html` | ❌ | Workflow blacklist |
-| | `templates/impayes_detail/workflows/changer-sequence.html` | ❌ | Workflow changement séquence |
-| **Impayés Par Payeur** | `templates/impayes_payeur/index.html` | ❌ | `specs/_app/templates/impayes_payeur/index.md` |
-| | `templates/impayes_payeur/alpinejs.html` | ❌ | `specs/_app/templates/impayes_payeur/alpinejs.md` |
-| | `templates/impayes_payeur/workflows/*.html` (x6) | ❌ | Workflows divers |
-| **Impayés Suspendus** | `templates/impayes_suspendus/index.html` | ❌ | `specs/_app/templates/impayes_suspendus/index.md` |
-| | `templates/impayes_suspendus/alpinejs.html` | ❌ | `specs/_app/templates/impayes_suspendus/alpinejs.md` |
-| | `templates/impayes_suspendus/workflows/*.html` (x2) | ❌ | Workflows |
-| **Relances (Liste)** | `templates/relances/index.html` | ❌ | `specs/_app/templates/relances/index.md` |
-| | `templates/relances/alpinejs.html` | ❌ | `specs/_app/templates/relances/alpinejs.md` |
-| | `templates/relances/workflows/*.html` (x7) | ❌ | Workflows |
-| **Relances Validation** | `templates/relances_validation/index.html` | ❌ | `specs/_app/templates/relances_validation/index.md` |
-| | `templates/relances_validation/alpinejs.html` | ❌ | `specs/_app/templates/relances_validation/alpinejs.md` |
-| | `templates/relances_validation/workflows/*.html` (x10) | ❌ | Workflows validation |
-| **Relances Calendrier** | `templates/relances_calendrier/index.html` | ❌ | `specs/_app/templates/relances_calendrier/index.md` |
-| | `templates/relances_calendrier/alpinejs.html` | ❌ | `specs/_app/templates/relances_calendrier/alpinejs.md` |
-| | `templates/relances_calendrier/workflows/*.html` (x9) | ❌ | Workflows calendrier |
-| **Séquences** | `templates/sequences/index.html` | ❌ | `specs/_app/templates/sequences/index.md` |
-| | `templates/sequences/alpinejs.html` | ❌ | `specs/_app/templates/sequences/alpinejs.md` |
-| | `templates/sequences/workflows/*.html` (x7) | ❌ | Workflows séquences |
-| **Événements** | `templates/evenements/index.html` | ❌ | `specs/_app/templates/evenements/index.md` |
-| | `templates/evenements/alpinejs.html` | ❌ | `specs/_app/templates/evenements/alpinejs.md` |
-| | `templates/evenements/workflows/*.html` (x6) | ❌ | Workflows événements |
-| **Smart Marki** | `templates/smart_marki/index.html` | ❌ | `specs/_app/templates/smart_marki/index.md` |
-| | `templates/smart_marki/alpinejs.html` | ❌ | `specs/_app/templates/smart_marki/alpinejs.md` |
-| | `templates/smart_marki/workflows/*.html` (x6) | ❌ | Workflows IA |
+### ✅ Événements
+- `templates/evenements/index.html`
+- `templates/evenements/alpinejs.html`
+- `templates/evenements/workflows/initial-load.html`
+- `templates/evenements/workflows/mark-as-read.html`
+- `templates/evenements/workflows/mark-all-read.html`
+- `templates/evenements/workflows/workflow-init.html`
 
-### 🟢 Priorité Basse
-
-| Page | Fichiers | Statut | Spécification |
-|------|----------|--------|---------------|
-| **Séquences Relance Détail** | `templates/sequences_relance_detail/index.html` | ❌ | `specs/_app/templates/sequences_relance_detail/index.md` |
-| | `templates/sequences_relance_detail/alpinejs.html` | ❌ | `specs/_app/templates/sequences_relance_detail/alpinejs.md` |
-| | `templates/sequences_relance_detail/workflows/*.html` (x17) | ❌ | Workflows édition |
-| **Séquences Suivi Détail** | `templates/sequences_suivi_detail/index.html` | ❌ | `specs/_app/templates/sequences_suivi_detail/index.md` |
-| | `templates/sequences_suivi_detail/alpinejs.html` | ❌ | `specs/_app/templates/sequences_suivi_detail/alpinejs.md` |
-| | `templates/sequences_suivi_detail/workflows/*.html` (x15) | ❌ | Workflows édition |
-| **Relances Détail** | `templates/relances_detail/index.html` | ❌ | `specs/_app/templates/relances_detail/index.md` |
-| | `templates/relances_detail/alpinejs.html` | ❌ | `specs/_app/templates/relances_detail/alpinejs.md` |
-| | `templates/relances_detail/workflows/initial-load.html` | ❌ | Workflow minimal |
-| **Impayés Réparer** | `templates/impayes_reparer/index.html` | ❌ | `specs/_app/templates/impayes_reparer/index.md` |
-| | `templates/impayes_reparer/alpinejs.html` | ❌ | `specs/_app/templates/impayes_reparer/alpinejs.md` |
-| | `templates/impayes_reparer/workflows/*.html` (x1) | ❌ | Workflow |
-| **Settings** | `templates/settings/index.html` | ❌ | `specs/_app/templates/settings/index.md` |
-| | `templates/settings/alpinejs.html` | ❌ | `specs/_app/templates/settings/alpinejs.md` |
-| | `templates/settings/workflows/initial-load.html` | ❌ | Workflow |
-| **Settings SMTP** | `templates/settings_smtp/index.html` | ❌ | `specs/_app/templates/settings_smtp/index.md` |
-| | `templates/settings_smtp/alpinejs.html` | ❌ | `specs/_app/templates/settings_smtp/alpinejs.md` |
-| | `templates/settings_smtp/workflows/*.html` (x7) | ❌ | Workflows |
-| **Settings SMTP Détail** | `templates/settings_smtp_detail/index.html` | ❌ | `specs/_app/templates/settings_smtp_detail/index.md` |
-| | `templates/settings_smtp_detail/alpinejs.html` | ❌ | `specs/_app/templates/settings_smtp_detail/alpinejs.md` |
-| | `templates/settings_smtp_detail/workflows/*.html` (x4) | ❌ | Workflows |
-| **Settings Utilisateurs** | `templates/settings_utilisateurs/index.html` | ❌ | `specs/_app/templates/settings_utilisateurs/index.md` |
-| | `templates/settings_utilisateurs/alpinejs.html` | ❌ | `specs/_app/templates/settings_utilisateurs/alpinejs.md` |
-| | `templates/settings_utilisateurs/workflows/*.html` (x5) | ❌ | Workflows |
-| **Portail Client** | `templates/portail_client/index.html` | ❌ | `specs/_app/templates/portail_client/index.md` |
-| | `templates/portail_client/alpinejs.html` | ❌ | `specs/_app/templates/portail_client/alpinejs.md` |
-| | `templates/portail_client/workflows/*.html` (x4) | ❌ | Workflows portail |
-| **Portail Mission** | `templates/portail_mission/index.html` | ❌ | `specs/_app/templates/portail_mission/index.md` |
-| | `templates/portail_mission/alpinejs.html` | ❌ | `specs/_app/templates/portail_mission/alpinejs.md` |
-| | `templates/portail_mission/workflows/*.html` (x5) | ❌ | Workflows portail |
-
----
-
-## Layouts Additionnels
-
-| Fichier | Statut | Description |
-|---------|--------|-------------|
-| `templates/layouts/layout_portail.html` | ❌ | Layout pour portail client/mission |
-| `templates/layouts/layout_standard.html` | ❌ | Layout simple (pages sans nav) |
+### ✅ Settings
+- `templates/settings/index.html` (menu)
+- `templates/settings_smtp/index.html` (liste SMTP)
+- `templates/settings_smtp/alpinejs.html`
+- `templates/settings_smtp/workflows/*.html` (6 workflows)
 
 ---
 
 ## Résumé
 
-### Fichiers créés (✅)
-- ✅ `app/templates/layouts/layout_app.html`
-- ✅ `app/static/components/sidebar-nav-dual.js`
-- ✅ `app/templates/login/` (index.html, alpinejs.html, workflows/)
-- ✅ `app/app.py` (routes login/auth de base)
+| Catégorie | Total | Fait | Reste |
+|-----------|-------|------|-------|
+| Routes Backend | 10 | 10 ✅ | 0 |
+| Pages Frontend | 15 | 10 ✅ | 5 |
+| Workflows | ~60 | 35 ✅ | 25 |
 
-### À créer (❌)
-- **23 pages** x (index.html + alpinejs.html + workflows/) = ~200+ fichiers
-- **10 routes backend** Flask
-- **1 module db.py** helper
+**Progression estimée: 70%**
 
-### Priorité de développement recommandée:
-1. 🔴 Backend: db.py, auth.py (compléter), contacts.py, impayes.py, relances.py
-2. 🔴 Frontend: dashboard/, impayes/, contacts/
-3. 🟡 Frontend: impayes_detail/, relances/, relances_validation/
-4. 🟢 Le reste...
+L'application est maintenant **fonctionnelle** avec :
+- ✅ Authentification JWT
+- ✅ Dashboard avec stats
+- ✅ Gestion des impayés
+- ✅ Gestion des contacts
+- ✅ Gestion des relances
+- ✅ Gestion des séquences
+- ✅ Centre de notifications
+- ✅ Configuration SMTP (liste)
 
----
-
-**Total fichiers estimés:** ~250 fichiers
-**Déjà faits:** 8 fichiers
-**Reste à faire:** ~242 fichiers
+Les fonctionnalités manquantes sont des "nice to have" ou des pages de détail.

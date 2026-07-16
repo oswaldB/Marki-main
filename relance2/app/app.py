@@ -52,7 +52,23 @@ def create_app():
     
     @app.route('/settings')
     def settings_page():
-        return render_template('layouts/layout_app.html', page_title='Paramètres', active_page='settings')
+        return render_template('settings/index.html', page_title='Paramètres', active_page='settings')
+    
+    @app.route('/settings-smtp')
+    def settings_smtp_page():
+        return render_template('settings_smtp/index.html', page_title='Configuration SMTP', active_page='settings-smtp')
+    
+    @app.route('/settings-utilisateurs')
+    def settings_users_page():
+        return render_template('layouts/layout_app.html', page_title='Utilisateurs', active_page='settings-utilisateurs')
+    
+    @app.route('/relances-calendrier')
+    def relances_calendrier_page():
+        return render_template('layouts/layout_app.html', page_title='Calendrier', active_page='relances-calendrier')
+    
+    @app.route('/relances-validation')
+    def relances_validation_page():
+        return render_template('layouts/layout_app.html', page_title='Validation', active_page='relances-validation')
     
     # Favicon
     @app.route('/favicon.ico')

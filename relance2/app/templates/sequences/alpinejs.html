@@ -1,0 +1,51 @@
+<script>
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('sequences', () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES (STATE)
+            // =====================================================
+            
+            loading: true,
+            error: null,
+            
+            sequences: [],
+            filteredSequences: [],
+            
+            searchQuery: '',
+            filterType: '',
+            
+            currentPage: 1,
+            perPage: 20,
+            
+            get totalPages() {
+                return Math.ceil(this.filteredSequences.length / this.perPage) || 1;
+            },
+            
+            get paginatedSequences() {
+                const start = (this.currentPage - 1) * this.perPage;
+                return this.filteredSequences.slice(start, start + this.perPage);
+            },
+            
+            // =====================================================
+            // 2. WORKFLOWS
+            // =====================================================
+            {% include 'sequences/workflows/initial-load.html' %},
+            {% include 'sequences/workflows/pagination-next.html' %},
+            {% include 'sequences/workflows/pagination-prev.html' %},
+            {% include 'sequences/workflows/create-sequence.html' %},
+            {% include 'sequences/workflows/delete-sequence.html' %},
+            
+            // =====================================================
+            // 3. INIT
+            // =====================================================
+            {% include 'sequences/workflows/workflow-init.html' %}
+        }));
+    });
+</script>
