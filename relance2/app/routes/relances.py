@@ -1,124 +1,212 @@
+"""Routes relances (API)."""
+
 from flask import Blueprint, request, jsonify
 import uuid
-import datetime
-from ..db import get_db
+from datetime import datetime, date
 
-bp = Blueprint('relances', __name__)
+relances_bp = Blueprint('relances', __name__, url_prefix='/api/relances')
 
 
-@bp.route('/', methods=['GET'])
-def get_relances():
-    """Get relances list."""
-    print("[API.RELANCES.LIST] START: fetching relances")
+def get_db():
+    """Get database connection from app context."""
+    from flask import current_app
+    import sqlite3
+    db = sqlite3.connect(
+        current_app.config['DATABASE'],
+        detect_types=sqlite3.PARSE_DECLTYPES
+    )
+    db.row_factory = sqlite3.Row
+    return db
+
+
+@relances_bp.route('', methods=['GET'])
+def list_relances():
+    """Liste des relances."""
+    print(f"[API.RELANCES.LIST] START: params={dict(request.args)}")
     
     db = get_db()
-    cursor = db.cursor()
     
-    cursor.execute("""
-        SELECT r.*, i.nfacture, c.nom as contact_nom
+    # Paramètres
+    statut = request.args.get('statut')
+    contact_id = request.args.get('contact_id')
+    sequence_id = request.args.get('sequence_id')
+    today = request.args.get('today') == '1' or request.args.get('date') == 'today'
+    
+    print(f"[API.RELANCES.LIST] STEP: Filtres statut={statut}, contact={contact_id}")
+    
+    # Construction de la requête
+    where_clauses = []
+    params = []
+    
+    if statut:
+        where_clauses.append("r.statut = ?")
+        params.append(statut)
+    
+    if contact_id:
+        where_clauses.append("r.contact_id = ?")
+        params.append(contact_id)
+    
+    if sequence_id:
+        where_clauses.append("r.sequence_id = ?")
+        params.append(sequence_id)
+    
+    if today:
+        today_str = date.today().isoformat()
+        where_clauses.append("DATE(r.date_envoi) = ?")
+        params.append(today_str)
+    
+    where_sql = "WHERE " + " AND ".join(where_clauses) if where_clauses else ""
+    
+    # Récupération des relances
+    query = f"""
+        SELECT r.*, c.nom as contact_nom, c.email as contact_email,
+               s.nom as sequence_nom
         FROM relances r
-        LEFT JOIN impayes i ON r.impaye_id = i.id
         LEFT JOIN contacts c ON r.contact_id = c.id
+        LEFT JOIN sequences s ON r.sequence_id = s.id
+        {where_sql}
         ORDER BY r.created_at DESC
-    """)
+    """
     
-    relances = [dict(row) for row in cursor.fetchall()]
-    print(f"[API.RELANCES.LIST] SUCCESS: {len(relances)} relances returned")
+    rows = db.execute(query, params).fetchall()
     
-    return jsonify({'relances': relances})
+    relances = [dict(row) for row in rows]
+    
+    print(f"[API.RELANCES.LIST] SUCCESS: {len(relances)} relances retournées")
+    return jsonify({'relances': relances}), 200
 
 
-@bp.route('/<id>', methods=['GET'])
+@relances_bp.route('/<id>', methods=['GET'])
 def get_relance(id):
-    """Get single relance."""
+    """Détail d'une relance."""
     print(f"[API.RELANCES.GET] START: id={id}")
     
     db = get_db()
-    cursor = db.cursor()
+    print(f"[API.RELANCES.GET] STEP: Recherche relance id={id}")
     
-    cursor.execute("SELECT * FROM relances WHERE id = ?", (id,))
-    relance = cursor.fetchone()
+    row = db.execute("""
+        SELECT r.*, c.nom as contact_nom, c.email as contact_email,
+               s.nom as sequence_nom
+        FROM relances r
+        LEFT JOIN contacts c ON r.contact_id = c.id
+        LEFT JOIN sequences s ON r.sequence_id = s.id
+        WHERE r.id = ?
+    """, (id,)).fetchone()
     
-    if not relance:
+    if row is None:
         return jsonify({'error': 'Relance non trouvée'}), 404
     
-    return jsonify(dict(relance))
-
-
-@bp.route('/', methods=['POST'])
-def create_relance():
-    """Create new relance."""
-    print("[API.RELANCES.CREATE] START: creating relance")
+    relance = dict(row)
     
+    # Récupérer les impayés liés
+    impayes = db.execute("""
+        SELECT i.* FROM impayes i
+        JOIN relance_impayes ri ON i.id = ri.impaye_id
+        WHERE ri.relance_id = ?
+    """, (id,)).fetchall()
+    
+    print(f"[API.RELANCES.GET] STEP: Recherche {len(impayes)} impayés liés")
+    
+    relance['impayes'] = [dict(row) for row in impayes]
+    
+    print(f"[API.RELANCES.GET] SUCCESS: Relance trouvée")
+    return jsonify(relance), 200
+
+
+@relances_bp.route('', methods=['POST'])
+def create_relance():
+    """Créer une relance."""
     data = request.get_json() or {}
-    new_id = str(uuid.uuid4())
-    now = datetime.datetime.now().isoformat()
+    print(f"[API.RELANCES.CREATE] START: data={data}")
     
     db = get_db()
-    cursor = db.cursor()
     
-    cursor.execute("""
-        INSERT INTO relances (id, impaye_id, contact_id, sequence_id, type_relance, 
-        statut, date_prevue, created_at, updated_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-    """, (new_id, data.get('impaye_id'), data.get('contact_id'),
-          data.get('sequence_id'), data.get('type_relance'), 
-          'en_attente', data.get('date_prevue'), now, now))
+    contact_id = data.get('contact_id')
+    print(f"[API.RELANCES.CREATE] STEP: Création relance contact_id={contact_id}")
+    
+    new_id = str(uuid.uuid4())
+    
+    db.execute("""
+        INSERT INTO relances (id, contact_id, sequence_id, statut, date_envoi, created_at)
+        VALUES (?, ?, ?, ?, ?, ?)
+    """, (
+        new_id,
+        contact_id,
+        data.get('sequence_id'),
+        data.get('statut', 'pending'),
+        data.get('date_envoi'),
+        datetime.utcnow().isoformat()
+    ))
+    
+    # Lier les impayés
+    for impaye_id in data.get('impaye_ids', []):
+        db.execute("""
+            INSERT INTO relance_impayes (relance_id, impaye_id)
+            VALUES (?, ?)
+        """, (new_id, impaye_id))
     
     db.commit()
     
-    print(f"[API.RELANCES.CREATE] SUCCESS: id={new_id}")
-    return jsonify({'id': new_id, 'message': 'Relance créée'}), 201
+    print(f"[API.RELANCES.CREATE] SUCCESS: Relance créée id={new_id}")
+    return jsonify({'id': new_id, 'success': True}), 201
 
 
-@bp.route('/<id>', methods=['PUT'])
+@relances_bp.route('/<id>', methods=['PUT'])
 def update_relance(id):
-    """Update relance."""
+    """Modifier une relance."""
+    data = request.get_json() or {}
     print(f"[API.RELANCES.UPDATE] START: id={id}")
     
-    data = request.get_json() or {}
-    now = datetime.datetime.now().isoformat()
-    
     db = get_db()
-    cursor = db.cursor()
     
-    # Check exists
-    cursor.execute("SELECT id FROM relances WHERE id = ?", (id,))
-    if not cursor.fetchone():
+    # Vérifier existence
+    existing = db.execute("SELECT id FROM relances WHERE id = ?", (id,)).fetchone()
+    if existing is None:
         return jsonify({'error': 'Relance non trouvée'}), 404
     
-    updates = []
-    params = []
+    statut = data.get('statut')
+    print(f"[API.RELANCES.UPDATE] STEP: Mise à jour statut={statut}")
     
-    for field in ['statut', 'date_envoi', 'email_sujet', 'email_corps', 
-                  'validation_requise', 'valide_par', 'valide_le']:
-        if field in data:
-            updates.append(f"{field} = ?")
-            params.append(data[field])
+    fields = []
+    values = []
     
-    if updates:
-        updates.append("updated_at = ?")
-        params.append(now)
-        params.append(id)
-        
-        query = f"UPDATE relances SET {', '.join(updates)} WHERE id = ?"
-        cursor.execute(query, params)
-        db.commit()
+    if 'statut' in data:
+        fields.append("statut = ?")
+        values.append(data['statut'])
     
-    print("[API.RELANCES.UPDATE] SUCCESS")
-    return jsonify({'message': 'Relance mise à jour'})
+    if 'date_envoi' in data:
+        fields.append("date_envoi = ?")
+        values.append(data['date_envoi'])
+    
+    if not fields:
+        return jsonify({'error': 'Aucun champ à mettre à jour'}), 400
+    
+    values.append(id)
+    sql = f"UPDATE relances SET {', '.join(fields)}, updated_at = ? WHERE id = ?"
+    values.insert(-1, datetime.utcnow().isoformat())
+    
+    db.execute(sql, values)
+    db.commit()
+    
+    print(f"[API.RELANCES.UPDATE] SUCCESS: Relance mise à jour")
+    return jsonify({'success': True}), 200
 
 
-@bp.route('/<id>', methods=['DELETE'])
+@relances_bp.route('/<id>', methods=['DELETE'])
 def delete_relance(id):
-    """Delete relance."""
+    """Supprimer une relance."""
     print(f"[API.RELANCES.DELETE] START: id={id}")
     
     db = get_db()
-    cursor = db.cursor()
     
-    cursor.execute("DELETE FROM relances WHERE id = ?", (id,))
+    existing = db.execute("SELECT id FROM relances WHERE id = ?", (id,)).fetchone()
+    if existing is None:
+        return jsonify({'error': 'Relance non trouvée'}), 404
+    
+    # Supprimer les liens d'abord
+    db.execute("DELETE FROM relance_impayes WHERE relance_id = ?", (id,))
+    db.execute("DELETE FROM relances WHERE id = ?", (id,))
     db.commit()
     
-    print("[API.RELANCES.DELETE] SUCCESS")
-    return jsonify({'message': 'Relance supprimée'})
+    print(f"[API.RELANCES.DELETE] SUCCESS: Relance supprimée")
+    return jsonify({'success': True}), 200

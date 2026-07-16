@@ -1,37 +1,29 @@
 {% extends 'layouts/layout_app.html' %}
 
-{% block page_title %}Dashboard{% endblock %}
+{% block page_title %}Tableau de bord{% endblock %}
 {% block active_page %}dashboard{% endblock %}
 
-{% block header_title %}
-<div class="flex items-center gap-3">
-  <h1 class="text-base font-semibold text-slate-700">Dashboard</h1>
-  <span class="text-slate-400">/</span>
-  <span class="text-sm text-slate-500">Vue d'ensemble de l'activité</span>
-</div>
-{% endblock %}
-
 {% block header_right %}
-<!-- Dernière synchro -->
-<div class="text-right mr-4" x-show="lastSyncTime">
-  <p class="text-xs text-slate-400">Dernière synchro</p>
-  <p class="text-sm font-medium text-slate-600" x-text="lastSyncTime"></p>
-</div>
-
-<button 
-  @click="syncData()"
-  :disabled="syncing"
-  class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all disabled:opacity-50"
->
-  <i x-show="!syncing" class="fas fa-sync-alt"></i>
-  <i x-show="syncing" class="fas fa-circle-notch fa-spin"></i>
-  <span x-text="syncing ? 'Synchronisation...' : 'Synchroniser'"></span>
-</button>
+  <!-- Dernière synchro -->
+  <div class="text-right" x-show="lastSyncTime">
+    <p class="text-xs text-slate-400">Dernière synchro</p>
+    <p class="text-sm font-medium text-slate-600" x-text="lastSyncTime"></p>
+  </div>
+  
+  <button 
+    @click="syncData()"
+    :disabled="syncing"
+    class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all disabled:opacity-50"
+  >
+    <i x-show="!syncing" class="fas fa-sync-alt"></i>
+    <i x-show="syncing" class="fas fa-circle-notch fa-spin"></i>
+    <span x-text="syncing ? 'Synchronisation...' : 'Synchroniser'"></span>
+  </button>
 {% endblock %}
 
 {% block content %}
-<div x-data="dashboardPage" x-init="init()" x-cloak>
-  
+<div x-data="dashboard" x-init="init()" x-cloak>
+
   <!-- Loading State -->
   <template x-if="loading">
     <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
@@ -48,7 +40,7 @@
       </template>
     </div>
   </template>
-  
+
   <!-- Error State -->
   <template x-if="error">
     <div class="bg-sky-50 border border-sky-100 rounded-xl p-4 mb-6">
@@ -62,14 +54,14 @@
       </div>
     </div>
   </template>
-  
+
   <!-- Content -->
   <template x-if="!loading && !error">
     <div class="space-y-6">
-      
+
       <!-- KPI Row 1 -->
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-        
+
         <!-- KPI: Factures en attente -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
           <div class="flex items-start gap-3 p-4">
@@ -79,14 +71,14 @@
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-1">
                 <p class="text-xs text-slate-500 font-medium truncate">Factures en attente</p>
-                <i class="fas fa-info-circle text-slate-400 text-xs" title="Factures avec reste à payer > 0"></i>
+                <i class="fas fa-info-circle text-slate-400 text-xs"></i>
               </div>
               <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.facturesEnAttente"></p>
               <p class="text-xs text-slate-400 mt-1">reste à payer > 0</p>
             </div>
           </div>
         </div>
-        
+
         <!-- KPI: Impayés actifs -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
           <div class="flex items-start gap-3 p-4">
@@ -103,7 +95,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- KPI: Montant total -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
           <div class="flex items-start gap-3 p-4">
@@ -120,7 +112,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- KPI: Relances du jour -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
           <div class="flex items-start gap-3 p-4">
@@ -137,7 +129,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- KPI: Taux recouvrement -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
           <div class="flex items-start gap-3 p-4">
@@ -155,10 +147,10 @@
           </div>
         </div>
       </div>
-      
+
       <!-- KPI Row 2: Ancienneté -->
       <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-        
+
         <!-- Ancienneté < 7j -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
           <div class="flex items-start gap-3 p-4">
@@ -172,7 +164,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Ancienneté 8-30j -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
           <div class="flex items-start gap-3 p-4">
@@ -186,7 +178,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Ancienneté 31-60j -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
           <div class="flex items-start gap-3 p-4">
@@ -200,7 +192,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Ancienneté 60-120j -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
           <div class="flex items-start gap-3 p-4">
@@ -214,7 +206,7 @@
             </div>
           </div>
         </div>
-        
+
         <!-- Ancienneté > 120j -->
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
           <div class="flex items-start gap-3 p-4">
@@ -229,7 +221,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Smart Marki Section -->
       <div class="bg-gradient-to-r from-sky-500 to-sky-600 rounded-xl shadow-sm overflow-hidden" x-data="{ open: false }">
         <div @click="open = !open" class="px-6 py-4 border-b border-white/10 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors">
@@ -250,6 +242,7 @@
             <i class="fas fa-chevron-down text-white transition-transform" :class="open ? 'rotate-180' : ''"></i>
           </div>
         </div>
+        
         <div x-show="open" x-collapse class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           <!-- Conseil 1 -->
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/10">
@@ -263,6 +256,7 @@
               </div>
             </div>
           </div>
+          
           <!-- Conseil 2 -->
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/10">
             <div class="flex items-start gap-3">
@@ -275,6 +269,7 @@
               </div>
             </div>
           </div>
+          
           <!-- Conseil 3 -->
           <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/10">
             <div class="flex items-start gap-3">
@@ -288,6 +283,7 @@
             </div>
           </div>
         </div>
+        
         <div x-show="open" x-collapse class="px-6 py-3 bg-white/5 border-t border-white/10">
           <div class="flex items-center justify-between text-sm">
             <span class="text-sky-200">
@@ -300,8 +296,8 @@
           </div>
         </div>
       </div>
-      
-      <!-- Events / Activité récente -->
+
+      <!-- Événements récents -->
       <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
         <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
           <div class="flex items-center gap-2">
@@ -312,6 +308,7 @@
             Effacer tout
           </button>
         </div>
+        
         <div class="divide-y divide-slate-100 max-h-64 overflow-y-auto">
           <template x-for="event in events" :key="event.id">
             <div class="px-6 py-3 flex items-start gap-3 hover:bg-slate-50/50 transition-colors">
@@ -324,7 +321,7 @@
                        'bg-sky-400 text-sky-900': event.type === 'relance',
                        'bg-sky-500 text-white': event.type === 'alert'
                      }">
-                  <i class="fas text-xs" :class="event.icon"></i>
+                  <i class="fas text-xs" :class="event.icon || 'fa-bell'"></i>
                 </div>
               </div>
               <div class="flex-1 min-w-0">
@@ -334,19 +331,142 @@
               </div>
             </div>
           </template>
+          
           <div x-show="events.length === 0" class="px-6 py-8 text-center text-slate-400 text-sm">
             Aucun événement récent
           </div>
         </div>
       </div>
-      
+
+      <!-- Graphique -->
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <div class="px-6 py-4 border-b border-slate-100">
+          <h3 class="font-semibold text-slate-900">Évolution des impayés</h3>
+          <p class="text-sm text-slate-500">Montant facturé vs reste à payer par mois (12 mois)</p>
+        </div>
+        
+        <div class="p-6 h-80">
+          <canvas id="evolutionChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Top Débiteurs -->
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+          <h3 class="font-semibold text-slate-900">Top débiteurs</h3>
+          
+          <div class="flex items-center gap-3">
+            <!-- Toggle view -->
+            <div class="flex items-center bg-slate-100 rounded-lg p-1">
+              <button 
+                @click="viewMode = 'list'"
+                :class="viewMode === 'list' ? 'bg-white shadow-sm text-slate-700' : 'text-slate-500 hover:text-slate-700'"
+                class="px-3 py-1.5 text-xs font-medium rounded-md transition-all flex items-center gap-1.5"
+              >
+                <i class="fas fa-list"></i>
+                Liste
+              </button>
+              <button 
+                @click="viewMode = 'card'"
+                :class="viewMode === 'card' ? 'bg-white shadow-sm text-slate-700' : 'text-slate-500 hover:text-slate-700'"
+                class="px-3 py-1.5 text-xs font-medium rounded-md transition-all flex items-center gap-1.5"
+              >
+                <i class="fas fa-th-large"></i>
+                Cartes
+              </button>
+            </div>
+            
+            <a href="/impayes" class="text-sm text-sky-600 hover:text-sky-700 font-medium flex items-center gap-1">
+              Voir tout
+              <i class="fas fa-arrow-right text-xs"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Vue Liste -->
+        <template x-if="viewMode === 'list'">
+          <div class="divide-y divide-slate-100">
+            <template x-for="debtor in topDebtors" :key="debtor.id">
+              <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/50 transition-colors">
+                <div class="flex items-center gap-4">
+                  <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-sm"
+                       x-text="debtor.initials">
+                  </div>
+                  <div>
+                    <p class="font-medium text-slate-900" x-text="debtor.name"></p>
+                    <p class="text-sm text-slate-500">
+                      <span x-text="debtor.impayesCount"></span> impayé(s) · 
+                      <span x-text="debtor.jours"></span> jours de retard
+                    </p>
+                  </div>
+                </div>
+                
+                <div class="flex items-center gap-6">
+                  <span class="font-semibold text-slate-900" x-text="formatMoney(debtor.montant)"></span>
+                  
+                  <span class="px-2.5 py-1 text-xs font-medium rounded-full"
+                        :class="{
+                          'bg-sky-100 text-sky-700': debtor.relance === 'R1',
+                          'bg-sky-300 text-sky-800': debtor.relance === 'R2',
+                          'bg-sky-500 text-white': debtor.relance === 'R3'
+                        }"
+                        x-text="'Relance ' + debtor.relance">
+                  </span>
+                </div>
+              </div>
+            </template>
+          </div>
+        </template>
+        
+        <!-- Vue Cartes -->
+        <template x-if="viewMode === 'card'">
+          <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <template x-for="debtor in topDebtors" :key="debtor.id">
+              <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 hover:border-sky-300 transition-colors">
+                <div class="flex items-start justify-between mb-3">
+                  <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-sm"
+                         x-text="debtor.initials">
+                    </div>
+                    
+                    <div>
+                      <p class="font-medium text-slate-900 text-sm" x-text="debtor.name"></p>
+                      <p class="text-xs text-slate-500" x-text="debtor.jours + ' jours de retard'"></p>
+                    </div>
+                  </div>
+                  
+                  <span class="px-2 py-0.5 text-xs font-medium rounded-full"
+                        :class="{
+                          'bg-sky-100 text-sky-700': debtor.relance === 'R1',
+                          'bg-sky-300 text-sky-800': debtor.relance === 'R2',
+                          'bg-sky-500 text-white': debtor.relance === 'R3'
+                        }"
+                        x-text="debtor.relance">
+                  </span>
+                </div>
+                
+                <div class="space-y-2">
+                  <div class="flex justify-between text-sm">
+                    <span class="text-slate-500">Montant dû:</span>
+                    <span class="font-semibold text-slate-900" x-text="formatMoney(debtor.montant)"></span>
+                  </div>
+                  <div class="flex justify-between text-sm">
+                    <span class="text-slate-500">Nombre d'impayés:</span>
+                    <span class="font-medium text-slate-900" x-text="debtor.impayesCount"></span>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </template>
+      </div>
+
     </div>
   </template>
+
 </div>
+{% endblock %}
 
 {% block page_scripts %}
-<script>
 {% include 'dashboard/alpinejs.html' %}
-</script>
-{% endblock %}
 {% endblock %}

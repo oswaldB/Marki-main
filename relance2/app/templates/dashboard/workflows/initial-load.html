@@ -1,196 +1,279 @@
-// Workflow: Chargement initial des données brutes et calcul des KPIs
-initialLoad: async function() {
-    const workflowId = crypto.randomUUID();
-    const startTime = Date.now();
-    
-    log.info('WORKFLOW_START', { workflowId, workflow: 'initialLoad', page: 'dashboard' });
-    
-    this.loading = true;
-    
-    try {
-        const token = localStorage.getItem('token');
-        
-        // Charger les impayés (données brutes)
-        log.debug('API_CALL_START', { workflowId, endpoint: '/api/impayes' });
-        
-        const impayesResponse = await fetch('/api/impayes', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        
-        if (!impayesResponse.ok) throw new Error('Erreur chargement impayés');
-        
-        const impayesData = await impayesResponse.json();
-        this.impayes = impayesData.data || [];
-        
-        log.debug('API_CALL_COMPLETE', { workflowId, impayesCount: this.impayes.length });
-        
-        // Charger les relances (données brutes)
-        log.debug('API_CALL_START', { workflowId, endpoint: '/api/relances' });
-        
-        const relancesResponse = await fetch('/api/relances', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        
-        if (relancesResponse.ok) {
-            const relancesData = await relancesResponse.json();
-            this.relances = relancesData.data || [];
-            log.debug('API_CALL_COMPLETE', { workflowId, relancesCount: this.relances.length });
-        }
-        
-        // Charger les contacts (pour le top débiteurs)
-        log.debug('API_CALL_START', { workflowId, endpoint: '/api/contacts' });
-        
-        const contactsResponse = await fetch('/api/contacts', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        
-        if (contactsResponse.ok) {
-            const contactsData = await contactsResponse.json();
-            this.contacts = contactsData.data || [];
-            log.debug('API_CALL_COMPLETE', { workflowId, contactsCount: this.contacts.length });
-        }
-        
-        // Charger les événements récents
-        log.debug('API_CALL_START', { workflowId, endpoint: '/api/events' });
-        
-        const eventsResponse = await fetch('/api/events?limit=10', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        
-        if (eventsResponse.ok) {
-            const eventsData = await eventsResponse.json();
-            this.recentEvents = eventsData.data || [];
-            log.debug('API_CALL_COMPLETE', { workflowId, eventsCount: this.recentEvents.length });
-        }
-        
-        // Charger le dernier event de synchro
-        log.debug('API_CALL_START', { workflowId, endpoint: '/api/events?type=sync&limit=1' });
-        
-        const syncResponse = await fetch('/api/events?type=sync&limit=1', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        
-        if (syncResponse.ok) {
-            const syncData = await syncResponse.json();
-            if (syncData.data && syncData.data.length > 0) {
-                this.lastSyncTime = this.formatDate(syncData.data[0].created_at);
-            }
-        }
-        
-        // CALCUL DES KPIS CÔTÉ FRONTEND (selon les specs)
-        log.debug('CALCULATE_KPIS_START', { workflowId });
-        
-        this.calculateKPIs();
-        
-        log.debug('CALCULATE_KPIS_COMPLETE', { workflowId });
-        
-        const duration = Date.now() - startTime;
-        log.info('WORKFLOW_SUCCESS', { workflowId, duration });
-        
-    } catch (error) {
-        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
-        this.error = error.message;
-    } finally {
-        this.loading = false;
-    }
+<!-- Workflow: Initial Load Dashboard -->
+
+/**
+ * @action Afficher le spinner de chargement global
+ * @checkpoint loading-shown
+ */
+loading: true,
+error: null,
+
+// Data stores
+impayes: [],
+relances: [],
+events: [],
+newInvoices: [],
+lastSyncTime: null,
+
+// KPIs calculés
+kpis: {
+  facturesEnAttente: 0,
+  impayesActifs: 0,
+  montantTotal: 0,
+  relancesJour: 0,
+  tauxRecouvrement: 0,
+  anciennete: {
+    moins7j: 0, moins7jMontant: 0,
+    j8a30: 0, j8a30Montant: 0,
+    j31a60: 0, j31a60Montant: 0,
+    j60a120: 0, j60a120Montant: 0,
+    plus120j: 0, plus120jMontant: 0
+  }
 },
 
-// Calcul des KPIs côté frontend (selon specs)
-calculateKPIs: function() {
-    const now = new Date();
+// Chart data
+chartData: {
+  labels: ['Avant', 'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'],
+  montantsPayes: [],
+  restesAPayer: [],
+  facturesImpayees: []
+},
+
+topDebtors: [],
+
+async init() {
+  await this.loadData();
+},
+
+async loadData() {
+  this.loading = true;
+  this.error = null;
+  
+  try {
+    // @checkpoint auth-check - Vérifier token
+    const token = localStorage.getItem('marki_token');
+    if (!token) {
+      window.location.href = '/login';
+      return;
+    }
     
-    // KPI 1: Factures en attente (reste_a_payer > 0)
-    const facturesEnAttente = this.impayes.filter(i => i.reste_a_payer > 0);
-    this.kpis.facturesEnAttente = facturesEnAttente.length;
+    const headers = { 'Authorization': `Bearer ${token}` };
     
-    // KPI 2: Impayés actifs (statut = 'impaye' et reste_a_payer > 0)
-    const impayesActifs = this.impayes.filter(i => 
-        i.statut === 'impaye' && i.reste_a_payer > 0
-    );
-    this.kpis.impayesActifs = impayesActifs.length;
+    // @action Récupérer les impayés
+    // @checkpoint impayes-fetched
+    const impayesRes = await fetch('/api/impayes?statut=unpaid&facture_soldee=0', { headers });
+    if (!impayesRes.ok) throw new Error('Erreur chargement impayés');
+    const impayesData = await impayesRes.json();
+    this.impayes = impayesData.impayes || [];
     
-    // KPI 3: Montant total (sum de reste_a_payer)
-    this.kpis.montantTotal = this.impayes.reduce((sum, i) => sum + (i.reste_a_payer || 0), 0);
+    // @action Récupérer les relances du jour
+    // @checkpoint relances-fetched
+    const today = new Date().toISOString().split('T')[0];
+    const relancesRes = await fetch('/api/relances?today=1', { headers });
+    if (relancesRes.ok) {
+      const relancesData = await relancesRes.json();
+      this.relances = relancesData.relances || [];
+    }
     
-    // KPI 4: Relances du jour
-    const today = now.toISOString().split('T')[0];
-    this.kpis.relancesJour = this.relances.filter(r => {
-        if (!r.date_envoi) return false;
-        return r.date_envoi.startsWith(today);
-    }).length;
+    // @action Récupérer les événements
+    // @checkpoint events-fetched
+    const eventsRes = await fetch('/api/events?limit=10', { headers });
+    if (eventsRes.ok) {
+      const eventsData = await eventsRes.json();
+      this.events = this.formatEvents(eventsData.events || []);
+    }
     
-    // KPI 5: Taux de recouvrement (à calculer selon logique métier)
-    const montantPaye = this.impayes.reduce((sum, i) => 
-        sum + ((i.montant_total || 0) - (i.reste_a_payer || 0)), 0
-    );
-    const montantTotal = this.impayes.reduce((sum, i) => sum + (i.montant_total || 0), 0);
-    this.kpis.tauxRecouvrement = montantTotal > 0 ? Math.round((montantPaye / montantTotal) * 100) : 0;
+    // @action Récupérer dernier event de sync
+    // @checkpoint last-sync-fetched
+    const syncRes = await fetch('/api/events?type=sync&limit=1', { headers });
+    if (syncRes.ok) {
+      const syncData = await syncRes.json();
+      if (syncData.events && syncData.events.length > 0) {
+        this.lastSyncTime = this.formatTime(syncData.events[0].created_at);
+      }
+    }
     
-    // KPIs Ancienneté (calcul des tranches)
-    this.kpis.anciennete = {
-        moins7j: 0, moins7jMontant: 0,
-        j8a30: 0, j8a30Montant: 0,
-        j31a60: 0, j31a60Montant: 0,
-        j60a120: 0, j60a120Montant: 0,
-        plus120j: 0, plus120jMontant: 0
-    };
+    // @action Calculer les KPIs
+    // @checkpoint kpis-calculated
+    this.calculateKPIs();
     
-    this.impayes.forEach(i => {
-        if (!i.date_echeance) return;
-        
-        const dateEcheance = new Date(i.date_echeance);
-        const daysDiff = Math.floor((now - dateEcheance) / (1000 * 60 * 60 * 24));
-        const montant = i.reste_a_payer || 0;
-        
-        if (daysDiff < 7) {
-            this.kpis.anciennete.moins7j++;
-            this.kpis.anciennete.moins7jMontant += montant;
-        } else if (daysDiff <= 30) {
-            this.kpis.anciennete.j8a30++;
-            this.kpis.anciennete.j8a30Montant += montant;
-        } else if (daysDiff <= 60) {
-            this.kpis.anciennete.j31a60++;
-            this.kpis.anciennete.j31a60Montant += montant;
-        } else if (daysDiff <= 120) {
-            this.kpis.anciennete.j60a120++;
-            this.kpis.anciennete.j60a120Montant += montant;
-        } else {
-            this.kpis.anciennete.plus120j++;
-            this.kpis.anciennete.plus120jMontant += montant;
-        }
+    // @action Calculer données graphique
+    // @checkpoint chart-data-calculated
+    this.calculateChartData();
+    
+    // @action Calculer top débiteurs
+    // @checkpoint top-debiteurs-calculated
+    this.calculateTopDebtors();
+    
+    // @checkpoint loading-complete
+    this.$nextTick(() => {
+      this.initChart();
     });
     
-    // Calcul Top Débiteurs (grouper par payer_id)
-    const debtorMap = {};
-    this.impayes.forEach(i => {
-        if (!i.payer_id) return;
-        
-        if (!debtorMap[i.payer_id]) {
-            const contact = this.contacts.find(c => c.id === i.payer_id);
-            debtorMap[i.payer_id] = {
-                id: i.payer_id,
-                name: contact ? `${contact.nom} ${contact.prenom || ''}`.trim() : 'Inconnu',
-                initials: contact ? (contact.prenom?.[0] || '') + (contact.nom?.[0] || '') : '??',
-                montant: 0,
-                jours: 0,
-                impayesCount: 0,
-                relance: 'R1' // Simplifié - à déterminer selon logique métier
-            };
-        }
-        
-        const debtor = debtorMap[i.payer_id];
-        debtor.montant += i.reste_a_payer || 0;
-        debtor.impayesCount++;
-        
-        // Jours de retard max
-        if (i.date_echeance) {
-            const days = Math.floor((now - new Date(i.date_echeance)) / (1000 * 60 * 60 * 24));
-            debtor.jours = Math.max(debtor.jours, days);
-        }
-    });
+  } catch (err) {
+    this.error = err.message;
+    console.error('[DASHBOARD] Error:', err);
+  } finally {
+    this.loading = false;
+  }
+},
+
+calculateKPIs() {
+  const now = new Date();
+  
+  // Factures en attente (reste_a_payer > 0)
+  this.kpis.facturesEnAttente = this.impayes.filter(i => i.reste_a_payer > 0).length;
+  
+  // Impayés actifs
+  this.kpis.impayesActifs = this.impayes.filter(i => i.statut === 'unpaid' && i.reste_a_payer > 0).length;
+  
+  // Montant total
+  this.kpis.montantTotal = this.impayes.reduce((sum, i) => sum + (i.reste_a_payer || 0), 0);
+  
+  // Relances du jour
+  this.kpis.relancesJour = this.relances.length;
+  
+  // Taux recouvrement (simulation)
+  const montantPaye = this.impayes.reduce((sum, i) => {
+    const paye = (i.montant_total || 0) - (i.reste_a_payer || 0);
+    return sum + paye;
+  }, 0);
+  const montantTotalFacture = this.impayes.reduce((sum, i) => sum + (i.montant_total || 0), 0);
+  this.kpis.tauxRecouvrement = montantTotalFacture > 0 
+    ? Math.round((montantPaye / montantTotalFacture) * 100) 
+    : 0;
+  
+  // Ancienneté
+  const getDays = (dateStr) => {
+    if (!dateStr) return 0;
+    const date = new Date(dateStr);
+    return Math.floor((now - date) / (1000 * 60 * 60 * 24));
+  };
+  
+  this.kpis.anciennete.moins7j = 0; this.kpis.anciennete.moins7jMontant = 0;
+  this.kpis.anciennete.j8a30 = 0; this.kpis.anciennete.j8a30Montant = 0;
+  this.kpis.anciennete.j31a60 = 0; this.kpis.anciennete.j31a60Montant = 0;
+  this.kpis.anciennete.j60a120 = 0; this.kpis.anciennete.j60a120Montant = 0;
+  this.kpis.anciennete.plus120j = 0; this.kpis.anciennete.plus120jMontant = 0;
+  
+  this.impayes.forEach(i => {
+    const days = getDays(i.date_echeance);
+    const montant = i.reste_a_payer || 0;
     
-    // Trier par montant décroissant et limiter à 5
-    this.topDebtors = Object.values(debtorMap)
-        .sort((a, b) => b.montant - a.montant)
-        .slice(0, 5);
+    if (days < 7) {
+      this.kpis.anciennete.moins7j++;
+      this.kpis.anciennete.moins7jMontant += montant;
+    } else if (days <= 30) {
+      this.kpis.anciennete.j8a30++;
+      this.kpis.anciennete.j8a30Montant += montant;
+    } else if (days <= 60) {
+      this.kpis.anciennete.j31a60++;
+      this.kpis.anciennete.j31a60Montant += montant;
+    } else if (days <= 120) {
+      this.kpis.anciennete.j60a120++;
+      this.kpis.anciennete.j60a120Montant += montant;
+    } else {
+      this.kpis.anciennete.plus120j++;
+      this.kpis.anciennete.plus120jMontant += montant;
+    }
+  });
+},
+
+calculateChartData() {
+  // Grouper par mois
+  const months = {};
+  const now = new Date();
+  const currentYear = now.getFullYear();
+  
+  // Initialiser les 12 mois
+  const monthNames = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'];
+  this.chartData.labels = ['Avant', ...monthNames];
+  this.chartData.montantsPayes = new Array(13).fill(0);
+  this.chartData.restesAPayer = new Array(13).fill(0);
+  this.chartData.facturesImpayees = new Array(13).fill(0);
+  
+  this.impayes.forEach(i => {
+    const date = new Date(i.date_echeance || i.created_at);
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    
+    const montantTotal = i.montant_total || 0;
+    const reste = i.reste_a_payer || 0;
+    const paye = montantTotal - reste;
+    
+    if (year < currentYear) {
+      // Avant
+      this.chartData.montantsPayes[0] += paye;
+      this.chartData.restesAPayer[0] += reste;
+      this.chartData.facturesImpayees[0]++;
+    } else {
+      // Mois correspondant (index + 1 car "Avant" est en 0)
+      const idx = month + 1;
+      this.chartData.montantsPayes[idx] += paye;
+      this.chartData.restesAPayer[idx] += reste;
+      this.chartData.facturesImpayees[idx]++;
+    }
+  });
+},
+
+calculateTopDebtors() {
+  // Grouper par payer_id
+  const debtorsMap = {};
+  
+  this.impayes.forEach(i => {
+    const id = i.payer_id;
+    if (!id) return;
+    
+    if (!debtorsMap[id]) {
+      debtorsMap[id] = {
+        id: id,
+        name: i.payer_nom || 'Inconnu',
+        initials: this.getInitials(i.payer_nom || 'Inconnu'),
+        montant: 0,
+        jours: 0,
+        impayesCount: 0,
+        relance: 'R1'
+      };
+    }
+    
+    debtorsMap[id].montant += (i.reste_a_payer || 0);
+    debtorsMap[id].impayesCount++;
+    
+    const days = Math.floor((new Date() - new Date(i.date_echeance)) / (1000 * 60 * 60 * 24));
+    if (days > debtorsMap[id].jours) {
+      debtorsMap[id].jours = days;
+    }
+    
+    // Déterminer relance (R1, R2, R3)
+    if (days > 90) debtorsMap[id].relance = 'R3';
+    else if (days > 30) debtorsMap[id].relance = 'R2';
+  });
+  
+  // Convertir en array et trier
+  this.topDebtors = Object.values(debtorsMap)
+    .sort((a, b) => b.montant - a.montant)
+    .slice(0, 5);
+},
+
+getInitials(name) {
+  return name.split(' ').map(p => p[0]).join('').toUpperCase().slice(0, 2);
+},
+
+formatEvents(events) {
+  return events.map(e => ({
+    ...e,
+    time: this.formatTime(e.created_at)
+  }));
+},
+
+formatTime(dateStr) {
+  if (!dateStr) return '-';
+  const date = new Date(dateStr);
+  return date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+},
+
+formatMoney(amount) {
+  return new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR'
+  }).format(amount || 0);
 }

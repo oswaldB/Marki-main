@@ -1,52 +1,63 @@
-// Workflow: Synchronisation des données
-syncData: async function() {
-    const workflowId = crypto.randomUUID();
-    const startTime = Date.now();
+<!-- Workflow: Sync Data -->
+
+syncing: false,
+syncProgress: 0,
+
+async syncData() {
+  if (this.syncing) return;
+  
+  this.syncing = true;
+  this.syncProgress = 0;
+  this.error = null;
+  
+  const token = localStorage.getItem('marki_token');
+  const headers = { 
+    'Authorization': `Bearer ${token}`,
+    'Content-Type': 'application/json'
+  };
+  
+  try {
+    // Appel à l'orchestrateur de sync (qui chaine les workflows backend)
+    const response = await fetch('/api/workflows/sync-orchestrator', {
+      method: 'POST',
+      headers: headers
+    });
     
-    log.info('WORKFLOW_START', { workflowId, workflow: 'syncData', page: 'dashboard' });
-    
-    this.syncing = true;
-    
-    try {
-        const token = localStorage.getItem('token');
-        
-        // Recharger les stats
-        log.debug('SYNC_START', { workflowId });
-        
-        const response = await fetch('/api/dashboard/stats', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        
-        if (!response.ok) throw new Error('Erreur synchronisation');
-        
-        const data = await response.json();
-        this.stats = data;
-        
-        // Recharger les événements
-        const eventsResponse = await fetch('/api/dashboard/recent', {
-            headers: { 'Authorization': `Bearer ${token}` }
-        });
-        
-        if (eventsResponse.ok) {
-            const eventsData = await eventsResponse.json();
-            this.recentEvents = eventsData.events || [];
-        }
-        
-        const duration = Date.now() - startTime;
-        log.info('WORKFLOW_SUCCESS', { workflowId, duration });
-        
-        // Notification
-        if (typeof Alpine !== 'undefined' && Alpine.store('ui')) {
-            Alpine.store('ui').addToast('Données synchronisées', 'success');
-        }
-        
-    } catch (error) {
-        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
-        
-        if (typeof Alpine !== 'undefined' && Alpine.store('ui')) {
-            Alpine.store('ui').addToast(error.message, 'error');
-        }
-    } finally {
-        this.syncing = false;
+    if (!response.ok) {
+      throw new Error('Erreur lors de la synchronisation');
     }
+    
+    const data = await response.json();
+    
+    // Progression simulée
+    this.syncProgress = 25;
+    await new Promise(r => setTimeout(r, 200));
+    this.syncProgress = 50;
+    await new Promise(r => setTimeout(r, 200));
+    this.syncProgress = 75;
+    await new Promise(r => setTimeout(r, 200));
+    this.syncProgress = 100;
+    
+    // Mettre à jour l'heure de dernière synchro
+    this.lastSyncTime = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    
+    // Recharger les données
+    await this.loadData();
+    
+    // Ajouter un event local
+    this.events.unshift({
+      id: Date.now(),
+      type: 'sync',
+      icon: 'fa-sync-alt',
+      title: 'Synchronisation effectuée',
+      description: `${data.imported_count || 0} factures importées`,
+      time: 'À l\'instant'
+    });
+    
+  } catch (err) {
+    this.error = err.message;
+  } finally {
+    this.syncing = false;
+    setTimeout(() => this.syncProgress = 0, 500);
+  }
 }

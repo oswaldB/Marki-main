@@ -1,17 +1,5 @@
-// Workflow: Switch to list view
-switchViewList: function() {
-    const workflowId = crypto.randomUUID();
-    log.info('WORKFLOW_START', { workflowId, workflow: 'switchViewList' });
-    
-    try {
-        // Change view mode
-        this.viewMode = 'list';
-        
-        // Persist preference in localStorage
-        localStorage.setItem('dashboard_view', 'list');
-        
-        log.info('WORKFLOW_SUCCESS', { workflowId, viewMode: 'list' });
-    } catch (error) {
-        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
-    }
+<!-- Workflow: Switch View List -->
+
+switchToList() {
+  this.viewMode = 'list';
 }

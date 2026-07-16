@@ -1,54 +1,325 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block page_title %}Marki{% endblock %} | Marki</title>
-    
-    <!-- Favicon (transparent 1x1 pixel to avoid 404) -->
-    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        [x-cloak] { display: none !important; }
-        html { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block page_title %}Marki{% endblock %} | Marki</title>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+
+    /* Scrollbar personnalisée */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+
+  {% block head_extra %}{% endblock %}
 </head>
 <body class="bg-slate-50">
+
+  <!-- Sidebar Navigation Dual -->
+  <aside class="fixed left-0 top-0 z-[100] flex h-screen font-sans" 
+         x-data="{ 
+           activeRail: 'relance',
+           expanded: { impayes: false, relances: false },
+           isActive(page) {
+             const current = '{{ active_page|default('dashboard') }}';
+             if (page === current) return true;
+             if (page === 'impayes' && current.startsWith('impayes')) return true;
+             if (page === 'relances-liste' && current.startsWith('relance')) return true;
+             return false;
+           }
+         }"
+         x-init="
+           expanded.impayes = isActive('impayes');
+           expanded.relances = isActive('relances-liste');
+         "
+         x-cloak>
     
-    <!-- Sidebar Navigation Dual -->
-    <sidebar-nav-dual page="{% block active_page %}{% endblock %}"></sidebar-nav-dual>
-    
-    <!-- Main Content -->
-    <div class="ml-[284px] min-h-screen">
-        
-        <!-- Header -->
-        <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
-            <div class="flex items-center gap-3">
-                <h1 class="text-lg font-semibold text-slate-800">{% block header_title %}{{ self.page_title() }}{% endblock %}</h1>
-                {% block header_actions %}{% endblock %}
-            </div>
-            <div class="flex items-center gap-2">
-                {% block header_right %}{% endblock %}
-            </div>
-        </header>
-        
-        <!-- Page Content -->
-        <main class="p-6">
-            {% block content %}{% endblock %}
-        </main>
-        
+    <!-- Colonne 1 : Rail étroit (64px) - GRIS CLAIR -->
+    <div class="flex h-full w-16 flex-col items-center border-r border-gray-200 bg-gray-50 py-3">
+      
+      <!-- Logo Marki -->
+      <div class="flex h-11 w-11 items-center justify-center rounded-xl mb-4" title="Marki">
+        <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg">
+          <img src="/static/marki-logo.png" alt="Marki" class="h-full w-full object-contain">
+        </div>
+      </div>
+      
+      <!-- Divider -->
+      <div class="w-10 h-px bg-gray-200 mb-3"></div>
+      
+      <!-- App 1 : Relance -->
+      <a href="/dashboard"
+         @click="activeRail = 'relance'"
+         :class="activeRail === 'relance' ? 'bg-white shadow-md ring-2 ring-sky-200' : 'hover:bg-white hover:shadow-sm'"
+         class="flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200 mb-2"
+         title="Relance">
+        <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-sky-500">
+          <span class="text-white font-bold text-xs">RE</span>
+        </div>
+      </a>
+      
+      <!-- App 2 : Tantiem Manager -->
+      <button 
+        @click="activeRail = 'tantiem'"
+        :class="activeRail === 'tantiem' ? 'bg-white shadow-md ring-2 ring-emerald-200' : 'hover:bg-white hover:shadow-sm'"
+        class="flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200 mb-2 cursor-pointer"
+        title="Tantiem Manager">
+        <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-emerald-500">
+          <span class="text-white font-bold text-xs">TM</span>
+        </div>
+      </button>
+      
+      <!-- App 3 : Commande plus -->
+      <button 
+        @click="activeRail = 'commande'"
+        :class="activeRail === 'commande' ? 'bg-white shadow-md ring-2 ring-violet-200' : 'hover:bg-white hover:shadow-sm'"
+        class="flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200 mb-2 cursor-pointer"
+        title="Commande plus">
+        <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-violet-500">
+          <span class="text-white font-bold text-xs">CP</span>
+        </div>
+      </button>
+      
+      <!-- App 4 : Régie totale -->
+      <button 
+        @click="activeRail = 'regie'"
+        :class="activeRail === 'regie' ? 'bg-white shadow-md ring-2 ring-amber-200' : 'hover:bg-white hover:shadow-sm'"
+        class="flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200 mb-2 cursor-pointer"
+        title="Régie totale">
+        <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-amber-500">
+          <span class="text-white font-bold text-xs">RT</span>
+        </div>
+      </button>
+      
+      <!-- App 5 : Commissions transparentes -->
+      <button 
+        @click="activeRail = 'commissions'"
+        :class="activeRail === 'commissions' ? 'bg-white shadow-md ring-2 ring-orange-200' : 'hover:bg-white hover:shadow-sm'"
+        class="flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200 mb-2 cursor-pointer"
+        title="Commissions transparentes">
+        <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-orange-500">
+          <span class="text-white font-bold text-xs">CT</span>
+        </div>
+      </button>
+      
+      <!-- App 6 : Agenda optimisé -->
+      <button 
+        @click="activeRail = 'agenda-optimise'"
+        :class="activeRail === 'agenda-optimise' ? 'bg-white shadow-md ring-2 ring-cyan-200' : 'hover:bg-white hover:shadow-sm'"
+        class="flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200 mb-2 cursor-pointer"
+        title="Agenda optimisé">
+        <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-cyan-500">
+          <span class="text-white font-bold text-xs">AO</span>
+        </div>
+      </button>
+      
+      <!-- App 7 : Portail client -->
+      <button 
+        @click="activeRail = 'portail'"
+        :class="activeRail === 'portail' ? 'bg-white shadow-md ring-2 ring-indigo-200' : 'hover:bg-white hover:shadow-sm'"
+        class="flex h-11 w-11 items-center justify-center rounded-xl transition-all duration-200 cursor-pointer"
+        title="Portail client">
+        <div class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-lg bg-indigo-500">
+          <span class="text-white font-bold text-xs">PC</span>
+        </div>
+      </button>
+      
+      <!-- Spacer pour pousser la déconnexion en bas -->
+      <div class="flex-1"></div>
+      
+      <!-- Déconnexion -->
+      <button onclick="localStorage.removeItem('marki_token'); localStorage.removeItem('marki_user'); window.location.href='/login';" 
+              class="flex h-11 w-11 items-center justify-center rounded-xl text-gray-400 hover:bg-white hover:shadow-sm transition-all duration-200 mb-2"
+              title="Déconnexion">
+        <i class="fas fa-sign-out-alt text-gray-500"></i>
+      </button>
     </div>
     
-    <!-- Scripts -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <script src="/static/components/sidebar-nav-dual.js"></script>
-    {% block page_scripts %}{% endblock %}
-    
+    <!-- Colonne 2 : Menu détaillé (220px) -->
+    <div class="w-[220px] h-full bg-white border-r border-gray-200 flex flex-col">
+      
+      <!-- Header - App active -->
+      <div class="h-16 flex items-center px-4 border-b border-gray-100">
+        <div class="flex items-center gap-3">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-sky-500">
+            <span class="text-white font-bold text-xs">RE</span>
+          </div>
+          <span class="font-semibold text-gray-900 text-sm">Relance</span>
+        </div>
+      </div>
+      
+      <!-- Navigation -->
+      <nav class="flex-1 overflow-y-auto py-4">
+        
+        <!-- Tableau de bord -->
+        <a href="/dashboard" 
+           :class="isActive('dashboard') ? 'bg-sky-50 text-sky-700 border-r-2 border-sky-500' : 'text-gray-600 hover:bg-gray-50'"
+           class="flex items-center gap-3 px-4 py-2.5 mx-2 rounded-lg text-sm font-medium transition-all">
+          <i class="fas fa-home w-5 text-center"></i>
+          <span>Tableau de bord</span>
+        </a>
+        
+        <!-- Impayés (expandable) -->
+        <div class="mt-1">
+          <button @click="expanded.impayes = !expanded.impayes"
+                  :class="isActive('impayes') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
+                  class="flex items-center justify-between w-full px-4 py-2.5 mx-2 text-sm font-medium transition-all">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-file-invoice-dollar w-5 text-center"></i>
+              <span>Impayés</span>
+            </div>
+            <i class="fas fa-chevron-down text-xs text-gray-400 transition-transform" :class="expanded.impayes ? 'rotate-180' : ''"></i>
+          </button>
+          
+          <div x-show="expanded.impayes" x-collapse class="ml-4">
+            <a href="/impayes" 
+               :class="isActive('impayes') ? 'text-sky-700' : 'text-gray-500 hover:text-gray-700'"
+               class="flex items-center gap-3 px-4 py-2 text-sm transition-all">
+              <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+              <span>Tous les impayés</span>
+            </a>
+            <a href="/impayes-payeur" 
+               :class="isActive('impayes-payeur') ? 'text-sky-700' : 'text-gray-500 hover:text-gray-700'"
+               class="flex items-center gap-3 px-4 py-2 text-sm transition-all">
+              <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+              <span>Par payeur</span>
+            </a>
+            <a href="/impayes-suspendus" 
+               :class="isActive('impayes-suspendus') ? 'text-sky-700' : 'text-gray-500 hover:text-gray-700'"
+               class="flex items-center gap-3 px-4 py-2 text-sm transition-all">
+              <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+              <span>Suspendus</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Relances (expandable) -->
+        <div class="mt-1">
+          <button @click="expanded.relances = !expanded.relances"
+                  :class="isActive('relances-liste') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
+                  class="flex items-center justify-between w-full px-4 py-2.5 mx-2 text-sm font-medium transition-all">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-envelope w-5 text-center"></i>
+              <span>Relances</span>
+            </div>
+            <i class="fas fa-chevron-down text-xs text-gray-400 transition-transform" :class="expanded.relances ? 'rotate-180' : ''"></i>
+          </button>
+          
+          <div x-show="expanded.relances" x-collapse class="ml-4">
+            <a href="/relances" 
+               :class="isActive('relances-liste') ? 'text-sky-700' : 'text-gray-500 hover:text-gray-700'"
+               class="flex items-center gap-3 px-4 py-2 text-sm transition-all">
+              <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+              <span>Liste des relances</span>
+            </a>
+            <a href="/relances-calendrier" 
+               :class="isActive('relances-calendrier') ? 'text-sky-700' : 'text-gray-500 hover:text-gray-700'"
+               class="flex items-center gap-3 px-4 py-2 text-sm transition-all">
+              <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+              <span>Calendrier</span>
+            </a>
+            <a href="/relances-validation" 
+               :class="isActive('relances-validation') ? 'text-sky-700' : 'text-gray-500 hover:text-gray-700'"
+               class="flex items-center gap-3 px-4 py-2 text-sm transition-all">
+              <span class="w-1.5 h-1.5 rounded-full bg-current"></span>
+              <span>Validation</span>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Contacts -->
+        <a href="/contacts" 
+           :class="isActive('contacts') ? 'bg-sky-50 text-sky-700 border-r-2 border-sky-500' : 'text-gray-600 hover:bg-gray-50'"
+           class="flex items-center gap-3 px-4 py-2.5 mx-2 mt-1 rounded-lg text-sm font-medium transition-all">
+          <i class="fas fa-address-book w-5 text-center"></i>
+          <span>Contacts</span>
+        </a>
+        
+        <!-- Séquences -->
+        <a href="/sequences" 
+           :class="isActive('sequences') ? 'bg-sky-50 text-sky-700 border-r-2 border-sky-500' : 'text-gray-600 hover:bg-gray-50'"
+           class="flex items-center gap-3 px-4 py-2.5 mx-2 mt-1 rounded-lg text-sm font-medium transition-all">
+          <i class="fas fa-stream w-5 text-center"></i>
+          <span>Séquences</span>
+        </a>
+        
+        <!-- Événements -->
+        <a href="/evenements" 
+           :class="isActive('evenements') ? 'bg-sky-50 text-sky-700 border-r-2 border-sky-500' : 'text-gray-600 hover:bg-gray-50'"
+           class="flex items-center gap-3 px-4 py-2.5 mx-2 mt-1 rounded-lg text-sm font-medium transition-all">
+          <i class="fas fa-bell w-5 text-center"></i>
+          <span>Événements</span>
+          <span class="ml-auto px-2 py-0.5 bg-sky-100 text-sky-700 text-xs rounded-full">3</span>
+        </a>
+        
+        <!-- Smart Marki -->
+        <a href="/smart-marki" 
+           :class="isActive('smart-marki') ? 'bg-sky-50 text-sky-700 border-r-2 border-sky-500' : 'text-gray-600 hover:bg-gray-50'"
+           class="flex items-center gap-3 px-4 py-2.5 mx-2 mt-1 rounded-lg text-sm font-medium transition-all">
+          <i class="fas fa-brain w-5 text-center"></i>
+          <span>Smart Marki</span>
+          <span class="ml-auto px-2 py-0.5 bg-violet-100 text-violet-700 text-xs rounded-full">IA</span>
+        </a>
+      </nav>
+      
+      <!-- Footer - Paramètres -->
+      <div class="p-4 border-t border-gray-100">
+        <a href="/settings" 
+           :class="isActive('settings') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
+           class="flex items-center gap-3 text-sm font-medium transition-all">
+          <i class="fas fa-cog w-5 text-center"></i>
+          <span>Paramètres</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <div class="md:ml-[284px] min-h-screen">
+
+    <!-- Header -->
+    <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+      <div class="flex items-center gap-3">
+        {% block header_left %}
+        <h1 class="text-base font-semibold text-slate-700">{% block header_title %}{{ self.page_title() }}{% endblock %}</h1>
+        {% endblock %}
+      </div>
+      <div class="flex items-center gap-4">
+        {% block header_right %}{% endblock %}
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <main class="p-6">
+      {% block content %}{% endblock %}
+    </main>
+
+  </div>
+
+  <!-- Scripts -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  {% block page_scripts %}{% endblock %}
+
 </body>
 </html>

@@ -1,9 +1,0 @@
-// Workflow: Créer profil
-createProfil: function() {
-    const workflowId = crypto.randomUUID();
-    log.info('WORKFLOW_START', { workflowId, workflow: 'createProfil' });
-    
-    window.location.href = '/settings-smtp/new';
-    
-    log.info('WORKFLOW_SUCCESS', { workflowId });
-}
