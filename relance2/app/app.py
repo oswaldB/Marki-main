@@ -1,93 +1,63 @@
-from flask import Flask, render_template, request, jsonify
-import sqlite3
-import jwt
-import datetime
-from functools import wraps
-
-def get_db():
-    """Get database connection"""
-    conn = sqlite3.connect('marki.db')
-    conn.row_factory = sqlite3.Row
-    return conn
+from flask import Flask, render_template, send_from_directory
+import os
+from .db import init_app as init_db
+from .routes import register_blueprints
 
 def create_app():
     app = Flask(__name__, template_folder='templates', static_folder='static')
     app.config['SECRET_KEY'] = 'votre-secret-jwt-tres-long-pour-marki-2026'
     
+    # Initialize database
+    init_db(app)
+    
+    # Register blueprints
+    register_blueprints(app)
+    
+    # Routes pages
     @app.route('/')
-    def hello_world():
-        return render_template('index.html')
+    def index():
+        return render_template('layouts/layout_app.html')
     
-    @app.route('/api/hello')
-    def api_hello():
-        return {'message': 'Hello from backend!', 'status': 'ok'}
-    
-    # Login page
     @app.route('/login')
     def login_page():
         return render_template('login/index.html')
     
-    # Auth API
-    @app.route('/api/auth/login', methods=['POST'])
-    def auth_login():
-        data = request.get_json()
-        username = data.get('username')
-        password = data.get('password')
-        
-        conn = get_db()
-        cursor = conn.cursor()
-        
-        # Check user credentials
-        cursor.execute(
-            "SELECT * FROM users WHERE username = ? OR email = ?",
-            (username, username)
-        )
-        user = cursor.fetchone()
-        conn.close()
-        
-        if user and user['password_hash'] == password:  # TODO: use proper password hashing
-            # Generate JWT token
-            token = jwt.encode(
-                {
-                    'user_id': user['id'],
-                    'username': user['username'],
-                    'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1)
-                },
-                app.config['SECRET_KEY'],
-                algorithm='HS256'
-            )
-            
-            return jsonify({
-                'token': token,
-                'user': {
-                    'id': user['id'],
-                    'username': user['username'],
-                    'email': user['email'],
-                    'role': user['role']
-                }
-            })
-        
-        return jsonify({'error': 'Identifiants invalides'}), 401
+    @app.route('/dashboard')
+    def dashboard_page():
+        return render_template('layouts/layout_app.html', page_title='Dashboard', active_page='dashboard')
     
-    # Verify token
-    @app.route('/api/auth/me', methods=['GET'])
-    def auth_me():
-        auth_header = request.headers.get('Authorization')
-        if not auth_header or not auth_header.startswith('Bearer '):
-            return jsonify({'error': 'Token manquant'}), 401
-        
-        token = auth_header.split(' ')[1]
-        
-        try:
-            payload = jwt.decode(token, app.config['SECRET_KEY'], algorithms=['HS256'])
-            return jsonify({
-                'user_id': payload['user_id'],
-                'username': payload['username']
-            })
-        except jwt.ExpiredSignatureError:
-            return jsonify({'error': 'Token expiré'}), 401
-        except jwt.InvalidTokenError:
-            return jsonify({'error': 'Token invalide'}), 401
+    @app.route('/impayes')
+    def impayes_page():
+        return render_template('layouts/layout_app.html', page_title='Impayés', active_page='impayes')
+    
+    @app.route('/contacts')
+    def contacts_page():
+        return render_template('layouts/layout_app.html', page_title='Contacts', active_page='contacts')
+    
+    @app.route('/relances')
+    def relances_page():
+        return render_template('layouts/layout_app.html', page_title='Relances', active_page='relances-liste')
+    
+    @app.route('/sequences')
+    def sequences_page():
+        return render_template('layouts/layout_app.html', page_title='Séquences', active_page='sequences')
+    
+    @app.route('/evenements')
+    def evenements_page():
+        return render_template('layouts/layout_app.html', page_title='Événements', active_page='evenements')
+    
+    @app.route('/smart-marki')
+    def smart_marki_page():
+        return render_template('layouts/layout_app.html', page_title='Smart Marki', active_page='smart-marki')
+    
+    @app.route('/settings')
+    def settings_page():
+        return render_template('layouts/layout_app.html', page_title='Paramètres', active_page='settings')
+    
+    # Favicon
+    @app.route('/favicon.ico')
+    def favicon():
+        return '', 204
     
     return app
 
