@@ -1,44 +1,32 @@
-demanderPrenom: async function() {
-    const workflowId = crypto.randomUUID();
-    const startTime = Date.now();
-    
-    log.info('WORKFLOW_START', { 
-        workflowId, 
-        workflow: 'demanderPrenom',
-        page: 'helloPage'
-    });
-    
-    this.loading = true;
-    
-    try {
+{# Workflow: demanderPrenom - Demande le prénom via prompt et met à jour this.prenom #}
+<script>
+    demanderPrenom: async function() {
+        const workflowId = crypto.randomUUID();
+        
+        log('WORKFLOW_START', { 
+            workflowId: workflowId, 
+            workflow: 'demanderPrenom' 
+        });
+        
         const prenomSaisi = prompt('Quel est votre prénom ?');
         
-        if (prenomSaisi && prenomSaisi.trim()) {
+        if (prenomSaisi !== null && prenomSaisi.trim() !== '') {
             this.prenom = prenomSaisi.trim();
-            log.info('STATE_UPDATE', { 
-                prenom: this.prenom,
-                workflowId 
-            });
-        } else if (prenomSaisi !== null) {
-            log.warn('VALIDATION_ERROR', { 
-                reason: 'empty_prenom',
-                workflowId 
+            
+            log('STATE_UPDATE', { 
+                workflowId: workflowId, 
+                property: 'prenom', 
+                value: this.prenom 
             });
         } else {
-            log.info('WORKFLOW_CANCELLED', { workflowId });
+            log('WORKFLOW_CANCELLED', { 
+                workflowId: workflowId, 
+                reason: 'User cancelled or empty input' 
+            });
         }
         
-        log.info('WORKFLOW_SUCCESS', { 
-            workflowId,
-            duration: Date.now() - startTime
+        log('WORKFLOW_SUCCESS', { 
+            workflowId: workflowId 
         });
-        
-    } catch (error) {
-        log.error('WORKFLOW_ERROR', {
-            workflowId,
-            error: error.message
-        });
-    } finally {
-        this.loading = false;
     }
-}
+</script>
