@@ -59,14 +59,38 @@ def list_impayes():
     
     print(f"[API.IMPAYES.LIST] STEP: Requête count exécutée, total={total}")
     
+    # Paramètres de tri
+    order_by = request.args.get('order_by', 'date_echeance')
+    order = request.args.get('order', 'ASC').upper()
+    
+    # Validation des colonnes de tri autorisées
+    allowed_columns = {
+        'nfacture': 'i.nfacture',
+        'numero_dossier': 'i.numero_dossier',
+        'payeur_nom': 'c.nom',
+        'montant_ttc': 'i.montant_total',
+        'reste_a_payer': 'i.reste_a_payer',
+        'date_echeance': 'i.date_echeance'
+    }
+    
+    # Colonne de tri par défaut si non autorisée
+    if order_by not in allowed_columns:
+        order_by = 'date_echeance'
+    
+    # Direction de tri (ASC ou DESC uniquement)
+    if order not in ['ASC', 'DESC']:
+        order = 'ASC'
+    
+    order_column = allowed_columns[order_by]
+    
     # Récupération des impayés
     offset = (page - 1) * per_page
     query = f"""
-        SELECT i.*, c.nom as payer_nom, c.email as payer_email
+        SELECT i.*, c.nom as contact_nom, c.email as contact_email
         FROM impayes i
         LEFT JOIN contacts c ON i.payer_id = c.id
         {where_sql}
-        ORDER BY i.date_echeance ASC
+        ORDER BY {order_column} {order}
         LIMIT ? OFFSET ?
     """
     
@@ -75,6 +99,11 @@ def list_impayes():
     impayes = []
     for row in rows:
         impaye = dict(row)
+        # Mapping des champs de la jointure contact
+        if impaye.get('contact_nom'):
+            impaye['payeur_nom'] = impaye['contact_nom']
+        if impaye.get('contact_email'):
+            impaye['payeur_email'] = impaye['contact_email']
         # Conversion des booléens
         impaye['facture_soldee'] = bool(impaye.get('facture_soldee', 0))
         impaye['is_blacklisted'] = bool(impaye.get('is_blacklisted', 0))
@@ -103,7 +132,7 @@ def get_impaye(id):
     print(f"[API.IMPAYES.GET] STEP: Recherche impayé id={id}")
     
     row = db.execute("""
-        SELECT i.*, c.nom as payer_nom, c.email as payer_email
+        SELECT i.*, c.nom as contact_nom, c.email as contact_email
         FROM impayes i
         LEFT JOIN contacts c ON i.payer_id = c.id
         WHERE i.id = ?
@@ -114,6 +143,11 @@ def get_impaye(id):
         return jsonify({'error': 'Impayé non trouvé'}), 404
     
     impaye = dict(row)
+    # Mapping des champs de la jointure contact
+    if impaye.get('contact_nom'):
+        impaye['payeur_nom'] = impaye['contact_nom']
+    if impaye.get('contact_email'):
+        impaye['payeur_email'] = impaye['contact_email']
     impaye['facture_soldee'] = bool(impaye.get('facture_soldee', 0))
     impaye['is_blacklisted'] = bool(impaye.get('is_blacklisted', 0))
     
