@@ -1,33 +1,26 @@
 <script>
-// Logger global
-const log = {
-    debug: (...args) => console.debug('[hello]', ...args),
-    info: (...args) => console.info('[hello]', ...args),
-    warn: (...args) => console.warn('[hello]', ...args),
-    error: (...args) => console.error('[hello]', ...args)
-};
+    // Logger global
+    const log = {
+        debug: (...args) => console.debug('[DEBUG]', ...args),
+        info: (...args) => console.info('[INFO]', ...args),
+        warn: (...args) => console.warn('[WARN]', ...args),
+        error: (...args) => console.error('[ERROR]', ...args)
+    };
 
-// Alpine.js data component
-document.addEventListener('alpine:init', () => {
-    Alpine.data('helloPage', () => ({
-        // ============================================
-        // PROPS RÉACTIVES
-        // ============================================
-        prenom: null,
-        showPopup: false,
-        inputValue: '',
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('helloPage', () => ({
+            // Props réactives
+            prenom: null,
+            showPopup: false,
+            inputValue: '',
 
-        // ============================================
-        // WORKFLOWS
-        // ============================================
-        {% include 'hello/workflows/demander_prenom.html' %},
-        {% include 'hello/workflows/valider_prenom.html' %},
-        {% include 'hello/workflows/afficher_message.html' %},
+            // Workflows
+            {% include 'hello/workflows/demander-prenom.html' %},
+            {% include 'hello/workflows/valider-prenom.html' %},
+            {% include 'hello/workflows/afficher-message.html' %},
 
-        // ============================================
-        // INIT
-        // ============================================
-        {% include 'hello/workflows/workflow-init.html' %}
-    }));
-});
+            // Init
+            {% include 'hello/workflows/workflow-init.html' %}
+        }));
+    });
 </script>
