@@ -446,7 +446,7 @@ def etape_4_creer_contacts(sync_db, db, pieces):
         if dossier_id and role:
             if dossier_id not in result['dossier_contacts']:
                 result['dossier_contacts'][dossier_id] = {}
-            role_normalized = role.lower().replace(' ', '_').replace('-', '_').replace("'", "")
+            role_normalized = role.lower().replace(' ', '_').replace('-', '_').replace("'", "_")
             for accented, plain in [('é', 'e'), ('è', 'e'), ('ê', 'e'), ('à', 'a'), ('ù', 'u'), ('ç', 'c'), ('ô', 'o'), ('î', 'i'), ('ï', 'i')]:
                 role_normalized = role_normalized.replace(accented, plain)
             result['dossier_contacts'][dossier_id][role_normalized] = contact_id
