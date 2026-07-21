@@ -1,0 +1,88 @@
+// Workflow: Suspension d'une facture
+// Suspend les relances avec motif
+
+suspendImpaye: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'suspendImpaye',
+        impayeId: this.impaye?.id,
+        motif: this.suspendForm.motif
+    });
+    
+    if (!this.impaye || !this.suspendForm.motif) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: 'Missing impaye or motif' });
+        return;
+    }
+    
+    this.suspending = true;
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        
+        log.debug('API_CALL_START', { 
+            workflowId, 
+            endpoint: `/api/impayes/${this.impaye.id}/suspend`,
+            method: 'POST'
+        });
+        
+        const response = await fetch(`/api/impayes/${this.impaye.id}/suspend`, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                motif: this.suspendForm.motif,
+                detail: this.suspendForm.detail
+            })
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { workflowId, status: response.status });
+        
+        // Gestion token expiré
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+            throw new Error(data.error?.message || 'Erreur lors de la suspension');
+        }
+        
+        // Update local state
+        this.impaye.statut = 'suspendue';
+        this.impaye.is_blacklisted = true;
+        this.impaye.blacklist_motif = this.suspendForm.motif;
+        this.impaye.blacklist_date = new Date().toISOString();
+        
+        log.debug('STATE_UPDATE', { 
+            workflowId, 
+            props: ['statut', 'is_blacklisted', 'blacklist_motif']
+        });
+        
+        this.showSuspendForm = false;
+        this.showToast('Succès', 'Facture suspendue', 'success');
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime
+        });
+        
+    } catch (error) {
+        this.showToast('Erreur', error.message, 'error');
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    } finally {
+        this.suspending = false;
+    }
+}

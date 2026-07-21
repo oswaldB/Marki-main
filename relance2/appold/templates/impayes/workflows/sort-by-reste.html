@@ -1,0 +1,15 @@
+<!-- Workflow: Trier par reste à payer -->
+
+async sortByReste() {
+  if (this.sortColumn === 'reste_a_payer') {
+    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+  } else {
+    this.sortColumn = 'reste_a_payer';
+    this.sortDirection = 'desc'; // Défaut: plus grand d'abord
+  }
+  
+  this.currentPage = 1;
+  await this.loadData();
+  
+  log.info('sort-by-reste', { direction: this.sortDirection });
+}

@@ -1,0 +1,393 @@
+// Workflow: Chargement initial des données de l'impayé
+// Charge l'impayé, le contact payeur, les notes, les relances et les événements
+
+loadData: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'initialLoad',
+        page: 'impayeDetailPage'
+    });
+    
+    this.loading = true;
+    this.error = null;
+    
+    const id = this.getImpayeId();
+    if (!id) {
+        this.error = 'ID de facture non trouvé dans l\'URL';
+        this.loading = false;
+        log.error('WORKFLOW_ERROR', { workflowId, error: this.error });
+        return;
+    }
+    
+    log.debug('EXTRACT_ID', { workflowId, impayeId: id });
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        
+        // Charger l'impayé avec le contact payeur (sans dénormalisation)
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/impayes/${id}` });
+        
+        const response = await fetch(`/api/impayes/${id}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { workflowId, status: response.status });
+        
+        // Gestion token expiré
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        if (!response.ok) {
+            if (response.status === 404) {
+                throw new Error('Impayé non trouvé');
+            }
+            throw new Error(`Erreur HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+            throw new Error(data.error?.message || 'Erreur lors du chargement');
+        }
+        
+        this.impaye = data;
+        this.selectedSequence = data.sequence_id || '';
+        
+        log.debug('DATA_LOADED', { 
+            workflowId, 
+            impayeId: data.id,
+            nfacture: data.nfacture,
+            payerId: data.payer_id
+        });
+        
+        // Charger les notes JSON (impaye + contact)
+        await this.loadImpayeNotes(id);
+        if (data.payer_id) {
+            await this.loadContactNotes(data.payer_id);
+        }
+        
+        // Charger les événements liés à cet impayé
+        await this.loadEvents(id);
+        console.log('[DEBUG] Events après loadEvents:', this.events.length, this.events);
+        
+        // Charger les relances du contact payeur si présent
+        if (data.payer_id) {
+            await this.loadRelances(data.payer_id);
+            console.log('[DEBUG] Relances après loadRelances:', this.relances.length);
+        }
+        
+        // Fusionner relances et événements pour l'historique complet
+        console.log('[DEBUG] Avant mergeHistorique - events:', this.events.length, 'relances:', this.relances.length);
+        this.mergeHistorique();
+        console.log('[DEBUG] Après mergeHistorique - historique:', this.historique.length);
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime,
+            impayeId: id
+        });
+        
+    } catch (error) {
+        this.error = error.message;
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message,
+            stack: error.stack
+        });
+    } finally {
+        this.loading = false;
+    }
+},
+
+loadNotes: async function(impayeId) {
+    // Méthode legacy - appelle les deux nouvelles méthodes
+    await this.loadImpayeNotes(impayeId);
+},
+
+loadImpayeNotes: async function(impayeId) {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'loadImpayeNotes',
+        impayeId
+    });
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/impayes/${impayeId}/notes` });
+        
+        const response = await fetch(`/api/impayes/${impayeId}/notes`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        // Gestion token expiré
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        const data = await response.json();
+        
+        // Support ancien format (data.notes) et nouveau (data.data.notes)
+        const notes = data.notes || [];
+        
+        if (data.success && notes) {
+            this.notesImpaye = notes;
+            log.debug('NOTES_IMPAYE_LOADED', { workflowId, count: notes.length });
+        } else {
+            this.notesImpaye = [];
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        this.notesImpaye = [];
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+},
+
+loadContactNotes: async function(contactId) {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'loadContactNotes',
+        contactId
+    });
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/contacts/${contactId}/notes` });
+        
+        const response = await fetch(`/api/contacts/${contactId}/notes`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        // Gestion token expiré
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        const data = await response.json();
+        
+        // Support ancien format (data.notes) et nouveau (data.data.notes)
+        const notes = data.notes || [];
+        
+        if (data.success && notes) {
+            this.notesContact = notes;
+            log.debug('NOTES_CONTACT_LOADED', { workflowId, count: notes.length });
+        } else {
+            this.notesContact = [];
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        this.notesContact = [];
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+},
+
+loadEvents: async function(impayeId) {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'loadEvents',
+        impayeId
+    });
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        
+        log.debug('API_CALL_START', { 
+            workflowId, 
+            endpoint: '/api/events/by-entity',
+            params: { entity_type: 'impaye', entity_id: impayeId }
+        });
+        
+        const response = await fetch(`/api/events/by-entity?entity_type=impaye&entity_id=${impayeId}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        // Gestion token expiré
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        const data = await response.json();
+        
+        if (data.success && data.events) {
+            this.events = data.events;
+            log.debug('EVENTS_LOADED', { workflowId, count: data.events.length });
+        } else {
+            this.events = [];
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        this.events = [];
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+},
+
+loadRelances: async function(contactId) {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'loadRelances',
+        contactId
+    });
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: `/api/relances?contact_id=${contactId}` });
+        
+        const response = await fetch(`/api/relances?contact_id=${contactId}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        // Gestion token expiré
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        const data = await response.json();
+        
+        if (data.relances) {
+            this.relances = data.relances;
+            log.debug('RELANCES_LOADED', { workflowId, count: data.relances.length });
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+},
+
+loadSequences: async function() {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'loadSequences'
+    });
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        
+        log.debug('API_CALL_START', { workflowId, endpoint: '/api/impayes/sequences' });
+        
+        const response = await fetch('/api/impayes/sequences', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        // Gestion token expiré
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        const data = await response.json();
+        
+        if (data.success && data.sequences) {
+            this.sequences = data.sequences;
+            log.debug('SEQUENCES_LOADED', { workflowId, count: data.sequences.length });
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: error.message });
+    }
+},
+
+mergeHistorique: function() {
+    // Fusionner relances et événements, triés par date
+    const historique = [];
+    
+    // Ajouter les relances
+    this.relances.forEach(relance => {
+        historique.push({
+            id: relance.id,
+            type: 'relance',
+            titre: relance.sequence_nom || 'Relance',
+            description: `Statut: ${relance.statut || 'Programmée'}`,
+            date: relance.date_envoi || relance.created_at,
+            statut: relance.statut,
+            email: relance.contact_email,
+            icon: this.getRelanceIcon(relance.statut)
+        });
+    });
+    
+    // Ajouter les événements
+    console.log('[DEBUG] mergeHistorique - this.events:', this.events?.length, this.events);
+    if (this.events && Array.isArray(this.events)) {
+        this.events.forEach(event => {
+            historique.push({
+                id: event.id,
+                type: event.type || 'system',
+                titre: event.titre || 'Événement',
+                description: event.description || '',
+                date: event.created_at,
+                icon: event.icon || 'fa-bell'
+            });
+        });
+    }
+    
+    // Trier par date décroissante
+    historique.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    this.historique = historique;
+    
+    log.debug('HISTORIQUE_MERGED', { count: historique.length });
+},
+
+getRelanceIcon: function(statut) {
+    const icons = {
+        'envoyee': 'fa-paper-plane',
+        'planifiee': 'fa-clock',
+        'brouillon': 'fa-edit',
+        'annulee': 'fa-times'
+    };
+    return icons[statut] || 'fa-envelope';
+},
+
+getImpayeId: function() {
+    const path = window.location.pathname;
+    const match = path.match(/\/impayes\/([^\/]+)/);
+    return match ? match[1] : null;
+}

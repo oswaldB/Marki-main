@@ -1,0 +1,454 @@
+<script>
+  // Logger utilitaire
+  const logPayeur = {
+    debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+    info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+    warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+    error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+  };
+
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('impayesPayeur', () => ({
+      // =====================================================
+      // STATE
+      // =====================================================
+      
+      // UI State
+      loading: false,
+      error: null,
+      syncing: false,
+      syncProgress: 0,
+      
+      // Data - reçus du backend déjà filtrés/groupés
+      groupes: [],
+      totalGlobal: 0,
+      currentPage: 1,
+      perPage: 5,
+      total: 0,
+      totalPages: 1,
+      
+      // Filtres (envoyés au backend)
+      searchQuery: '',
+      filterMinMontant: '',
+      sortBy: 'montant_desc',
+      
+      // État des cartes rétractables
+      expandedCards: {},
+      
+      // Modal détail
+      showDetailModal: false,
+      selectedFacture: null,
+      noteContent: '',
+      savingNote: false,
+      
+      // =====================================================
+      // LIFECYCLE
+      // =====================================================
+      
+      async init() {
+        // @checkpoint init-started
+        await this.loadData();
+      },
+      
+      // =====================================================
+      // DATA LOADING (BACKEND)
+      // =====================================================
+      
+      async loadData() {
+        this.loading = true;
+        this.error = null;
+        
+        try {
+          const token = localStorage.getItem('marki_token');
+          if (!token) {
+            window.location.href = '/login';
+            return;
+          }
+          
+          const headers = { 
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          };
+          
+          // Construction des paramètres pour le backend
+          const params = new URLSearchParams({
+            page: this.currentPage.toString(),
+            per_page: this.perPage.toString(),
+            sort_by: this.sortBy
+          });
+          
+          // Ajouter recherche si présente
+          if (this.searchQuery?.trim()) {
+            params.append('search', this.searchQuery.trim());
+          }
+          
+          // Ajouter filtre montant
+          if (this.filterMinMontant) {
+            params.append('min_montant', this.filterMinMontant);
+          }
+          
+          // @checkpoint payeur-fetch-started
+          const response = await fetch(`/api/impayes/by-payeur?${params.toString()}`, { 
+            headers 
+          });
+          
+          if (!response.ok) {
+            throw new Error(`Erreur ${response.status}: ${response.statusText}`);
+          }
+          
+          const data = await response.json();
+          
+          if (!data.success) {
+            throw new Error(data.error?.message || 'Erreur de chargement');
+          }
+          
+          this.groupes = data.groupes || [];
+          this.total = data.total || 0;
+          this.totalGlobal = data.total_global || 0;
+          this.totalPages = data.total_pages || 1;
+          
+          // Initialiser l'état des cartes (toutes ouvertes par défaut)
+          this.groupes.forEach(g => {
+            if (!(g.payeur.id in this.expandedCards)) {
+              this.expandedCards[g.payeur.id] = true;
+            }
+          });
+          
+          logPayeur.info('payeur-data-loaded', { 
+            groupes: this.groupes.length,
+            total: this.total,
+            page: this.currentPage
+          });
+          
+        } catch (err) {
+          this.error = err.message;
+          logPayeur.error('payeur-load-error', err.message);
+        } finally {
+          this.loading = false;
+        }
+      },
+      
+      // =====================================================
+      // CARD EXPANSION
+      // =====================================================
+      
+      isExpanded(payeurId) {
+        return this.expandedCards[payeurId] !== false;
+      },
+      
+      toggleCard(payeurId) {
+        this.expandedCards[payeurId] = !this.isExpanded(payeurId);
+      },
+      
+      expandAll() {
+        this.groupes.forEach(g => {
+          this.expandedCards[g.payeur.id] = true;
+        });
+      },
+      
+      collapseAll() {
+        this.groupes.forEach(g => {
+          this.expandedCards[g.payeur.id] = false;
+        });
+      },
+      
+      // =====================================================
+      // SYNC
+      // =====================================================
+      
+      async syncData() {
+        if (this.syncing) return;
+        
+        this.syncing = true;
+        this.syncProgress = 0;
+        
+        try {
+          const token = localStorage.getItem('marki_token');
+          if (!token) {
+            window.location.href = '/login';
+            return;
+          }
+          
+          const headers = { 
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          };
+          
+          // @checkpoint sync-api-called
+          const response = await fetch('/api/sync/invoices', {
+            method: 'POST',
+            headers: headers
+          });
+          
+          if (!response.ok) {
+            const errorData = await response.json().catch(() => ({}));
+            throw new Error(errorData.error || 'Erreur lors de la synchronisation');
+          }
+          
+          // Progression simulée
+          this.syncProgress = 25;
+          await new Promise(r => setTimeout(r, 200));
+          this.syncProgress = 50;
+          await new Promise(r => setTimeout(r, 200));
+          this.syncProgress = 75;
+          await new Promise(r => setTimeout(r, 200));
+          this.syncProgress = 100;
+          
+          // Recharger les données
+          await this.loadData();
+          
+          // Toast
+          if (Alpine.store('ui')?.addToast) {
+            Alpine.store('ui').addToast('Synchronisation terminée', 'success');
+          }
+          
+        } catch (err) {
+          this.error = err.message;
+          logPayeur.error('sync-error', err.message);
+          
+          if (Alpine.store('ui')?.addToast) {
+            Alpine.store('ui').addToast(err.message, 'error');
+          }
+        } finally {
+          this.syncing = false;
+          setTimeout(() => this.syncProgress = 0, 500);
+        }
+      },
+      
+      // =====================================================
+      // FILTERS & SORT (BACKEND)
+      // =====================================================
+      
+      async applyFilters() {
+        this.currentPage = 1;
+        await this.loadData();
+      },
+      
+      async applySort() {
+        this.currentPage = 1;
+        await this.loadData();
+      },
+      
+      // =====================================================
+      // PAGINATION
+      // =====================================================
+      
+      async goToPage(page) {
+        this.currentPage = page;
+        await this.loadData();
+      },
+      
+      async prevPage() {
+        if (this.currentPage > 1) {
+          this.currentPage--;
+          await this.loadData();
+        }
+      },
+      
+      async nextPage() {
+        if (this.currentPage < this.totalPages) {
+          this.currentPage++;
+          await this.loadData();
+        }
+      },
+      
+      get visiblePages() {
+        const pages = [];
+        const maxVisible = 5;
+        let start = Math.max(1, this.currentPage - Math.floor(maxVisible / 2));
+        let end = Math.min(this.totalPages, start + maxVisible - 1);
+        
+        if (end - start + 1 < maxVisible) {
+          start = Math.max(1, end - maxVisible + 1);
+        }
+        
+        for (let i = start; i <= end; i++) {
+          pages.push(i);
+        }
+        return pages;
+      },
+      
+      // =====================================================
+      // DETAIL MODAL
+      // =====================================================
+      
+      openDetail(facture) {
+        this.selectedFacture = {...facture};
+        this.noteContent = '';
+        this.showDetailModal = true;
+      },
+      
+      closeDetail() {
+        this.showDetailModal = false;
+        this.selectedFacture = null;
+        this.noteContent = '';
+      },
+      
+      // =====================================================
+      // SEQUENCE UPDATE
+      // =====================================================
+      
+      async updateSequence(event) {
+        if (!this.selectedFacture) return;
+        
+        const sequenceCode = event.target.value;
+        
+        try {
+          const token = localStorage.getItem('marki_token');
+          if (!token) return;
+          
+          const headers = { 
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          };
+          
+          const response = await fetch(`/api/impayes/${this.selectedFacture.id}/sequence`, {
+            method: 'PUT',
+            headers: headers,
+            body: JSON.stringify({ sequence_code: sequenceCode })
+          });
+          
+          if (!response.ok) {
+            throw new Error('Erreur lors de la mise à jour');
+          }
+          
+          // Mettre à jour localement
+          this.groupes.forEach(g => {
+            const facture = g.factures.find(f => f.id === this.selectedFacture.id);
+            if (facture) {
+              facture.sequence_code = sequenceCode;
+            }
+          });
+          
+          if (Alpine.store('ui')?.addToast) {
+            Alpine.store('ui').addToast('Séquence mise à jour', 'success');
+          }
+          
+        } catch (err) {
+          logPayeur.error('update-sequence-error', err.message);
+          if (Alpine.store('ui')?.addToast) {
+            Alpine.store('ui').addToast(err.message, 'error');
+          }
+        }
+      },
+      
+      // =====================================================
+      // SAVE NOTE
+      // =====================================================
+      
+      async saveNote() {
+        if (!this.selectedFacture || !this.noteContent.trim()) return;
+        
+        this.savingNote = true;
+        
+        try {
+          const token = localStorage.getItem('marki_token');
+          if (!token) return;
+          
+          const headers = { 
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          };
+          
+          // Récupérer l'utilisateur courant
+          let author = 'Utilisateur';
+          try {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            author = payload.username || payload.email || 'Utilisateur';
+          } catch (e) {}
+          
+          const response = await fetch(`/api/impayes/${this.selectedFacture.id}/notes`, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify({ 
+              content: this.noteContent.trim(),
+              author: author
+            })
+          });
+          
+          if (!response.ok) {
+            throw new Error('Erreur lors de l\'enregistrement');
+          }
+          
+          // Mettre à jour localement
+          this.groupes.forEach(g => {
+            const facture = g.factures.find(f => f.id === this.selectedFacture.id);
+            if (facture) {
+              if (!facture.notes_json) facture.notes_json = '[]';
+              try {
+                const notes = JSON.parse(facture.notes_json);
+                notes.unshift({
+                  content: this.noteContent.trim(),
+                  author: author,
+                  date: new Date().toISOString()
+                });
+                facture.notes_json = JSON.stringify(notes);
+              } catch (e) {}
+            }
+          });
+          
+          this.noteContent = '';
+          this.showDetailModal = false;
+          
+          if (Alpine.store('ui')?.addToast) {
+            Alpine.store('ui').addToast('Note enregistrée', 'success');
+          }
+          
+        } catch (err) {
+          logPayeur.error('save-note-error', err.message);
+          if (Alpine.store('ui')?.addToast) {
+            Alpine.store('ui').addToast(err.message, 'error');
+          }
+        } finally {
+          this.savingNote = false;
+        }
+      },
+      
+      // =====================================================
+      // HELPERS
+      // =====================================================
+      
+      formatMoney(amount) {
+        if (amount === null || amount === undefined) return '-';
+        return new Intl.NumberFormat('fr-FR', {
+          style: 'currency', currency: 'EUR'
+        }).format(amount);
+      },
+      
+      formatDate(dateStr) {
+        if (!dateStr) return '-';
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('fr-FR');
+      },
+      
+      getInitials(name) {
+        if (!name) return '?';
+        return name.split(' ').map(p => p[0]).join('').toUpperCase().slice(0, 2);
+      },
+      
+      getStatutLabel(statut) {
+        const labels = {
+          'non-payee': 'Non payée',
+          'en-relance': 'En relance',
+          'suspendue': 'Suspendue',
+          'a-reparer': 'À réparer'
+        };
+        return labels[statut] || statut;
+      },
+      
+      getStatutClass(statut) {
+        const classes = {
+          'non-payee': 'bg-slate-100 text-slate-700',
+          'en-relance': 'bg-sky-100 text-sky-700',
+          'suspendue': 'bg-amber-100 text-amber-700',
+          'a-reparer': 'bg-red-100 text-red-700'
+        };
+        return classes[statut] || 'bg-slate-100 text-slate-700';
+      },
+      
+      getSuspendedCount(factures) {
+        return factures.filter(f => f.statut === 'suspendue').length;
+      }
+    }));
+  });
+</script>

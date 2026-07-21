@@ -1,0 +1,100 @@
+<!-- Workflow: Synchronisation des données -->
+
+syncing: false,
+syncProgress: 0,
+
+async syncData() {
+  // @checkpoint already-syncing
+  if (this.syncing) return;
+  
+  // @action Activer état synchronisation
+  // @checkpoint syncing-started
+  this.syncing = true;
+  this.syncProgress = 0;
+  // Sync avec le store global
+  Alpine.store('impayes').syncing = true;
+  Alpine.store('impayes').syncProgress = 0;
+  this.error = null;
+  
+  try {
+    const token = localStorage.getItem('marki_token');
+    if (!token) {
+      window.location.href = '/login';
+      return;
+    }
+    
+    const headers = { 
+      'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    };
+    
+    // @checkpoint sync-start
+    console.log('[SYNC] Début synchronisation');
+    
+    // @action Appeler API de synchronisation (import_invoice.py)
+    // @checkpoint sync-api-called
+    const response = await fetch('/api/sync/invoices', {
+      method: 'POST',
+      headers: headers
+    });
+    
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(errorData.error || 'Erreur lors de la synchronisation');
+    }
+    
+    const data = await response.json();
+    console.log('[SYNC] Réponse:', data);
+    
+    // Progression simulée
+    this.syncProgress = 25;
+    Alpine.store('impayes').syncProgress = 25;
+    await new Promise(r => setTimeout(r, 200));
+    this.syncProgress = 50;
+    Alpine.store('impayes').syncProgress = 50;
+    await new Promise(r => setTimeout(r, 200));
+    this.syncProgress = 75;
+    Alpine.store('impayes').syncProgress = 75;
+    await new Promise(r => setTimeout(r, 200));
+    this.syncProgress = 100;
+    Alpine.store('impayes').syncProgress = 100;
+    
+    // @action Recharger les données après sync
+    // @checkpoint data-reloaded
+    await this.loadData();
+    await this.loadStats();
+    
+    const stats = data.data || {};
+    
+    // @action Notifier succès
+    // @checkpoint toast-shown
+    if (Alpine.store('ui')?.addToast) {
+      Alpine.store('ui').addToast(
+        `Synchronisation terminée: ${stats.pieces_count || 0} factures traitées`,
+        'success'
+      );
+    }
+    
+    log.info('sync-completed', { 
+      pieces: stats.pieces_count || 0,
+      created: stats.impayes_created || 0,
+      updated: stats.impayes_updated || 0
+    });
+    
+  } catch (err) {
+    this.error = err.message;
+    log.error('sync-error', err.message);
+    
+    if (Alpine.store('ui')?.addToast) {
+      Alpine.store('ui').addToast(err.message, 'error');
+    }
+  } finally {
+    // @checkpoint sync-complete
+    this.syncing = false;
+    Alpine.store('impayes').syncing = false;
+    setTimeout(() => {
+      this.syncProgress = 0;
+      Alpine.store('impayes').syncProgress = 0;
+    }, 500);
+  }
+}

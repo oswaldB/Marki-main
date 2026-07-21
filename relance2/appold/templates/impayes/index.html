@@ -1,0 +1,638 @@
+{% extends 'layouts/layout_app.html' %}
+
+{% block page_title %}Impayés{% endblock %}
+{% block active_page %}impayes{% endblock %}
+
+{% block header_right %}
+<div x-data="{ syncing: false, syncProgress: 0 }" x-init="$watch('$store.impayes.syncing', v => syncing = v); $watch('$store.impayes.syncProgress', v => syncProgress = v)" class="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-3">
+  <a href="/impayes-payeur" class="flex items-center gap-2 px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium transition-all">
+    <i class="fas fa-users"></i>
+    <span>Vue par payeur</span>
+  </a>
+  
+  <!-- Bouton Synchronisation -->
+  <div class="relative">
+    <button 
+      @click="$store.impayes.syncData()"
+      :disabled="syncing"
+      class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all disabled:opacity-50 shadow-sm"
+    >
+      <i x-show="!syncing" class="fas fa-sync-alt"></i>
+      <i x-show="syncing" class="fas fa-circle-notch fa-spin"></i>
+      <span x-text="syncing ? 'Synchronisation...' : 'Synchroniser'"></span>
+    </button>
+    
+    <!-- Barre de progression (visible pendant sync) -->
+    <div 
+      x-show="syncing && syncProgress > 0" 
+      x-cloak
+      class="absolute -bottom-1 left-0 right-0 h-0.5 bg-slate-100 rounded-full overflow-hidden"
+    >
+      <div 
+        class="h-full bg-sky-500 transition-all duration-300" 
+        :style="`width: ${syncProgress}%`"
+      ></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div x-data="impayes" x-init="init()" x-cloak>
+  
+  <!-- Pas de header interne - les boutons sont dans la top bar -->
+
+  <main class="p-6">
+    
+    <!-- Filtres -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 mb-6">
+      <div class="flex flex-wrap items-center gap-4">
+        
+        <div class="relative flex-1 min-w-[240px] max-w-md">
+          <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            x-model="searchQuery"
+            @input.debounce.500ms="applyFilters()"
+            placeholder="Rechercher N° facture, N° dossier, payeur..."
+            class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all"
+          >
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <select x-model="filterStatut" @change="applyFilters()" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+            <option value="">Tous les statuts</option>
+            <option value="non-payee">Non payée</option>
+            <option value="en-relance">En relance</option>
+            <option value="suspendue">Suspendue</option>
+          </select>
+          
+          <select x-model="filterSequence" @change="applyFilters()" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 max-w-[200px]">
+            <option value="">Toutes les séquences</option>
+            <template x-for="seq in sequences" :key="seq.id">
+              <option :value="seq.id" x-text="seq.code + ' - ' + seq.nom"></option>
+            </template>
+          </select>
+        </div>
+        
+        <div class="flex-1"></div>
+        
+        <a href="/impayes/reparer" class="flex items-center gap-2 px-3 py-2 text-sky-600 hover:bg-sky-50 rounded-lg text-sm font-medium transition-all">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span>À réparer (<span x-text="stats.aReparer"></span>)</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Layout split screen -->
+    <div class="flex gap-6" style="min-height: calc(100vh - 220px);">
+      
+      <!-- Left: Table -->
+      <div class="flex-1" :class="showDetailPanel ? 'w-1/2' : 'w-full'">
+        
+        <!-- Loading -->
+        <template x-if="loading">
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="divide-y divide-slate-100">
+              <template x-for="i in 5" :key="i">
+                <div class="px-6 py-4 animate-pulse flex items-center gap-4">
+                  <div class="w-24 h-4 bg-slate-200 rounded"></div>
+                  <div class="w-20 h-4 bg-slate-200 rounded"></div>
+                  <div class="flex-1">
+                    <div class="h-4 bg-slate-200 rounded w-1/4 mb-2"></div>
+                  </div>
+                  <div class="w-24 h-4 bg-slate-200 rounded"></div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </template>
+        
+        <!-- Error -->
+        <template x-if="error && !loading">
+          <div class="bg-sky-50 border border-sky-100 rounded-xl p-4">
+            <div class="flex items-start gap-3">
+              <i class="fas fa-exclamation-circle text-sky-500 mt-0.5"></i>
+              <div>
+                <p class="text-sm font-medium text-sky-800">Erreur de chargement</p>
+                <p class="text-sm text-sky-600 mt-1" x-text="error"></p>
+                <button @click="loadData()" class="mt-2 text-sm text-sky-700 hover:text-sky-800 underline">Réessayer</button>
+              </div>
+            </div>
+          </div>
+        </template>
+        
+        <!-- Empty -->
+        <template x-if="!loading && !error && total === 0">
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm py-16">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-inbox text-slate-400 text-2xl"></i>
+              </div>
+              <h3 class="text-lg font-medium text-slate-900 mb-1">Aucune facture trouvée</h3>
+              <p class="text-sm text-slate-500">Modifiez vos filtres ou synchronisez de nouvelles factures</p>
+            </div>
+          </div>
+        </template>
+        
+        <!-- Table -->
+        <template x-if="!loading && !error && total > 0">
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+            <div class="overflow-x-auto">
+              <table class="w-full text-sm text-left min-w-[900px]">
+              <thead class="bg-slate-50 text-slate-600 font-medium">
+                <tr>
+                  <th @click="sortBy('nfacture')" class="px-6 py-3 cursor-pointer hover:bg-slate-100 select-none">
+                    <div class="flex items-center gap-1">
+                      N° Facture
+                      <i class="fas text-xs" :class="sortColumn === 'nfacture' ? (sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort text-slate-300'"></i>
+                    </div>
+                  </th>
+                  <th @click="sortBy('payeur_nom')" class="px-6 py-3 cursor-pointer hover:bg-slate-100 select-none">
+                    <div class="flex items-center gap-1">
+                      Payeur
+                      <i class="fas text-xs" :class="sortColumn === 'payeur_nom' ? (sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort text-slate-300'"></i>
+                    </div>
+                  </th>
+                  <th @click="sortBy('reste_a_payer')" class="px-6 py-3 text-right cursor-pointer hover:bg-slate-100 select-none">
+                    <div class="flex items-center justify-end gap-1">
+                      Montant
+                      <i class="fas text-xs" :class="sortColumn === 'reste_a_payer' ? (sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort text-slate-300'"></i>
+                    </div>
+                  </th>
+                  <th @click="sortBy('date_echeance')" class="px-6 py-3 cursor-pointer hover:bg-slate-100 select-none">
+                    <div class="flex items-center gap-1">
+                      Échéance
+                      <i class="fas text-xs" :class="sortColumn === 'date_echeance' ? (sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort text-slate-300'"></i>
+                    </div>
+                  </th>
+                  <th class="px-6 py-3">Séquence</th>
+                  <th class="px-6 py-3">Agence</th>
+                  <th class="px-6 py-3 text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100">
+                <template x-for="facture in paginatedFactures" :key="facture.id">
+                  <tr class="hover:bg-slate-50/50 transition-colors cursor-pointer" @click="openDetail(facture)">
+                    <td class="px-6 py-4">
+                      <p class="font-medium text-slate-900" x-text="facture.nfacture"></p>
+                      <p class="text-xs text-slate-500">
+                        <span x-text="formatDate(facture.date_facture)"></span>
+                        <span class="text-slate-300 mx-1">·</span>
+                        <span class="font-mono text-slate-600" x-text="'D-' + (facture.numero_dossier || '-')"></span>
+                      </p>
+                    </td>
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-3" x-show="facture.payeur_nom">
+                        <div class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-xs"
+                             x-text="getInitials(facture.payeur_nom)">
+                        </div>
+                        <div>
+                          <p class="font-medium text-slate-900" x-text="facture.payeur_nom"></p>
+                          <p class="text-xs text-slate-500" x-text="facture.payeur_email"></p>
+                        </div>
+                      </div>
+                      <span x-show="!facture.payeur_nom" class="text-slate-400 text-xs">-</span>
+                    </td>
+                    <td class="px-6 py-4 text-right">
+                      <div class="flex flex-col items-end">
+                        <span class="font-bold text-slate-900" x-text="formatMoney(facture.reste_a_payer)"></span>
+                        <span class="text-xs text-slate-400">/ <span x-text="formatMoney(facture.montant_ttc)"></span></span>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <div class="flex flex-col">
+                        <span x-text="formatDate(facture.date_echeance)"></span>
+                        <span :class="getJoursRetardClass(facture.date_echeance) + ' text-xs mt-1'" x-text="getJoursRetard(facture.date_echeance)"></span>
+                      </div>
+                    </td>
+                    <td class="px-6 py-4">
+                      <span x-show="facture.sequence_code" class="px-2.5 py-1 text-xs font-medium rounded-full bg-sky-100 text-sky-700" x-text="facture.sequence_code"></span>
+                      <span x-show="!facture.sequence_code" class="text-slate-400 text-xs">-</span>
+                    </td>
+                    
+                    <td class="px-6 py-4">
+                      <div class="flex items-center gap-2">
+                        <i x-show="facture.apporteur_est_payeur" class="fas fa-coins text-amber-500" title="Agence = Payeur"></i>
+                        <span x-show="facture.apporteur_nom" x-text="facture.apporteur_nom" class="text-sm text-slate-700"></span>
+                        <span x-show="!facture.apporteur_nom" class="text-slate-400 text-xs">-</span>
+                      </div>
+                    </td>
+                    
+                    <td class="px-6 py-4 text-right">
+                      <div class="flex items-center justify-end gap-2" @click.stop>
+                        <button @click="openDetail(facture)" class="p-1.5 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all" title="Voir détail">
+                          <i class="fas fa-arrow-right"></i>
+                        </button>
+                        <button 
+                          x-show="facture.statut !== 'suspendue'"
+                          @click="openSuspendModal(facture)" 
+                          class="p-1.5 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all" 
+                          title="Suspendre"
+                        >
+                          <i class="fas fa-pause"></i>
+                        </button>
+                        <button 
+                          x-show="facture.statut === 'suspendue'"
+                          @click="openUnsuspendModal(facture)" 
+                          class="p-1.5 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all" 
+                          title="Désuspendre"
+                        >
+                          <i class="fas fa-play"></i>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </template>
+              </tbody>
+            </table>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-between">
+              <p class="text-sm text-slate-500">
+                Affichage de <span x-text="(currentPage - 1) * itemsPerPage + 1"></span> à <span x-text="Math.min(currentPage * itemsPerPage, total)"></span> sur <span x-text="total"></span> factures
+              </p>
+              <div class="flex items-center gap-2">
+                <button @click="prevPage()" :disabled="currentPage === 1" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50 transition-all">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <template x-for="page in visiblePages" :key="page">
+                  <button @click="goToPage(page)" class="px-3 py-1.5 rounded-lg text-sm font-medium transition-all" :class="currentPage === page ? 'bg-sky-500 text-white' : 'border border-slate-200 text-slate-600 hover:bg-slate-50'" x-text="page"></button>
+                </template>
+                <button @click="nextPage()" :disabled="currentPage === totalPages" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50 transition-all">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+      
+      <!-- Right: Detail Panel -->
+      <template x-if="showDetailPanel">
+        <div class="w-1/2 bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col" style="max-height: calc(100vh - 220px);">
+          <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+            <div class="flex items-center gap-3">
+              <button @click="closeDetail()" class="text-slate-400 hover:text-slate-600 p-1 hover:bg-slate-200 rounded-lg">
+                <i class="fas fa-times"></i>
+              </button>
+              <div>
+                <h3 class="font-semibold text-slate-900" x-text="selectedFacture?.nfacture"></h3>
+                <p class="text-sm text-slate-500" x-text="selectedFacture?.payeur_nom"></p>
+              </div>
+            </div>
+            <a :href="'/impayes/' + selectedFacture?.id" class="text-sky-600 hover:text-sky-700 text-sm font-medium flex items-center gap-1">
+              Voir plus <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          
+          <div class="flex-1 overflow-y-auto p-6 space-y-6">
+            <!-- Informations facture -->
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-3">Informations facture</p>
+              <div class="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span class="text-slate-500">N° Facture:</span>
+                  <span class="font-medium ml-2" x-text="selectedFacture?.nfacture"></span>
+                </div>
+                <div>
+                  <span class="text-slate-500">N° Dossier:</span>
+                  <span class="font-medium ml-2" x-text="selectedFacture?.numero_dossier || '-'"></span>
+                </div>
+                <div>
+                  <span class="text-slate-500">Date:</span>
+                  <span class="ml-2" x-text="formatDate(selectedFacture?.date_facture)"></span>
+                </div>
+                <div>
+                  <span class="text-slate-500">Échéance:</span>
+                  <span class="ml-2" x-text="formatDate(selectedFacture?.date_echeance)"></span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Montants -->
+            <div class="bg-slate-50 rounded-lg p-4">
+              <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-3">Montants</p>
+              <div class="space-y-2">
+                <div class="flex justify-between text-sm">
+                  <span class="text-slate-500">Montant TTC</span>
+                  <span x-text="formatMoney(selectedFacture?.montant_ttc)"></span>
+                </div>
+                <div class="flex justify-between text-sm font-bold">
+                  <span class="text-slate-700">Reste à payer</span>
+                  <span class="text-sky-600" x-text="formatMoney(selectedFacture?.reste_a_payer)"></span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Payeur -->
+            <div x-show="selectedFacture?.payeur_nom">
+              <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-3">Payeur</p>
+              <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
+                <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold" 
+                     x-text="getInitials(selectedFacture?.payeur_nom)"></div>
+                <div>
+                  <p class="font-medium text-sm" x-text="selectedFacture?.payeur_nom"></p>
+                  <p class="text-xs text-slate-500" x-text="selectedFacture?.payeur_email"></p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Séquence -->
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-2">Relance</p>
+              <select x-model="selectedFacture.sequence_code" @change="updateSequence($event)" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                <option value="">Aucune séquence</option>
+                <option value="R1">R1 - Première relance</option>
+                <option value="R2">R2 - Deuxième relance</option>
+                <option value="R3">R3 - Troisième relance</option>
+                <option value="R4">R4 - Dernière relance</option>
+              </select>
+            </div>
+            
+            <!-- Notes existantes -->
+            <div x-data="{ 
+              currentUser: '',
+              editingIndex: null,
+              editingContent: '',
+              init() {
+                // Récupérer l'utilisateur courant
+                const token = localStorage.getItem('marki_token');
+                if (token) {
+                  try {
+                    const payload = JSON.parse(atob(token.split('.')[1]));
+                    this.currentUser = payload.username || payload.email || 'Utilisateur';
+                  } catch (e) {
+                    this.currentUser = 'Utilisateur';
+                  }
+                }
+              },
+              // GETTER CALCULÉ : toujours à jour, pas de copie
+              get notesList() {
+                if (!$parent.selectedFacture?.notes_json) return [];
+                let notes = [];
+                try {
+                  notes = JSON.parse($parent.selectedFacture.notes_json);
+                  if (!Array.isArray(notes)) notes = [];
+                } catch (e) {
+                  if ($parent.selectedFacture.note) {
+                    notes = [{
+                      content: $parent.selectedFacture.note,
+                      author: $parent.selectedFacture.note_author || 'Inconnu',
+                      date: $parent.selectedFacture.updated_at
+                    }];
+                  }
+                }
+                // Trier par date décroissante (plus récent d'abord)
+                return notes.sort((a, b) => new Date(b.date) - new Date(a.date));
+              },
+              canEdit(author) {
+                return author === this.currentUser;
+              },
+              startEditing(index, content) {
+                this.editingIndex = index;
+                this.editingContent = content;
+              },
+              cancelEditing() {
+                this.editingIndex = null;
+                this.editingContent = '';
+              },
+              async saveEditing(index) {
+                if (!this.editingContent.trim()) return;
+                await $parent.editNote(index, this.editingContent.trim());
+                this.editingIndex = null;
+                this.editingContent = '';
+                // Pas besoin de refresh - le getter est réactif
+              },
+              async deleteNoteWithRefresh(index) {
+                await $parent.deleteNote(index);
+                // Getter réactif : pas besoin de refresh manuel
+              },
+              async saveNoteWithRefresh() {
+                await $parent.saveNote();
+                // Getter réactif : pas besoin de refresh manuel
+              }
+            }" x-init="init()">
+              <div class="flex items-center justify-between mb-3">
+                <p class="text-xs text-slate-500 uppercase tracking-wider font-medium">Notes (<span x-text="notesList.length"></span>)</p>
+                <button 
+                  x-show="notesList.length > 0"
+                  @click="$parent.noteContent = ''; $refs.newNoteInput?.focus()" 
+                  class="text-xs text-sky-600 hover:text-sky-700 font-medium flex items-center gap-1"
+                >
+                  <i class="fas fa-plus"></i> Ajouter
+                </button>
+              </div>
+              
+              <template x-if="notesList.length === 0">
+                <div class="bg-slate-50 border border-slate-200 rounded-lg p-4 text-center">
+                  <i class="fas fa-sticky-note text-slate-300 text-2xl mb-2"></i>
+                  <p class="text-sm text-slate-500">Aucune note pour le moment</p>
+                  <p class="text-xs text-slate-400 mt-1">Ajoutez une note ci-dessous</p>
+                </div>
+              </template>
+              
+              <template x-if="notesList.length > 0">
+                <div class="space-y-3">
+                  <template x-for="(note, index) in notesList" :key="index">
+                    <div class="bg-sky-50 border border-sky-100 rounded-lg p-3 group transition-all hover:shadow-sm">
+                      <!-- Mode affichage -->
+                      <template x-if="editingIndex !== index">
+                        <div>
+                          <p class="text-sm text-slate-700 whitespace-pre-wrap" x-text="note.content"></p>
+                          <div class="flex items-center justify-between mt-2">
+                            <p class="text-xs text-slate-400">
+                              <i class="fas fa-user-circle mr-1"></i>
+                              <span x-text="note.author"></span>
+                              <span class="mx-1">·</span>
+                              <span x-text="new Date(note.date).toLocaleString('fr-FR', {day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit'})" x-show="!note.edited"></span>
+                              <span x-show="note.edited">
+                                <span x-text="new Date(note.edited_at || note.date).toLocaleString('fr-FR', {day:'2-digit', month:'short', year:'numeric', hour:'2-digit', minute:'2-digit'})"></span>
+                                <span class="text-slate-400 italic">(modifié)</span>
+                              </span>
+                            </p>
+                            <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                              <button 
+                                x-show="canEdit(note.author)" 
+                                @click="startEditing(index, note.content)" 
+                                class="p-1.5 text-slate-400 hover:text-sky-600 hover:bg-sky-100 rounded transition-colors" 
+                                title="Modifier"
+                              >
+                                <i class="fas fa-pencil-alt text-xs"></i>
+                              </button>
+                              <button 
+                                x-show="canEdit(note.author)" 
+                                @click="deleteNoteWithRefresh(index)" 
+                                class="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded transition-colors" 
+                                title="Supprimer"
+                              >
+                                <i class="fas fa-trash-alt text-xs"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </template>
+                      
+                      <!-- Mode édition -->
+                      <template x-if="editingIndex === index">
+                        <div>
+                          <textarea 
+                            x-model="editingContent"
+                            x-init="$el.focus(); $el.select()"
+                            @keydown.escape.prevent="cancelEditing()"
+                            @keydown.enter.ctrl.prevent="saveEditing(index)"
+                            rows="3"
+                            class="w-full px-3 py-2 bg-white border border-sky-300 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 resize-none"
+                          ></textarea>
+                          <div class="flex items-center justify-between mt-2">
+                            <span class="text-xs text-slate-400"><kbd class="px-1 bg-slate-200 rounded">Ctrl</kbd> + <kbd class="px-1 bg-slate-200 rounded">Entrée</kbd> pour sauvegarder</span>
+                            <div class="flex items-center gap-2">
+                              <button 
+                                @click="cancelEditing()" 
+                                class="px-2 py-1 text-xs text-slate-600 hover:bg-slate-200 rounded transition-colors"
+                              >
+                                Annuler
+                              </button>
+                              <button 
+                                @click="saveEditing(index)" 
+                                :disabled="!editingContent.trim() || $parent.savingNote"
+                                class="px-2 py-1 text-xs bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded transition-colors"
+                              >
+                                <i class="fas fa-circle-notch fa-spin mr-1" x-show="$parent.savingNote"></i>
+                                <span x-text="$parent.savingNote ? 'Enregistrement...' : 'Enregistrer'"></span>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </template>
+                    </div>
+                  </template>
+                </div>
+              </template>
+            </div>
+            
+            <!-- Ajouter une note -->
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-2">Ajouter une note</p>
+              <textarea 
+                x-ref="newNoteInput"
+                x-model="$parent.noteContent"
+                @keydown.enter.ctrl.prevent="$parent.saveNote()"
+                rows="3"
+                placeholder="Écrivez votre note ici..."
+                class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 resize-none"
+              ></textarea>
+              <div class="flex items-center justify-between mt-2">
+                <span class="text-xs text-slate-400" x-show="$parent.noteContent.length > 0"><kbd class="px-1 bg-slate-200 rounded">Ctrl</kbd> + <kbd class="px-1 bg-slate-200 rounded">Entrée</kbd> pour envoyer</span>
+                <span x-show="$parent.noteContent.length === 0" class="text-xs text-slate-400">Votre note sera visible par tous les utilisateurs</span>
+                <button 
+                  @click="$parent.saveNote()" 
+                  :disabled="$parent.savingNote || !$parent.noteContent.trim()" 
+                  class="px-3 py-1.5 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white text-sm rounded-lg transition-colors flex items-center gap-1.5"
+                >
+                  <i class="fas fa-paper-plane" x-show="!$parent.savingNote"></i>
+                  <i class="fas fa-circle-notch fa-spin" x-show="$parent.savingNote"></i>
+                  <span x-text="$parent.savingNote ? 'Enregistrement...' : 'Ajouter'"></span>
+                </button>
+              </div>
+            </div>
+            
+            <!-- Actions rapides -->
+            <div class="pt-4 border-t border-slate-100">
+              <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-3">Actions rapides</p>
+              <div class="flex gap-2">
+                <button 
+                  x-show="selectedFacture?.statut !== 'suspendue'"
+                  @click="openSuspendModal(selectedFacture)"
+                  class="flex items-center gap-2 px-3 py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 rounded-lg text-sm font-medium"
+                >
+                  <i class="fas fa-pause"></i> Suspendre
+                </button>
+                <button 
+                  x-show="selectedFacture?.statut === 'suspendue'"
+                  @click="openUnsuspendModal(selectedFacture)"
+                  class="flex items-center gap-2 px-3 py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 rounded-lg text-sm font-medium"
+                >
+                  <i class="fas fa-play"></i> Réactiver
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+    
+    <!-- Suspend Modal -->
+    <template x-if="showSuspendModal">
+      <div class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+        <div class="absolute inset-0 bg-slate-500/75" @click="showSuspendModal = false"></div>
+        <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">
+            <i class="fas fa-pause-circle text-sky-500 mr-2"></i>Suspendre la facture
+          </h3>
+          <p class="text-sm text-slate-600 mb-4">La suspension empêchera la génération de nouvelles relances pour cette facture.</p>
+          
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1.5">Motif de suspension *</label>
+              <select x-model="suspendForm.motif" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                <option value="">Choisir un motif...</option>
+                <option value="litige">Litige en cours</option>
+                <option value="arrangement">Arrangement avec le client</option>
+                <option value="procedure">Procédure judiciaire</option>
+                <option value="cessation">Cessation d'activité</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1.5">Détail (optionnel)</label>
+              <textarea x-model="suspendForm.detail" rows="3" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm" placeholder="Précisez si nécessaire..."></textarea>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-end gap-2 mt-6">
+            <button @click="showSuspendModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+            <button @click="confirmSuspend()" :disabled="!suspendForm.motif || suspending" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+              <span x-text="suspending ? 'Suspension...' : 'Confirmer'"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+    
+    <!-- Unsuspend Modal -->
+    <template x-if="showUnsuspendModal">
+      <div class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+        <div class="absolute inset-0 bg-slate-500/75" @click="showUnsuspendModal = false"></div>
+        <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            <i class="fas fa-play-circle text-sky-500 mr-2"></i>Désuspendre la facture
+          </h3>
+          <p class="text-sm text-slate-600 mb-4">La facture sera à nouveau éligible aux relances automatiques. Confirmer ?</p>
+          
+          <div class="bg-slate-50 rounded-lg p-3 mb-4">
+            <p class="text-xs text-slate-500">Facture:</p>
+            <p class="font-medium" x-text="selectedFacture?.nfacture"></p>
+            <p class="text-xs text-slate-500 mt-1">Payeur:</p>
+            <p x-text="selectedFacture?.payeur_nom"></p>
+          </div>
+          
+          <div class="flex items-center justify-end gap-2">
+            <button @click="showUnsuspendModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+            <button @click="confirmUnsuspend()" :disabled="unsuspending" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+              <i class="fas fa-check mr-1" x-show="!unsuspending"></i>
+              <span x-text="unsuspending ? 'Réactivation...' : 'Confirmer'"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+    
+  </main>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+{% include 'impayes/alpinejs.html' %}
+{% endblock %}

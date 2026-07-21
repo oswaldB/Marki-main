@@ -1,0 +1,307 @@
+// Workflow: Gestion des notes (impaye + contact)
+// Gère la sauvegarde et suppression des deux types de notes
+
+/**
+ * Charge les notes du contact (payeur)
+ * @param {string} contactId - ID du contact
+ */
+loadContactNotes: async function(contactId) {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'loadContactNotes',
+        contactId
+    });
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        
+        log.debug('API_CALL_START', { 
+            workflowId, 
+            endpoint: `/api/contacts/${contactId}/notes`
+        });
+        
+        const response = await fetch(`/api/contacts/${contactId}/notes`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { workflowId, status: response.status });
+        
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            this.notesContact = data.notes || [];
+            log.debug('STATE_UPDATE', { 
+                workflowId, 
+                prop: 'notesContact',
+                count: this.notesContact.length
+            });
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    }
+},
+
+/**
+ * Charge les notes de l'impaye
+ * @param {string} impayeId - ID de l'impaye
+ */
+loadImpayeNotes: async function(impayeId) {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'loadImpayeNotes',
+        impayeId
+    });
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        
+        log.debug('API_CALL_START', { 
+            workflowId, 
+            endpoint: `/api/impayes/${impayeId}/notes`
+        });
+        
+        const response = await fetch(`/api/impayes/${impayeId}/notes`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { workflowId, status: response.status });
+        
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            this.notesImpaye = data.notes || [];
+            log.debug('STATE_UPDATE', { 
+                workflowId, 
+                prop: 'notesImpaye',
+                count: this.notesImpaye.length
+            });
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    }
+},
+
+/**
+ * Sauvegarde une note (impaye ou contact)
+ * @param {string} type - 'impaye' ou 'contact'
+ */
+saveNote: async function(type) {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'saveNote',
+        type,
+        impayeId: this.impaye?.id
+    });
+    
+    if (!this.impaye) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: 'No impaye loaded' });
+        return;
+    }
+    
+    const content = type === 'impaye' ? this.newNoteImpaye : this.newNoteContact;
+    
+    if (!content || !content.trim()) {
+        this.showToast('Erreur', 'La note ne peut pas être vide', 'error');
+        return;
+    }
+    
+    this.savingNote = true;
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        const user = JSON.parse(localStorage.getItem('marki_user') || '{}');
+        const username = user.username || 'Utilisateur';
+        
+        const endpoint = type === 'impaye'
+            ? `/api/impayes/${this.impaye.id}/notes`
+            : `/api/contacts/${this.impaye.payer_id}/notes`;
+        
+        log.debug('API_CALL_START', { 
+            workflowId, 
+            endpoint,
+            method: 'POST'
+        });
+        
+        const response = await fetch(endpoint, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ 
+                content: content.trim(),
+                author: username
+            })
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { workflowId, status: response.status });
+        
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+            throw new Error(data.error?.message || 'Erreur lors de l\'enregistrement');
+        }
+        
+        // Ajouter la nouvelle note au début du tableau
+        if (data.note) {
+            if (type === 'impaye') {
+                this.notesImpaye.unshift(data.note);
+                this.newNoteImpaye = '';
+            } else {
+                this.notesContact.unshift(data.note);
+                this.newNoteContact = '';
+            }
+        }
+        
+        log.debug('STATE_UPDATE', { 
+            workflowId, 
+            type,
+            impayeCount: this.notesImpaye.length,
+            contactCount: this.notesContact.length
+        });
+        
+        this.showToast('Succès', 'Note ajoutée', 'success');
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime
+        });
+        
+    } catch (error) {
+        this.showToast('Erreur', error.message, 'error');
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    } finally {
+        this.savingNote = false;
+    }
+},
+
+/**
+ * Supprime une note (impaye ou contact)
+ * @param {string} type - 'impaye' ou 'contact'
+ * @param {string} noteId - ID de la note
+ */
+deleteNote: async function(type, noteId) {
+    const workflowId = crypto.randomUUID();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'deleteNote',
+        type,
+        noteId
+    });
+    
+    if (!this.impaye) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: 'No impaye loaded' });
+        return;
+    }
+    
+    if (!confirm('Supprimer cette note ?')) {
+        return;
+    }
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        
+        const endpoint = type === 'impaye'
+            ? `/api/impayes/${this.impaye.id}/notes/${noteId}`
+            : `/api/contacts/${this.impaye.payer_id}/notes/${noteId}`;
+        
+        log.debug('API_CALL_START', { 
+            workflowId, 
+            endpoint,
+            method: 'DELETE'
+        });
+        
+        const response = await fetch(endpoint, {
+            method: 'DELETE',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { workflowId, status: response.status });
+        
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+            throw new Error(data.error?.message || 'Erreur lors de la suppression');
+        }
+        
+        // Supprimer de la liste locale
+        if (type === 'impaye') {
+            this.notesImpaye = this.notesImpaye.filter(n => n.id !== noteId);
+        } else {
+            this.notesContact = this.notesContact.filter(n => n.id !== noteId);
+        }
+        
+        log.debug('STATE_UPDATE', { 
+            workflowId, 
+            type,
+            noteId,
+            remaining: type === 'impaye' ? this.notesImpaye.length : this.notesContact.length
+        });
+        
+        this.showToast('Succès', 'Note supprimée', 'success');
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        this.showToast('Erreur', error.message, 'error');
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    }
+}

@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exemple Workflow PouchDB + CouchDB</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- PouchDB -->
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></script>
+  
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  
+  <!-- Workflow PouchDB Template -->
+  <script src="pouchdb-workflow-template.js"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  
+  <div x-data="impayesPouchDBManager()" x-init="init()" class="container mx-auto px-4 py-8">
+    
+    <!-- HEADER -->
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">Impayés (PouchDB Live)</h1>
+      <p class="text-gray-600">Synchronisation temps réel avec CouchDB</p>
+    </div>
+    
+    <!-- INDICATEUR DE SYNC (RÈGLE #9) -->
+    <div class="mb-6 flex items-center gap-3 p-4 bg-white rounded-lg shadow-sm border">
+      <div 
+        class="w-3 h-3 rounded-full transition-all duration-300"
+        :class="syncStatusClass"
+        :title="syncStatusLabel"
+      ></div>
+      <span class="text-sm font-medium" x-text="syncStatusLabel"></span>
+      <span class="text-gray-400">|</span>
+      <span class="text-sm text-gray-500">
+        <span x-show="lastSync" x-text="'Dernière sync: ' + lastSyncFormatted"></span>
+        <span x-show="!lastSync">Jamais synchronisé</span>
+      </span>
+      <span class="text-gray-400">|</span>
+      <span class="text-sm" :class="isOnline ? 'text-green-600' : 'text-red-600'">
+        <span x-text="isOnline ? '🟢 En ligne' : '🔴 Hors ligne'"></span>
+      </span>
+      <div class="flex-1"></div>
+      <button 
+        @click="forceSync()"
+        :disabled="!isOnline || syncStatus === 'syncing'"
+        class="px-3 py-1 text-sm bg-blue-100 hover:bg-blue-200 text-blue-700 rounded disabled:opacity-50 disabled:cursor-not-allowed transition"
+      >
+        <span x-show="syncStatus !== 'syncing'">🔄 Forcer sync</span>
+        <span x-show="syncStatus === 'syncing'">Synchronisation...</span>
+      </button>
+    </div>
+    
+    <!-- ALERTES -->
+    <div x-show="conflictCount > 0" class="mb-4 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+      <div class="flex items-start gap-3">
+        <span class="text-yellow-600 text-xl">⚠️</span>
+        <div>
+          <h3 class="font-semibold text-yellow-800">Conflits détectés</h3>
+          <p class="text-sm text-yellow-700" x-text="conflictCount + ' document(s) en conflit'"></p>
+          <button @click="showConflicts = true" class="mt-2 text-sm text-yellow-800 underline">Voir les conflits</button>
+        </div>
+      </div>
+    </div>
+    
+    <div x-show="error" class="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+      <p class="text-red-700" x-text="error"></p>
+    </div>
+    
+    <div x-show="successMessage" 
+          x-transition
+          class="mb-4 p-4 bg-green-50 border border-green-200 rounded-lg">
+      <p class="text-green-700" x-text="successMessage"></p>
+    </div>
+    
+    <!-- BARRE D'OUTILS -->
+    <div class="mb-6 flex flex-wrap items-center gap-3">
+      <!-- Recherche -->
+      <div class="flex-1 min-w-[200px]">
+        <input 
+          type="text"
+          x-model="searchQuery"
+          @input="applyFilters()"
+          placeholder="Rechercher..."
+          class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        >
+      </div>
+      
+      <!-- Filtre statut -->
+      <select 
+        x-model="filterStatus"
+        @change="applyFilters()"
+        class="px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+      >
+        <option value="all">Tous les statuts</option>
+        <option value="non_payee">Non payée</option>
+        <option value="payee">Payée</option>
+        <option value="en_retard">En retard</option>
+        <option value="suspendue">Suspendue</option>
+      </select>
+      
+      <!-- Bouton créer -->
+      <button 
+        @click="openCreateModal()"
+        class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition"
+      >
+        + Nouvel impayé
+      </button>
+    </div>
+    
+    <!-- TABLEAU DES DONNÉES -->
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      
+      <!-- Loading state -->
+      <div x-show="loading" class="p-8 text-center text-gray-500">
+        <div class="inline-block w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-2"></div>
+        <p>Chargement depuis PouchDB...</p>
+      </div>
+      
+      <!-- Empty state -->
+      <div x-show="!loading && filteredItems.length === 0" class="p-8 text-center text-gray-500">
+        <p class="text-lg mb-2">Aucun document trouvé</p>
+        <p class="text-sm">Les données sont synchronisées avec CouchDB</p>
+      </div>
+      
+      <!-- Table -->
+      <table x-show="!loading && filteredItems.length > 0" class="w-full">
+        <thead class="bg-gray-50 border-b">
+          <tr>
+            <th @click="setSort('client')" class="px-4 py-3 text-left text-sm font-medium text-gray-700 cursor-pointer hover:bg-gray-100">
+              Client
+              <span x-show="sortField === 'client'" x-text="sortDirection === 'asc' ? '↑' : '↓'"></span>
+            </th>
+            <th @click="setSort('montant')" class="px-4 py-3 text-right text-sm font-medium text-gray-700 cursor-pointer hover:bg-gray-100">
+              Montant
+              <span x-show="sortField === 'montant'" x-text="sortDirection === 'asc' ? '↑' : '↓'"></span>
+            </th>
+            <th @click="setSort('dateEcheance')" class="px-4 py-3 text-left text-sm font-medium text-gray-700 cursor-pointer hover:bg-gray-100">
+              Échéance
+              <span x-show="sortField === 'dateEcheance'" x-text="sortDirection === 'asc' ? '↑' : '↓'"></span>
+            </th>
+            <th class="px-4 py-3 text-center text-sm font-medium text-gray-700">Statut</th>
+            <th class="px-4 py-3 text-center text-sm font-medium text-gray-700">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y">
+          <template x-for="item in filteredItems" :key="item._id">
+            <tr class="hover:bg-gray-50 transition" :class="item.hasConflicts ? 'bg-yellow-50' : ''">
+              <td class="px-4 py-3">
+                <div class="flex items-center gap-2">
+                  <span x-text="item.client" class="font-medium"></span>
+                  <span x-show="item.hasConflicts" class="text-yellow-600" title="Conflit détecté">⚠️</span>
+                </div>
+                <span x-text="item._id" class="text-xs text-gray-400 font-mono"></span>
+              </td>
+              <td class="px-4 py-3 text-right font-mono" x-text="formatMontant(item.montant)"></td>
+              <td class="px-4 py-3 text-sm" x-text="formatDate(item.dateEcheance)"></td>
+              <td class="px-4 py-3 text-center">
+                <span :class="getStatusClass(item.status)" x-text="getStatusLabel(item.status)"></span>
+              </td>
+              <td class="px-4 py-3 text-center">
+                <div class="flex items-center justify-center gap-2">
+                  <button 
+                    @click="editItem(item)"
+                    class="px-2 py-1 text-sm text-blue-600 hover:bg-blue-50 rounded transition"
+                  >
+                    ✏️
+                  </button>
+                  <button 
+                    @click="deleteItem(item._id)"
+                    class="px-2 py-1 text-sm text-red-600 hover:bg-red-50 rounded transition"
+                  >
+                    🗑️
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+      
+      <!-- Footer stats -->
+      <div class="px-4 py-3 bg-gray-50 border-t text-sm text-gray-600 flex justify-between">
+        <span x-text="filteredCount + ' / ' + totalCount + ' documents'"></span>
+        <span x-show="pendingChanges > 0" x-text="pendingChanges + ' changements en attente'"></span>
+      </div>
+    </div>
+    
+    <!-- MODAL CRÉATION/ÉDITION -->
+    <div x-show="showModal" 
+          x-transition
+          class="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+          @keydown.escape.window="closeModal()">
+      <div class="bg-white rounded-lg shadow-xl max-w-md w-full p-6" @click.outside="closeModal()">
+        <h2 class="text-xl font-bold mb-4" x-text="isEditing ? 'Modifier' : 'Nouvel impayé'"></h2>
+        
+        <form @submit.prevent="saveItem()">
+          <!-- Client -->
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Client</label>
+            <input 
+              type="text"
+              x-model="formData.client"
+              required
+              class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+            >
+          </div>
+          
+          <!-- Montant -->
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Montant (€)</label>
+            <input 
+              type="number"
+              step="0.01"
+              x-model="formData.montant"
+              required
+              class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+            >
+          </div>
+          
+          <!-- Date d'échéance -->
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Date d'échéance</label>
+            <input 
+              type="date"
+              x-model="formData.dateEcheance"
+              required
+              class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
+            >
+          </div>
+          
+          <!-- Statut -->
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Statut</label>
+            <select x-model="formData.status" class="w-full px-3 py-2 border rounded-lg">
+              <option value="non_payee">Non payée</option>
+              <option value="payee">Payée</option>
+              <option value="en_retard">En retard</option>
+              <option value="suspendue">Suspendue</option>
+            </select>
+          </div>
+          
+          <!-- Info révision si édition -->
+          <div x-show="isEditing && currentItem" class="mb-4 p-3 bg-gray-50 rounded text-xs text-gray-500">
+            <div>ID: <span x-text="currentItem?._id" class="font-mono"></span></div>
+            <div>Rev: <span x-text="currentItem?._rev" class="font-mono"></span></div>
+          </div>
+          
+          <!-- Actions -->
+          <div class="flex gap-3">
+            <button 
+              type="button"
+              @click="closeModal()"
+              class="flex-1 px-4 py-2 border rounded-lg hover:bg-gray-50 transition"
+            >
+              Annuler
+            </button>
+            <button 
+              type="submit"
+              :disabled="isSaving"
+              class="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white rounded-lg transition"
+            >
+              <span x-show="!isSaving" x-text="isEditing ? 'Mettre à jour' : 'Créer'"></span>
+              <span x-show="isSaving">Sauvegarde...</span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- SCRIPT: Workflow spécifique basé sur le template -->
+  <script>
+    /**
+     * Workflow Impayés - Adaptation du template PouchDB
+     * ==================================================
+     * Exemple concret d'utilisation du template pouchdb-workflow-template.js
+     */
+    function impayesPouchDBManager() {
+      // Hériter du template de base
+      const base = pouchDBWorkflowManager();
+      
+      return {
+        ...base,
+        
+        // ========================================
+        // CONFIGURATION SPÉCIFIQUE
+        // ========================================
+        
+        // Écraser la config pour la collection impayes
+        init() {
+          // Modifier la config avant d'appeler le init parent
+          COUCHDB_CONFIG.dbName = 'marki_impayes';
+          
+          // Mettre à jour les design docs pour les impayés
+          this.designDocs = [
+            {
+              _id: '_design/impayes',
+              views: {
+                by_type: {
+                  map: function(doc) {
+                    if (doc.type === 'impaye') {
+                      emit(doc._id, doc);
+                    }
+                  }.toString()
+                },
+                by_status: {
+                  map: function(doc) {
+                    if (doc.type === 'impaye' && doc.status) {
+                      emit(doc.status, doc);
+                    }
+                  }.toString()
+                },
+                by_client: {
+                  map: function(doc) {
+                    if (doc.type === 'impaye' && doc.client) {
+                      emit(doc.client, doc);
+                    }
+                  }.toString()
+                },
+                by_date_echeance: {
+                  map: function(doc) {
+                    if (doc.type === 'impaye' && doc.dateEcheance) {
+                      emit(doc.dateEcheance, doc);
+                    }
+                  }.toString()
+                },
+                stats: {
+                  map: function(doc) {
+                    if (doc.type === 'impaye') {
+                      emit('total', 1);
+                      emit('montant_total', doc.montant || 0);
+                      if (doc.status) emit('status_' + doc.status, 1);
+                    }
+                  }.toString(),
+                  reduce: '_sum'
+                }
+              }
+            }
+          ];
+          
+          // Appeler le init parent
+          return base.init.call(this);
+        },
+        
+        // Données du formulaire
+        formData: {
+          client: '',
+          montant: '',
+          dateEcheance: '',
+          status: 'non_payee',
+          notes: ''
+        },
+        
+        showModal: false,
+        isEditing: false,
+        isSaving: false,
+        showConflicts: false,
+        
+        // ========================================
+        // MÉTHODES SPÉCIFIQUES
+        // ========================================
+        
+        /**
+         * Ouvrir le modal de création
+         */
+        openCreateModal() {
+          this.isEditing = false;
+          this.formData = {
+            client: '',
+            montant: '',
+            dateEcheance: new Date().toISOString().split('T')[0],
+            status: 'non_payee',
+            notes: ''
+          };
+          this.currentItem = null;
+          this.showModal = true;
+        },
+        
+        /**
+         * Éditer un item existant
+         */
+        editItem(item) {
+          this.isEditing = true;
+          this.currentItem = item;
+          this.formData = {
+            client: item.client || '',
+            montant: item.montant || '',
+            dateEcheance: item.dateEcheance ? item.dateEcheance.split('T')[0] : '',
+            status: item.status || 'non_payee',
+            notes: item.notes || ''
+          };
+          this.showModal = true;
+        },
+        
+        /**
+         * Sauvegarder (créer ou mettre à jour)
+         */
+        async saveItem() {
+          this.isSaving = true;
+          
+          const data = {
+            ...this.formData,
+            montant: parseFloat(this.formData.montant) || 0
+          };
+          
+          let result;
+          
+          if (this.isEditing && this.currentItem) {
+            // Mise à jour
+            result = await this.updateItem(this.currentItem._id, data);
+          } else {
+            // Création
+            result = await this.createItem({
+              type: 'impaye',
+              ...data
+            });
+          }
+          
+          if (result.success) {
+            this.closeModal();
+          } else {
+            this.error = result.error;
+          }
+          
+          this.isSaving = false;
+        },
+        
+        /**
+         * Fermer le modal
+         */
+        closeModal() {
+          this.showModal = false;
+          this.currentItem = null;
+          this.error = null;
+        },
+        
+        // ========================================
+        // UTILITAIRES D'AFFICHAGE
+        // ========================================
+        
+        formatMontant(montant) {
+          if (!montant) return '0,00 €';
+          return new Intl.NumberFormat('fr-FR', {
+            style: 'currency',
+            currency: 'EUR'
+          }).format(montant);
+        },
+        
+        formatDate(date) {
+          if (!date) return '-';
+          return new Date(date).toLocaleDateString('fr-FR');
+        },
+        
+        getStatusClass(status) {
+          const classes = {
+            non_payee: 'px-2 py-1 text-xs bg-orange-100 text-orange-700 rounded-full',
+            payee: 'px-2 py-1 text-xs bg-green-100 text-green-700 rounded-full',
+            en_retard: 'px-2 py-1 text-xs bg-red-100 text-red-700 rounded-full',
+            suspendue: 'px-2 py-1 text-xs bg-gray-100 text-gray-700 rounded-full'
+          };
+          return classes[status] || classes.non_payee;
+        },
+        
+        getStatusLabel(status) {
+          const labels = {
+            non_payee: 'Non payée',
+            payee: 'Payée',
+            en_retard: 'En retard',
+            suspendue: 'Suspendue'
+          };
+          return labels[status] || status;
+        }
+      };
+    }
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "marki-couchdb-migration",
+  "version": "1.0.0",
+  "description": "Migration SQLite vers CouchDB pour Marki",
+  "main": "migrations/migrate-sqlite-to-couchdb.js",
+  "scripts": {
+    "migrate": "node migrations/migrate-sqlite-to-couchdb.js --db=../marki.db",
+    "verify": "node migrations/verify-migration.js --db=../marki.db",
+    "check": "node -e \"const c=require('./utils/couch-client'); const cc=new c(require('./config').url, require('./config').dbName); cc.ping().then(console.log)\"",
+    "test": "npm run check && npm run verify"
+  },
+  "dependencies": {
+    "nano": "^10.1.4",
+    "sqlite3": "^5.1.7"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

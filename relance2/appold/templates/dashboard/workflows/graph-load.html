@@ -1,0 +1,243 @@
+/**
+ * Workflow: Graph Load
+ * Calcule les données du graphique d'évolution
+ * 
+ * @action Calculer données graphique
+ * @checkpoint chart-data-calculated
+ */
+
+async loadGraphData() {
+  await this.loadChartDataFromAPI();
+  // @checkpoint chart-ready
+  this.$nextTick(() => {
+    this.initChart();
+  });
+},
+
+async loadChartDataFromAPI() {
+  // @checkpoint auth-check
+  const token = localStorage.getItem('marki_token');
+  if (!token) return;
+  
+  const headers = { 'Authorization': `Bearer ${token}` };
+  
+  try {
+    // Calculer la date de début (12 mois avant)
+    const twelveMonthsAgo = new Date();
+    twelveMonthsAgo.setMonth(twelveMonthsAgo.getMonth() - 12);
+    const dateFrom = twelveMonthsAgo.toISOString().split('T')[0];
+    
+    // @action Récupérer toutes les factures échues pour le graphique
+    // @checkpoint chart-data-fetch
+    const res = await fetch(`/api/impayes/chart-data?date_from=${dateFrom}`, { headers });
+    if (!res.ok) throw new Error('Erreur chargement données graphique');
+    
+    const data = await res.json();
+    this.calculateChartDataFromAPI(data.factures || []);
+    
+  } catch (err) {
+    console.error('[CHART] Error:', err);
+    // Fallback sur les impayés en mémoire
+    this.calculateChartData();
+  }
+},
+
+calculateChartDataFromAPI(factures) {
+  const now = new Date();
+  const twelveMonthsAgo = new Date();
+  twelveMonthsAgo.setMonth(twelveMonthsAgo.getMonth() - 12);
+  
+  // Générer les labels des 12 derniers mois
+  const monthNames = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'];
+  const labels = ['Avant'];
+  for (let i = 11; i >= 0; i--) {
+    const d = new Date();
+    d.setMonth(d.getMonth() - i);
+    labels.push(monthNames[d.getMonth()]);
+  }
+  this.chartData.labels = labels;
+  
+  // Initialiser les données
+  this.chartData.montantsPayes = new Array(13).fill(0);
+  this.chartData.restesAPayer = new Array(13).fill(0);
+  this.chartData.facturesImpayees = new Array(13).fill(0);
+  
+  // Calculer les données
+  factures.forEach(i => {
+    if (!i.date_echeance) return;
+    
+    const date = new Date(i.date_echeance);
+    const reste = i.reste_a_payer || 0;
+    const paye = i.montant_paye || 0;
+    
+    // Déterminer l'index
+    let idx;
+    if (date < twelveMonthsAgo) {
+      // Avant les 12 derniers mois - uniquement reste à payer
+      idx = 0;
+      this.chartData.restesAPayer[idx] += reste;
+    } else {
+      // Dans les 12 derniers mois - empiler payé + reste
+      const monthDiff = (now.getFullYear() - date.getFullYear()) * 12 + (now.getMonth() - date.getMonth());
+      idx = 12 - monthDiff;
+      if (idx < 1) idx = 1;
+      if (idx > 12) idx = 12;
+      
+      this.chartData.montantsPayes[idx] += paye;
+      this.chartData.restesAPayer[idx] += reste;
+    }
+    
+    // Compter les factures impayées (reste > 0)
+    if (reste > 0) {
+      this.chartData.facturesImpayees[idx]++;
+    }
+  });
+},
+
+calculateChartData() {
+  const now = new Date();
+  const twelveMonthsAgo = new Date();
+  twelveMonthsAgo.setMonth(twelveMonthsAgo.getMonth() - 12);
+  
+  // Helper: est-ce échu ?
+  const isEchu = (dateStr) => {
+    if (!dateStr) return false;
+    return new Date(dateStr) < now;
+  };
+  
+  // Filtrer uniquement les factures échues
+  const facturesEchues = this.impayes.filter(i => isEchu(i.date_echeance));
+  
+  // Initialiser les données
+  // Index 0 = "Avant", 1-12 = les 12 derniers mois
+  this.chartData.montantsPayes = new Array(13).fill(0);
+  this.chartData.restesAPayer = new Array(13).fill(0);
+  this.chartData.facturesImpayees = new Array(13).fill(0);
+  
+  // Générer les labels des 12 derniers mois
+  const monthNames = ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'];
+  const labels = ['Avant'];
+  for (let i = 11; i >= 0; i--) {
+    const d = new Date();
+    d.setMonth(d.getMonth() - i);
+    labels.push(monthNames[d.getMonth()]);
+  }
+  this.chartData.labels = labels;
+  
+  // Calculer les données
+  facturesEchues.forEach(i => {
+    if (!i.date_echeance) return;
+    
+    const date = new Date(i.date_echeance);
+    // Utiliser montant_ttc (nom réel dans la DB) au lieu de montant_total
+    const montantTotal = i.montant_ttc || i.montant_total || 0;
+    const reste = i.reste_a_payer || 0;
+    // Montant payé = total - reste (minimum 0, pas négatif)
+    const paye = Math.max(0, montantTotal - reste);
+    
+    // Déterminer l'index
+    let idx;
+    if (date < twelveMonthsAgo) {
+      // Avant les 12 derniers mois
+      idx = 0;
+    } else {
+      // Dans les 12 derniers mois
+      // Calculer le nombre de mois entre la date et maintenant
+      const monthDiff = (now.getFullYear() - date.getFullYear()) * 12 + (now.getMonth() - date.getMonth());
+      // idx = 12 - monthDiff (car index 1 = il y a 12 mois, index 12 = ce mois)
+      idx = 12 - monthDiff;
+      if (idx < 1) idx = 1;
+      if (idx > 12) idx = 12;
+    }
+    
+    this.chartData.montantsPayes[idx] += paye;
+    this.chartData.restesAPayer[idx] += reste;
+    this.chartData.facturesImpayees[idx]++;
+  });
+},
+
+initChart() {
+  const ctx = document.getElementById('evolutionChart');
+  if (!ctx || this.chart) return;
+  
+  this.chart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: this.chartData.labels,
+      datasets: [
+        {
+          label: 'Reste à payer',
+          data: this.chartData.restesAPayer,
+          backgroundColor: '#7dd3fc',
+          borderRadius: 4,
+          yAxisID: 'y',
+          order: 2,
+        },
+        {
+          label: 'Montant payé',
+          data: this.chartData.montantsPayes,
+          backgroundColor: '#0ea5e9',
+          borderRadius: 4,
+          yAxisID: 'y',
+          order: 2,
+        },
+        {
+          type: 'line',
+          label: 'Nb factures impayées',
+          data: this.chartData.facturesImpayees,
+          borderColor: '#0369a1',
+          backgroundColor: '#0369a1',
+          pointBackgroundColor: '#0369a1',
+          pointRadius: 4,
+          borderWidth: 2,
+          tension: 0.3,
+          yAxisID: 'y1',
+          order: 1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom',
+          labels: { usePointStyle: true, padding: 15 }
+        },
+        tooltip: {
+          callbacks: {
+            label(ctx) {
+              if (ctx.dataset.yAxisID === 'y1') {
+                return ` ${ctx.parsed.y} facture${ctx.parsed.y > 1 ? 's' : ''} impayée${ctx.parsed.y > 1 ? 's' : ''}`;
+              }
+              const val = ctx.parsed.y;
+              if (val >= 1000) return ` ${ctx.dataset.label} : ${(val / 1000).toFixed(1)} k€`;
+              return ` ${ctx.dataset.label} : ${val.toLocaleString('fr-FR')} €`;
+            }
+          }
+        }
+      },
+      scales: {
+        y: {
+          stacked: true,
+          position: 'left',
+          ticks: {
+            callback: (val) => val >= 1000 ? (val / 1000).toFixed(0) + ' k€' : val + ' €'
+          },
+          grid: { color: '#f3f4f6' }
+        },
+        y1: {
+          position: 'right',
+          beginAtZero: true,
+          ticks: { stepSize: 1, callback: (val) => val + ' fa.' },
+          grid: { drawOnChartArea: false }
+        },
+        x: {
+          stacked: true,
+          grid: { display: false }
+        }
+      }
+    }
+  });
+}

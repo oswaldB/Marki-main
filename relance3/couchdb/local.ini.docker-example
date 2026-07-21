@@ -1,0 +1,53 @@
+; CouchDB Configuration for Marki
+; Place in /opt/couchdb/etc/local.d/local.ini
+
+[couchdb]
+; Taille max des documents (10MB)
+max_document_size = 10000000
+; Taille max des pièces jointes (50MB)
+max_attachment_size = 50000000
+; Mode production
+delayed_commits = false
+
+[httpd]
+; Port d'écoute
+port = 5984
+bind_address = 0.0.0.0
+; CORS pour le frontend
+enable_cors = true
+
+[cors]
+origins = *
+credentials = true
+methods = GET, PUT, POST, HEAD, DELETE, OPTIONS
+headers = accept, authorization, content-type, origin, referer, x-requested-with
+
+[log]
+; Logging
+level = info
+file = /var/log/couchdb/couch.log
+
+[chttpd]
+; Authentification requise par défaut
+require_valid_user = false
+authentication_handlers = {couch_httpd_oauth, oauth_authentication_handler}, {couch_httpd_auth, default_authentication_handler}, {couch_httpd_auth, cookie_authentication_handler}
+
+[couch_httpd_auth]
+; Session cookie
+authentication_db = _users
+cookie_domain = auto
+secret = marki-secret-key
+
+[replicator]
+; Réplication
+interval = 60000
+http_connections = 20
+worker_processes = 4
+
+[compaction]
+; Compression auto
+_default = [{db_fragmentation, "70%"}, {view_fragmentation, "60%"}]
+
+[query_server_config]
+; Limite réduction
+reduce_limit = true

@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body x-data="dashboardPage()" x-init="init()">
+
+<!-- Sidebar -->
+<sidebar-nav-dual page="dashboard"></sidebar-nav-dual>
+
+<!-- Main Content -->
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  
+  <!-- Header -->
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <h1 class="text-base font-semibold text-slate-700">Dashboard</h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500">Vue d'ensemble de l'activité</span>
+    </div>
+    
+    <div class="flex items-center gap-4">
+      <!-- Dernière synchro -->
+      <div class="text-right" x-show="lastSyncTime">
+        <p class="text-xs text-slate-400">Dernière synchro</p>
+        <p class="text-sm font-medium text-slate-600" x-text="lastSyncTime"></p>
+      </div>
+      <script>
+        // Workflow: Récupérer la dernière synchro depuis events
+        // Récupère l'événement de type 'sync' le plus récent pour afficher l'heure
+        // Query: SELECT created_at FROM events WHERE type = 'sync' ORDER BY created_at DESC LIMIT 1
+      </script>
+      
+      <button 
+        @click="syncData()"
+        :disabled="syncing"
+        class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all disabled:opacity-50"
+      >
+        <i x-show="!syncing" class="fas fa-sync-alt"></i>
+        <i x-show="syncing" class="fas fa-circle-notch fa-spin"></i>
+        <span x-text="syncing ? 'Synchronisation...' : 'Synchroniser'"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="p-6">
+    
+    <!-- Loading State -->
+    <template x-if="loading">
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-6">
+        <template x-for="i in 10" :key="i">
+          <div class="bg-white rounded-xl border border-slate-200 p-4 animate-pulse">
+            <div class="flex items-start gap-3">
+              <div class="w-10 h-10 bg-slate-200 rounded-lg"></div>
+              <div class="flex-1">
+                <div class="h-3 bg-slate-200 rounded w-2/3 mb-2"></div>
+                <div class="h-6 bg-slate-200 rounded w-1/2"></div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+    
+    <!-- Error State -->
+    <template x-if="error">
+      <div class="bg-sky-50 border border-sky-100 rounded-xl p-4 mb-6">
+        <div class="flex items-start gap-3">
+          <i class="fas fa-exclamation-circle text-sky-500 mt-0.5"></i>
+          <div>
+            <p class="text-sm font-medium text-sky-800">Erreur de chargement</p>
+            <p class="text-sm text-sky-600 mt-1" x-text="error"></p>
+            <button @click="loadData()" class="mt-2 text-sm text-sky-700 hover:text-sky-800 underline">Réessayer</button>
+          </div>
+        </div>
+      </div>
+    </template>
+    
+    <!-- Content -->
+    <template x-if="!loading && !error">
+      <div class="space-y-6">
+        
+        <!-- KPI Row 1 -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          
+          <!-- KPI: Factures en attente -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-start gap-3 p-4">
+              <div class="p-2 rounded-lg bg-sky-50">
+                <i class="fas fa-file-invoice text-sky-500 text-lg"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1">
+                  <p class="text-xs text-slate-500 font-medium truncate">Factures en attente</p>
+                  <i class="fas fa-info-circle text-slate-400 text-xs hover:text-sky-500 cursor-pointer transition-colors" title="Factures avec reste à payer > 0"></i>
+                </div>
+                <script>
+                  // Workflow: Calculer le nombre de factures avec reste à payer > 0
+                  // Query: SELECT COUNT(*) FROM factures WHERE reste_a_payer > 0
+                </script>
+                <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.facturesEnAttente"></p>
+                <p class="text-xs text-slate-400 mt-1">reste à payer > 0</p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- KPI: Impayés actifs -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-start gap-3 p-4">
+              <div class="p-2 rounded-lg bg-sky-100">
+                <i class="fas fa-exclamation-triangle text-sky-600 text-lg"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1">
+                  <p class="text-xs text-slate-500 font-medium truncate">Impayés actifs</p>
+                  <i class="fas fa-info-circle text-slate-400 text-xs hover:text-sky-500 cursor-pointer transition-colors" title="Factures dont la date d'échéance est dépassée"></i>
+                </div>
+                <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.impayesActifs"></p>
+                <p class="text-xs text-slate-400 mt-1">factures échues</p>
+                <script>
+                  // Workflow: Calculer le nombre de factures échues (date d'échéance dépassée)
+                  // Query: SELECT COUNT(*) FROM factures WHERE date_echeance < NOW() AND reste_a_payer > 0
+                </script>
+              </div>
+            </div>
+          </div>
+          
+          <!-- KPI: Montant total -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-start gap-3 p-4">
+              <div class="p-2 rounded-lg bg-sky-200">
+                <i class="fas fa-euro-sign text-sky-700 text-lg"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1">
+                  <p class="text-xs text-slate-500 font-medium truncate">Montant total</p>
+                  <i class="fas fa-info-circle text-slate-400 text-xs hover:text-sky-500 cursor-pointer transition-colors" title="Montant HT total des factures"></i>
+                </div>
+                <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="formatMoney(kpis.montantTotal)"></p>
+                <p class="text-xs text-slate-400 mt-1">HT · DSO: 42 jours</p>
+                <script>
+                  // Workflow: Calculer le montant HT total des factures
+                  // Query: SELECT SUM(montant_ht) FROM factures WHERE reste_a_payer > 0
+                </script>
+              </div>
+            </div>
+          </div>
+          
+          <!-- KPI: Relances du jour -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-start gap-3 p-4">
+              <div class="p-2 rounded-lg bg-sky-50">
+                <i class="fas fa-envelope text-sky-500 text-lg"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1">
+                  <p class="text-xs text-slate-500 font-medium truncate">Relances du jour</p>
+                  <i class="fas fa-info-circle text-slate-400 text-xs hover:text-sky-500 cursor-pointer transition-colors" title="Relances envoyées aujourd'hui"></i>
+                </div>
+                <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.relancesJour"></p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- KPI: Taux recouvrement -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-start gap-3 p-4">
+              <div class="p-2 rounded-lg bg-sky-300">
+                <i class="fas fa-chart-pie text-sky-800 text-lg"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-1">
+                  <p class="text-xs text-slate-500 font-medium truncate">Taux recouvrement</p>
+                  <i class="fas fa-info-circle text-slate-400 text-xs hover:text-sky-500 cursor-pointer transition-colors" title="Taux de recouvrement sur 90 jours glissants"></i>
+                </div>
+                <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.tauxRecouvrement + '%'"></p>
+                <p class="text-xs text-sky-600 mt-1 font-medium">+5% vs période précédente</p>
+                <script>
+                  // Workflow: Calculer le taux de recouvrement par période de 90 jours
+                  // Taux = (Montant payé dans les 90j / Montant total échu dans les 90j) * 100
+                  // Query: 
+                  // WITH periode_actuelle AS (
+                  //   SELECT SUM(montant_paye) as paye, SUM(montant_total) as total 
+                  //   FROM factures 
+                  //   WHERE date_echeance BETWEEN NOW() - INTERVAL '90 days' AND NOW()
+                  // )
+                  // SELECT (paye / NULLIF(total, 0)) * 100 as taux FROM periode_actuelle
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- KPI Row 2: Ancienneté (5 cases exactement comme la référence) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          
+          <!-- Ancienneté < 7j -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-start gap-3 p-4">
+              <div class="p-2 rounded-lg bg-sky-50">
+                <i class="fas fa-clock text-sky-400 text-lg"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs text-slate-500 font-medium">Moins de 7 jours</p>
+                <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.anciennete.moins7j"></p>
+                <p class="text-xs text-slate-400 mt-1" x-text="formatMoney(kpis.anciennete.moins7jMontant)"></p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Ancienneté 8-30j -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-start gap-3 p-4">
+              <div class="p-2 rounded-lg bg-sky-100">
+                <i class="fas fa-clock text-sky-500 text-lg"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs text-slate-500 font-medium">8 à 30 jours</p>
+                <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.anciennete.j8a30"></p>
+                <p class="text-xs text-slate-400 mt-1" x-text="formatMoney(kpis.anciennete.j8a30Montant)"></p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Ancienneté 31-60j -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-start gap-3 p-4">
+              <div class="p-2 rounded-lg bg-sky-200">
+                <i class="fas fa-clock text-sky-600 text-lg"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs text-slate-500 font-medium">31 à 60 jours</p>
+                <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.anciennete.j31a60"></p>
+                <p class="text-xs text-slate-400 mt-1" x-text="formatMoney(kpis.anciennete.j31a60Montant)"></p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Ancienneté 60-120j -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-start gap-3 p-4">
+              <div class="p-2 rounded-lg bg-sky-300">
+                <i class="fas fa-clock text-sky-700 text-lg"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs text-slate-500 font-medium">60 à 120 jours</p>
+                <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.anciennete.j60a120"></p>
+                <p class="text-xs text-slate-400 mt-1" x-text="formatMoney(kpis.anciennete.j60a120Montant)"></p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Ancienneté > 120j -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="flex items-start gap-3 p-4">
+              <div class="p-2 rounded-lg bg-sky-400">
+                <i class="fas fa-exclamation-triangle text-sky-900 text-lg"></i>
+              </div>
+              <div class="flex-1 min-w-0">
+                <p class="text-xs text-slate-500 font-medium">Plus de 120 jours</p>
+                <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.anciennete.plus120j"></p>
+                <p class="text-xs text-slate-400 mt-1" x-text="formatMoney(kpis.anciennete.plus120jMontant)"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Smart Marki Section - En haut, état tiroir fermé par défaut -->
+        <div class="bg-gradient-to-r from-sky-500 to-sky-600 rounded-xl shadow-sm overflow-hidden" x-data="{ open: false }">
+          <div @click="open = !open" class="px-6 py-4 border-b border-white/10 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors">
+            <div class="flex items-center gap-3">
+              <span class="px-3 py-1.5 bg-white/20 text-white text-xs font-medium rounded-full backdrop-blur-sm">
+                <i class="fas fa-tools mr-1"></i>
+                En cours de développement
+              </span>
+              <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center overflow-hidden">
+                <img src="./marki-logo.png" alt="Marki" class="w-8 h-8 object-contain">
+              </div>
+              <div>
+                <h3 class="font-semibold text-white">Smart Marki</h3>
+                <p class="text-sm text-sky-100">Conseils et recommandations personnalisés</p>
+              </div>
+            </div>
+            <i class="fas fa-chevron-down text-white transition-transform" :class="open ? 'rotate-180' : ''"></i>
+          </div>
+          <div x-show="open" x-collapse class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Conseil 1 -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+              <div class="flex items-start gap-3">
+                <div class="p-2 rounded-lg bg-sky-400/20">
+                  <i class="fas fa-lightbulb text-sky-300"></i>
+                </div>
+                <div>
+                  <p class="font-medium text-white text-sm">Optimisez vos relances</p>
+                  <p class="text-sm text-sky-100 mt-1">
+                    Vos relances R2 ont un taux de réponse de 45%. Envisagez d'ajouter une étape SMS entre R1 et R2.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Conseil 2 -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+              <div class="flex items-start gap-3">
+                <div class="p-2 rounded-lg bg-sky-400/20">
+                  <i class="fas fa-exclamation-triangle text-sky-300"></i>
+                </div>
+                <div>
+                  <p class="font-medium text-white text-sm">Attention aux délais</p>
+                  <p class="text-sm text-sky-100 mt-1">
+                    3 clients dépassent les 120 jours d'ancienneté. Privilégiez un contact téléphonique direct.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Conseil 3 -->
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/10">
+              <div class="flex items-start gap-3">
+                <div class="p-2 rounded-lg bg-sky-400/20">
+                  <i class="fas fa-trophy text-sky-300"></i>
+                </div>
+                <div>
+                  <p class="font-medium text-white text-sm">Votre progression</p>
+                  <p class="text-sm text-sky-100 mt-1">
+                    Vous avez récupéré +12% de créances ce mois-ci par rapport au mois dernier. Continuez ainsi !
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div x-show="open" x-collapse class="px-6 py-3 bg-white/5 border-t border-white/10">
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-sky-200">
+                <i class="fas fa-sync-alt mr-1"></i>
+                Mise à jour il y a 2 heures
+              </span>
+              <a href="./smart-marki.html" class="text-white hover:text-sky-100 font-medium">
+                Voir tous les insights <i class="fas fa-arrow-right ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Events / Activité récente -->
+        <script>
+          // Workflow: Gestion des événements avec localStorage
+          // 
+          // 1. Format des événements (avec jointure users):
+          // {
+          //   id: 1,
+          //   type: 'sync'|'payment'|'relance'|'alert'|'import'|'relance_cleaned'|'contact_blacklisted'|'payment_suspended',
+          //   icon: 'fa-xxx',
+          //   title: '...',
+          //   description: '...',
+          //   time: '...',
+          //   created_at: '2024-01-15T10:30:00Z',
+          //   user_id: 123,           // NULL si by_marki = true
+          //   user_username: 'john',  // Jointure avec users table
+          //   by_marki: false         // true = afficher logo Marki
+          // }
+          //
+          // 2. Icônes par type d'action:
+          // - sync: fa-sync-alt
+          // - payment: fa-check-circle
+          // - relance: fa-paper-plane
+          // - alert: fa-exclamation-circle
+          // - import: fa-file-import
+          // - relance_cleaned: fa-broom (relances nettoyées)
+          // - contact_blacklisted: fa-ban
+          // - payment_suspended: fa-pause-circle
+          //
+          // 3. Calcul du format des dates:
+          // - Si < 1 minute: "À l'instant"
+          // - Si < 1 heure: "Il y a X minutes"
+          // - Si < 24h et même jour: "Il y a X heures"
+          // - Si hier: "Hier à HH:MM"
+          // - Si < 7 jours: "Il y a X jours"
+          // - Sinon: "Le 15/01/2024 à 10:30"
+          //
+          // 4. Fonctionnement "Marquer comme lu":
+          // - Au chargement: récupérer events depuis API + localStorage
+          // - localStorage key: 'marki_read_events'
+          // - Format: { eventId: { read: true, readAt: '2024-01-15T10:30:00Z' } }
+          // - Afficher uniquement les events non marqués comme lus
+          // - Au clic "Marquer comme lu": ajouter tous les events visibles à localStorage
+          // - Rafraîchir la liste (filtrer ceux présents dans localStorage)
+        </script>
+        
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="relative">
+                <i class="fas fa-history text-slate-400"></i>
+                <!-- Badge non lus -->
+                <span 
+                  x-show="hasUnreadEvents" 
+                  x-cloak
+                  x-text="unreadCount"
+                  class="absolute -top-2 -right-2 h-4 min-w-[16px] px-1 flex items-center justify-center bg-red-500 text-white text-[10px] font-bold rounded-full"
+                ></span>
+              </div>
+              <h3 class="font-semibold text-slate-900">Événements récents</h3>
+            </div>
+            <button 
+              @click="markAllAsRead()" 
+              :disabled="!hasUnreadEvents"
+              :class="hasUnreadEvents ? 'text-sky-600 hover:text-sky-700' : 'text-slate-400 cursor-not-allowed'"
+              class="text-xs font-medium transition-colors"
+            >
+              Marquer comme lu
+            </button>
+          </div>
+          <div class="divide-y divide-slate-100 max-h-64 overflow-y-auto">
+            <template x-for="event in events" :key="event.id">
+              <div 
+                class="px-6 py-3 flex items-start gap-3 hover:bg-slate-50/50 transition-colors group relative"
+                x-data="{ hovered: false }"
+                @mouseenter="hovered = true"
+                @mouseleave="hovered = false"
+              >
+                <div class="mt-0.5 relative">
+                  <div class="w-8 h-8 rounded-full flex items-center justify-center"
+                       :class="{
+                         'bg-sky-100 text-sky-600': event.type === 'sync',
+                         'bg-sky-200 text-sky-700': event.type === 'import',
+                         'bg-sky-300 text-sky-800': event.type === 'payment',
+                         'bg-sky-400 text-sky-900': event.type === 'relance',
+                         'bg-sky-500 text-white': event.type === 'alert',
+                         'bg-emerald-100 text-emerald-600': event.type === 'relance_cleaned',
+                         'bg-red-100 text-red-600': event.type === 'contact_blacklisted',
+                         'bg-amber-100 text-amber-600': event.type === 'payment_suspended'
+                       }">
+                    <i class="fas text-xs" :class="event.icon"></i>
+                  </div>
+                  <!-- Pastille non-lu -->
+                  <span 
+                    x-show="!isEventRead(event.id)"
+                    class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-sky-500 rounded-full border-2 border-white"
+                  ></span>
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center gap-2">
+                    <p class="text-sm font-medium text-slate-900" x-text="event.title"></p>
+                    <!-- Badge non-lu texte -->
+                    <span 
+                      x-show="!isEventRead(event.id)"
+                      class="px-1.5 py-0.5 bg-sky-100 text-sky-700 text-[10px] font-medium rounded-full"
+                    >
+                      Non lu
+                    </span>
+                  </div>
+                  <p class="text-sm text-slate-500" x-text="event.description"></p>
+                  <div class="flex items-center gap-2 mt-1">
+                    <p class="text-xs text-slate-400" x-text="event.time"></p>
+                    <span class="text-slate-300">·</span>
+                    <div class="flex items-center gap-1">
+                      <template x-if="event.by_marki">
+                        <div class="flex items-center gap-1">
+                          <img src="./marki-logo.png" alt="Marki" class="w-4 h-4 object-contain">
+                          <span class="text-xs text-sky-600 font-medium">Marki</span>
+                        </div>
+                      </template>
+                      <template x-if="!event.by_marki && event.user_username">
+                        <span class="text-xs text-slate-500" x-text="'@' + event.user_username"></span>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+                <!-- Bouton marquer comme lu (visible au hover) -->
+                <button
+                  x-show="hovered"
+                  x-transition:enter="transition ease-out duration-150"
+                  x-transition:enter-start="opacity-0 scale-90"
+                  x-transition:enter-end="opacity-100 scale-100"
+                  x-transition:leave="transition ease-in duration-100"
+                  x-transition:leave-start="opacity-100 scale-100"
+                  x-transition:leave-end="opacity-0 scale-90"
+                  @click="markEventAsRead(event.id)"
+                  class="ml-2 p-1.5 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-md transition-colors"
+                  title="Marquer comme lu"
+                >
+                  <i class="fas fa-check text-xs"></i>
+                </button>
+              </div>
+            </template>
+            <div x-show="events.length === 0" class="px-6 py-8 text-center text-slate-400 text-sm">
+              Aucun événement récent
+            </div>
+          </div>
+        </div>
+        
+        <!-- Graphique Section avec Chart.js -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="px-6 py-4 border-b border-slate-100">
+            <h3 class="font-semibold text-slate-900">Évolution des impayés</h3>
+            <p class="text-sm text-slate-500">Montant facturé vs reste à payer sur 12 mois glissants</p>
+            <script>
+              // Workflow: Données sur 12 mois glissants
+              // Période: NOW() - INTERVAL '12 months' à NOW()
+              // Grouper par mois et année pour l'affichage
+            </script>
+          </div>
+          <div class="p-6 h-80">
+            <canvas id="evolutionChart"></canvas>
+          </div>
+        </div>
+        
+        <!-- Top Débiteurs avec toggle vue -->
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden" x-data="{ viewMode: 'list' }">
+          <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+            <h3 class="font-semibold text-slate-900">Top débiteurs</h3>
+            <div class="flex items-center gap-3">
+              <!-- Toggle view -->
+              <div class="flex items-center bg-slate-100 rounded-lg p-1">
+                <button 
+                  @click="viewMode = 'list'"
+                  :class="viewMode === 'list' ? 'bg-white shadow-sm text-slate-700' : 'text-slate-500 hover:text-slate-700'"
+                  class="px-3 py-1.5 text-xs font-medium rounded-md transition-all flex items-center gap-1.5"
+                >
+                  <i class="fas fa-list"></i>
+                  Liste
+                </button>
+                <button 
+                  @click="viewMode = 'card'"
+                  :class="viewMode === 'card' ? 'bg-white shadow-sm text-slate-700' : 'text-slate-500 hover:text-slate-700'"
+                  class="px-3 py-1.5 text-xs font-medium rounded-md transition-all flex items-center gap-1.5"
+                >
+                  <i class="fas fa-th-large"></i>
+                  Cartes
+                </button>
+              </div>
+              <a href="./impayes.html" class="text-sm text-sky-600 hover:text-sky-700 font-medium flex items-center gap-1">
+                Voir tout
+                <i class="fas fa-arrow-right text-xs"></i>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Vue Liste -->
+          <template x-if="viewMode === 'list'">
+            <div class="divide-y divide-slate-100">
+              <template x-for="debtor in topDebtors" :key="debtor.id">
+                <div class="px-6 py-4 flex items-center justify-between hover:bg-slate-50/50 transition-colors">
+                  <div class="flex items-center gap-4">
+                    <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-sm"
+                         x-text="debtor.initials">
+                    </div>
+                    <div>
+                      <p class="font-medium text-slate-900" x-text="debtor.name"></p>
+                      <p class="text-sm text-slate-500">
+                        <span x-text="debtor.impayesCount"></span> impayé(s) · 
+                        <span x-text="debtor.jours"></span> jours de retard
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex items-center gap-6">
+                    <span class="font-semibold text-slate-900" x-text="formatMoney(debtor.montant)"></span>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </template>
+          
+          <!-- Vue Cartes -->
+          <template x-if="viewMode === 'card'">
+            <div class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <template x-for="debtor in topDebtors" :key="debtor.id">
+                <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 hover:border-sky-300 transition-colors">
+                  <div class="flex items-start justify-between mb-3">
+                    <div class="flex items-center gap-3">
+                      <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-sm"
+                           x-text="debtor.initials">
+                      </div>
+                      <div>
+                        <p class="font-medium text-slate-900 text-sm" x-text="debtor.name"></p>
+                        <p class="text-xs text-slate-500" x-text="debtor.jours + ' jours de retard'"></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="space-y-2">
+                    <div class="flex justify-between text-sm">
+                      <span class="text-slate-500">Montant dû:</span>
+                      <span class="font-semibold text-slate-900" x-text="formatMoney(debtor.montant)"></span>
+                    </div>
+                    <div class="flex justify-between text-sm">
+                      <span class="text-slate-500">Nombre d'impayés:</span>
+                      <span class="font-medium text-slate-900" x-text="debtor.impayesCount"></span>
+                    </div>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </template>
+        </div>
+        
+      </div>
+    </template>
+    
+  </main>
+</div>
+
+<script>
+function dashboardPage() {
+  return {
+    loading: false,
+    error: null,
+    syncing: false,
+    lastSyncTime: 'Aujourd\'hui à 09:45',
+    chart: null,
+    
+    kpis: {
+      facturesEnAttente: 45,
+      impayesActifs: 28,
+      montantTotal: 128500,
+      relancesJour: 18,
+      tauxRecouvrement: 68,
+      anciennete: {
+        moins7j: 12,
+        moins7jMontant: 15400,
+        j8a30: 15,
+        j8a30Montant: 28300,
+        j31a60: 10,
+        j31a60Montant: 42100,
+        j60a120: 8,
+        j60a120Montant: 22700,
+        plus120j: 5,
+        plus120jMontant: 20100
+      }
+    },
+    
+    newInvoices: [
+      { id: 1, nfacture: 'F-2024-0156', montant: 3500, date: '2024-01-15' },
+      { id: 2, nfacture: 'F-2024-0157', montant: 2800, date: '2024-01-15' },
+      { id: 3, nfacture: 'F-2024-0158', montant: 4200, date: '2024-01-14' }
+    ],
+    
+    events: [
+      { 
+        id: 1, 
+        type: 'sync', 
+        icon: 'fa-sync-alt',
+        title: 'Synchronisation effectuée', 
+        description: '3 nouvelles factures importées depuis ADTI',
+        time: 'Il y a 2 heures',
+        created_at: '2024-01-15T10:30:00Z',
+        user_id: 123,
+        user_username: 'admin',
+        by_marki: false
+      },
+      { 
+        id: 2, 
+        type: 'payment', 
+        icon: 'fa-check-circle',
+        title: 'Paiement reçu', 
+        description: 'ACME Corp a réglé la facture F-2024-0123 (€4,230)',
+        time: 'Il y a 3 heures',
+        created_at: '2024-01-15T09:30:00Z',
+        user_id: null,
+        user_username: null,
+        by_marki: true
+      },
+      { 
+        id: 3, 
+        type: 'relance', 
+        icon: 'fa-paper-plane',
+        title: 'Relance R2 envoyée', 
+        description: 'Relance niveau 2 envoyée à TechStart SARL pour la facture F-2024-0089',
+        time: 'Hier à 18:30',
+        created_at: '2024-01-14T18:30:00Z',
+        user_id: null,
+        user_username: null,
+        by_marki: true
+      },
+      { 
+        id: 4, 
+        type: 'relance', 
+        icon: 'fa-paper-plane',
+        title: 'Relance R1 envoyée', 
+        description: 'Relance niveau 1 envoyée à BuildPlus SA pour la facture F-2024-0102',
+        time: 'Hier à 18:15',
+        created_at: '2024-01-14T18:15:00Z',
+        user_id: null,
+        user_username: null,
+        by_marki: true
+      },
+      { 
+        id: 5, 
+        type: 'alert', 
+        icon: 'fa-exclamation-circle',
+        title: 'Nouveau contact sans email', 
+        description: 'Le contact "Dupont SAS" n\'a pas d\'adresse email configurée',
+        time: 'Hier à 14:15',
+        created_at: '2024-01-14T14:15:00Z',
+        user_id: 456,
+        user_username: 'marie',
+        by_marki: false
+      },
+      { 
+        id: 6, 
+        type: 'relance_cleaned', 
+        icon: 'fa-broom',
+        title: 'Relance archivée', 
+        description: 'La relance R3 pour Digital Agency a été archivée (paiement reçu)',
+        time: 'Il y a 2 jours',
+        created_at: '2024-01-13T10:00:00Z',
+        user_id: 123,
+        user_username: 'admin',
+        by_marki: false
+      },
+      { 
+        id: 7, 
+        type: 'contact_blacklisted', 
+        icon: 'fa-ban',
+        title: 'Contact blacklisté', 
+        description: 'Le contact "Spam Corp" a été ajouté à la liste noire',
+        time: 'Il y a 3 jours',
+        created_at: '2024-01-12T15:30:00Z',
+        user_id: 789,
+        user_username: 'pierre',
+        by_marki: false
+      },
+      { 
+        id: 8, 
+        type: 'payment_suspended', 
+        icon: 'fa-pause-circle',
+        title: 'Paiement suspendu', 
+        description: 'Le paiement de la facture F-2024-0100 pour Consulting Pro est en attente de validation',
+        time: 'Il y a 4 jours',
+        created_at: '2024-01-11T09:15:00Z',
+        user_id: null,
+        user_username: null,
+        by_marki: true
+      }
+    ],
+    
+    // Nombre d'événements non lus (pour le badge)
+    get unreadCount() {
+      const readEvents = JSON.parse(localStorage.getItem('marki_read_events') || '{}');
+      return this.events.filter(event => !readEvents[event.id]).length;
+    },
+    
+    // Boolean pour afficher le badge
+    get hasUnreadEvents() {
+      return this.unreadCount > 0;
+    },
+    
+    topDebtors: [
+      { id: 1, name: 'ACME Corp', initials: 'AC', jours: 87, montant: 45230, relance: 'R3', impayesCount: 3 },
+      { id: 2, name: 'TechStart SARL', initials: 'TS', jours: 52, montant: 28150, relance: 'R2', impayesCount: 2 },
+      { id: 3, name: 'BuildPlus SA', initials: 'BP', jours: 34, montant: 18900, relance: 'R1', impayesCount: 1 },
+      { id: 4, name: 'Digital Agency', initials: 'DA', jours: 28, montant: 12500, relance: 'R1', impayesCount: 1 },
+      { id: 5, name: 'Consulting Pro', initials: 'CP', jours: 45, montant: 9800, relance: 'R2', impayesCount: 2 }
+    ],
+    
+    // Données pour le graphique
+    chartData: {
+      labels: ['Avant', 'Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'],
+      montantsPayes: [45000, 52000, 48000, 61000, 55000, 58000, 62000, 59000, 65000, 70000, 68000, 72000, 75000],
+      restesAPayer: [28000, 32000, 35000, 42000, 38000, 41000, 39000, 43000, 47000, 52000, 48000, 51000, 49000],
+      facturesImpayees: [12, 15, 18, 22, 19, 21, 20, 23, 25, 28, 26, 27, 24]
+    },
+    
+    init() {
+      this.loadData().then(() => {
+        this.$nextTick(() => {
+          this.initChart();
+        });
+      });
+    },
+    
+    initChart() {
+      const ctx = document.getElementById('evolutionChart');
+      if (!ctx) return;
+      
+      this.chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: this.chartData.labels,
+          datasets: [
+            {
+              label: 'Reste à payer',
+              data: this.chartData.restesAPayer,
+              backgroundColor: '#7dd3fc',
+              borderRadius: 4,
+              yAxisID: 'y',
+              order: 2,
+            },
+            {
+              label: 'Montant payé',
+              data: this.chartData.montantsPayes,
+              backgroundColor: '#0ea5e9',
+              borderRadius: 4,
+              yAxisID: 'y',
+              order: 2,
+            },
+            {
+              type: 'line',
+              label: 'Nb factures impayées',
+              data: this.chartData.facturesImpayees,
+              borderColor: '#0369a1',
+              backgroundColor: '#0369a1',
+              pointBackgroundColor: '#0369a1',
+              pointRadius: 4,
+              borderWidth: 2,
+              tension: 0.3,
+              yAxisID: 'y1',
+              order: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'bottom',
+              labels: {
+                usePointStyle: true,
+                padding: 15,
+              }
+            },
+            tooltip: {
+              callbacks: {
+                label(ctx) {
+                  if (ctx.dataset.yAxisID === 'y1') {
+                    return ` ${ctx.parsed.y} facture${ctx.parsed.y > 1 ? 's' : ''} impayée${ctx.parsed.y > 1 ? 's' : ''}`;
+                  }
+                  const val = ctx.parsed.y;
+                  if (val >= 1000) return ` ${ctx.dataset.label} : ${(val / 1000).toFixed(1)} k€`;
+                  return ` ${ctx.dataset.label} : ${val.toLocaleString('fr-FR')} €`;
+                }
+              }
+            }
+          },
+          scales: {
+            y: {
+              stacked: true,
+              position: 'left',
+              ticks: {
+                callback: (val) => {
+                  if (val >= 1000) return (val / 1000).toFixed(0) + ' k€';
+                  return val + ' €';
+                },
+              },
+              grid: { color: '#f3f4f6' },
+            },
+            y1: {
+              position: 'right',
+              beginAtZero: true,
+              ticks: {
+                stepSize: 1,
+                callback: (val) => val + ' fa.',
+              },
+              grid: { drawOnChartArea: false },
+            },
+            x: {
+              stacked: true,
+              grid: { display: false }
+            },
+          },
+        }
+      });
+    },
+    
+    async loadData() {
+      this.loading = true;
+      this.error = null;
+      
+      try {
+        await new Promise(r => setTimeout(r, 800));
+      } catch (err) {
+        this.error = err.message || 'Erreur lors du chargement des données';
+      } finally {
+        this.loading = false;
+      }
+      
+      // Réinitialiser le graphique après le chargement
+      this.$nextTick(() => {
+        if (!this.chart) {
+          this.initChart();
+        }
+      });
+    },
+    
+    async syncData() {
+      this.syncing = true;
+      try {
+        await new Promise(r => setTimeout(r, 1500));
+        this.lastSyncTime = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+        await this.loadData();
+      } catch (err) {
+        this.error = err.message;
+      } finally {
+        this.syncing = false;
+      }
+    },
+    
+    markAllAsRead() {
+      // Workflow: Marquer tous les événements comme lus
+      // Récupérer les events déjà lus depuis localStorage
+      const readEvents = JSON.parse(localStorage.getItem('marki_read_events') || '{}');
+      
+      // Ajouter tous les events actuels comme lus
+      const now = new Date().toISOString();
+      this.events.forEach(event => {
+        readEvents[event.id] = { read: true, readAt: now };
+      });
+      
+      // Sauvegarder dans localStorage
+      localStorage.setItem('marki_read_events', JSON.stringify(readEvents));
+      
+      // Forcer la mise à jour de la liste pour mettre à jour les pastilles
+      this.events = [...this.events];
+    },
+    
+    markEventAsRead(eventId) {
+      // Workflow: Marquer un seul événement comme lu
+      // Récupérer les events déjà lus depuis localStorage
+      const readEvents = JSON.parse(localStorage.getItem('marki_read_events') || '{}');
+      
+      // Ajouter l'event spécifique comme lu
+      readEvents[eventId] = { 
+        read: true, 
+        readAt: new Date().toISOString() 
+      };
+      
+      // Sauvegarder dans localStorage
+      localStorage.setItem('marki_read_events', JSON.stringify(readEvents));
+      
+      // Forcer la mise à jour de la liste
+      this.events = [...this.events];
+    },
+    
+    isEventRead(eventId) {
+      // Workflow: Vérifier si un événement est marqué comme lu
+      const readEvents = JSON.parse(localStorage.getItem('marki_read_events') || '{}');
+      return !!readEvents[eventId];
+    },
+    
+    formatMoney(amount) {
+      return new Intl.NumberFormat('fr-FR', {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      }).format(amount);
+    }
+  }
+}
+</script>
+
+</body>
+</html>

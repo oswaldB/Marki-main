@@ -1,0 +1,15 @@
+<!-- Workflow: Trier par payeur -->
+
+async sortByPayeur() {
+  if (this.sortColumn === 'payeur_nom') {
+    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+  } else {
+    this.sortColumn = 'payeur_nom';
+    this.sortDirection = 'asc';
+  }
+  
+  this.currentPage = 1;
+  await this.loadData();
+  
+  log.info('sort-by-payeur', { direction: this.sortDirection });
+}

@@ -1,0 +1,47 @@
+<!-- Modale Confirmation Blacklist -->
+<div x-show="showBlacklistModal" x-cloak class="fixed inset-0 z-[300] overflow-y-auto" x-transition.opacity>
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="absolute inset-0 bg-slate-900/60" @click="cancelBlacklist()"></div>
+    
+    <div class="relative bg-white rounded-xl shadow-2xl max-w-md w-full" x-transition.scale>
+      <!-- Header -->
+      <div class="px-6 py-4 border-b border-slate-200 bg-red-50">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-red-500 flex items-center justify-center text-white">
+            <i class="fas fa-ban"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-slate-900">Confirmer le blacklistage</h3>
+          </div>
+        </div>
+      </div>
+      
+      <div class="p-6">
+        <!-- Warning Message -->
+        <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+          <div class="flex items-start gap-3">
+            <i class="fas fa-exclamation-triangle text-red-500 mt-0.5"></i>
+            <div>
+              <p class="text-sm text-slate-700">
+                Êtes-vous sûr de vouloir blacklister <strong x-text="contactToBlacklist?.nomComplet"></strong> ?
+              </p>
+              <p class="text-xs text-slate-500 mt-2">
+                Ce contact sera exclu des relances automatiques et ne pourra plus recevoir d'emails.
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Actions -->
+        <div class="flex justify-end gap-3">
+          <button @click="cancelBlacklist()" class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium transition-colors">
+            Annuler
+          </button>
+          <button @click="confirmBlacklist()" class="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg text-sm font-medium transition-all">
+            <i class="fas fa-ban mr-1.5"></i>Confirmer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

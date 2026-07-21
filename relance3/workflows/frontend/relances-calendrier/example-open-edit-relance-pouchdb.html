@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Édition Relance - PouchDB + CouchDB</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  
+  <!-- PouchDB -->
+  <script src="https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></script>
+  
+  <!-- Le workflow PouchDB -->
+  <script src="open-edit-relance-pouchdb.js"></script>
+</head>
+<body class="bg-gray-100">
+  
+  <!-- ==========================================
+       EXEMPLE D'INTEGRATION: Édition Relance
+       ========================================== -->
+  <div x-data="openEditRelanceWorkflow()" x-init="init()" class="p-6">
+    
+    <!-- En-tête avec indicateur de sync -->
+    <div class="mb-6 flex items-center justify-between">
+      <h1 class="text-2xl font-bold text-gray-800">Calendrier des Relances</h1>
+      
+      <!-- Indicateur de synchronisation (RÈGLE #9) -->
+      <div 
+        :class="syncStatusClass"
+        class="flex items-center gap-2 px-3 py-1 rounded-full text-white text-sm font-medium transition-all">
+        <span x-text="syncStatusIcon"></span>
+        <span x-text="syncStatusLabel"></span>
+        <span x-show="lastSync" class="text-xs opacity-75" x-text="lastSyncFormatted"></span>
+      </div>
+    </div>
+    
+    <!-- Alerte hors ligne -->
+    <div 
+      x-show="!isOnline" 
+      x-transition
+      class="mb-4 p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 rounded">
+      <p class="font-medium">⚠️ Mode hors ligne</p>
+      <p class="text-sm">Les modifications seront synchronisées dès que la connexion sera rétablie.</p>
+    </div>
+    
+    <!-- Alerte conflits -->
+    <div 
+      x-show="conflicts.length > 0" 
+      x-transition
+      class="mb-4 p-4 bg-orange-100 border-l-4 border-orange-500 text-orange-700 rounded">
+      <p class="font-medium">⚠️ Conflits détectés</p>
+      <p class="text-sm" x-text="conflicts.length + ' document(s) en conflit'">Certains documents ont des versions en conflit.</p>
+    </div>
+    
+    <!-- Messages d'erreur/succès -->
+    <div x-show="error" x-transition class="mb-4 p-4 bg-red-100 border-l-4 border-red-500 text-red-700 rounded" x-text="error"></div>
+    <div x-show="successMessage" x-transition class="mb-4 p-4 bg-green-100 border-l-4 border-green-500 text-green-700 rounded" x-text="successMessage"></div>
+    
+    <!-- ==========================================
+         LISTE DES RELANCES (Exemple)
+         ========================================== -->
+    <div class="bg-white rounded-lg shadow-sm p-6">
+      <h2 class="text-lg font-semibold mb-4">Relances du jour</h2>
+      
+      <!-- Exemple de liste de relances -->
+      <div class="space-y-2">
+        <template x-for="rel in relancesProgrammees || []" :key="rel.id || rel._id">
+          <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+            <div>
+              <p class="font-medium" x-text="rel.contactNom || 'Contact'">Jean Dupont</p>
+              <p class="text-sm text-gray-500" x-text="rel.dateProgrammee">2024-01-15</p>
+            </div>
+            
+            <!-- Bouton d'édition -->
+            <button 
+              @click="openEditRelance(rel)"
+              :disabled="loading"
+              class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+              </svg>
+              Éditer
+            </button>
+          </div>
+        </template>
+        
+        <!-- Exemple statique si pas de données -->
+        <div x-show="!(relancesProgrammees && relancesProgrammees.length)" class="text-center py-8 text-gray-500">
+          <p>Aucune relance programmée</p>
+          <p class="text-sm">Les relances chargées depuis PouchDB apparaîtront ici</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ==========================================
+         MODAL D'EDITION (RÈGLE #8)
+         ========================================== -->
+    <div 
+      x-show="showModal" 
+      x-transition:enter="transition ease-out duration-300"
+      x-transition:enter-start="opacity-0"
+      x-transition:enter-end="opacity-100"
+      x-transition:leave="transition ease-in duration-200"
+      x-transition:leave-start="opacity-100"
+      x-transition:leave-end="opacity-0"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm"
+      style="display: none;">
+      
+      <div 
+        x-show="showModal"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 scale-95"
+        x-transition:enter-end="opacity-100 scale-100"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100 scale-100"
+        x-transition:leave-end="opacity-0 scale-95"
+        @click.away="cancelEdit()"
+        class="bg-white rounded-xl shadow-2xl w-full max-w-lg mx-4 overflow-hidden"
+        style="display: none;">
+        
+        <!-- Header du modal -->
+        <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-gray-50">
+          <h3 class="text-lg font-semibold text-gray-800">Éditer la relance</h3>
+          
+          <!-- Badge de statut -->
+          <span 
+            :class="{
+              'bg-yellow-100 text-yellow-800': formData.statut === 'brouillon',
+              'bg-blue-100 text-blue-800': formData.statut === 'programmee',
+              'bg-green-100 text-green-800': formData.statut === 'envoyee'
+            }"
+            class="px-2 py-1 text-xs font-medium rounded-full capitalize"
+            x-text="formData.statut">
+          </span>
+        </div>
+        
+        <!-- Contenu du modal -->
+        <div class="p-6 space-y-4">
+          
+          <!-- Loading state -->
+          <div x-show="loading" class="text-center py-8">
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+            <p class="mt-2 text-gray-500">Chargement...</p>
+          </div>
+          
+          <!-- Formulaire -->
+          <form x-show="!loading && relance" @submit.prevent="saveRelance()" class="space-y-4">
+            
+            <!-- Date programmée -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Date programmée</label>
+              <input 
+                type="date" 
+                x-model="formData.dateProgrammee"
+                required
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+            </div>
+            
+            <!-- Contenu -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Contenu</label>
+              <textarea 
+                x-model="formData.contenu"
+                rows="4"
+                placeholder="Contenu de la relance..."
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition resize-none">
+              </textarea>
+            </div>
+            
+            <!-- Statut -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Statut</label>
+              <select 
+                x-model="formData.statut"
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition">
+                <option value="brouillon">Brouillon</option>
+                <option value="programmee">Programmée</option>
+                <option value="envoyee">Envoyée</option>
+                <option value="annulee">Annulée</option>
+              </select>
+            </div>
+            
+            <!-- Info CouchDB (pour debug) -->
+            <div x-show="relance" class="p-3 bg-gray-50 rounded text-xs text-gray-500 font-mono space-y-1">
+              <p><strong>_id:</strong> <span x-text="relance?._id || 'N/A'"></span></p>
+              <p><strong>_rev:</strong> <span x-text="relance?._rev?.substring(0, 8) + '...' || 'N/A'"></span></p>
+              <p><strong>Modifié:</strong> <span x-text="relance?.updatedAt ? new Date(relance.updatedAt).toLocaleString('fr-FR') : 'Jamais'"></span></p>
+            </div>
+            
+            <!-- Actions -->
+            <div class="flex gap-3 pt-4 border-t border-gray-200">
+              <button 
+                type="button"
+                @click="cancelEdit()"
+                class="flex-1 px-4 py-2 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition">
+                Annuler
+              </button>
+              
+              <button 
+                type="submit"
+                :disabled="!canSave || loading"
+                :class="{ 'opacity-50 cursor-not-allowed': !canSave || loading }"
+                class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition flex items-center justify-center gap-2">
+                <span x-show="loading" class="animate-spin h-4 w-4 border-2 border-white border-t-transparent rounded-full"></span>
+                <span x-text="loading ? 'Sauvegarde...' : 'Sauvegarder'"></span>
+              </button>
+            </div>
+          </form>
+          
+        </div>
+        
+        <!-- Footer avec info sync -->
+        <div class="px-6 py-3 bg-gray-50 border-t border-gray-200 text-xs text-gray-500 flex justify-between items-center">
+          <span>
+            <span x-show="isOnline" class="text-green-600">● En ligne</span>
+            <span x-show="!isOnline" class="text-gray-400">● Hors ligne</span>
+          </span>
+          <span x-show="isDirty" class="text-orange-600">Modifications non sauvegardées</span>
+        </div>
+        
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- ==========================================
+       DONNEES DE TEST (Simulation)
+       ========================================== -->
+  <script>
+    // Données de test pour démonstration
+    document.addEventListener('alpine:init', () => {
+      // Ajouter des données de test si besoin
+      Alpine.store('testData', {
+        relances: [
+          { 
+            _id: 'relance_001', 
+            type: 'relance',
+            contactNom: 'Jean Dupont',
+            dateProgrammee: '2024-01-15',
+            contenu: 'Relance concernant la facture #12345',
+            statut: 'programmee',
+            updatedAt: new Date().toISOString()
+          },
+          { 
+            _id: 'relance_002', 
+            type: 'relance',
+            contactNom: 'Marie Martin',
+            dateProgrammee: '2024-01-16',
+            contenu: 'Relance concernant la facture #12346',
+            statut: 'brouillon',
+            updatedAt: new Date().toISOString()
+          }
+        ]
+      });
+    });
+  </script>
+  
+</body>
+</html>

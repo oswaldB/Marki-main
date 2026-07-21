@@ -1,0 +1,63 @@
+<!-- Workflow: Sync Data -->
+
+syncing: false,
+syncProgress: 0,
+
+async syncData() {
+  if (this.syncing) return;
+  
+  this.syncing = true;
+  this.syncProgress = 0;
+  this.error = null;
+  
+  const token = localStorage.getItem('marki_token');
+  const headers = { 
+    'Authorization': `Bearer ${token}`,
+    'Content-Type': 'application/json'
+  };
+  
+  try {
+    // Appel à l'orchestrateur de sync (qui chaine les workflows backend)
+    const response = await fetch('/api/workflows/sync-orchestrator', {
+      method: 'POST',
+      headers: headers
+    });
+    
+    if (!response.ok) {
+      throw new Error('Erreur lors de la synchronisation');
+    }
+    
+    const data = await response.json();
+    
+    // Progression simulée
+    this.syncProgress = 25;
+    await new Promise(r => setTimeout(r, 200));
+    this.syncProgress = 50;
+    await new Promise(r => setTimeout(r, 200));
+    this.syncProgress = 75;
+    await new Promise(r => setTimeout(r, 200));
+    this.syncProgress = 100;
+    
+    // Mettre à jour l'heure de dernière synchro
+    this.lastSyncTime = new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+    
+    // Recharger les données
+    await this.loadData();
+    
+    // Ajouter un event local
+    this.events.unshift({
+      id: Date.now(),
+      type: 'sync',
+      icon: 'fa-sync-alt',
+      title: 'Synchronisation effectuée',
+      description: `${data.imported_count || 0} factures importées`,
+      time: 'À l\'instant'
+    });
+    
+  } catch (err) {
+    this.error = err.message;
+  } finally {
+    this.syncing = false;
+    setTimeout(() => this.syncProgress = 0, 500);
+  }
+}

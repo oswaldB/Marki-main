@@ -1,0 +1,80 @@
+// Workflow: Réactivation d'une facture suspendue
+// Réactive les relances
+
+unsuspendImpaye: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'unsuspendImpaye',
+        impayeId: this.impaye?.id
+    });
+    
+    if (!this.impaye) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: 'No impaye loaded' });
+        return;
+    }
+    
+    this.unsuspending = true;
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        
+        log.debug('API_CALL_START', { 
+            workflowId, 
+            endpoint: `/api/impayes/${this.impaye.id}/unsuspend`,
+            method: 'POST'
+        });
+        
+        const response = await fetch(`/api/impayes/${this.impaye.id}/unsuspend`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { workflowId, status: response.status });
+        
+        // Gestion token expiré
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+            throw new Error(data.error?.message || 'Erreur lors de la réactivation');
+        }
+        
+        // Update local state
+        this.impaye.statut = 'impaye';
+        this.impaye.is_blacklisted = false;
+        this.impaye.blacklist_motif = null;
+        this.impaye.blacklist_date = null;
+        
+        log.debug('STATE_UPDATE', { 
+            workflowId, 
+            props: ['statut', 'is_blacklisted']
+        });
+        
+        this.showUnsuspendConfirm = false;
+        this.showToast('Succès', 'Facture réactivée', 'success');
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime
+        });
+        
+    } catch (error) {
+        this.showToast('Erreur', error.message, 'error');
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    } finally {
+        this.unsuspending = false;
+    }
+}

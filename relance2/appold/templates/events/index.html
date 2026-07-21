@@ -1,0 +1,242 @@
+{% extends 'layouts/layout_app.html' %}
+
+{% block page_title %}Événements{% endblock %}
+{% block active_page %}evenements{% endblock %}
+
+{% block content %}
+<div x-data="evenements" x-init="init()" x-cloak>
+
+  <!-- Header -->
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <h1 class="text-base font-semibold text-slate-700">Événements</h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500">Historique des activités</span>
+    </div>
+    
+    <div class="flex items-center gap-3">
+      <button 
+        @click="clearCache()"
+        class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-500 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all"
+        title="Vider le cache et recharger"
+      >
+        <i class="fas fa-sync-alt"></i>
+      </button>
+      
+      <button 
+        @click="markAllAsRead()"
+        :disabled="unreadCount === 0"
+        class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+        title="Tout marquer comme lu"
+      >
+        <i class="fas fa-check-double"></i>
+        <span class="hidden sm:inline">Tout marquer comme lu</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="p-6">
+    
+    <!-- Filtres -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 mb-6">
+      <div class="flex flex-wrap items-center gap-4">
+        <div class="relative flex-1 min-w-[240px] max-w-md">
+          <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            x-model="searchQuery"
+            placeholder="Rechercher un événement..."
+            class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+          >
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <button 
+            @click="filterType = 'all'"
+            :class="filterType === 'all' ? 'bg-sky-500 text-white border-sky-500' : 'bg-white text-slate-600 hover:bg-slate-100 border-slate-200'"
+            class="px-3 py-1.5 rounded-lg text-sm font-medium transition-all border"
+          >
+            Tous
+          </button>
+          <button 
+            @click="filterType = 'unread'"
+            :class="filterType === 'unread' ? 'bg-sky-500 text-white border-sky-500' : 'bg-white text-slate-600 hover:bg-slate-100 border-slate-200'"
+            class="px-3 py-1.5 rounded-lg text-sm font-medium transition-all border flex items-center gap-1"
+          >
+            <i class="fas fa-envelope"></i>
+            Non lus <span x-show="unreadCount > 0" class="ml-1 px-1.5 py-0.5 bg-slate-100 text-slate-600 text-xs rounded-full" x-text="unreadCount"></span>
+          </button>
+        </div>
+        
+        <div class="flex-1"></div>
+        
+        <select x-model="filterCategory" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+          <option value="">Toutes les catégories</option>
+          <option value="sync">Synchronisation</option>
+          <option value="payment">Paiement</option>
+          <option value="relance">Relance</option>
+          <option value="alert">Alerte</option>
+          <option value="import">Import</option>
+        </select>
+      </div>
+    </div>
+    
+    <!-- Loading State -->
+    <template x-if="loading">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <div class="divide-y divide-slate-100">
+          <template x-for="i in 5" :key="i">
+            <div class="px-6 py-5 animate-pulse">
+              <div class="flex items-start gap-4">
+                <div class="w-12 h-12 bg-slate-200 rounded-full"></div>
+                <div class="flex-1 space-y-3">
+                  <div class="flex items-center gap-2">
+                    <div class="h-4 bg-slate-200 rounded w-1/3"></div>
+                    <div class="h-4 bg-slate-200 rounded w-16"></div>
+                  </div>
+                  <div class="h-3 bg-slate-200 rounded w-3/4"></div>
+                  <div class="flex gap-4">
+                    <div class="h-3 bg-slate-200 rounded w-24"></div>
+                    <div class="h-3 bg-slate-200 rounded w-32"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </template>
+
+    <!-- Error State -->
+    <template x-if="error && !loading">
+      <div class="bg-sky-50 border border-sky-100 rounded-xl p-4">
+        <div class="flex items-start gap-3">
+          <i class="fas fa-exclamation-circle text-sky-500 mt-0.5"></i>
+          <div>
+            <p class="text-sm font-medium text-sky-800">Erreur de chargement</p>
+            <p class="text-sm text-sky-600 mt-1" x-text="error"></p>
+            <button @click="loadEvents()" class="mt-2 text-sm text-sky-700 hover:text-sky-800 underline">Réessayer</button>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- Empty State -->
+    <template x-if="!loading && !error && filteredEvents.length === 0">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm py-16">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-inbox text-slate-400 text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-medium text-slate-900 mb-1">Aucun événement</h3>
+          <p class="text-sm text-slate-500" x-text="filterType === 'unread' ? 'Aucun événement non lu' : 'Aucun événement trouvé'"></p>
+        </div>
+      </div>
+    </template>
+    
+    <!-- Liste des événements -->
+    <template x-if="!loading && !error && filteredEvents.length > 0">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+        <div class="divide-y divide-slate-100">
+          <template x-for="event in filteredEvents" :key="event.id">
+            <div 
+              class="px-6 py-5 transition-colors"
+              :class="{ 'bg-sky-50/30 border-l-4 border-sky-500': !event.read, 'hover:bg-slate-50/50': event.read }"
+            >
+              <div class="flex items-start gap-4">
+                <!-- Icon avec bordure si non lu -->
+                <div class="mt-0.5 relative">
+                  <div 
+                    class="w-12 h-12 rounded-full flex items-center justify-center text-lg"
+                    :class="getEventIconClass(event.type)"
+                  >
+                    <i class="fas" :class="event.icon || 'fa-bell'"></i>
+                  </div>
+                  <div x-show="!event.read" class="absolute -top-1 -right-1 w-3.5 h-3.5 bg-sky-500 rounded-full border-2 border-white"></div>
+                </div>
+                
+                <!-- Content -->
+                <div class="flex-1 min-w-0">
+                  <!-- Header ligne: Titre + Badge Nouveau + Catégorie + Actions -->
+                  <div class="flex items-start justify-between gap-3">
+                    <div class="flex-1 min-w-0">
+                      <div class="flex items-center gap-2 flex-wrap">
+                        <p class="font-semibold text-slate-900" x-text="event.titre || event.title"></p>
+                        <span 
+                          x-show="!event.read" 
+                          class="px-2 py-0.5 bg-sky-100 text-sky-700 text-xs font-medium rounded-full"
+                        >
+                          Nouveau
+                        </span>
+                        <span 
+                          class="px-2 py-0.5 rounded-full text-xs font-medium"
+                          :class="getCategoryClass(event.type)"
+                          x-text="getCategoryLabel(event.type)"
+                        ></span>
+                      </div>
+                      
+                      <p class="text-sm text-slate-600 mt-1" x-text="event.description"></p>
+                      
+                      <!-- Objet concerné avec lien -->
+                      <div x-show="event.entity_name && event.entity_name !== 'null' && event.entity_name !== 'undefined'" class="mt-2 flex items-center gap-2">
+                        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-slate-100 text-slate-700 text-xs rounded-lg font-medium">
+                          <i class="fas fa-link text-slate-400"></i>
+                          <span x-text="(event.entity_type || 'Objet') + ': '"></span>
+                          <span x-text="event.entity_name" class="text-sky-700 font-semibold"></span>
+                        </span>
+                      </div>
+                      
+                      <!-- Ligne d'infos détaillées -->
+                      <div class="flex flex-wrap items-center gap-4 mt-2.5 text-xs text-slate-500">
+                        <!-- Date complète -->
+                        <span class="flex items-center gap-1.5">
+                          <i class="far fa-clock"></i>
+                          <span x-text="formatDateTime(event.created_at)"></span>
+                          <span class="text-slate-400" x-text="'(' + formatTimeAgo(event.created_at) + ')'"></span>
+                        </span>
+                        
+                        <!-- Qui a fait l'action -->
+                        <span x-show="event.by_marki" class="flex items-center gap-1.5 px-2 py-1 bg-sky-100 text-sky-700 rounded-full font-semibold border border-sky-200">
+                          <img src="/static/marki-logo.png" alt="Marki" class="w-3 h-3 object-contain">
+                          par Marki
+                        </span>
+                        
+                        <span x-show="!event.by_marki && event.user_name" class="flex items-center gap-1.5 px-2 py-1 bg-slate-100 text-slate-700 rounded-full font-semibold border border-slate-200">
+                          <i class="far fa-user-circle"></i>
+                          <span x-text="'par ' + event.user_name"></span>
+                        </span>
+                        
+                        <!-- Metadata additionnels si présents -->
+                        <span x-show="event.metadata && event.metadata.montant != null" class="flex items-center gap-1">
+                          <i class="fas fa-euro-sign text-slate-400"></i>
+                          <span x-text="formatMoney(event.metadata.montant)"></span>
+                        </span>
+                      </div>
+                    </div>
+                    
+                    <!-- Actions -->
+                    <div class="flex items-center gap-1 flex-shrink-0">
+                      <button 
+                        @click="toggleRead(event)"
+                        class="p-2 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all"
+                        :title="event.read ? 'Marquer comme non lu' : 'Marquer comme lu'"
+                      >
+                        <i class="fas" :class="event.read ? 'fa-envelope-open' : 'fa-envelope'"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </template>
+    
+  </main>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+{% include 'events/alpinejs.html' %}
+{% endblock %}

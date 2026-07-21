@@ -1,0 +1,135 @@
+[
+  {
+    "_id": "_design/impayes",
+    "views": {
+      "by_contact": {
+        "map": "function(doc) { if(doc.type === 'impaye' && doc.contact) emit(doc.contact._id, doc); }"
+      },
+      "by_statut": {
+        "map": "function(doc) { if(doc.type === 'impaye') emit(doc.statut, doc); }"
+      },
+      "by_date_echeance": {
+        "map": "function(doc) { if(doc.type === 'impaye' && doc.date_echeance) emit(doc.date_echeance, doc); }"
+      },
+      "by_montant": {
+        "map": "function(doc) { if(doc.type === 'impaye') emit(doc.reste_a_payer, doc); }"
+      },
+      "blacklistes": {
+        "map": "function(doc) { if(doc.type === 'impaye' && doc.is_blacklisted) emit(doc.blacklist_date, doc); }"
+      },
+      "all": {
+        "map": "function(doc) { if(doc.type === 'impaye') emit(doc.created_at, doc); }"
+      }
+    }
+  },
+  {
+    "_id": "_design/contacts",
+    "views": {
+      "by_email": {
+        "map": "function(doc) { if(doc.type === 'contact' && doc.email) emit(doc.email.toLowerCase(), doc); }"
+      },
+      "by_type": {
+        "map": "function(doc) { if(doc.type === 'contact' && doc.type_personne) emit(doc.type_personne, doc); }"
+      },
+      "by_blacklist": {
+        "map": "function(doc) { if(doc.type === 'contact') emit(doc.is_blacklisted || false, doc); }"
+      },
+      "all_relations": {
+        "map": "function(doc) { if(doc.type === 'contact_relation') { emit([doc.contact_source_id, doc.type_relation], doc); emit([doc.contact_cible_id, 'inverse:' + doc.type_relation], doc); } }"
+      },
+      "all": {
+        "map": "function(doc) { if(doc.type === 'contact') emit(doc.nom + ' ' + doc.prenom, doc); }"
+      }
+    }
+  },
+  {
+    "_id": "_design/relances",
+    "views": {
+      "by_contact": {
+        "map": "function(doc) { if(doc.type === 'relance') emit(doc.contact_id, doc); }"
+      },
+      "by_sequence": {
+        "map": "function(doc) { if(doc.type === 'relance') emit(doc.sequence_id, doc); }"
+      },
+      "by_statut": {
+        "map": "function(doc) { if(doc.type === 'relance') emit(doc.statut, doc); }"
+      },
+      "by_date_programmation": {
+        "map": "function(doc) { if(doc.type === 'relance' && doc.date_programmation) emit(doc.date_programmation, doc); }"
+      },
+      "en_erreur": {
+        "map": "function(doc) { if(doc.type === 'relance' && doc.erreur_count > 0) emit(doc.erreur_count, doc); }"
+      },
+      "all": {
+        "map": "function(doc) { if(doc.type === 'relance') emit(doc.created_at, doc); }"
+      }
+    }
+  },
+  {
+    "_id": "_design/sequences",
+    "views": {
+      "actives": {
+        "map": "function(doc) { if(doc.type === 'sequence' && doc.actif) emit(doc.nom, doc); }"
+      },
+      "by_type": {
+        "map": "function(doc) { if(doc.type === 'sequence') emit(doc.type_sequence, doc); }"
+      },
+      "all": {
+        "map": "function(doc) { if(doc.type === 'sequence') emit(doc.nom, doc); }"
+      }
+    }
+  },
+  {
+    "_id": "_design/smtp",
+    "views": {
+      "actifs": {
+        "map": "function(doc) { if(doc.type === 'smtp' && doc.actif) emit(doc.nom, doc); }"
+      },
+      "default": {
+        "map": "function(doc) { if(doc.type === 'smtp' && doc.is_default) emit(doc.nom, doc); }"
+      }
+    }
+  },
+  {
+    "_id": "_design/events",
+    "views": {
+      "by_entity": {
+        "map": "function(doc) { if(doc.type === 'event' && doc.entity_type) emit([doc.entity_type, doc.entity_id], doc); }"
+      },
+      "by_type": {
+        "map": "function(doc) { if(doc.type === 'event') emit(doc.type, doc); }"
+      },
+      "unread": {
+        "map": "function(doc) { if(doc.type === 'event' && !doc.read) emit(doc.created_at, doc); }"
+      }
+    }
+  },
+  {
+    "_id": "_design/dashboards",
+    "views": {
+      "kpi_impayes": {
+        "map": "function(doc) { if(doc.type === 'impaye') { emit('total', doc.reste_a_payer || 0); emit(doc.statut, doc.reste_a_payer || 0); } }",
+        "reduce": "_sum"
+      },
+      "impayes_par_mois": {
+        "map": "function(doc) { if(doc.type === 'impaye' && doc.date_facture) { var d = doc.date_facture.substring(0,7); emit(d, doc.reste_a_payer || 0); } }",
+        "reduce": "_sum"
+      },
+      "relances_par_statut": {
+        "map": "function(doc) { if(doc.type === 'relance') emit(doc.statut, 1); }",
+        "reduce": "_sum"
+      },
+      "contacts_par_type": {
+        "map": "function(doc) { if(doc.type === 'contact' && doc.type_personne) emit(doc.type_personne, 1); }",
+        "reduce": "_sum"
+      }
+    }
+  },
+  {
+    "_id": "_design/filters",
+    "filters": {
+      "by_user": "function(doc, req) { return doc.user_id === req.query.user_id; }",
+      "no_deleted": "function(doc, req) { return !doc._deleted; }"
+    }
+  }
+]

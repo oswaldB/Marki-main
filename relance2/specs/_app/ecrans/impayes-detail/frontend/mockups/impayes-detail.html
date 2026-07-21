@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détail Impayé | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body x-data="impayeDetailPage()" x-init="init()">
+
+<sidebar-nav-dual page="impayes"></sidebar-nav-dual>
+
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <a href="./impayes.html" class="text-slate-400 hover:text-slate-600">
+        <i class="fas fa-arrow-left"></i>
+      </a>
+      <div>
+        <h1 class="text-base font-semibold text-slate-700" x-text="impaye?.numero || 'Chargement...'"></h1>
+        <span x-show="impaye?.numeroDossier" class="text-sm text-slate-400" x-text="impaye?.numeroDossier"></span>
+      </div>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <span class="px-2.5 py-1 text-xs font-medium rounded-full"
+            :class="{
+              'bg-slate-100 text-slate-700': impaye?.statut === 'non-payee',
+              'bg-sky-100 text-sky-700': impaye?.statut === 'en-relance',
+              'bg-sky-100 text-sky-700': impaye?.statut === 'suspendue'
+            }"
+            x-text="getStatutLabel(impaye?.statut)">
+      </span>
+      
+      <button @click="openPdf()" class="flex items-center gap-2 px-3 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-lg text-sm font-medium transition-all">
+        <i class="fas fa-file-pdf"></i>PDF
+      </button>
+    </div>
+  </header>
+
+  <main class="p-6">
+    
+    <div x-show="loading" class="text-center py-12 text-slate-400">Chargement...</div>
+    
+    <template x-if="!loading && impaye">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Colonne gauche: Infos facture, bien, missions, interventions, payeur, apporteur, propriétaire, historique -->
+        <div :class="showPdfViewer ? 'lg:col-span-1 space-y-6' : 'lg:col-span-2 space-y-6'">
+          
+          <!-- Section Facture -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="px-6 py-4 border-b border-slate-100">
+              <h3 class="font-semibold text-slate-900">
+                <i class="fas fa-file-invoice text-slate-400 mr-2"></i>Informations de la facture
+              </h3>
+            </div>
+            <div class="p-6 space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">N° Facture</p>
+                  <p class="font-semibold text-slate-900" x-text="impaye?.numero"></p>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">N° Dossier</p>
+                  <p class="font-mono text-slate-700" x-text="impaye?.numeroDossier || '-'"></p>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">Date de facture</p>
+                  <p class="text-slate-900" x-text="impaye?.dateFacture"></p>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">Échéance</p>
+                  <p class="text-slate-900" x-text="impaye?.echeance"></p>
+                </div>
+              </div>
+              <div class="pt-4 border-t border-slate-100">
+                <div class="flex justify-between items-center mb-2">
+                  <span class="text-sm text-slate-500">Montant TTC</span>
+                  <span class="font-medium" x-text="formatMoney(impaye?.montant)"></span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm font-medium text-slate-700">Reste à payer</span>
+                  <span class="text-xl font-bold text-sky-600" x-text="formatMoney(impaye?.resteAPayer)"></span>
+                </div>
+                <div x-show="impaye?.tauxPaye < 100" class="mt-3">
+                  <div class="flex items-center gap-2">
+                    <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                      <div class="h-full bg-sky-500 rounded-full" :style="'width: ' + impaye?.tauxPaye + '%'"></div>
+                    </div>
+                    <span class="text-sm font-medium" x-text="impaye?.tauxPaye + '% payé'"></span>
+                  </div>
+                </div>
+                <p x-show="impaye?.joursRetard > 0" class="text-sm text-sky-600 mt-2" x-text="impaye?.joursRetard + ' jours de retard'"></p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Section Bien -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="px-6 py-4 border-b border-slate-100">
+              <h3 class="font-semibold text-slate-900">
+                <i class="fas fa-building text-slate-400 mr-2"></i>Informations du bien
+              </h3>
+            </div>
+            <div class="p-6">
+              <div>
+                <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">Adresse</p>
+                <p class="text-slate-900" x-text="impaye?.bien?.adresse || '-'"></p>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Section Missions et Interventions -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+              <h3 class="font-semibold text-slate-900">
+                <i class="fas fa-tasks text-slate-400 mr-2"></i>Missions et interventions
+              </h3>
+              <button @click="syncMissions()" :disabled="syncingMissions"
+                      class="text-xs px-3 py-1.5 bg-sky-50 text-sky-600 hover:bg-sky-100 rounded-lg font-medium transition-colors flex items-center gap-1.5">
+                <i class="fas fa-sync-alt" :class="syncingMissions ? 'fa-spin' : ''"></i>
+                <span x-text="syncingMissions ? 'Sync...' : 'Sync ADTI'"></span>
+              </button>
+            </div>
+            <div class="p-6">
+              <div class="space-y-4">
+                <!-- Missions -->
+                <template x-if="impaye?.missions?.length">
+                  <div class="mb-4">
+                    <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-2">Missions</p>
+                    <div class="space-y-2">
+                      <template x-for="(mission, index) in impaye?.missions" :key="index">
+                        <div class="p-3 bg-slate-50 rounded-lg border border-slate-100">
+                          <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                              <span class="px-2 py-0.5 text-xs font-medium bg-sky-100 text-sky-700 rounded"
+                                    x-text="mission.typeMission || 'Mission'"></span>
+                              <span class="font-medium text-slate-900" x-text="mission.type"></span>
+                            </div>
+                            <span class="text-xs text-slate-500" x-text="mission.dateIntervention"></span>
+                          </div>
+                          <p class="text-xs text-slate-500 mt-1" x-text="mission.description"></p>
+                        </div>
+                      </template>
+                    </div>
+                  </div>
+                </template>
+                
+                <!-- Interventions -->
+                <template x-for="(intervention, index) in impaye?.interventions || []" :key="index">
+                  <div class="p-4 bg-slate-50 rounded-lg border border-slate-100">
+                    <div class="flex items-start justify-between mb-2">
+                      <div class="flex items-center gap-2">
+                        <span class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 text-xs">
+                          <i class="fas fa-wrench"></i>
+                        </span>
+                        <div>
+                          <p class="text-sm font-medium text-slate-900" x-text="intervention.type"></p>
+                          <p class="text-xs text-slate-500" x-text="intervention.date + ' par ' + intervention.agent"></p>
+                        </div>
+                      </div>
+                    </div>
+                    <p x-show="intervention.description" class="text-sm text-slate-600 mt-2" x-text="intervention.description"></p>
+                    <div x-show="intervention.bien" class="mt-2 flex items-center gap-2 text-xs text-slate-500">
+                      <i class="fas fa-building"></i>
+                      <span x-text="intervention.bien"></span>
+                    </div>
+                  </div>
+                </template>
+                <div x-show="!(impaye?.interventions?.length) && !(impaye?.missions?.length)" class="text-center text-slate-400 text-sm py-8">
+                  <i class="fas fa-clipboard-list text-3xl mb-2"></i>
+                  <p>Aucune mission ou intervention</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Section Payeur -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="px-6 py-4 border-b border-slate-100">
+              <h3 class="font-semibold text-slate-900">
+                <i class="fas fa-user text-slate-400 mr-2"></i>Payeur
+              </h3>
+            </div>
+            <div class="p-6">
+              <div class="flex items-start gap-4">
+                <div class="w-16 h-16 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-xl" x-text="impaye?.payeur?.initials"></div>
+                <div class="flex-1">
+                  <h4 class="text-lg font-semibold text-slate-900" x-text="impaye?.payeur?.nom"></h4>
+                  <p class="text-slate-500" x-text="impaye?.payeur?.entreprise"></p>
+                  <div class="mt-3 space-y-1 text-sm">
+                    <p x-show="impaye?.payeur?.email" class="text-slate-600">
+                      <i class="fas fa-envelope text-slate-400 mr-2 w-4"></i>
+                      <a :href="'mailto:' + impaye?.payeur?.email" class="hover:text-sky-600" x-text="impaye?.payeur?.email"></a>
+                    </p>
+                    <div x-show="impaye?.payeur?.emailForce" class="bg-sky-50 border border-sky-200 rounded-lg p-3 mt-2">
+                      <p class="text-slate-600 flex items-center gap-2">
+                        <i class="fas fa-envelope text-sky-500 mr-2 w-4"></i>
+                        <a :href="'mailto:' + impaye?.payeur?.emailForce" class="text-sky-600 hover:underline font-medium" x-text="impaye?.payeur?.emailForce"></a>
+                        <span class="px-2 py-0.5 bg-sky-100 text-sky-700 text-xs rounded-full">Email forcé</span>
+                      </p>
+                      <p class="text-xs text-slate-500 mt-1 ml-6">Cet email sera utilisé pour les relances</p>
+                    </div>
+                    <p x-show="impaye?.payeur?.telephone" class="text-slate-600">
+                      <i class="fas fa-phone text-slate-400 mr-2 w-4"></i>
+                      <span x-text="impaye?.payeur?.telephone"></span>
+                    </p>
+                    <p x-show="impaye?.payeur?.adresse" class="text-slate-600">
+                      <i class="fas fa-map-marker-alt text-slate-400 mr-2 w-4"></i>
+                      <span x-text="impaye?.payeur?.adresse"></span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Section Apporteur d'affaire -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="px-6 py-4 border-b border-slate-100">
+              <h3 class="font-semibold text-slate-900">
+                <i class="fas fa-handshake text-slate-400 mr-2"></i>Apporteur d'affaire
+              </h3>
+            </div>
+            <div class="p-6">
+              <div class="flex items-start gap-4" x-show="impaye?.apporteur">
+                <div class="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold" x-text="impaye?.apporteur?.initials || 'AA'"></div>
+                <div class="flex-1">
+                  <h4 class="font-semibold text-slate-900" x-text="impaye?.apporteur?.nom || 'Agence Partenaire'"></h4>
+                  <p x-show="impaye?.apporteur?.email" class="text-sm text-slate-600">
+                    <i class="fas fa-envelope text-slate-400 mr-2"></i>
+                    <span x-text="impaye?.apporteur?.email || 'contact@agence.fr'"></span>
+                  </p>
+                  <p x-show="impaye?.apporteur?.telephone" class="text-sm text-slate-600">
+                    <i class="fas fa-phone text-slate-400 mr-2"></i>
+                    <span x-text="impaye?.apporteur?.telephone || '01 23 45 67 89'"></span>
+                  </p>
+                </div>
+              </div>
+              <p x-show="!impaye?.apporteur" class="text-slate-400 text-sm">Aucun apporteur d'affaire</p>
+            </div>
+          </div>
+          
+          <!-- Section Propriétaire -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="px-6 py-4 border-b border-slate-100">
+              <h3 class="font-semibold text-slate-900">
+                <i class="fas fa-key text-slate-400 mr-2"></i>Propriétaire
+              </h3>
+            </div>
+            <div class="p-6">
+              <div class="flex items-start gap-4" x-show="impaye?.proprietaire">
+                <div class="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold" x-text="impaye?.proprietaire?.initials || 'PR'"></div>
+                <div class="flex-1">
+                  <h4 class="font-semibold text-slate-900" x-text="impaye?.proprietaire?.nom || 'M. Dupont'"></h4>
+                  <p x-show="impaye?.proprietaire?.email" class="text-sm text-slate-600">
+                    <i class="fas fa-envelope text-slate-400 mr-2"></i>
+                    <span x-text="impaye?.proprietaire?.email || 'proprietaire@email.fr'"></span>
+                  </p>
+                </div>
+              </div>
+              <p x-show="!impaye?.proprietaire" class="text-slate-400 text-sm">Aucun propriétaire renseigné</p>
+            </div>
+          </div>
+          
+          <!-- Section Historique des événements -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+              <h3 class="font-semibold text-slate-900">
+                <i class="fas fa-history text-sky-500 mr-2"></i>Historique des événements
+              </h3>
+              <span class="text-xs text-slate-500" x-text="(impaye?.evenements?.length || 0) + ' événements'"></span>
+            </div>
+            <div class="p-6">
+              <div class="space-y-6">
+                <template x-for="(event, index) in impaye?.evenements || []" :key="index">
+                  <div class="relative pl-8">
+                    <!-- Timeline line -->
+                    <div x-show="index < (impaye?.evenements?.length || 0) - 1" class="absolute left-3 top-8 bottom-0 w-0.5 bg-slate-200"></div>
+                    
+                    <!-- Icon -->
+                    <div class="absolute left-0 top-0 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs"
+                         :class="{
+                           'bg-sky-100 text-sky-600': event.type === 'relance',
+                           'bg-green-100 text-green-600': event.type === 'paiement',
+                           'bg-amber-100 text-amber-600': event.type === 'suspension',
+                           'bg-slate-100 text-slate-600': event.type === 'systeme'
+                         }"
+                    >
+                      <i class="fas" :class="event.icon || 'fa-bell'"></i>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div>
+                      <div class="flex items-center justify-between mb-1">
+                        <p class="text-sm font-medium text-slate-900" x-text="event.titre"></p>
+                        <span class="text-xs text-slate-400" x-text="event.date"></span>
+                      </div>
+                      <p x-show="event.description" class="text-sm text-slate-600" x-text="event.description"></p>
+                      
+                      <!-- Metadata si présent -->
+                      <div x-show="event.metadata" class="mt-2 text-xs text-slate-500">
+                        <span x-text="event.metadata"></span>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+                <div x-show="!impaye?.evenements?.length" class="text-center text-slate-400 text-sm py-8">
+                  <i class="fas fa-inbox text-3xl mb-2"></i>
+                  <p>Aucun événement</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Colonne droite: Métadonnées, Actions, Note personnelle -->
+        <div class="lg:col-span-1 space-y-6">
+          
+          <!-- Métadonnées -->
+          <div class="bg-slate-50 rounded-xl border border-slate-200 p-6">
+            <h3 class="text-sm font-medium text-slate-500 uppercase tracking-wider mb-4">Métadonnées</h3>
+            <div class="space-y-3 text-sm">
+              <div class="flex justify-between">
+                <span class="text-slate-500">Créé le</span>
+                <span class="text-slate-700" x-text="impaye?.dateCreation"></span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-500">Importé le</span>
+                <span class="text-slate-700" x-text="impaye?.dateImport"></span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-500">Source</span>
+                <span class="text-slate-700" x-text="impaye?.source || 'ADTI'"></span>
+              </div>
+              <div class="flex justify-between">
+                <span class="text-slate-500">ID interne</span>
+                <span class="text-slate-700 font-mono text-xs" x-text="impaye?.id"></span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Actions -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="px-6 py-4 border-b border-slate-100">
+              <h3 class="font-semibold text-slate-900">
+                <i class="fas fa-cogs text-slate-400 mr-2"></i>Actions
+              </h3>
+            </div>
+            <div class="p-6 space-y-4">
+              
+              <!-- Séquence actuelle -->
+              <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-2">Séquence active</p>
+                <p class="font-medium text-slate-900" x-text="impaye?.sequenceNom || 'Aucune séquence'"></p>
+                <p x-show="impaye?.sequence" class="text-xs text-slate-500 mt-1">
+                  Prochaine relance : <span x-text="impaye?.prochaineRelance || '-'"></span>
+                </p>
+                <button @click="showChangeSequenceModal = true" 
+                        class="mt-3 w-full px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium transition-colors">
+                  <i class="fas fa-exchange-alt mr-2"></i>Changer de séquence
+                </button>
+              </div>
+              
+              <!-- Actions suspendre/pause -->
+              <div class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-100">
+                <template x-if="impaye?.statut !== 'suspendue'">
+                  <button @click="showSuspendModal = true" class="flex items-center justify-center gap-2 p-3 border-2 border-sky-200 rounded-xl hover:bg-sky-50 transition-all text-left">
+                    <div class="w-10 h-10 rounded-lg bg-sky-100 flex items-center justify-center text-sky-600">
+                      <i class="fas fa-pause"></i>
+                    </div>
+                    <div>
+                      <p class="font-medium text-slate-900 text-sm">Suspendre</p>
+                      <p class="text-xs text-slate-500">Suspendre le dossier</p>
+                    </div>
+                  </button>
+                </template>
+                <template x-if="impaye?.statut === 'suspendue'">
+                  <button @click="showUnsuspendConfirm = true" class="flex items-center justify-center gap-2 p-3 border-2 border-sky-200 rounded-xl hover:bg-sky-50 transition-all text-left">
+                    <div class="w-10 h-10 rounded-lg bg-sky-100 flex items-center justify-center text-sky-600">
+                      <i class="fas fa-play"></i>
+                    </div>
+                    <div>
+                      <p class="font-medium text-slate-900 text-sm">Réactiver</p>
+                      <p class="text-xs text-slate-500">Reprendre le dossier</p>
+                    </div>
+                  </button>
+                </template>
+                
+                <button @click="showBlacklistConfirm = true" class="flex items-center justify-center gap-2 p-3 border-2 border-sky-200 rounded-xl hover:bg-sky-50 transition-all text-left" :disabled="impaye?.blacklisted">
+                  <div class="w-10 h-10 rounded-lg bg-sky-100 flex items-center justify-center text-sky-600">
+                    <i class="fas fa-ban"></i>
+                  </div>
+                  <div>
+                    <p class="font-medium text-slate-900 text-sm">Blacklister</p>
+                    <p class="text-xs text-slate-500">Blacklister le contact</p>
+                  </div>
+                </button>
+              </div>
+              
+            </div>
+          </div>
+          
+          <!-- Notes (Facture + Contact) -->
+          <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+              <h3 class="font-semibold text-slate-900">
+                <i class="fas fa-sticky-note text-slate-400 mr-2"></i>Notes
+              </h3>
+              <button @click="$refs.noteTextarea.focus()" 
+                      class="text-xs px-3 py-1.5 bg-sky-50 text-sky-600 hover:bg-sky-100 rounded-lg font-medium transition-colors flex items-center gap-1.5">
+                <i class="fas fa-plus"></i>
+                Ajouter une note
+              </button>
+            </div>
+            
+            <!-- Onglets horizontaux -->
+            <div class="flex border-b border-slate-200">
+              <button @click="activeNotesTab = 'impaye'"
+                      :class="{ 
+                        'border-b-2 border-sky-500 text-sky-600 bg-sky-50/50': activeNotesTab === 'impaye', 
+                        'text-slate-500 hover:text-slate-700 hover:bg-slate-50': activeNotesTab !== 'impaye' 
+                      }"
+                      class="flex-1 px-4 py-3 text-sm font-medium transition-colors flex items-center justify-center gap-2">
+                <i class="fas fa-file"></i>
+                <span>Facture</span>
+                <span class="ml-1 px-1.5 py-0.5 text-xs rounded-full bg-slate-200 text-slate-600" 
+                      x-text="notesImpaye.length"></span>
+              </button>
+              <button @click="activeNotesTab = 'contact'"
+                      :class="{ 
+                        'border-b-2 border-sky-500 text-sky-600 bg-sky-50/50': activeNotesTab === 'contact', 
+                        'text-slate-500 hover:text-slate-700 hover:bg-slate-50': activeNotesTab !== 'contact' 
+                      }"
+                      class="flex-1 px-4 py-3 text-sm font-medium transition-colors flex items-center justify-center gap-2">
+                <i class="fas fa-user"></i>
+                <span>Contact</span>
+                <span class="ml-1 px-1.5 py-0.5 text-xs rounded-full bg-slate-200 text-slate-600" 
+                      x-text="notesContact.length"></span>
+              </button>
+            </div>
+            
+            <!-- Contenu -->
+            <div class="p-4">
+              <!-- Liste des notes -->
+              <div class="space-y-3 mb-4 max-h-64 overflow-y-auto">
+                <template x-for="note in currentNotes" :key="note.id">
+                  <div class="bg-slate-50 rounded-lg p-3 group hover:bg-slate-100 transition-colors">
+                    <p class="text-sm text-slate-700" x-text="note.content"></p>
+                    
+                    <div class="flex items-center justify-between mt-2 text-xs text-slate-500">
+                      <span>
+                        <i class="fas fa-pen text-slate-400 mr-1"></i>
+                        <span x-text="note.author"></span>, 
+                        <span x-text="note.date"></span>
+                      </span>
+                      
+                      <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button @click="openEditNote(activeNotesTab, note)" 
+                                x-show="note.isAuthor"
+                                class="text-sky-500 hover:text-sky-700"
+                                title="Modifier">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                        
+                        <button @click="deleteNote(activeNotesTab, note.id)" 
+                                x-show="note.isAuthor"
+                                class="text-red-500 hover:text-red-700"
+                                title="Supprimer">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+                
+                <div x-show="currentNotes.length === 0" class="text-center text-slate-400 py-8">
+                  Aucune note
+                </div>
+              </div>
+              
+              <!-- Saisie -->
+              <div class="border-t border-slate-200 pt-3">
+                <textarea x-model="newNoteContent"
+                          x-ref="noteTextarea"
+                          @keydown.ctrl.enter="saveNote(activeNotesTab)"
+                          placeholder="Écrivez votre note ici... (Ctrl+Enter pour envoyer)"
+                          class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm resize-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+                          rows="3"></textarea>
+                <div class="flex justify-end mt-2">
+                  <button @click="saveNote(activeNotesTab)"
+                          :disabled="!newNoteContent.trim() || savingNote"
+                          class="px-4 py-2 bg-sky-600 text-white text-sm font-medium rounded-lg hover:bg-sky-700 disabled:opacity-50 flex items-center gap-2">
+                    <i x-show="!savingNote" class="fas fa-paper-plane"></i>
+                    <span x-show="!savingNote">Ajouter</span>
+                    <span x-show="savingNote"><i class="fas fa-spinner fa-spin mr-1"></i> Envoi...</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+        
+        <!-- Colonne PDF -->
+        <div x-show="showPdfViewer" class="lg:col-span-1 space-y-6 border-l border-slate-200 pl-6" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
+          <div class="bg-white rounded-xl border border-slate-200 h-full flex flex-col">
+            <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <i class="fas fa-file-pdf text-red-500"></i>
+                <span class="font-medium text-slate-700 text-sm">Facture PDF</span>
+              </div>
+              <button @click="closePdf()" class="text-slate-400 hover:text-slate-600 p-1.5 rounded hover:bg-slate-100 transition-all">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div class="flex-1 bg-slate-50 p-2">
+              <iframe :src="'./pdf/facture-' + impaye?.id + '.pdf'" class="w-full h-full border-0 rounded-lg bg-white" type="application/pdf"></iframe>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </template>
+    
+    <!-- Modal Confirmation Désuspension -->
+    <div x-show="showUnsuspendConfirm" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showUnsuspendConfirm = false"></div>
+      <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+        <div class="text-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-play text-sky-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">Réactiver les relances ?</h3>
+          <p class="text-sm text-slate-600">La facture sera à nouveau éligible aux relances automatiques.</p>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <button @click="showUnsuspendConfirm = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="unsuspendImpaye()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">
+            <i class="fas fa-check mr-1"></i>Confirmer
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal Confirmation Blacklist -->
+    <div x-show="showBlacklistConfirm" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showBlacklistConfirm = false"></div>
+      <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+        <div class="text-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-ban text-sky-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">Blacklister cette facture ?</h3>
+          <p class="text-sm text-slate-600">Le payeur ne recevra plus aucune relance pour cette facture. Cette action est irréversible.</p>
+        </div>
+        <div class="flex items-center justify-center gap-2">
+          <button @click="showBlacklistConfirm = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="blacklistImpaye()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">
+            <i class="fas fa-ban mr-1"></i>Blacklister
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal Changer de Séquence -->
+    <div x-show="showChangeSequenceModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showChangeSequenceModal = false"></div>
+      <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+        <div class="text-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-exchange-alt text-sky-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">Changer de séquence</h3>
+          <p class="text-sm text-slate-600">Sélectionnez une nouvelle séquence de relance pour ce dossier.</p>
+        </div>
+        
+        <div class="space-y-4 mb-6">
+          <div class="space-y-2">
+            <label class="block text-sm font-medium text-slate-700">Nouvelle séquence</label>
+            <select x-model="newSequence" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+              <option value="">Aucune séquence</option>
+              <template x-for="seq in availableSequences" :key="seq.id">
+                <option :value="seq.id" x-text="seq.nom"></option>
+              </template>
+            </select>
+          </div>
+          
+          <div class="space-y-2">
+            <label class="block text-sm font-medium text-slate-700">Mode</label>
+            <div class="flex gap-4">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" x-model="changeSequenceMode" value="continue" class="text-sky-500">
+                <span class="text-sm">Continuer</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" x-model="changeSequenceMode" value="restart" class="text-sky-500">
+                <span class="text-sm">Redémarrer</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <button @click="showChangeSequenceModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="confirmChangeSequence()" :disabled="!newSequence" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+            <i class="fas fa-check mr-1"></i>Confirmer
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal Suspendre Dossier -->
+    <div x-show="showSuspendModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showSuspendModal = false"></div>
+      <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+        <div class="text-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-pause text-amber-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">Suspendre le dossier</h3>
+          <p class="text-sm text-slate-600">Les relances seront suspendues pour ce dossier.</p>
+        </div>
+        
+        <div class="space-y-4 mb-6">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Motif de suspension *</label>
+            <select x-model="suspendForm.motif" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+              <option value="">Choisir un motif...</option>
+              <option value="litige">Litige en cours</option>
+              <option value="arrangement">Arrangement avec le client</option>
+              <option value="procedure">Procédure judiciaire</option>
+              <option value="cessation">Cessation d'activité</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Détail (optionnel)</label>
+            <textarea x-model="suspendForm.detail" rows="3" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm" placeholder="Précisez si nécessaire..."></textarea>
+          </div>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <button @click="showSuspendModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="suspendImpaye()" :disabled="!suspendForm.motif" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+            <i class="fas fa-pause mr-1"></i>Confirmer la suspension
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal Ajouter Intervention -->
+    <div x-show="showAddInterventionModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showAddInterventionModal = false"></div>
+      <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+        <h3 class="text-lg font-semibold text-slate-900 mb-4">
+          <i class="fas fa-tools text-sky-500 mr-2"></i>Nouvelle intervention
+        </h3>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Type d'intervention *</label>
+            <select x-model="newIntervention.type" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+              <option value="">Choisir...</option>
+              <option value="Visite sur site">Visite sur site</option>
+              <option value="Maintenance">Maintenance</option>
+              <option value="Réparation">Réparation</option>
+              <option value="Installation">Installation</option>
+              <option value="Contrôle">Contrôle</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Agent *</label>
+            <input type="text" x-model="newIntervention.agent" placeholder="Nom de l'agent" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Date *</label>
+            <input type="date" x-model="newIntervention.date" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Bien concerné</label>
+            <input type="text" x-model="newIntervention.bien" placeholder="Ex: Bureaux étage 2" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Description</label>
+            <textarea x-model="newIntervention.description" rows="3" placeholder="Détails de l'intervention..." class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm"></textarea>
+          </div>
+        </div>
+        <div class="flex items-center justify-end gap-2 mt-6">
+          <button @click="showAddInterventionModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="saveIntervention()" :disabled="!newIntervention.type || !newIntervention.agent || !newIntervention.date" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+            <i class="fas fa-save mr-1"></i>Enregistrer
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal Édition Note -->
+    <div x-show="showEditNoteModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showEditNoteModal = false"></div>
+      <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+        <h3 class="text-lg font-semibold text-slate-900 mb-4">
+          <i class="fas fa-edit text-sky-500 mr-2"></i>Modifier la note
+        </h3>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Contenu *</label>
+            <textarea x-model="editNoteForm.content" rows="4" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm" placeholder="Modifier votre note..."></textarea>
+          </div>
+          <div class="text-xs text-slate-500">
+            Par <span x-text="editNoteForm.author"></span> - <span x-text="editNoteForm.date"></span>
+          </div>
+        </div>
+        <div class="flex items-center justify-end gap-2 mt-6">
+          <button @click="showEditNoteModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="confirmEditNote()" :disabled="!editNoteForm.content.trim()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+            <i class="fas fa-save mr-1"></i>Enregistrer
+          </button>
+        </div>
+      </div>
+    </div>
+    
+  </main>
+</div>
+
+<script>
+function impayeDetailPage() {
+  return {
+    toast: { show: false, type: 'success', title: '', message: '' },
+    loading: true,
+    showSuspendForm: false,
+    showSuspendModal: false,
+    showUnsuspendConfirm: false,
+    showBlacklistConfirm: false,
+    showAddInterventionModal: false,
+    showPdfViewer: false,
+    showChangeSequenceModal: false,
+    showEditNoteModal: false,
+    syncingMissions: false,
+    
+    activeNotesTab: 'impaye',
+    notesImpaye: [
+      { id: 'n1', content: 'Client contacté par téléphone, promesse de paiement la semaine prochaine', author: 'Moi', date: '20/03/2024', isAuthor: true },
+      { id: 'n2', content: 'Facture envoyée par courrier le 15/03, en attente de réponse', author: 'Marie D.', date: '18/03/2024', isAuthor: false }
+    ],
+    notesContact: [
+      { id: 'c1', content: 'Contact difficile, préfère communiquer par email', author: 'Pierre M.', date: '15/02/2024', isAuthor: false }
+    ],
+    newNoteContent: '',
+    savingNote: false,
+    editNoteForm: { id: null, content: '', author: '', date: '', type: '' },
+    
+    newSequence: '',
+    changeSequenceMode: 'continue',
+    availableSequences: [
+      { id: 'R1', nom: 'R1 - Première relance (J+15)' },
+      { id: 'R2', nom: 'R2 - Deuxième relance (J+30)' },
+      { id: 'R3', nom: 'R3 - Troisième relance (J+45)' },
+      { id: 'R4', nom: 'R4 - Dernière relance (J+60)' }
+    ],
+    
+    suspendForm: { motif: '', detail: '' },
+    newIntervention: { type: '', agent: '', date: '', bien: '', description: '' },
+    
+    impaye: {
+      id: 1,
+      numero: 'FAC-2024-001',
+      numeroDossier: 'D-2024-045',
+      dateFacture: '15/01/2024',
+      echeance: '15/02/2024',
+      joursRetard: 45,
+      montant: 12500,
+      resteAPayer: 8500,
+      tauxPaye: 32,
+      statut: 'en-relance',
+      sequence: 'R2',
+      sequenceNom: 'R2 - Deuxième relance (J+30)',
+      prochaineRelance: '05/04/2024',
+      note: '',
+      blacklisted: false,
+      dateCreation: '15/01/2024 10:30',
+      dateImport: '16/01/2024 08:15',
+      source: 'ADTI',
+      bien: {
+        adresse: '12 Rue de la Paix, 75002 Paris'
+      },
+      missions: [
+        { typeMission: 'vente', type: 'Diagnostic amiante', dateIntervention: '10/01/2024', description: 'Diagnostic réglementaire avant travaux' },
+        { typeMission: 'repérage amiante', type: 'DPE', dateIntervention: '12/01/2024', description: 'Diagnostic de performance énergétique' }
+      ],
+      payeur: {
+        nom: 'Jean Dupont',
+        entreprise: 'ACME Corp',
+        email: 'contact@acme.fr',
+        emailForce: 'finance@acme.fr',
+        telephone: '01 23 45 67 89',
+        adresse: '123 Rue de Paris, 75001 Paris',
+        initials: 'JD'
+      },
+      apporteur: {
+        nom: 'Agence Immo Plus',
+        email: 'contact@agenceplus.fr',
+        telephone: '01 98 76 54 32',
+        initials: 'AI'
+      },
+      proprietaire: {
+        nom: 'M. Martin Dupont',
+        email: 'm.dupont@email.fr',
+        initials: 'MD'
+      },
+      evenements: [
+        { 
+          type: 'relance', 
+          icon: 'fa-paper-plane', 
+          titre: 'Relance R2 envoyée', 
+          date: '15/03/2024', 
+          description: 'Email envoyé à contact@acme.fr',
+          metadata: 'À: contact@acme.fr'
+        },
+        { 
+          type: 'paiement', 
+          icon: 'fa-euro-sign', 
+          titre: 'Paiement partiel reçu', 
+          date: '10/03/2024', 
+          description: '4 000,00 € reçus par virement'
+        },
+        { 
+          type: 'relance', 
+          icon: 'fa-paper-plane', 
+          titre: 'Relance R1 envoyée', 
+          date: '01/03/2024', 
+          description: 'Email envoyé à contact@acme.fr',
+          metadata: 'À: contact@acme.fr'
+        },
+        { 
+          type: 'systeme', 
+          icon: 'fa-file-import', 
+          titre: 'Facture importée', 
+          date: '16/01/2024', 
+          description: 'Import automatique depuis ADTI'
+        }
+      ],
+      interventions: [
+        {
+          type: 'Maintenance',
+          date: '10/02/2024',
+          agent: 'Pierre Martin',
+          bien: 'Bureaux étage 2',
+          description: 'Révision annuelle du système de climatisation'
+        },
+        {
+          type: 'Visite sur site',
+          date: '15/01/2024',
+          agent: 'Marie Dubois',
+          bien: 'Salle de réunion',
+          description: 'Mise en place du nouveau équipement audiovisuel'
+        }
+      ]
+    },
+    
+    init() {
+      // Simuler le chargement depuis l'URL /impayes/id
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      console.log('Chargement impayé ID:', id);
+      
+      setTimeout(() => {
+        this.loading = false;
+      }, 500);
+    },
+    
+    changerSequence() {
+      this.showToast('Séquence mise à jour', this.impaye.sequence, 'success');
+      this.impaye.evenements.unshift({
+        type: 'systeme',
+        icon: 'fa-exchange-alt',
+        titre: 'Séquence modifiée',
+        date: new Date().toLocaleDateString('fr-FR'),
+        description: 'Nouvelle séquence : ' + this.impaye.sequence
+      });
+    },
+    
+    confirmChangeSequence() {
+      this.impaye.sequence = this.newSequence;
+      const seq = this.availableSequences.find(s => s.id === this.newSequence);
+      this.impaye.sequenceNom = seq ? seq.nom : 'Aucune séquence';
+      this.showChangeSequenceModal = false;
+      this.impaye.evenements.unshift({
+        type: 'systeme',
+        icon: 'fa-exchange-alt',
+        titre: 'Séquence modifiée',
+        date: new Date().toLocaleDateString('fr-FR'),
+        description: 'Mode: ' + this.changeSequenceMode
+      });
+      this.showToast('Succès', 'Séquence mise à jour', 'success');
+    },
+    
+    suspendImpaye() {
+      this.impaye.statut = 'suspendue';
+      this.showSuspendModal = false;
+      this.impaye.evenements.unshift({
+        type: 'suspension',
+        icon: 'fa-pause',
+        titre: 'Dossier suspendu',
+        date: new Date().toLocaleDateString('fr-FR'),
+        description: 'Motif : ' + this.suspendForm.motif
+      });
+      this.showToast('Succès', 'Dossier suspendu avec succès', 'success');
+    },
+    
+    unsuspendImpaye() {
+      this.impaye.statut = 'en-relance';
+      this.showUnsuspendConfirm = false;
+      this.impaye.evenements.unshift({
+        type: 'systeme',
+        icon: 'fa-play',
+        titre: 'Dossier réactivé',
+        date: new Date().toLocaleDateString('fr-FR'),
+        description: 'Les relances sont à nouveau actives'
+      });
+      this.showToast('Succès', 'Dossier réactivé avec succès', 'success');
+    },
+    
+    blacklistImpaye() {
+      this.impaye.blacklisted = true;
+      this.impaye.statut = 'suspendue';
+      this.showBlacklistConfirm = false;
+      this.impaye.evenements.unshift({
+        type: 'suspension',
+        icon: 'fa-ban',
+        titre: 'Contact blacklisted',
+        date: new Date().toLocaleDateString('fr-FR'),
+        description: 'Aucune relance ne sera plus envoyée à ce contact'
+      });
+      this.showToast('Succès', 'Contact blacklisted avec succès', 'success');
+    },
+    
+    async syncMissions() {
+      this.syncingMissions = true;
+      // Simuler l'appel API pour sync les missions depuis ADTI
+      await new Promise(r => setTimeout(r, 1500));
+      this.syncingMissions = false;
+      this.showToast('Succès', 'Missions synchronisées depuis ADTI', 'success');
+    },
+    
+    saveNote(type) {
+      if (!this.newNoteContent.trim()) return;
+      this.savingNote = true;
+      const newNote = {
+        id: Date.now().toString(),
+        content: this.newNoteContent.trim(),
+        author: 'Moi',
+        date: new Date().toLocaleDateString('fr-FR'),
+        isAuthor: true
+      };
+      if (type === 'impaye') {
+        this.notesImpaye.unshift(newNote);
+      } else {
+        this.notesContact.unshift(newNote);
+      }
+      this.newNoteContent = '';
+      this.savingNote = false;
+      this.showToast('Succès', 'Note enregistrée', 'success');
+    },
+    
+    deleteNote(type, noteId) {
+      if (confirm('Supprimer cette note ?')) {
+        if (type === 'impaye') {
+          this.notesImpaye = this.notesImpaye.filter(n => n.id !== noteId);
+        } else {
+          this.notesContact = this.notesContact.filter(n => n.id !== noteId);
+        }
+        this.showToast('Succès', 'Note supprimée', 'success');
+      }
+    },
+    
+    openEditNote(type, note) {
+      this.editNoteForm = { 
+        id: note.id, 
+        content: note.content, 
+        author: note.author, 
+        date: note.date,
+        type: type
+      };
+      this.showEditNoteModal = true;
+    },
+    
+    confirmEditNote() {
+      const { type, id, content } = this.editNoteForm;
+      
+      if (type === 'impaye') {
+        const note = this.notesImpaye.find(n => n.id === id);
+        if (note) note.content = content;
+      } else {
+        const note = this.notesContact.find(n => n.id === id);
+        if (note) note.content = content;
+      }
+      
+      this.showEditNoteModal = false;
+      this.showToast('Succès', 'Note modifiée', 'success');
+    },
+    
+    get currentNotes() {
+      return this.activeNotesTab === 'impaye' ? this.notesImpaye : this.notesContact;
+    },
+    
+    addIntervention() {
+      this.newIntervention = { type: '', agent: '', date: new Date().toISOString().split('T')[0], bien: '', description: '' };
+      this.showAddInterventionModal = true;
+    },
+    
+    saveIntervention() {
+      if (!this.impaye.interventions) {
+        this.impaye.interventions = [];
+      }
+      this.impaye.interventions.unshift({...this.newIntervention});
+      this.showAddInterventionModal = false;
+      this.showToast('Succès', 'Intervention enregistrée avec succès', 'success');
+    },
+    
+    openPdf() {
+      this.showPdfViewer = true;
+    },
+    
+    closePdf() {
+      this.showPdfViewer = false;
+    },
+    
+    getStatutLabel(statut) {
+      const labels = { 'non-payee': 'Non payée', 'en-relance': 'En relance', 'suspendue': 'Suspendue' };
+      return labels[statut] || statut;
+    },
+    
+    formatMoney(amount) {
+      return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount);
+    },
+    
+    showToast(title, message, type = 'success') {
+      this.toast = { show: true, title, message, type };
+      setTimeout(() => this.toast.show = false, 3000);
+    }
+  }
+}
+</script>
+
+
+    <!-- Toast Notification -->
+    <div x-show="toast.show" x-transition class="fixed bottom-4 right-4 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50">
+      <i :class="toast.type === 'success' ? 'fa-check-circle text-green-400' : 'fa-exclamation-circle text-red-400'" class="fas"></i>
+      <div>
+        <p class="font-medium text-sm" x-text="toast.title"></p>
+        <p class="text-xs text-slate-300" x-text="toast.message"></p>
+      </div>
+    </div>
+</body>
+</html>

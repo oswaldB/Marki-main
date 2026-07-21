@@ -1,0 +1,286 @@
+{% extends 'layouts/layout_app.html' %}
+
+{% block page_title %}Impayés suspendus{% endblock %}
+{% block active_page %}impayes-suspendus{% endblock %}
+
+{% block content %}
+<div x-data="impayesSuspendus" x-init="init()" x-cloak>
+  
+  <!-- Header -->
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <h1 class="text-base font-semibold text-slate-700">Impayés suspendus</h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500">Factures en blacklist</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <span class="px-2.5 py-1 bg-slate-100 text-slate-600 text-xs font-medium rounded-full" x-text="impayes.length + ' impayés'"></span>
+    </div>
+  </header>
+
+  <main class="p-6">
+    
+    <!-- Filters -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 mb-6">
+      <div class="flex flex-wrap items-center gap-4">
+        <div class="relative flex-1 min-w-[240px] max-w-md">
+          <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            x-model="searchQuery"
+            @input.debounce.300ms="applyFilters()"
+            placeholder="Rechercher une facture ou un payeur..."
+            class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+          >
+        </div>
+        
+        <select x-model="filterMotif" @change="applyFilters()" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+          <option value="">Tous les motifs</option>
+          <option value="litige">Litige en cours</option>
+          <option value="erreur">Erreur de facturation</option>
+          <option value="demande">Demande client</option>
+          <option value="contentieux">Contentieux</option>
+          <option value="arrangement">Arrangement avec le client</option>
+          <option value="procedure">Procédure judiciaire</option>
+          <option value="cessation">Cessation d'activité</option>
+          <option value="autre">Autre</option>
+        </select>
+        
+        <div class="flex-1"></div>
+        
+        <button 
+          @click="loadData()"
+          :disabled="loading"
+          class="flex items-center gap-2 px-4 py-2 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all disabled:opacity-50"
+        >
+          <i class="fas fa-sync-alt" :class="loading ? 'fa-spin' : ''"></i>
+          <span x-text="loading ? 'Chargement...' : 'Actualiser'"></span>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Loading State -->
+    <template x-if="loading">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-8">
+        <div class="animate-pulse space-y-4">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-slate-200 rounded-full"></div>
+            <div class="flex-1 space-y-2">
+              <div class="h-4 bg-slate-200 rounded w-1/4"></div>
+              <div class="h-3 bg-slate-200 rounded w-1/3"></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-slate-200 rounded-full"></div>
+            <div class="flex-1 space-y-2">
+              <div class="h-4 bg-slate-200 rounded w-1/4"></div>
+              <div class="h-3 bg-slate-200 rounded w-1/3"></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 bg-slate-200 rounded-full"></div>
+            <div class="flex-1 space-y-2">
+              <div class="h-4 bg-slate-200 rounded w-1/4"></div>
+              <div class="h-3 bg-slate-200 rounded w-1/3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+    
+    <!-- Error State -->
+    <template x-if="error && !loading">
+      <div class="bg-red-50 border border-red-100 rounded-xl p-6">
+        <div class="flex items-start gap-3">
+          <i class="fas fa-exclamation-circle text-red-500 mt-0.5 text-xl"></i>
+          <div>
+            <p class="text-sm font-medium text-red-800">Erreur de chargement</p>
+            <p class="text-sm text-red-600 mt-1" x-text="error"></p>
+            <button @click="loadData()" class="mt-3 text-sm text-red-700 hover:text-red-800 underline">Réessayer</button>
+          </div>
+        </div>
+      </div>
+    </template>
+    
+    <!-- Liste des impayés suspendus -->
+    <template x-if="!loading && !error">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <!-- Header -->
+        <div class="bg-slate-50 border-b border-slate-200 px-6 py-4">
+          <div class="flex items-center gap-2">
+            <i class="fas fa-ban text-slate-400"></i>
+            <span class="text-sm font-semibold text-slate-700">Impayés suspendus</span>
+          </div>
+          <p class="text-xs text-slate-500 mt-1">
+            Les relances automatiques sont désactivées. 
+            <span class="text-amber-600 font-medium">Orange</span> = facture suspendue individuellement. 
+            <span class="text-violet-600 font-medium">Violet</span> = contact blacklisté.
+          </p>
+        </div>
+        
+        <!-- Empty state -->
+        <div x-show="filteredImpayes.length === 0" class="py-16 text-center">
+          <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-check-circle text-slate-400 text-2xl"></i>
+          </div>
+          <h3 class="text-sm font-medium text-slate-900">Aucun impayé suspendu</h3>
+          <p class="text-sm text-slate-500 mt-1">Toutes les factures sont actives ou en cours de relance.</p>
+        </div>
+        
+        <!-- Liste -->
+        <div x-show="filteredImpayes.length > 0" class="divide-y divide-slate-100">
+          <template x-for="impaye in filteredImpayes" :key="impaye.id">
+            <div class="px-6 py-4 hover:bg-slate-50/50 transition-colors">
+              <div class="flex items-start justify-between gap-4">
+                <!-- Gauche: Info impayé -->
+                <div class="flex items-start gap-4 flex-1">
+                  <div class="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 flex-shrink-0">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                  </div>
+                  <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <h3 class="text-sm font-medium text-slate-900 font-mono" x-text="impaye.nfacture"></h3>
+                      <!-- Badge selon la source de suspension -->
+                      <span 
+                        x-show="impaye.suspension_source === 'impaye' || impaye.suspension_source === 'both'" 
+                        class="px-1.5 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-medium rounded"
+                        title="Facture suspendue individuellement"
+                      >
+                        <i class="fas fa-pause mr-0.5"></i> Facture suspendue
+                      </span>
+                      <span 
+                        x-show="impaye.suspension_source === 'contact' || impaye.suspension_source === 'both'" 
+                        class="px-1.5 py-0.5 bg-violet-100 text-violet-700 text-[10px] font-medium rounded"
+                        title="Contact blacklisté - toutes ses factures sont suspendues"
+                      >
+                        <i class="fas fa-user-slash mr-0.5"></i> Contact blacklisté
+                      </span>
+                      <span x-show="impaye.sequence_code" class="px-1.5 py-0.5 bg-sky-100 text-sky-700 text-[10px] font-medium rounded" x-text="impaye.sequence_code"></span>
+                    </div>
+                    <p class="text-sm text-slate-700 mt-0.5" x-text="impaye.payeur_nom || 'Payeur non attribué'"></p>
+                    <p class="text-xs text-slate-500 mt-0.5" x-text="impaye.payeur_email || '-'"></p>
+                    <div class="flex items-center gap-4 mt-2 text-xs text-slate-400 flex-wrap">
+                      <span><i class="far fa-calendar mr-1"></i>Échéance: <span x-text="formatDate(impaye.date_echeance)"></span></span>
+                      <span><i class="fas fa-euro-sign mr-1"></i><span x-text="formatMoney(impaye.reste_a_payer)"></span></span>
+                      <span x-show="impaye.blacklist_date"><i class="fas fa-ban mr-1"></i>Suspendue le <span x-text="formatDate(impaye.blacklist_date)"></span></span>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Droite: Motif blacklist + Actions -->
+                <div class="flex items-center gap-4 flex-shrink-0">
+                  <div class="text-right">
+                    <span class="px-2 py-1 bg-slate-800 text-white text-xs font-medium rounded" x-text="formatMotif(impaye.blacklist_motif)"></span>
+                    <p class="text-xs text-violet-600 mt-1" x-show="impaye.suspension_source === 'contact' || impaye.suspension_source === 'both'">
+                      <i class="fas fa-info-circle mr-0.5"></i> Contact blacklisté
+                    </p>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <button 
+                      @click="openReactivateModal(impaye)"
+                      :disabled="impaye.suspension_source === 'contact' || impaye.suspension_source === 'both'"
+                      class="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      :class="(impaye.suspension_source === 'contact' || impaye.suspension_source === 'both') ? 'bg-slate-100 text-slate-400' : 'bg-sky-50 text-sky-700 hover:bg-sky-100'"
+                      :title="(impaye.suspension_source === 'contact' || impaye.suspension_source === 'both') ? 'Impossible de réactiver : le contact est blacklisté. Retirez d\'abord le contact de la blacklist.' : 'Réactiver l\'impayé'"
+                    >
+                      <i class="fas fa-undo"></i>
+                      <span class="hidden sm:inline">Réactiver</span>
+                    </button>
+                    <a :href="'/contacts?id=' + impaye.payer_id" 
+                       x-show="impaye.suspension_source === 'contact' || impaye.suspension_source === 'both'"
+                       class="p-2 text-violet-400 hover:text-violet-600 hover:bg-violet-50 rounded-lg" 
+                       title="Voir le contact pour le retirer de la blacklist">
+                      <i class="fas fa-user-slash"></i>
+                    </a>
+                    <a :href="'/impayes/' + impaye.id" class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg" title="Voir le détail">
+                      <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+        
+        <!-- Pagination -->
+        <div x-show="totalPages > 1" class="px-6 py-4 border-t border-slate-100 flex items-center justify-between">
+          <p class="text-sm text-slate-500">
+            Affichage de <span x-text="(currentPage - 1) * itemsPerPage + 1"></span> à <span x-text="Math.min(currentPage * itemsPerPage, total)"></span> sur <span x-text="total"></span> factures
+          </p>
+          <div class="flex items-center gap-2">
+            <button @click="prevPage()" :disabled="currentPage === 1" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50 transition-all">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <template x-for="page in visiblePages" :key="page">
+              <button @click="goToPage(page)" class="px-3 py-1.5 rounded-lg text-sm font-medium transition-all" :class="currentPage === page ? 'bg-sky-500 text-white' : 'border border-slate-200 text-slate-600 hover:bg-slate-50'" x-text="page"></button>
+            </template>
+            <button @click="nextPage()" :disabled="currentPage === totalPages" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50 transition-all">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+    
+  </main>
+  
+  <!-- Reactivate Modal -->
+  <template x-if="showReactivateModal">
+    <div class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showReactivateModal = false"></div>
+      <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+        <h3 class="text-lg font-semibold text-slate-900 mb-2">
+          <i class="fas fa-play-circle text-sky-500 mr-2"></i>Réactiver l'impayé
+        </h3>
+        <p class="text-sm text-slate-600 mb-4">
+          Cette facture sera réactivée et pourra à nouveau être incluse dans les relances automatiques. 
+          Les relances seront régénérées selon la séquence attribuée.
+        </p>
+        
+        <div class="bg-slate-50 rounded-lg p-3 mb-4" x-show="selectedImpaye">
+          <p class="text-xs text-slate-500">Facture:</p>
+          <p class="font-medium font-mono" x-text="selectedImpaye?.nfacture"></p>
+          <p class="text-xs text-slate-500 mt-1">Payeur:</p>
+          <p x-text="selectedImpaye?.payeur_nom || 'Non attribué'"></p>
+          <p class="text-xs text-slate-500 mt-1">Motif de suspension:</p>
+          <p class="text-sm text-slate-700" x-text="formatMotif(selectedImpaye?.blacklist_motif)"></p>
+        </div>
+        
+        <div class="flex items-center justify-end gap-2">
+          <button @click="showReactivateModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="confirmReactivate()" :disabled="reactivating" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium flex items-center gap-2">
+            <i class="fas fa-circle-notch fa-spin" x-show="reactivating"></i>
+            <i class="fas fa-check" x-show="!reactivating"></i>
+            <span x-text="reactivating ? 'Réactivation...' : 'Confirmer la réactivation'"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </template>
+  
+  <!-- Toast Notification -->
+  <div 
+    x-show="toast.show" 
+    x-transition:enter="transition ease-out duration-300"
+    x-transition:enter-start="opacity-0 translate-y-4"
+    x-transition:enter-end="opacity-100 translate-y-0"
+    x-transition:leave="transition ease-in duration-200"
+    x-transition:leave-start="opacity-100 translate-y-0"
+    x-transition:leave-end="opacity-0 translate-y-4"
+    class="fixed bottom-4 right-4 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50"
+  >
+    <i :class="toast.type === 'success' ? 'fa-check-circle text-green-400' : 'fa-exclamation-circle text-red-400'" class="fas"></i>
+    <div>
+      <p class="font-medium text-sm" x-text="toast.title"></p>
+      <p class="text-xs text-slate-300" x-text="toast.message"></p>
+    </div>
+    <button @click="toast.show = false" class="ml-2 text-slate-400 hover:text-white">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+{% include 'impayes/alpinejs-suspendus.html' %}
+{% endblock %}

@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détail Séquence Relance | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css">
+  <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+    .toastui-editor-defaultUI { border-radius: 0.5rem; border: 1px solid #e2e8f0; }
+    .toastui-editor-toolbar { border-radius: 0.5rem 0.5rem 0 0; }
+    .email-card { border-left: 4px solid #8b5cf6; }
+    .rule-row { display: grid; grid-template-columns: 1fr 1fr 80px 40px; gap: 0.75rem; }
+    .variable-tag { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.25rem 0.5rem; background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 0.25rem; font-size: 0.75rem; font-family: monospace; cursor: pointer; transition: all 0.15s; }
+    .variable-tag:hover { background: #e0f2fe; border-color: #7dd3fc; color: #0369a1; }
+    .variable-group { margin-bottom: 1rem; }
+    .variable-group-title { font-size: 0.65rem; font-weight: 600; text-transform: uppercase; color: #94a3b8; margin-bottom: 0.5rem; letter-spacing: 0.05em; }
+    .editor-textarea { font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; }
+  </style>
+</head>
+<body x-data="sequenceRelanceDetailPage()" x-init="init()">
+
+<sidebar-nav-dual page="sequences"></sidebar-nav-dual>
+
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <a href="./sequences.html" class="text-slate-400 hover:text-slate-600"><i class="fas fa-arrow-left"></i></a>
+      <div class="flex-1">
+        <input type="text" x-model="sequence.nom" class="text-xl font-semibold bg-transparent border-none focus:ring-0 p-0 w-full" placeholder="Nom de la séquence">
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-sky-100 text-sky-700">Relances</span>
+      <span :class="sequence.publiee ? 'bg-sky-100 text-sky-700' : 'bg-slate-100 text-slate-600'" class="px-2.5 py-1 text-xs font-medium rounded-full" x-text="sequence.publiee ? 'Publiée' : 'Brouillon'"></span>
+      <button @click="togglePublication()" :class="sequence.publiee ? 'text-slate-600 hover:bg-slate-100 border border-slate-200' : 'bg-sky-500 hover:bg-sky-600 text-white'" class="flex items-center gap-2 px-3 py-2 text-sm font-medium rounded-lg transition-all"><i :class="sequence.publiee ? 'fa-eye-slash' : 'fa-eye'" class="fas"></i><span x-text="sequence.publiee ? 'Dépublier' : 'Publier'"></span></button>
+      <button @click="sauvegarder()" class="flex items-center gap-2 px-3 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium"><i class="fas fa-save"></i>Enregistrer</button>
+    </div>
+  </header>
+
+  <main class="p-6 max-w-7xl mx-auto space-y-6">
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
+      <div class="flex items-center gap-4">
+        <span class="text-sm font-medium text-slate-700 w-36 shrink-0">Validation obligatoire</span>
+        <div class="flex items-center gap-3">
+          <button @click="sequence.validationObligatoire = !sequence.validationObligatoire" :class="sequence.validationObligatoire ? 'bg-sky-500' : 'bg-slate-200'" class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors"><span :class="sequence.validationObligatoire ? 'translate-x-6' : 'translate-x-1'" class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"></span></button>
+          <span class="text-sm text-slate-500" x-text="sequence.validationObligatoire ? 'Validation obligatoire activée' : 'Validation obligatoire désactivée'"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div class="lg:col-span-2 space-y-4">
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+            <h3 class="font-semibold text-slate-900"><i class="fas fa-envelope text-sky-500 mr-2"></i>EMAILS DE RELANCE</h3>
+            <button @click="openIaModal()" class="flex items-center gap-2 px-3 py-2 text-sky-600 hover:bg-sky-50 rounded-lg text-sm font-medium"><i class="fas fa-sparkles"></i>Générer par IA</button>
+          </div>
+          <div class="p-6 space-y-4">
+            <template x-for="(email, idx) in sequence.emails" :key="idx">
+              <div class="email-card bg-slate-50 rounded-lg p-4 border border-slate-200">
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-3">
+                    <span class="w-6 h-6 rounded-full bg-sky-500 text-white flex items-center justify-center text-xs font-bold" x-text="idx + 1"></span>
+                    <span class="font-medium text-slate-900">Email de relance</span>
+                    <span class="text-xs text-slate-400">J+<span x-text="email.delai"></span></span>
+                  </div>
+                  <div class="flex items-center gap-1">
+                    <button @click="toggleEmail(idx)" class="p-1.5 text-slate-400 hover:text-slate-600 hover:bg-slate-200 rounded"><i :class="email.collapsed ? 'fa-chevron-down' : 'fa-chevron-up'" class="fas"></i></button>
+                    <button @click="supprimerEmail(idx)" class="p-1.5 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded"><i class="fas fa-trash"></i></button>
+                  </div>
+                </div>
+                <div x-show="!email.collapsed" x-collapse>
+                  <div class="space-y-3">
+                    <div class="border-b border-slate-200">
+                      <nav class="flex gap-4">
+                        <button @click="email.activeScenario = 'single'" :class="email.activeScenario === 'single' ? 'text-sky-600 border-b-2 border-sky-500' : 'text-slate-500 hover:text-slate-700'" class="pb-2 text-xs font-medium transition-colors">1 impayé</button>
+                        <button @click="email.activeScenario = 'multiple'" :class="email.activeScenario === 'multiple' ? 'text-sky-600 border-b-2 border-sky-500' : 'text-slate-500 hover:text-slate-700'" class="pb-2 text-xs font-medium transition-colors">Plusieurs impayés</button>
+                        <button @click="email.activeScenario = 'broker_only'" :class="email.activeScenario === 'broker_only' ? 'text-sky-600 border-b-2 border-sky-500' : 'text-slate-500 hover:text-slate-700'" class="pb-2 text-xs font-medium transition-colors">Apporteur seul</button>
+                        <button @click="email.activeScenario = 'impayes_broker'" :class="email.activeScenario === 'impayes_broker' ? 'text-sky-600 border-b-2 border-sky-500' : 'text-slate-500 hover:text-slate-700'" class="pb-2 text-xs font-medium transition-colors">Impayés + Apporteur</button>
+                      </nav>
+                    </div>
+                    <div class="flex items-center justify-between py-2">
+                      <span class="text-xs font-medium text-slate-600">Format <span x-text="email.activeScenario"></span> actif</span>
+                      <button @click="toggleScenarioActive(idx)" :class="email.scenarios[email.activeScenario].active ? 'bg-sky-500' : 'bg-slate-300'" class="relative inline-flex h-5 w-9 items-center rounded-full transition-colors"><span :class="email.scenarios[email.activeScenario].active ? 'translate-x-5' : 'translate-x-1'" class="inline-block h-3 w-3 transform rounded-full bg-white transition-transform"></span></button>
+                    </div>
+                    <template x-if="email.scenarios[email.activeScenario].active">
+                      <div class="space-y-3">
+                        <div>
+                          <label class="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">Objet</label>
+                          <input type="text" x-model="email.scenarios[email.activeScenario].objet" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm" placeholder="Objet de l'email">
+                        </div>
+                        <div>
+                          <label class="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">CC</label>
+                          <input type="text" x-model="email.scenarios[email.activeScenario].cc" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm" placeholder="cc@exemple.com">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                          <div>
+                            <label class="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">J+ (délai)</label>
+                            <div class="flex items-center gap-2"><input type="number" x-model="email.delai" class="w-20 px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm"><span class="text-sm text-slate-500">jours</span></div>
+                          </div>
+                          <div>
+                            <label class="block text-xs font-medium text-slate-500 uppercase tracking-wider mb-1">Profil SMTP</label>
+                            <select x-model="email.scenarios[email.activeScenario].smtp" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                              <option value="">Choisir...</option>
+                              <template x-for="smtp in smtpOptions" :key="smtp.id"><option :value="smtp.id" x-text="smtp.nom"></option></template>
+                            </select>
+                          </div>
+                        </div>
+                        <div>
+                          <div class="flex items-center justify-between mb-1">
+                            <label class="block text-xs font-medium text-slate-500 uppercase tracking-wider">Corps du message</label>
+                            <button @click="openChatGpt(idx)" title="Générer avec ChatGPT" class="text-sky-600 hover:text-sky-700 text-sm"
+                              ><i class="fas fa-robot"></i> IA</button
+                            >
+                          </div>
+
+                          <div class="bg-white rounded-lg border border-slate-200 overflow-hidden">
+                            <!-- ToastUI Editor Container -->
+                            <div :id="'toast-editor-' + idx + '-' + email.activeScenario" x-init="initToastEditor(idx, email.activeScenario)"></div>
+                          </div>
+
+                          <p class="text-xs text-slate-400 mt-1">
+                            <i class="fas fa-info-circle mr-1"></i>Syntaxe:
+                            <code class="bg-slate-100 px-1 rounded">[[nom_variable]]</code> ou
+                            <code class="bg-slate-100 px-1 rounded">[[date, format(&quot;DD/MM/YYYY&quot;)]]</code>
+                          </p>
+                        </div>
+                        <div class="flex items-center justify-end gap-2">
+                          <button @click="testerEmail(idx)" class="flex items-center gap-2 px-3 py-2 text-slate-600 hover:bg-slate-200 rounded-lg text-sm"><i class="fas fa-paper-plane"></i>Tester</button>
+                        </div>
+                      </div>
+                    </template>
+                    <div x-show="!email.scenarios[email.activeScenario].active" class="text-center py-4 text-slate-400 text-sm italic">Ce format est désactivé</div>
+                  </div>
+                </div>
+              </div>
+            </template>
+            <button @click="ajouterEmail()" class="flex items-center gap-2 px-4 py-2 border border-slate-300 hover:bg-slate-50 rounded-lg text-sm font-medium"><i class="fas fa-plus"></i>Ajouter un email</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          <div class="px-4 py-3 border-b border-slate-100 flex items-center justify-between">
+            <h3 class="font-semibold text-slate-900 text-sm"><i class="fas fa-code text-sky-500 mr-2"></i>Variables disponibles</h3>
+            <div class="relative"><i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 text-xs"></i><input type="text" x-model="varsSearch" placeholder="Rechercher..." class="pl-7 pr-2 py-1 text-xs border border-slate-200 rounded-lg w-32 focus:ring-1 focus:ring-sky-500"></div>
+          </div>
+          <div class="p-4 max-h-[calc(100vh-300px)] overflow-y-auto">
+            <div class="mb-4 p-3 bg-sky-50 rounded-lg border border-sky-100">
+              <p class="text-xs font-medium text-sky-800 mb-1"><i class="fas fa-info-circle mr-1"></i>Format multiple</p>
+              <pre class="text-xs bg-white p-2 rounded border border-sky-200 overflow-x-auto"><code>[[loop impayes]]
+| [[nfacture]] | [[montant_total]] |
+[[endloop]]</code></pre>
+            </div>
+            <template x-for="group in filteredVariables" :key="group.groupe">
+              <div class="variable-group">
+                <div class="variable-group-title" x-text="group.groupe"></div>
+                <div class="flex flex-wrap gap-1.5">
+                  <template x-for="v in group.vars" :key="v">
+                    <button @click="copyVariable(v)" class="variable-tag" :title="'Copier [['+v+']]'"><span x-text="v"></span><i class="fas fa-copy text-slate-400"></i></button>
+                  </template>
+                </div>
+              </div>
+            </template>
+            <div class="variable-group">
+              <div class="variable-group-title flex items-center gap-2">LIENS DE PAIEMENT <button @click="ouvrirModalLiensPaiement()" class="text-sky-500 hover:text-sky-700 text-xs" title="Gérer les liens"><i class="fas fa-cog"></i></button></div>
+              <div class="flex flex-wrap gap-1.5">
+                <template x-for="lien in liensPaiement" :key="lien.id">
+                  <button @click="copyToClipboard(lien.url)" class="variable-tag bg-sky-50 border-sky-200 hover:bg-sky-100"><i class="fas fa-link text-sky-500"></i><span x-text="lien.nom"></span></button>
+                </template>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-sky-50 rounded-xl border border-sky-200 p-4">
+          <h4 class="text-xs font-semibold text-sky-800 mb-2"><i class="fas fa-calendar-alt mr-1"></i>Formatage des dates</h4>
+          <p class="text-xs text-sky-700 mb-2">Utilisez la syntaxe avec format :</p>
+          <code class="text-xs bg-white px-2 py-1 rounded border border-sky-200 block mb-1">[[date_echeance, date("DD/MM/YYYY")]]</code>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+      <div class="px-6 py-4 border-b border-slate-100">
+        <h3 class="font-semibold text-slate-900"><i class="fas fa-filter text-sky-500 mr-2"></i>RÈGLES D'ATTRIBUTION</h3>
+      </div>
+      <div class="p-6 space-y-4">
+        <div class="flex items-center gap-4">
+          <span class="text-sm font-medium text-slate-700">Attribution automatique</span>
+          <button @click="sequence.attributionAuto = !sequence.attributionAuto" :class="sequence.attributionAuto ? 'bg-sky-500' : 'bg-slate-200'" class="relative inline-flex h-6 w-11 items-center rounded-full transition-colors"><span :class="sequence.attributionAuto ? 'translate-x-6' : 'translate-x-1'" class="inline-block h-4 w-4 transform rounded-full bg-white transition-transform"></span></button>
+        </div>
+        <div x-show="sequence.attributionAuto" class="bg-sky-50 rounded-lg p-4 border border-sky-200">
+          <p class="text-sm text-sky-800 font-medium">Attribution automatique activée</p>
+          <button @click="lancerAttribution()" class="mt-3 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium"><i class="fas fa-play mr-1"></i>Lancer l'attribution auto</button>
+        </div>
+        <template x-for="(groupe, gIdx) in sequence.groupesRegles" :key="gIdx">
+          <div class="border border-slate-200 rounded-lg p-4">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-3">
+                <h4 class="font-medium text-slate-900">Groupe de règles <span x-text="gIdx + 1"></span></h4>
+                <template x-if="gIdx > 0">
+                  <select x-model="sequence.operateurGroupes" class="text-xs px-2 py-1 border border-slate-200 rounded bg-slate-50">
+                    <option value="ET">ET</option>
+                    <option value="OU">OU</option>
+                  </select>
+                </template>
+              </div>
+              <button @click="supprimerGroupe(gIdx)" class="text-slate-400 hover:text-sky-600"><i class="fas fa-trash"></i></button>
+            </div>
+            <div class="space-y-2">
+              <template x-for="(regle, rIdx) in groupe.regles" :key="rIdx">
+                <div class="flex items-center gap-2">
+                  <template x-if="rIdx > 0">
+                    <select x-model="groupe.operateurRegles" class="text-xs px-2 py-1 border border-slate-200 rounded bg-slate-50 w-16">
+                      <option value="ET">ET</option>
+                      <option value="OU">OU</option>
+                    </select>
+                  </template>
+                  <div class="rule-row items-center flex-1">
+                    <select x-model="regle.champ" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                      <option value="">Champ...</option>
+                      <option value="anciennete">Ancienneté</option>
+                      <option value="montant">Montant</option>
+                      <option value="payeur_type">Type payeur</option>
+                      <option value="reste_a_payer">Reste à payer</option>
+                    </select>
+                    <select x-model="regle.operateur" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                      <option value="">Op...</option>
+                      <option value="sup">&gt;</option>
+                      <option value="inf">&lt;</option>
+                      <option value="egal">=</option>
+                      <option value="contient">contient</option>
+                    </select>
+                    <input type="text" x-model="regle.valeur" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm" placeholder="Valeur">
+                    <button @click="supprimerRegle(gIdx, rIdx)" class="text-slate-400 hover:text-sky-600"><i class="fas fa-times"></i></button>
+                  </div>
+                </div>
+              </template>
+              <button @click="ajouterRegle(gIdx)" class="text-sm text-sky-600 hover:text-sky-700 font-medium"><i class="fas fa-plus mr-1"></i>Ajouter une règle</button>
+            </div>
+          </div>
+        </template>
+        <button @click="ajouterGroupe()" class="flex items-center gap-2 px-4 py-2 border border-slate-300 hover:bg-slate-50 rounded-lg text-sm font-medium"><i class="fas fa-plus"></i>Ajouter un groupe</button>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between">
+      <button @click="regenererRelances()" class="flex items-center gap-2 px-4 py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 rounded-lg text-sm font-medium"><i class="fas fa-sync-alt"></i>Régénérer les relances</button>
+      <div class="flex items-center gap-2">
+        <button @click="testerSequence()" class="flex items-center gap-2 px-4 py-2 text-slate-600 hover:bg-slate-200 rounded-lg text-sm font-medium"><i class="fas fa-vial"></i>Tester</button>
+        <button @click="sauvegarder()" class="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium"><i class="fas fa-save"></i>Enregistrer</button>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- Modal Lien Paiement -->
+<div x-show="showLienPaiementModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+  <div class="absolute inset-0 bg-slate-500/75" @click="showLienPaiementModal = false"></div>
+  <div class="relative bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col" x-transition.scale>
+    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+      <h3 class="text-lg font-semibold text-slate-900"><i class="fas fa-credit-card text-sky-500 mr-2"></i>Gestion des liens de paiement</h3>
+      <button @click="showLienPaiementModal = false" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="flex-1 overflow-y-auto p-6 space-y-6">
+      <div>
+        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Liens existants</p>
+        <div x-show="liensPaiement.length === 0" class="text-center py-6 text-slate-400 bg-slate-50 rounded-lg"><i class="fas fa-link text-3xl mb-2"></i><p class="text-sm">Aucun lien</p></div>
+        <div x-show="liensPaiement.length > 0" class="space-y-2">
+          <template x-for="lien in liensPaiement" :key="lien.id">
+            <div class="border border-slate-200 rounded-lg p-3 hover:bg-slate-50">
+              <div class="flex items-center justify-between">
+                <div class="flex-1 min-w-0">
+                  <p class="font-medium text-slate-900 text-sm" x-text="lien.nom"></p>
+                  <p class="text-xs text-slate-500 truncate font-mono" x-text="lien.url"></p>
+                </div>
+                <div class="flex items-center gap-1 ml-2">
+                  <button @click="editerLienPaiement(lien)" class="p-1.5 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded" title="Modifier"><i class="fas fa-pen text-xs"></i></button>
+                  <button @click="supprimerLienPaiement(lien.id)" class="p-1.5 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded" title="Supprimer"><i class="fas fa-trash text-xs"></i></button>
+                </div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+      <div class="border border-slate-200 rounded-lg bg-slate-50 p-4">
+        <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">Variables disponibles</p>
+        <div class="relative mb-3">
+          <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 text-xs"></i>
+          <input type="text" x-model="lienVarsSearch" placeholder="Rechercher..." class="pl-8 pr-3 py-1.5 text-xs border border-slate-200 rounded-lg w-full">
+        </div>
+        <div class="space-y-3 max-h-32 overflow-y-auto">
+          <template x-for="group in filteredLienVars" :key="group.groupe">
+            <div>
+              <p class="text-xs font-semibold text-slate-400 uppercase tracking-wide mb-1" x-text="group.groupe"></p>
+              <div class="flex flex-wrap gap-1">
+                <template x-for="v in group.vars" :key="v">
+                  <button @click="insererVariableDansLien(v)" class="text-xs bg-white hover:bg-sky-50 hover:text-sky-700 border border-slate-200 rounded px-1.5 py-0.5 font-mono transition-colors">[[<span x-text="v"></span>]]</button>
+                </template>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+      <div class="border-t border-slate-200 pt-4">
+        <p class="text-sm font-semibold text-slate-900 mb-3" x-text="lienPaiementEditing ? 'Modifier le lien' : 'Créer un nouveau lien'"></p>
+        <div class="space-y-3">
+          <div>
+            <label class="block text-xs font-medium text-slate-700 mb-1">Nom du lien <span class="text-sky-500">*</span></label>
+            <input type="text" x-model="lienPaiementForm.nom" placeholder="Ex: Paiement par CB" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+          </div>
+          <div>
+            <label class="block text-xs font-medium text-slate-700 mb-1">URL avec variables <span class="text-sky-500">*</span></label>
+            <textarea x-model="lienPaiementForm.url" x-ref="lienPaiementTextarea" rows="3" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm font-mono focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 resize-y" placeholder="https://paiement.exemple.com?facture=[[nfacture]]&montant=[[reste_a_payer]]"></textarea>
+            <div x-show="lienPaiementForm.url" class="mt-2 bg-sky-50 rounded-lg p-3 border border-sky-100">
+              <p class="text-xs text-sky-700 font-medium mb-1"><i class="fas fa-eye mr-1"></i>Aperçu</p>
+              <p class="text-xs text-sky-600 font-mono break-all" x-text="genererApercuLien(lienPaiementForm.url)"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-end gap-2 bg-slate-50">
+      <button x-show="lienPaiementEditing" @click="annulerEditionLien()" class="px-4 py-2 text-slate-700 hover:bg-slate-200 rounded-lg text-sm font-medium">Annuler</button>
+      <button @click="enregistrerLienPaiement()" :disabled="!lienPaiementForm.nom || !lienPaiementForm.url" class="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium"><i :class="lienPaiementEditing ? 'fa-save' : 'fa-plus'" class="fas"></i><span x-text="lienPaiementEditing ? 'Mettre à jour' : 'Créer'"></span></button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Test Email -->
+<div x-show="showTestEmailModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+  <div class="absolute inset-0 bg-slate-500/75" @click="showTestEmailModal = false"></div>
+  <div class="relative bg-white rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col" x-transition.scale>
+    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-sky-500 to-sky-600">
+      <h3 class="text-lg font-semibold text-white"><i class="fas fa-vial mr-2"></i>Tester l'email</h3>
+      <button @click="showTestEmailModal = false" class="text-white/70 hover:text-white"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="flex-1 overflow-y-auto p-6 space-y-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2"><i class="fas fa-envelope mr-1 text-slate-400"></i>Destinataire du test</label>
+          <input type="email" x-model="testEmailConfig.destinataire" placeholder="votre-email@exemple.com" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-700 mb-2"><i class="fas fa-layer-group mr-1 text-slate-400"></i>Scénario à tester</label>
+          <select x-model="testEmailConfig.scenario" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+            <option value="single">1 impayé</option>
+            <option value="multiple">Plusieurs impayés</option>
+            <option value="broker_only">Apporteur seul</option>
+            <option value="impayes_broker">Impayés + Apporteur</option>
+          </select>
+        </div>
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-2"><i class="fas fa-user mr-1 text-slate-400"></i>Choisir un payeur pour le test</label>
+        <div class="border border-slate-200 rounded-lg overflow-hidden max-h-64 overflow-y-auto">
+          <div class="bg-slate-50 px-4 py-2 border-b border-slate-200 grid grid-cols-4 gap-2 text-xs font-medium text-slate-500">
+            <span>Payeur</span>
+            <span>Email</span>
+            <span>Impayés</span>
+            <span>Total</span>
+          </div>
+          <template x-for="payeur in payeursAvecImpayes" :key="payeur.id">
+            <div 
+              @click="testEmailConfig.payeurId = payeur.id"
+              class="px-4 py-3 grid grid-cols-4 gap-2 text-sm cursor-pointer hover:bg-sky-50 border-b border-slate-100 last:border-b-0"
+              :class="testEmailConfig.payeurId == payeur.id ? 'bg-sky-50 border-sky-200' : ''"
+            >
+              <span class="font-medium text-slate-900" x-text="payeur.nom + ' ' + payeur.prenom"></span>
+              <span class="text-slate-600 truncate" x-text="payeur.email"></span>
+              <span class="text-slate-600" x-text="payeur.impayes.length"></span>
+              <span class="font-medium text-slate-900" x-text="formatMontant(getTotalImpayes(payeur))"></span>
+            </div>
+          </template>
+        </div>
+      </div>
+      
+      <div x-show="testEmailConfig.payeurId" x-collapse class="bg-sky-50 rounded-lg p-4 border border-sky-200">
+        <div class="flex items-start gap-3">
+          <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center flex-shrink-0"><i class="fas fa-user text-sky-600"></i></div>
+          <div class="flex-1">
+            <p class="font-medium text-slate-900" x-text="getPayeurSelectionne()?.nom + ' ' + getPayeurSelectionne()?.prenom"></p>
+            <p class="text-sm text-slate-600" x-text="getPayeurSelectionne()?.email"></p>
+            <div class="mt-2 flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-white rounded text-xs font-medium text-slate-700"><i class="fas fa-file-invoice mr-1"></i><span x-text="getPayeurSelectionne()?.impayes.length"></span> impayés</span>
+              <span class="px-2 py-1 bg-white rounded text-xs font-medium text-slate-700"><i class="fas fa-euro-sign mr-1"></i>Total: <span x-text="formatMontant(getTotalImpayes(getPayeurSelectionne()))"></span></span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-3 pt-3 border-t border-sky-200">
+          <p class="text-xs font-medium text-sky-800 mb-2">Factures qui seront incluses :</p>
+          <div class="space-y-1 max-h-32 overflow-y-auto">
+            <template x-for="impaye in getPayeurSelectionne()?.impayes" :key="impaye.nfacture">
+              <div class="flex items-center justify-between text-xs bg-white rounded px-2 py-1.5"><span class="font-mono" x-text="impaye.nfacture"></span><span class="font-medium" x-text="formatMontant(impaye.montant)"></span></div>
+            </template>
+          </div>
+        </div>
+      </div>
+      
+      <div x-show="!testEmailConfig.payeurId" class="text-center py-6 bg-slate-50 rounded-lg border border-slate-200 border-dashed"><i class="fas fa-user-plus text-3xl text-slate-300 mb-2"></i><p class="text-sm text-slate-500">Sélectionnez un payeur pour prévisualiser l'email</p></div>
+      
+      <div x-show="testEmailConfig.payeurId">
+        <div class="flex items-center justify-between mb-2">
+          <label class="text-sm font-medium text-slate-700"><i class="fas fa-eye mr-1 text-slate-400"></i>Prévisualisation (<span x-text="getScenarioLabel(testEmailConfig.scenario)"></span>)</label>
+          <button @click="toggleViewMode()" class="text-xs text-sky-600 hover:text-sky-700 font-medium"><i :class="testEmailConfig.viewMode === 'rendered' ? 'fa-code' : 'fa-eye'" class="fas mr-1"></i><span x-text="testEmailConfig.viewMode === 'rendered' ? 'Voir le code' : 'Voir le rendu'"></span></button>
+        </div>
+        <div x-show="testEmailConfig.viewMode === 'rendered'" class="border border-slate-200 rounded-lg overflow-hidden bg-white" style="min-height: 200px; max-height: 400px; overflow-y: auto;">
+          <div class="bg-slate-100 px-4 py-2 border-b border-slate-200"><p class="text-xs text-slate-500">Objet: <span class="font-medium text-slate-700" x-text="getEmailPreviewObjet()"></span></p></div>
+          <div class="p-4 email-preview-content" x-html="getEmailPreviewRendu()"></div>
+        </div>
+        <div x-show="testEmailConfig.viewMode === 'source'" class="border border-slate-200 rounded-lg overflow-hidden">
+          <div class="bg-slate-800 px-4 py-2 flex items-center justify-between"><p class="text-xs text-slate-400">Source (HTML)</p><button @click="copierSourceEmail()" class="text-xs text-slate-400 hover:text-white"><i class="fas fa-copy mr-1"></i>Copier</button></div>
+          <pre class="p-4 bg-slate-900 text-slate-300 text-xs overflow-x-auto" style="max-height: 400px;"><code x-text="getEmailPreviewSource()"></code></pre>
+        </div>
+      </div>
+    </div>
+    <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-between bg-slate-50">
+      <div class="text-xs text-slate-500"><i class="fas fa-info-circle mr-1"></i>L'email sera envoyé avec les données du payeur sélectionné</div>
+      <div class="flex items-center gap-2">
+        <button @click="showTestEmailModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-200 rounded-lg text-sm font-medium">Annuler</button>
+        <button @click="envoyerTestEmail()" :disabled="!testEmailConfig.destinataire || !testEmailConfig.payeurId || envoiEnCours" class="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium"><i :class="envoiEnCours ? 'fa-circle-notch fa-spin' : 'fa-paper-plane'" class="fas"></i><span x-text="envoiEnCours ? 'Envoi...' : 'Envoyer le test'"></span></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal ChatGPT -->
+<div x-show="showChatGptModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+  <div class="absolute inset-0 bg-slate-500/75" @click="showChatGptModal = false"></div>
+  <div class="relative bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-hidden flex flex-col" x-transition.scale>
+    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-sky-500 to-sky-600">
+      <h3 class="text-lg font-semibold text-white"><i class="fas fa-robot mr-2"></i>Générer avec ChatGPT</h3>
+      <button @click="showChatGptModal = false" class="text-white/70 hover:text-white"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="flex-1 overflow-y-auto p-6 space-y-4">
+      <p class="text-sm text-slate-600">Décrivez le contenu que vous souhaitez générer pour cet email :</p>
+      <textarea x-model="chatGptPrompt" rows="6" class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 resize-y" placeholder="Ex: Un email professionnel pour relancer un client sur une facture impayée de 3 mois, ton cordial mais ferme..."></textarea>
+      <div class="bg-sky-50 rounded-lg p-3 border border-sky-100">
+        <p class="text-xs text-sky-700"><i class="fas fa-info-circle mr-1"></i>Le contenu généré remplacera le corps actuel de l'email.</p>
+      </div>
+    </div>
+    <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-end gap-2 bg-slate-50">
+      <button @click="showChatGptModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-200 rounded-lg text-sm font-medium">Annuler</button>
+      <button @click="genererChatGpt()" :disabled="!chatGptPrompt || generating" class="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+        <i :class="generating ? 'fa-circle-notch fa-spin' : 'fa-wand-magic-sparkles'" class="fas"></i>
+        <span x-text="generating ? 'Génération...' : 'Générer'"></span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast Notification -->
+<div x-show="toast.show" x-transition class="fixed bottom-4 right-4 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50">
+  <i :class="toast.type === 'success' ? 'fa-check-circle text-sky-400' : 'fa-exclamation-circle text-sky-400'" class="fas"></i>
+  <div><p class="font-medium text-sm" x-text="toast.title"></p><p class="text-xs text-slate-300" x-text="toast.message"></p></div>
+</div>
+
+<div x-show="showDeleteEmailModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+  <div class="absolute inset-0 bg-slate-500/75" @click="showDeleteEmailModal = false"></div>
+  <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+    <div class="text-center mb-4">
+      <div class="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-3">
+        <i class="fas fa-trash text-sky-500 text-xl"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-slate-900">Confirmer la suppression</h3>
+      <p class="text-sm text-slate-500 mt-1">Êtes-vous sûr de vouloir supprimer cet email ?</p>
+    </div>
+    <div class="flex items-center justify-end gap-2">
+      <button @click="showDeleteEmailModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+      <button @click="confirmSupprimerEmail()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">Supprimer</button>
+    </div>
+  </div>
+</div>
+
+<div x-show="showDeleteLienModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+  <div class="absolute inset-0 bg-slate-500/75" @click="showDeleteLienModal = false"></div>
+  <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+    <div class="text-center mb-4">
+      <div class="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-3">
+        <i class="fas fa-trash text-sky-500 text-xl"></i>
+      </div>
+      <h3 class="text-lg font-semibold text-slate-900">Confirmer la suppression</h3>
+      <p class="text-sm text-slate-500 mt-1">Êtes-vous sûr de vouloir supprimer ce lien de paiement ?</p>
+    </div>
+    <div class="flex items-center justify-end gap-2">
+      <button @click="showDeleteLienModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+      <button @click="confirmSupprimerLien()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">Supprimer</button>
+    </div>
+  </div>
+</div>
+
+<div x-show="showTestSequenceModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+  <div class="absolute inset-0 bg-slate-500/75" @click="showTestSequenceModal = false"></div>
+  <div class="relative bg-white rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col" x-transition.scale>
+    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-gradient-to-r from-sky-500 to-sky-600">
+      <h3 class="text-lg font-semibold text-white"><i class="fas fa-vial mr-2"></i>Tester toute la séquence</h3>
+      <button @click="showTestSequenceModal = false" class="text-white/70 hover:text-white"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="flex-1 overflow-y-auto p-6 space-y-6">
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-2"><i class="fas fa-user mr-1 text-slate-400"></i>Choisir un payeur pour tester la séquence complète</label>
+        <div class="border border-slate-200 rounded-lg overflow-hidden max-h-64 overflow-y-auto">
+          <div class="bg-slate-50 px-4 py-2 border-b border-slate-200 grid grid-cols-4 gap-2 text-xs font-medium text-slate-500">
+            <span>Payeur</span>
+            <span>Email</span>
+            <span>Impayés</span>
+            <span>Total</span>
+          </div>
+          <template x-for="payeur in payeursAvecImpayes" :key="payeur.id">
+            <div 
+              @click="testSequenceConfig.payeurId = payeur.id"
+              class="px-4 py-3 grid grid-cols-4 gap-2 text-sm cursor-pointer hover:bg-sky-50 border-b border-slate-100 last:border-b-0"
+              :class="testSequenceConfig.payeurId == payeur.id ? 'bg-sky-50 border-sky-200' : ''"
+            >
+              <span class="font-medium text-slate-900" x-text="payeur.nom + ' ' + payeur.prenom"></span>
+              <span class="text-slate-600 truncate" x-text="payeur.email"></span>
+              <span class="text-slate-600" x-text="payeur.impayes.length"></span>
+              <span class="font-medium text-slate-900" x-text="formatMontant(getTotalImpayes(payeur))"></span>
+            </div>
+          </template>
+        </div>
+      </div>
+      
+      <div x-show="testSequenceConfig.payeurId" class="bg-slate-50 rounded-lg p-4 border border-slate-200">
+        <h4 class="font-medium text-slate-900 mb-3">Aperçu de la séquence</h4>
+        <div class="space-y-2">
+          <template x-for="(email, idx) in sequence.emails" :key="idx">
+            <div class="flex items-center gap-3 p-3 bg-white rounded-lg border border-slate-200">
+              <div class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center text-sky-600 font-bold text-sm" x-text="idx + 1"></div>
+              <div class="flex-1">
+                <p class="font-medium text-slate-900" x-text="email.scenarios[email.activeScenario].objet || 'Email ' + (idx + 1)"></p>
+                <p class="text-xs text-slate-500">J+<span x-text="email.delai"></span></p>
+              </div>
+              <span class="text-xs px-2 py-1 bg-slate-100 rounded text-slate-600" x-text="email.activeScenario"></span>
+            </div>
+          </template>
+        </div>
+      </div>
+      
+      <div x-show="!testSequenceConfig.payeurId" class="text-center py-6 bg-slate-50 rounded-lg border border-slate-200 border-dashed">
+        <i class="fas fa-user-plus text-3xl text-slate-300 mb-2"></i>
+        <p class="text-sm text-slate-500">Sélectionnez un payeur pour voir l'aperçu de la séquence</p>
+      </div>
+    </div>
+    <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-between bg-slate-50">
+      <div class="text-xs text-slate-500"><i class="fas fa-info-circle mr-1"></i>Cette action enverra tous les emails de la séquence en mode test</div>
+      <div class="flex items-center gap-2">
+        <button @click="showTestSequenceModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-200 rounded-lg text-sm font-medium">Annuler</button>
+        <button @click="executerTestSequence()" :disabled="!testSequenceConfig.payeurId || testSequenceEnCours" class="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+          <i :class="testSequenceEnCours ? 'fa-circle-notch fa-spin' : 'fa-play'" class="fas"></i>
+          <span x-text="testSequenceEnCours ? 'Test en cours...' : 'Lancer le test'"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function sequenceRelanceDetailPage() {
+  return {
+    loading: false,
+    showIaModal: false,
+    showChatGptModal: false,
+    showRegenererModal: false,
+    showLienPaiementModal: false,
+    showTestEmailModal: false,
+    showDeleteEmailModal: false,
+    showDeleteLienModal: false,
+    showTestSequenceModal: false,
+    emailToDelete: null,
+    lienToDelete: null,
+    currentEmailIndex: null,
+    generating: false,
+    varsSearch: '',
+    iaPrompt: '',
+    iaEmailCount: 4,
+    chatGptPrompt: '',
+    regenOptions: { resetDates: false, includeSent: false },
+    toast: { show: false, type: 'success', title: '', message: '' },
+    lienPaiementEditing: null,
+    lienPaiementForm: { nom: '', url: '' },
+    lienVarsSearch: '',
+    envoiEnCours: false,
+    testEmailConfig: { destinataire: '', payeurId: '', scenario: 'single', viewMode: 'rendered' },
+    testSequenceConfig: { payeurId: '' },
+    testSequenceEnCours: false,
+    
+    // ToastUI Editors storage
+    toastEditors: {},
+
+    allVariables: [
+      { groupe: "PAYEUR", vars: ["payeur_nom", "payeur_prenom", "payeur_email", "payeur_telephone", "payeur_type", "payeur_civilite"] },
+      { groupe: "FACTURE", vars: ["nfacture", "ref_piece", "date_piece", "reste_a_payer", "montant_total", "date_echeance"] },
+      { groupe: "BIEN", vars: ["adresse_bien", "code_postal", "ville", "numero_lot", "etage", "porte"] },
+      { groupe: "PROPRIETAIRE", vars: ["proprietaire_nom", "proprietaire_prenom", "proprietaire_email"] },
+      { groupe: "APPORTEUR", vars: ["apporteur_nom", "apporteur_prenom", "apporteur_email", "apporteur_societe"] },
+      { groupe: "DOSSIER", vars: ["numero_dossier", "employe_intervention", "date_debut_mission"] },
+      { groupe: "MULTIPLE", vars: ["total_impayes", "nfactures_liste", "ndossier_liste"] },
+      { groupe: "LIENS", vars: ["lien_pdf", "lien_espace"] }
+    ],
+    
+    liensPaiement: [
+      { id: 1, nom: 'Paiement CB Stripe', url: 'https://pay.stripe.com/facture/[[nfacture]]?montant=[[reste_a_payer]]' },
+      { id: 2, nom: 'Virement bancaire', url: 'https://marki.fr/paiement/virement?client=[[payeur_nom]]' }
+    ],
+    
+    payeursAvecImpayes: [
+      { id: 1, nom: 'Dupont', prenom: 'Jean', email: 'jean.dupont@email.com', telephone: '06 12 34 56 78', adresse: '123 Rue de Paris', ville: 'Paris', code_postal: '75001', impayes: [
+        { nfacture: 'FA-2024-001', montant: '1250.00', date_echeance: '15/01/2024', date_piece: '01/01/2024', ref_piece: 'REF001', numero_dossier: 'DOS-001' },
+        { nfacture: 'FA-2024-015', montant: '890.00', date_echeance: '10/02/2024', date_piece: '15/01/2024', ref_piece: 'REF015', numero_dossier: 'DOS-015' }
+      ]},
+      { id: 2, nom: 'Martin', prenom: 'Sophie', email: 'sophie.martin@email.com', telephone: '06 98 76 54 32', adresse: '45 Avenue Victor Hugo', ville: 'Lyon', code_postal: '69001', impayes: [
+        { nfacture: 'FA-2024-042', montant: '2340.00', date_echeance: '20/03/2024', date_piece: '01/03/2024', ref_piece: 'REF042', numero_dossier: 'DOS-042' }
+      ]}
+    ],
+    
+    sequence: {
+      id: 1,
+      nom: 'Relance Standard 24 étapes',
+      publiee: true,
+      validationObligatoire: true,
+      attributionAuto: true,
+      operateurGroupes: 'ET',
+      emails: [
+        {
+          collapsed: false,
+          delai: 15,
+          activeScenario: 'single',
+          scenarios: {
+            single: { active: true, smtp: '1', cc: '', objet: 'Rappel - Votre facture', corps: 'Bonjour [[payeur_nom]],\n\nVotre facture [[nfacture]] de [[montant_total]] est arrivée à échéance.' },
+            multiple: { active: false, smtp: '', cc: '', objet: '', corps: '' },
+            broker_only: { active: false, smtp: '', cc: '', objet: '', corps: '' },
+            impayes_broker: { active: false, smtp: '', cc: '', objet: '', corps: '' }
+          }
+        }
+      ],
+      groupesRegles: [{ operateurRegles: 'ET', regles: [{ champ: 'payeur_type', operateur: 'egal', valeur: 'Propriétaire' }] }]
+    },
+    
+    smtpOptions: [{ id: '1', nom: 'SMTP Principal' }, { id: '2', nom: 'SMTP Secondaire' }],
+    
+    get filteredVariables() {
+      const search = this.varsSearch.toLowerCase();
+      if (!search) return this.allVariables;
+      return this.allVariables.map(g => ({ ...g, vars: g.vars.filter(v => v.toLowerCase().includes(search)) })).filter(g => g.vars.length > 0);
+    },
+    
+    get filteredLienVars() {
+      const search = this.lienVarsSearch.toLowerCase();
+      if (!search) return this.allVariables;
+      return this.allVariables.map(g => ({ ...g, vars: g.vars.filter(v => v.toLowerCase().includes(search)) })).filter(g => g.vars.length > 0);
+    },
+    
+    init() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      console.log('Chargement séquence relance ID:', id);
+    },
+
+    // === TOASTUI EDITOR METHODS ===
+    initToastEditor(emailIdx, scenario) {
+      const editorId = `toast-editor-${emailIdx}-${scenario}`;
+      
+      this.$nextTick(() => {
+        const element = document.getElementById(editorId);
+        if (!element) return;
+        
+        // Destroy existing if any
+        if (this.toastEditors[editorId]) {
+          this.toastEditors[editorId].destroy();
+          delete this.toastEditors[editorId];
+        }
+        
+        // Get initial content
+        const email = this.sequence.emails[emailIdx];
+        const initialContent = email.scenarios[scenario].corps || '';
+        
+        // Initialize ToastUI Editor
+        const editor = new toastui.Editor({
+          el: element,
+          height: '200px',
+          initialEditType: 'wysiwyg',
+          previewStyle: 'tab',
+          initialValue: initialContent,
+          toolbarItems: [
+            ['heading', 'bold', 'italic', 'strike'],
+            ['hr', 'quote'],
+            ['ul', 'ol', 'task', 'indent', 'outdent'],
+            ['table', 'link'],
+            ['code', 'codeblock']
+          ],
+          language: 'fr'
+        });
+        
+        // Store reference
+        this.toastEditors[editorId] = editor;
+        
+        // Sync content back to Alpine data on change
+        editor.on('change', () => {
+          email.scenarios[scenario].corps = editor.getHTML();
+        });
+      });
+    },
+
+    // Re-initialize when scenario changes
+    onScenarioChange(emailIdx, newScenario) {
+      this.sequence.emails[emailIdx].activeScenario = newScenario;
+      setTimeout(() => {
+        this.initToastEditor(emailIdx, newScenario);
+      }, 50);
+    },
+
+    // Insert variable at cursor position in ToastUI
+    insertVariableInToast(emailIdx, scenario, variable) {
+      const editorId = `toast-editor-${emailIdx}-${scenario}`;
+      const editor = this.toastEditors[editorId];
+      
+      if (editor) {
+        editor.insertText(`[[${variable}]]`);
+        // Also update the model
+        this.sequence.emails[emailIdx].scenarios[scenario].corps = editor.getHTML();
+      }
+    },
+
+    // Get content from editor
+    getContentFromEditor(emailIdx, scenario) {
+      const editorId = `toast-editor-${emailIdx}-${scenario}`;
+      const editor = this.toastEditors[editorId];
+      return editor ? editor.getHTML() : '';
+    },
+
+    // Cleanup editors when removing emails
+    destroyAllEditors() {
+      Object.values(this.toastEditors).forEach(editor => {
+        if (editor && editor.destroy) editor.destroy();
+      });
+      this.toastEditors = {};
+    },
+
+    // === END TOASTUI METHODS ===
+
+    togglePublication() { this.sequence.publiee = !this.sequence.publiee; this.showToast(this.sequence.publiee ? 'Publiée' : 'Dépubliée', '', 'success'); },
+    sauvegarder() { this.showToast('Sauvegardé', '', 'success'); },
+    ajouterEmail() { this.sequence.emails.push({ collapsed: false, delai: this.sequence.emails.length * 15 + 15, activeScenario: 'single', scenarios: { single: { active: true, smtp: '', cc: '', objet: '', corps: '' }, multiple: { active: false, smtp: '', cc: '', objet: '', corps: '' }, broker_only: { active: false, smtp: '', cc: '', objet: '', corps: '' }, impayes_broker: { active: false, smtp: '', cc: '', objet: '', corps: '' } } }); },
+    supprimerEmail(idx) { this.emailToDelete = idx; this.showDeleteEmailModal = true; },confirmSupprimerEmail() { if (this.emailToDelete !== null) { this.sequence.emails.splice(this.emailToDelete, 1); this.showToast('Supprimé', 'Email supprimé', 'success'); this.emailToDelete = null; this.showDeleteEmailModal = false; } },
+    toggleEmail(idx) {
+      this.sequence.emails[idx].collapsed = !this.sequence.emails[idx].collapsed;
+      // Re-init editor when expanded
+      if (!this.sequence.emails[idx].collapsed) {
+        setTimeout(() => {
+          const email = this.sequence.emails[idx];
+          this.initToastEditor(idx, email.activeScenario);
+        }, 100);
+      }
+    },
+
+    toggleScenarioActive(idx) {
+      const email = this.sequence.emails[idx];
+      const scenario = email.activeScenario;
+      email.scenarios[scenario].active = !email.scenarios[scenario].active;
+      // Re-init if now active
+      if (email.scenarios[scenario].active) {
+        setTimeout(() => {
+          this.initToastEditor(idx, scenario);
+        }, 50);
+      }
+    },
+
+    insertVariable(idx, variable) {
+      const email = this.sequence.emails[idx];
+      const scenario = email.activeScenario;
+      this.insertVariableInToast(idx, scenario, variable);
+    },
+
+    insertLink(emailIdx) {
+      const email = this.sequence.emails[emailIdx];
+      const scenario = email.activeScenario;
+      const editorId = `toast-editor-${emailIdx}-${scenario}`;
+      const editor = this.toastEditors[editorId];
+
+      if (!editor) return;
+
+      const url = prompt('URL du lien :', 'https://');
+      if (url) {
+        const text = prompt('Texte du lien :', 'Cliquez ici');
+        if (text) {
+          const linkMarkdown = `[${text}](${url})`;
+          editor.insertText(linkMarkdown);
+          email.scenarios[scenario].corps = editor.getHTML();
+        }
+      }
+    },
+    copyVariable(variable) { navigator.clipboard.writeText(`[[${variable}]]`); this.showToast('Copié', `[[${variable}]]`, 'success'); },
+    copyToClipboard(text) { navigator.clipboard.writeText(text); this.showToast('Copié', '', 'success'); },
+    openIaModal() { this.iaPrompt = ''; this.showIaModal = true; },
+    async genererIA() { this.generating = true; await new Promise(r => setTimeout(r, 1500)); this.generating = false; this.showIaModal = false; this.showToast('Généré', '4 emails créés', 'success'); },
+    openChatGpt(idx) { this.currentEmailIndex = idx; this.chatGptPrompt = ''; this.showChatGptModal = true; },
+    genererChatGpt() {
+      if (!this.chatGptPrompt || this.generating) return;
+      
+      this.generating = true;
+      
+      // Simuler la génération par ChatGPT
+      setTimeout(() => {
+        const email = this.sequence.emails[this.currentEmailIndex];
+        const scenario = email.activeScenario;
+        
+        // Contenu généré fictif (dans une vraie app, ce serait l'API ChatGPT)
+        const contenuGenere = `<p>Bonjour [[payeur_nom]],</p>
+<p>Nous vous contactons concernant votre facture <strong>[[nfacture]]</strong> d'un montant de <strong>[[montant_total]]</strong> arrivée à échéance le [[date_echeance]].</p>
+<p>Nous vous prions de bien vouloir régulariser cette situation dans les plus brefs délais.</p>
+<p>Cordialement,</p>
+<p>L'équipe Marki</p>`;
+        
+        // Mettre à jour le modèle
+        email.scenarios[scenario].corps = contenuGenere;
+        
+        // Mettre à jour l'éditeur ToastUI s'il existe
+        const editorId = `toast-editor-${this.currentEmailIndex}-${scenario}`;
+        const editor = this.toastEditors[editorId];
+        if (editor) {
+          editor.setHTML(contenuGenere);
+        }
+        
+        this.generating = false;
+        this.showChatGptModal = false;
+        this.showToast('Contenu généré', 'Le corps de l\'email a été mis à jour', 'success');
+      }, 1500);
+    },
+    testerEmail(idx) { this.currentEmailIndex = idx; this.testEmailConfig = { destinataire: '', payeurId: '', scenario: this.sequence.emails[idx].activeScenario, viewMode: 'rendered' }; this.showTestEmailModal = true; },
+    onPayeurChange() {},
+    getPayeurSelectionne() { return this.payeursAvecImpayes.find(p => p.id == this.testEmailConfig.payeurId); },
+    getTotalImpayes(payeur) { if (!payeur || !payeur.impayes) return 0; return payeur.impayes.reduce((sum, i) => sum + parseFloat(i.montant), 0); },
+    formatMontant(amount) { return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount); },
+    toggleViewMode() { this.testEmailConfig.viewMode = this.testEmailConfig.viewMode === 'rendered' ? 'source' : 'rendered'; },
+    getEmailPreviewObjet() { const email = this.sequence.emails[this.currentEmailIndex]; return this.remplacerVariables(email.scenarios[email.activeScenario].objet); },
+    getEmailPreviewSource() { const email = this.sequence.emails[this.currentEmailIndex]; return email.scenarios[email.activeScenario].corps || ''; },
+    getEmailPreviewRendu() { return this.remplacerVariables(this.getEmailPreviewSource()); },
+    remplacerVariables(texte) {
+      if (!texte) return ''; const payeur = this.getPayeurSelectionne(); if (!payeur) return texte;
+      const impaye = payeur.impayes[0] || {}; const total = this.getTotalImpayes(payeur);
+      const variables = { 'payeur_nom': payeur.nom, 'payeur_prenom': payeur.prenom, 'payeur_email': payeur.email, 'nfacture': impaye.nfacture || 'N/A', 'montant_total': impaye.montant || '0', 'date_echeance': impaye.date_echeance || 'N/A', 'total_impayes': total.toFixed(2) };
+      let resultat = texte;
+      Object.entries(variables).forEach(([varName, valeur]) => { resultat = resultat.replaceAll(`[[${varName}]]`, valeur); });
+      return resultat;
+    },
+    copierSourceEmail() { this.showToast('Copié', 'Code HTML copié', 'success'); },
+    async envoyerTestEmail() { this.envoiEnCours = true; await new Promise(r => setTimeout(r, 1500)); this.envoiEnCours = false; this.showTestEmailModal = false; this.showToast('Envoyé', `Test envoyé à ${this.testEmailConfig.destinataire}`, 'success'); },
+    ajouterGroupe() { this.sequence.groupesRegles.push({ operateurRegles: 'ET', regles: [{ champ: '', operateur: '', valeur: '' }] }); },getScenarioLabel(scenario) { const labels = { single: '1 impayé', multiple: 'Plusieurs impayés', broker_only: 'Apporteur seul', impayes_broker: 'Impayés + Apporteur' }; return labels[scenario] || scenario; },testerSequence() { this.testSequenceConfig = { payeurId: '' }; this.showTestSequenceModal = true; },executerTestSequence() { this.testSequenceEnCours = true; setTimeout(() => { this.testSequenceEnCours = false; this.showTestSequenceModal = false; this.showToast('Test terminé', 'La séquence a été testée avec succès', 'success'); }, 2000); },
+    supprimerGroupe(idx) { this.sequence.groupesRegles.splice(idx, 1); },
+    ajouterRegle(gIdx) { this.sequence.groupesRegles[gIdx].regles.push({ champ: '', operateur: '', valeur: '' }); },
+    supprimerRegle(gIdx, rIdx) { this.sequence.groupesRegles[gIdx].regles.splice(rIdx, 1); },
+    lancerAttribution() { this.showToast('Lancée', 'Attribution automatique', 'success'); },
+    regenererRelances() { 
+      this.showToast('Régénération en cours', 'Vous recevrez un email quand c\'est bon', 'success'); 
+    },
+    confirmRegenerer() { this.showRegenererModal = false; this.showToast('Régénéré', 'Relances régénérées', 'success'); },
+    ouvrirModalLiensPaiement() { this.showLienPaiementModal = true; this.annulerEditionLien(); },
+    editerLienPaiement(lien) { this.lienPaiementEditing = lien.id; this.lienPaiementForm = { nom: lien.nom, url: lien.url }; },
+    annulerEditionLien() { this.lienPaiementEditing = null; this.lienPaiementForm = { nom: '', url: '' }; },
+    supprimerLienPaiement(id) { this.lienToDelete = id; this.showDeleteLienModal = true; },confirmSupprimerLien() { this.liensPaiement = this.liensPaiement.filter(l => l.id !== this.lienToDelete); this.showToast('Supprimé', 'Lien supprimé', 'success'); this.lienToDelete = null; this.showDeleteLienModal = false; },
+    enregistrerLienPaiement() { if (this.lienPaiementEditing) { const idx = this.liensPaiement.findIndex(l => l.id === this.lienPaiementEditing); if (idx !== -1) this.liensPaiement[idx] = { id: this.lienPaiementEditing, ...this.lienPaiementForm }; this.showToast('Mis à jour', '', 'success'); } else { const newId = Math.max(...this.liensPaiement.map(l => l.id), 0) + 1; this.liensPaiement.push({ id: newId, ...this.lienPaiementForm }); this.showToast('Créé', '', 'success'); } this.annulerEditionLien(); },
+    insererVariableDansLien(variable) { const textarea = this.$refs.lienPaiementTextarea; if (!textarea) return; const start = textarea.selectionStart; const end = textarea.selectionEnd; const text = this.lienPaiementForm.url; this.lienPaiementForm.url = text.substring(0, start) + `[[${variable}]]` + text.substring(end); },
+    genererApercuLien(url) { if (!url) return ''; const exemples = { 'nfacture': 'FA-2024-001', 'reste_a_payer': '1250.00', 'payeur_nom': 'Dupont' }; let apercu = url; Object.entries(exemples).forEach(([varName, exemple]) => { apercu = apercu.replaceAll(`[[${varName}]]`, exemple); }); return apercu; },
+    showToast(title, message, type = 'success') { this.toast = { show: true, title, message, type }; setTimeout(() => this.toast.show = false, 3000); }
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendrier Relances - PouchDB Live Sync</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.find.min.js"></script>
+    <script src="./relances-calendrier-complete-pouchdb.js"></script>
+    
+    <style>
+        .calendar-day { min-height: 100px; }
+        .calendar-day:hover { background-color: #f3f4f6; }
+        .has-relances { border-left: 3px solid #3b82f6; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div x-data="relancesCalendrierPouchDBManager()" x-init="init()">
+        
+        <!-- HEADER -->
+        <header class="bg-white shadow-sm border-b">
+            <div class="max-w-7xl mx-auto px-4 py-4">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-4">
+                        <h1 class="text-2xl font-bold text-gray-900">Calendrier des Relances</h1>
+                        
+                        <!-- Indicateur sync (RÈGLE #9) -->
+                        <div class="flex items-center gap-2 px-3 py-1 rounded-full text-sm text-white"
+                             :class="syncStatusClass">
+                            <span class="w-2 h-2 rounded-full bg-white"
+                                  :class="{ 'animate-pulse': syncStatus === 'syncing' }"></span>
+                            <span x-text="syncStatusLabel"></span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                        <!-- Bouton Aujourd'hui (WORKFLOW GO-TODAY) -->
+                        <button @click="goToToday()"
+                                :disabled="loading"
+                                class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50">
+                            <span x-show="!loading">📅 Aujourd'hui</span>
+                            <span x-show="loading">⏳ ...</span>
+                        </button>
+                        
+                        <!-- Navigation période -->
+                        <button @click="previousPeriod()" class="p-2 border rounded hover:bg-gray-50"><←</button>
+                        <span class="text-lg font-semibold min-w-[200px] text-center" x-text="periodLabel"></span>
+                        
+                        <button @click="nextPeriod()" class="p-2 border rounded hover:bg-gray-50">→</button>
+                        
+                        <!-- Switch vue -->
+                        <select x-model="viewMode" @change="switchView($event.target.value)"
+                                class="ml-4 px-3 py-2 border rounded">
+                            <option value="month">Mois</option>
+                            <option value="week">Semaine</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <!-- SKELETON -->
+        <div x-show="skeletonVisible" class="max-w-7xl mx-auto px-4 py-8">
+            <div class="animate-pulse bg-white rounded-lg shadow h-96"></div>
+        </div>
+        
+        <!-- CALENDRIER MOIS -->
+        <div x-show="!skeletonVisible && viewMode === 'month'" 
+             class="max-w-7xl mx-auto px-4 py-8">
+            
+            <!-- Jours de la semaine -->
+            <div class="grid grid-cols-7 gap-1 mb-2">
+                <template x-for="day in ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']" :key="day">
+                    <div class="text-center text-sm font-medium text-gray-500 py-2" x-text="day"></div>
+                </template>
+            </div>
+            
+            <!-- Grille du calendrier -->
+            <div class="grid grid-cols-7 gap-1">
+                <template x-for="(day, index) in daysInMonth" :key="index">
+                    <div x-show="day"
+                         @click="selectDate(day)"
+                         class="calendar-day bg-white border rounded p-2 cursor-pointer transition-colors"
+                         :class="{
+                             'bg-blue-50': selectedDate?.toDateString() === day?.toDateString(),
+                             'has-relances': relancesByDate[day?.toISOString().split('T')[0]]?.length > 0
+                         }">
+                        <div class="text-sm font-medium" x-text="day?.getDate()"></div>
+                        
+                        <!-- Indicateur de relances -->
+                        <div x-show="relancesByDate[day?.toISOString().split('T')[0]]?.length > 0"
+                             class="mt-1">
+                            <div class="text-xs text-blue-600 font-medium"
+                                 x-text="relancesByDate[day?.toISOString().split('T')[0]]?.length + ' relance(s)'"></div>
+                            
+                            <!-- Indicateurs de statut -->
+                            <div class="flex gap-1 mt-1">
+                                <template x-for="relance in relancesByDate[day?.toISOString().split('T')[0]]?.slice(0, 3)">
+                                    <div class="w-2 h-2 rounded-full"
+                                         :class="{
+                                             'bg-yellow-400': relance.statut === 'planifiee',
+                                             'bg-green-400': relance.statut === 'envoyee',
+                                             'bg-red-400': relance.statut === 'annulee'
+                                         }"></div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Case vide -->
+                    <div x-show="!day" class="calendar-day"></div>
+                </template>
+            </div>
+        </div>
+        
+        <!-- VUE SEMAINE -->
+        <div x-show="!skeletonVisible && viewMode === 'week'"
+             class="max-w-7xl mx-auto px-4 py-8">
+            <div class="bg-white rounded-lg shadow overflow-hidden">
+                <div class="divide-y">
+                    <template x-for="relance in relancesProgrammees" :key="relance.id">
+                        <div class="p-4 hover:bg-gray-50 flex items-center justify-between">
+                            <div>
+                                <p class="font-medium" x-text="relance.contact_nom || 'Contact inconnu'"></p>
+                                <p class="text-sm text-gray-500" x-text="formatDateTime(relance.date_envoi_planifiee)"></p>
+                            </div>
+                            
+                            <div class="flex items-center gap-2">
+                                <span class="px-2 py-1 text-xs rounded-full"
+                                      :class="{
+                                          'bg-yellow-100 text-yellow-800': relance.statut === 'planifiee',
+                                          'bg-green-100 text-green-800': relance.statut === 'envoyee',
+                                          'bg-red-100 text-red-800': relance.statut === 'annulee'
+                                      }"
+                                      x-text="relance.statut"></span>
+                                
+                                <button class="text-blue-600 hover:text-blue-800 text-sm">Modifier</button>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MODAL RELANCES DU JOUR -->
+        <div x-show="showModal" 
+             x-transition
+             class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+             @click.self="closeModal()">
+            <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[80vh] overflow-auto">
+                <div class="p-6 border-b">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-xl font-bold">
+                            Relances du <span x-text="formatDate(selectedDate)"></span>
+                        </h2>
+                        
+                        <button @click="closeModal()" class="text-gray-500 hover:text-gray-700">✕</button>
+                    </div>
+                </div>
+                
+                <div class="p-6">
+                    <div x-show="relancesDuJour.length === 0" class="text-center text-gray-500 py-8">
+                        Aucune relance programmée pour ce jour
+                    </div>
+                    
+                    <div x-show="relancesDuJour.length > 0" class="space-y-4">
+                        <template x-for="relance in relancesDuJour" :key="relance.id">
+                            <div class="border rounded-lg p-4 hover:bg-gray-50"
+                                  :class="{ 'border-yellow-400': relance.hasConflicts }">
+                                <div class="flex items-start justify-between">
+                                    <div>
+                                        <p class="font-medium text-lg" x-text="relance.contact_nom || 'Contact inconnu'"></p>
+                                        
+                                        <p class="text-sm text-gray-500" x-text="relance.contact_email"></p>
+                                        
+                                        <div class="mt-2 flex items-center gap-2">
+                                            <span class="px-2 py-1 text-xs rounded-full"
+                                                  :class="{
+                                                      'bg-yellow-100 text-yellow-800': relance.statut === 'planifiee',
+                                                      'bg-green-100 text-green-800': relance.statut === 'envoyee',
+                                                      'bg-red-100 text-red-800': relance.statut === 'annulee'
+                                                  }"
+                                                  x-text="relance.statut"></span>
+                                            
+                                            <span x-show="relance.hasConflicts" class="text-xs text-yellow-600">⚠ Conflit</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="text-right">
+                                        <p class="text-sm text-gray-500" x-text="formatDateTime(relance.date_envoi_planifiee)"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- ERROR -->
+        <div x-show="error" class="max-w-7xl mx-auto px-4 py-4">
+            <div class="bg-red-50 border-l-4 border-red-500 p-4">
+                <p class="text-red-700" x-text="error"></p>
+            </div>
+        </div>
+        
+        <!-- DEBUG -->
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <details class="bg-gray-800 text-white rounded p-4 text-xs font-mono">
+                <summary>Debug Info</summary>
+                <div class="mt-4 space-y-1">
+                    <p>syncStatus: <span x-text="syncStatus"></span></p>
+                    <p>isOnline: <span x-text="isOnline"></span></p>
+                    <p>relancesProgrammees: <span x-text="relancesProgrammees.length"></span></p>
+                    <p>relancesDuJour: <span x-text="relancesDuJour.length"></span></p>
+                    <p>currentDate: <span x-text="currentDate.toISOString()"></span></p>
+                </div>
+            </details>
+        </div>
+    </div>
+</body>
+</html>

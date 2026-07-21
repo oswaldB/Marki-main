@@ -1,0 +1,57 @@
+<script>
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('usersPage', () => ({
+      // =====================================================
+      // STATE
+      // =====================================================
+      
+      // UI State
+      loading: true,
+      error: null,
+      isAdmin: false,
+      showAddForm: false,
+      showEditForm: false,
+      
+      // Data
+      users: [],
+      editingUser: null,
+      
+      // New user form
+      newUser: {
+        prenom: '',
+        nom: '',
+        username: '',
+        email: '',
+        password: '',
+        role: 'user'
+      },
+      
+      // =====================================================
+      // WORKFLOWS
+      // =====================================================
+      {% include 'settings-users/workflows/initial-load.html' %},
+      {% include 'settings-users/workflows/create-user.html' %},
+      {% include 'settings-users/workflows/edit-user.html' %},
+      {% include 'settings-users/workflows/open-add-user.html' %},
+      
+      // =====================================================
+      // HELPERS
+      // =====================================================
+      
+      isNewUserValid() {
+        return this.newUser.prenom && 
+               this.newUser.nom && 
+               this.newUser.username && 
+               this.newUser.email && 
+               this.newUser.password;
+      },
+      
+      // Edit user - ouvre le modal
+      openEditUser(user) {
+        if (!this.isAdmin) return;
+        this.editingUser = { ...user };
+        this.showEditForm = true;
+      }
+    }));
+  });
+</script>

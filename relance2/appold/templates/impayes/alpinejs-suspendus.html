@@ -1,0 +1,337 @@
+<script>
+  // Logger utilitaire
+  const logSuspendus = {
+    debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+    info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+    warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+    error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+  };
+
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('impayesSuspendus', () => ({
+      // =====================================================
+      // STATE
+      // =====================================================
+      
+      // UI State
+      loading: false,
+      error: null,
+      
+      // Data
+      impayes: [],
+      impayesFiltered: [],
+      currentPage: 1,
+      itemsPerPage: 25,
+      totalPages: 1,
+      total: 0,
+      
+      // Filtres
+      searchQuery: '',
+      filterMotif: '',
+      
+      // Modal
+      showReactivateModal: false,
+      reactivating: false,
+      selectedImpaye: null,
+      
+      // Toast
+      toast: { 
+        show: false, 
+        type: 'success', 
+        title: '', 
+        message: '' 
+      },
+      
+      // =====================================================
+      // LIFECYCLE
+      // =====================================================
+      
+      init() {
+        logSuspendus.info('init', { message: 'Initialisation de la page impayés suspendus' });
+        this.loadData();
+      },
+      
+      // =====================================================
+      // WORKFLOWS
+      // =====================================================
+      
+      /**
+       * @workflow initial-load
+       * @checkpoint state-initialized - État initial configuré
+       * @checkpoint api-call-started - Appel API en cours
+       * @checkpoint data-received - Données reçues
+       * @checkpoint table-rendered - Tableau affiché
+       */
+      async loadData() {
+        this.loading = true;
+        this.error = null;
+        
+        logSuspendus.info('loadData', { page: this.currentPage });
+        
+        try {
+          // Récupérer le token d'authentification
+          const token = localStorage.getItem('marki_token');
+          
+          // Appel API pour récupérer les impayés suspendus
+          const response = await fetch(`/api/impayes?is_blacklisted=1&statut=suspendue&page=${this.currentPage}&per_page=${this.itemsPerPage}`, {
+            method: 'GET',
+            headers: {
+              'Authorization': token ? `Bearer ${token}` : '',
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          if (!response.ok) {
+            throw new Error(`Erreur HTTP: ${response.status}`);
+          }
+          
+          const data = await response.json();
+          
+          if (!data.success) {
+            throw new Error(data.error || 'Erreur lors du chargement des données');
+          }
+          
+          this.impayes = data.impayes || [];
+          this.total = data.total || 0;
+          this.totalPages = data.total_pages || 1;
+          
+          // Appliquer les filtres locaux
+          this.applyFilters();
+          
+          logSuspendus.info('loadData.success', { 
+            count: this.impayes.length, 
+            total: this.total 
+          });
+          
+        } catch (err) {
+          logSuspendus.error('loadData.error', { message: err.message });
+          this.error = err.message || 'Impossible de charger les impayés suspendus';
+        } finally {
+          this.loading = false;
+        }
+      },
+      
+      /**
+       * @workflow filter-data
+       * @checkpoint filters-applied - Filtres appliqués aux données
+       */
+      applyFilters() {
+        logSuspendus.debug('applyFilters', { 
+          search: this.searchQuery, 
+          motif: this.filterMotif 
+        });
+        
+        let filtered = [...this.impayes];
+        
+        // Filtre par recherche textuelle
+        if (this.searchQuery) {
+          const search = this.searchQuery.toLowerCase();
+          filtered = filtered.filter(i => 
+            (i.nfacture && i.nfacture.toLowerCase().includes(search)) ||
+            (i.payeur_nom && i.payeur_nom.toLowerCase().includes(search)) ||
+            (i.payeur_email && i.payeur_email.toLowerCase().includes(search)) ||
+            (i.numero_dossier && i.numero_dossier.toLowerCase().includes(search))
+          );
+        }
+        
+        // Filtre par motif
+        if (this.filterMotif) {
+          filtered = filtered.filter(i => 
+            i.blacklist_motif && i.blacklist_motif.toLowerCase().includes(this.filterMotif)
+          );
+        }
+        
+        this.impayesFiltered = filtered;
+        
+        logSuspendus.info('applyFilters.result', { 
+          total: this.impayes.length, 
+          filtered: filtered.length 
+        });
+      },
+      
+      /**
+       * @workflow reactivate-impaye
+       * @checkpoint modal-opened - Modal de réactivation ouvert
+       * @checkpoint api-call-started - Appel API de réactivation
+       * @checkpoint impaye-reactivated - Impayé réactivé avec succès
+       * @checkpoint list-refreshed - Liste rafraîchie
+       */
+      openReactivateModal(impaye) {
+        // Vérifier si le contact est blacklisté - dans ce cas on ne peut pas réactiver juste l'impayé
+        if (impaye.suspension_source === 'contact' || impaye.suspension_source === 'both') {
+          this.showToast(
+            'Action impossible',
+            'Ce contact est blacklisté. Vous devez d\'abord retirer le contact de la blacklist depuis la page Contacts.',
+            'error'
+          );
+          return;
+        }
+        
+        logSuspendus.info('openReactivateModal', { id: impaye.id, source: impaye.suspension_source });
+        this.selectedImpaye = impaye;
+        this.showReactivateModal = true;
+      },
+      
+      async confirmReactivate() {
+        if (!this.selectedImpaye) return;
+        
+        this.reactivating = true;
+        
+        logSuspendus.info('confirmReactivate', { id: this.selectedImpaye.id });
+        
+        try {
+          const token = localStorage.getItem('marki_token');
+          
+          const response = await fetch(`/api/impayes/${this.selectedImpaye.id}/unsuspend`, {
+            method: 'POST',
+            headers: {
+              'Authorization': token ? `Bearer ${token}` : '',
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          if (!response.ok) {
+            throw new Error(`Erreur HTTP: ${response.status}`);
+          }
+          
+          const data = await response.json();
+          
+          if (!data.success) {
+            throw new Error(data.error || 'Erreur lors de la réactivation');
+          }
+          
+          // Retirer de la liste locale
+          this.impayes = this.impayes.filter(i => i.id !== this.selectedImpaye.id);
+          this.applyFilters();
+          
+          // Mettre à jour le total
+          this.total = Math.max(0, this.total - 1);
+          
+          // Fermer le modal
+          this.showReactivateModal = false;
+          this.selectedImpaye = null;
+          
+          // Afficher le toast de succès
+          this.showToast(
+            'Succès', 
+            `Impayé réactivé avec succès. ${data.relances_crees || 0} relance(s) régénérée(s).`,
+            'success'
+          );
+          
+          logSuspendus.info('confirmReactivate.success', { 
+            id: this.selectedImpaye?.id,
+            relances_crees: data.relances_crees 
+          });
+          
+        } catch (err) {
+          logSuspendus.error('confirmReactivate.error', { message: err.message });
+          this.showToast('Erreur', err.message, 'error');
+        } finally {
+          this.reactivating = false;
+        }
+      },
+      
+      /**
+       * @workflow pagination
+       * @checkpoint page-changed - Page changée
+       * @checkpoint data-reloaded - Données rechargées
+       */
+      goToPage(page) {
+        if (page < 1 || page > this.totalPages) return;
+        this.currentPage = page;
+        this.loadData();
+      },
+      
+      prevPage() {
+        if (this.currentPage > 1) {
+          this.currentPage--;
+          this.loadData();
+        }
+      },
+      
+      nextPage() {
+        if (this.currentPage < this.totalPages) {
+          this.currentPage++;
+          this.loadData();
+        }
+      },
+      
+      // =====================================================
+      // COMPUTED / GETTERS
+      // =====================================================
+      
+      get filteredImpayes() {
+        // Si on a des filtres locaux actifs, utiliser les données filtrées
+        if (this.searchQuery || this.filterMotif) {
+          return this.impayesFiltered;
+        }
+        return this.impayes;
+      },
+      
+      get visiblePages() {
+        const pages = [];
+        const maxVisible = 5;
+        let start = Math.max(1, this.currentPage - 2);
+        let end = Math.min(this.totalPages, start + maxVisible - 1);
+        
+        if (end - start + 1 < maxVisible) {
+          start = Math.max(1, end - maxVisible + 1);
+        }
+        
+        for (let i = start; i <= end; i++) {
+          pages.push(i);
+        }
+        return pages;
+      },
+      
+      // =====================================================
+      // HELPERS
+      // =====================================================
+      
+      formatMoney(amount) {
+        if (amount === null || amount === undefined) return '-';
+        return new Intl.NumberFormat('fr-FR', {
+          style: 'currency', currency: 'EUR'
+        }).format(amount);
+      },
+      
+      formatDate(dateStr) {
+        if (!dateStr) return '-';
+        const date = new Date(dateStr);
+        return date.toLocaleDateString('fr-FR');
+      },
+      
+      formatMotif(motif) {
+        if (!motif) return 'Non précisé';
+        const motifs = {
+          'litige': 'Litige en cours',
+          'erreur': 'Erreur de facturation',
+          'demande': 'Demande client',
+          'contentieux': 'Contentieux',
+          'arrangement': 'Arrangement client',
+          'procedure': 'Procédure judiciaire',
+          'cessation': 'Cessation activité',
+          'autre': 'Autre',
+          'non-payee': 'Non payée',
+          'en-relance': 'En relance',
+          'suspendue': 'Suspendue',
+          'a-reparer': 'À réparer'
+        };
+        return motifs[motif.toLowerCase()] || motif;
+      },
+      
+      truncate(text, length) {
+        if (!text) return '';
+        if (text.length <= length) return text;
+        return text.substring(0, length) + '...';
+      },
+      
+      showToast(title, message, type = 'success') {
+        this.toast = { show: true, title, message, type };
+        setTimeout(() => {
+          this.toast.show = false;
+        }, 4000);
+      }
+    }));
+  });
+</script>
