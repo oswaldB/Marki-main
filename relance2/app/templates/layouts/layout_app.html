@@ -9,6 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
   <style>
     html { font-family: 'Inter', system-ui, sans-serif; }
@@ -36,6 +38,11 @@
   </style>
 
   {% block head_extra %}{% endblock %}
+  
+  <script>
+    // Active page pour la navigation (rendu côté serveur)
+    window.CURRENT_PAGE = '{% block active_page %}dashboard{% endblock %}';
+  </script>
 </head>
 <body class="bg-slate-50">
 
@@ -114,17 +121,25 @@
       <!-- Navigation -->
       <nav class="flex-1 overflow-y-auto py-3"
            x-data="{
-             expanded: { impayes: false, relances: false },
+             expanded: { impayes: false, relances: false, contacts: false },
+             currentPage: window.CURRENT_PAGE || 'dashboard',
              isActive(page) {
-               const current = '{{ active_page|default('dashboard') }}';
-               if (page === current) return true;
-               if (page === 'impayes' && current.startsWith('impayes')) return true;
-               if (page === 'relances-liste' && current.startsWith('relance')) return true;
-               if (page === 'contacts' && (current.startsWith('contacts') || current === 'contacts-blacklist' || current === 'contacts-sans-email')) return true;
+               return this.currentPage === page;
+             },
+             isSectionActive(section) {
+               if (section === 'impayes') {
+                 return this.currentPage === 'impayes' || this.currentPage.startsWith('impayes-');
+               }
+               if (section === 'relances') {
+                 return this.currentPage.startsWith('relance');
+               }
+               if (section === 'contacts') {
+                 return this.currentPage.startsWith('contacts') || this.currentPage === 'contacts-blacklist' || this.currentPage === 'contacts-sans-email';
+               }
                return false;
              }
            }"
-           x-init="expanded.impayes = isActive('impayes'); expanded.relances = isActive('relances-liste')">
+           x-init="expanded.impayes = isSectionActive('impayes'); expanded.relances = isSectionActive('relances'); expanded.contacts = isSectionActive('contacts')">
         
         <a href="/dashboard" @click="drawerOpen = false" 
            :class="isActive('dashboard') ? 'bg-sky-50 text-sky-700 border-r-2 border-sky-500' : 'text-gray-600 hover:bg-gray-50'"
@@ -136,7 +151,7 @@
         <!-- Impayés -->
         <div class="mt-1">
           <button @click="expanded.impayes = !expanded.impayes"
-                  :class="isActive('impayes') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
+                  :class="isSectionActive('impayes') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
                   class="flex items-center justify-between w-full px-4 py-3 mx-2 text-sm font-medium transition-all rounded-lg">
             <div class="flex items-center gap-3">
               <i class="fas fa-file-invoice-dollar w-5 text-center"></i>
@@ -169,7 +184,7 @@
         <!-- Relances -->
         <div class="mt-1">
           <button @click="expanded.relances = !expanded.relances"
-                  :class="isActive('relances-liste') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
+                  :class="isSectionActive('relances') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
                   class="flex items-center justify-between w-full px-4 py-3 mx-2 text-sm font-medium transition-all rounded-lg">
             <div class="flex items-center gap-3">
               <i class="fas fa-envelope w-5 text-center"></i>
@@ -202,7 +217,7 @@
         <!-- Contacts -->
         <div class="mt-1">
           <button @click="expanded.contacts = !expanded.contacts"
-                  :class="isActive('contacts') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
+                  :class="isSectionActive('contacts') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
                   class="flex items-center justify-between w-full px-4 py-3 mx-2 text-sm font-medium transition-all rounded-lg">
             <div class="flex items-center gap-3">
               <i class="fas fa-address-book w-5 text-center"></i>
@@ -278,20 +293,28 @@
 <aside class="hidden lg:flex fixed left-0 top-0 z-[100] h-screen font-sans"
        x-data="{ 
          activeRail: 'relance',
-         expanded: { impayes: false, relances: false },
+         expanded: { impayes: false, relances: false, contacts: false },
+         currentPage: window.CURRENT_PAGE || 'dashboard',
          isActive(page) {
-           const current = '{{ active_page|default('dashboard') }}';
-           if (page === current) return true;
-           if (page === 'impayes' && current.startsWith('impayes')) return true;
-           if (page === 'relances-liste' && current.startsWith('relance')) return true;
-           if (page === 'contacts' && (current.startsWith('contacts') || current === 'contacts-blacklist' || current === 'contacts-sans-email')) return true;
+           return this.currentPage === page;
+         },
+         isSectionActive(section) {
+           if (section === 'impayes') {
+             return this.currentPage === 'impayes' || this.currentPage.startsWith('impayes-');
+           }
+           if (section === 'relances') {
+             return this.currentPage.startsWith('relance');
+           }
+           if (section === 'contacts') {
+             return this.currentPage.startsWith('contacts') || this.currentPage === 'contacts-blacklist' || this.currentPage === 'contacts-sans-email';
+           }
            return false;
          }
        }"
        x-init="
-         expanded.impayes = isActive('impayes');
-         expanded.relances = isActive('relances-liste');
-         expanded.contacts = isActive('contacts');
+         expanded.impayes = isSectionActive('impayes');
+         expanded.relances = isSectionActive('relances');
+         expanded.contacts = isSectionActive('contacts');
        "
        x-cloak>
   
@@ -423,7 +446,7 @@
       <!-- Impayés (expandable) -->
       <div class="mt-1">
         <button @click="expanded.impayes = !expanded.impayes"
-                :class="isActive('impayes') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
+                :class="isSectionActive('impayes') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
                 class="flex items-center justify-between w-full px-4 py-2.5 mx-2 text-sm font-medium transition-all">
           <div class="flex items-center gap-3">
             <i class="fas fa-file-invoice-dollar w-5 text-center"></i>
@@ -457,7 +480,7 @@
       <!-- Relances (expandable) -->
       <div class="mt-1">
         <button @click="expanded.relances = !expanded.relances"
-                :class="isActive('relances-liste') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
+                :class="isSectionActive('relances') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
                 class="flex items-center justify-between w-full px-4 py-2.5 mx-2 text-sm font-medium transition-all">
           <div class="flex items-center gap-3">
             <i class="fas fa-envelope w-5 text-center"></i>
@@ -491,7 +514,7 @@
       <!-- Contacts (expandable) -->
       <div class="mt-1">
         <button @click="expanded.contacts = !expanded.contacts"
-                :class="isActive('contacts') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
+                :class="isSectionActive('contacts') ? 'text-sky-700' : 'text-gray-600 hover:text-gray-900'"
                 class="flex items-center justify-between w-full px-4 py-2.5 mx-2 text-sm font-medium transition-all">
           <div class="flex items-center gap-3">
             <i class="fas fa-address-book w-5 text-center"></i>
@@ -582,9 +605,6 @@
   </main>
 
 </div>
-
-<!-- Scripts -->
-<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
 {% block page_scripts %}{% endblock %}
 

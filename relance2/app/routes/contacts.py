@@ -98,7 +98,6 @@ def list_contacts():
             c.statut,
             c.is_blacklisted as isBlacklisted,
             c.type,
-            c.blacklisted_at as blacklistedAt,
             (SELECT COUNT(*) FROM impayes i WHERE i.proprietaire_id = c.id AND i.statut = 'impaye') as impayesCount
         FROM contacts c
         WHERE 1=1
@@ -296,26 +295,11 @@ def blacklist_contact(contact_id):
     
     db = get_db()
     
-    # Vérifier si la colonne blacklisted_at existe
-    try:
-        db.execute("SELECT blacklisted_at FROM contacts LIMIT 1")
-        has_blacklisted_at = True
-    except:
-        has_blacklisted_at = False
-    
-    if has_blacklisted_at:
-        db.execute("""
-            UPDATE contacts 
-            SET statut = 'blacklist', is_blacklisted = 1, blacklisted_at = CURRENT_TIMESTAMP
-            WHERE id = ?
-        """, [contact_id])
-    else:
-        db.execute("""
-            UPDATE contacts 
-            SET statut = 'blacklist', is_blacklisted = 1
-            WHERE id = ?
-        """, [contact_id])
-    
+    db.execute("""
+        UPDATE contacts 
+        SET statut = 'blacklist', is_blacklisted = 1
+        WHERE id = ?
+    """, [contact_id])
     db.commit()
     
     print(f"[API.CONTACTS.BLACKLIST] SUCCESS: Contact {contact_id} blacklisté")

@@ -85,6 +85,7 @@ def list_impayes():
     print(f"[API.IMPAYES.LIST] SUCCESS: {len(impayes)} impayés retournés (page {page}/{total_pages})")
     
     return jsonify({
+        'success': True,
         'impayes': impayes,
         'total': total,
         'page': page,
@@ -117,7 +118,7 @@ def get_impaye(id):
     impaye['is_blacklisted'] = bool(impaye.get('is_blacklisted', 0))
     
     print(f"[API.IMPAYES.GET] SUCCESS: Impayé trouvé")
-    return jsonify(impaye), 200
+    return jsonify({'success': True, 'impaye': impaye}), 200
 
 
 @impayes_bp.route('', methods=['POST'])
@@ -200,3 +201,70 @@ def update_impaye(id):
     
     print(f"[API.IMPAYES.UPDATE] SUCCESS: Impayé mis à jour")
     return jsonify({'success': True}), 200
+
+
+@impayes_bp.route('/sequences', methods=['GET'])
+def get_sequences():
+    """Liste des séquences pour les impayés."""
+    print(f"[API.IMPAYES.SEQUENCES] START")
+    
+    db = get_db()
+    
+    rows = db.execute("""
+        SELECT id, nom, type_sequence as type, niveau, actif as est_active
+        FROM sequences
+        WHERE actif = 1
+        ORDER BY nom ASC
+    """).fetchall()
+    
+    sequences = []
+    for row in rows:
+        seq = dict(row)
+        seq['est_active'] = bool(seq.get('est_active', 0))
+        sequences.append(seq)
+    
+    print(f"[API.IMPAYES.SEQUENCES] SUCCESS: {len(sequences)} séquences retournées")
+    return jsonify({'success': True, 'sequences': sequences}), 200
+
+
+@impayes_bp.route('/stats', methods=['GET'])
+def get_stats():
+    """Statistiques des impayés."""
+    print(f"[API.IMPAYES.STATS] START")
+    
+    db = get_db()
+    
+    # Nombre total d'impayés
+    total = db.execute("SELECT COUNT(*) as count FROM impayes WHERE facture_soldee = 0").fetchone()['count']
+    
+    # Montant total restant à payer
+    montant_total = db.execute("""
+        SELECT COALESCE(SUM(reste_a_payer), 0) as total 
+        FROM impayes 
+        WHERE facture_soldee = 0
+    """).fetchone()['total']
+    
+    # Nombre de payeurs distincts
+    payeurs = db.execute("""
+        SELECT COUNT(DISTINCT payer_id) as count 
+        FROM impayes 
+        WHERE facture_soldee = 0
+    """).fetchone()['count']
+    
+    # Impayés par statut
+    par_statut = db.execute("""
+        SELECT statut, COUNT(*) as count, SUM(reste_a_payer) as montant
+        FROM impayes
+        WHERE facture_soldee = 0
+        GROUP BY statut
+    """).fetchall()
+    
+    stats = {
+        'total_impayes': total,
+        'montant_total': montant_total,
+        'nombre_payeurs': payeurs,
+        'par_statut': [dict(row) for row in par_statut]
+    }
+    
+    print(f"[API.IMPAYES.STATS] SUCCESS: stats={stats}")
+    return jsonify({'success': True, 'stats': stats}), 200

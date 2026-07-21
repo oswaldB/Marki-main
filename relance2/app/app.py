@@ -54,7 +54,43 @@ def dashboard_page():
 @app.route('/impayes')
 def impayes_page():
     """Page impayés."""
-    return "Page Impayés - À implémenter"
+    return render_template('impayes/index.html')
+
+
+@app.route('/impayes/payeur')
+def impayes_payeur_page_redirect():
+    """Redirect ancienne URL vers nouvelle."""
+    return redirect('/impayes-payeur')
+
+
+@app.route('/impayes-payeur')
+def impayes_payeur_page():
+    """Page impayés par payeur."""
+    return render_template('impayes-payeur/index.html')
+
+
+@app.route('/impayes/suspendus')
+def impayes_suspendus_page_redirect():
+    """Redirect ancienne URL vers nouvelle."""
+    return redirect('/impayes-suspendus')
+
+
+@app.route('/impayes-suspendus')
+def impayes_suspendus_page():
+    """Page impayés suspendus."""
+    return render_template('impayes-suspendus/index.html')
+
+
+@app.route('/impayes/reparer')
+def impayes_reparer_page():
+    """Page impayés à réparer."""
+    return render_template('impayes/reparer.html')
+
+
+@app.route('/impayes-detail/<id>')
+def impayes_detail_page(id):
+    """Page détail impayé."""
+    return render_template('impayes-detail/index.html', impaye_id=id)
 
 
 @app.route('/contacts')
