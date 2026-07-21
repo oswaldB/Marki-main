@@ -11,6 +11,9 @@ async syncData() {
   // @checkpoint syncing-started
   this.syncing = true;
   this.syncProgress = 0;
+  // Sync avec le store global
+  Alpine.store('impayes').syncing = true;
+  Alpine.store('impayes').syncProgress = 0;
   this.error = null;
   
   try {
@@ -45,12 +48,16 @@ async syncData() {
     
     // Progression simulée
     this.syncProgress = 25;
+    Alpine.store('impayes').syncProgress = 25;
     await new Promise(r => setTimeout(r, 200));
     this.syncProgress = 50;
+    Alpine.store('impayes').syncProgress = 50;
     await new Promise(r => setTimeout(r, 200));
     this.syncProgress = 75;
-    await new Promise(r, setTimeout(r, 200));
+    Alpine.store('impayes').syncProgress = 75;
+    await new Promise(r => setTimeout(r, 200));
     this.syncProgress = 100;
+    Alpine.store('impayes').syncProgress = 100;
     
     // @action Recharger les données après sync
     // @checkpoint data-reloaded
@@ -84,6 +91,10 @@ async syncData() {
   } finally {
     // @checkpoint sync-complete
     this.syncing = false;
-    setTimeout(() => this.syncProgress = 0, 500);
+    Alpine.store('impayes').syncing = false;
+    setTimeout(() => {
+      this.syncProgress = 0;
+      Alpine.store('impayes').syncProgress = 0;
+    }, 500);
   }
 }

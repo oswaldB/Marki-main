@@ -8,6 +8,23 @@
   };
 
   document.addEventListener('alpine:init', () => {
+    // Store global pour partager l'état avec la top bar
+    Alpine.store('impayes', {
+      syncing: false,
+      syncProgress: 0,
+      
+      syncData() {
+        // Déléguer au composant principal s'il existe
+        const el = document.querySelector('[x-data="impayes"]');
+        if (el && el._x_dataStack) {
+          const component = Alpine.$data(el);
+          if (component.syncData) {
+            component.syncData();
+          }
+        }
+      }
+    });
+    
     Alpine.data('impayes', () => ({
       // =====================================================
       // STATE
