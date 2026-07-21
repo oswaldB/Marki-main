@@ -1,0 +1,94 @@
+// =====================================================
+// WORKFLOW: search-contacts - Recherche de contacts
+// =====================================================
+
+// Filter - lance la recherche API backend au clic du bouton
+filterContacts: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'filterContacts',
+        searchQuery: this.searchQuery
+    });
+    
+    // Validation: Ne recherche que si au moins 2 caractères
+    if (!this.searchQuery || this.searchQuery.trim().length < 2) {
+        log.warn('VALIDATION_ERROR', {
+            workflowId,
+            reason: 'search_too_short',
+            length: this.searchQuery?.length || 0
+        });
+        return;
+    }
+    
+    await this.searchContactsAPI();
+    
+    log.info('WORKFLOW_SUCCESS', { workflowId });
+},
+
+// API: Recherche de contacts en backend
+searchContactsAPI: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'searchContactsAPI',
+        search: this.searchQuery
+    });
+    
+    this.loading = true;
+    this.hasSearched = true;
+    
+    try {
+        const encodedSearch = encodeURIComponent(this.searchQuery.trim());
+        const endpoint = `/api/contacts?search=${encodedSearch}&limit=1000`;
+        
+        log.debug('API_CALL_START', { 
+            workflowId,
+            endpoint,
+            method: 'GET'
+        });
+        
+        const response = await fetch(endpoint);
+        
+        log.debug('API_RESPONSE_RECEIVED', { 
+            workflowId,
+            status: response.status
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        log.debug('STATE_UPDATE', { 
+            workflowId,
+            oldCount: this.contacts.length,
+            newCount: (data.contacts || data).length
+        });
+        
+        // L'API retourne déjà les contacts structurés avec leurs relations
+        this.contacts = data.contacts || data;
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            workflow: 'searchContactsAPI',
+            duration: Date.now() - startTime,
+            count: this.contacts.length
+        });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            workflow: 'searchContactsAPI',
+            error: error.message
+        });
+        
+        this.contacts = [];
+    } finally {
+        this.loading = false;
+        log.debug('STATE_UPDATE', { workflowId, loading: false });
+    }
+}

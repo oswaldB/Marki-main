@@ -209,6 +209,28 @@ for (const interloc of interlocuteurs) {
 ```
 
 ### Étape 5 : Création/MàJ Impayés
+
+Construction de l'URL PDF à partir de la référence pièce et de la date de création :
+
+```javascript
+const MOIS_FR = [
+  "janvier", "fevrier", "mars", "avril", "mai", "juin",
+  "juillet", "aout", "septembre", "octobre", "novembre", "decembre"
+];
+
+function buildUrlPdf(refPiece, dateCre) {
+  if (!refPiece || !dateCre) return null;
+  let d = new Date(dateCre);
+  if (isNaN(d.getTime())) return null;
+  let year = d.getFullYear();
+  let month = MOIS_FR[d.getMonth()];
+  let refClean = String(refPiece).replace(/\s+/g, "_");
+  return `/ADN/Reporting/Gco/Piece/${year}/${month}/${refClean}/standard/${refPiece} (GCO PI FA).pdf`;
+}
+```
+
+Création/MàJ des impayés :
+
 ```javascript
 for (const piece of piecesRows) {
   const impayeData = {
@@ -222,6 +244,7 @@ for (const piece of piecesRows) {
     facture_soldee: piece.facturesoldee ? 1 : 0,
     numero_dossier: piece.numero,
     adresse_bien: `${piece.adresse} ${piece.codePostal} ${piece.ville}`,
+    url_pdf: buildUrlPdf(piece.refpiece, piece.datecre), // URL du PDF sur le SFTP
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString()
   };

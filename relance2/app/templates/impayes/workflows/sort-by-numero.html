@@ -1,0 +1,19 @@
+<!-- Workflow: Trier par numéro de facture -->
+
+async sortByNumero() {
+  // @checkpoint sort-toggled
+  if (this.sortColumn === 'nfacture') {
+    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+  } else {
+    this.sortColumn = 'nfacture';
+    this.sortDirection = 'asc';
+  }
+  
+  // @checkpoint page-reset
+  this.currentPage = 1;
+  
+  // @checkpoint data-sorted
+  await this.loadData();
+  
+  log.info('sort-by-numero', { direction: this.sortDirection });
+}

@@ -1,0 +1,114 @@
+async editNote(index, newContent) {
+  // @checkpoint edit-note-called
+  if (!newContent || !newContent.trim()) {
+    return false;
+  }
+  
+  this.savingNote = true;
+  
+  try {
+    const token = localStorage.getItem('marki_token');
+    if (!token) {
+      window.location.href = '/login';
+      return false;
+    }
+    
+    // Récupérer l'utilisateur courant
+    let currentUser = 'Utilisateur';
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      currentUser = payload.username || payload.email || 'Utilisateur';
+    } catch (e) {
+      console.warn('Impossible de décoder le token');
+    }
+    
+    // Parser les notes
+    let notes = [];
+    if (this.selectedFacture?.notes_json) {
+      try {
+        notes = JSON.parse(this.selectedFacture.notes_json);
+        if (!Array.isArray(notes)) notes = [];
+      } catch (e) {
+        if (this.selectedFacture.note) {
+          notes = [{
+            content: this.selectedFacture.note,
+            author: this.selectedFacture.note_author || 'Inconnu',
+            date: this.selectedFacture.updated_at || new Date().toISOString()
+          }];
+        }
+      }
+    }
+    
+    // Vérifier si la note existe
+    if (!notes[index]) {
+      throw new Error('Note introuvable');
+    }
+    
+    // Vérifier que l'utilisateur est l'auteur
+    const noteAuthor = notes[index].author;
+    if (noteAuthor !== currentUser) {
+      if (Alpine.store('ui')?.addToast) {
+        Alpine.store('ui').addToast('Vous ne pouvez modifier que vos propres notes', 'error');
+      }
+      return false;
+    }
+    
+    // Modifier la note
+    notes[index] = {
+      ...notes[index],
+      content: newContent.trim(),
+      edited_at: new Date().toISOString(),
+      edited: true
+    };
+    
+    // @checkpoint api-called
+    const response = await fetch(`/api/impayes/${this.selectedFacture.id}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        notes_json: JSON.stringify(notes),
+        updated_at: new Date().toISOString()
+      })
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Erreur ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    if (!data.success) {
+      throw new Error(data.error?.message || 'Erreur de modification');
+    }
+    
+    // @checkpoint local-updated
+    const factureIndex = this.factures.findIndex(f => f.id === this.selectedFacture.id);
+    if (factureIndex !== -1) {
+      this.factures[factureIndex].notes_json = JSON.stringify(notes);
+      this.selectedFacture.notes_json = JSON.stringify(notes);
+    }
+    
+    // Réinitialiser le formulaire d'édition
+    this.editingNoteIndex = null;
+    this.editNoteContent = '';
+    
+    if (Alpine.store('ui')?.addToast) {
+      Alpine.store('ui').addToast('Note modifiée', 'success');
+    }
+    
+    log.info('note-edited', { factureId: this.selectedFacture.id, noteIndex: index });
+    return true;
+    
+  } catch (err) {
+    log.error('edit-note-error', err.message);
+    if (Alpine.store('ui')?.addToast) {
+      Alpine.store('ui').addToast(err.message, 'error');
+    }
+    return false;
+  } finally {
+    this.savingNote = false;
+  }
+}

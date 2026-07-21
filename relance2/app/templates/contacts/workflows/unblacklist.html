@@ -1,0 +1,78 @@
+// =====================================================
+// WORKFLOW: unblacklist - Retirer un contact de la blacklist via backend workflow
+// =====================================================
+
+unblacklist: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'unblacklist',
+        contactId: this.contactToBlacklist?.id
+    });
+    
+    if (!this.contactToBlacklist) {
+        log.warn('VALIDATION_ERROR', { workflowId, reason: 'no_contact_to_unblacklist' });
+        return;
+    }
+    
+    try {
+        log.debug('API_CALL_START', { 
+            workflowId,
+            endpoint: `/api/contacts/${this.contactToBlacklist.id}/blacklist`,
+            method: 'POST'
+        });
+        
+        // Le backend toggle automatiquement - si déjà blacklisté, il va retirer
+        const response = await fetch(`/api/contacts/${this.contactToBlacklist.id}/blacklist`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ motif: null })
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { 
+            workflowId,
+            status: response.status
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP ${response.status}`);
+        }
+        
+        const result = await response.json();
+        
+        // Mise à jour locale avec les données du backend
+        log.debug('STATE_UPDATE', { 
+            workflowId,
+            contactId: this.contactToBlacklist.id,
+            oldStatut: this.contactToBlacklist.statut,
+            newStatut: result.contact.is_blacklisted ? 'blacklist' : 'actif',
+            oldIsBlacklisted: this.contactToBlacklist.isBlacklisted,
+            newIsBlacklisted: result.contact.is_blacklisted ? 1 : 0,
+            action: result.action
+        });
+        
+        this.contactToBlacklist.statut = result.contact.is_blacklisted ? 'blacklist' : 'actif';
+        this.contactToBlacklist.isBlacklisted = result.contact.is_blacklisted ? 1 : 0;
+        
+        // Mettre à jour les stats
+        if (result.contact.is_blacklisted) {
+            this.stats.blacklist++;
+        } else {
+            this.stats.blacklist = Math.max(0, this.stats.blacklist - 1);
+        }
+        log.debug('STATE_UPDATE', { workflowId, statsBlacklist: this.stats.blacklist });
+        
+        this.showBlacklistModal = false;
+        this.contactToBlacklist = null;
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId, action: result.action });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            workflow: 'unblacklist',
+            error: error.message
+        });
+        alert('Erreur lors du retrait de la blacklist');
+    }
+}

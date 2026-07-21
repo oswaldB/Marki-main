@@ -1,0 +1,31 @@
+// =====================================================
+// WORKFLOW: open-modals - Ouverture des modales
+// =====================================================
+
+// Modale Email Forcé
+openSetEmailForce: function(contact) {
+    log.info('MODAL_OPEN', { 
+        modal: 'emailForce',
+        contactId: contact?.id,
+        contactName: contact?.nomComplet
+    });
+    
+    this.selectedContact = contact;
+    this.showEmailForceModal = true;
+    this.emailForceValue = contact?.emailForce || '';
+    this.emailForceSearch = '';
+    this.emailForceSearchResults = [];
+    this.loadingEmailForceSearch = false;
+},
+
+// Modale Blacklist
+openBlacklistConfirm: function(contact) {
+    log.info('MODAL_OPEN', { 
+        modal: 'blacklist',
+        contactId: contact?.id,
+        contactName: contact?.nomComplet
+    });
+    
+    this.contactToBlacklist = contact;
+    this.showBlacklistModal = true;
+}

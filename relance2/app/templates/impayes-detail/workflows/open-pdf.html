@@ -1,0 +1,113 @@
+// Workflow: Ouverture du PDF facture dans un viewer intégré
+// Affiche le PDF dans un iframe à droite de l'écran (50% de la largeur)
+
+openPdf: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'openPdf',
+        impayeId: this.impaye?.id
+    });
+    
+    if (!this.impaye?.id) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: 'No impaye ID' });
+        this.showToast('Erreur', 'Aucune facture chargée', 'error');
+        return;
+    }
+    
+    if (!this.impaye?.url_pdf) {
+        this.showToast('Erreur', 'PDF non disponible pour cette facture', 'error');
+        return;
+    }
+    
+    this.loading = true;
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        
+        // Appel API pour obtenir l'URL sécurisée
+        log.debug('API_CALL_START', { 
+            workflowId, 
+            endpoint: '/api/tokens/pdf',
+            method: 'POST'
+        });
+        
+        const response = await fetch('/api/tokens/pdf', {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ impaye_id: this.impaye.id })
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { workflowId, status: response.status });
+        
+        // Gestion token expiré
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        if (!response.ok) {
+            const errData = await response.json().catch(() => ({}));
+            throw new Error(errData.error?.message || 'Erreur HTTP ' + response.status);
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+            throw new Error(data.error?.message || 'Erreur lors de la génération du lien PDF');
+        }
+        
+        // Construire l'URL relative pour l'iframe (même domaine que la page)
+        // Récupérer juste le chemin/token de l'URL retournée
+        const fullUrl = data.data?.pdfUrl || '';
+        let relativeUrl = fullUrl;
+        
+        // Si l'URL contient le domaine, extraire uniquement le chemin
+        if (fullUrl.includes('/api/pdf/')) {
+            const urlParts = fullUrl.split('/api/pdf/');
+            if (urlParts.length > 1) {
+                relativeUrl = '/api/pdf/' + urlParts[1];
+            }
+        }
+        
+        this.pdfUrl = relativeUrl;
+        
+        if (!this.pdfUrl) {
+            throw new Error('URL PDF non disponible');
+        }
+        
+        log.debug('PDF_URL_GENERATED', { workflowId, fullUrl, relativeUrl: this.pdfUrl });
+        
+        // Afficher le viewer PDF
+        this.showPdfViewer = true;
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime
+        });
+        
+    } catch (error) {
+        console.error('Erreur ouverture PDF:', error);
+        this.showToast('Erreur', error.message, 'error');
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    } finally {
+        this.loading = false;
+    }
+},
+
+closePdf: function() {
+    log.info('PDF_VIEWER_CLOSED', { impayeId: this.impaye?.id });
+    this.showPdfViewer = false;
+    this.pdfUrl = null;
+}

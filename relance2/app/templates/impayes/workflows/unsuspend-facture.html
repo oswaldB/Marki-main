@@ -1,0 +1,68 @@
+<!-- Workflow: Désuspendre facture -->
+
+async confirmUnsuspend() {
+  // @checkpoint confirm-unsuspend-called
+  this.unsuspending = true;
+  
+  try {
+    const token = localStorage.getItem('marki_token');
+    if (!token) {
+      window.location.href = '/login';
+      return;
+    }
+    
+    // @action Appeler API unsuspend
+    // @checkpoint api-called
+    const response = await fetch(`/api/impayes/${this.selectedFacture.id}/unsuspend`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Erreur ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    if (!data.success) {
+      throw new Error(data.error || 'Erreur de réactivation');
+    }
+    
+    // @action Mettre à jour local
+    // @checkpoint local-updated
+    const index = this.allFactures.findIndex(f => f.id === this.selectedFacture.id);
+    if (index !== -1) {
+      this.allFactures[index].statut = 'en-relance';
+      this.selectedFacture.statut = 'en-relance';
+    }
+    
+    // @action Fermer modal
+    // @checkpoint modal-closed
+    this.showUnsuspendModal = false;
+    
+    // @action Notifier succès
+    const relancesCrees = data.relances_crees || 0;
+    if (Alpine.store('ui')?.addToast) {
+      Alpine.store('ui').addToast(
+        `Facture réactivée. ${relancesCrees} relance(s) créée(s).`,
+        'success'
+      );
+    }
+    
+    log.info('facture-unsuspended', { 
+      factureId: this.selectedFacture.id,
+      relancesCrees 
+    });
+    
+  } catch (err) {
+    log.error('unsuspend-error', err.message);
+    if (Alpine.store('ui')?.addToast) {
+      Alpine.store('ui').addToast(err.message, 'error');
+    }
+  } finally {
+    this.unsuspending = false;
+  }
+}

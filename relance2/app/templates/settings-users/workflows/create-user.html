@@ -1,0 +1,46 @@
+<!-- Workflow: Create User -->
+
+/**
+ * @action Créer un nouvel utilisateur
+ * @checkpoint form-valid
+ */
+async createUser() {
+  if (!this.isNewUserValid()) {
+    return;
+  }
+  
+  this.loading = true;
+  
+  try {
+    const token = localStorage.getItem('marki_token');
+    
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(this.newUser)
+    });
+    
+    const data = await response.json();
+    
+    if (!data.success) {
+      throw new Error(data.error?.message || 'Erreur lors de la création');
+    }
+    
+    // @checkpoint user-created
+    this.users.unshift(data.data);
+    
+    // @checkpoint modal-closed
+    this.showAddForm = false;
+    this.newUser = { prenom: '', nom: '', username: '', email: '', password: '', role: 'user' };
+    
+  } catch (err) {
+    this.error = err.message;
+    console.error('[USERS] Create error:', err);
+    alert(err.message);
+  } finally {
+    this.loading = false;
+  }
+}

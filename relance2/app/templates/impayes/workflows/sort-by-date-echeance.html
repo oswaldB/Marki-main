@@ -1,0 +1,19 @@
+<!-- Workflow: Trier par date d'échéance -->
+
+async sortByDateEcheance() {
+  // @checkpoint sort-toggled
+  if (this.sortColumn === 'date_echeance') {
+    this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+  } else {
+    this.sortColumn = 'date_echeance';
+    this.sortDirection = 'desc'; // Défaut: plus récent d'abord
+  }
+  
+  // @checkpoint page-reset
+  this.currentPage = 1;
+  
+  // @checkpoint data-sorted
+  await this.loadData();
+  
+  log.info('sort-by-date-echeance', { direction: this.sortDirection });
+}

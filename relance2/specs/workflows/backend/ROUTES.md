@@ -54,6 +54,7 @@
 | PUT | `/api/impayes/:id` | [import-invoice](./import-invoice.md) | Modifier un impayé |
 | POST | `/api/impayes/:id/suspend` | [impayes-suspend](./impayes-suspend.md) | Suspendre un impayé |
 | POST | `/api/impayes/:id/unsuspend` | [impayes-unsuspend](./impayes-unsuspend.md) | Réactiver un impayé |
+| POST | `/api/impayes/:id/change-sequence` | [change-sequence-restart](./change-sequence-restart.md) + [change-sequence-continue](./change-sequence-continue.md) | Changer la séquence avec mode `restart` ou `continue` |
 
 ---
 
@@ -184,7 +185,7 @@
 | **Auth** | 3 routes |
 | **Utilisateurs** | 5 routes |
 | **Contacts** | 8 routes |
-| **Impayés** | 6 routes |
+| **Impayés** | 7 routes |
 | **Relances** | 10 routes |
 | **Emails** | 1 route |
 | **Suivis** | 2 routes |
@@ -197,7 +198,7 @@
 | **Portail** | 2 routes |
 | **Tokens** | 3 routes |
 
-**Total : 63 routes API**
+**Total : 64 routes API**
 
 ---
 

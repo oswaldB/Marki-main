@@ -1,0 +1,18 @@
+// =====================================================
+// WORKFLOW INIT - Initialisation de la page contacts
+// =====================================================
+
+// Fonction d'initialisation (doit être en dernier dans Alpine.data)
+init: function() {
+    log.info('PAGE_INIT', { 
+        page: 'contacts',
+        timestamp: Date.now()
+    });
+    
+    this.loading = false;
+    this.hasSearched = false;
+    this.contacts = [];
+    
+    // Charger uniquement les stats globales
+    this.loadStatsOnly();
+}

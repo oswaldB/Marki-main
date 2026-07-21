@@ -322,15 +322,29 @@ interface PayeurImpaye {
 ```javascript
 function impayesDetailPage() {
   return {
-    // Data
+    // Data - Impayé
     facture: null,         // FactureComplete
+    notesImpaye: [],       // Note[] - notes spécifiques à cette facture
+    
+    // Data - Contact (Payeur)
+    contact: null,          // ContactComplet
+    notesContact: [],       // Note[] - notes générales du contact
+    
+    // Historique
     historiquePaiements: [],
     historiqueRelances: [],
     
     // UI state
     loading: true,
     error: null,
-    activeTab: 'details', // details | paiements | relances | anomalies
+    activeTab: 'details', // details | paiements | relances | anomalies | notes
+    
+    // Notes UI state
+    activeNotesTab: 'impaye', // 'impaye' | 'contact'
+    showAddNoteModal: false,
+    newNoteContent: '',
+    noteToDelete: null,
+    savingNote: false,
     
     // Actions
     showMarkAsPaidModal: false,
@@ -339,6 +353,10 @@ function impayesDetailPage() {
     
     // Methods
     async loadFacture(id) { /* ... */ },
+    async loadContactNotes(contactId) { /* ... */ },
+    async loadImpayeNotes(impayeId) { /* ... */ },
+    async saveNote(type, content) { /* ... */ }, // type: 'impaye' | 'contact'
+    async deleteNote(type, noteId) { /* ... */ },
     async markAsPaid(data) { /* ... */ },
     async addRelance(data) { /* ... */ },
     async suspendre() { /* ... */ },
@@ -353,6 +371,21 @@ interface FactureComplete extends Facture {
   lignes?: LigneFacture[];
   historique: ActionLog[];
   documents: Document[];
+  notes: Note[];              // Notes spécifiques à la facture (depuis notes_json)
+  contact?: ContactComplet;   // Payeur avec ses notes
+}
+
+interface ContactComplet extends Contact {
+  notes: Note[];              // Notes générales du contact
+}
+
+interface Note {
+  id: string;
+  content: string;
+  type: 'impaye' | 'contact';
+  createdBy: string;
+  createdByName: string;
+  createdAt: string;
 }
 
 interface Paiement {
@@ -362,6 +395,64 @@ interface Paiement {
   mode: 'virement' | 'cheque' | 'carte' | 'especes';
   reference?: string;
 }
+```
+
+**UI - Deux blocs de notes distincts:**
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  📝 NOTES                                                       │
+├─────────────────────────────────────────────────────────────────┤
+│  ┌─────────────┐  ┌──────────────────────────────────────────┐  │
+│  │ 📄 Facture  │  │                                          │  │
+│  │   Notes     │  │  Note 1: Client conteste le montant...   │  │
+│  │             │  │  — Par Admin, le 15/07/2026 à 14:30      │  │
+│  │  [2 notes]  │  │                                          │  │
+│  └─────────────┘  │  ┌─────────────────────────────────────┐  │  │
+│  ┌─────────────┐   │  │ 💬 Ajouter une note sur cette     │  │  │
+│  │ 👤 Contact  │   │  │    facture...                      │  │  │
+│  │   Notes     │   │  └─────────────────────────────────────┘  │  │
+│  │             │   │                                          │  │
+│  │  [5 notes]  │   └──────────────────────────────────────────┘  │
+│  └─────────────┘                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Différence entre les deux types de notes:**
+
+| Type | Scope | Exemple | Stockage |
+|------|-------|---------|----------|
+| **Notes Facture** | Uniquement cette facture | "Client conteste le montant de la prestation" | `impayes.notes_json` |
+| **Notes Contact** | Toutes les factures du contact | "Préfère être contacté par téléphone" | `contacts.notes` |
+
+**API Endpoints:**
+
+```typescript
+// Charger les notes d'un impayé
+GET /api/impayes/:id/notes
+Response: { success: true, data: { notes: Note[] } }
+
+// Ajouter une note à un impayé
+POST /api/impayes/:id/notes
+Body: { content: string }
+Response: { success: true, data: { note: Note } }
+
+// Supprimer une note d'un impayé
+DELETE /api/impayes/:id/notes/:noteId
+Response: { success: true }
+
+// Charger les notes d'un contact
+GET /api/contacts/:id/notes
+Response: { success: true, data: { notes: Note[] } }
+
+// Ajouter une note à un contact
+POST /api/contacts/:id/notes
+Body: { content: string }
+Response: { success: true, data: { note: Note } }
+
+// Supprimer une note d'un contact
+DELETE /api/contacts/:id/notes/:noteId
+Response: { success: true }
 ```
 
 ---

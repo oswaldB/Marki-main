@@ -95,22 +95,37 @@ Contacts du système (propriétaires, apporteurs d'affaire, payeurs).
 | `adresse_ville` | TEXT | | Ville |
 | `adresse_code_postal` | TEXT | | Code postal |
 | `adresse_pays` | TEXT | DEFAULT 'France' | Pays |
-| `notes` | TEXT | | Notes JSON (voir format ci-dessous) |
+| `notes` | TEXT | | **Notes JSON du contact** (voir format ci-dessous) |
+| `externe_id` | TEXT | | ID externe du contact (import) |
 | `created_at` | TEXT | NOT NULL | Date de création |
 | `updated_at` | TEXT | NOT NULL | Date de modification |
 
-### Format de `notes` (JSON)
+### Format de `notes` (JSON) - Notes du Contact
 ```json
 [
   {
     "id": "note_001",
-    "content": "Note textuelle",
+    "content": "Note textuelle sur le contact",
+    "type": "contact",
     "created_by": "user_001",
     "created_by_name": "Admin",
     "created_at": "2026-07-14T10:00:00Z"
   }
 ]
 ```
+
+**Note importante :** Les notes du contact sont partagées entre tous les impayés de ce contact. Une modification sur la fiche contact est visible depuis tous les impayés du même payeur.
+
+### Différence avec `impayes.notes_json`
+
+| Colonne | Entité | Portée | Usage |
+|---------|--------|--------|-------|
+| `contacts.notes` | Contact | **Tous les impayés** du contact | Notes générales sur le payeur (mode de paiement préféré, historique relationnel, etc.) |
+| `impayes.notes_json` | Impayé | **Uniquement cette facture** | Notes spécifiques à la facture (litige, échange sur cette facture précise, etc.) |
+
+**Exemple d'utilisation :**
+- Note contact : *"Client préfère être contacté par téléphone plutôt qu'email"*
+- Note impayé : *"Client conteste le montant de la prestation, échange téléphonique le 15/07"*
 
 ### Index recommandés
 ```sql
@@ -128,36 +143,120 @@ Factures impayées importées depuis la comptabilité.
 | Colonne | Type | Contraintes | Description |
 |---------|------|-------------|-------------|
 | `id` | TEXT | PRIMARY KEY | Identifiant unique (préfixe `imp_`) |
+| **Contacts (Foreign Keys)** |
 | `payer_id` | TEXT | FOREIGN KEY → contacts(id) | Contact payeur |
 | `contact_relance_id` | TEXT | FOREIGN KEY → contacts(id) | Contact à relancer |
 | `proprietaire_id` | TEXT | FOREIGN KEY → contacts(id) | Propriétaire du bien |
 | `apporteur_id` | TEXT | FOREIGN KEY → contacts(id) | Apporteur d'affaire |
+| `donneur_ordre_id` | TEXT | FOREIGN KEY → contacts(id) | Donneur d'ordre |
+| `locataire_entrant_id` | TEXT | FOREIGN KEY → contacts(id) | Locataire entrant |
+| `locataire_sortant_id` | TEXT | FOREIGN KEY → contacts(id) | Locataire sortant |
+| `notaire_id` | TEXT | FOREIGN KEY → contacts(id) | Notaire |
+| `syndic_id` | TEXT | FOREIGN KEY → contacts(id) | Syndic |
+| `acquereur_id` | TEXT | FOREIGN KEY → contacts(id) | Acquéreur |
+| **Séquence** |
 | `sequence_id` | TEXT | FOREIGN KEY → sequences(id) | Séquence active |
+| `email_index` | INTEGER | DEFAULT 0 | Index email dans séquence (0-3) |
+| **Facturation** |
 | `nfacture` | TEXT | NOT NULL | Numéro de facture |
 | `date_facture` | TEXT | | Date de facture |
 | `date_echeance` | TEXT | NOT NULL | Date d'échéance |
 | `date_piece` | TEXT | | Date de la pièce comptable |
-| `date_import` | TEXT | | Date d'import dans Marki |
 | `montant_ttc` | REAL | DEFAULT 0 | Montant TTC |
-| `solde_du` | REAL | DEFAULT 0 | Solde dû |
+| `total_ht` | REAL | DEFAULT 0 | Montant HT |
 | `reste_a_payer` | REAL | DEFAULT 0 | Reste à payer |
+| **Statuts** |
 | `statut` | TEXT | DEFAULT 'impaye' | `impaye`, `paye`, `annule` |
+| `statut_dossier` | TEXT | | Statut du dossier |
+| `facture_soldee` | INTEGER | DEFAULT 0 | Facture soldée (0/1) |
+| `solde_le` | TEXT | | Date de solde |
+| **Blacklist** |
 | `is_blacklisted` | INTEGER | DEFAULT 0 | Blacklisté (0/1) |
 | `blacklist_date` | TEXT | | Date de blacklist |
 | `blacklist_motif` | TEXT | | Motif |
-| `facture_soldee` | INTEGER | DEFAULT 0 | Facture soldée (0/1) |
+| **Dossier** |
 | `id_dossier` | TEXT | | ID système du dossier |
 | `numero_dossier` | TEXT | | Numéro de dossier affiché |
+| `reference` | TEXT | | Référence |
+| `reference_externe` | TEXT | | Référence externe |
+| `cadre_mission` | TEXT | | Cadre de mission |
+| `employe_intervention` | TEXT | | Employé d'intervention |
+| **Adresse du bien** |
 | `adresse_bien` | TEXT | | Adresse du bien concerné |
 | `code_postal` | TEXT | | Code postal du bien |
 | `ville` | TEXT | | Ville du bien |
-| `payeur_nom` | TEXT | | Nom du payeur (dénormalisé) |
-| `payeur_prenom` | TEXT | | Prénom du payeur |
-| `payeur_email` | TEXT | | Email du payeur |
-| `payeur_telephone` | TEXT | | Téléphone du payeur |
+| `etage` | TEXT | | Étage |
+| `entree` | TEXT | | Entrée |
+| `escalier` | TEXT | | Escalier |
+| `porte` | TEXT | | Porte |
+| `numero_lot` | TEXT | | Numéro de lot |
+| **Payeur (dénormalisé)** |
+| `payeur_nom` | TEXT | | Nom du payeur |
+| `payeur_prenom` | TEXT | | Prénom |
+| `payeur_email` | TEXT | | Email |
+| `payeur_telephone` | TEXT | | Téléphone |
+| `payeur_civilite` | TEXT | | Civilité |
+| `payeur_type` | TEXT | | Type |
+| `payeur_type_personne` | TEXT | | Type personne (P/M) |
+| **Propriétaire (dénormalisé)** |
+| `proprietaire_nom` | TEXT | | Nom |
+| `proprietaire_prenom` | TEXT | | Prénom |
+| `proprietaire_email` | TEXT | | Email |
+| `proprietaire_telephone` | TEXT | | Téléphone |
+| `proprietaire_civilite` | TEXT | | Civilité |
+| `proprietaire_type_personne` | TEXT | | Type personne |
+| **Apporteur (dénormalisé)** |
+| `apporteur_nom` | TEXT | | Nom |
+| `apporteur_prenom` | TEXT | | Prénom |
+| `apporteur_email` | TEXT | | Email |
+| `apporteur_telephone` | TEXT | | Téléphone |
+| `apporteur_civilite` | TEXT | | Civilité |
+| **Donneur d'ordre (dénormalisé)** |
+| `donneur_ordre_nom` | TEXT | | Nom |
+| `donneur_ordre_prenom` | TEXT | | Prénom |
+| `donneur_ordre_email` | TEXT | | Email |
+| `donneur_ordre_telephone` | TEXT | | Téléphone |
+| `donneur_ordre_civilite` | TEXT | | Civilité |
+| **Syndic (dénormalisé)** |
+| `syndic_nom` | TEXT | | Nom |
+| `syndic_prenom` | TEXT | | Prénom |
+| `syndic_email` | TEXT | | Email |
+| `syndic_telephone` | TEXT | | Téléphone |
+| `syndic_civilite` | TEXT | | Civilité |
+| **Notaire (dénormalisé)** |
+| `notaire_nom` | TEXT | | Nom |
+| `notaire_prenom` | TEXT | | Prénom |
+| `notaire_email` | TEXT | | Email |
+| `notaire_telephone` | TEXT | | Téléphone |
+| `notaire_civilite` | TEXT | | Civilité |
+| **Locataire entrant (dénormalisé)** |
+| `locataire_entrant_nom` | TEXT | | Nom |
+| `locataire_entrant_prenom` | TEXT | | Prénom |
+| `locataire_entrant_email` | TEXT | | Email |
+| `locataire_entrant_telephone` | TEXT | | Téléphone |
+| `locataire_entrant_civilite` | TEXT | | Civilité |
+| **Locataire sortant (dénormalisé)** |
+| `locataire_sortant_nom` | TEXT | | Nom |
+| `locataire_sortant_prenom` | TEXT | | Prénom |
+| `locataire_sortant_email` | TEXT | | Email |
+| `locataire_sortant_telephone` | TEXT | | Téléphone |
+| `locataire_sortant_civilite` | TEXT | | Civilité |
+| **Acquéreur (dénormalisé)** |
+| `acquereur_nom` | TEXT | | Nom |
+| `acquereur_prenom` | TEXT | | Prénom |
+| `acquereur_email` | TEXT | | Email |
+| `acquereur_telephone` | TEXT | | Téléphone |
+| `acquereur_civilite` | TEXT | | Civilité |
+| **PDF** |
 | `url_pdf` | TEXT | | URL du PDF facture |
 | `url_pdf_token` | TEXT | | Token d'accès au PDF |
-| `email_index` | INTEGER | DEFAULT 0 | Index email dans séquence (0-3) |
+| `url_pdf_token_expires` | TEXT | | Expiration du token |
+| **Commentaires** |
+| `commentaire_dossier` | TEXT | | Commentaire sur le dossier |
+| `commentaire_piece` | TEXT | | Commentaire sur la pièce |
+| `notes_json` | TEXT | | **Notes JSON de l'impayé** (format ci-dessous) |
+| **Dates** |
+| `date_import` | TEXT | | Date d'import dans Marki |
 | `created_at` | TEXT | NOT NULL | Date de création |
 | `updated_at` | TEXT | NOT NULL | Date de modification |
 
@@ -193,6 +292,13 @@ Emails de relance générés pour les impayés.
 | `email_envoye_a` | TEXT | | Adresse email destinataire |
 | `valide` | INTEGER | DEFAULT 0 | Validée par un utilisateur (0/1) |
 | `manuelle` | INTEGER | DEFAULT 0 | Créée manuellement (0/1) |
+| `smtp_profile_id` | TEXT | FOREIGN KEY → smtp_profiles(id) | Profil SMTP utilisé |
+| `cc` | TEXT | | Destinataires en copie |
+| `scenario` | TEXT | | Scénario utilisé |
+| `email_index` | INTEGER | | Index de l'email dans la séquence |
+| `email_sent` | INTEGER | DEFAULT 0 | Email envoyé (0/1) |
+| `erreur_count` | INTEGER | DEFAULT 0 | Nombre d'erreurs d'envoi |
+| `last_error` | TEXT | | Dernière erreur d'envoi |
 | `created_at` | TEXT | NOT NULL | Date de création |
 | `updated_at` | TEXT | NOT NULL | Date de modification |
 
@@ -201,13 +307,26 @@ Emails de relance générés pour les impayés.
 - **Many-to-One** avec `sequences`
 
 ### Lien avec impayés
-Les impayés liés à une relance sont stockés dans une table de liaison (à créer si besoin) :
+Les impayés liés à une relance sont stockés dans la table de liaison `relance_impayes`.
+
+---
+
+## Table: `relance_impayes`
+
+Table de liaison many-to-many entre relances et impayés.
+
+| Colonne | Type | Contraintes | Description |
+|---------|------|-------------|-------------|
+| `relance_id` | TEXT | NOT NULL, FOREIGN KEY → relances(id) ON DELETE CASCADE | ID de la relance |
+| `impaye_id` | TEXT | NOT NULL, FOREIGN KEY → impayes(id) ON DELETE CASCADE | ID de l'impayé |
+
+### Contraintes
+- **PRIMARY KEY** composite: (`relance_id`, `impaye_id`)
+
+### Index recommandés
 ```sql
-CREATE TABLE relances_impayes (
-  relance_id TEXT REFERENCES relances(id) ON DELETE CASCADE,
-  impaye_id TEXT REFERENCES impayes(id) ON DELETE CASCADE,
-  PRIMARY KEY (relance_id, impaye_id)
-);
+CREATE INDEX idx_relance_impayes_relance ON relance_impayes(relance_id);
+CREATE INDEX idx_relance_impayes_impaye ON relance_impayes(impaye_id);
 ```
 
 ### Index recommandés
@@ -259,24 +378,30 @@ Emails configurés dans une séquence (templates).
 | `created_at` | TEXT | NOT NULL | Date de création |
 | `updated_at` | TEXT | NOT NULL | Date de modification |
 
-**Note:** Le template de l'email (objet, corps HTML) doit être stocké dans une table complémentaire ou en JSON.
+**Note:** Le template de l'email (objet, corps HTML) est stocké dans la table `sequences_scenarios`.
 
-Table recommandée pour les templates:
-```sql
-CREATE TABLE sequences_email_templates (
-  id TEXT PRIMARY KEY,
-  sequence_email_id TEXT REFERENCES sequences_emails(id) ON DELETE CASCADE,
-  format TEXT NOT NULL, -- 'single', 'multiple', 'both', 'broker'
-  active INTEGER DEFAULT 0,
-  objet TEXT NOT NULL,
-  corps TEXT NOT NULL, -- HTML
-  cc TEXT,
-  bcc TEXT,
-  smtp_profile_id TEXT REFERENCES smtp_profiles(id),
-  created_at TEXT NOT NULL,
-  updated_at TEXT NOT NULL
-);
-```
+---
+
+## Table: `sequences_scenarios`
+
+Templates de scénarios pour les emails de relance.
+
+| Colonne | Type | Contraintes | Description |
+|---------|------|-------------|-------------|
+| `id` | TEXT | PRIMARY KEY | Identifiant unique (préfixe `seqscen_`) |
+| `sequence_id` | TEXT | FOREIGN KEY → sequences(id) | Séquence parente |
+| `email_index` | INTEGER | NOT NULL | Position dans la séquence (1, 2, 3...) |
+| `format` | TEXT | | Format: 'single', 'multiple', 'both', 'broker' |
+| `active` | INTEGER | DEFAULT 1 | Scénario actif (0/1) |
+| `smtp` | TEXT | | Profil SMTP (legacy, voir smtp_profile_id) |
+| `cc` | TEXT | | Destinataires en copie |
+| `objet` | TEXT | | Objet de l'email |
+| `corps` | TEXT | | Corps HTML de l'email |
+| `created_at` | TEXT | NOT NULL | Date de création |
+| `updated_at` | TEXT | NOT NULL | Date de modification |
+
+### Relations
+- **Many-to-One** avec `sequences` (via `sequence_id`)
 
 ---
 
@@ -320,6 +445,10 @@ CREATE INDEX idx_smtp_actif ON smtp_profiles(actif);
 | `entity_type` | TEXT | | Type d'entité liée (`contact`, `impaye`, `relance`) |
 | `entity_id` | TEXT | | ID de l'entité liée |
 | `read` | INTEGER | DEFAULT 0 | Lu (0/1) |
+| `who_id` | TEXT | | ID utilisateur ayant déclenché l'événement |
+| `by_marki` | INTEGER | DEFAULT 0 | Événement automatique (0/1) |
+| `metadata` | TEXT | | Métadonnées JSON |
+| `icon` | TEXT | DEFAULT 'fa-bell' | Icône FontAwesome |
 | `created_at` | TEXT | NOT NULL | Date de création |
 
 ### Index recommandés
@@ -350,6 +479,89 @@ sequences ||--o{ sequences_emails : "contient"
 smtp_profiles ||--o{ relances : "utilisé pour envoi"
 
 relances }o--o{ impayes : "relances_impayes (liaison)"
+suivis }o--o{ impayes : "suivi_impayes (liaison)"
+```
+
+---
+
+## Table: `suivis`
+
+Suivis/relances spécifiques (similaire à `relances` mais pour d'autres cas).
+
+| Colonne | Type | Contraintes | Description |
+|---------|------|-------------|-------------|
+| `id` | TEXT | PRIMARY KEY | Identifiant unique |
+| `statut` | TEXT | | Statut du suivi |
+| `format` | TEXT | | Format |
+| `email_index` | INTEGER | | Index de l'email |
+| `valide` | INTEGER | | Validé (0/1) |
+| `manuelle` | INTEGER | | Manuelle (0/1) |
+| `corps` | TEXT | | Corps du message |
+| `objet` | TEXT | | Objet du message |
+| `emailSent` | INTEGER | | Email envoyé (0/1) - legacy |
+| `contact_id` | TEXT | FOREIGN KEY → contacts(id) | Contact concerné |
+| `sequence_id` | TEXT | FOREIGN KEY → sequences(id) | Séquence utilisée |
+| `smtp_profile_id` | TEXT | FOREIGN KEY → smtp_profiles(id) | Profil SMTP |
+| `date_envoi` | TEXT | | Date d'envoi |
+| `date_programmation` | TEXT | | Date de programmation |
+| `sujet` | TEXT | | Sujet (dénormalisé) |
+| `cc` | TEXT | | Destinataires en copie |
+| `scenario` | TEXT | | Scénario utilisé |
+| `email_sent` | INTEGER | DEFAULT 0 | Email envoyé (0/1) |
+| `erreur_count` | INTEGER | DEFAULT 0 | Nombre d'erreurs |
+| `last_error` | TEXT | | Dernière erreur |
+| `created_at` | TEXT | NOT NULL | Date de création |
+| `updated_at` | TEXT | NOT NULL | Date de modification |
+
+---
+
+## Table: `suivi_impayes`
+
+Table de liaison entre suivis et impayés (similaire à `relance_impayes`).
+
+| Colonne | Type | Contraintes | Description |
+|---------|------|-------------|-------------|
+| `suivi_id` | TEXT | NOT NULL, FOREIGN KEY → suivis(id) | ID du suivi |
+| `impaye_id` | TEXT | NOT NULL, FOREIGN KEY → impayes(id) | ID de l'impayé |
+
+**PRIMARY KEY**: (`suivi_id`, `impaye_id`)
+
+---
+
+## Table: `lien_paiements`
+
+Liens de paiement générés (ex: paiement en ligne).
+
+| Colonne | Type | Contraintes | Description |
+|---------|------|-------------|-------------|
+| `id` | TEXT | PRIMARY KEY | Identifiant unique |
+| `nom` | TEXT | | Nom/description du lien |
+| `url` | TEXT | | URL de paiement |
+| `created_at` | TEXT | | Date de création |
+| `updated_at` | TEXT | | Date de modification |
+
+---
+
+## Table: `options_dynamiques`
+
+Options dynamiques configurables pour l'application.
+
+| Colonne | Type | Contraintes | Description |
+|---------|------|-------------|-------------|
+| `id` | TEXT | PRIMARY KEY | Identifiant unique |
+| `type` | TEXT | | Type d'option |
+| `valeurs` | TEXT | | Valeurs (JSON) |
+| `created_at` | TEXT | | Date de création |
+| `updated_at` | TEXT | | Date de modification |
+
+### Exemple d'utilisation
+```json
+// valeur stockée dans la colonne 'valeurs'
+{
+  "key": "delai_relance",
+  "value": 7,
+  "description": "Délai par défaut entre les relances"
+}
 ```
 
 ---
@@ -435,4 +647,4 @@ Les anciennes collections YAML sont remplacées par ces tables SQL:
 | `smtp_profiles` | `smtp_profiles` |
 | `events` | `events` |
 
-**Note:** `notes` des impayés sont maintenant stockées en JSON dans `impayes.notes`.
+**Note:** Les notes sont stockées en JSON dans `contacts.notes` (notes contact) et `impayes.notes_json` (notes impayés).

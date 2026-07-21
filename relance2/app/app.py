@@ -12,6 +12,7 @@ from routes.auth import auth_bp, require_auth
 from routes.impayes import impayes_bp
 from routes.events import events_bp
 from routes.relances import relances_bp
+from routes.contacts import contacts_bp, contacts_api_bp
 
 app = Flask(__name__)
 
@@ -23,6 +24,8 @@ app.register_blueprint(auth_bp)
 app.register_blueprint(impayes_bp)
 app.register_blueprint(events_bp)
 app.register_blueprint(relances_bp)
+app.register_blueprint(contacts_bp)
+app.register_blueprint(contacts_api_bp)
 
 # Fermeture auto de la connexion DB à la fin des requêtes
 @app.teardown_appcontext
@@ -57,7 +60,19 @@ def impayes_page():
 @app.route('/contacts')
 def contacts_page():
     """Page contacts."""
-    return "Page Contacts - À implémenter"
+    return render_template('contacts/index.html')
+
+
+@app.route('/contacts/blacklist')
+def contacts_blacklist_page():
+    """Page contacts blacklistés."""
+    return render_template('contact-blacklist/index.html')
+
+
+@app.route('/contacts/sans-email')
+def contacts_sans_email_page():
+    """Page contacts sans email."""
+    return render_template('contacts-sans-email/index.html')
 
 
 @app.route('/sequences')

@@ -1,0 +1,451 @@
+<script>
+// =====================================================
+// LOGGER GLOBAL - Génération exhaustive des logs
+// =====================================================
+const logSansEmail = {
+    debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+    info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+    warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+    error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+};
+
+// =====================================================
+// ALPINE.JS DATA - Pattern: Props → Workflows → Init
+// =====================================================
+document.addEventListener('alpine:init', () => {
+    Alpine.data('contactsSansEmailPage', () => ({
+        // =====================================================
+        // 1. PROPS RÉACTIVES (STATE) - Définies D'ABORD
+        // =====================================================
+        
+        // UI State
+        loading: false,
+        
+        // Search & Pagination
+        searchQuery: '',
+        currentPage: 1,
+        itemsPerPage: 12,
+        
+        // Data
+        contacts: [],
+        filteredContacts: [],
+        
+        // UI State - Modals
+        showEmailForceModal: false,
+        
+        // Selected
+        selectedContact: null,
+        
+        // Email Force
+        emailForceValue: '',
+        emailForceSearch: '',
+        emailForceSearchResults: [],
+        loadingEmailForceSearch: false,
+        savingEmailForce: false,
+        
+        // Debounce timer
+        debounceTimer: null,
+
+        // =====================================================
+        // GETTERS CALCULÉS - Définis avec les props
+        // =====================================================
+        
+        // Computed: Contacts paginés
+        get paginatedContacts() {
+            const start = (this.currentPage - 1) * this.itemsPerPage;
+            return this.filteredContacts.slice(start, start + this.itemsPerPage);
+        },
+        
+        // Computed: Nombre total de pages
+        get totalPages() {
+            return Math.ceil(this.filteredContacts.length / this.itemsPerPage) || 1;
+        },
+        
+        // Computed: Pages visibles (max 5)
+        get visiblePages() {
+            const pages = [];
+            const maxVisible = 5;
+            let start = Math.max(1, this.currentPage - Math.floor(maxVisible / 2));
+            let end = Math.min(this.totalPages, start + maxVisible - 1);
+            if (end - start + 1 < maxVisible) {
+                start = Math.max(1, end - maxVisible + 1);
+            }
+            for (let i = start; i <= end; i++) {
+                pages.push(i);
+            }
+            return pages;
+        },
+
+        // =====================================================
+        // HELPERS - Méthodes utilitaires
+        // =====================================================
+        
+        formatDate(dateStr) {
+            if (!dateStr) return '-';
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('fr-FR');
+        },
+
+        // =====================================================
+        // 2. WORKFLOWS - Définis APRÈS les props
+        // =====================================================
+        
+        // -----------------------------------------------------
+        // WORKFLOW: contacts-sans-email-load
+        // Description: Charge les contacts sans email
+        // -----------------------------------------------------
+        
+        /**
+         * @action Initialiser le workflow
+         * @checkpoint wf-sans-email-init
+         * State: { loading: true, contacts: [] }
+         */
+        async loadContacts() {
+            const workflowId = crypto.randomUUID();
+            logSansEmail.info('WORKFLOW_START', { 
+                workflowId, 
+                workflow: 'contacts-sans-email-load' 
+            });
+            
+            this.loading = true;
+            logSansEmail.debug('wf-sans-email-init', { loading: true });
+            
+            try {
+                /**
+                 * @action Construire l'URL
+                 * @checkpoint wf-sans-email-url-built
+                 * Params: { email: 'none', limit: 1000 }
+                 */
+                const url = '/api/contacts?email=none&limit=1000';
+                logSansEmail.debug('wf-sans-email-url-built', { url });
+                
+                /**
+                 * @action Fetch API
+                 * @checkpoint wf-sans-email-api-called
+                 */
+                const response = await fetch(url);
+                logSansEmail.debug('wf-sans-email-api-called', { status: response.status });
+                
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                /**
+                 * @action Normaliser les données
+                 * @checkpoint wf-sans-email-data-normalized
+                 */
+                this.contacts = (data.contacts || []).map(contact => ({
+                    id: contact.id,
+                    nomComplet: contact.nomComplet || contact.nom || 'Sans nom',
+                    typePersonne: contact.typePersonne || 'P',
+                    entreprise: contact.entreprise || null,
+                    email: contact.email || null,
+                    telephone: contact.telephone || '',
+                    impayesCount: contact.impayesCount || 0
+                }));
+                
+                this.filteredContacts = [...this.contacts];
+                this.currentPage = 1;
+                
+                logSansEmail.debug('wf-sans-email-data-normalized', { 
+                    count: this.contacts.length 
+                });
+                
+                /**
+                 * @action Terminer
+                 * @checkpoint wf-sans-email-complete
+                 * State: { loading: false, contacts: [...] }
+                 */
+                logSansEmail.info('WORKFLOW_SUCCESS', { 
+                    workflowId, 
+                    workflow: 'contacts-sans-email-load',
+                    contactCount: this.contacts.length 
+                });
+                
+            } catch (error) {
+                /**
+                 * @action Erreur
+                 * @checkpoint wf-sans-email-error
+                 */
+                logSansEmail.error('wf-sans-email-error', { 
+                    workflowId, 
+                    error: error.message 
+                });
+                this.contacts = [];
+                this.filteredContacts = [];
+            } finally {
+                this.loading = false;
+            }
+        },
+        
+        // -----------------------------------------------------
+        // WORKFLOW: contacts-sans-email-search
+        // Description: Recherche de contacts sans email
+        // -----------------------------------------------------
+        
+        /**
+         * @action Capturer l'input utilisateur
+         * @checkpoint wf-sans-email-search-input
+         * Debounce: 300ms
+         */
+        debouncedSearch() {
+            const workflowId = crypto.randomUUID();
+            logSansEmail.debug('wf-sans-email-search-input', { 
+                workflowId,
+                query: this.searchQuery 
+            });
+            
+            clearTimeout(this.debounceTimer);
+            
+            this.debounceTimer = setTimeout(() => {
+                this.searchContacts(workflowId);
+            }, 300);
+        },
+        
+        async searchContacts(workflowId) {
+            const query = this.searchQuery.trim();
+            
+            /**
+             * @action Vérifier la query
+             * @checkpoint wf-sans-email-search-validated
+             */
+            if (query.length > 0 && query.length < 2) {
+                logSansEmail.debug('wf-sans-email-search-validated', { 
+                    workflowId, 
+                    valid: false, 
+                    reason: 'query_too_short' 
+                });
+                return;
+            }
+            
+            this.loading = true;
+            
+            try {
+                /**
+                 * @action Construire l'URL de recherche
+                 * @checkpoint wf-sans-email-search-url-built
+                 */
+                let url = '/api/contacts?email=none&limit=1000';
+                if (query) {
+                    url += `&search=${encodeURIComponent(query)}`;
+                }
+                logSansEmail.debug('wf-sans-email-search-url-built', { workflowId, url });
+                
+                /**
+                 * @action Appeler l'API backend
+                 * @checkpoint wf-sans-email-search-api-called
+                 */
+                const response = await fetch(url);
+                logSansEmail.debug('wf-sans-email-search-api-called', { 
+                    workflowId, 
+                    status: response.status 
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                /**
+                 * @action Traiter la réponse
+                 * @checkpoint wf-sans-email-search-response
+                 */
+                this.filteredContacts = (data.contacts || []).map(contact => ({
+                    id: contact.id,
+                    nomComplet: contact.nomComplet || contact.nom || 'Sans nom',
+                    typePersonne: contact.typePersonne || 'P',
+                    entreprise: contact.entreprise || null,
+                    telephone: contact.telephone || '',
+                    impayesCount: contact.impayesCount || 0
+                }));
+                
+                this.currentPage = 1;
+                
+                logSansEmail.debug('wf-sans-email-search-response', { 
+                    workflowId, 
+                    count: this.filteredContacts.length 
+                });
+                
+                /**
+                 * @action Mettre à jour l'état
+                 * @checkpoint wf-sans-email-search-complete
+                 */
+                logSansEmail.info('WORKFLOW_SUCCESS', { 
+                    workflowId, 
+                    workflow: 'contacts-sans-email-search',
+                    resultCount: this.filteredContacts.length 
+                });
+                
+            } catch (error) {
+                logSansEmail.error('wf-sans-email-search-error', { 
+                    workflowId, 
+                    error: error.message 
+                });
+            } finally {
+                this.loading = false;
+            }
+        },
+        
+        // -----------------------------------------------------
+        // WORKFLOW: contacts-sans-email-set-email-force
+        // Description: Définit un email forcé
+        // -----------------------------------------------------
+        
+        /**
+         * @action Ouvrir la modale
+         * @checkpoint wf-set-email-force-modal-open
+         */
+        openSetEmailForce(contact) {
+            logSansEmail.debug('wf-set-email-force-modal-open', { 
+                contactId: contact.id, 
+                nomComplet: contact.nomComplet 
+            });
+            this.selectedContact = contact;
+            this.emailForceValue = '';
+            this.emailForceSearch = '';
+            this.emailForceSearchResults = [];
+            this.showEmailForceModal = true;
+        },
+        
+        /**
+         * @action Rechercher des contacts avec email
+         * @checkpoint wf-email-force-search-input
+         */
+        async searchEmailForceContacts() {
+            const workflowId = crypto.randomUUID();
+            const query = this.emailForceSearch.trim();
+            
+            if (query.length < 2) {
+                return;
+            }
+            
+            this.loadingEmailForceSearch = true;
+            
+            try {
+                /**
+                 * @action Construire l'URL
+                 * @checkpoint wf-email-force-search-url-built
+                 */
+                const url = `/api/contacts?search=${encodeURIComponent(query)}&limit=20`;
+                logSansEmail.debug('wf-email-force-search-url-built', { workflowId, url });
+                
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                /**
+                 * @action Filtrer les résultats avec email
+                 * @checkpoint wf-email-force-search-filtered
+                 */
+                this.emailForceSearchResults = (data.contacts || [])
+                    .filter(c => c.email || c.emailForce)
+                    .slice(0, 10);
+                
+                logSansEmail.debug('wf-email-force-search-filtered', { 
+                    workflowId, 
+                    count: this.emailForceSearchResults.length 
+                });
+                
+            } catch (error) {
+                logSansEmail.error('wf-email-force-search-error', { 
+                    workflowId, 
+                    error: error.message 
+                });
+            } finally {
+                this.loadingEmailForceSearch = false;
+            }
+        },
+        
+        /**
+         * @action Enregistrer l'email forcé
+         * @checkpoint wf-save-email-force-confirm
+         */
+        async saveEmailForce() {
+            const workflowId = crypto.randomUUID();
+            
+            if (!this.selectedContact || !this.emailForceValue) {
+                return;
+            }
+            
+            this.savingEmailForce = true;
+            
+            try {
+                /**
+                 * @action Appel API
+                 * @checkpoint wf-save-email-force-api-called
+                 * API: PATCH /api/contacts/{id}/email-force
+                 * Payload: { email_force: string }
+                 */
+                const url = `/api/contacts/${this.selectedContact.id}/email-force`;
+                logSansEmail.debug('wf-save-email-force-api-called', { 
+                    workflowId, 
+                    url,
+                    emailForce: this.emailForceValue 
+                });
+                
+                const response = await fetch(url, {
+                    method: 'PATCH',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email_force: this.emailForceValue })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP ${response.status}`);
+                }
+                
+                /**
+                 * @action Mettre à jour l'UI
+                 * @checkpoint wf-save-email-force-complete
+                 * - Retirer le contact de la liste (car il a maintenant un email)
+                 * - Fermer la modale
+                 * - Toast de succès
+                 */
+                const contactName = this.selectedContact.nomComplet;
+                
+                // Retirer de la liste locale (car maintenant avec email)
+                this.contacts = this.contacts.filter(c => c.id !== this.selectedContact.id);
+                this.filteredContacts = this.filteredContacts.filter(c => c.id !== this.selectedContact.id);
+                
+                this.showEmailForceModal = false;
+                this.selectedContact = null;
+                this.emailForceValue = '';
+                
+                logSansEmail.info('WORKFLOW_SUCCESS', { 
+                    workflowId, 
+                    workflow: 'contacts-sans-email-set-email-force',
+                    contactName 
+                });
+                
+                this.$dispatch('toast', { 
+                    message: `Email forcé enregistré pour ${contactName}`, 
+                    type: 'success' 
+                });
+                
+            } catch (error) {
+                logSansEmail.error('wf-save-email-force-error', { 
+                    workflowId, 
+                    error: error.message 
+                });
+                
+                this.$dispatch('toast', { 
+                    message: `Erreur: ${error.message}`, 
+                    type: 'error' 
+                });
+            } finally {
+                this.savingEmailForce = false;
+            }
+        },
+
+        // =====================================================
+        // 3. INIT - En DERNIER (dépend des props et workflows)
+        // =====================================================
+        
+        init() {
+            logSansEmail.info('PAGE_INIT', { page: 'contacts-sans-email' });
+            this.loadContacts();
+        }
+    }));
+});
+</script>
