@@ -1,49 +1,44 @@
-<!--
-  Workflow: demanderPrenom
-  Description: Demande le prénom via prompt() et met à jour le state
--->
-<div x-data="{ 
-  prenom: '',
-  
-  demanderPrenom: async function() {
+demanderPrenom: async function() {
     const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
     
-    console.log(JSON.stringify({
-      timestamp: new Date().toISOString(),
-      workflowId: workflowId,
-      workflow: 'demanderPrenom',
-      event: 'WORKFLOW_START'
-    }));
-    
-    const nouveauPrenom = prompt('Quel est votre prénom ?');
-    
-    if (nouveauPrenom !== null && nouveauPrenom.trim() !== '') {
-      this.prenom = nouveauPrenom.trim();
-      
-      console.log(JSON.stringify({
-        timestamp: new Date().toISOString(),
-        workflowId: workflowId,
+    log.info('WORKFLOW_START', { 
+        workflowId, 
         workflow: 'demanderPrenom',
-        event: 'STATE_UPDATE',
-        property: 'prenom',
-        value: this.prenom
-      }));
-    } else {
-      console.log(JSON.stringify({
-        timestamp: new Date().toISOString(),
-        workflowId: workflowId,
-        workflow: 'demanderPrenom',
-        event: 'WORKFLOW_CANCELLED'
-      }));
+        page: 'helloPage'
+    });
+    
+    this.loading = true;
+    
+    try {
+        const prenomSaisi = prompt('Quel est votre prénom ?');
+        
+        if (prenomSaisi && prenomSaisi.trim()) {
+            this.prenom = prenomSaisi.trim();
+            log.info('STATE_UPDATE', { 
+                prenom: this.prenom,
+                workflowId 
+            });
+        } else if (prenomSaisi !== null) {
+            log.warn('VALIDATION_ERROR', { 
+                reason: 'empty_prenom',
+                workflowId 
+            });
+        } else {
+            log.info('WORKFLOW_CANCELLED', { workflowId });
+        }
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            duration: Date.now() - startTime
+        });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    } finally {
+        this.loading = false;
     }
-    
-    console.log(JSON.stringify({
-      timestamp: new Date().toISOString(),
-      workflowId: workflowId,
-      workflow: 'demanderPrenom',
-      event: 'WORKFLOW_SUCCESS'
-    }));
-  }
-}">
-  <!-- Template vide - workflow appelé programmatiquement -->
-</div>
+}
