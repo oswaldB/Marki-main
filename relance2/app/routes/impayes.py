@@ -86,9 +86,10 @@ def list_impayes():
     # Récupération des impayés
     offset = (page - 1) * per_page
     query = f"""
-        SELECT i.*, c.nom as contact_nom, c.email as contact_email
+        SELECT i.*, c.nom as contact_nom, c.email as contact_email, s.nom as sequence_nom
         FROM impayes i
         LEFT JOIN contacts c ON i.payer_id = c.id
+        LEFT JOIN sequences s ON i.sequence_id = s.id
         {where_sql}
         ORDER BY {order_column} {order}
         LIMIT ? OFFSET ?
@@ -104,6 +105,9 @@ def list_impayes():
             impaye['payeur_nom'] = impaye['contact_nom']
         if impaye.get('contact_email'):
             impaye['payeur_email'] = impaye['contact_email']
+        # Mapping du nom de séquence
+        if impaye.get('sequence_nom'):
+            impaye['sequence_code'] = impaye['sequence_nom']
         # Conversion des booléens
         impaye['facture_soldee'] = bool(impaye.get('facture_soldee', 0))
         impaye['is_blacklisted'] = bool(impaye.get('is_blacklisted', 0))
@@ -132,9 +136,10 @@ def get_impaye(id):
     print(f"[API.IMPAYES.GET] STEP: Recherche impayé id={id}")
     
     row = db.execute("""
-        SELECT i.*, c.nom as contact_nom, c.email as contact_email
+        SELECT i.*, c.nom as contact_nom, c.email as contact_email, s.nom as sequence_nom
         FROM impayes i
         LEFT JOIN contacts c ON i.payer_id = c.id
+        LEFT JOIN sequences s ON i.sequence_id = s.id
         WHERE i.id = ?
     """, (id,)).fetchone()
     
@@ -148,6 +153,9 @@ def get_impaye(id):
         impaye['payeur_nom'] = impaye['contact_nom']
     if impaye.get('contact_email'):
         impaye['payeur_email'] = impaye['contact_email']
+    # Mapping du nom de séquence
+    if impaye.get('sequence_nom'):
+        impaye['sequence_code'] = impaye['sequence_nom']
     impaye['facture_soldee'] = bool(impaye.get('facture_soldee', 0))
     impaye['is_blacklisted'] = bool(impaye.get('is_blacklisted', 0))
     
