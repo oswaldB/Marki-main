@@ -36,6 +36,11 @@
         <p class="text-xs text-slate-400">Dernière synchro</p>
         <p class="text-sm font-medium text-slate-600" x-text="lastSyncTime"></p>
       </div>
+      <script>
+        // Workflow: Récupérer la dernière synchro depuis events
+        // Récupère l'événement de type 'sync' le plus récent pour afficher l'heure
+        // Query: SELECT created_at FROM events WHERE type = 'sync' ORDER BY created_at DESC LIMIT 1
+      </script>
       
       <button 
         @click="syncData()"
@@ -99,8 +104,12 @@
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-1">
                   <p class="text-xs text-slate-500 font-medium truncate">Factures en attente</p>
-                  <i class="fas fa-info-circle text-slate-400 text-xs" title="Factures avec reste à payer > 0"></i>
+                  <i class="fas fa-info-circle text-slate-400 text-xs hover:text-sky-500 cursor-pointer transition-colors" title="Factures avec reste à payer > 0"></i>
                 </div>
+                <script>
+                  // Workflow: Calculer le nombre de factures avec reste à payer > 0
+                  // Query: SELECT COUNT(*) FROM factures WHERE reste_a_payer > 0
+                </script>
                 <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.facturesEnAttente"></p>
                 <p class="text-xs text-slate-400 mt-1">reste à payer > 0</p>
               </div>
@@ -116,10 +125,14 @@
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-1">
                   <p class="text-xs text-slate-500 font-medium truncate">Impayés actifs</p>
-                  <i class="fas fa-info-circle text-slate-400 text-xs"></i>
+                  <i class="fas fa-info-circle text-slate-400 text-xs hover:text-sky-500 cursor-pointer transition-colors" title="Factures dont la date d'échéance est dépassée"></i>
                 </div>
                 <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.impayesActifs"></p>
-                <p class="text-xs text-slate-400 mt-1">en relance</p>
+                <p class="text-xs text-slate-400 mt-1">factures échues</p>
+                <script>
+                  // Workflow: Calculer le nombre de factures échues (date d'échéance dépassée)
+                  // Query: SELECT COUNT(*) FROM factures WHERE date_echeance < NOW() AND reste_a_payer > 0
+                </script>
               </div>
             </div>
           </div>
@@ -133,10 +146,14 @@
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-1">
                   <p class="text-xs text-slate-500 font-medium truncate">Montant total</p>
-                  <i class="fas fa-info-circle text-slate-400 text-xs"></i>
+                  <i class="fas fa-info-circle text-slate-400 text-xs hover:text-sky-500 cursor-pointer transition-colors" title="Montant HT total des factures"></i>
                 </div>
                 <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="formatMoney(kpis.montantTotal)"></p>
-                <p class="text-xs text-slate-400 mt-1">DSO: 42 jours</p>
+                <p class="text-xs text-slate-400 mt-1">HT · DSO: 42 jours</p>
+                <script>
+                  // Workflow: Calculer le montant HT total des factures
+                  // Query: SELECT SUM(montant_ht) FROM factures WHERE reste_a_payer > 0
+                </script>
               </div>
             </div>
           </div>
@@ -150,10 +167,9 @@
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-1">
                   <p class="text-xs text-slate-500 font-medium truncate">Relances du jour</p>
-                  <i class="fas fa-info-circle text-slate-400 text-xs"></i>
+                  <i class="fas fa-info-circle text-slate-400 text-xs hover:text-sky-500 cursor-pointer transition-colors" title="Relances envoyées aujourd'hui"></i>
                 </div>
                 <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.relancesJour"></p>
-                <p class="text-xs text-sky-600 mt-1 font-medium">8 réponses reçues</p>
               </div>
             </div>
           </div>
@@ -167,10 +183,21 @@
               <div class="flex-1 min-w-0">
                 <div class="flex items-center gap-1">
                   <p class="text-xs text-slate-500 font-medium truncate">Taux recouvrement</p>
-                  <i class="fas fa-info-circle text-slate-400 text-xs"></i>
+                  <i class="fas fa-info-circle text-slate-400 text-xs hover:text-sky-500 cursor-pointer transition-colors" title="Taux de recouvrement sur 90 jours glissants"></i>
                 </div>
                 <p class="text-2xl font-bold text-slate-900 mt-0.5" x-text="kpis.tauxRecouvrement + '%'"></p>
-                <p class="text-xs text-sky-600 mt-1 font-medium">+5% vs mois dernier</p>
+                <p class="text-xs text-sky-600 mt-1 font-medium">+5% vs période précédente</p>
+                <script>
+                  // Workflow: Calculer le taux de recouvrement par période de 90 jours
+                  // Taux = (Montant payé dans les 90j / Montant total échu dans les 90j) * 100
+                  // Query: 
+                  // WITH periode_actuelle AS (
+                  //   SELECT SUM(montant_paye) as paye, SUM(montant_total) as total 
+                  //   FROM factures 
+                  //   WHERE date_echeance BETWEEN NOW() - INTERVAL '90 days' AND NOW()
+                  // )
+                  // SELECT (paye / NULLIF(total, 0)) * 100 as taux FROM periode_actuelle
+                </script>
               </div>
             </div>
           </div>
@@ -254,6 +281,10 @@
         <div class="bg-gradient-to-r from-sky-500 to-sky-600 rounded-xl shadow-sm overflow-hidden" x-data="{ open: false }">
           <div @click="open = !open" class="px-6 py-4 border-b border-white/10 flex items-center justify-between cursor-pointer hover:bg-white/5 transition-colors">
             <div class="flex items-center gap-3">
+              <span class="px-3 py-1.5 bg-white/20 text-white text-xs font-medium rounded-full backdrop-blur-sm">
+                <i class="fas fa-tools mr-1"></i>
+                En cours de développement
+              </span>
               <div class="w-10 h-10 rounded-lg bg-white/20 flex items-center justify-center overflow-hidden">
                 <img src="./marki-logo.png" alt="Marki" class="w-8 h-8 object-contain">
               </div>
@@ -262,13 +293,7 @@
                 <p class="text-sm text-sky-100">Conseils et recommandations personnalisés</p>
               </div>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="px-3 py-1 bg-white/20 text-white text-xs font-medium rounded-full">
-                <i class="fas fa-chart-line mr-1"></i>
-                Efficacité: 78%
-              </span>
-              <i class="fas fa-chevron-down text-white transition-transform" :class="open ? 'rotate-180' : ''"></i>
-            </div>
+            <i class="fas fa-chevron-down text-white transition-transform" :class="open ? 'rotate-180' : ''"></i>
           </div>
           <div x-show="open" x-collapse class="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             <!-- Conseil 1 -->
@@ -327,57 +352,146 @@
           </div>
         </div>
         
-        <!-- Nouvelles factures importées -->
-        <div x-show="newInvoices.length > 0" x-cloak class="bg-sky-50 border border-sky-200 rounded-xl p-4">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-3">
-              <div class="p-2 rounded-lg bg-sky-100">
-                <i class="fas fa-file-import text-sky-600 text-lg"></i>
-              </div>
-              <div>
-                <p class="font-semibold text-sky-900">Nouvelles factures importées</p>
-                <p class="text-sm text-sky-700">
-                  <span x-text="newInvoices.length"></span> facture(s) depuis la dernière synchronisation
-                </p>
-              </div>
-            </div>
-            <a href="./impayes.html" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white text-sm font-medium rounded-lg transition-colors">
-              Voir les factures
-            </a>
-          </div>
-        </div>
-        
         <!-- Events / Activité récente -->
+        <script>
+          // Workflow: Gestion des événements avec localStorage
+          // 
+          // 1. Format des événements (avec jointure users):
+          // {
+          //   id: 1,
+          //   type: 'sync'|'payment'|'relance'|'alert'|'import'|'relance_cleaned'|'contact_blacklisted'|'payment_suspended',
+          //   icon: 'fa-xxx',
+          //   title: '...',
+          //   description: '...',
+          //   time: '...',
+          //   created_at: '2024-01-15T10:30:00Z',
+          //   user_id: 123,           // NULL si by_marki = true
+          //   user_username: 'john',  // Jointure avec users table
+          //   by_marki: false         // true = afficher logo Marki
+          // }
+          //
+          // 2. Icônes par type d'action:
+          // - sync: fa-sync-alt
+          // - payment: fa-check-circle
+          // - relance: fa-paper-plane
+          // - alert: fa-exclamation-circle
+          // - import: fa-file-import
+          // - relance_cleaned: fa-broom (relances nettoyées)
+          // - contact_blacklisted: fa-ban
+          // - payment_suspended: fa-pause-circle
+          //
+          // 3. Calcul du format des dates:
+          // - Si < 1 minute: "À l'instant"
+          // - Si < 1 heure: "Il y a X minutes"
+          // - Si < 24h et même jour: "Il y a X heures"
+          // - Si hier: "Hier à HH:MM"
+          // - Si < 7 jours: "Il y a X jours"
+          // - Sinon: "Le 15/01/2024 à 10:30"
+          //
+          // 4. Fonctionnement "Marquer comme lu":
+          // - Au chargement: récupérer events depuis API + localStorage
+          // - localStorage key: 'marki_read_events'
+          // - Format: { eventId: { read: true, readAt: '2024-01-15T10:30:00Z' } }
+          // - Afficher uniquement les events non marqués comme lus
+          // - Au clic "Marquer comme lu": ajouter tous les events visibles à localStorage
+          // - Rafraîchir la liste (filtrer ceux présents dans localStorage)
+        </script>
+        
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
           <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
             <div class="flex items-center gap-2">
-              <i class="fas fa-history text-slate-400"></i>
+              <div class="relative">
+                <i class="fas fa-history text-slate-400"></i>
+                <!-- Badge non lus -->
+                <span 
+                  x-show="hasUnreadEvents" 
+                  x-cloak
+                  x-text="unreadCount"
+                  class="absolute -top-2 -right-2 h-4 min-w-[16px] px-1 flex items-center justify-center bg-red-500 text-white text-[10px] font-bold rounded-full"
+                ></span>
+              </div>
               <h3 class="font-semibold text-slate-900">Événements récents</h3>
             </div>
-            <button @click="clearEvents()" class="text-xs text-slate-500 hover:text-slate-700">
-              Effacer tout
+            <button 
+              @click="markAllAsRead()" 
+              :disabled="!hasUnreadEvents"
+              :class="hasUnreadEvents ? 'text-sky-600 hover:text-sky-700' : 'text-slate-400 cursor-not-allowed'"
+              class="text-xs font-medium transition-colors"
+            >
+              Marquer comme lu
             </button>
           </div>
           <div class="divide-y divide-slate-100 max-h-64 overflow-y-auto">
             <template x-for="event in events" :key="event.id">
-              <div class="px-6 py-3 flex items-start gap-3 hover:bg-slate-50/50 transition-colors">
-                <div class="mt-0.5">
+              <div 
+                class="px-6 py-3 flex items-start gap-3 hover:bg-slate-50/50 transition-colors group relative"
+                x-data="{ hovered: false }"
+                @mouseenter="hovered = true"
+                @mouseleave="hovered = false"
+              >
+                <div class="mt-0.5 relative">
                   <div class="w-8 h-8 rounded-full flex items-center justify-center"
                        :class="{
                          'bg-sky-100 text-sky-600': event.type === 'sync',
                          'bg-sky-200 text-sky-700': event.type === 'import',
                          'bg-sky-300 text-sky-800': event.type === 'payment',
                          'bg-sky-400 text-sky-900': event.type === 'relance',
-                         'bg-sky-500 text-white': event.type === 'alert'
+                         'bg-sky-500 text-white': event.type === 'alert',
+                         'bg-emerald-100 text-emerald-600': event.type === 'relance_cleaned',
+                         'bg-red-100 text-red-600': event.type === 'contact_blacklisted',
+                         'bg-amber-100 text-amber-600': event.type === 'payment_suspended'
                        }">
                     <i class="fas text-xs" :class="event.icon"></i>
                   </div>
+                  <!-- Pastille non-lu -->
+                  <span 
+                    x-show="!isEventRead(event.id)"
+                    class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-sky-500 rounded-full border-2 border-white"
+                  ></span>
                 </div>
                 <div class="flex-1 min-w-0">
-                  <p class="text-sm font-medium text-slate-900" x-text="event.title"></p>
+                  <div class="flex items-center gap-2">
+                    <p class="text-sm font-medium text-slate-900" x-text="event.title"></p>
+                    <!-- Badge non-lu texte -->
+                    <span 
+                      x-show="!isEventRead(event.id)"
+                      class="px-1.5 py-0.5 bg-sky-100 text-sky-700 text-[10px] font-medium rounded-full"
+                    >
+                      Non lu
+                    </span>
+                  </div>
                   <p class="text-sm text-slate-500" x-text="event.description"></p>
-                  <p class="text-xs text-slate-400 mt-1" x-text="event.time"></p>
+                  <div class="flex items-center gap-2 mt-1">
+                    <p class="text-xs text-slate-400" x-text="event.time"></p>
+                    <span class="text-slate-300">·</span>
+                    <div class="flex items-center gap-1">
+                      <template x-if="event.by_marki">
+                        <div class="flex items-center gap-1">
+                          <img src="./marki-logo.png" alt="Marki" class="w-4 h-4 object-contain">
+                          <span class="text-xs text-sky-600 font-medium">Marki</span>
+                        </div>
+                      </template>
+                      <template x-if="!event.by_marki && event.user_username">
+                        <span class="text-xs text-slate-500" x-text="'@' + event.user_username"></span>
+                      </template>
+                    </div>
+                  </div>
                 </div>
+                <!-- Bouton marquer comme lu (visible au hover) -->
+                <button
+                  x-show="hovered"
+                  x-transition:enter="transition ease-out duration-150"
+                  x-transition:enter-start="opacity-0 scale-90"
+                  x-transition:enter-end="opacity-100 scale-100"
+                  x-transition:leave="transition ease-in duration-100"
+                  x-transition:leave-start="opacity-100 scale-100"
+                  x-transition:leave-end="opacity-0 scale-90"
+                  @click="markEventAsRead(event.id)"
+                  class="ml-2 p-1.5 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-md transition-colors"
+                  title="Marquer comme lu"
+                >
+                  <i class="fas fa-check text-xs"></i>
+                </button>
               </div>
             </template>
             <div x-show="events.length === 0" class="px-6 py-8 text-center text-slate-400 text-sm">
@@ -390,7 +504,12 @@
         <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
           <div class="px-6 py-4 border-b border-slate-100">
             <h3 class="font-semibold text-slate-900">Évolution des impayés</h3>
-            <p class="text-sm text-slate-500">Montant facturé vs reste à payer par mois (12 mois)</p>
+            <p class="text-sm text-slate-500">Montant facturé vs reste à payer sur 12 mois glissants</p>
+            <script>
+              // Workflow: Données sur 12 mois glissants
+              // Période: NOW() - INTERVAL '12 months' à NOW()
+              // Grouper par mois et année pour l'affichage
+            </script>
           </div>
           <div class="p-6 h-80">
             <canvas id="evolutionChart"></canvas>
@@ -447,14 +566,6 @@
                   </div>
                   <div class="flex items-center gap-6">
                     <span class="font-semibold text-slate-900" x-text="formatMoney(debtor.montant)"></span>
-                    <span class="px-2.5 py-1 text-xs font-medium rounded-full"
-                          :class="{
-                            'bg-sky-100 text-sky-700': debtor.relance === 'R1',
-                            'bg-sky-300 text-sky-800': debtor.relance === 'R2',
-                            'bg-sky-500 text-white': debtor.relance === 'R3'
-                          }"
-                          x-text="'Relance ' + debtor.relance">
-                    </span>
                   </div>
                 </div>
               </template>
@@ -476,14 +587,6 @@
                         <p class="text-xs text-slate-500" x-text="debtor.jours + ' jours de retard'"></p>
                       </div>
                     </div>
-                    <span class="px-2 py-0.5 text-xs font-medium rounded-full"
-                          :class="{
-                            'bg-sky-100 text-sky-700': debtor.relance === 'R1',
-                            'bg-sky-300 text-sky-800': debtor.relance === 'R2',
-                            'bg-sky-500 text-white': debtor.relance === 'R3'
-                          }"
-                          x-text="debtor.relance">
-                    </span>
                   </div>
                   <div class="space-y-2">
                     <div class="flex justify-between text-sm">
@@ -549,7 +652,11 @@ function dashboardPage() {
         icon: 'fa-sync-alt',
         title: 'Synchronisation effectuée', 
         description: '3 nouvelles factures importées depuis ADTI',
-        time: 'Il y a 2 heures'
+        time: 'Il y a 2 heures',
+        created_at: '2024-01-15T10:30:00Z',
+        user_id: 123,
+        user_username: 'admin',
+        by_marki: false
       },
       { 
         id: 2, 
@@ -557,33 +664,96 @@ function dashboardPage() {
         icon: 'fa-check-circle',
         title: 'Paiement reçu', 
         description: 'ACME Corp a réglé la facture F-2024-0123 (€4,230)',
-        time: 'Il y a 3 heures'
+        time: 'Il y a 3 heures',
+        created_at: '2024-01-15T09:30:00Z',
+        user_id: null,
+        user_username: null,
+        by_marki: true
       },
       { 
         id: 3, 
         type: 'relance', 
         icon: 'fa-paper-plane',
-        title: 'Relances envoyées', 
-        description: '12 relances R2 ont été envoyées automatiquement',
-        time: 'Hier à 18:30'
+        title: 'Relance R2 envoyée', 
+        description: 'Relance niveau 2 envoyée à TechStart SARL pour la facture F-2024-0089',
+        time: 'Hier à 18:30',
+        created_at: '2024-01-14T18:30:00Z',
+        user_id: null,
+        user_username: null,
+        by_marki: true
       },
       { 
         id: 4, 
+        type: 'relance', 
+        icon: 'fa-paper-plane',
+        title: 'Relance R1 envoyée', 
+        description: 'Relance niveau 1 envoyée à BuildPlus SA pour la facture F-2024-0102',
+        time: 'Hier à 18:15',
+        created_at: '2024-01-14T18:15:00Z',
+        user_id: null,
+        user_username: null,
+        by_marki: true
+      },
+      { 
+        id: 5, 
         type: 'alert', 
         icon: 'fa-exclamation-circle',
         title: 'Nouveau contact sans email', 
         description: 'Le contact "Dupont SAS" n\'a pas d\'adresse email configurée',
-        time: 'Hier à 14:15'
+        time: 'Hier à 14:15',
+        created_at: '2024-01-14T14:15:00Z',
+        user_id: 456,
+        user_username: 'marie',
+        by_marki: false
       },
       { 
-        id: 5, 
-        type: 'import', 
-        icon: 'fa-file-import',
-        title: 'Import de contacts', 
-        description: '15 nouveaux contacts ont été importés',
-        time: 'Il y a 2 jours'
+        id: 6, 
+        type: 'relance_cleaned', 
+        icon: 'fa-broom',
+        title: 'Relance archivée', 
+        description: 'La relance R3 pour Digital Agency a été archivée (paiement reçu)',
+        time: 'Il y a 2 jours',
+        created_at: '2024-01-13T10:00:00Z',
+        user_id: 123,
+        user_username: 'admin',
+        by_marki: false
+      },
+      { 
+        id: 7, 
+        type: 'contact_blacklisted', 
+        icon: 'fa-ban',
+        title: 'Contact blacklisté', 
+        description: 'Le contact "Spam Corp" a été ajouté à la liste noire',
+        time: 'Il y a 3 jours',
+        created_at: '2024-01-12T15:30:00Z',
+        user_id: 789,
+        user_username: 'pierre',
+        by_marki: false
+      },
+      { 
+        id: 8, 
+        type: 'payment_suspended', 
+        icon: 'fa-pause-circle',
+        title: 'Paiement suspendu', 
+        description: 'Le paiement de la facture F-2024-0100 pour Consulting Pro est en attente de validation',
+        time: 'Il y a 4 jours',
+        created_at: '2024-01-11T09:15:00Z',
+        user_id: null,
+        user_username: null,
+        by_marki: true
       }
     ],
+    
+    // Nombre d'événements non lus (pour le badge)
+    get unreadCount() {
+      const readEvents = JSON.parse(localStorage.getItem('marki_read_events') || '{}');
+      return this.events.filter(event => !readEvents[event.id]).length;
+    },
+    
+    // Boolean pour afficher le badge
+    get hasUnreadEvents() {
+      return this.unreadCount > 0;
+    },
     
     topDebtors: [
       { id: 1, name: 'ACME Corp', initials: 'AC', jours: 87, montant: 45230, relance: 'R3', impayesCount: 3 },
@@ -737,8 +907,46 @@ function dashboardPage() {
       }
     },
     
-    clearEvents() {
-      this.events = [];
+    markAllAsRead() {
+      // Workflow: Marquer tous les événements comme lus
+      // Récupérer les events déjà lus depuis localStorage
+      const readEvents = JSON.parse(localStorage.getItem('marki_read_events') || '{}');
+      
+      // Ajouter tous les events actuels comme lus
+      const now = new Date().toISOString();
+      this.events.forEach(event => {
+        readEvents[event.id] = { read: true, readAt: now };
+      });
+      
+      // Sauvegarder dans localStorage
+      localStorage.setItem('marki_read_events', JSON.stringify(readEvents));
+      
+      // Forcer la mise à jour de la liste pour mettre à jour les pastilles
+      this.events = [...this.events];
+    },
+    
+    markEventAsRead(eventId) {
+      // Workflow: Marquer un seul événement comme lu
+      // Récupérer les events déjà lus depuis localStorage
+      const readEvents = JSON.parse(localStorage.getItem('marki_read_events') || '{}');
+      
+      // Ajouter l'event spécifique comme lu
+      readEvents[eventId] = { 
+        read: true, 
+        readAt: new Date().toISOString() 
+      };
+      
+      // Sauvegarder dans localStorage
+      localStorage.setItem('marki_read_events', JSON.stringify(readEvents));
+      
+      // Forcer la mise à jour de la liste
+      this.events = [...this.events];
+    },
+    
+    isEventRead(eventId) {
+      // Workflow: Vérifier si un événement est marqué comme lu
+      const readEvents = JSON.parse(localStorage.getItem('marki_read_events') || '{}');
+      return !!readEvents[eventId];
     },
     
     formatMoney(amount) {

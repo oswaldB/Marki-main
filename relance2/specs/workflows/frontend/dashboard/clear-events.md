@@ -1,106 +1,108 @@
-# Workflow : Effacer les événements
+---
+id: dashboard-clear-events
+type: frontend
+folder: specs/workflows/frontend/dashboard/
+description: Marquer tous les événements comme lus (via localStorage)
+depends_on: [auth-check]
+screen: dashboard
+global: false
+mockup_entry: specs/mockups/dashboard.html
+---
+
+# Workflow : Marquer tous les événements comme lus
 
 ## Écran
 `dashboard.html`
 
 ## Élément déclencheur
-Bouton avec `@click="clearEvents()"`
+Bouton avec `@click="markAllAsRead()"`
 
 ## Action
-Marquer tous les événements comme lus (clear notification badge)
+Marquer tous les événements affichés comme lus dans localStorage
 
 ## Description
-- Marque tous les events de l'utilisateur courant comme `read: true`
+- Marque tous les events comme `read: true` dans localStorage
 - Met à jour le compteur de notifications (unread count passe à 0)
-- Ne supprime PAS les events de la base (uniquement changement de statut)
+- **Ne supprime PAS les events de la liste** - ils restent visibles mais sans la pastille "Non lu"
+- Les pastilles "Non lu" disparaissent pour tous les events
 
 ## Data Model
 
 **Page Function:** `dashboardPage()`
 
 **Données:**
-- `events` - liste des events affichés
-- `unreadCount` - nombre d'events non lus
-
-**États UI:**
-- `loading`
-- `error`
+- `events` - liste des events affichés (tous restent visibles)
+- `readEvents` - Map des events lus depuis localStorage
+- `unreadCount` - nombre d'events non lus (computed)
+- `hasUnreadEvents` - boolean pour afficher le badge (computed)
 
 ## State Changes
 
 **Modifications:**
-- `events` ← chaque event passe à `read: true`
-- `unreadCount` ← 0
+- `readEvents` ← ajoute tous les event.id avec `{ read: true, readAt: now }`
+- `unreadCount` ← 0 (recalculé automatiquement)
+- `hasUnreadEvents` ← false (recalculé automatiquement)
+- Pastilles "Non lu" ← disparaissent pour tous les events
 
-## API Calls
+## localStorage
 
-**Endpoint:** `POST /api/events/mark-read`
+**Clé:** `marki_read_events`
 
-**Payload:** Aucun (utilise l'utilisateur courant depuis le token)
-
-**Response:** `ApiResponse<{ updated: number }>`
-
-**Note:** L'API met à jour uniquement les events où `user_id = current_user` et `read = false`.
-
-## Organisation des fichiers
-
-```
-frontend/
-└── app/
-    └── dashboard/
-        ├── index.html
-        └── js/
-            └── clear-events.js
-```
-
-### Fichier workflow
-- **JS** : `frontend/app/dashboard/js/clear-events.js`
+**Action:** Ajoute tous les event.id actuels avec leur timestamp de lecture
 
 ```javascript
-// frontend/app/dashboard/js/clear-events.js
-export function clearEvents() {
-  // Implementation du workflow
+// Exemple après markAllAsRead()
+{
+  "evt-001": { read: true, readAt: "2024-01-15T10:30:00Z" },
+  "evt-002": { read: true, readAt: "2024-01-15T10:30:00Z" },
+  "evt-003": { read: true, readAt: "2024-01-15T10:30:00Z" }
 }
 ```
 
 ## Implementation
 
 ```javascript
-async clearEvents() {
-  try {
-    // 1. Call API pour marquer tous comme lus
-    const response = await fetch('/api/events/mark-read', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
-    });
-    
-    const data = await response.json();
-    
-    if (!data.success) {
-      throw new Error(data.error?.message);
-    }
-    
-    // 2. Update local state - tous les events deviennent lus
-    this.events = this.events.map(event => ({
-      ...event,
-      read: true
-    }));
-    
-    // 3. Reset unread counter
-    this.unreadCount = 0;
-    
-    // 4. Update UI store notification badge
-    Alpine.store('ui').setUnreadCount(0);
-    
-  } catch (error) {
-    console.error('Erreur clear events:', error);
-    Alpine.store('ui').addToast('Erreur lors de la mise à jour', 'error');
-  }
+markAllAsRead() {
+  // Récupérer les events déjà lus
+  const readEvents = JSON.parse(localStorage.getItem('marki_read_events') || '{}');
+  
+  // Marquer tous les events actuels comme lus
+  const now = new Date().toISOString();
+  this.events.forEach(event => {
+    readEvents[event.id] = { read: true, readAt: now };
+  });
+  
+  // Sauvegarder dans localStorage
+  localStorage.setItem('marki_read_events', JSON.stringify(readEvents));
+  
+  // Forcer le recalcul pour mettre à jour les pastilles
+  this.events = [...this.events];
 }
 ```
 
+## UI Behavior
+
+### Avant le clic
+- Badge "Non lu" visible dans le header avec le nombre
+- Chaque event non lu a une pastille bleue
+- Badge "Non lu" texte visible sur chaque event
+
+### Après le clic
+- Badge header disparaît (ou affiche 0)
+- Toutes les pastilles bleues disparaissent
+- Les badges "Non lu" textes disparaissent
+- **Tous les events restent visibles** dans la liste
+
+## Différence avec markEventAsRead()
+
+| Action | Portée | Effet sur la liste |
+|--------|--------|-------------------|
+| `markAllAsRead()` | Tous les events | Pastilles disparaissent pour tous |
+| `markEventAsRead(id)` | Un seul event | Pastille disparaît pour cet event uniquement |
+
 ## Notes importantes
 
-- **Isolation par utilisateur:** Seuls les events de l'utilisateur courant sont modifiés
-- **Persistence:** Le statut `read` est persisté en base via la table `events`
-- **Realtime:** Les autres onglets/appareils de l'utilisateur verront le compteur à jour au prochain refresh
+- **Persistence:** Le statut `read` est stocké uniquement dans localStorage (pas d'appel API)
+- **Local uniquement:** Chaque navigateur/appareil a son propre historique de lecture
+- **Events conservés:** Contrairement à l'ancienne version, les events ne sont pas filtrés - ils restent tous visibles
+- **Clear possible:** L'utilisateur peut vider son localStorage pour revoir toutes les pastilles "Non lu"

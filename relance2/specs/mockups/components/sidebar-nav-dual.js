@@ -12,7 +12,7 @@ class SidebarNavDual extends HTMLElement {
           current: '${currentPage}',
           url: window.location.pathname + window.location.search,
           activeRail: 'relance',
-          expanded: { impayes: false, relances: false },
+          expanded: { impayes: false, relances: false, contacts: false },
           
           isActive(page) {
             if (page === this.current) return true;
@@ -22,12 +22,16 @@ class SidebarNavDual extends HTMLElement {
             if (page === 'relances-calendrier' && this.url.includes('relances-calendrier')) return true;
             if (page === 'relances-validation' && this.url.includes('relances-validation')) return true;
             if (page === 'impayes-suspendus' && this.url.includes('impayes-suspendus')) return true;
+            if (page === 'contacts' && this.url.includes('/contacts') && !this.url.includes('blacklist') && !this.url.includes('sans-email')) return true;
+            if (page === 'contacts-blacklist' && this.url.includes('contacts-blacklist')) return true;
+            if (page === 'contacts-sans-email' && this.url.includes('contacts-sans-email')) return true;
             return false;
           },
           
           isActiveSection(section) {
             if (this.current.startsWith(section)) return true;
             if (this.url.includes(section)) return true;
+            if (section === 'contacts' && (this.url.includes('/contacts-blacklist') || this.url.includes('/contacts-sans-email'))) return true;
             return false;
           },
           
@@ -52,6 +56,7 @@ class SidebarNavDual extends HTMLElement {
             // Auto-expand sections based on URL
             if (this.url.includes('impayes')) this.expanded.impayes = true;
             if (this.url.includes('relances')) this.expanded.relances = true;
+            if (this.url.includes('contacts')) this.expanded.contacts = true;
           }
         }"
         x-init="init()"
@@ -409,15 +414,63 @@ class SidebarNavDual extends HTMLElement {
                 <!-- Contacts Section -->
                 <div class="mb-2">
                   <div class="flex flex-col gap-0.5">
-                    <a 
-                      href="/contacts" 
-                      :class="isActive('contacts') ? 'bg-sky-50 text-sky-600' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'"
-                      class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-150"
+                    <button 
+                      @click="toggle('contacts')"
+                      :class="isActiveSection('contacts') ? 'bg-sky-50 text-sky-600' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'"
+                      class="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left text-sm font-medium transition-all duration-150"
                     >
-                      <span class="flex h-5 w-5 items-center justify-center text-base" :class="isActive('contacts') ? 'text-sky-600' : ''">
+                      <span class="flex h-5 w-5 items-center justify-center text-base" :class="isActiveSection('contacts') ? 'text-sky-600' : ''">
                         <i class="fas fa-address-book"></i>
                       </span>
                       <span>Contacts</span>
+                      <i class="fas fa-chevron-down ml-auto text-xs transition-transform" :class="expanded.contacts ? 'rotate-180' : ''"></i>
+                    </button>
+                  </div>
+                  
+                  <!-- Subnav -->
+                  <div 
+                    x-show="expanded.contacts" 
+                    x-transition:enter="transition ease-out duration-150"
+                    x-transition:enter-start="opacity-0 -translate-y-1"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-100"
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 -translate-y-1"
+                    class="ml-8 mt-1 flex flex-col gap-0.5 border-l-2 border-gray-200 pl-2"
+                    :class="isActiveSection('contacts') ? 'border-sky-600' : ''"
+                  >
+                    <a 
+                      href="/contacts" 
+                      :class="isActive('contacts') ? 'bg-sky-50 text-sky-600' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'"
+                      class="relative flex items-center gap-2 rounded-md py-1.5 pl-3 pr-2.5 text-xs font-medium transition-all duration-150"
+                    >
+                      <span 
+                        class="absolute -left-2.5 top-1/2 h-1 w-1 -translate-y-1/2 rounded-full"
+                        :class="isActive('contacts') ? 'bg-sky-600' : 'bg-gray-400'"
+                      ></span>
+                      Liste
+                    </a>
+                    <a 
+                      href="/contacts-blacklist" 
+                      :class="isActive('contacts-blacklist') ? 'bg-sky-50 text-sky-600' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'"
+                      class="relative flex items-center gap-2 rounded-md py-1.5 pl-3 pr-2.5 text-xs font-medium transition-all duration-150"
+                    >
+                      <span 
+                        class="absolute -left-2.5 top-1/2 h-1 w-1 -translate-y-1/2 rounded-full"
+                        :class="isActive('contacts-blacklist') ? 'bg-sky-600' : 'bg-gray-400'"
+                      ></span>
+                      Blacklisté
+                    </a>
+                    <a 
+                      href="/contacts-sans-email" 
+                      :class="isActive('contacts-sans-email') ? 'bg-sky-50 text-sky-600' : 'text-gray-500 hover:bg-gray-100 hover:text-gray-900'"
+                      class="relative flex items-center gap-2 rounded-md py-1.5 pl-3 pr-2.5 text-xs font-medium transition-all duration-150"
+                    >
+                      <span 
+                        class="absolute -left-2.5 top-1/2 h-1 w-1 -translate-y-1/2 rounded-full"
+                        :class="isActive('contacts-sans-email') ? 'bg-sky-600' : 'bg-gray-400'"
+                      ></span>
+                      Sans email
                     </a>
                   </div>
                 </div>

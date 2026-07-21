@@ -112,31 +112,24 @@
               </h3>
             </div>
             <div class="p-6">
-              <div class="space-y-3">
-                <div>
-                  <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">Adresse</p>
-                  <p class="text-slate-900" x-text="impaye?.bien?.adresse || '12 Rue de la Paix, 75002 Paris'"></p>
-                </div>
-                <div class="grid grid-cols-2 gap-4">
-                  <div>
-                    <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">Type</p>
-                    <p class="text-slate-900" x-text="impaye?.bien?.type || 'Bureaux'"></p>
-                  </div>
-                  <div>
-                    <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">Surface</p>
-                    <p class="text-slate-900" x-text="impaye?.bien?.surface || '250 m²'"></p>
-                  </div>
-                </div>
+              <div>
+                <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">Adresse</p>
+                <p class="text-slate-900" x-text="impaye?.bien?.adresse || '-'"></p>
               </div>
             </div>
           </div>
           
           <!-- Section Missions et Interventions -->
           <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
-            <div class="px-6 py-4 border-b border-slate-100">
+            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
               <h3 class="font-semibold text-slate-900">
                 <i class="fas fa-tasks text-slate-400 mr-2"></i>Missions et interventions
               </h3>
+              <button @click="syncMissions()" :disabled="syncingMissions"
+                      class="text-xs px-3 py-1.5 bg-sky-50 text-sky-600 hover:bg-sky-100 rounded-lg font-medium transition-colors flex items-center gap-1.5">
+                <i class="fas fa-sync-alt" :class="syncingMissions ? 'fa-spin' : ''"></i>
+                <span x-text="syncingMissions ? 'Sync...' : 'Sync ADTI'"></span>
+              </button>
             </div>
             <div class="p-6">
               <div class="space-y-4">
@@ -148,7 +141,11 @@
                       <template x-for="(mission, index) in impaye?.missions" :key="index">
                         <div class="p-3 bg-slate-50 rounded-lg border border-slate-100">
                           <div class="flex items-center justify-between">
-                            <span class="font-medium text-slate-900" x-text="mission.type"></span>
+                            <div class="flex items-center gap-2">
+                              <span class="px-2 py-0.5 text-xs font-medium bg-sky-100 text-sky-700 rounded"
+                                    x-text="mission.typeMission || 'Mission'"></span>
+                              <span class="font-medium text-slate-900" x-text="mission.type"></span>
+                            </div>
                             <span class="text-xs text-slate-500" x-text="mission.dateIntervention"></span>
                           </div>
                           <p class="text-xs text-slate-500 mt-1" x-text="mission.description"></p>
@@ -275,31 +272,31 @@
             </div>
           </div>
           
-          <!-- Section Historique des relances -->
+          <!-- Section Historique des événements -->
           <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
             <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
               <h3 class="font-semibold text-slate-900">
-                <i class="fas fa-history text-sky-500 mr-2"></i>Historique des relances
+                <i class="fas fa-history text-sky-500 mr-2"></i>Historique des événements
               </h3>
-              <span class="text-xs text-slate-500" x-text="(impaye?.historique?.length || 0) + ' événements'"></span>
+              <span class="text-xs text-slate-500" x-text="(impaye?.evenements?.length || 0) + ' événements'"></span>
             </div>
             <div class="p-6">
               <div class="space-y-6">
-                <template x-for="(event, index) in impaye?.historique || []" :key="index">
+                <template x-for="(event, index) in impaye?.evenements || []" :key="index">
                   <div class="relative pl-8">
                     <!-- Timeline line -->
-                    <div x-show="index < (impaye?.historique?.length || 0) - 1" class="absolute left-3 top-8 bottom-0 w-0.5 bg-slate-200"></div>
+                    <div x-show="index < (impaye?.evenements?.length || 0) - 1" class="absolute left-3 top-8 bottom-0 w-0.5 bg-slate-200"></div>
                     
                     <!-- Icon -->
                     <div class="absolute left-0 top-0 w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 text-xs"
                          :class="{
                            'bg-sky-100 text-sky-600': event.type === 'relance',
-                           'bg-sky-100 text-sky-600': event.type === 'paiement',
-                           'bg-sky-100 text-sky-600': event.type === 'suspension',
+                           'bg-green-100 text-green-600': event.type === 'paiement',
+                           'bg-amber-100 text-amber-600': event.type === 'suspension',
                            'bg-slate-100 text-slate-600': event.type === 'systeme'
                          }"
                     >
-                      <i class="fas" :class="event.icon"></i>
+                      <i class="fas" :class="event.icon || 'fa-bell'"></i>
                     </div>
                     
                     <!-- Content -->
@@ -310,27 +307,16 @@
                       </div>
                       <p x-show="event.description" class="text-sm text-slate-600" x-text="event.description"></p>
                       
-                      <!-- Email details -->
-                      <div x-show="event.emails" class="mt-3 space-y-2">
-                        <template x-for="email in event.emails" :key="email.id">
-                          <div class="bg-slate-50 rounded-lg p-3 border border-slate-100">
-                            <div class="flex items-center justify-between mb-1">
-                              <span class="text-xs font-medium text-slate-600" x-text="email.sujet"></span>
-                              <span class="text-xs px-2 py-0.5 rounded-full" 
-                                    :class="email.statut === 'ouvert' ? 'bg-sky-100 text-sky-700' : 'bg-slate-100 text-slate-600'"
-                                    x-text="email.statut === 'ouvert' ? 'Ouvert' : 'Envoyé'"></span>
-                            </div>
-                            <p class="text-xs text-slate-500" x-text="'À: ' + email.destinataire"></p>
-                            <p x-show="email.dateOuverture" class="text-xs text-sky-600 mt-1" x-text="'Ouvert le ' + email.dateOuverture"></p>
-                          </div>
-                        </template>
+                      <!-- Metadata si présent -->
+                      <div x-show="event.metadata" class="mt-2 text-xs text-slate-500">
+                        <span x-text="event.metadata"></span>
                       </div>
                     </div>
                   </div>
                 </template>
-                <div x-show="!impaye?.historique?.length" class="text-center text-slate-400 text-sm py-8">
+                <div x-show="!impaye?.evenements?.length" class="text-center text-slate-400 text-sm py-8">
                   <i class="fas fa-inbox text-3xl mb-2"></i>
-                  <p>Aucun historique</p>
+                  <p>Aucun événement</p>
                 </div>
               </div>
             </div>
@@ -373,36 +359,29 @@
             </div>
             <div class="p-6 space-y-4">
               
-              <!-- Séquence -->
-              <div>
-                <label class="block text-sm font-medium text-slate-700 mb-2">Séquence de relance</label>
-                <div class="flex items-center gap-3">
-                  <select x-model="impaye.sequence" class="flex-1 px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
-                    <option value="">Aucune séquence</option>
-                    <option value="R1">R1 - Première relance (J+15)</option>
-                    <option value="R2">R2 - Deuxième relance (J+30)</option>
-                    <option value="R3">R3 - Troisième relance (J+45)</option>
-                    <option value="R4">R4 - Dernière relance (J+60)</option>
-                  </select>
-                  <button @click="changerSequence()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">
-                    <i class="fas fa-save"></i>
-                  </button>
-                </div>
-                <p x-show="impaye.sequence" class="text-xs text-slate-500 mt-2">
-                  <i class="fas fa-info-circle mr-1"></i>Prochaine relance prévue le <span x-text="impaye?.prochaineRelance"></span>
+              <!-- Séquence actuelle -->
+              <div class="p-4 bg-slate-50 rounded-lg border border-slate-200">
+                <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-2">Séquence active</p>
+                <p class="font-medium text-slate-900" x-text="impaye?.sequenceNom || 'Aucune séquence'"></p>
+                <p x-show="impaye?.sequence" class="text-xs text-slate-500 mt-1">
+                  Prochaine relance : <span x-text="impaye?.prochaineRelance || '-'"></span>
                 </p>
+                <button @click="showChangeSequenceModal = true" 
+                        class="mt-3 w-full px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium transition-colors">
+                  <i class="fas fa-exchange-alt mr-2"></i>Changer de séquence
+                </button>
               </div>
               
               <!-- Actions suspendre/pause -->
               <div class="grid grid-cols-2 gap-3 pt-4 border-t border-slate-100">
                 <template x-if="impaye?.statut !== 'suspendue'">
-                  <button @click="showSuspendForm = true" class="flex items-center justify-center gap-2 p-3 border-2 border-sky-200 rounded-xl hover:bg-sky-50 transition-all text-left">
+                  <button @click="showSuspendModal = true" class="flex items-center justify-center gap-2 p-3 border-2 border-sky-200 rounded-xl hover:bg-sky-50 transition-all text-left">
                     <div class="w-10 h-10 rounded-lg bg-sky-100 flex items-center justify-center text-sky-600">
                       <i class="fas fa-pause"></i>
                     </div>
                     <div>
                       <p class="font-medium text-slate-900 text-sm">Suspendre</p>
-                      <p class="text-xs text-slate-500">Empêcher les relances</p>
+                      <p class="text-xs text-slate-500">Suspendre le dossier</p>
                     </div>
                   </button>
                 </template>
@@ -413,7 +392,7 @@
                     </div>
                     <div>
                       <p class="font-medium text-slate-900 text-sm">Réactiver</p>
-                      <p class="text-xs text-slate-500">Reprendre les relances</p>
+                      <p class="text-xs text-slate-500">Reprendre le dossier</p>
                     </div>
                   </button>
                 </template>
@@ -424,7 +403,7 @@
                   </div>
                   <div>
                     <p class="font-medium text-slate-900 text-sm">Blacklister</p>
-                    <p class="text-xs text-slate-500">Bloquer définitivement</p>
+                    <p class="text-xs text-slate-500">Blacklister le contact</p>
                   </div>
                 </button>
               </div>
@@ -432,49 +411,102 @@
             </div>
           </div>
           
-          <!-- Formulaire de suspension -->
-          <div x-show="showSuspendForm" x-collapse class="bg-sky-50 border border-sky-200 rounded-xl p-6">
-            <div class="flex items-center gap-2 mb-4">
-              <i class="fas fa-pause-circle text-sky-500"></i>
-              <h3 class="font-semibold text-sky-900">Suspendre les relances</h3>
-            </div>
-            <div class="space-y-4">
-              <div>
-                <label class="block text-sm font-medium text-sky-900 mb-1.5">Motif de suspension *</label>
-                <select x-model="suspendForm.motif" class="w-full px-3 py-2 bg-white border border-sky-200 rounded-lg text-sm">
-                  <option value="">Choisir un motif...</option>
-                  <option value="litige">Litige en cours</option>
-                  <option value="arrangement">Arrangement avec le client</option>
-                  <option value="procedure">Procédure judiciaire</option>
-                  <option value="cessation">Cessation d'activité</option>
-                  <option value="autre">Autre</option>
-                </select>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-sky-900 mb-1.5">Détail (optionnel)</label>
-                <textarea x-model="suspendForm.detail" rows="3" class="w-full px-3 py-2 bg-white border border-sky-200 rounded-lg text-sm" placeholder="Précisez si nécessaire..."></textarea>
-              </div>
-              <div class="flex items-center justify-end gap-2">
-                <button @click="showSuspendForm = false" class="px-4 py-2 text-sky-700 hover:bg-sky-100 rounded-lg text-sm font-medium">Annuler</button>
-                <button @click="suspendImpaye()" :disabled="!suspendForm.motif" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
-                  Confirmer la suspension
-                </button>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Note personnelle -->
+          <!-- Notes (Facture + Contact) -->
           <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
-            <div class="px-6 py-4 border-b border-slate-100">
+            <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
               <h3 class="font-semibold text-slate-900">
-                <i class="fas fa-sticky-note text-slate-400 mr-2"></i>Note personnelle
+                <i class="fas fa-sticky-note text-slate-400 mr-2"></i>Notes
               </h3>
-            </div>
-            <div class="p-6">
-              <textarea x-model="impaye.note" rows="4" class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500" placeholder="Ajouter une note personnelle sur cette facture..."></textarea>
-              <button @click="saveNote()" class="mt-3 px-4 py-2 bg-slate-600 hover:bg-slate-700 text-white rounded-lg text-sm font-medium">
-                <i class="fas fa-save mr-1"></i>Enregistrer la note
+              <button @click="$refs.noteTextarea.focus()" 
+                      class="text-xs px-3 py-1.5 bg-sky-50 text-sky-600 hover:bg-sky-100 rounded-lg font-medium transition-colors flex items-center gap-1.5">
+                <i class="fas fa-plus"></i>
+                Ajouter une note
               </button>
+            </div>
+            
+            <!-- Onglets horizontaux -->
+            <div class="flex border-b border-slate-200">
+              <button @click="activeNotesTab = 'impaye'"
+                      :class="{ 
+                        'border-b-2 border-sky-500 text-sky-600 bg-sky-50/50': activeNotesTab === 'impaye', 
+                        'text-slate-500 hover:text-slate-700 hover:bg-slate-50': activeNotesTab !== 'impaye' 
+                      }"
+                      class="flex-1 px-4 py-3 text-sm font-medium transition-colors flex items-center justify-center gap-2">
+                <i class="fas fa-file"></i>
+                <span>Facture</span>
+                <span class="ml-1 px-1.5 py-0.5 text-xs rounded-full bg-slate-200 text-slate-600" 
+                      x-text="notesImpaye.length"></span>
+              </button>
+              <button @click="activeNotesTab = 'contact'"
+                      :class="{ 
+                        'border-b-2 border-sky-500 text-sky-600 bg-sky-50/50': activeNotesTab === 'contact', 
+                        'text-slate-500 hover:text-slate-700 hover:bg-slate-50': activeNotesTab !== 'contact' 
+                      }"
+                      class="flex-1 px-4 py-3 text-sm font-medium transition-colors flex items-center justify-center gap-2">
+                <i class="fas fa-user"></i>
+                <span>Contact</span>
+                <span class="ml-1 px-1.5 py-0.5 text-xs rounded-full bg-slate-200 text-slate-600" 
+                      x-text="notesContact.length"></span>
+              </button>
+            </div>
+            
+            <!-- Contenu -->
+            <div class="p-4">
+              <!-- Liste des notes -->
+              <div class="space-y-3 mb-4 max-h-64 overflow-y-auto">
+                <template x-for="note in currentNotes" :key="note.id">
+                  <div class="bg-slate-50 rounded-lg p-3 group hover:bg-slate-100 transition-colors">
+                    <p class="text-sm text-slate-700" x-text="note.content"></p>
+                    
+                    <div class="flex items-center justify-between mt-2 text-xs text-slate-500">
+                      <span>
+                        <i class="fas fa-pen text-slate-400 mr-1"></i>
+                        <span x-text="note.author"></span>, 
+                        <span x-text="note.date"></span>
+                      </span>
+                      
+                      <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button @click="openEditNote(activeNotesTab, note)" 
+                                x-show="note.isAuthor"
+                                class="text-sky-500 hover:text-sky-700"
+                                title="Modifier">
+                          <i class="fas fa-edit"></i>
+                        </button>
+                        
+                        <button @click="deleteNote(activeNotesTab, note.id)" 
+                                x-show="note.isAuthor"
+                                class="text-red-500 hover:text-red-700"
+                                title="Supprimer">
+                          <i class="fas fa-trash"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </template>
+                
+                <div x-show="currentNotes.length === 0" class="text-center text-slate-400 py-8">
+                  Aucune note
+                </div>
+              </div>
+              
+              <!-- Saisie -->
+              <div class="border-t border-slate-200 pt-3">
+                <textarea x-model="newNoteContent"
+                          x-ref="noteTextarea"
+                          @keydown.ctrl.enter="saveNote(activeNotesTab)"
+                          placeholder="Écrivez votre note ici... (Ctrl+Enter pour envoyer)"
+                          class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm resize-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+                          rows="3"></textarea>
+                <div class="flex justify-end mt-2">
+                  <button @click="saveNote(activeNotesTab)"
+                          :disabled="!newNoteContent.trim() || savingNote"
+                          class="px-4 py-2 bg-sky-600 text-white text-sm font-medium rounded-lg hover:bg-sky-700 disabled:opacity-50 flex items-center gap-2">
+                    <i x-show="!savingNote" class="fas fa-paper-plane"></i>
+                    <span x-show="!savingNote">Ajouter</span>
+                    <span x-show="savingNote"><i class="fas fa-spinner fa-spin mr-1"></i> Envoi...</span>
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
           
@@ -541,6 +573,93 @@
       </div>
     </div>
     
+    <!-- Modal Changer de Séquence -->
+    <div x-show="showChangeSequenceModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showChangeSequenceModal = false"></div>
+      <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+        <div class="text-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-exchange-alt text-sky-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">Changer de séquence</h3>
+          <p class="text-sm text-slate-600">Sélectionnez une nouvelle séquence de relance pour ce dossier.</p>
+        </div>
+        
+        <div class="space-y-4 mb-6">
+          <div class="space-y-2">
+            <label class="block text-sm font-medium text-slate-700">Nouvelle séquence</label>
+            <select x-model="newSequence" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+              <option value="">Aucune séquence</option>
+              <template x-for="seq in availableSequences" :key="seq.id">
+                <option :value="seq.id" x-text="seq.nom"></option>
+              </template>
+            </select>
+          </div>
+          
+          <div class="space-y-2">
+            <label class="block text-sm font-medium text-slate-700">Mode</label>
+            <div class="flex gap-4">
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" x-model="changeSequenceMode" value="continue" class="text-sky-500">
+                <span class="text-sm">Continuer</span>
+              </label>
+              <label class="flex items-center gap-2 cursor-pointer">
+                <input type="radio" x-model="changeSequenceMode" value="restart" class="text-sky-500">
+                <span class="text-sm">Redémarrer</span>
+              </label>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <button @click="showChangeSequenceModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="confirmChangeSequence()" :disabled="!newSequence" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+            <i class="fas fa-check mr-1"></i>Confirmer
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Modal Suspendre Dossier -->
+    <div x-show="showSuspendModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showSuspendModal = false"></div>
+      <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+        <div class="text-center mb-6">
+          <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center mx-auto mb-3">
+            <i class="fas fa-pause text-amber-600 text-xl"></i>
+          </div>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">Suspendre le dossier</h3>
+          <p class="text-sm text-slate-600">Les relances seront suspendues pour ce dossier.</p>
+        </div>
+        
+        <div class="space-y-4 mb-6">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Motif de suspension *</label>
+            <select x-model="suspendForm.motif" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+              <option value="">Choisir un motif...</option>
+              <option value="litige">Litige en cours</option>
+              <option value="arrangement">Arrangement avec le client</option>
+              <option value="procedure">Procédure judiciaire</option>
+              <option value="cessation">Cessation d'activité</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Détail (optionnel)</label>
+            <textarea x-model="suspendForm.detail" rows="3" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm" placeholder="Précisez si nécessaire..."></textarea>
+          </div>
+        </div>
+        
+        <div class="flex items-center justify-center gap-2">
+          <button @click="showSuspendModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="suspendImpaye()" :disabled="!suspendForm.motif" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+            <i class="fas fa-pause mr-1"></i>Confirmer la suspension
+          </button>
+        </div>
+      </div>
+    </div>
+    
     <!-- Modal Ajouter Intervention -->
     <div x-show="showAddInterventionModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
       <div class="absolute inset-0 bg-slate-500/75" @click="showAddInterventionModal = false"></div>
@@ -586,6 +705,31 @@
       </div>
     </div>
     
+    <!-- Modal Édition Note -->
+    <div x-show="showEditNoteModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+      <div class="absolute inset-0 bg-slate-500/75" @click="showEditNoteModal = false"></div>
+      <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+        <h3 class="text-lg font-semibold text-slate-900 mb-4">
+          <i class="fas fa-edit text-sky-500 mr-2"></i>Modifier la note
+        </h3>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Contenu *</label>
+            <textarea x-model="editNoteForm.content" rows="4" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm" placeholder="Modifier votre note..."></textarea>
+          </div>
+          <div class="text-xs text-slate-500">
+            Par <span x-text="editNoteForm.author"></span> - <span x-text="editNoteForm.date"></span>
+          </div>
+        </div>
+        <div class="flex items-center justify-end gap-2 mt-6">
+          <button @click="showEditNoteModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="confirmEditNote()" :disabled="!editNoteForm.content.trim()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+            <i class="fas fa-save mr-1"></i>Enregistrer
+          </button>
+        </div>
+      </div>
+    </div>
+    
   </main>
 </div>
 
@@ -595,10 +739,35 @@ function impayeDetailPage() {
     toast: { show: false, type: 'success', title: '', message: '' },
     loading: true,
     showSuspendForm: false,
+    showSuspendModal: false,
     showUnsuspendConfirm: false,
     showBlacklistConfirm: false,
     showAddInterventionModal: false,
     showPdfViewer: false,
+    showChangeSequenceModal: false,
+    showEditNoteModal: false,
+    syncingMissions: false,
+    
+    activeNotesTab: 'impaye',
+    notesImpaye: [
+      { id: 'n1', content: 'Client contacté par téléphone, promesse de paiement la semaine prochaine', author: 'Moi', date: '20/03/2024', isAuthor: true },
+      { id: 'n2', content: 'Facture envoyée par courrier le 15/03, en attente de réponse', author: 'Marie D.', date: '18/03/2024', isAuthor: false }
+    ],
+    notesContact: [
+      { id: 'c1', content: 'Contact difficile, préfère communiquer par email', author: 'Pierre M.', date: '15/02/2024', isAuthor: false }
+    ],
+    newNoteContent: '',
+    savingNote: false,
+    editNoteForm: { id: null, content: '', author: '', date: '', type: '' },
+    
+    newSequence: '',
+    changeSequenceMode: 'continue',
+    availableSequences: [
+      { id: 'R1', nom: 'R1 - Première relance (J+15)' },
+      { id: 'R2', nom: 'R2 - Deuxième relance (J+30)' },
+      { id: 'R3', nom: 'R3 - Troisième relance (J+45)' },
+      { id: 'R4', nom: 'R4 - Dernière relance (J+60)' }
+    ],
     
     suspendForm: { motif: '', detail: '' },
     newIntervention: { type: '', agent: '', date: '', bien: '', description: '' },
@@ -615,6 +784,7 @@ function impayeDetailPage() {
       tauxPaye: 32,
       statut: 'en-relance',
       sequence: 'R2',
+      sequenceNom: 'R2 - Deuxième relance (J+30)',
       prochaineRelance: '05/04/2024',
       note: '',
       blacklisted: false,
@@ -622,13 +792,11 @@ function impayeDetailPage() {
       dateImport: '16/01/2024 08:15',
       source: 'ADTI',
       bien: {
-        adresse: '12 Rue de la Paix, 75002 Paris',
-        type: 'Bureaux',
-        surface: '250 m²'
+        adresse: '12 Rue de la Paix, 75002 Paris'
       },
       missions: [
-        { type: 'Diagnostic amiante', dateIntervention: '10/01/2024', description: 'Diagnostic réglementaire avant travaux' },
-        { type: 'DPE', dateIntervention: '12/01/2024', description: 'Diagnostic de performance énergétique' }
+        { typeMission: 'vente', type: 'Diagnostic amiante', dateIntervention: '10/01/2024', description: 'Diagnostic réglementaire avant travaux' },
+        { typeMission: 'repérage amiante', type: 'DPE', dateIntervention: '12/01/2024', description: 'Diagnostic de performance énergétique' }
       ],
       payeur: {
         nom: 'Jean Dupont',
@@ -650,23 +818,21 @@ function impayeDetailPage() {
         email: 'm.dupont@email.fr',
         initials: 'MD'
       },
-      historique: [
+      evenements: [
         { 
           type: 'relance', 
           icon: 'fa-paper-plane', 
           titre: 'Relance R2 envoyée', 
           date: '15/03/2024', 
           description: 'Email envoyé à contact@acme.fr',
-          emails: [
-            { id: 1, sujet: 'Relance - Facture FAC-2024-001 impayée', destinataire: 'contact@acme.fr', statut: 'ouvert', dateOuverture: '15/03/2024 10:23' }
-          ]
+          metadata: 'À: contact@acme.fr'
         },
         { 
           type: 'paiement', 
           icon: 'fa-euro-sign', 
           titre: 'Paiement partiel reçu', 
           date: '10/03/2024', 
-          description: '4 000,00 € reçus par virement' 
+          description: '4 000,00 € reçus par virement'
         },
         { 
           type: 'relance', 
@@ -674,16 +840,14 @@ function impayeDetailPage() {
           titre: 'Relance R1 envoyée', 
           date: '01/03/2024', 
           description: 'Email envoyé à contact@acme.fr',
-          emails: [
-            { id: 2, sujet: 'Rappel - Votre facture est arrivée à échéance', destinataire: 'contact@acme.fr', statut: 'ouvert', dateOuverture: '02/03/2024 09:15' }
-          ]
+          metadata: 'À: contact@acme.fr'
         },
         { 
           type: 'systeme', 
           icon: 'fa-file-import', 
           titre: 'Facture importée', 
           date: '16/01/2024', 
-          description: 'Import automatique depuis ADTI' 
+          description: 'Import automatique depuis ADTI'
         }
       ],
       interventions: [
@@ -717,8 +881,7 @@ function impayeDetailPage() {
     
     changerSequence() {
       this.showToast('Séquence mise à jour', this.impaye.sequence, 'success');
-      // Ajouter à l'historique
-      this.impaye.historique.unshift({
+      this.impaye.evenements.unshift({
         type: 'systeme',
         icon: 'fa-exchange-alt',
         titre: 'Séquence modifiée',
@@ -727,48 +890,128 @@ function impayeDetailPage() {
       });
     },
     
+    confirmChangeSequence() {
+      this.impaye.sequence = this.newSequence;
+      const seq = this.availableSequences.find(s => s.id === this.newSequence);
+      this.impaye.sequenceNom = seq ? seq.nom : 'Aucune séquence';
+      this.showChangeSequenceModal = false;
+      this.impaye.evenements.unshift({
+        type: 'systeme',
+        icon: 'fa-exchange-alt',
+        titre: 'Séquence modifiée',
+        date: new Date().toLocaleDateString('fr-FR'),
+        description: 'Mode: ' + this.changeSequenceMode
+      });
+      this.showToast('Succès', 'Séquence mise à jour', 'success');
+    },
+    
     suspendImpaye() {
       this.impaye.statut = 'suspendue';
-      this.showSuspendForm = false;
-      this.impaye.historique.unshift({
+      this.showSuspendModal = false;
+      this.impaye.evenements.unshift({
         type: 'suspension',
         icon: 'fa-pause',
-        titre: 'Facture suspendue',
+        titre: 'Dossier suspendu',
         date: new Date().toLocaleDateString('fr-FR'),
         description: 'Motif : ' + this.suspendForm.motif
       });
-      this.showToast('Succès', 'Facture suspendue avec succès', 'success');
+      this.showToast('Succès', 'Dossier suspendu avec succès', 'success');
     },
     
     unsuspendImpaye() {
       this.impaye.statut = 'en-relance';
       this.showUnsuspendConfirm = false;
-      this.impaye.historique.unshift({
+      this.impaye.evenements.unshift({
         type: 'systeme',
         icon: 'fa-play',
-        titre: 'Facture réactivée',
+        titre: 'Dossier réactivé',
         date: new Date().toLocaleDateString('fr-FR'),
         description: 'Les relances sont à nouveau actives'
       });
-      this.showToast('Succès', 'Facture réactivée avec succès', 'success');
+      this.showToast('Succès', 'Dossier réactivé avec succès', 'success');
     },
     
     blacklistImpaye() {
       this.impaye.blacklisted = true;
       this.impaye.statut = 'suspendue';
       this.showBlacklistConfirm = false;
-      this.impaye.historique.unshift({
+      this.impaye.evenements.unshift({
         type: 'suspension',
         icon: 'fa-ban',
-        titre: 'Payeur blacklisted',
+        titre: 'Contact blacklisted',
         date: new Date().toLocaleDateString('fr-FR'),
-        description: 'Aucune relance ne sera plus envoyée'
+        description: 'Aucune relance ne sera plus envoyée à ce contact'
       });
-      this.showToast('Succès', 'Payeur blacklisted avec succès', 'success');
+      this.showToast('Succès', 'Contact blacklisted avec succès', 'success');
     },
     
-    saveNote() {
-      this.showToast('Succès', 'Note enregistrée avec succès', 'success');
+    async syncMissions() {
+      this.syncingMissions = true;
+      // Simuler l'appel API pour sync les missions depuis ADTI
+      await new Promise(r => setTimeout(r, 1500));
+      this.syncingMissions = false;
+      this.showToast('Succès', 'Missions synchronisées depuis ADTI', 'success');
+    },
+    
+    saveNote(type) {
+      if (!this.newNoteContent.trim()) return;
+      this.savingNote = true;
+      const newNote = {
+        id: Date.now().toString(),
+        content: this.newNoteContent.trim(),
+        author: 'Moi',
+        date: new Date().toLocaleDateString('fr-FR'),
+        isAuthor: true
+      };
+      if (type === 'impaye') {
+        this.notesImpaye.unshift(newNote);
+      } else {
+        this.notesContact.unshift(newNote);
+      }
+      this.newNoteContent = '';
+      this.savingNote = false;
+      this.showToast('Succès', 'Note enregistrée', 'success');
+    },
+    
+    deleteNote(type, noteId) {
+      if (confirm('Supprimer cette note ?')) {
+        if (type === 'impaye') {
+          this.notesImpaye = this.notesImpaye.filter(n => n.id !== noteId);
+        } else {
+          this.notesContact = this.notesContact.filter(n => n.id !== noteId);
+        }
+        this.showToast('Succès', 'Note supprimée', 'success');
+      }
+    },
+    
+    openEditNote(type, note) {
+      this.editNoteForm = { 
+        id: note.id, 
+        content: note.content, 
+        author: note.author, 
+        date: note.date,
+        type: type
+      };
+      this.showEditNoteModal = true;
+    },
+    
+    confirmEditNote() {
+      const { type, id, content } = this.editNoteForm;
+      
+      if (type === 'impaye') {
+        const note = this.notesImpaye.find(n => n.id === id);
+        if (note) note.content = content;
+      } else {
+        const note = this.notesContact.find(n => n.id === id);
+        if (note) note.content = content;
+      }
+      
+      this.showEditNoteModal = false;
+      this.showToast('Succès', 'Note modifiée', 'success');
+    },
+    
+    get currentNotes() {
+      return this.activeNotesTab === 'impaye' ? this.notesImpaye : this.notesContact;
     },
     
     addIntervention() {
