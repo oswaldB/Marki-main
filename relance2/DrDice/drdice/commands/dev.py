@@ -623,7 +623,7 @@ Statut: Développée
 
 
 def _update_app_py(project: Project, cell) -> bool:
-    """Met à jour app.py pour ajouter le blueprint de la cell."""
+    """Met à jour app.py pour ajouter le blueprint de la cell via pi -p."""
     app_py = project.root / "app" / "app.py"
     if not app_py.exists():
         console.print("  [yellow]⚠️ app.py non trouvé[/yellow]")
@@ -632,7 +632,7 @@ def _update_app_py(project: Project, cell) -> bool:
     cell_name = cell.name
     cell_path_str = str(cell.path)
 
-    # Déterminer le type de cell
+    # Déterminer le type de cell et les infos de route
     if "/screens/" in cell_path_str:
         cell_type = "screens"
         url_prefix = f"/{cell_name}"
@@ -651,71 +651,79 @@ def _update_app_py(project: Project, cell) -> bool:
         section = "# SCREENS"
 
     import_line = f"from app.{cell_type}.{cell_name} import bp as {cell_name}_bp"
-    register_line = f"    app.register_blueprint({cell_name}_bp, url_prefix='{url_prefix}')"
+    register_line = f"app.register_blueprint({cell_name}_bp, url_prefix='{url_prefix}')"
+
+    # Lire le contenu actuel de app.py
+    try:
+        current_content = app_py.read_text(encoding="utf-8")
+    except Exception as e:
+        console.print(f"  [red]❌ Erreur lecture app.py: {e}[/red]")
+        return False
+
+    # Vérifier si déjà présent
+    if f"{cell_name}_bp" in current_content:
+        console.print(f"  [dim]ℹ️ Route déjà présente dans app.py[/dim]")
+        return True
+
+    # Construire le prompt pour pi
+    prompt = f"""Tu es un expert Flask. Analyse ce fichier app.py et ajoute le blueprint pour la nouvelle cell.
+
+## Contenu actuel de app.py:
+```python
+{current_content}
+```
+
+## Nouvelle cell à intégrer:
+- Nom: {cell_name}
+- Type: {cell_type}
+- Section: {section}
+- Import à ajouter: {import_line}
+- Registration à ajouter: {register_line}
+
+## Instructions:
+1. Ajoute la ligne d'import {import_line} dans la section des imports appropriée (avec les autres from app.{cell_type}...)
+2. Ajoute la ligne de registration {register_line} dans la fonction create_app(), dans la section {section}
+3. Respecte le style et l'indentation existante
+4. Retourne le fichier app.py complet et fonctionnel
+
+Réponds avec UNIQUEMENT le contenu du fichier app.py, sans balises markdown, sans explications."""
 
     try:
-        content = app_py.read_text(encoding="utf-8")
+        console.print("  [blue]🤖 Analyse et mise à jour de app.py avec pi...")
+        result = subprocess.run(
+            ["pi", "-p", prompt],
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
 
-        if f"{cell_name}_bp" in content:
-            console.print(f"  [dim]ℹ️ Route déjà présente dans app.py[/dim]")
-            return True
+        if result.returncode != 0:
+            console.print(f"  [red]❌ Erreur pi: {result.stderr[:200]}[/red]")
+            return False
 
-        lines = content.split('\n')
-        new_lines = []
-        import_inserted = False
-        register_inserted = False
+        # Nettoyer la réponse (enlever les balises markdown si présentes)
+        new_content = result.stdout.strip()
+        if new_content.startswith("```python"):
+            new_content = new_content[9:]
+        if new_content.startswith("```"):
+            new_content = new_content[3:]
+        if new_content.endswith("```"):
+            new_content = new_content[:-3]
+        new_content = new_content.strip()
 
-        for i, line in enumerate(lines):
-            if line.strip() == section:
-                new_lines.append(line)
-                continue
+        # Vérifier que le blueprint a bien été ajouté
+        if f"{cell_name}_bp" not in new_content:
+            console.print("  [red]❌ Le blueprint n'a pas été ajouté dans la réponse[/red]")
+            return False
 
-            # Insertion de l'import
-            if not import_inserted and line.strip().startswith("from app.") and section in content:
-                if i + 1 < len(lines) and not lines[i + 1].strip().startswith("from app."):
-                    new_lines.append(import_line)
-                    import_inserted = True
-
-            # Insertion du register
-            if section in line and "register_blueprint" in line and not register_inserted:
-                new_lines.append(line)
-                if i + 1 < len(lines):
-                    next_line = lines[i + 1]
-                    if not next_line.strip().startswith("app.register_blueprint"):
-                        new_lines.append(register_line)
-                        register_inserted = True
-                else:
-                    new_lines.append(register_line)
-                    register_inserted = True
-                continue
-
-            new_lines.append(line)
-
-        # Fallback si pas inséré
-        if not import_inserted:
-            for i, line in enumerate(new_lines):
-                if line.strip() == section:
-                    j = i + 1
-                    while j < len(new_lines) and not new_lines[j].startswith("# "):
-                        j += 1
-                    new_lines.insert(j, import_line)
-                    import_inserted = True
-                    break
-
-        if not register_inserted:
-            for i, line in enumerate(new_lines):
-                if section in line:
-                    j = i + 1
-                    while j < len(new_lines) and (new_lines[j].strip().startswith("app.register_blueprint") or new_lines[j].strip().startswith("# ")):
-                        j += 1
-                    new_lines.insert(j, register_line)
-                    register_inserted = True
-                    break
-
-        app_py.write_text('\n'.join(new_lines), encoding="utf-8")
+        # Écrire le nouveau contenu
+        app_py.write_text(new_content, encoding="utf-8")
         console.print(f"  [green]✅ Route ajoutée: {url_prefix}[/green]")
         return True
 
+    except subprocess.TimeoutExpired:
+        console.print("  [red]❌ Timeout pi[/red]")
+        return False
     except Exception as e:
         console.print(f"  [red]❌ Erreur mise à jour app.py: {e}[/red]")
         return False

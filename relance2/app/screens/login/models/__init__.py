@@ -1,1 +1,1 @@
-from .auth import User, AuthModel, AuthError
+# Models package

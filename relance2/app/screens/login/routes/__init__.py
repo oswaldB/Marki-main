@@ -1,1 +1,1 @@
-from . import index, wf_auth
+# Routes package

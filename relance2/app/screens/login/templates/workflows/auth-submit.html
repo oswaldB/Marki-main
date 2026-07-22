@@ -1,54 +1,6 @@
-/**
- * @action Soumettre le formulaire de connexion
- * @checkpoint form-submitted, appel API en cours
- * @checkpoint auth-success, token stocké et redirection effectuée
- * @checkpoint auth-error, message d'erreur affiché
- */
-async handleLogin() {
-    // 1. Validate form
-    if (!this.form.username || !this.form.password) {
-        this.error = 'Veuillez remplir tous les champs';
-        log.warn('AUTH', 'Form validation failed: empty fields');
-        return;
-    }
-    
-    // 2. Set loading
-    this.loading = true;
-    this.error = null;
-    
-    log.info('AUTH', 'Submitting login for: ' + this.form.username);
-    
-    try {
-        // 3. Call auth API
-        const response = await fetch('/login/api/auth/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                username: this.form.username,
-                password: this.form.password
-            })
-        });
-        
-        const data = await response.json();
-        
-        if (!response.ok) {
-            throw new Error(data.error || 'Échec de connexion');
-        }
-        
-        log.info('AUTH', 'Login successful for user: ' + data.user.username);
-        
-        // 4. Store auth data in localStorage
-        localStorage.setItem('token', data.token);
-        localStorage.setItem('user', JSON.stringify(data.user));
-        
-        // 5. Redirect to dashboard
-        log.info('AUTH', 'Redirecting to /dashboard');
-        window.location.href = '/dashboard';
-        
-    } catch (error) {
-        log.error('AUTH', 'Login failed: ' + error.message);
-        this.error = error.message || 'Identifiants invalides';
-    } finally {
-        this.loading = false;
-    }
-},
+<!--
+Workflow: auth-submit
+Type: frontend
+Screen: login
+Description: Soumission du formulaire d'authentification
+-->
