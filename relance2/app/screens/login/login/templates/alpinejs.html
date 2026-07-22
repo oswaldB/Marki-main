@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+
+{% block head %}
+<!-- Stores globaux Alpine.js -->
+<script>
+    document.addEventListener('alpine:init', () => {
+        // Store d'authentification
+        Alpine.store('auth', {
+            token: localStorage.getItem('token'),
+            user: JSON.parse(localStorage.getItem('user') || 'null'),
+            isAuthenticated: !!localStorage.getItem('token'),
+            
+            setAuth(token, user) {
+                this.token = token;
+                this.user = user;
+                this.isAuthenticated = true;
+                localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(user));
+            },
+            
+            clearAuth() {
+                this.token = null;
+                this.user = null;
+                this.isAuthenticated = false;
+                localStorage.removeItem('token');
+                localStorage.removeItem('user');
+            },
+            
+            async verifyToken() {
+                if (!this.token) return false;
+                
+                try {
+                    const response = await fetch('/api/auth/me', {
+                        headers: {
+                            'Authorization': `Bearer ${this.token}`
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        this.user = data.user;
+                        return true;
+                    } else {
+                        this.clearAuth();
+                        return false;
+                    }
+                } catch (error) {
+                    this.clearAuth();
+                    return false;
+                }
+            }
+        });
+        
+        // Store UI
+        Alpine.store('ui', {
+            loading: false,
+            toast: null,
+            
+            showToast(message, type = 'info') {
+                this.toast = { message, type };
+                setTimeout(() => this.toast = null, 3000);
+            }
+        });
+    });
+</script>
+{% endblock %}
