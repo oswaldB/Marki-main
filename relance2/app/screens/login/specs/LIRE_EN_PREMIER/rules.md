@@ -52,6 +52,15 @@
 - Utiliser **uniquement** les dépendances existantes du projet
 - Si une fonctionnalité nécessite une librairie externe → la réimplémenter en interne ou utiliser la stdlib
 
+### RÈGLE D'OR 6 : Pas de Flask-CORS
+
+**PAS DE FLASK-CORS.** Le projet n'utilise pas et n'accepte pas l'extension Flask-CORS.
+
+- **Interdiction stricte** d'ajouter `flask-cors` aux dépendances
+- Pas de `CORS(app)` ou de configuration CORS via cette librairie
+- Gérer les headers CORS manuellement si nécessaire, ou s'assurer que frontend et backend sont sur la même origine
+- Cette règle renforce la RÈGLE D'OR 5 (pas de composants externes)
+
 ---
 
 ## 📁 Structure d'une Cell
