@@ -1,213 +1,186 @@
-# Modèle Utilisateur - Login
+# Spec Modèle : User
 
-## Overview
-Modèle d'authentification utilisateur. **PAS D'ORM** - Utilise `sqlite3` du standard library uniquement avec requêtes SQL brutes.
+## Description
 
-## Table: users
+Modèle utilisateur pour l'authentification et la gestion des comptes. Utilise sqlite3 pur sans ORM.
 
-| Champ | Type | Constraints | Description |
-|-------|------|-------------|-------------|
-| id | VARCHAR(36) | PRIMARY KEY | UUID utilisateur |
-| username | VARCHAR(50) | NOT NULL, UNIQUE | Nom d'utilisateur |
-| email | VARCHAR(255) | NOT NULL, UNIQUE | Email (utilisé pour login) |
-| password | VARCHAR(255) | NOT NULL | Mot de passe (en clair pour test, à hasher en prod) |
-| role | VARCHAR(20) | DEFAULT 'user' | Role: admin, user |
-| is_active | BOOLEAN | DEFAULT 1 | Compte actif |
-| created_at | DATETIME | DEFAULT CURRENT_TIMESTAMP | Date création |
+## Table SQL
 
-## Fichiers de Modèle
-
-```
-models/
-├── __init__.py    # Exporte AuthModel, AuthError, User
-└── auth.py        # Toute la logique d'auth en sqlite3 pur
+```sql
+CREATE TABLE users (
+    id TEXT PRIMARY KEY,
+    username TEXT NOT NULL UNIQUE,
+    email TEXT NOT NULL,
+    password_hash TEXT NOT NULL,
+    role TEXT NOT NULL DEFAULT 'user',
+    is_active INTEGER NOT NULL DEFAULT 1,
+    last_login TEXT,
+    login_count INTEGER NOT NULL DEFAULT 0,
+    created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
 ```
 
-## Code : `models/auth.py`
+## Classe User
+
+### Attributs
+
+| Attribut | Type | Description |
+|----------|------|-------------|
+| `id` | str | Identifiant unique (user_xxx) |
+| `username` | str | Nom d'utilisateur unique |
+| `email` | str | Email de l'utilisateur |
+| `password_hash` | str | Hash du mot de passe (bcrypt) |
+| `role` | str | Rôle : 'admin' ou 'user' |
+| `is_active` | bool | Compte actif ou désactivé |
+| `last_login` | str | Date ISO 8601 dernière connexion |
+| `login_count` | int | Nombre de connexions |
+| `created_at` | str | Date ISO 8601 création |
+| `updated_at` | str | Date ISO 8601 mise à jour |
+
+### Méthodes de classe
+
+#### `from_row(row: sqlite3.Row) -> Optional[User]`
+
+Crée une instance User depuis une ligne de résultat SQL.
 
 ```python
-"""Modèle d'authentification utilisateur - Pure sqlite3."""
-
-import sqlite3
-from flask import current_app
-from app.middleware.auth.jwt_utils import generate_token, validate_token
-
-
-class AuthError(Exception):
-    """Exception pour les erreurs d'authentification."""
-    pass
-
-
-class User:
-    """Modèle utilisateur simple (dataclass-like)."""
-    
-    def __init__(self, user_id, username, email, role='user', is_active=True):
-        self.id = user_id
-        self.username = username
-        self.email = email
-        self.role = role
-        self.is_active = is_active
-    
-    @classmethod
-    def from_row(cls, row):
-        """Crée un User depuis une ligne sqlite3 (sqlite3.Row)."""
-        if not row:
-            return None
-        return cls(
-            user_id=row['id'],
-            username=row['username'],
-            email=row.get('email'),
-            role=row.get('role', 'user'),
-            is_active=row.get('is_active', 1) == 1
-        )
-    
-    def to_dict(self):
-        """Convertit en dict pour JSON."""
-        return {
-            'id': self.id,
-            'username': self.username,
-            'email': self.email,
-            'role': self.role
-        }
-
-
-class AuthModel:
-    """Modèle pour les opérations d'authentification - sqlite3 pur."""
-    
-    @staticmethod
-    def get_db():
-        """Récupère la connexion DB (sqlite3 standard)."""
-        db_path = current_app.config['DATABASE']
-        conn = sqlite3.connect(db_path)
-        conn.row_factory = sqlite3.Row  # Pour accès par nom de colonne
-        return conn
-    
-    @classmethod
-    def find_by_username(cls, username):
-        """Trouve un utilisateur par username."""
-        db = cls.get_db()
-        user = db.execute(
-            "SELECT * FROM users WHERE username = ? AND is_active = 1",
-            (username,)
-        ).fetchone()
-        db.close()
-        return User.from_row(user)
-    
-    @classmethod
-    def find_by_id(cls, user_id):
-        """Trouve un utilisateur par ID."""
-        db = cls.get_db()
-        user = db.execute(
-            "SELECT * FROM users WHERE id = ? AND is_active = 1",
-            (user_id,)
-        ).fetchone()
-        db.close()
-        return User.from_row(user)
-    
-    @classmethod
-    def verify_password(cls, user, password):
-        """Vérifie le mot de passe (comparaison directe pour test)."""
-        db = cls.get_db()
-        stored = db.execute(
-            "SELECT password FROM users WHERE id = ?",
-            (user.id,)
-        ).fetchone()
-        db.close()
-        
-        if not stored:
-            return False
-        
-        # TODO: Migrer vers bcrypt pour le hash
-        return stored['password'] == password
-    
-    @classmethod
-    def authenticate(cls, username, password):
-        """
-        Authentifie un utilisateur.
-        Retourne: {'user': User, 'token': str}
-        Lève: AuthError si échec
-        """
-        user = cls.find_by_username(username)
-        
-        if not user:
-            raise AuthError("Utilisateur non trouvé")
-        
-        if not cls.verify_password(user, password):
-            raise AuthError("Mot de passe incorrect")
-        
-        token = generate_token(user.id, user.username, user.role)
-        
-        return {'user': user, 'token': token}
-    
-    @classmethod
-    def verify_token(cls, token):
-        """
-        Vérifie un token JWT et retourne l'utilisateur.
-        Lève: AuthError si token invalide
-        """
-        try:
-            payload = validate_token(token)
-            user = cls.find_by_id(payload['id'])
-            
-            if not user:
-                raise AuthError("Utilisateur non trouvé")
-            
-            return user
-            
-        except Exception as e:
-            raise AuthError(f"Token invalide: {str(e)}")
+@classmethod
+def from_row(cls, row: sqlite3.Row) -> Optional['User']:
+    if not row:
+        return None
+    return cls(
+        id=row['id'],
+        username=row['username'],
+        email=row['email'],
+        password_hash=row['password_hash'],
+        role=row['role'],
+        is_active=bool(row['is_active']),
+        last_login=row['last_login'],
+        login_count=row['login_count'],
+        created_at=row['created_at'],
+        updated_at=row['updated_at']
+    )
 ```
 
-## Points Clés
+#### `get_by_id(user_id: str) -> Optional[User]`
 
-### ✅ Ce qu'on fait (sqlite3 pur)
+Récupère un utilisateur par son ID.
+
 ```python
-import sqlite3
-
-conn = sqlite3.connect(db_path)
-conn.row_factory = sqlite3.Row
-cursor = conn.execute("SELECT * FROM users WHERE username = ?", (username,))
-row = cursor.fetchone()
-conn.close()
+@classmethod
+def get_by_id(cls, user_id: str) -> Optional['User']:
+    db = get_db()
+    cursor = db.execute(
+        "SELECT * FROM users WHERE id = ? AND is_active = 1",
+        (user_id,)
+    )
+    return cls.from_row(cursor.fetchone())
 ```
 
-### ❌ Ce qu'on ne fait PAS (SQLAlchemy interdit)
-```python
-# INTERDIT:
-from sqlalchemy import Column, String
-from sqlalchemy.orm import Session
+#### `get_by_username(username: str) -> Optional[User]`
 
-class User(Base):  # INTERDIT
-    __tablename__ = 'users'
-    id = Column(String, primary_key=True)  # INTERDIT
+Récupère un utilisateur par son nom d'utilisateur.
+
+```python
+@classmethod
+def get_by_username(cls, username: str) -> Optional['User']:
+    db = get_db()
+    cursor = db.execute(
+        "SELECT * FROM users WHERE username = ? AND is_active = 1",
+        (username,)
+    )
+    return cls.from_row(cursor.fetchone())
+```
+
+#### `get_by_email(email: str) -> Optional[User]`
+
+Récupère un utilisateur par son email.
+
+```python
+@classmethod
+def get_by_email(cls, email: str) -> Optional['User']:
+    db = get_db()
+    cursor = db.execute(
+        "SELECT * FROM users WHERE email = ? AND is_active = 1",
+        (email.lower().strip(),)
+    )
+    return cls.from_row(cursor.fetchone())
+```
+
+#### `authenticate(username: str, password: str) -> Optional[User]`
+
+Authentifie un utilisateur avec son nom d'utilisateur et mot de passe.
+
+```python
+@classmethod
+def authenticate(cls, username: str, password: str) -> Optional['User']:
+    import bcrypt
+    user = cls.get_by_username(username)
+    if not user:
+        return None
+    if bcrypt.checkpw(password.encode('utf-8'), user.password_hash.encode('utf-8')):
+        return user
+    return None
+```
+
+#### `update_last_login(user_id: str) -> bool`
+
+Met à jour la date de dernière connexion et incrémente le compteur.
+
+```python
+@classmethod
+def update_last_login(cls, user_id: str) -> bool:
+    from datetime import datetime
+    db = get_db()
+    db.execute(
+        """UPDATE users 
+           SET last_login = ?, login_count = login_count + 1, updated_at = ?
+           WHERE id = ?""",
+        (datetime.now().isoformat(), datetime.now().isoformat(), user_id)
+    )
+    db.commit()
+    return True
+```
+
+### Méthodes d'instance
+
+#### `to_dict() -> dict`
+
+Convertit l'utilisateur en dictionnaire (pour JSON).
+
+```python
+def to_dict(self) -> dict:
+    return {
+        'id': self.id,
+        'username': self.username,
+        'email': self.email,
+        'role': self.role,
+        'is_active': self.is_active
+    }
+```
+
+#### `to_dict_secure() -> dict`
+
+Version sans données sensibles pour le frontend.
+
+```python
+def to_dict_secure(self) -> dict:
+    return {
+        'id': self.id,
+        'username': self.username,
+        'email': self.email,
+        'role': self.role
+    }
 ```
 
 ## Dépendances
 
-- **Aucune** pour la DB (sqlite3 est dans la stdlib)
-- `app.middleware.auth.jwt_utils` : pour generate_token/validate_token
-- `flask.current_app` : pour accéder à app.config['DATABASE']
+- `app.data import get_db`
+- `bcrypt` (pour la vérification des mots de passe)
+- `typing.Optional`
+- `sqlite3`
 
-## Fixtures SQL
+## Fichier de sortie
 
-```sql
--- Création table users
-CREATE TABLE IF NOT EXISTS users (
-    id VARCHAR(36) PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    email VARCHAR(255) NOT NULL UNIQUE,
-    password VARCHAR(255) NOT NULL,
-    role VARCHAR(20) DEFAULT 'user',
-    is_active BOOLEAN DEFAULT 1,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-
--- Utilisateur de test
-INSERT OR IGNORE INTO users (id, username, email, password, role)
-VALUES ('user-123', 'admin', 'admin@marki.fr', 'admin', 'admin');
-```
-
-## Related Routes
-
-- `routes/api_auth.py` : Utilise AuthModel.authenticate(), AuthModel.verify_token()
-- `routes/index.py` : Utilise AuthModel.authenticate()
+`app/screens/login/models/user.py`

@@ -1,4 +1,5 @@
-"""Models package."""
-from .auth import AuthModel, AuthError, User
+"""Modèles pour la cell login."""
+from .user import User
+from .session import Session
 
-__all__ = ['AuthModel', 'AuthError', 'User']
+__all__ = ['User', 'Session']
