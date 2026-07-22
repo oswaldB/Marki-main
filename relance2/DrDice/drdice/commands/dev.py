@@ -425,24 +425,89 @@ def _check_server() -> bool:
         return False
 
 
-def _start_server(project_dir: Path) -> bool:
-    """Tente de démarrer le serveur Flask automatiquement."""
+def _start_server(project_dir: Path) -> tuple[bool, list[str]]:
+    """Tente de démarrer le serveur Flask automatiquement.
+    
+    Retourne (succès, liste_d_erreurs).
+    """
     init_script = project_dir / "scripts" / "03-init-boilerplate.sh"
     if not init_script.exists():
-        return False
+        return False, ["Script d'initialisation non trouvé"]
+
+    # Lire la taille du log avant démarrage
+    flask_log = project_dir / "flask_server.log"
+    log_before = 0
+    if flask_log.exists():
+        try:
+            with open(flask_log, 'r') as f:
+                log_before = len(f.readlines())
+        except IOError:
+            pass
 
     try:
-        subprocess.Popen(
+        # Capturer stderr pour voir les erreurs de démarrage immédiates
+        process = subprocess.Popen(
             ["bash", str(init_script)],
             cwd=str(project_dir),
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
             start_new_session=True
         )
+        
+        # Attendre un peu et essayer de lire les erreurs immédiates
         time.sleep(3)
-        return _check_server()
-    except Exception:
-        return False
+        
+        # Vérifier si le processus a crashé immédiatement
+        poll_result = process.poll()
+        startup_errors = []
+        
+        if poll_result is not None and poll_result != 0:
+            # Le processus a crashé, lire stderr
+            try:
+                stderr_output = process.stderr.read() if process.stderr else ""
+                if stderr_output:
+                    startup_errors.append(f"[STARTUP] {stderr_output[:2000]}")
+            except:
+                pass
+        
+        # Vérifier si le serveur répond
+        if _check_server():
+            return True, []
+        
+        # Si pas de réponse, essayer de lire les nouvelles erreurs dans le log
+        if flask_log.exists():
+            try:
+                with open(flask_log, 'r') as f:
+                    lines = f.readlines()
+                log_after = len(lines)
+                
+                if log_after > log_before:
+                    new_lines = lines[log_before:log_after]
+                    for line in new_lines:
+                        if any(kw in line for kw in ["ERROR", "Exception", "Traceback", "ImportError", "NoAppException", "ModuleNotFoundError"]):
+                            startup_errors.append(f"[LOG] {line.strip()}")
+            except IOError:
+                pass
+        
+        # Essayer de lire les logs gunicorn/flask alternatifs
+        for log_file in ["gunicorn.log", "server.log", "app.log"]:
+            alt_log = project_dir / log_file
+            if alt_log.exists():
+                try:
+                    content = alt_log.read_text(encoding="utf-8")
+                    # Chercher les dernières erreurs
+                    lines = content.split('\n')
+                    for line in lines[-50:]:  # Dernières 50 lignes
+                        if any(kw in line for kw in ["ERROR", "Exception", "Traceback", "ImportError", "NoAppException"]):
+                            startup_errors.append(f"[{log_file}] {line.strip()}")
+                except:
+                    pass
+        
+        return False, startup_errors if startup_errors else ["Serveur Flask ne répond pas (démarrage probablement échoué)"]
+        
+    except Exception as e:
+        return False, [f"Erreur démarrage serveur: {e}"]
 
 
 def _run_frontend_test(url: str, screenshot_path: Path, log_path: Path, project_dir: Path) -> tuple[bool, list[str], str]:
@@ -509,7 +574,7 @@ def _capture_backend_logs(project_dir: Path, logs_dir: Path, log_before: int) ->
                 f.writelines(new_lines)
 
             for line in new_lines:
-                if any(kw in line for kw in ["ERROR", "Exception", "Traceback", "500"]):
+                if any(kw in line for kw in ["ERROR", "Exception", "Traceback", "500", "ImportError", "NoAppException", "ModuleNotFoundError", "SyntaxError", "cannot import"]):
                     errors.append(f"[BACK] {line.strip()}")
 
         return errors[:10]
@@ -559,9 +624,18 @@ def _run_cell_tests(cell, project: Project, console: Console) -> tuple[bool, lis
     # 1. Vérifier le serveur
     if not _check_server():
         console.print("  [yellow]⚠️ Serveur non démarré, tentative de démarrage...[/yellow]")
-        if not _start_server(project_dir):
+        server_ok, startup_errors = _start_server(project_dir)
+        if not server_ok:
             console.print("  [red]❌ Impossible de démarrer le serveur[/red]")
-            return False, ["Serveur Flask non disponible"]
+            if startup_errors:
+                console.print("  [red]Erreurs de démarrage:[/red]")
+                for err in startup_errors[:10]:
+                    console.print(f"    [dim]{err}[/dim]")
+            errors.extend(startup_errors if startup_errors else ["Serveur Flask non disponible"])
+            # Sauvegarder les erreurs de démarrage avant de retourner
+            (logs_dir / "errors.txt").write_text("\n".join(errors), encoding="utf-8")
+            (logs_dir / "backend.log").write_text("\n".join(startup_errors), encoding="utf-8")
+            return False, errors
 
     # 2. Vérifier HTTP
     http_code, http_ok = _get_http_status(url)
@@ -805,20 +879,48 @@ def _auto_fix_cell(cell, project: Project, yaml_path: Path, errors: list[str]) -
         except IOError:
             pass
 
-    # Lire les erreurs backend
+    # Lire les erreurs backend depuis le fichier backend.log
     backend_errors = ""
     if latest_log:
         backend_file = latest_log.parent / "backend.log"
         if backend_file.exists():
-            backend_errors = backend_file.read_text(encoding="utf-8")
+            try:
+                backend_errors = backend_file.read_text(encoding="utf-8")
+            except IOError:
+                pass
+    
+    # Lire aussi errors.txt s'il existe (erreurs consolidées)
+    errors_txt = ""
+    if latest_log:
+        errors_file = latest_log.parent / "errors.txt"
+        if errors_file.exists():
+            try:
+                errors_txt = errors_file.read_text(encoding="utf-8")
+            except IOError:
+                pass
+    
+    # Lire le log de sortie du test (test_output.log)
+    test_output = ""
+    if latest_log:
+        output_file = latest_log.parent / "test_output.log"
+        if output_file.exists():
+            try:
+                test_output = output_file.read_text(encoding="utf-8")
+            except IOError:
+                pass
 
-    # Construire le prompt de correction
+    # Construire le prompt de correction avec toutes les sources d'erreur
+    all_errors = "\n".join(errors) if errors else ""
+    
     fix_prompt = f"""Tu es un développeur Flask/Alpine.js expert.
 
 La cell '{cell_name}' a des erreurs lors des tests.
 
-## Erreurs détectées:
-{chr(10).join(errors)}
+## Erreurs détectées (consolidées):
+{all_errors[:2000]}
+
+## Erreurs détaillées (errors.txt):
+{errors_txt[:2000]}
 
 ## Logs frontend (JSON):
 {frontend_json[:2000]}
@@ -826,17 +928,20 @@ La cell '{cell_name}' a des erreurs lors des tests.
 ## Logs backend (Flask):
 {backend_errors[:2000]}
 
+## Sortie du test:
+{test_output[:2000]}
+
 ## Code actuel (extrait):
 {code_context[:3000]}
 
 ## Ta mission:
-1. Analyse les erreurs ci-dessus (frontend ET backend)
-2. Identifie la cause racine
+1. Analyse les erreurs ci-dessus (frontend ET backend ET démarrage serveur)
+2. Identifie la cause racine (ImportError, NoAppException, etc.)
 3. Corrige le code pour résoudre TOUTES les erreurs
 4. Donne les fichiers corrigés complets
 
 ## IMPORTANT - NE PAS GÉNÉRER:
-- **NE génère PAS app.py**
+- **NE génère PAS app.py** (géré automatiquement)
 - Ne génère que les fichiers de la cell elle-même
 
 Pour CHAQUE fichier corrigé, donne un élément YAML avec:

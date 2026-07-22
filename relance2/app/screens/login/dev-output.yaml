@@ -1,28 +1,20 @@
 fichiers:
   - chemin: models/__init__.py
     contenu: |
-      from .user import User
-      
-      __all__ = ['User']
+      # Models package
 
-  - chemin: models/user.py
+  - chemin: models/auth.py
     contenu: |
       import sqlite3
-      import hashlib
-      import secrets
-      from datetime import datetime, timedelta
       import jwt
-      from flask import current_app
+      import datetime
+      from functools import wraps
+      from flask import current_app, jsonify
       
-      DATABASE = 'data/app.db'
+      DATABASE = 'database.db'
       
-      class User:
-          def __init__(self, id=None, username=None, email=None, password_hash=None, role='user'):
-              self.id = id
-              self.username = username
-              self.email = email
-              self.password_hash = password_hash
-              self.role = role
+      class AuthLocal:
+          """Modèle d'authentification locale avec JWT"""
           
           @staticmethod
           def get_db():
@@ -31,146 +23,217 @@ fichiers:
               return conn
           
           @staticmethod
-          def hash_password(password, salt=None):
-              if salt is None:
-                  salt = secrets.token_hex(16)
-              hash_value = hashlib.pbkdf2_hmac('sha256', password.encode(), salt.encode(), 100000)
-              return salt + hash_value.hex()
+          def hash_password(password):
+              """Hache un mot de passe avec bcrypt"""
+              import bcrypt
+              return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
           
           @staticmethod
-          def verify_password(password, password_hash):
-              salt = password_hash[:32]
-              check_hash = User.hash_password(password, salt)
-              return check_hash == password_hash
-          
-          @classmethod
-          def find_by_email(cls, email):
-              conn = cls.get_db()
-              cursor = conn.cursor()
-              cursor.execute('SELECT * FROM users WHERE email = ?', (email,))
-              row = cursor.fetchone()
-              conn.close()
-              if row:
-                  return cls(
-                      id=row['id'],
-                      username=row['username'],
-                      email=row['email'],
-                      password_hash=row['password_hash'],
-                      role=row['role']
-                  )
-              return None
-          
-          @classmethod
-          def find_by_id(cls, user_id):
-              conn = cls.get_db()
-              cursor = conn.cursor()
-              cursor.execute('SELECT * FROM users WHERE id = ?', (user_id,))
-              row = cursor.fetchone()
-              conn.close()
-              if row:
-                  return cls(
-                      id=row['id'],
-                      username=row['username'],
-                      email=row['email'],
-                      password_hash=row['password_hash'],
-                      role=row['role']
-                  )
-              return None
+          def verify_password(password, hashed):
+              """Vérifie un mot de passe contre son hash"""
+              import bcrypt
+              return bcrypt.checkpw(password.encode('utf-8'), hashed.encode('utf-8'))
           
           @staticmethod
-          def generate_token(user_id, secret_key, expires_in=3600):
+          def generate_token(user_id, username, email, role):
+              """Génère un token JWT"""
               payload = {
                   'user_id': user_id,
-                  'exp': datetime.utcnow() + timedelta(seconds=expires_in),
-                  'iat': datetime.utcnow()
+                  'username': username,
+                  'email': email,
+                  'role': role,
+                  'exp': datetime.datetime.utcnow() + datetime.timedelta(days=7)
               }
-              return jwt.encode(payload, secret_key, algorithm='HS256')
+              return jwt.encode(payload, current_app.config['SECRET_KEY'], algorithm='HS256')
           
           @staticmethod
-          def verify_token(token, secret_key):
+          def verify_token(token):
+              """Vérifie et décode un token JWT"""
               try:
-                  payload = jwt.decode(token, secret_key, algorithms=['HS256'])
-                  return payload.get('user_id')
+                  payload = jwt.decode(token, current_app.config['SECRET_KEY'], algorithms=['HS256'])
+                  return payload
               except jwt.ExpiredSignatureError:
                   return None
               except jwt.InvalidTokenError:
                   return None
           
-          def to_dict(self):
+          @classmethod
+          def authenticate(cls, email, password):
+              """Authentifie un utilisateur par email/mot de passe"""
+              db = cls.get_db()
+              user = db.execute(
+                  'SELECT * FROM users WHERE email = ?', (email,)
+              ).fetchone()
+              
+              if user is None:
+                  return None
+              
+              if not cls.verify_password(password, user['password_hash']):
+                  return None
+              
               return {
-                  'id': self.id,
-                  'username': self.username,
-                  'email': self.email,
-                  'role': self.role
+                  'id': user['id'],
+                  'username': user['username'],
+                  'email': user['email'],
+                  'role': user['role']
               }
+          
+          @classmethod
+          def get_user_by_id(cls, user_id):
+              """Récupère un utilisateur par son ID"""
+              db = cls.get_db()
+              user = db.execute(
+                  'SELECT id, username, email, role FROM users WHERE id = ?', (user_id,)
+              ).fetchone()
+              
+              if user is None:
+                  return None
+              
+              return dict(user)
 
   - chemin: routes/__init__.py
     contenu: |
-      from .login import bp as login_bp
-      from .wf_auth import bp as wf_auth_bp
-      
-      __all__ = ['login_bp', 'wf_auth_bp']
+      # Routes package
 
   - chemin: routes/login.py
     contenu: |
       from flask import Blueprint, render_template
       
-      bp = Blueprint('login', __name__, url_prefix='')
+      bp = Blueprint('login', __name__, url_prefix='/login')
       
-      @bp.route('/login', methods=['GET'])
-      def login_page():
+      @bp.route('/')
+      def index():
+          """Affiche la page de login"""
           return render_template('login.html')
 
   - chemin: routes/wf_auth.py
     contenu: |
       from flask import Blueprint, request, jsonify, current_app
-      from models.user import User
+      from models.auth import AuthLocal
       
       bp = Blueprint('wf_auth', __name__, url_prefix='/api/auth')
       
       @bp.route('/login', methods=['POST'])
       def login():
+          """Authentifie un utilisateur et retourne un token JWT"""
           data = request.get_json()
+          
+          if not data or 'email' not in data or 'password' not in data:
+              return jsonify({'error': 'Email et mot de passe requis'}), 400
+          
           email = data.get('email')
           password = data.get('password')
           
-          if not email or not password:
-              return jsonify({'error': 'Email et mot de passe requis'}), 400
+          # Validation email basique
+          if '@' not in email:
+              return jsonify({'error': 'Format email invalide'}), 400
           
-          user = User.find_by_email(email)
-          if not user or not User.verify_password(password, user.password_hash):
+          # Authentification
+          user = AuthLocal.authenticate(email, password)
+          
+          if user is None:
               return jsonify({'error': 'Identifiants invalides'}), 401
           
-          token = User.generate_token(
-              user.id, 
-              current_app.config['SECRET_KEY'],
-              expires_in=3600
+          # Génération du token
+          token = AuthLocal.generate_token(
+              user['id'],
+              user['username'],
+              user['email'],
+              user['role']
           )
           
           return jsonify({
               'token': token,
-              'user': user.to_dict()
+              'user': user
           }), 200
       
       @bp.route('/me', methods=['GET'])
       def me():
+          """Vérifie le token et retourne les infos utilisateur"""
           auth_header = request.headers.get('Authorization')
+          
           if not auth_header or not auth_header.startswith('Bearer '):
               return jsonify({'error': 'Token manquant'}), 401
           
           token = auth_header.split(' ')[1]
-          user_id = User.verify_token(token, current_app.config['SECRET_KEY'])
+          payload = AuthLocal.verify_token(token)
           
-          if not user_id:
+          if payload is None:
               return jsonify({'error': 'Token invalide ou expiré'}), 401
           
-          user = User.find_by_id(user_id)
-          if not user:
+          user = AuthLocal.get_user_by_id(payload['user_id'])
+          
+          if user is None:
               return jsonify({'error': 'Utilisateur non trouvé'}), 404
           
           return jsonify({
-              'user': user.to_dict()
+              'user': user,
+              'token': token
           }), 200
+
+  - chemin: templates/__init__.py
+    contenu: |
+      # Templates package
+
+  - chemin: templates/alpinejs.html
+    contenu: |
+      <!-- Alpine.js Stores Configuration -->
+      <script>
+          document.addEventListener('alpine:init', () => {
+              // Store d'authentification
+              Alpine.store('auth', {
+                  token: localStorage.getItem('token') || null,
+                  user: null,
+                  isAuthenticated: false,
+                  
+                  init() {
+                      if (this.token) {
+                          this.isAuthenticated = true;
+                      }
+                  },
+                  
+                  setAuth(token, user) {
+                      this.token = token;
+                      this.user = user;
+                      this.isAuthenticated = true;
+                      localStorage.setItem('token', token);
+                  },
+                  
+                  clearAuth() {
+                      this.token = null;
+                      this.user = null;
+                      this.isAuthenticated = false;
+                      localStorage.removeItem('token');
+                  }
+              });
+              
+              // Store UI global
+              Alpine.store('ui', {
+                  loading: false,
+                  error: null,
+                  success: null,
+                  
+                  setLoading(value) {
+                      this.loading = value;
+                  },
+                  
+                  setError(message) {
+                      this.error = message;
+                      this.success = null;
+                  },
+                  
+                  setSuccess(message) {
+                      this.success = message;
+                      this.error = null;
+                  },
+                  
+                  clearMessages() {
+                      this.error = null;
+                      this.success = null;
+                  }
+              });
+          });
+      </script>
 
   - chemin: templates/login.html
     contenu: |
@@ -180,134 +243,183 @@ fichiers:
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
           <title>Login - Marki</title>
-          <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+          
+          <!-- Tailwind CSS CDN -->
           <script src="https://cdn.tailwindcss.com"></script>
+          
+          <!-- Alpine.js -->
+          <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+          
+          <!-- Alpine.js Stores -->
+          {% include 'alpinejs.html' %}
+          
+          <style>
+              [x-cloak] { display: none !important; }
+          </style>
       </head>
-      <body class="bg-gray-100 min-h-screen flex items-center justify-center">
-          <div x-data="loginPage()" x-init="init()" class="w-full max-w-md">
-              <!-- Loading State -->
-              <div x-show="loading" class="text-center">
-                  <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-                  <p class="mt-4 text-gray-600">Connexion en cours...</p>
-              </div>
-      
-              <!-- Error Message -->
-              <div x-show="error" x-cloak class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-                  <span x-text="error"></span>
-              </div>
-      
-              <!-- Login Form -->
-              <div x-show="!loading && !checkingSession" x-cloak class="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8">
-                  <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Connexion</h2>
+      <body class="bg-gray-50 min-h-screen flex items-center justify-center"
+            x-data="loginPage()" 
+            x-init="initPage()">
+          
+          <div class="max-w-md w-full mx-4">
+              <!-- Card -->
+              <div class="bg-white rounded-lg shadow-md p-8">
+                  <!-- Header -->
+                  <div class="text-center mb-8">
+                      <h1 class="text-2xl font-bold text-gray-900">Connexion</h1>
+                      <p class="text-gray-600 mt-2">Accédez à votre espace Marki</p>
+                  </div>
                   
-                  <form @submit.prevent="handleLogin()">
-                      <div class="mb-4">
-                          <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                  <!-- Error Message -->
+                  <div x-show="error" 
+                       x-transition
+                       class="mb-4 p-4 bg-red-50 border border-red-200 rounded-md"
+                       x-cloak>
+                      <p class="text-red-700 text-sm" x-text="error"></p>
+                  </div>
+                  
+                  <!-- Loading State -->
+                  <div x-show="loading" class="text-center py-8" x-cloak>
+                      <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                      <p class="text-gray-600 mt-2">Connexion en cours...</p>
+                  </div>
+                  
+                  <!-- Login Form -->
+                  <form x-show="!loading" 
+                        @submit.prevent="handleLogin()"
+                        class="space-y-6"
+                        x-cloak>
+                      
+                      <!-- Email Field -->
+                      <div>
+                          <label for="email" class="block text-sm font-medium text-gray-700">
                               Email
                           </label>
-                          <input 
-                              x-model="form.email"
-                              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                              id="email" 
-                              type="email" 
-                              placeholder="admin@marki.fr"
-                              required
-                          >
+                          <input type="email" 
+                                 id="email"
+                                 x-model="form.email"
+                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                 placeholder="admin@marki.fr"
+                                 required>
                       </div>
                       
-                      <div class="mb-6">
-                          <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                      <!-- Password Field -->
+                      <div>
+                          <label for="password" class="block text-sm font-medium text-gray-700">
                               Mot de passe
                           </label>
-                          <input 
-                              x-model="form.password"
-                              class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                              id="password" 
-                              type="password" 
-                              placeholder="******************"
-                              required
-                          >
+                          <input type="password" 
+                                 id="password"
+                                 x-model="form.password"
+                                 class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                                 placeholder="••••••••"
+                                 required>
                       </div>
                       
-                      <div class="flex items-center justify-between">
-                          <button 
+                      <!-- Submit Button -->
+                      <button type="submit"
                               :disabled="loading"
-                              class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full disabled:opacity-50"
-                              type="submit"
-                          >
-                              <span x-show="!loading">Se connecter</span>
-                              <span x-show="loading">Connexion...</span>
-                          </button>
-                      </div>
+                              class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
+                          Se connecter
+                      </button>
                   </form>
+                  
+                  <!-- Footer -->
+                  <div class="mt-6 text-center">
+                      <p class="text-sm text-gray-600">
+                          Mot de passe oublié ? 
+                          <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
+                              Contactez l'administrateur
+                          </a>
+                      </p>
+                  </div>
               </div>
           </div>
-      
+          
+          <!-- Workflow Frontend -->
           <script>
-              document.addEventListener('alpine:init', () => {
-                  Alpine.store('auth', {
-                      token: null,
-                      user: null,
-                      isAuthenticated: false
+              async function authSubmit(email, password) {
+                  const response = await fetch('/api/auth/login', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ email, password })
                   });
                   
-                  Alpine.store('ui', {
-                      theme: 'light',
-                      sidebarOpen: false
+                  if (!response.ok) {
+                      const error = await response.json();
+                      throw new Error(error.error || 'Échec de connexion');
+                  }
+                  
+                  return await response.json();
+              }
+              
+              async function verifyToken(token) {
+                  const response = await fetch('/api/auth/me', {
+                      method: 'GET',
+                      headers: { 
+                          'Authorization': `Bearer ${token}`,
+                          'Content-Type': 'application/json'
+                      }
                   });
-              });
+                  
+                  if (!response.ok) {
+                      return null;
+                  }
+                  
+                  return await response.json();
+              }
               
               function loginPage() {
                   return {
+                      // Data Model
                       form: {
                           email: '',
                           password: ''
                       },
                       loading: false,
-                      checkingSession: true,
                       error: null,
                       
-                      async init() {
-                          // Workflow: login-initial-load
-                          // @action Vérifier la présence d'un token dans localStorage
+                      /**
+                       * @checkpoint dom-ready - body avec x-data="loginPage()" présent
+                       */
+                      async initPage() {
+                          /**
+                           * @checkpoint token-checked - token présent ou absent déterminé
+                           */
                           const token = localStorage.getItem('token');
                           
                           if (token) {
-                              // @checkpoint token-checked, token présent
-                              // @action Si token présent, valider via GET /api/auth/me
-                              try {
-                                  const response = await fetch('/api/auth/me', {
-                                      method: 'GET',
-                                      headers: {
-                                          'Authorization': `Bearer ${token}`
-                                      }
-                                  });
+                              /**
+                               * @checkpoint session-verified - réponse API reçue
+                               */
+                              const data = await verifyToken(token);
+                              
+                              if (data) {
+                                  // Session valide, mettre à jour le store
+                                  Alpine.store('auth').setAuth(data.token, data.user);
                                   
-                                  // @checkpoint session-verified, réponse API reçue
-                                  if (response.ok) {
-                                      const data = await response.json();
-                                      
-                                      // Mettre à jour le store auth
-                                      Alpine.store('auth').token = token;
-                                      Alpine.store('auth').user = data.user;
-                                      Alpine.store('auth').isAuthenticated = true;
-                                      
-                                      // @action Si session valide, rediriger vers /dashboard
-                                      // @checkpoint redirect-executed, navigation vers dashboard
-                                      window.location.href = '/dashboard';
-                                      return;
-                                  }
-                              } catch (err) {
-                                  console.log('Session invalide');
-                                  localStorage.removeItem('token');
+                                  /**
+                                   * @checkpoint redirect-executed - navigation vers dashboard
+                                   */
+                                  window.location.href = '/dashboard';
+                                  return;
+                              } else {
+                                  // Token invalide, le supprimer
+                                  Alpine.store('auth').clearAuth();
                               }
                           }
                           
-                          // @checkpoint token-checked, token absent
-                          // @checkpoint form-ready, champs username/password focusables
-                          this.checkingSession = false;
+                          /**
+                           * @checkpoint form-ready - champs email/password focusables
+                           */
+                          this.$nextTick(() => {
+                              this.$refs.emailInput?.focus();
+                          });
                       },
                       
+                      /**
+                       * @action Valider et soumettre le formulaire
+                       */
                       async handleLogin() {
                           // 1. Validate form
                           if (!this.form.email || !this.form.password) {
@@ -315,10 +427,9 @@ fichiers:
                               return;
                           }
                           
-                          // Validation email format
-                          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                          if (!emailRegex.test(this.form.email)) {
-                              this.error = 'Format email invalide';
+                          // Validation email
+                          if (!this.form.email.includes('@')) {
+                              this.error = 'Veuillez entrer un email valide';
                               return;
                           }
                           
@@ -328,31 +439,12 @@ fichiers:
                           
                           try {
                               // 3. Call auth API
-                              const response = await fetch('/api/auth/login', {
-                                  method: 'POST',
-                                  headers: { 'Content-Type': 'application/json' },
-                                  body: JSON.stringify({
-                                      email: this.form.email,
-                                      password: this.form.password
-                                  })
-                              });
-                              
-                              if (!response.ok) {
-                                  const errorData = await response.json();
-                                  throw new Error(errorData.error || 'Échec de connexion');
-                              }
-                              
-                              const data = await response.json();
+                              const data = await authSubmit(this.form.email, this.form.password);
                               
                               // 4. Store auth data
-                              Alpine.store('auth').token = data.token;
-                              Alpine.store('auth').user = data.user;
-                              Alpine.store('auth').isAuthenticated = true;
+                              Alpine.store('auth').setAuth(data.token, data.user);
                               
-                              // 5. Persist token
-                              localStorage.setItem('token', data.token);
-                              
-                              // 6. Redirect
+                              // 5. Redirect
                               window.location.href = '/dashboard';
                               
                           } catch (error) {
@@ -364,69 +456,67 @@ fichiers:
                   }
               }
           </script>
-          
-          <style>
-              [x-cloak] { display: none !important; }
-          </style>
       </body>
       </html>
 
-  - chemin: templates/workflows/login/auth-submit.html
+  - chemin: templates/workflows/__init__.py
     contenu: |
-      {% comment %}
-      Workflow Frontend: auth-submit
-      Description: Composant de soumission d'authentification réutilisable
-      Usage: {% include 'workflows/login/auth-submit.html' %}
-      {% endcomment %}
+      # Workflows templates package
+
+  - chemin: templates/workflows/login-initial-load.html
+    contenu: |
+      <!-- Workflow: login-initial-load -->
+      <!-- ID: login-initial-load -->
+      <!-- Type: frontend -->
+      <!-- Screen: login -->
+      <!-- Description: Charger la page de login et vérifier l'état d'authentification existant -->
       
       <script>
       /**
-       * Fonction utilitaire pour soumettre les identifiants d'authentification
-       * @param {string} email - Email de l'utilisateur
-       * @param {string} password - Mot de passe
-       * @returns {Promise<Object>} - Données de l'utilisateur et token
+       * Workflow: login-initial-load
+       * 
+       * @action Initialiser le DOM de la page login
+       * @checkpoint dom-ready, body avec x-data="loginPage()" présent
+       * 
+       * @action Vérifier la présence d'un token dans localStorage
+       * @checkpoint token-checked, token présent ou absent déterminé
+       * 
+       * @action Si token présent, valider via GET /api/auth/me (token dans header Authorization: Bearer)
+       * @checkpoint session-verified, réponse API reçue
+       * **Backend** : Utilise AuthLocal.verifyToken(token) pour valider le JWT
+       * 
+       * @action Si session valide, rediriger vers /dashboard
+       * @checkpoint redirect-executed, navigation vers dashboard
+       * 
+       * @action Afficher le formulaire de login prêt à l'emploi
+       * @checkpoint form-ready, champs username/password focusables
        */
-      async function authSubmit(email, password) {
-          const response = await fetch('/api/auth/login', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ email, password })
+      
+      async function verifyToken(token) {
+          const response = await fetch('/api/auth/me', {
+              method: 'GET',
+              headers: { 
+                  'Authorization': `Bearer ${token}`,
+                  'Content-Type': 'application/json'
+              }
           });
           
           if (!response.ok) {
-              const error = await response.json();
-              throw new Error(error.error || 'Échec de connexion');
+              return null;
           }
           
           return await response.json();
       }
       
-      /**
-       * Vérifie la validité d'un token existant
-       * @param {string} token - Token JWT stocké
-       * @returns {Promise<Object|null>} - Données utilisateur si valide, null sinon
-       */
-      async function verifyToken(token) {
-          try {
-              const response = await fetch('/api/auth/me', {
-                  method: 'GET',
-                  headers: { 'Authorization': `Bearer ${token}` }
-              });
-              
-              if (!response.ok) return null;
-              return await response.json();
-          } catch (err) {
-              return null;
-          }
-      }
+      // Ce workflow est intégré dans la méthode initPage() du composant loginPage
+      // dans templates/login.html
       </script>
 
   - chemin: logs/.gitkeep
     contenu: |
-      # Répertoire de logs
-      # Ce fichier permet de conserver le répertoire dans git
+      # Logs directory
 
-  - chemin: data/.gitkeep
+  - chemin: __init__.py
     contenu: |
-      # Répertoire de données SQLite
-      # Ce fichier permet de conserver le répertoire dans git
+      # Login cell package
+      # Cell: login - Authentication module for Marki application

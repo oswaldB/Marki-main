@@ -1,0 +1,57 @@
+<!-- Alpine.js Stores Configuration -->
+<script>
+    document.addEventListener('alpine:init', () => {
+        // Store d'authentification
+        Alpine.store('auth', {
+            token: localStorage.getItem('token') || null,
+            user: null,
+            isAuthenticated: false,
+            
+            init() {
+                if (this.token) {
+                    this.isAuthenticated = true;
+                }
+            },
+            
+            setAuth(token, user) {
+                this.token = token;
+                this.user = user;
+                this.isAuthenticated = true;
+                localStorage.setItem('token', token);
+            },
+            
+            clearAuth() {
+                this.token = null;
+                this.user = null;
+                this.isAuthenticated = false;
+                localStorage.removeItem('token');
+            }
+        });
+        
+        // Store UI global
+        Alpine.store('ui', {
+            loading: false,
+            error: null,
+            success: null,
+            
+            setLoading(value) {
+                this.loading = value;
+            },
+            
+            setError(message) {
+                this.error = message;
+                this.success = null;
+            },
+            
+            setSuccess(message) {
+                this.success = message;
+                this.error = null;
+            },
+            
+            clearMessages() {
+                this.error = null;
+                this.success = null;
+            }
+        });
+    });
+</script>

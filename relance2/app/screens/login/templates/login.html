@@ -4,134 +4,183 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Marki</title>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Alpine.js Stores -->
+    {% include 'alpinejs.html' %}
+    
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div x-data="loginPage()" x-init="init()" class="w-full max-w-md">
-        <!-- Loading State -->
-        <div x-show="loading" class="text-center">
-            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
-            <p class="mt-4 text-gray-600">Connexion en cours...</p>
-        </div>
-
-        <!-- Error Message -->
-        <div x-show="error" x-cloak class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-            <span x-text="error"></span>
-        </div>
-
-        <!-- Login Form -->
-        <div x-show="!loading && !checkingSession" x-cloak class="bg-white shadow-lg rounded-lg px-8 pt-6 pb-8">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Connexion</h2>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center"
+      x-data="loginPage()" 
+      x-init="initPage()">
+    
+    <div class="max-w-md w-full mx-4">
+        <!-- Card -->
+        <div class="bg-white rounded-lg shadow-md p-8">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-2xl font-bold text-gray-900">Connexion</h1>
+                <p class="text-gray-600 mt-2">Accédez à votre espace Marki</p>
+            </div>
             
-            <form @submit.prevent="handleLogin()">
-                <div class="mb-4">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+            <!-- Error Message -->
+            <div x-show="error" 
+                 x-transition
+                 class="mb-4 p-4 bg-red-50 border border-red-200 rounded-md"
+                 x-cloak>
+                <p class="text-red-700 text-sm" x-text="error"></p>
+            </div>
+            
+            <!-- Loading State -->
+            <div x-show="loading" class="text-center py-8" x-cloak>
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+                <p class="text-gray-600 mt-2">Connexion en cours...</p>
+            </div>
+            
+            <!-- Login Form -->
+            <form x-show="!loading" 
+                  @submit.prevent="handleLogin()"
+                  class="space-y-6"
+                  x-cloak>
+                
+                <!-- Email Field -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-gray-700">
                         Email
                     </label>
-                    <input 
-                        x-model="form.email"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="email" 
-                        type="email" 
-                        placeholder="admin@marki.fr"
-                        required
-                    >
+                    <input type="email" 
+                           id="email"
+                           x-model="form.email"
+                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                           placeholder="admin@marki.fr"
+                           required>
                 </div>
                 
-                <div class="mb-6">
-                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                <!-- Password Field -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-gray-700">
                         Mot de passe
                     </label>
-                    <input 
-                        x-model="form.password"
-                        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="password" 
-                        type="password" 
-                        placeholder="******************"
-                        required
-                    >
+                    <input type="password" 
+                           id="password"
+                           x-model="form.password"
+                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                           placeholder="••••••••"
+                           required>
                 </div>
                 
-                <div class="flex items-center justify-between">
-                    <button 
+                <!-- Submit Button -->
+                <button type="submit"
                         :disabled="loading"
-                        class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full disabled:opacity-50"
-                        type="submit"
-                    >
-                        <span x-show="!loading">Se connecter</span>
-                        <span x-show="loading">Connexion...</span>
-                    </button>
-                </div>
+                        class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed">
+                    Se connecter
+                </button>
             </form>
+            
+            <!-- Footer -->
+            <div class="mt-6 text-center">
+                <p class="text-sm text-gray-600">
+                    Mot de passe oublié ? 
+                    <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
+                        Contactez l'administrateur
+                    </a>
+                </p>
+            </div>
         </div>
     </div>
-
+    
+    <!-- Workflow Frontend -->
     <script>
-        document.addEventListener('alpine:init', () => {
-            Alpine.store('auth', {
-                token: null,
-                user: null,
-                isAuthenticated: false
+        async function authSubmit(email, password) {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
             });
             
-            Alpine.store('ui', {
-                theme: 'light',
-                sidebarOpen: false
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error || 'Échec de connexion');
+            }
+            
+            return await response.json();
+        }
+        
+        async function verifyToken(token) {
+            const response = await fetch('/api/auth/me', {
+                method: 'GET',
+                headers: { 
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
             });
-        });
+            
+            if (!response.ok) {
+                return null;
+            }
+            
+            return await response.json();
+        }
         
         function loginPage() {
             return {
+                // Data Model
                 form: {
                     email: '',
                     password: ''
                 },
                 loading: false,
-                checkingSession: true,
                 error: null,
                 
-                async init() {
-                    // Workflow: login-initial-load
-                    // @action Vérifier la présence d'un token dans localStorage
+                /**
+                 * @checkpoint dom-ready - body avec x-data="loginPage()" présent
+                 */
+                async initPage() {
+                    /**
+                     * @checkpoint token-checked - token présent ou absent déterminé
+                     */
                     const token = localStorage.getItem('token');
                     
                     if (token) {
-                        // @checkpoint token-checked, token présent
-                        // @action Si token présent, valider via GET /api/auth/me
-                        try {
-                            const response = await fetch('/api/auth/me', {
-                                method: 'GET',
-                                headers: {
-                                    'Authorization': `Bearer ${token}`
-                                }
-                            });
+                        /**
+                         * @checkpoint session-verified - réponse API reçue
+                         */
+                        const data = await verifyToken(token);
+                        
+                        if (data) {
+                            // Session valide, mettre à jour le store
+                            Alpine.store('auth').setAuth(data.token, data.user);
                             
-                            // @checkpoint session-verified, réponse API reçue
-                            if (response.ok) {
-                                const data = await response.json();
-                                
-                                // Mettre à jour le store auth
-                                Alpine.store('auth').token = token;
-                                Alpine.store('auth').user = data.user;
-                                Alpine.store('auth').isAuthenticated = true;
-                                
-                                // @action Si session valide, rediriger vers /dashboard
-                                // @checkpoint redirect-executed, navigation vers dashboard
-                                window.location.href = '/dashboard';
-                                return;
-                            }
-                        } catch (err) {
-                            console.log('Session invalide');
-                            localStorage.removeItem('token');
+                            /**
+                             * @checkpoint redirect-executed - navigation vers dashboard
+                             */
+                            window.location.href = '/dashboard';
+                            return;
+                        } else {
+                            // Token invalide, le supprimer
+                            Alpine.store('auth').clearAuth();
                         }
                     }
                     
-                    // @checkpoint token-checked, token absent
-                    // @checkpoint form-ready, champs username/password focusables
-                    this.checkingSession = false;
+                    /**
+                     * @checkpoint form-ready - champs email/password focusables
+                     */
+                    this.$nextTick(() => {
+                        this.$refs.emailInput?.focus();
+                    });
                 },
                 
+                /**
+                 * @action Valider et soumettre le formulaire
+                 */
                 async handleLogin() {
                     // 1. Validate form
                     if (!this.form.email || !this.form.password) {
@@ -139,10 +188,9 @@
                         return;
                     }
                     
-                    // Validation email format
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(this.form.email)) {
-                        this.error = 'Format email invalide';
+                    // Validation email
+                    if (!this.form.email.includes('@')) {
+                        this.error = 'Veuillez entrer un email valide';
                         return;
                     }
                     
@@ -152,31 +200,12 @@
                     
                     try {
                         // 3. Call auth API
-                        const response = await fetch('/api/auth/login', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                email: this.form.email,
-                                password: this.form.password
-                            })
-                        });
-                        
-                        if (!response.ok) {
-                            const errorData = await response.json();
-                            throw new Error(errorData.error || 'Échec de connexion');
-                        }
-                        
-                        const data = await response.json();
+                        const data = await authSubmit(this.form.email, this.form.password);
                         
                         // 4. Store auth data
-                        Alpine.store('auth').token = data.token;
-                        Alpine.store('auth').user = data.user;
-                        Alpine.store('auth').isAuthenticated = true;
+                        Alpine.store('auth').setAuth(data.token, data.user);
                         
-                        // 5. Persist token
-                        localStorage.setItem('token', data.token);
-                        
-                        // 6. Redirect
+                        // 5. Redirect
                         window.location.href = '/dashboard';
                         
                     } catch (error) {
@@ -188,9 +217,5 @@
             }
         }
     </script>
-    
-    <style>
-        [x-cloak] { display: none !important; }
-    </style>
 </body>
 </html>

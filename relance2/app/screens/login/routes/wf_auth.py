@@ -1,48 +1,62 @@
 from flask import Blueprint, request, jsonify, current_app
-from models.user import User
+from models.auth import AuthLocal
 
 bp = Blueprint('wf_auth', __name__, url_prefix='/api/auth')
 
 @bp.route('/login', methods=['POST'])
 def login():
+    """Authentifie un utilisateur et retourne un token JWT"""
     data = request.get_json()
+    
+    if not data or 'email' not in data or 'password' not in data:
+        return jsonify({'error': 'Email et mot de passe requis'}), 400
+    
     email = data.get('email')
     password = data.get('password')
     
-    if not email or not password:
-        return jsonify({'error': 'Email et mot de passe requis'}), 400
+    # Validation email basique
+    if '@' not in email:
+        return jsonify({'error': 'Format email invalide'}), 400
     
-    user = User.find_by_email(email)
-    if not user or not User.verify_password(password, user.password_hash):
+    # Authentification
+    user = AuthLocal.authenticate(email, password)
+    
+    if user is None:
         return jsonify({'error': 'Identifiants invalides'}), 401
     
-    token = User.generate_token(
-        user.id, 
-        current_app.config['SECRET_KEY'],
-        expires_in=3600
+    # Génération du token
+    token = AuthLocal.generate_token(
+        user['id'],
+        user['username'],
+        user['email'],
+        user['role']
     )
     
     return jsonify({
         'token': token,
-        'user': user.to_dict()
+        'user': user
     }), 200
 
 @bp.route('/me', methods=['GET'])
 def me():
+    """Vérifie le token et retourne les infos utilisateur"""
     auth_header = request.headers.get('Authorization')
+    
     if not auth_header or not auth_header.startswith('Bearer '):
         return jsonify({'error': 'Token manquant'}), 401
     
     token = auth_header.split(' ')[1]
-    user_id = User.verify_token(token, current_app.config['SECRET_KEY'])
+    payload = AuthLocal.verify_token(token)
     
-    if not user_id:
+    if payload is None:
         return jsonify({'error': 'Token invalide ou expiré'}), 401
     
-    user = User.find_by_id(user_id)
-    if not user:
+    user = AuthLocal.get_user_by_id(payload['user_id'])
+    
+    if user is None:
         return jsonify({'error': 'Utilisateur non trouvé'}), 404
     
     return jsonify({
-        'user': user.to_dict()
+        'user': user,
+        'token': token
     }), 200
