@@ -1,5 +1,0 @@
-"""Package middleware."""
-
-from .auth import generate_token, validate_token
-
-__all__ = ['generate_token', 'validate_token']

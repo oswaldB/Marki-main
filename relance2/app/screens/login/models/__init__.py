@@ -1,4 +1,4 @@
-"""Package models - Exporte AuthModel, AuthError, User."""
+"""Modèles pour l'authentification."""
 
 from .auth import AuthModel, AuthError, User
 
