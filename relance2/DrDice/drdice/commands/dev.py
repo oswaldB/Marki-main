@@ -333,6 +333,29 @@ def dev(project_dir: str | None, cell_name: str | None, skip_tests: bool,
                             "errors": test_errors,
                             "yaml_path": yaml_path
                         })
+                elif not auto_fix and yaml_path:
+                    # Proposition interactive de correction immédiate
+                    console.print()
+                    if Confirm.ask(f"🔧 Corriger {cell.name} maintenant?", default=True):
+                        console.print("[blue]🔨 Tentative de correction...")
+                        if _auto_fix_cell(cell, project, yaml_path, test_errors):
+                            console.print(f"[green]✅ {cell.name}: CORRECTION OK")
+                            test_failed -= 1
+                            test_passed += 1
+                        else:
+                            console.print(f"[red]❌ {cell.name}: Correction échouée")
+                            failed_cells.append({
+                                "cell": cell,
+                                "errors": test_errors,
+                                "yaml_path": yaml_path
+                            })
+                    else:
+                        # Ajouté à la liste pour correction finale possible
+                        failed_cells.append({
+                            "cell": cell,
+                            "errors": test_errors,
+                            "yaml_path": yaml_path
+                        })
         else:
             test_skipped += 1
             console.print("[yellow]⚠️ Tests sautés (--skip-tests)")
@@ -364,11 +387,13 @@ def dev(project_dir: str | None, cell_name: str | None, skip_tests: bool,
                 console.print(f"[cyan]🔧 Correction de: {cell.name}[/cyan]")
                 if _auto_fix_cell(cell, project, item["yaml_path"], item["errors"]):
                     console.print(f"[green]✅ {cell.name}: CORRECTION OK")
+                    test_failed -= 1
+                    test_passed += 1
                 else:
                     console.print(f"[red]❌ {cell.name}: Correction échouée")
 
-    # Demander création de devok.md pour les cells OK
-    if dev_passed > 0:
+    # Demander création de devok.md UNIQUEMENT si tous les tests sont OK
+    if dev_passed > 0 and (skip_tests or test_failed == 0):
         console.print()
         if Confirm.ask("Créer devok.md pour les cells développées?", default=True):
             for cell in cells:
