@@ -1,12 +1,7 @@
-from flask import Blueprint, render_template
+from flask import render_template
+from . import login_bp
 
-main_bp = Blueprint('main', __name__)
-
-@main_bp.route('/')
-@main_bp.route('/login')
-def login():
+@login_bp.route('/login')
+def login_page():
+    """Affiche la page de login"""
     return render_template('index.html')
-
-@main_bp.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html')

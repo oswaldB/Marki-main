@@ -211,7 +211,8 @@ document.addEventListener('alpine:init', () => {{
                 "Définir page_title, active_page, content. "
                 "x-data avec le nom de la cell, x-init=init(). "
                 "Le layout inclut déjà Alpine.js. "
-                "IMPORTANT: AUCUN TAG <script> DANS CE FICHIER - tout JavaScript doit être dans alpinejs.html"
+                "IMPORTANT: AUCUN TAG <script> DANS CE FICHIER - tout JavaScript doit être dans alpinejs.html. "
+                "IMPORTANT: Le développement des mockups en index.html doit se faire en PIXEL PERFECT - reproduire fidèlement les maquettes visuelles."
             ),
             "specs_context": index_spec[:2000],
             "contenu": f"""{{% extends 'layouts/layout_app.html' %}}

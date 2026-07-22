@@ -1,7 +1,8 @@
-from flask import Flask
-from .index import main_bp
-from .wf_auth import wf_auth_bp
+from flask import Blueprint
 
-def init_app(app: Flask):
-    app.register_blueprint(main_bp)
-    app.register_blueprint(wf_auth_bp)
+# Blueprint principal de la cell login
+login_bp = Blueprint('login', __name__, template_folder='../templates')
+
+# Import des routes
+from . import index
+from . import wf_auth

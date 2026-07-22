@@ -1,15 +1,36 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Marki{% endblock %}</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    {% block head %}{% endblock %}
-</head>
-<body class="bg-gray-50 text-gray-900">
-    {% block content %}{% endblock %}
-    {% block scripts %}{% endblock %}
-</body>
-</html>
+<!-- Alpine.js Stores et Initialisation -->
+<script>
+    document.addEventListener('alpine:init', () => {
+        // Store d'authentification
+        Alpine.store('auth', {
+            token: localStorage.getItem('token') || null,
+            user: null,
+            isAuthenticated: false,
+            
+            init() {
+                if (this.token) {
+                    this.isAuthenticated = true;
+                }
+            },
+            
+            logout() {
+                this.token = null;
+                this.user = null;
+                this.isAuthenticated = false;
+                localStorage.removeItem('token');
+            }
+        });
+        
+        // Store UI global
+        Alpine.store('ui', {
+            theme: 'dark',
+            loading: false,
+            toast: null,
+            
+            showToast(message, type = 'info') {
+                this.toast = { message, type };
+                setTimeout(() => this.toast = null, 3000);
+            }
+        });
+    });
+</script>
