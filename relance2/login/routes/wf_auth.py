@@ -2,20 +2,22 @@
 import sqlite3
 import jwt
 import datetime
-from flask import Blueprint, request, jsonify, current_app
-from functools import wraps
-
-bp = Blueprint('login_wf_auth', __name__)
+import os
+from flask import request, jsonify
+from .. import bp
 
 # Configuration JWT
-JWT_SECRET = 'your-secret-key-change-in-production'
+JWT_SECRET = os.environ.get('JWT_SECRET', 'dev-secret-key-change-in-production')
 JWT_ALGORITHM = 'HS256'
 JWT_EXPIRATION_HOURS = 24
+
+# Database path - use absolute path or environment variable
+DATABASE_PATH = os.environ.get('DATABASE_PATH', os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'marki.db'))
 
 
 def get_db_connection():
     """Get SQLite database connection."""
-    conn = sqlite3.connect('database.db')
+    conn = sqlite3.connect(DATABASE_PATH)
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -43,29 +45,6 @@ def verify_token(token):
         return None
 
 
-def token_required(f):
-    """Decorator to protect routes with JWT token."""
-    @wraps(f)
-    def decorated(*args, **kwargs):
-        token = None
-        if 'Authorization' in request.headers:
-            auth_header = request.headers['Authorization']
-            try:
-                token = auth_header.split(' ')[1]
-            except IndexError:
-                return jsonify({'error': 'Token format invalid'}), 401
-        
-        if not token:
-            return jsonify({'error': 'Token manquant'}), 401
-        
-        payload = verify_token(token)
-        if not payload:
-            return jsonify({'error': 'Token invalide ou expiré'}), 401
-        
-        return f(payload, *args, **kwargs)
-    return decorated
-
-
 @bp.route('/api/auth/login', methods=['POST'])
 def auth_login():
     """
@@ -90,41 +69,46 @@ def auth_login():
     conn = get_db_connection()
     cursor = conn.cursor()
     
-    # Check user credentials
-    cursor.execute(
-        'SELECT id, username, email, role, password_hash FROM users WHERE email = ?',
-        (email,)
-    )
-    user = cursor.fetchone()
-    conn.close()
-    
-    if not user:
-        return jsonify({'error': 'Identifiants invalides'}), 401
-    
-    # Verify password (simple comparison for demo - use bcrypt in production)
-    import hashlib
-    password_hash = hashlib.sha256(password.encode()).hexdigest()
-    
-    if password_hash != user['password_hash']:
-        return jsonify({'error': 'Identifiants invalides'}), 401
-    
-    # Generate token
-    token = generate_token(
-        user_id=user['id'],
-        username=user['username'],
-        email=user['email'],
-        role=user['role']
-    )
-    
-    return jsonify({
-        'token': token,
-        'user': {
-            'id': user['id'],
-            'username': user['username'],
-            'email': user['email'],
-            'role': user['role']
-        }
-    }), 200
+    try:
+        # Check user credentials
+        cursor.execute(
+            'SELECT id, username, email, role, password_hash FROM users WHERE email = ?',
+            (email,)
+        )
+        user = cursor.fetchone()
+        
+        if not user:
+            return jsonify({'error': 'Identifiants invalides'}), 401
+        
+        # Verify password (SHA-256 hash comparison)
+        import hashlib
+        password_hash = hashlib.sha256(password.encode()).hexdigest()
+        
+        if password_hash != user['password_hash']:
+            return jsonify({'error': 'Identifiants invalides'}), 401
+        
+        # Generate token
+        token = generate_token(
+            user_id=user['id'],
+            username=user['username'],
+            email=user['email'],
+            role=user['role']
+        )
+        
+        return jsonify({
+            'token': token,
+            'user': {
+                'id': user['id'],
+                'username': user['username'],
+                'email': user['email'],
+                'role': user['role']
+            }
+        }), 200
+        
+    except sqlite3.Error as e:
+        return jsonify({'error': f'Erreur base de données: {str(e)}'}), 500
+    finally:
+        conn.close()
 
 
 @bp.route('/api/auth/me', methods=['GET'])

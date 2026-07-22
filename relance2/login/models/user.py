@@ -1,6 +1,10 @@
 """User model for authentication."""
 import sqlite3
 import hashlib
+import os
+
+# Database path - use absolute path or environment variable
+DATABASE_PATH = os.environ.get('DATABASE_PATH', os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), 'marki.db'))
 
 
 class User:
@@ -16,7 +20,7 @@ class User:
     @staticmethod
     def get_db_connection():
         """Get SQLite database connection."""
-        conn = sqlite3.connect('database.db')
+        conn = sqlite3.connect(DATABASE_PATH)
         conn.row_factory = sqlite3.Row
         return conn
     
@@ -25,44 +29,48 @@ class User:
         """Find user by email address."""
         conn = cls.get_db_connection()
         cursor = conn.cursor()
-        cursor.execute(
-            'SELECT id, username, email, role, password_hash FROM users WHERE email = ?',
-            (email,)
-        )
-        row = cursor.fetchone()
-        conn.close()
-        
-        if row:
-            return cls(
-                id=row['id'],
-                username=row['username'],
-                email=row['email'],
-                role=row['role'],
-                password_hash=row['password_hash']
+        try:
+            cursor.execute(
+                'SELECT id, username, email, role, password_hash FROM users WHERE email = ?',
+                (email,)
             )
-        return None
+            row = cursor.fetchone()
+            
+            if row:
+                return cls(
+                    id=row['id'],
+                    username=row['username'],
+                    email=row['email'],
+                    role=row['role'],
+                    password_hash=row['password_hash']
+                )
+            return None
+        finally:
+            conn.close()
     
     @classmethod
     def find_by_id(cls, user_id):
         """Find user by ID."""
         conn = cls.get_db_connection()
         cursor = conn.cursor()
-        cursor.execute(
-            'SELECT id, username, email, role, password_hash FROM users WHERE id = ?',
-            (user_id,)
-        )
-        row = cursor.fetchone()
-        conn.close()
-        
-        if row:
-            return cls(
-                id=row['id'],
-                username=row['username'],
-                email=row['email'],
-                role=row['role'],
-                password_hash=row['password_hash']
+        try:
+            cursor.execute(
+                'SELECT id, username, email, role, password_hash FROM users WHERE id = ?',
+                (user_id,)
             )
-        return None
+            row = cursor.fetchone()
+            
+            if row:
+                return cls(
+                    id=row['id'],
+                    username=row['username'],
+                    email=row['email'],
+                    role=row['role'],
+                    password_hash=row['password_hash']
+                )
+            return None
+        finally:
+            conn.close()
     
     def check_password(self, password):
         """Verify password against stored hash."""

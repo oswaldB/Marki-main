@@ -1,7 +1,6 @@
 """Main routes for login page."""
-from flask import Blueprint, render_template
-
-bp = Blueprint('login', __name__, template_folder='../templates')
+from flask import render_template
+from .. import bp
 
 
 @bp.route('/login', methods=['GET'])

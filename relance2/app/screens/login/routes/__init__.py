@@ -1,8 +1,7 @@
-"""Routes pour la cellule login."""
-from flask import Blueprint
+from flask import Flask
+from .index import main_bp
+from .wf_auth import wf_auth_bp
 
-# Création du blueprint auth
-auth_bp = Blueprint('auth', __name__, url_prefix='/api/auth')
-
-# Import des routes après création du blueprint pour éviter les imports circulaires
-from . import auth
+def init_app(app: Flask):
+    app.register_blueprint(main_bp)
+    app.register_blueprint(wf_auth_bp)
