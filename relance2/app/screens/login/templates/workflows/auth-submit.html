@@ -1,0 +1,70 @@
+{# Workflow: auth-submit - Authentication submission #}
+{# This template is included in login.html #}
+{# Alpine.js component: authSubmit() #}
+
+<script>
+function authSubmitComponent() {
+    return {
+        form: {
+            username: '',
+            password: ''
+        },
+        loading: false,
+        error: null,
+        
+        async submit() {
+            this.error = null;
+            
+            // Validation
+            if (!this.form.username || !this.form.password) {
+                this.error = 'Veuillez remplir tous les champs';
+                return;
+            }
+            
+            this.loading = true;
+            
+            try {
+                const data = await authSubmit(this.form.username, this.form.password);
+                
+                // Store token and user data
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                
+                // Update Alpine stores
+                if (Alpine.store('auth')) {
+                    Alpine.store('auth').token = data.token;
+                    Alpine.store('auth').user = data.user;
+                    Alpine.store('auth').isAuthenticated = true;
+                }
+                
+                // Redirect
+                window.location.href = '/dashboard';
+                
+            } catch (err) {
+                this.error = err.message;
+            } finally {
+                this.loading = false;
+            }
+        }
+    };
+}
+
+// Standalone function for programmatic calls
+async function authSubmit(username, password) {
+    const response = await fetch('/login/api/auth/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+    });
+    
+    const data = await response.json();
+    
+    if (!response.ok || !data.success) {
+        throw new Error(data.error || 'Échec de connexion');
+    }
+    
+    return data;
+}
+</script>

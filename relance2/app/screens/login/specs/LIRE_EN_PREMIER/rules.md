@@ -32,6 +32,16 @@
 
 **PAS D'ORM.** Utiliser uniquement `sqlite3` du standard library Python avec des requêtes SQL brutes.
 
+### RÈGLE D'OR 4 : Mockups PIXELS PERFECT
+
+**LES MOCKUPS SONT PIXELS PERFECT. PAS D'IMPROVISATION.**
+
+- Les mockups HTML dans `specs/mockups/` doivent correspondre EXACTEMENT aux specs visuelles
+- Pas de modification arbitraire des couleurs, tailles, espacements, ou typographie
+- Pas d'ajout de fonctionnalités non prévues dans les specs
+- Respect strict du styleguide (couleurs Tailwind, tailles de police, marges)
+- Les états des mockups doivent être fidèles aux workflows définis
+
 ---
 
 ## 📁 Structure d'une Cell

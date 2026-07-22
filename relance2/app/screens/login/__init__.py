@@ -1,7 +1,13 @@
-"""Blueprint pour la cell login."""
+"""Login screen blueprint."""
 from flask import Blueprint
 
-bp = Blueprint('login', __name__, url_prefix='/login')
+bp = Blueprint(
+    'login',
+    __name__,
+    url_prefix='/login',
+    template_folder='templates',
+    static_folder='static'
+)
 
-# Importer les routes après la création du blueprint
-from .routes import index, logout, auth_login, auth_logout, auth_me, auth_verify
+# Import routes after blueprint creation to avoid circular imports
+from .routes import index, auth_login, auth_logout, auth_me, auth_verify

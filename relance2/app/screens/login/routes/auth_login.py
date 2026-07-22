@@ -1,35 +1,38 @@
-"""Route API pour l'authentification."""
+"""API route for user authentication."""
 from flask import request, jsonify
-from datetime import datetime, timedelta
 from .. import bp
-from ..models.user import User
-from ..models.session import Session
-from app.middleware.auth.jwt_utils import generate_token
+from ..models.user import AuthModel
+from ..models.session import SessionModel
+from ....middleware.auth.jwt_utils import generate_token
+from datetime import datetime, timedelta
 
 
 @bp.route('/api/auth/login', methods=['POST'])
 def auth_login():
-    """Authentifie un utilisateur et crée une session."""
+    """Authenticate user and create session."""
     data = request.get_json()
     
-    username = data.get('username', '').strip()
+    if not data:
+        return jsonify({'success': False, 'error': 'Données JSON requises'}), 400
+    
+    # Support both username and email fields
+    username = data.get('username', '').strip() or data.get('email', '').strip()
     password = data.get('password', '')
     
     if not username or not password:
         return jsonify({'success': False, 'error': 'Identifiants requis'}), 400
     
-    # Authentification
-    user = User.authenticate(username, password)
-    
+    # Authenticate user
+    user = AuthModel.authenticate(username, password)
     if not user:
         return jsonify({'success': False, 'error': 'Identifiants invalides'}), 401
     
-    # Générer token JWT
+    # Generate JWT token
     token = generate_token(user.id, user.username, user.role)
     
-    # Créer session en base
+    # Create session
     expires_at = (datetime.utcnow() + timedelta(hours=24)).isoformat()
-    Session.create(
+    SessionModel.create(
         user_id=user.id,
         token=token,
         expires_at=expires_at,
@@ -37,8 +40,8 @@ def auth_login():
         user_agent=request.headers.get('User-Agent')
     )
     
-    # Mettre à jour last_login
-    User.update_last_login(user.id)
+    # Update last login
+    AuthModel.update_last_login(user.id)
     
     return jsonify({
         'success': True,

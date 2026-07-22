@@ -1,8 +1,8 @@
-# Spec Modèle : User
+# Modèle : User
 
 ## Description
 
-Modèle utilisateur pour l'authentification et la gestion des comptes. Utilise sqlite3 pur sans ORM.
+Représente un utilisateur de l'application. Gère l'authentification et les informations du compte.
 
 ## Table SQL
 
@@ -21,16 +21,18 @@ CREATE TABLE users (
 );
 ```
 
-## Classe User
+## Dataclass User
+
+Classe simple représentant un utilisateur.
 
 ### Attributs
 
-| Attribut | Type | Description |
-|----------|------|-------------|
+| Nom | Type | Description |
+|-----|------|-------------|
 | `id` | str | Identifiant unique (user_xxx) |
 | `username` | str | Nom d'utilisateur unique |
 | `email` | str | Email de l'utilisateur |
-| `password_hash` | str | Hash du mot de passe (bcrypt) |
+| `password_hash` | str | Hash bcrypt du mot de passe |
 | `role` | str | Rôle : 'admin' ou 'user' |
 | `is_active` | bool | Compte actif ou désactivé |
 | `last_login` | str | Date ISO 8601 dernière connexion |
@@ -38,18 +40,60 @@ CREATE TABLE users (
 | `created_at` | str | Date ISO 8601 création |
 | `updated_at` | str | Date ISO 8601 mise à jour |
 
+### Méthodes
+
+#### `to_dict() -> dict`
+
+Convertit en dictionnaire pour JSON.
+
+```python
+return {
+    'id': self.id,
+    'username': self.username,
+    'email': self.email,
+    'role': self.role,
+    'is_active': self.is_active
+}
+```
+
+#### `to_dict_secure() -> dict`
+
+Version sans données sensibles pour le frontend.
+
+```python
+return {
+    'id': self.id,
+    'username': self.username,
+    'email': self.email,
+    'role': self.role
+}
+```
+
+## Classe AuthModel
+
+Logique métier d'authentification. Pattern séparé de la dataclass.
+
+### Imports
+
+```python
+import sqlite3
+from typing import Optional
+from app.data import get_db
+import bcrypt
+```
+
 ### Méthodes de classe
 
 #### `from_row(row: sqlite3.Row) -> Optional[User]`
 
-Crée une instance User depuis une ligne de résultat SQL.
+Crée un User depuis une ligne sqlite3.
 
 ```python
 @classmethod
-def from_row(cls, row: sqlite3.Row) -> Optional['User']:
+def from_row(cls, row: sqlite3.Row) -> Optional[User]:
     if not row:
         return None
-    return cls(
+    return User(
         id=row['id'],
         username=row['username'],
         email=row['email'],
@@ -65,11 +109,11 @@ def from_row(cls, row: sqlite3.Row) -> Optional['User']:
 
 #### `get_by_id(user_id: str) -> Optional[User]`
 
-Récupère un utilisateur par son ID.
+Récupère un utilisateur par ID.
 
 ```python
 @classmethod
-def get_by_id(cls, user_id: str) -> Optional['User']:
+def get_by_id(cls, user_id: str) -> Optional[User]:
     db = get_db()
     cursor = db.execute(
         "SELECT * FROM users WHERE id = ? AND is_active = 1",
@@ -80,11 +124,11 @@ def get_by_id(cls, user_id: str) -> Optional['User']:
 
 #### `get_by_username(username: str) -> Optional[User]`
 
-Récupère un utilisateur par son nom d'utilisateur.
+Récupère un utilisateur par nom d'utilisateur.
 
 ```python
 @classmethod
-def get_by_username(cls, username: str) -> Optional['User']:
+def get_by_username(cls, username: str) -> Optional[User]:
     db = get_db()
     cursor = db.execute(
         "SELECT * FROM users WHERE username = ? AND is_active = 1",
@@ -93,29 +137,13 @@ def get_by_username(cls, username: str) -> Optional['User']:
     return cls.from_row(cursor.fetchone())
 ```
 
-#### `get_by_email(email: str) -> Optional[User]`
-
-Récupère un utilisateur par son email.
-
-```python
-@classmethod
-def get_by_email(cls, email: str) -> Optional['User']:
-    db = get_db()
-    cursor = db.execute(
-        "SELECT * FROM users WHERE email = ? AND is_active = 1",
-        (email.lower().strip(),)
-    )
-    return cls.from_row(cursor.fetchone())
-```
-
 #### `authenticate(username: str, password: str) -> Optional[User]`
 
-Authentifie un utilisateur avec son nom d'utilisateur et mot de passe.
+Authentifie un utilisateur.
 
 ```python
 @classmethod
-def authenticate(cls, username: str, password: str) -> Optional['User']:
-    import bcrypt
+def authenticate(cls, username: str, password: str) -> Optional[User]:
     user = cls.get_by_username(username)
     if not user:
         return None
@@ -126,7 +154,7 @@ def authenticate(cls, username: str, password: str) -> Optional['User']:
 
 #### `update_last_login(user_id: str) -> bool`
 
-Met à jour la date de dernière connexion et incrémente le compteur.
+Met à jour la dernière connexion.
 
 ```python
 @classmethod
@@ -142,44 +170,6 @@ def update_last_login(cls, user_id: str) -> bool:
     db.commit()
     return True
 ```
-
-### Méthodes d'instance
-
-#### `to_dict() -> dict`
-
-Convertit l'utilisateur en dictionnaire (pour JSON).
-
-```python
-def to_dict(self) -> dict:
-    return {
-        'id': self.id,
-        'username': self.username,
-        'email': self.email,
-        'role': self.role,
-        'is_active': self.is_active
-    }
-```
-
-#### `to_dict_secure() -> dict`
-
-Version sans données sensibles pour le frontend.
-
-```python
-def to_dict_secure(self) -> dict:
-    return {
-        'id': self.id,
-        'username': self.username,
-        'email': self.email,
-        'role': self.role
-    }
-```
-
-## Dépendances
-
-- `app.data import get_db`
-- `bcrypt` (pour la vérification des mots de passe)
-- `typing.Optional`
-- `sqlite3`
 
 ## Fichier de sortie
 

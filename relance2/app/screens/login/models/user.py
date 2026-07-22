@@ -1,34 +1,63 @@
-"""Modèle utilisateur pour l'authentification."""
+"""User model for authentication."""
+from dataclasses import dataclass
+from typing import Optional
 import sqlite3
 import bcrypt
-from datetime import datetime
-from typing import Optional
-from app.data import get_db
+import sys
+import os
+
+# Add app to path for imports
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(__file__)))))
+from data import get_db
 
 
+@dataclass
 class User:
-    """Modèle utilisateur pour l'authentification et la gestion des comptes."""
+    """User dataclass representing a user account."""
+    id: str
+    username: str
+    email: str
+    password_hash: str
+    role: str
+    is_active: bool
+    last_login: Optional[str] = None
+    login_count: int = 0
+    created_at: str = ""
+    updated_at: str = ""
     
-    def __init__(self, id: str, username: str, email: str, password_hash: str,
-                 role: str = 'user', is_active: bool = True, last_login: str = None,
-                 login_count: int = 0, created_at: str = None, updated_at: str = None):
-        self.id = id
-        self.username = username
-        self.email = email
-        self.password_hash = password_hash
-        self.role = role
-        self.is_active = is_active
-        self.last_login = last_login
-        self.login_count = login_count
-        self.created_at = created_at
-        self.updated_at = updated_at
+    def to_dict(self) -> dict:
+        """Convert user to dictionary (full)."""
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'role': self.role,
+            'is_active': self.is_active,
+            'last_login': self.last_login,
+            'login_count': self.login_count,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
+        }
+    
+    def to_dict_secure(self) -> dict:
+        """Convert user to dictionary (without sensitive data)."""
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'role': self.role
+        }
+
+
+class AuthModel:
+    """Business logic for user authentication."""
     
     @classmethod
-    def from_row(cls, row: sqlite3.Row) -> Optional['User']:
-        """Crée une instance User depuis une ligne de résultat SQL."""
+    def from_row(cls, row: sqlite3.Row) -> Optional[User]:
+        """Create User from database row."""
         if not row:
             return None
-        return cls(
+        return User(
             id=row['id'],
             username=row['username'],
             email=row['email'],
@@ -42,8 +71,8 @@ class User:
         )
     
     @classmethod
-    def get_by_id(cls, user_id: str) -> Optional['User']:
-        """Récupère un utilisateur par son ID."""
+    def get_by_id(cls, user_id: str) -> Optional[User]:
+        """Get user by ID."""
         db = get_db()
         cursor = db.execute(
             "SELECT * FROM users WHERE id = ? AND is_active = 1",
@@ -52,8 +81,8 @@ class User:
         return cls.from_row(cursor.fetchone())
     
     @classmethod
-    def get_by_username(cls, username: str) -> Optional['User']:
-        """Récupère un utilisateur par son nom d'utilisateur."""
+    def get_by_username(cls, username: str) -> Optional[User]:
+        """Get user by username."""
         db = get_db()
         cursor = db.execute(
             "SELECT * FROM users WHERE username = ? AND is_active = 1",
@@ -62,54 +91,35 @@ class User:
         return cls.from_row(cursor.fetchone())
     
     @classmethod
-    def get_by_email(cls, email: str) -> Optional['User']:
-        """Récupère un utilisateur par son email."""
-        db = get_db()
-        cursor = db.execute(
-            "SELECT * FROM users WHERE email = ? AND is_active = 1",
-            (email.lower().strip(),)
-        )
-        return cls.from_row(cursor.fetchone())
-    
-    @classmethod
-    def authenticate(cls, username: str, password: str) -> Optional['User']:
-        """Authentifie un utilisateur avec son nom d'utilisateur et mot de passe."""
+    def authenticate(cls, username: str, password: str) -> Optional[User]:
+        """Authenticate user with username and password."""
         user = cls.get_by_username(username)
         if not user:
             return None
-        if bcrypt.checkpw(password.encode('utf-8'), user.password_hash.encode('utf-8')):
-            return user
+        
+        # Check password with bcrypt
+        try:
+            if bcrypt.checkpw(password.encode('utf-8'), user.password_hash.encode('utf-8')):
+                return user
+        except Exception:
+            pass
         return None
     
     @classmethod
     def update_last_login(cls, user_id: str) -> bool:
-        """Met à jour la date de dernière connexion et incrémente le compteur."""
+        """Update user's last login timestamp and increment count."""
+        from datetime import datetime
         db = get_db()
-        now = datetime.now().isoformat()
         db.execute(
             """UPDATE users 
                SET last_login = ?, login_count = login_count + 1, updated_at = ?
                WHERE id = ?""",
-            (now, now, user_id)
+            (datetime.now().isoformat(), datetime.now().isoformat(), user_id)
         )
         db.commit()
         return True
     
-    def to_dict(self) -> dict:
-        """Convertit l'utilisateur en dictionnaire (pour JSON)."""
-        return {
-            'id': self.id,
-            'username': self.username,
-            'email': self.email,
-            'role': self.role,
-            'is_active': self.is_active
-        }
-    
-    def to_dict_secure(self) -> dict:
-        """Version sans données sensibles pour le frontend."""
-        return {
-            'id': self.id,
-            'username': self.username,
-            'email': self.email,
-            'role': self.role
-        }
+    @classmethod
+    def hash_password(cls, password: str) -> str:
+        """Hash a password using bcrypt."""
+        return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')

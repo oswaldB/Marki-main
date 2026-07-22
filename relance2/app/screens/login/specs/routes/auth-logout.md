@@ -1,13 +1,53 @@
-"""API route for user logout."""
+# Route : API Auth Logout
+
+## Description
+
+Endpoint API pour déconnecter un utilisateur (révoque sa session).
+
+## Définition
+
+| Aspect | Valeur |
+|--------|--------|
+| **Méthode** | POST |
+| **URL** | `/api/auth/logout` |
+| **Fichier** | `app/screens/login/routes/auth_logout.py` |
+
+## Requête
+
+**Header:** `Authorization: Bearer <token>`
+
+```json
+{}
+```
+
+## Réponse 200 (Succès)
+
+```json
+{
+  "success": true,
+  "message": "Déconnexion réussie"
+}
+```
+
+## Réponse 401 (Token invalide)
+
+```json
+{
+  "success": false,
+  "error": "Token invalide"
+}
+```
+
+## Implémentation
+
+```python
 from flask import request, jsonify
 from .. import bp
 from ..models.session import SessionModel
-from ....middleware.auth.jwt_utils import validate_token
-
+from app.middleware.auth.jwt_utils import validate_token
 
 @bp.route('/api/auth/logout', methods=['POST'])
 def auth_logout():
-    """Logout user and revoke session."""
     auth_header = request.headers.get('Authorization', '')
     if not auth_header.startswith('Bearer '):
         return jsonify({'success': False, 'error': 'Token manquant'}), 401
@@ -22,3 +62,9 @@ def auth_logout():
         return jsonify({'success': True, 'message': 'Déconnexion réussie'})
     except Exception:
         return jsonify({'success': False, 'error': 'Token invalide'}), 401
+```
+
+## Dépendances
+
+- Modèle `Session`
+- `jwt_utils.validate_token`

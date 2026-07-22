@@ -1,0 +1,102 @@
+{# Workflow: initial-load - Check existing session on page load #}
+{# This workflow is integrated into login.html init() #}
+
+<script>
+// Initial load workflow - checks for existing session
+// Integrated in loginPage() Alpine component
+
+async function checkExistingSession() {
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+        return { hasSession: false };
+    }
+    
+    try {
+        // Verify token via API
+        const response = await fetch('/login/api/auth/verify', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ token })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success && data.valid) {
+            // Token is valid, try to get user info
+            const meResponse = await fetch('/login/api/auth/me', {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            
+            const meData = await meResponse.json();
+            
+            if (meData.success) {
+                return { 
+                    hasSession: true, 
+                    user: meData.user,
+                    redirect: '/dashboard'
+                };
+            }
+        }
+        
+        // Token invalid, clear it
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        
+        return { hasSession: false, reason: data.error || 'Session invalide' };
+        
+    } catch (err) {
+        console.error('Session check error:', err);
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        return { hasSession: false, reason: 'Erreur de vérification' };
+    }
+}
+
+// Global auth store initialization
+document.addEventListener('alpine:init', () => {
+    Alpine.store('auth', {
+        token: localStorage.getItem('token') || null,
+        user: JSON.parse(localStorage.getItem('user') || 'null'),
+        isAuthenticated: false,
+        
+        init() {
+            this.checkAuth();
+        },
+        
+        async checkAuth() {
+            if (this.token) {
+                const result = await checkExistingSession();
+                this.isAuthenticated = result.hasSession;
+                if (result.hasSession) {
+                    this.user = result.user;
+                }
+            }
+        },
+        
+        logout() {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            this.token = null;
+            this.user = null;
+            this.isAuthenticated = false;
+            window.location.href = '/login';
+        }
+    });
+    
+    // Initialize UI store
+    Alpine.store('ui', {
+        loading: false,
+        toast: null,
+        
+        showToast(message, type = 'info') {
+            this.toast = { message, type };
+            setTimeout(() => this.toast = null, 3000);
+        }
+    });
+});
+</script>

@@ -1,8 +1,8 @@
-# Spec Modèle : Session
+# Modèle : Session
 
 ## Description
 
-Modèle de session utilisateur pour la gestion des tokens JWT et le suivi des connexions. Utilise sqlite3 pur sans ORM.
+Représente une session utilisateur pour la gestion des tokens JWT.
 
 ## Table SQL
 
@@ -21,32 +21,69 @@ CREATE INDEX idx_sessions_user_id ON sessions(user_id);
 CREATE INDEX idx_sessions_token ON sessions(token);
 ```
 
-## Classe Session
+## Dataclass Session
 
 ### Attributs
 
-| Attribut | Type | Description |
-|----------|------|-------------|
-| `id` | str | Identifiant unique de session (sess_xxx) |
-| `user_id` | str | ID de l'utilisateur propriétaire |
-| `token` | str | Token JWT stocké |
+| Nom | Type | Description |
+|-----|------|-------------|
+| `id` | str | Identifiant unique (sess_xxx) |
+| `user_id` | str | ID de l'utilisateur |
+| `token` | str | Token JWT |
 | `expires_at` | str | Date ISO 8601 d'expiration |
-| `ip_address` | str | Adresse IP du client (optionnel) |
-| `user_agent` | str | User-Agent du client (optionnel) |
+| `ip_address` | str | Adresse IP du client |
+| `user_agent` | str | User-Agent du client |
 | `created_at` | str | Date ISO 8601 création |
+
+### Méthodes
+
+#### `is_expired() -> bool`
+
+Vérifie si la session est expirée.
+
+```python
+def is_expired(self) -> bool:
+    from datetime import datetime
+    return datetime.fromisoformat(self.expires_at) < datetime.now()
+```
+
+#### `to_dict() -> dict`
+
+Convertit en dictionnaire.
+
+```python
+return {
+    'id': self.id,
+    'user_id': self.user_id,
+    'expires_at': self.expires_at,
+    'created_at': self.created_at
+}
+```
+
+## Classe SessionModel
+
+Logique métier des sessions.
+
+### Imports
+
+```python
+import sqlite3
+from typing import Optional, List
+from app.data import get_db
+from datetime import datetime
+import uuid
+```
 
 ### Méthodes de classe
 
 #### `from_row(row: sqlite3.Row) -> Optional[Session]`
 
-Crée une instance Session depuis une ligne de résultat SQL.
-
 ```python
 @classmethod
-def from_row(cls, row: sqlite3.Row) -> Optional['Session']:
+def from_row(cls, row: sqlite3.Row) -> Optional[Session]:
     if not row:
         return None
-    return cls(
+    return Session(
         id=row['id'],
         user_id=row['user_id'],
         token=row['token'],
@@ -64,70 +101,36 @@ Crée une nouvelle session.
 ```python
 @classmethod
 def create(cls, user_id: str, token: str, expires_at: str, 
-           ip_address: str = None, user_agent: str = None) -> 'Session':
-    from datetime import datetime
-    import uuid
-    
+           ip_address: str = None, user_agent: str = None) -> Session:
     session_id = f"sess_{uuid.uuid4().hex[:8]}_{int(datetime.now().timestamp())}"
-    
     db = get_db()
     db.execute(
         """INSERT INTO sessions (id, user_id, token, expires_at, ip_address, user_agent, created_at)
            VALUES (?, ?, ?, ?, ?, ?, ?)""",
-        (session_id, user_id, token, expires_at, ip_address, user_agent, 
-         datetime.now().isoformat())
+        (session_id, user_id, token, expires_at, ip_address, user_agent, datetime.now().isoformat())
     )
     db.commit()
-    
     return cls.get_by_id(session_id)
 ```
 
 #### `get_by_id(session_id: str) -> Optional[Session]`
 
-Récupère une session par son ID.
-
 ```python
 @classmethod
-def get_by_id(cls, session_id: str) -> Optional['Session']:
+def get_by_id(cls, session_id: str) -> Optional[Session]:
     db = get_db()
-    cursor = db.execute(
-        "SELECT * FROM sessions WHERE id = ?",
-        (session_id,)
-    )
+    cursor = db.execute("SELECT * FROM sessions WHERE id = ?", (session_id,))
     return cls.from_row(cursor.fetchone())
 ```
 
 #### `get_by_token(token: str) -> Optional[Session]`
 
-Récupère une session par son token JWT.
-
 ```python
 @classmethod
-def get_by_token(cls, token: str) -> Optional['Session']:
+def get_by_token(cls, token: str) -> Optional[Session]:
     db = get_db()
-    cursor = db.execute(
-        "SELECT * FROM sessions WHERE token = ?",
-        (token,)
-    )
+    cursor = db.execute("SELECT * FROM sessions WHERE token = ?", (token,))
     return cls.from_row(cursor.fetchone())
-```
-
-#### `get_active_by_user(user_id: str) -> List[Session]`
-
-Récupère toutes les sessions actives d'un utilisateur.
-
-```python
-@classmethod
-def get_active_by_user(cls, user_id: str) -> List['Session']:
-    from datetime import datetime
-    db = get_db()
-    cursor = db.execute(
-        """SELECT * FROM sessions 
-           WHERE user_id = ? AND expires_at > ?
-           ORDER BY created_at DESC""",
-        (user_id, datetime.now().isoformat())
-    )
-    return [cls.from_row(row) for row in cursor.fetchall()]
 ```
 
 #### `is_valid(token: str) -> bool`
@@ -137,11 +140,9 @@ Vérifie si un token est valide et non expiré.
 ```python
 @classmethod
 def is_valid(cls, token: str) -> bool:
-    from datetime import datetime
     db = get_db()
     cursor = db.execute(
-        """SELECT 1 FROM sessions 
-           WHERE token = ? AND expires_at > ?""",
+        "SELECT 1 FROM sessions WHERE token = ? AND expires_at > ?",
         (token, datetime.now().isoformat())
     )
     return cursor.fetchone() is not None
@@ -149,7 +150,7 @@ def is_valid(cls, token: str) -> bool:
 
 #### `revoke(session_id: str) -> bool`
 
-Révoque une session spécifique.
+Révoque une session.
 
 ```python
 @classmethod
@@ -162,7 +163,7 @@ def revoke(cls, session_id: str) -> bool:
 
 #### `revoke_all_by_user(user_id: str) -> bool`
 
-Révoque toutes les sessions d'un utilisateur (logout global).
+Révoque toutes les sessions d'un utilisateur.
 
 ```python
 @classmethod
@@ -175,12 +176,11 @@ def revoke_all_by_user(cls, user_id: str) -> bool:
 
 #### `cleanup_expired() -> int`
 
-Nettoie les sessions expirées. Retourne le nombre de sessions supprimées.
+Nettoie les sessions expirées.
 
 ```python
 @classmethod
 def cleanup_expired(cls) -> int:
-    from datetime import datetime
     db = get_db()
     cursor = db.execute(
         "DELETE FROM sessions WHERE expires_at < ?",
@@ -189,41 +189,6 @@ def cleanup_expired(cls) -> int:
     db.commit()
     return cursor.rowcount
 ```
-
-### Méthodes d'instance
-
-#### `is_expired() -> bool`
-
-Vérifie si la session est expirée.
-
-```python
-def is_expired(self) -> bool:
-    from datetime import datetime
-    return datetime.fromisoformat(self.expires_at) < datetime.now()
-```
-
-#### `to_dict() -> dict`
-
-Convertit la session en dictionnaire.
-
-```python
-def to_dict(self) -> dict:
-    return {
-        'id': self.id,
-        'user_id': self.user_id,
-        'expires_at': self.expires_at,
-        'ip_address': self.ip_address,
-        'created_at': self.created_at
-    }
-```
-
-## Dépendances
-
-- `app.data import get_db`
-- `typing.Optional, List`
-- `sqlite3`
-- `uuid`
-- `datetime`
 
 ## Fichier de sortie
 
