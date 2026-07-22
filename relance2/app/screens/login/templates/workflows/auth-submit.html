@@ -1,0 +1,44 @@
+<!-- 
+Workflow: auth-submit
+Description: Soumission authentification - valide et appelle API d'authentification
+Screen: login
+Depends on: login-initial-load
+-->
+<script>
+    /**
+     * @action Initialiser le workflow auth-submit
+     * @checkpoint auth-submit-ready, fonction exportée disponible
+     */
+    
+    /**
+     * Authentification API client
+     * POST /api/auth/login
+     * 
+     * @param {string} email - User email
+     * @param {string} password - User password
+     * @returns {Promise<Object>} Auth data with token and user
+     * @throws {Error} If authentication fails
+     */
+    async function authSubmit(email, password) {
+        const response = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password })
+        });
+        
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Échec de connexion');
+        }
+        
+        return await response.json();
+    }
+    
+    /**
+     * Alternative: authSubmit as a standalone function for import
+     * This can be used by other components
+     */
+    window.authSubmit = authSubmit;
+</script>

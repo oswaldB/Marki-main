@@ -1,70 +1,107 @@
 fichiers:
-  - chemin: login/routes/__init__.py
+  - chemin: models/__init__.py
     contenu: |
-      """Routes module for login cell."""
+      # Models package initialization
 
-  - chemin: login/routes/index.py
+  - chemin: models/auth.py
     contenu: |
-      """Main routes for login page."""
-      from flask import Blueprint, render_template
-
-      bp = Blueprint('login', __name__, template_folder='../templates')
-
-
-      @bp.route('/login', methods=['GET'])
-      def login_page():
-          """Render the login page."""
-          return render_template('login.html')
-
-  - chemin: login/routes/wf_auth.py
-    contenu: |
-      """Authentication workflow routes for login cell."""
       import sqlite3
       import jwt
       import datetime
-      from flask import Blueprint, request, jsonify, current_app
       from functools import wraps
-
-      bp = Blueprint('login_wf_auth', __name__)
-
-      # Configuration JWT
-      JWT_SECRET = 'your-secret-key-change-in-production'
-      JWT_ALGORITHM = 'HS256'
-      JWT_EXPIRATION_HOURS = 24
-
-
-      def get_db_connection():
-          """Get SQLite database connection."""
-          conn = sqlite3.connect('database.db')
-          conn.row_factory = sqlite3.Row
-          return conn
-
-
-      def generate_token(user_id, username, email, role):
-          """Generate JWT token for authenticated user."""
-          payload = {
-              'user_id': user_id,
-              'username': username,
-              'email': email,
-              'role': role,
-              'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=JWT_EXPIRATION_HOURS)
-          }
-          return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
-
-
-      def verify_token(token):
-          """Verify JWT token and return payload."""
-          try:
-              payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
-              return payload
-          except jwt.ExpiredSignatureError:
+      from flask import request, jsonify, current_app
+      import os
+      
+      SECRET_KEY = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
+      
+      class AuthLocal:
+          @staticmethod
+          def get_db():
+              """Get database connection"""
+              conn = sqlite3.connect('database.db')
+              conn.row_factory = sqlite3.Row
+              return conn
+          
+          @staticmethod
+          def hash_password(password):
+              """Simple password hashing (use bcrypt in production)"""
+              import hashlib
+              return hashlib.sha256(password.encode()).hexdigest()
+          
+          @staticmethod
+          def verify_password(password, hashed):
+              """Verify password against hash"""
+              return AuthLocal.hash_password(password) == hashed
+          
+          @staticmethod
+          def generate_token(user_id, username, email, role):
+              """Generate JWT token"""
+              payload = {
+                  'user_id': user_id,
+                  'username': username,
+                  'email': email,
+                  'role': role,
+                  'exp': datetime.datetime.utcnow() + datetime.timedelta(days=1),
+                  'iat': datetime.datetime.utcnow()
+              }
+              return jwt.encode(payload, SECRET_KEY, algorithm='HS256')
+          
+          @staticmethod
+          def verify_token(token):
+              """Verify JWT token"""
+              try:
+                  payload = jwt.decode(token, SECRET_KEY, algorithms=['HS256'])
+                  return payload
+              except jwt.ExpiredSignatureError:
+                  return None
+              except jwt.InvalidTokenError:
+                  return None
+          
+          @staticmethod
+          def authenticate_user(email, password):
+              """Authenticate user with email and password"""
+              conn = AuthLocal.get_db()
+              cursor = conn.cursor()
+              cursor.execute(
+                  'SELECT id, username, email, password, role FROM users WHERE email = ?',
+                  (email,)
+              )
+              user = cursor.fetchone()
+              conn.close()
+              
+              if user and AuthLocal.verify_password(password, user['password']):
+                  return {
+                      'id': user['id'],
+                      'username': user['username'],
+                      'email': user['email'],
+                      'role': user['role']
+                  }
               return None
-          except jwt.InvalidTokenError:
+          
+          @staticmethod
+          def get_user_by_id(user_id):
+              """Get user by ID"""
+              conn = AuthLocal.get_db()
+              cursor = conn.cursor()
+              cursor.execute(
+                  'SELECT id, username, email, role FROM users WHERE id = ?',
+                  (user_id,)
+              )
+              user = cursor.fetchone()
+              conn.close()
+              
+              if user:
+                  return {
+                      'id': user['id'],
+                      'username': user['username'],
+                      'email': user['email'],
+                      'role': user['role']
+                  }
               return None
-
-
+      
+      
       def token_required(f):
-          """Decorator to protect routes with JWT token."""
+          """Decorator to protect routes with JWT"""
           @wraps(f)
           def decorated(*args, **kwargs):
               token = None
@@ -76,572 +113,461 @@ fichiers:
                       return jsonify({'error': 'Token format invalid'}), 401
               
               if not token:
-                  return jsonify({'error': 'Token manquant'}), 401
+                  return jsonify({'error': 'Token missing'}), 401
               
-              payload = verify_token(token)
+              payload = AuthLocal.verify_token(token)
               if not payload:
-                  return jsonify({'error': 'Token invalide ou expiré'}), 401
+                  return jsonify({'error': 'Token invalid or expired'}), 401
               
               return f(payload, *args, **kwargs)
           return decorated
 
+  - chemin: routes/__init__.py
+    contenu: |
+      # Routes package initialization
 
-      @bp.route('/api/auth/login', methods=['POST'])
-      def auth_login():
-          """
-          Authenticate user with email and password.
-          
-          Request Body:
-              - email: User email
-              - password: User password
-          
-          Returns:
-              - 200: Token and user data
-              - 401: Invalid credentials
-          """
+  - chemin: routes/wf_auth.py
+    contenu: |
+      from flask import Blueprint, request, jsonify
+      from models.auth import AuthLocal, token_required
+      
+      wf_auth_bp = Blueprint('wf_auth', __name__, url_prefix='/api/auth')
+      
+      
+      @wf_auth_bp.route('/login', methods=['POST'])
+      def login():
+          """Authenticate user and return JWT token"""
           data = request.get_json()
           
           if not data or not data.get('email') or not data.get('password'):
-              return jsonify({'error': 'Email et mot de passe requis'}), 400
+              return jsonify({'error': 'Email and password required'}), 400
           
-          email = data.get('email')
-          password = data.get('password')
+          email = data['email']
+          password = data['password']
           
-          conn = get_db_connection()
-          cursor = conn.cursor()
+          # Validate email format
+          import re
+          if not re.match(r'^[^@]+@[^@]+\.[^@]+$', email):
+              return jsonify({'error': 'Invalid email format'}), 400
           
-          # Check user credentials
-          cursor.execute(
-              'SELECT id, username, email, role, password_hash FROM users WHERE email = ?',
-              (email,)
-          )
-          user = cursor.fetchone()
-          conn.close()
+          user = AuthLocal.authenticate_user(email, password)
           
           if not user:
-              return jsonify({'error': 'Identifiants invalides'}), 401
+              return jsonify({'error': 'Invalid credentials'}), 401
           
-          # Verify password (simple comparison for demo - use bcrypt in production)
-          import hashlib
-          password_hash = hashlib.sha256(password.encode()).hexdigest()
-          
-          if password_hash != user['password_hash']:
-              return jsonify({'error': 'Identifiants invalides'}), 401
-          
-          # Generate token
-          token = generate_token(
-              user_id=user['id'],
-              username=user['username'],
-              email=user['email'],
-              role=user['role']
+          token = AuthLocal.generate_token(
+              user['id'],
+              user['username'],
+              user['email'],
+              user['role']
           )
           
           return jsonify({
               'token': token,
-              'user': {
-                  'id': user['id'],
-                  'username': user['username'],
-                  'email': user['email'],
-                  'role': user['role']
-              }
+              'user': user
           }), 200
+      
+      
+      @wf_auth_bp.route('/me', methods=['GET'])
+      @token_required
+      def get_current_user(payload):
+          """Get current authenticated user"""
+          user = AuthLocal.get_user_by_id(payload['user_id'])
+          if not user:
+              return jsonify({'error': 'User not found'}), 404
+          
+          return jsonify({'user': user}), 200
+      
+      
+      @wf_auth_bp.route('/logout', methods=['POST'])
+      def logout():
+          """Logout user (client-side token removal)"""
+          return jsonify({'message': 'Logged out successfully'}), 200
 
-
-      @bp.route('/api/auth/me', methods=['GET'])
-      def auth_me():
-          """
-          Validate token and return current user info.
-          
-          Headers:
-              - Authorization: Bearer <token>
-          
-          Returns:
-              - 200: User data
-              - 401: Invalid or expired token
-          """
-          token = None
-          if 'Authorization' in request.headers:
-              auth_header = request.headers['Authorization']
-              try:
-                  token = auth_header.split(' ')[1]
-              except IndexError:
-                  return jsonify({'error': 'Token format invalid'}), 401
-          
-          if not token:
-              return jsonify({'error': 'Token manquant'}), 401
-          
-          payload = verify_token(token)
-          if not payload:
-              return jsonify({'error': 'Token invalide ou expiré'}), 401
-          
-          return jsonify({
-              'user': {
-                  'id': payload['user_id'],
-                  'username': payload['username'],
-                  'email': payload['email'],
-                  'role': payload['role']
-              }
-          }), 200
-
-
-      @bp.route('/api/auth/logout', methods=['POST'])
-      def auth_logout():
-          """
-          Logout user (client-side token removal).
-          
-          Returns:
-              - 200: Logout success
-          """
-          return jsonify({'message': 'Déconnexion réussie'}), 200
-
-  - chemin: login/models/__init__.py
+  - chemin: routes/login.py
     contenu: |
-      """Models module for login cell."""
+      from flask import Blueprint, render_template
+      
+      login_bp = Blueprint('login', __name__, url_prefix='/login')
+      
+      
+      @login_bp.route('/')
+      def login_page():
+          """Render login page"""
+          return render_template('login.html')
+      
+      
+      @login_bp.route('/<path:path>')
+      def login_catchall(path):
+          """Catchall for login sub-routes"""
+          return render_template('login.html')
 
-  - chemin: login/models/user.py
+  - chemin: templates/__init__.py
     contenu: |
-      """User model for authentication."""
-      import sqlite3
-      import hashlib
+      # Templates package initialization
 
-
-      class User:
-          """User model representing application users."""
-          
-          def __init__(self, id=None, username=None, email=None, role=None, password_hash=None):
-              self.id = id
-              self.username = username
-              self.email = email
-              self.role = role
-              self.password_hash = password_hash
-          
-          @staticmethod
-          def get_db_connection():
-              """Get SQLite database connection."""
-              conn = sqlite3.connect('database.db')
-              conn.row_factory = sqlite3.Row
-              return conn
-          
-          @classmethod
-          def find_by_email(cls, email):
-              """Find user by email address."""
-              conn = cls.get_db_connection()
-              cursor = conn.cursor()
-              cursor.execute(
-                  'SELECT id, username, email, role, password_hash FROM users WHERE email = ?',
-                  (email,)
-              )
-              row = cursor.fetchone()
-              conn.close()
-              
-              if row:
-                  return cls(
-                      id=row['id'],
-                      username=row['username'],
-                      email=row['email'],
-                      role=row['role'],
-                      password_hash=row['password_hash']
-                  )
-              return None
-          
-          @classmethod
-          def find_by_id(cls, user_id):
-              """Find user by ID."""
-              conn = cls.get_db_connection()
-              cursor = conn.cursor()
-              cursor.execute(
-                  'SELECT id, username, email, role, password_hash FROM users WHERE id = ?',
-                  (user_id,)
-              )
-              row = cursor.fetchone()
-              conn.close()
-              
-              if row:
-                  return cls(
-                      id=row['id'],
-                      username=row['username'],
-                      email=row['email'],
-                      role=row['role'],
-                      password_hash=row['password_hash']
-                  )
-              return None
-          
-          def check_password(self, password):
-              """Verify password against stored hash."""
-              password_hash = hashlib.sha256(password.encode()).hexdigest()
-              return password_hash == self.password_hash
-          
-          def to_dict(self):
-              """Convert user to dictionary (excluding sensitive data)."""
-              return {
-                  'id': self.id,
-                  'username': self.username,
-                  'email': self.email,
-                  'role': self.role
-              }
-          
-          @staticmethod
-          def hash_password(password):
-              """Hash password using SHA-256."""
-              return hashlib.sha256(password.encode()).hexdigest()
-
-
-      class AuthLocal:
-          """Local authentication helper class."""
-          
-          @staticmethod
-          def verify_credentials(email, password):
-              """Verify user credentials and return user if valid."""
-              user = User.find_by_email(email)
-              if user and user.check_password(password):
-                  return user
-              return None
-
-  - chemin: login/templates/login.html
+  - chemin: templates/login.html
     contenu: |
       <!DOCTYPE html>
       <html lang="fr">
       <head>
           <meta charset="UTF-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Connexion - Marki</title>
-          <!-- Tailwind CSS -->
+          <title>Login - Marki Relance</title>
           <script src="https://cdn.tailwindcss.com"></script>
-          <!-- Alpine.js -->
           <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-          <!-- Google Fonts -->
-          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
           <style>
-              body { font-family: 'Inter', sans-serif; }
+              [x-cloak] { display: none !important; }
           </style>
       </head>
-      <body class="bg-gray-50 min-h-screen flex items-center justify-center"
-            x-data="loginPage()"
-            x-init="initPage()">
+      <body class="bg-gray-100 min-h-screen flex items-center justify-center">
+          {% include 'workflows/login-initial-load.html' %}
           
-          <!-- Login Container -->
-          <div class="w-full max-w-md p-8">
-              <!-- Logo/Brand -->
-              <div class="text-center mb-8">
-                  <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl mb-4">
-                      <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                      </svg>
-                  </div>
-                  <h1 class="text-2xl font-bold text-gray-900">Marki</h1>
-                  <p class="text-gray-500 mt-2">Connectez-vous à votre compte</p>
-              </div>
-              
-              <!-- Login Card -->
-              <div class="bg-white rounded-2xl shadow-lg p-8">
-                  <!-- Error Message -->
-                  <div x-show="error" 
-                       x-transition:enter="transition ease-out duration-300"
-                       x-transition:enter-start="opacity-0 translate-y-2"
-                       x-transition:enter-end="opacity-100 translate-y-0"
-                       class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex items-center gap-3"
-                       style="display: none;">
-                      <svg class="w-5 h-5 text-red-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                      </svg>
-                      <p class="text-sm text-red-700" x-text="error"></p>
+          <div x-data="loginPage()" x-init="init()" x-cloak class="w-full max-w-md">
+              <div class="bg-white rounded-lg shadow-md p-8">
+                  <div class="text-center mb-8">
+                      <h1 class="text-2xl font-bold text-gray-800">Connexion</h1>
+                      <p class="text-gray-600 mt-2">Accédez à votre espace</p>
                   </div>
                   
-                  <!-- Login Form -->
-                  <form @submit.prevent="handleLogin()" class="space-y-6">
-                      <!-- Email Field -->
+                  <!-- Loading state -->
+                  <div x-show="loading" class="text-center py-8">
+                      <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                      <p class="text-gray-600 mt-4">Connexion en cours...</p>
+                  </div>
+                  
+                  <!-- Error message -->
+                  <div x-show="error" x-transition class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                      <span x-text="error"></span>
+                  </div>
+                  
+                  <!-- Login form -->
+                  <form x-show="!loading" @submit.prevent="handleLogin()" class="space-y-6">
                       <div>
-                          <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
-                              Adresse email
-                          </label>
-                          <div class="relative">
-                              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"/>
-                                  </svg>
-                              </div>
-                              <input type="email" 
-                                     id="email"
-                                     x-model="form.email"
-                                     :disabled="loading"
-                                     class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed"
-                                     placeholder="vous@exemple.com"
-                                     required>
-                          </div>
+                          <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                          <input 
+                              type="email" 
+                              id="email"
+                              x-model="form.email"
+                              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                              placeholder="admin@marki.fr"
+                              required
+                          >
                       </div>
                       
-                      <!-- Password Field -->
                       <div>
-                          <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
-                              Mot de passe
-                          </label>
-                          <div class="relative">
-                              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
-                                  </svg>
-                              </div>
-                              <input :type="showPassword ? 'text' : 'password'" 
-                                     id="password"
-                                     x-model="form.password"
-                                     :disabled="loading"
-                                     class="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed"
-                                     placeholder="••••••••"
-                                     required>
-                              <button type="button"
-                                      @click="showPassword = !showPassword"
-                                      class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 focus:outline-none">
-                                  <svg x-show="!showPassword" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
-                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
-                                  </svg>
-                                  <svg x-show="showPassword" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display: none;">
-                                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>
-                                  </svg>
-                              </button>
-                          </div>
+                          <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Mot de passe</label>
+                          <input 
+                              type="password" 
+                              id="password"
+                              x-model="form.password"
+                              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition"
+                              placeholder="Votre mot de passe"
+                              required
+                          >
                       </div>
                       
-                      <!-- Remember Me & Forgot Password -->
-                      <div class="flex items-center justify-between">
-                          <div class="flex items-center">
-                              <input type="checkbox" 
-                                     id="remember"
-                                     x-model="form.remember"
-                                     :disabled="loading"
-                                     class="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500">
-                              <label for="remember" class="ml-2 text-sm text-gray-600">
-                                  Se souvenir de moi
-                              </label>
-                          </div>
-                          <a href="#" class="text-sm text-blue-600 hover:text-blue-500 font-medium">
-                              Mot de passe oublié ?
-                          </a>
-                      </div>
-                      
-                      <!-- Submit Button -->
-                      <button type="submit"
-                              :disabled="loading || !form.email || !form.password"
-                              class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2">
-                          <svg x-show="loading" class="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                          </svg>
-                          <span x-text="loading ? 'Connexion...' : 'Se connecter'"></span>
+                      <button 
+                          type="submit"
+                          :disabled="loading || !form.email || !form.password"
+                          class="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white font-semibold py-3 px-4 rounded-lg transition duration-200 flex items-center justify-center"
+                      >
+                          <span x-show="!loading">Se connecter</span>
+                          <span x-show="loading">Connexion...</span>
                       </button>
                   </form>
                   
-                  <!-- Divider -->
-                  <div class="mt-6 relative">
-                      <div class="absolute inset-0 flex items-center">
-                          <div class="w-full border-t border-gray-200"></div>
-                      </div>
-                      <div class="relative flex justify-center text-sm">
-                          <span class="px-2 bg-white text-gray-500">Ou</span>
-                      </div>
-                  </div>
-                  
-                  <!-- Social Login -->
-                  <div class="mt-6 grid grid-cols-2 gap-3">
-                      <button type="button"
-                              class="flex items-center justify-center gap-2 py-2.5 px-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors">
-                          <svg class="w-5 h-5" viewBox="0 0 24 24">
-                              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
-                              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
-                              <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
-                              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
-                          </svg>
-                          <span class="text-sm font-medium text-gray-700">Google</span>
-                      </button>
-                      <button type="button"
-                              class="flex items-center justify-center gap-2 py-2.5 px-4 border border-gray-300 rounded-xl hover:bg-gray-50 transition-colors">
-                          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
-                          </svg>
-                          <span class="text-sm font-medium text-gray-700">GitHub</span>
-                      </button>
+                  <!-- Initial loading check -->
+                  <div x-show="checkingSession" class="text-center py-8">
+                      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+                      <p class="text-gray-600 mt-2 text-sm">Vérification de la session...</p>
                   </div>
               </div>
-              
-              <!-- Sign Up Link -->
-              <p class="text-center mt-6 text-sm text-gray-600">
-                  Pas encore de compte ?
-                  <a href="#" class="font-medium text-blue-600 hover:text-blue-500">
-                      Créer un compte
-                  </a>
-              </p>
           </div>
           
-          <!-- Alpine.js Login Page Logic -->
-          <script>
-              function loginPage() {
-                  return {
-                      // Data Model
-                      form: {
-                          email: '',
-                          password: '',
-                          remember: false
-                      },
-                      loading: false,
-                      error: null,
-                      showPassword: false,
-                      
-                      // Initialize page - check for existing session
-                      async initPage() {
-                          // @checkpoint dom-ready: body avec x-data="loginPage()" présent
-                          console.log('[login-initial-load] DOM ready');
-                          
-                          // @checkpoint token-checked: vérification du token
-                          const token = localStorage.getItem('token');
-                          console.log('[login-initial-load] Token checked:', token ? 'present' : 'absent');
-                          
-                          if (token) {
-                              // @checkpoint session-verified: validation via API
-                              try {
-                                  const response = await fetch('/api/auth/me', {
-                                      method: 'GET',
-                                      headers: {
-                                          'Authorization': `Bearer ${token}`,
-                                          'Content-Type': 'application/json'
-                                      }
-                                  });
-                                  
-                                  if (response.ok) {
-                                      const data = await response.json();
-                                      // Store user data
-                                      Alpine.store('auth').token = token;
-                                      Alpine.store('auth').user = data.user;
-                                      Alpine.store('auth').isAuthenticated = true;
-                                      
-                                      // @checkpoint redirect-executed: redirection vers dashboard
-                                      console.log('[login-initial-load] Session valid, redirecting to dashboard');
-                                      window.location.href = '/dashboard';
-                                      return;
-                                  } else {
-                                      // Token invalid, clear it
-                                      localStorage.removeItem('token');
-                                  }
-                              } catch (err) {
-                                  console.error('[login-initial-load] Token validation error:', err);
-                                  localStorage.removeItem('token');
-                              }
-                          }
-                          
-                          // @checkpoint form-ready: formulaire prêt
-                          console.log('[login-initial-load] Form ready');
-                      },
-                      
-                      // Handle login form submission
-                      async handleLogin() {
-                          // 1. Validate form
-                          if (!this.form.email || !this.form.password) {
-                              this.error = 'Veuillez remplir tous les champs';
-                              return;
-                          }
-                          
-                          // Validate email format
-                          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                          if (!emailRegex.test(this.form.email)) {
-                              this.error = 'Veuillez entrer une adresse email valide';
-                              return;
-                          }
-                          
-                          // 2. Set loading state
-                          this.loading = true;
-                          this.error = null;
-                          
-                          try {
-                              // 3. Call auth API
-                              const response = await fetch('/api/auth/login', {
-                                  method: 'POST',
-                                  headers: {
-                                      'Content-Type': 'application/json'
-                                  },
-                                  body: JSON.stringify({
-                                      email: this.form.email,
-                                      password: this.form.password
-                                  })
-                              });
-                              
-                              const data = await response.json();
-                              
-                              if (!response.ok) {
-                                  throw new Error(data.error || 'Échec de connexion');
-                              }
-                              
-                              // 4. Store auth data in Alpine store
-                              Alpine.store('auth').token = data.token;
-                              Alpine.store('auth').user = data.user;
-                              Alpine.store('auth').isAuthenticated = true;
-                              
-                              // 5. Persist token
-                              localStorage.setItem('token', data.token);
-                              
-                              // Store remember preference
-                              if (this.form.remember) {
-                                  localStorage.setItem('rememberEmail', this.form.email);
-                              }
-                              
-                              // 6. Redirect to dashboard
-                              window.location.href = '/dashboard';
-                              
-                          } catch (error) {
-                              this.error = error.message;
-                          } finally {
-                              this.loading = false;
-                          }
-                      }
-                  }
-              }
-              
-              // Initialize Alpine.js stores
-              document.addEventListener('alpine:init', () => {
-                  Alpine.store('auth', {
-                      token: null,
-                      user: null,
-                      isAuthenticated: false,
-                      
-                      logout() {
-                          this.token = null;
-                          this.user = null;
-                          this.isAuthenticated = false;
-                          localStorage.removeItem('token');
-                          window.location.href = '/login';
-                      }
-                  });
-                  
-                  Alpine.store('ui', {
-                      toast: null,
-                      
-                      showToast(message, type = 'info') {
-                          this.toast = { message, type };
-                          setTimeout(() => {
-                              this.toast = null;
-                          }, 3000);
-                      }
-                  });
-              });
-          </script>
+          {% include 'workflows/auth-submit.html' %}
       </body>
       </html>
 
-  - chemin: login/templates/workflows/login-initial-load.html
+  - chemin: templates/workflows/__init__.py
     contenu: |
-      {# Workflow: login-initial-load #}
-      {# Description: Charger la page de login et vérifier l'état d'authentification existant #}
+      # Workflows templates package initialization
 
-      {# This workflow is embedded in login.html and handled by Alpine.js #}
-      {# Workflow logic is implemented in the loginPage() function within login.html #}
-
-      {# 
-      Checkpoint Summary:
-      - dom-ready: body avec x-data="loginPage()" présent
-      - token-checked: token présent ou absent déterminé
-      - session-verified: réponse API reçue (if token exists)
-      - redirect-executed: navigation vers dashboard (if session valid)
-      - form-ready: champs username/password focusables
-      #}
-
-  - chemin: login/logs/.gitkeep
+  - chemin: templates/workflows/login-initial-load.html
     contenu: |
-      # Logs directory for login cell
+      <!-- 
+      Workflow: login-initial-load
+      Description: Chargement initial Login - vérifie session existante et redirige si nécessaire
+      Screen: login
+      -->
+      <script>
+          document.addEventListener('alpine:init', () => {
+              Alpine.store('auth', {
+                  token: null,
+                  user: null,
+                  isAuthenticated: false,
+                  
+                  init() {
+                      const savedToken = localStorage.getItem('token');
+                      if (savedToken) {
+                          this.token = savedToken;
+                      }
+                  }
+              });
+              
+              Alpine.store('ui', {
+                  loading: false,
+                  error: null
+              });
+          });
+          
+          /**
+           * @action Initialiser le DOM de la page login
+           * @checkpoint dom-ready, body avec x-data="loginPage()" présent
+           */
+          function loginPage() {
+              return {
+                  form: {
+                      email: '',
+                      password: ''
+                  },
+                  loading: false,
+                  error: null,
+                  checkingSession: true,
+                  
+                  /**
+                   * @action Vérifier la présence d'un token dans localStorage
+                   * @checkpoint token-checked, token présent ou absent déterminé
+                   */
+                  async init() {
+                      const token = localStorage.getItem('token');
+                      
+                      if (token) {
+                          Alpine.store('auth').token = token;
+                          
+                          /**
+                           * @action Si token présent, valider via GET /api/auth/me
+                           * @checkpoint session-verified, réponse API reçue
+                           */
+                          try {
+                              const response = await fetch('/api/auth/me', {
+                                  method: 'GET',
+                                  headers: {
+                                      'Authorization': `Bearer ${token}`,
+                                      'Content-Type': 'application/json'
+                                  }
+                              });
+                              
+                              if (response.ok) {
+                                  const data = await response.json();
+                                  Alpine.store('auth').user = data.user;
+                                  Alpine.store('auth').isAuthenticated = true;
+                                  
+                                  /**
+                                   * @action Si session valide, rediriger vers /dashboard
+                                   * @checkpoint redirect-executed, navigation vers dashboard
+                                   */
+                                  window.location.href = '/dashboard';
+                                  return;
+                              } else {
+                                  // Token invalid, clear it
+                                  localStorage.removeItem('token');
+                                  Alpine.store('auth').token = null;
+                              }
+                          } catch (error) {
+                              console.error('Session verification failed:', error);
+                              localStorage.removeItem('token');
+                              Alpine.store('auth').token = null;
+                          }
+                      }
+                      
+                      /**
+                       * @action Afficher le formulaire de login prêt à l'emploi
+                       * @checkpoint form-ready, champs username/password focusables
+                       */
+                      this.checkingSession = false;
+                      
+                      // Auto-focus email field
+                      this.$nextTick(() => {
+                          const emailInput = document.getElementById('email');
+                          if (emailInput) emailInput.focus();
+                      });
+                  },
+                  
+                  /**
+                   * Soumission du formulaire de connexion
+                   * Workflow: auth-submit
+                   */
+                  async handleLogin() {
+                      /**
+                       * @action Valider le format de l'email
+                       */
+                      const emailRegex = /^[^@]+@[^@]+\.[^@]+$/;
+                      if (!emailRegex.test(this.form.email)) {
+                          this.error = 'Veuillez entrer un email valide';
+                          return;
+                      }
+                      
+                      /**
+                       * @action Validate form
+                       */
+                      if (!this.form.email || !this.form.password) {
+                          this.error = 'Veuillez remplir tous les champs';
+                          return;
+                      }
+                      
+                      /**
+                       * @action Set loading
+                       * Modification: loading → true
+                       */
+                      this.loading = true;
+                      this.error = null;
+                      Alpine.store('ui').loading = true;
+                      Alpine.store('ui').error = null;
+                      
+                      try {
+                          /**
+                           * @action Call auth API
+                           * POST /api/auth/login
+                           */
+                          const response = await fetch('/api/auth/login', {
+                              method: 'POST',
+                              headers: {
+                                  'Content-Type': 'application/json'
+                              },
+                              body: JSON.stringify({
+                                  email: this.form.email,
+                                  password: this.form.password
+                              })
+                          });
+                          
+                          if (!response.ok) {
+                              const errorData = await response.json();
+                              throw new Error(errorData.error || 'Échec de connexion');
+                          }
+                          
+                          /**
+                           * @action Store auth data
+                           * @checkpoint auth-success
+                           */
+                          const data = await response.json();
+                          Alpine.store('auth').token = data.token;
+                          Alpine.store('auth').user = data.user;
+                          Alpine.store('auth').isAuthenticated = true;
+                          
+                          /**
+                           * @action Persist token
+                           */
+                          localStorage.setItem('token', data.token);
+                          
+                          /**
+                           * @action Redirect
+                           * Navigation: /dashboard
+                           * Condition: Authentification réussie
+                           */
+                          window.location.href = '/dashboard';
+                          
+                      } catch (error) {
+                          /**
+                           * Modification: error ← message si échec
+                           */
+                          this.error = error.message;
+                          Alpine.store('ui').error = error.message;
+                      } finally {
+                          /**
+                           * Modification: loading → false
+                           */
+                          this.loading = false;
+                          Alpine.store('ui').loading = false;
+                      }
+                  }
+              };
+          }
+      </script>
+
+  - chemin: templates/workflows/auth-submit.html
+    contenu: |
+      <!-- 
+      Workflow: auth-submit
+      Description: Soumission authentification - valide et appelle API d'authentification
+      Screen: login
+      Depends on: login-initial-load
+      -->
+      <script>
+          /**
+           * @action Initialiser le workflow auth-submit
+           * @checkpoint auth-submit-ready, fonction exportée disponible
+           */
+          
+          /**
+           * Authentification API client
+           * POST /api/auth/login
+           * 
+           * @param {string} email - User email
+           * @param {string} password - User password
+           * @returns {Promise<Object>} Auth data with token and user
+           * @throws {Error} If authentication fails
+           */
+          async function authSubmit(email, password) {
+              const response = await fetch('/api/auth/login', {
+                  method: 'POST',
+                  headers: {
+                      'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({ email, password })
+              });
+              
+              if (!response.ok) {
+                  const error = await response.json();
+                  throw new Error(error.error || 'Échec de connexion');
+              }
+              
+              return await response.json();
+          }
+          
+          /**
+           * Alternative: authSubmit as a standalone function for import
+           * This can be used by other components
+           */
+          window.authSubmit = authSubmit;
+      </script>
+
+  - chemin: logs/.gitkeep
+    contenu: |
+      # Logs directory - keep in git but ignore log files
+
+  - chemin: requirements.txt
+    contenu: |
+      Flask==3.0.0
+      PyJWT==2.8.0
+      Werkzeug==3.0.1
+
+  - chemin: database_schema.sql
+    contenu: |
+      -- Database schema for Marki Relance
+      -- Run this SQL to initialize the database
+      
+      -- Users table
+      CREATE TABLE IF NOT EXISTS users (
+          id TEXT PRIMARY KEY,
+          username TEXT NOT NULL UNIQUE,
+          email TEXT NOT NULL UNIQUE,
+          password TEXT NOT NULL,
+          role TEXT DEFAULT 'user',
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+      
+      -- Create default admin user (password: admin123)
+      -- In production, use proper password hashing
+      INSERT OR IGNORE INTO users (id, username, email, password, role) VALUES (
+          'user_001',
+          'admin',
+          'admin@marki.fr',
+          'ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f',
+          'admin'
+      );
+      
+      -- Indexes
+      CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
+      CREATE INDEX IF NOT EXISTS idx_users_username ON users(username);

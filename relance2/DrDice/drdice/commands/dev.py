@@ -630,6 +630,16 @@ def _run_cell_tests(cell, project: Project, console: Console) -> tuple[bool, lis
 
     errors = []
 
+    # Initialiser le log tracking AVANT tout
+    flask_log = project_dir / "flask_server.log"
+    log_before = 0
+    if flask_log.exists():
+        try:
+            with open(flask_log, 'r') as f:
+                log_before = len(f.readlines())
+        except IOError:
+            pass
+
     # 1. Vérifier le serveur
     if not _check_server():
         console.print("  [yellow]⚠️ Serveur non démarré, tentative de démarrage...[/yellow]")
@@ -648,7 +658,9 @@ def _run_cell_tests(cell, project: Project, console: Console) -> tuple[bool, lis
 
     # 2. Vérifier HTTP
     http_code, http_ok = _get_http_status(url)
-    backend_errors = []  # Initialiser ici
+    backend_errors = []  # Initialiser ici pour tout le bloc
+    test_passed = True  # Initialiser aussi
+    output = ""
     if not http_ok:
         errors.append(f"[HTTP] Route retourne HTTP {http_code}")
         console.print(f"  [red]❌ HTTP {http_code}[/red]")
@@ -680,17 +692,6 @@ def _run_cell_tests(cell, project: Project, console: Console) -> tuple[bool, lis
     
     # Si erreur HTTP 500+, on skip le test Playwright car la page ne fonctionne pas
     skip_playwright = http_code >= 500
-
-    # Capturer la taille du log backend avant le test (si pas déjà fait)
-    if http_ok:
-        flask_log = project_dir / "flask_server.log"
-        log_before = 0
-        if flask_log.exists():
-            try:
-                with open(flask_log, 'r') as f:
-                    log_before = len(f.readlines())
-            except IOError:
-                pass
 
     # 3. Lancer le test Playwright (seulement si pas d'erreur serveur critique)
     screenshot_path = logs_dir / "screenshots" / f"{cell_name}.png"
