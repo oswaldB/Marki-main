@@ -516,9 +516,18 @@ def _run_frontend_test(url: str, screenshot_path: Path, log_path: Path, project_
     if not test_script.exists():
         return False, ["Script test-frontend.py non trouvé"], ""
 
+    # Chercher le Python du venv en priorité
+    python_exe = None
+    venv_python = project_dir / "venv" / "bin" / "python"
+    if venv_python.exists():
+        python_exe = str(venv_python)
+    else:
+        # Fallback sur le Python actuel
+        python_exe = sys.executable
+
     try:
         result = subprocess.run(
-            ["python", str(test_script), url, str(screenshot_path), str(log_path)],
+            [python_exe, str(test_script), url, str(screenshot_path), str(log_path)],
             capture_output=True, text=True, timeout=60
         )
         output = result.stdout + result.stderr
@@ -568,16 +577,16 @@ def _capture_backend_logs(project_dir: Path, logs_dir: Path, log_before: int) ->
         log_after = len(lines)
 
         if log_after > log_before:
-            new_lines = lines[log_before:log_after]
+            new_lines = lines[log_before:]
             backend_log = logs_dir / "backend.log"
             with open(backend_log, 'w') as f:
                 f.writelines(new_lines)
 
             for line in new_lines:
-                if any(kw in line for kw in ["ERROR", "Exception", "Traceback", "500", "ImportError", "NoAppException", "ModuleNotFoundError", "SyntaxError", "cannot import"]):
+                if any(kw in line for kw in ["ERROR", "Exception", "Traceback", "500", "ImportError", "NoAppException", "ModuleNotFoundError", "SyntaxError", "cannot import", "While importing"]):
                     errors.append(f"[BACK] {line.strip()}")
 
-        return errors[:10]
+        return errors[:20]  # Augmenté pour voir plus d'erreurs
 
     except IOError:
         return []
@@ -639,32 +648,70 @@ def _run_cell_tests(cell, project: Project, console: Console) -> tuple[bool, lis
 
     # 2. Vérifier HTTP
     http_code, http_ok = _get_http_status(url)
+    backend_errors = []  # Initialiser ici
     if not http_ok:
         errors.append(f"[HTTP] Route retourne HTTP {http_code}")
         console.print(f"  [red]❌ HTTP {http_code}[/red]")
+        
+        # Si HTTP 500+, forcer la capture des erreurs backend immédiatement
+        if http_code >= 500:
+            console.print("  [yellow]🔍 Recherche d'erreurs serveur...")
+            backend_errors = _capture_backend_logs(project_dir, logs_dir, log_before)
+            if backend_errors:
+                console.print("  [red]Erreurs serveur détectées:[/red]")
+                for err in backend_errors[:10]:
+                    console.print(f"    [dim]{err}[/dim]")
+                errors.extend(backend_errors)
+            else:
+                # Lire directement les dernières lignes du log
+                if flask_log.exists():
+                    try:
+                        with open(flask_log, 'r') as f:
+                            lines = f.readlines()
+                        if len(lines) > log_before:
+                            new_lines = lines[log_before:]
+                            for line in new_lines[-20:]:  # Dernières 20 lignes
+                                if any(kw in line for kw in ["ERROR", "Exception", "Traceback", "ImportError", "NoAppException", "ModuleNotFoundError", "cannot import"]):
+                                    err_msg = f"[BACK] {line.strip()}"
+                                    console.print(f"    [dim]{err_msg}[/dim]")
+                                    errors.append(err_msg)
+                    except IOError:
+                        pass
+    
+    # Si erreur HTTP 500+, on skip le test Playwright car la page ne fonctionne pas
+    skip_playwright = http_code >= 500
 
-    # Capturer la taille du log backend avant le test
-    flask_log = project_dir / "flask_server.log"
-    log_before = 0
-    if flask_log.exists():
-        try:
-            with open(flask_log, 'r') as f:
-                log_before = len(f.readlines())
-        except IOError:
-            pass
+    # Capturer la taille du log backend avant le test (si pas déjà fait)
+    if http_ok:
+        flask_log = project_dir / "flask_server.log"
+        log_before = 0
+        if flask_log.exists():
+            try:
+                with open(flask_log, 'r') as f:
+                    log_before = len(f.readlines())
+            except IOError:
+                pass
 
-    # 3. Lancer le test Playwright
+    # 3. Lancer le test Playwright (seulement si pas d'erreur serveur critique)
     screenshot_path = logs_dir / "screenshots" / f"{cell_name}.png"
     frontend_log = logs_dir / "frontend.json"
-    test_passed, frontend_errors, output = _run_frontend_test(
-        url, screenshot_path, frontend_log, project_dir
-    )
+    
+    if not skip_playwright:
+        test_passed, frontend_errors, output = _run_frontend_test(
+            url, screenshot_path, frontend_log, project_dir
+        )
+        errors.extend(frontend_errors)
+    else:
+        console.print("  [yellow]⚠️ Test frontend ignoré (erreur serveur 500+)")
+        test_passed = False
+        output = "Test frontend ignoré - erreur serveur HTTP 500"
+        # Créer un frontend_log vide
+        frontend_log.write_text('{"messages": [], "errors": []}', encoding="utf-8")
 
-    errors.extend(frontend_errors)
-
-    # 4. Vérifier les erreurs backend
-    backend_errors = _capture_backend_logs(project_dir, logs_dir, log_before)
-    errors.extend(backend_errors)
+    # 4. Vérifier les erreurs backend (si pas déjà capturées)
+    if http_ok or http_code < 500:
+        backend_errors = _capture_backend_logs(project_dir, logs_dir, log_before)
+        errors.extend(backend_errors)
 
     # Écrire le log de sortie
     (logs_dir / "test_output.log").write_text(output, encoding="utf-8")
@@ -830,6 +877,24 @@ Réponds avec UNIQUEMENT le contenu du fichier app.py, sans balises markdown, sa
 
 def _clean_yaml_response(content: str) -> str:
     """Nettoie la réponse de l'IA pour extraire le YAML."""
+    # Chercher un bloc YAML entre balises ```yaml ... ```
+    import re
+    
+    # Pattern pour extraire le contenu entre ```yaml et ```
+    yaml_block_pattern = r'```yaml\s*\n(.*?)\n```'
+    match = re.search(yaml_block_pattern, content, re.DOTALL)
+    if match:
+        return match.group(1).strip()
+    
+    # Fallback: chercher entre ``` et ``` sans spécifier yaml
+    generic_pattern = r'```\s*\n(.*?)\n```'
+    match = re.search(generic_pattern, content, re.DOTALL)
+    if match:
+        potential_yaml = match.group(1).strip()
+        if potential_yaml.startswith(('fichiers:', 'cell:', '---')):
+            return potential_yaml
+    
+    # Nettoyage ligne par ligne si pas de bloc markdown
     lines = content.split('\n')
     cleaned_lines = []
     in_yaml = False
@@ -982,28 +1047,76 @@ def _extract_files(cell, yaml_path: Path) -> bool:
         with open(yaml_path, "r", encoding="utf-8") as f:
             content = f.read()
 
-        data = yaml.safe_load(content)
+        # Pré-traitement: supprimer les lignes qui pourraient causer des problèmes
+        # Si le YAML contient du markdown avec **texte**, cela peut causer des erreurs
+        lines = content.split('\n')
+        cleaned_lines = []
+        in_content = False
+        
+        for line in lines:
+            # Détecter si on est dans un bloc contenu (après un |)
+            stripped = line.rstrip()
+            if stripped.endswith(': |') or stripped.endswith(': |-'):
+                in_content = True
+                cleaned_lines.append(line)
+                continue
+            
+            # Si on est dans le contenu, tout garder tel quel
+            if in_content:
+                cleaned_lines.append(line)
+                # Détecter la fin du bloc contenu (ligne non indentée)
+                if line and not line.startswith(' ') and not line.startswith('\t'):
+                    in_content = False
+                continue
+            
+            # En dehors du contenu, nettoyer les lignes problématiques
+            # Ignorer les lignes qui ressemblent à du markdown avec ** sans être dans un bloc contenu
+            if stripped.startswith('**') and stripped.endswith('**'):
+                console.print(f"  [dim]⚠️  Ligne ignorée (markdown): {line[:50]}...")
+                continue
+            
+            cleaned_lines.append(line)
+        
+        cleaned_content = '\n'.join(cleaned_lines)
+        
+        try:
+            data = yaml.safe_load(cleaned_content)
+        except yaml.YAMLError as ye:
+            console.print(f"[red]❌ Erreur YAML: {ye}")
+            # Sauvegarder le contenu problématique pour debug
+            debug_path = yaml_path.parent / f"{yaml_path.stem}-debug.yaml"
+            debug_path.write_text(cleaned_content, encoding="utf-8")
+            console.print(f"[dim]🐛 Contenu sauvegardé dans: {debug_path}")
+            return False
 
         if not isinstance(data, dict) or "fichiers" not in data:
-            console.print("[red]❌ Structure YAML invalide")
+            console.print("[red]❌ Structure YAML invalide - clé 'fichiers' manquante")
             return False
 
         fichiers = data["fichiers"]
+        if not isinstance(fichiers, list):
+            console.print("[red]❌ Structure YAML invalide - 'fichiers' n'est pas une liste")
+            return False
+
         files_created = 0
 
         for item in fichiers:
             if not isinstance(item, dict):
                 continue
 
-            filepath = item.get("chemin", "").strip()
+            filepath = item.get("chemin", "").strip() if item.get("chemin") else ""
             filecontent = item.get("contenu", "")
 
-            if not filepath or not filecontent:
+            if not filepath:
+                continue
+
+            if not filecontent:
+                console.print(f"[yellow]⚠️  Contenu vide pour: {filepath}")
                 continue
 
             # Ignorer app.py
             if Path(filepath).name == "app.py":
-                console.print(f"  [dim]⚠️ Ignoré (app.py géré automatiquement): {filepath}[/dim]")
+                console.print(f"  [dim]⚠️  Ignoré (app.py géré automatiquement): {filepath}[/dim]")
                 continue
 
             # Convertir en chemin absolu
@@ -1041,6 +1154,8 @@ def _extract_files(cell, yaml_path: Path) -> bool:
 
     except Exception as e:
         console.print(f"[red]❌ Erreur extraction: {e}")
+        import traceback
+        console.print(f"[dim]{traceback.format_exc()}")
         return False
 
 

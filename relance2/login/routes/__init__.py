@@ -1,1 +1,1 @@
-from . import index, logout
+"""Routes module for login cell."""
