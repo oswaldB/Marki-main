@@ -1,0 +1,83 @@
+"""
+User Model
+Represents a user in the system
+"""
+import sqlite3
+from datetime import datetime
+
+
+class User:
+    """User model for database operations"""
+    
+    def __init__(self, id=None, username=None, email=None, role='user', 
+                 created_at=None, updated_at=None):
+        self.id = id
+        self.username = username
+        self.email = email
+        self.role = role
+        self.created_at = created_at or datetime.now().isoformat()
+        self.updated_at = updated_at or datetime.now().isoformat()
+    
+    @staticmethod
+    def get_db_connection(db_path='marki.db'):
+        """Get database connection"""
+        conn = sqlite3.connect(db_path)
+        conn.row_factory = sqlite3.Row
+        return conn
+    
+    @classmethod
+    def find_by_email(cls, email, db_path='marki.db'):
+        """Find user by email"""
+        conn = cls.get_db_connection(db_path)
+        cursor = conn.cursor()
+        cursor.execute(
+            'SELECT id, username, email, role, created_at, updated_at FROM users WHERE email = ?',
+            (email,)
+        )
+        row = cursor.fetchone()
+        conn.close()
+        
+        if row:
+            return cls(
+                id=row['id'],
+                username=row['username'],
+                email=row['email'],
+                role=row['role'],
+                created_at=row['created_at'],
+                updated_at=row['updated_at']
+            )
+        return None
+    
+    @classmethod
+    def find_by_id(cls, user_id, db_path='marki.db'):
+        """Find user by ID"""
+        conn = cls.get_db_connection(db_path)
+        cursor = conn.cursor()
+        cursor.execute(
+            'SELECT id, username, email, role, created_at, updated_at FROM users WHERE id = ?',
+            (user_id,)
+        )
+        row = cursor.fetchone()
+        conn.close()
+        
+        if row:
+            return cls(
+                id=row['id'],
+                username=row['username'],
+                email=row['email'],
+                role=row['role'],
+                created_at=row['created_at'],
+                updated_at=row['updated_at']
+            )
+        return None
+    
+    def to_dict(self):
+        """Convert user to dictionary"""
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'role': self.role,
+            'created_at': self.created_at,
+            'updated_at': self.updated_at
+        }

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Marki{% endblock %}
+
+{% block content %}
+<div x-data="dashboardPage()" x-init="init()" class="min-h-screen bg-gray-100">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <div class="h-8 w-8 bg-primary-600 rounded-lg flex items-center justify-center">
+                            <span class="text-white font-bold text-lg">M</span>
+                        </div>
+                        <span class="ml-2 text-xl font-bold text-gray-900">Marki</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span x-text="$store.auth.user?.email" class="text-gray-600 text-sm"></span>
+                    <button 
+                        @click="logout()"
+                        class="text-gray-500 hover:text-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                        Déconnexion
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="px-4 py-6 sm:px-0">
+            <div class="bg-white rounded-lg shadow p-6">
+                <h1 class="text-2xl font-bold text-gray-900 mb-4">
+                    Bienvenue, <span x-text="$store.auth.user?.username || 'Utilisateur'"></span>!
+                </h1>
+                <p class="text-gray-600">
+                    Vous êtes connecté au dashboard Marki.
+                </p>
+
+                <!-- User Info Card -->
+                <div class="mt-6 bg-gray-50 rounded-lg p-4">
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">Informations utilisateur</h3>
+                    <dl class="grid grid-cols-1 gap-x-4 gap-y-4 sm:grid-cols-2">
+                        <div>
+                            <dt class="text-sm font-medium text-gray-500">ID</dt>
+                            <dd x-text="$store.auth.user?.id" class="mt-1 text-sm text-gray-900"></dd>
+                        </div>
+                        <div>
+                            <dt class="text-sm font-medium text-gray-500">Nom d'utilisateur</dt>
+                            <dd x-text="$store.auth.user?.username" class="mt-1 text-sm text-gray-900"></dd>
+                        </div>
+                        <div>
+                            <dt class="text-sm font-medium text-gray-500">Email</dt>
+                            <dd x-text="$store.auth.user?.email" class="mt-1 text-sm text-gray-900"></dd>
+                        </div>
+                        <div>
+                            <dt class="text-sm font-medium text-gray-500">Rôle</dt>
+                            <dd>
+                                <span 
+                                    x-text="$store.auth.user?.role"
+                                    class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium"
+                                    :class="$store.auth.user?.role === 'admin' ? 'bg-purple-100 text-purple-800' : 'bg-green-100 text-green-800'"
+                                ></span>
+                            </dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    function dashboardPage() {
+        return {
+            init() {
+                // Check auth on init
+                if (!Alpine.store('auth').isAuthenticated) {
+                    const token = localStorage.getItem('token');
+                    if (!token) {
+                        window.location.href = '/login';
+                        return;
+                    }
+                    Alpine.store('auth').validateToken();
+                }
+            },
+
+            async logout() {
+                try {
+                    const token = Alpine.store('auth').token;
+                    if (token) {
+                        await fetch('/api/auth/logout', {
+                            method: 'POST',
+                            headers: {
+                                'Authorization': `Bearer ${token}`
+                            }
+                        });
+                    }
+                } catch (error) {
+                    console.error('Logout error:', error);
+                } finally {
+                    Alpine.store('auth').logout();
+                }
+            }
+        };
+    }
+</script>
+{% endblock %}
