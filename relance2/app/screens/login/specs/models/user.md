@@ -1,8 +1,36 @@
+# Modèle Utilisateur - Login
+
+## Overview
+Modèle d'authentification utilisateur. **PAS D'ORM** - Utilise `sqlite3` du standard library uniquement avec requêtes SQL brutes.
+
+## Table: users
+
+| Champ | Type | Constraints | Description |
+|-------|------|-------------|-------------|
+| id | VARCHAR(36) | PRIMARY KEY | UUID utilisateur |
+| username | VARCHAR(50) | NOT NULL, UNIQUE | Nom d'utilisateur |
+| email | VARCHAR(255) | NOT NULL, UNIQUE | Email (utilisé pour login) |
+| password | VARCHAR(255) | NOT NULL | Mot de passe (en clair pour test, à hasher en prod) |
+| role | VARCHAR(20) | DEFAULT 'user' | Role: admin, user |
+| is_active | BOOLEAN | DEFAULT 1 | Compte actif |
+| created_at | DATETIME | DEFAULT CURRENT_TIMESTAMP | Date création |
+
+## Fichiers de Modèle
+
+```
+models/
+├── __init__.py    # Exporte AuthModel, AuthError, User
+└── auth.py        # Toute la logique d'auth en sqlite3 pur
+```
+
+## Code : `models/auth.py`
+
+```python
 """Modèle d'authentification utilisateur - Pure sqlite3."""
 
 import sqlite3
-import uuid
 from flask import current_app
+from app.middleware.auth.jwt_utils import generate_token, validate_token
 
 
 class AuthError(Exception):
@@ -55,50 +83,12 @@ class AuthModel:
         return conn
     
     @classmethod
-    def init_db(cls):
-        """Initialise la base de données avec les tables et fixtures."""
-        db = cls.get_db()
-        
-        # Création table users
-        db.execute("""
-            CREATE TABLE IF NOT EXISTS users (
-                id VARCHAR(36) PRIMARY KEY,
-                username VARCHAR(50) NOT NULL UNIQUE,
-                email VARCHAR(255) NOT NULL UNIQUE,
-                password VARCHAR(255) NOT NULL,
-                role VARCHAR(20) DEFAULT 'user',
-                is_active BOOLEAN DEFAULT 1,
-                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-            )
-        """)
-        
-        # Utilisateur de test
-        db.execute("""
-            INSERT OR IGNORE INTO users (id, username, email, password, role)
-            VALUES ('user-123', 'admin', 'admin@marki.fr', 'admin', 'admin')
-        """)
-        
-        db.commit()
-        db.close()
-    
-    @classmethod
     def find_by_username(cls, username):
         """Trouve un utilisateur par username."""
         db = cls.get_db()
         user = db.execute(
             "SELECT * FROM users WHERE username = ? AND is_active = 1",
             (username,)
-        ).fetchone()
-        db.close()
-        return User.from_row(user)
-    
-    @classmethod
-    def find_by_email(cls, email):
-        """Trouve un utilisateur par email."""
-        db = cls.get_db()
-        user = db.execute(
-            "SELECT * FROM users WHERE email = ? AND is_active = 1",
-            (email,)
         ).fetchone()
         db.close()
         return User.from_row(user)
@@ -131,13 +121,13 @@ class AuthModel:
         return stored['password'] == password
     
     @classmethod
-    def authenticate(cls, email, password):
+    def authenticate(cls, username, password):
         """
-        Authentifie un utilisateur par email.
+        Authentifie un utilisateur.
         Retourne: {'user': User, 'token': str}
         Lève: AuthError si échec
         """
-        user = cls.find_by_email(email)
+        user = cls.find_by_username(username)
         
         if not user:
             raise AuthError("Utilisateur non trouvé")
@@ -145,8 +135,6 @@ class AuthModel:
         if not cls.verify_password(user, password):
             raise AuthError("Mot de passe incorrect")
         
-        # Import ici pour éviter circular import
-        from middleware.auth.jwt_utils import generate_token
         token = generate_token(user.id, user.username, user.role)
         
         return {'user': user, 'token': token}
@@ -158,7 +146,6 @@ class AuthModel:
         Lève: AuthError si token invalide
         """
         try:
-            from middleware.auth.jwt_utils import validate_token
             payload = validate_token(token)
             user = cls.find_by_id(payload['id'])
             
@@ -169,3 +156,58 @@ class AuthModel:
             
         except Exception as e:
             raise AuthError(f"Token invalide: {str(e)}")
+```
+
+## Points Clés
+
+### ✅ Ce qu'on fait (sqlite3 pur)
+```python
+import sqlite3
+
+conn = sqlite3.connect(db_path)
+conn.row_factory = sqlite3.Row
+cursor = conn.execute("SELECT * FROM users WHERE username = ?", (username,))
+row = cursor.fetchone()
+conn.close()
+```
+
+### ❌ Ce qu'on ne fait PAS (SQLAlchemy interdit)
+```python
+# INTERDIT:
+from sqlalchemy import Column, String
+from sqlalchemy.orm import Session
+
+class User(Base):  # INTERDIT
+    __tablename__ = 'users'
+    id = Column(String, primary_key=True)  # INTERDIT
+```
+
+## Dépendances
+
+- **Aucune** pour la DB (sqlite3 est dans la stdlib)
+- `app.middleware.auth.jwt_utils` : pour generate_token/validate_token
+- `flask.current_app` : pour accéder à app.config['DATABASE']
+
+## Fixtures SQL
+
+```sql
+-- Création table users
+CREATE TABLE IF NOT EXISTS users (
+    id VARCHAR(36) PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+    role VARCHAR(20) DEFAULT 'user',
+    is_active BOOLEAN DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Utilisateur de test
+INSERT OR IGNORE INTO users (id, username, email, password, role)
+VALUES ('user-123', 'admin', 'admin@marki.fr', 'admin', 'admin');
+```
+
+## Related Routes
+
+- `routes/api_auth.py` : Utilise AuthModel.authenticate(), AuthModel.verify_token()
+- `routes/index.py` : Utilise AuthModel.authenticate()

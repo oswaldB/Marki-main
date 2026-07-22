@@ -1,49 +1,24 @@
-from flask import render_template, request, jsonify, redirect, url_for, make_response
-from .. import bp
-from ..models.auth import AuthModel, AuthError
-from app.middleware.auth.jwt_utils import TEST_TOKEN
+"""Main routes."""
 
-@bp.route('/', methods=['GET', 'POST'])
+from flask import Blueprint, render_template
+
+index_bp = Blueprint('index', __name__)
+
+
+@index_bp.route('/')
 def index():
-    """Page de login et génération de token."""
-    if request.method == 'POST':
-        # Vérifier le type de contenu avant de parser
-        if request.is_json:
-            data = request.get_json()
-        else:
-            data = request.form
-        
-        username = data.get('username', '').strip() or data.get('email', '').strip()
-        password = data.get('password', '')
-        
-        # Authentification via AuthModel
-        try:
-            result = AuthModel.authenticate(username, password)
-            token = result['token']
-            user = result['user']
-            
-            if request.is_json:
-                return jsonify({
-                    'token': token, 
-                    'user': {
-                        'id': user.id,
-                        'username': user.username,
-                        'email': user.email,
-                        'role': user.role
-                    }
-                })
-            
-            # Redirection vers hello_protected avec le token dans un cookie
-            response = make_response(redirect('/hello-protected'))
-            response.set_cookie('access_token', token, httponly=True, max_age=86400)
-            return response
-            
-        except AuthError:
-            # Échec d'authentification
-            if request.is_json:
-                return jsonify({'error': 'Identifiants invalides'}), 401
-            
-            return render_template('login.html', token=None, test_token=TEST_TOKEN, 
-                                   error='Identifiants invalides', username=username)
-    
-    return render_template('login.html', token=None, test_token=TEST_TOKEN)
+    """Redirection vers login."""
+    from flask import redirect, url_for
+    return redirect(url_for('index.login'))
+
+
+@index_bp.route('/login')
+def login():
+    """Page de login."""
+    return render_template('login.html')
+
+
+@index_bp.route('/dashboard')
+def dashboard():
+    """Page dashboard (protégée, mais vérification faite côté client)."""
+    return render_template('dashboard.html')

@@ -1,101 +1,72 @@
-"""Routes API pour l'authentification (/api/auth/*)."""
+"""API routes for authentication."""
 
-from flask import jsonify, request
-from ..auth_bp import auth_bp
-from ..models.auth import AuthModel, AuthError
+from flask import Blueprint, request, jsonify, current_app
+from models.auth import AuthModel, AuthError
+
+api_auth_bp = Blueprint('api_auth', __name__, url_prefix='/api/auth')
 
 
-@auth_bp.route('/login', methods=['POST'])
-def api_auth_login():
+@api_auth_bp.route('/login', methods=['POST'])
+def login():
     """
     POST /api/auth/login
-    Authentification utilisateur, retourne un JWT.
+    Authentifie un utilisateur et retourne un token JWT.
     """
-    data = request.get_json() or {}
-    username = data.get('username', '').strip() or data.get('email', '').strip()
-    password = data.get('password', '')
+    data = request.get_json()
     
-    if not username or not password:
-        return jsonify({"error": "Identifiants invalides"}), 401
+    if not data:
+        return jsonify({'error': 'Données manquantes'}), 400
+    
+    email = data.get('email')
+    password = data.get('password')
+    
+    if not email or not password:
+        return jsonify({'error': 'Email et mot de passe requis'}), 400
     
     try:
-        result = AuthModel.authenticate(username, password)
-        user = result['user']
+        result = AuthModel.authenticate(email, password)
         
         return jsonify({
-            "token": result['token'],
-            "user": {
-                "id": user.id,
-                "username": user.username,
-                "email": user.email,
-                "role": user.role
-            }
+            'token': result['token'],
+            'user': result['user'].to_dict()
         }), 200
         
-    except AuthError:
-        return jsonify({"error": "Identifiants invalides"}), 401
+    except AuthError as e:
+        current_app.logger.warning(f"Auth failed for {email}: {str(e)}")
+        return jsonify({'error': 'Identifiants invalides'}), 401
+    except Exception as e:
+        current_app.logger.error(f"Login error: {str(e)}")
+        return jsonify({'error': 'Erreur serveur'}), 500
 
 
-@auth_bp.route('/me', methods=['GET'])
-def api_auth_me():
+@api_auth_bp.route('/me', methods=['GET'])
+def me():
     """
     GET /api/auth/me
-    Vérifie le token et retourne les informations de l'utilisateur.
+    Vérifie le token et retourne l'utilisateur courant.
     """
-    auth_header = request.headers.get('Authorization', '')
+    auth_header = request.headers.get('Authorization')
     
     if not auth_header or not auth_header.startswith('Bearer '):
-        return jsonify({"error": "Token manquant"}), 401
+        return jsonify({'error': 'Token manquant'}), 401
     
     token = auth_header.split(' ')[1]
     
     try:
         user = AuthModel.verify_token(token)
+        return jsonify({'user': user.to_dict()}), 200
         
-        return jsonify({
-            "id": user.id,
-            "username": user.username,
-            "email": user.email,
-            "role": user.role
-        }), 200
-        
-    except AuthError:
-        return jsonify({"error": "Token invalide"}), 401
+    except AuthError as e:
+        return jsonify({'error': str(e)}), 401
+    except Exception as e:
+        current_app.logger.error(f"Token verification error: {str(e)}")
+        return jsonify({'error': 'Erreur serveur'}), 500
 
 
-@auth_bp.route('/logout', methods=['POST'])
-def api_auth_logout():
+@api_auth_bp.route('/logout', methods=['POST'])
+def logout():
     """
     POST /api/auth/logout
-    Déconnexion (côté client supprime le token).
+    Déconnexion (côté client: suppression du token).
     """
-    return jsonify({"success": True, "message": "Déconnecté"}), 200
-
-
-@auth_bp.route('/verify', methods=['POST'])
-def api_auth_verify():
-    """
-    POST /api/auth/verify
-    Vérifie la validité d'un token (pour le rechargement initial de page).
-    """
-    data = request.get_json() or {}
-    token = data.get('token')
-    
-    if not token:
-        return jsonify({"error": "Token manquant"}), 401
-    
-    try:
-        user = AuthModel.verify_token(token)
-        
-        return jsonify({
-            "valid": True,
-            "user": {
-                "id": user.id,
-                "username": user.username,
-                "email": user.email,
-                "role": user.role
-            }
-        }), 200
-        
-    except AuthError:
-        return jsonify({"valid": False, "error": "Token invalide"}), 401
+    return jsonify({'message': 'Déconnexion réussie'}), 200
