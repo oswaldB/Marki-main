@@ -1,0 +1,78 @@
+{% comment %}
+Workflow: login-initial-load
+Type: frontend
+Description: Chargement initial de la page login avec vérification session existante
+{% endcomment %}
+
+<script>
+/**
+ * @workflow login-initial-load
+ * @screen login
+ * @description Vérifier si une session existe et rediriger si nécessaire
+ */
+
+document.addEventListener('alpine:init', () => {
+    Alpine.data('loginInitialLoad', () => ({
+        checking: false,
+        
+        async execute() {
+            this.checking = true;
+            
+            /**
+             * @action Initialiser le DOM de la page login
+             * @checkpoint dom-ready, body avec x-data="loginPage()" présent
+             */
+            
+            /**
+             * @action Vérifier la présence d'un token dans localStorage
+             * @checkpoint token-checked, token présent ou absent déterminé
+             */
+            const token = localStorage.getItem('token');
+            
+            if (!token) {
+                this.checking = false;
+                return { hasSession: false };
+            }
+            
+            /**
+             * @action Si token présent, valider via GET /api/auth/me
+             * @checkpoint session-verified, réponse API reçue
+             * Backend: AuthLocal.verifyToken(token)
+             */
+            try {
+                const response = await fetch('/api/auth/me', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    Alpine.store('auth').token = token;
+                    Alpine.store('auth').user = data.user;
+                    Alpine.store('auth').isAuthenticated = true;
+                    
+                    /**
+                     * @action Si session valide, rediriger vers /dashboard
+                     * @checkpoint redirect-executed, navigation vers dashboard
+                     */
+                    window.location.href = '/dashboard';
+                    
+                    return { hasSession: true, redirected: true };
+                }
+            } catch (err) {
+                console.error('Session validation error:', err);
+            }
+            
+            // Token invalide
+            localStorage.removeItem('token');
+            this.checking = false;
+            
+            /**
+             * @action Afficher le formulaire de login prêt à l'emploi
+             * @checkpoint form-ready, champs username/password focusables
+             */
+            return { hasSession: false };
+        }
+    }));
+});
+</script>

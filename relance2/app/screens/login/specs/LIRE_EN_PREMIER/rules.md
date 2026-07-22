@@ -42,6 +42,16 @@
 - Respect strict du styleguide (couleurs Tailwind, tailles de police, marges)
 - Les états des mockups doivent être fidèles aux workflows définis
 
+### RÈGLE D'OR 5 : Pas d'Installation de Composants Externes
+
+**LE `requirements.txt` NE BOUGE PAS.**
+
+- **Interdiction stricte** d'ajouter de nouvelles dépendances Python
+- Pas de `pip install`, pas de modification du `requirements.txt`
+- Pas de nouvelles librairies externes (sauf mention contraire explicite)
+- Utiliser **uniquement** les dépendances existantes du projet
+- Si une fonctionnalité nécessite une librairie externe → la réimplémenter en interne ou utiliser la stdlib
+
 ---
 
 ## 📁 Structure d'une Cell
