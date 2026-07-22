@@ -1,0 +1,96 @@
+{% raw %}
+<!--
+Workflow: login-auth-submit
+Description: Soumettre les identifiants utilisateur pour authentification
+-->
+<script>
+    // Workflow Auth Submit - Overrides handleLogin in loginPage
+    
+    // Extend loginPage with auth submit functionality
+    const originalLoginPage = loginPage;
+    
+    loginPage = function() {
+        const self = originalLoginPage();
+        
+        /**
+         * Override handleLogin with auth submit workflow
+         */
+        self.handleLogin = async function() {
+            const email = this.form.email;
+            const password = this.form.password;
+            
+            /**
+             * @action Validate form
+             * Vérifie que email et password sont présents
+             */
+            if (!email || !password) {
+                this.error = 'Veuillez remplir tous les champs';
+                return;
+            }
+            
+            /**
+             * @action Set loading state
+             * Modifications: loading → true, error ← null
+             */
+            this.loading = true;
+            this.error = null;
+            
+            try {
+                /**
+                 * @action Call auth API
+                 * POST /api/auth/login avec JSON body
+                 */
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'Échec de connexion');
+                }
+                
+                /**
+                 * @action Store auth data
+                 * Récupère token et user depuis réponse
+                 */
+                const data = await response.json();
+                
+                /**
+                 * @action Persist token
+                 * Sauvegarde dans localStorage et Alpine store
+                 */
+                localStorage.setItem('token', data.token);
+                Alpine.store('auth').token = data.token;
+                Alpine.store('auth').user = data.user;
+                Alpine.store('auth').isAuthenticated = true;
+                
+                /**
+                 * @action Redirect to dashboard
+                 * Navigation vers /dashboard en cas de succès
+                 */
+                window.location.href = '/dashboard';
+                
+            } catch (error) {
+                /**
+                 * @action Display error
+                 * Affiche message d'erreur en cas d'échec
+                 * Modifications: error ← message
+                 */
+                this.error = error.message;
+            } finally {
+                /**
+                 * @action Reset loading state
+                 * Modifications: loading → false
+                 */
+                this.loading = false;
+            }
+        };
+        
+        return self;
+    };
+</script>
+{% endraw %}

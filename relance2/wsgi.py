@@ -1,15 +1,21 @@
 """
-Marki App - Point d'entrée principal
+Point d'entrée WSGI pour Marki App.
 
-Ce fichier contient l'enregistrement explicite de toutes les routes/cells.
-Structure Cell-Based MVC:
-  - screens/ : Écrans avec UI (pages web)
-  - backend_wf/ : Workflows backend (API endpoints)
-  - cron/ : Tâches planifiées
+Usage:
+  - Développement: flask run
+  - Production: gunicorn -w 4 "wsgi:app"
+  - Direct: python wsgi.py
 """
 
-from flask import Flask
+import os
+import sys
+
+# Ajouter le dossier app au path si exécuté directement
+if __name__ == '__main__':
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from app import create_app, scheduler
+from flask import Flask
 
 # Import des blueprints des cells
 # SCREENS (Écrans avec UI)

@@ -807,7 +807,7 @@ lsof -ti:5000 | xargs kill -9 2>/dev/null || echo "   Aucun processus à nettoye
 sleep 1
 
 # Lancement serveur avec autoreload (en arrière-plan)
-export FLASK_APP="app.app"
+export FLASK_APP="wsgi"
 export FLASK_ENV="development"
 export FLASK_DEBUG="1"
 

@@ -810,7 +810,7 @@ PYTHON_UPDATE_EOF
             if ! curl -s http://localhost:5000/ > /dev/null 2>&1; then
                 log_error "Impossible de démarrer le serveur automatiquement"
                 log_info "Tests ignorés pour $cell_name - démarrez manuellement:"
-                log_info "  export FLASK_APP=app && python -m flask run --port=5000"
+                log_info "  export FLASK_APP=wsgi && python -m flask run --port=5000"
             fi
         fi
 

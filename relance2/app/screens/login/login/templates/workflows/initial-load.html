@@ -1,0 +1,93 @@
+{% raw %}
+<!--
+Workflow: login-initial-load
+Description: Charger la page de login et vérifier l'état d'authentification existant
+-->
+<script>
+    // Workflow Initial Load - Included in login.html
+    // This script extends the loginPage function with init logic
+    
+    // Store original loginPage if exists, or create new
+    window.loginPageOriginal = window.loginPage;
+    
+    function loginPage() {
+        return {
+            // Data Model
+            form: {
+                email: '',
+                password: ''
+            },
+            loading: false,
+            error: null,
+            formReady: false,
+            
+            /**
+             * @action Initialiser le DOM de la page login
+             * @checkpoint dom-ready, body avec x-data="loginPage()" présent
+             */
+            initPage() {
+                console.log('[WF] initial-load: DOM ready');
+                
+                /**
+                 * @action Vérifier la présence d'un token dans localStorage
+                 * @checkpoint token-checked, token présent ou absent déterminé
+                 */
+                const token = localStorage.getItem('token');
+                console.log('[WF] initial-load: Token checked, present:', !!token);
+                
+                if (token) {
+                    this.loading = true;
+                    
+                    /**
+                     * @action Si token présent, valider via GET /api/auth/me
+                     * @checkpoint session-verified, réponse API reçue
+                     */
+                    fetch('/api/auth/me', {
+                        method: 'GET',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            return response.json();
+                        }
+                        throw new Error('Session invalide');
+                    })
+                    .then(data => {
+                        /**
+                         * @action Si session valide, rediriger vers /dashboard
+                         * @checkpoint redirect-executed, navigation vers dashboard
+                         */
+                        console.log('[WF] initial-load: Session verified, redirecting');
+                        Alpine.store('auth').token = token;
+                        Alpine.store('auth').user = data;
+                        Alpine.store('auth').isAuthenticated = true;
+                        
+                        window.location.href = '/dashboard';
+                    })
+                    .catch(err => {
+                        console.log('[WF] initial-load: Session verification failed', err);
+                        localStorage.removeItem('token');
+                        this.loading = false;
+                        /**
+                         * @action Afficher le formulaire de login prêt à l'emploi
+                         * @checkpoint form-ready, champs username/password focusables
+                         */
+                        this.formReady = true;
+                    });
+                } else {
+                    /**
+                     * @action Afficher le formulaire de login prêt à l'emploi
+                     * @checkpoint form-ready, champs username/password focusables
+                     */
+                    this.formReady = true;
+                }
+            },
+            
+            // Placeholder - implemented in auth-submit.html
+            handleLogin() {}
+        };
+    }
+</script>
+{% endraw %}

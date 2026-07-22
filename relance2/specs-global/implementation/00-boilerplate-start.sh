@@ -11,26 +11,27 @@
 # ÉTAPE 1: Structure de base de l'app Flask
 # ==============================================================================
 
-pi -p "Crée UNIQUEMENT le fichier app/app.py qui configure l'application Flask principale. Ne fais rien d'autre. Pas de prise d'initiative. Juste ce fichier.
+pi -p "Crée UNIQUEMENT le fichier wsgi.py à la racine du projet qui configure l'application Flask principale. Ne fais rien d'autre. Pas de prise d'initiative. Juste ce fichier.
 
 VARIABLES ET FICHIERS EXISTANTS:
-- Ce fichier est le point d'entrée de l'application
-- Il importera le blueprint 'hello_bp' depuis routes/hello.py (créé à l'étape 2)
-- Il utilisera le template_folder='templates' pour les templates Jinja2
+- Ce fichier est le point d'entrée WSGI de l'application (à la racine, pas dans app/)
+- Il importera le blueprint 'hello_bp' depuis app.routes.hello (créé à l'étape 2)
+- Il utilisera le create_app() depuis app
 
 Le fichier doit:
-- Importer Flask et configurer l'app avec template_folder='templates'
+- Importer create_app depuis app
 - Configurer le logging de base vers stdout
-- Enregistrer le blueprint hello_bp depuis routes/hello.py
-- Démarrer le serveur sur le port 5000 avec app.run(port=5000, debug=True)
+- Enregistrer le blueprint hello_bp
+- Exposer la variable 'app' pour flask run et gunicorn
+- Avoir un bloc if __name__ == '__main__' pour python wsgi.py
 
 Respecte les règles de dev-backend définies dans rules/dev-backend.md:
-- Utiliser une structure avec blueprints
+- Point d'entrée à la racine, pas dans app/
 - Configuration logging au démarrage
 - L'app expose un endpoint /hello qui affiche la page"
 
-git add app/app.py
-git commit -m "feat: ajoute app.py - configuration Flask principale"
+git add wsgi.py
+git commit -m "feat: ajoute wsgi.py - point d'entrée Flask"
 
 # ==============================================================================
 # ÉTAPE 2: Route Hello (Backend)

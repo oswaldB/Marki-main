@@ -25,33 +25,21 @@ playwright==1.40.0
 pyyaml>=6.0
 """
 
-APP_INIT_PY = '''from flask import Flask
-from flask_apscheduler import APScheduler
+WSGI_PY = '''\"\"\"
+Marki App - Point d'entrée WSGI (à la racine du projet)
+
+Usage:
+  - Développement: flask run
+  - Production: gunicorn -w 4 \"wsgi:app\"
+  - Direct: python wsgi.py
+\"\"\"
+
 import os
+import sys
 
-scheduler = APScheduler()
-
-def create_app():
-    """Crée l'application Flask avec la configuration de base."""
-    app = Flask(__name__)
-    
-    # Config
-    app.config['SECRET_KEY'] = 'dev-secret-key-change-in-production'
-    app.config['DATABASE'] = os.path.join(
-        os.path.dirname(__file__), 'data', 'marki.db'
-    )
-    app.config['SCHEDULER_API_ENABLED'] = True
-    
-    # Démarrer scheduler
-    scheduler.init_app(app)
-    scheduler.start()
-    
-    return app
-'''
-
-APP_PY = '''"""
-Marki App - Point d'entrée principal
-"""
+# Ajouter le dossier courant au path si exécuté directement
+if __name__ == '__main__':
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from app import create_app, scheduler
 
@@ -82,22 +70,48 @@ app.register_blueprint(hello_cron_bp, url_prefix='/hello-cron')
 
 @app.route('/')
 def index():
-    """Page d'accueil."""
-    return """<!DOCTYPE html>
+    \"\"\"Page d'accueil.\"\"\"
+    return \"\"\"<!DOCTYPE html>
 <html>
 <head><title>Marki App</title>
-<script src=\"https://cdn.tailwindcss.com\"></script>
+<script src=\\\"https://cdn.tailwindcss.com\\\"></script>
 </head>
-<body class=\"bg-gray-100 p-8\">
-<div class=\"max-w-2xl mx-auto bg-white p-6 rounded-lg shadow\">
-<h1 class=\"text-3xl font-bold mb-6 text-blue-600\">Marki App</h1>
-<p><a href=\"/hello\" class=\"text-blue-500\">/hello</a> - Écran public</p>
-<p><a href=\"/hello-protected\" class=\"text-blue-500\">/hello-protected</a> - Écran privé</p>
-<p><a href=\"/login\" class=\"text-blue-500\">/login</a> - Authentification</p>
-</div></body></html>"""
+<body class=\\\"bg-gray-100 p-8\\\">
+<div class=\\\"max-w-2xl mx-auto bg-white p-6 rounded-lg shadow\\\">
+<h1 class=\\\"text-3xl font-bold mb-6 text-blue-600\\\">Marki App</h1>
+<p><a href=\\\"/hello\\\" class=\\\"text-blue-500\\\">/hello</a> - Écran public</p>
+<p><a href=\\\"/hello-protected\\\" class=\\\"text-blue-500\\\">/hello-protected</a> - Écran privé</p>
+<p><a href=\\\"/login\\\" class=\\\"text-blue-500\\\">/login</a> - Authentification</p>
+</div></body></html>\"\"\"
 
 if __name__ == '__main__':
+    print(\"\\\"\\\"🚀 Démarrage de Marki App...\\\"\\\"\")
+    print(\"\\\"\\\"   URL: http://localhost:5000\\\"\\\"\")
     app.run(host='0.0.0.0', port=5000, debug=True)
+'''
+
+APP_INIT_PY = '''from flask import Flask
+from flask_apscheduler import APScheduler
+import os
+
+scheduler = APScheduler()
+
+def create_app():
+    \"\"\"Crée l'application Flask avec la configuration de base.\"\"\"
+    app = Flask(__name__)
+    
+    # Config
+    app.config['SECRET_KEY'] = 'dev-secret-key-change-in-production'
+    app.config['DATABASE'] = os.path.join(
+        os.path.dirname(__file__), 'data', 'marki.db'
+    )
+    app.config['SCHEDULER_API_ENABLED'] = True
+    
+    # Démarrer scheduler
+    scheduler.init_app(app)
+    scheduler.start()
+    
+    return app
 '''
 
 DATA_INIT_PY = '''import sqlite3
@@ -193,8 +207,8 @@ def _write_base_files(project: Project) -> None:
     # app/__init__.py
     (project.app_dir / "__init__.py").write_text(APP_INIT_PY, encoding="utf-8")
     
-    # app/app.py
-    (project.app_dir / "app.py").write_text(APP_PY, encoding="utf-8")
+    # wsgi.py (point d'entrée à la racine)
+    (project.root / "wsgi.py").write_text(WSGI_PY, encoding="utf-8")
     
     # app/data/__init__.py
     (project.app_dir / "data" / "__init__.py").write_text(DATA_INIT_PY, encoding="utf-8")
@@ -223,7 +237,7 @@ def _install_deps(project: Project) -> None:
 def _start_server(project: Project, skip_tests: bool) -> None:
     """Démarre le serveur Flask."""
     env = os.environ.copy()
-    env["FLASK_APP"] = "app.app"
+    env["FLASK_APP"] = "wsgi"
     env["FLASK_ENV"] = "development"
     env["FLASK_DEBUG"] = "1"
     

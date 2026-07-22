@@ -337,34 +337,35 @@ git commit -m "feat: ajoute auth-submit.html - soumission formulaire login"
 # ÉTAPE 9: App Flask principale
 # ==============================================================================
 
-pi -p "Crée UNIQUEMENT le fichier app/app.py qui configure l'application Flask principale.
+pi -p "Crée UNIQUEMENT le fichier wsgi.py à la racine du projet qui configure l'application Flask principale.
 Ne fais rien d'autre. Pas de prise d'initiative. Juste ce fichier.
 
 VARIABLES ET FICHIERS EXISTANTS:
 - Ce fichier importe et enregistre les blueprints:
-  - login_bp depuis routes/login.py (créé à l'étape 3)
-  - auth_bp depuis routes/auth.py (créé à l'étape 2)
-  - hello_bp depuis routes/hello.py (si existe déjà)
-- Les templates sont dans le dossier templates/
+  - login_bp depuis app.routes.login (créé à l'étape 3)
+  - auth_bp depuis app.routes.auth (créé à l'étape 2)
+  - hello_bp depuis app.routes.hello (si existe déjà)
+- Les templates sont dans le dossier app/templates/
 - La DB est dans app/data/marki.db (existante)
 
 Le fichier doit:
-- Importer Flask
+- Importer create_app depuis app
 - Configurer le logging de base vers stdout
 - Importer et enregistrer les blueprints:
-  - from routes.login import bp as login_bp
-  - from routes.auth import bp as auth_bp
-  - from routes.hello import bp as hello_bp (si existe déjà)
-- Démarrer le serveur sur le port 5000 avec app.run(port=5000, debug=True)
+  - from app.routes.login import bp as login_bp
+  - from app.routes.auth import bp as auth_bp
+  - from app.routes.hello import bp as hello_bp (si existe déjà)
+- Exposer la variable 'app' pour flask run et gunicorn
+- Avoir un bloc if __name__ == '__main__' pour python wsgi.py
 - Configurer SECRET_KEY pour JWT (via environnement ou valeur par défaut dev)
 
 Respecte rules/dev-backend.md:
-- Structure avec blueprints
+- Point d'entrée à la racine, pas dans app/
 - Configuration logging au démarrage
 - Gestion des erreurs globales"
 
-git add app/app.py
-git commit -m "feat: ajoute app.py - configuration Flask avec blueprints auth et login"
+git add wsgi.py
+git commit -m "feat: ajoute wsgi.py - point d'entrée Flask avec blueprints"
 
 # ==============================================================================
 # ÉTAPE 10: __init__.py pour les packages

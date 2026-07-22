@@ -1237,7 +1237,7 @@ echo "   📍 Cron actif: logs dans console"
 echo ""
 
 # Lancement serveur avec autoreload
-export FLASK_APP="app"
+export FLASK_APP="wsgi"
 export FLASK_ENV="development"
 export FLASK_DEBUG="1"
 
@@ -1609,7 +1609,7 @@ mkdir -p "$LOGS_DIR/screenshots"
 
 # Démarrer Flask en mode test (auth désactivée, logs → fichier)
 export TEST_MODE=true
-export FLASK_APP="app"
+export FLASK_APP="wsgi"
 export FLASK_ENV="development"
 
 echo "🚀 Démarrage serveur Flask (mode test)..."
