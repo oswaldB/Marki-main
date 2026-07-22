@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Marki Relance</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-gray-900">Marki Relance</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span x-data="{}" x-text="$store.auth.user?.username || 'Utilisateur'" class="text-gray-600"></span>
+                    <button 
+                        @click="$store.auth.clearAuth(); window.location.href = '/login'"
+                        class="text-sm text-red-600 hover:text-red-800"
+                    >
+                        Déconnexion
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-lg shadow p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Dashboard</h2>
+            <p class="text-gray-600">Bienvenue sur votre espace de travail.</p>
+            
+            <div class="mt-6 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="bg-blue-50 overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <div class="bg-blue-500 rounded-md p-3">
+                                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Factures</dt>
+                                    <dd class="text-lg font-medium text-gray-900">12</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-green-50 overflow-hidden shadow rounded-lg">
+                    <div class="p-5">
+                        <div class="flex items-center">
+                            <div class="flex-shrink-0">
+                                <div class="bg-green-500 rounded-md p-3">
+                                    <svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="ml-5 w-0 flex-1">
+                                <dl>
+                                    <dt class="text-sm font-medium text-gray-500 truncate">Relances</dt>
+                                    <dd class="text-lg font-medium text-gray-900">5</dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Stores Alpine.js -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            Alpine.store('auth', {
+                token: localStorage.getItem('token'),
+                user: null,
+                isAuthenticated: false,
+                
+                init() {
+                    if (this.token) {
+                        this.verifyToken();
+                    } else {
+                        window.location.href = '/login';
+                    }
+                },
+                
+                async verifyToken() {
+                    try {
+                        const response = await fetch('/api/auth/me', {
+                            headers: { 'Authorization': `Bearer ${this.token}` }
+                        });
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            this.user = data.user;
+                            this.isAuthenticated = true;
+                        } else {
+                            this.clearAuth();
+                            window.location.href = '/login';
+                        }
+                    } catch (err) {
+                        this.clearAuth();
+                        window.location.href = '/login';
+                    }
+                },
+                
+                setAuth(token, user) {
+                    this.token = token;
+                    this.user = user;
+                    this.isAuthenticated = true;
+                    localStorage.setItem('token', token);
+                },
+                
+                clearAuth() {
+                    this.token = null;
+                    this.user = null;
+                    this.isAuthenticated = false;
+                    localStorage.removeItem('token');
+                }
+            });
+            
+            Alpine.store('auth').init();
+        });
+    </script>
+
+</body>
+</html>

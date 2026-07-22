@@ -1,0 +1,115 @@
+{% comment %}
+Workflow: auth-submit
+Type: frontend  
+Screen: login
+Description: Soumettre les identifiants utilisateur pour authentification
+{% endcomment %}
+
+<script>
+/**
+ * Workflow: auth-submit
+ * 
+ * Étapes:
+ * 1. @checkpoint form-validated - email et password présents
+ * 2. @checkpoint loading-set - loading=true, error=null
+ * 3. @checkpoint api-called - réponse 200 reçue de POST /api/auth/login
+ * 4. @checkpoint auth-stored - token et user dans $store.auth + localStorage
+ * 5. @checkpoint redirect-executed - navigation vers /dashboard
+ */
+
+function workflowAuthSubmit() {
+    return {
+        /**
+         * @action Validate form
+         * @checkpoint form-validated, tous les champs remplis
+         */
+        validateForm() {
+            if (!this.form.email || !this.form.password) {
+                this.error = 'Veuillez remplir tous les champs';
+                return false;
+            }
+            // Validation email simple
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(this.form.email)) {
+                this.error = 'Veuillez entrer un email valide';
+                return false;
+            }
+            return true;
+        },
+
+        /**
+         * @action Set loading state
+         * @checkpoint loading-set, loading=true, error=null
+         */
+        setLoading() {
+            this.loading = true;
+            this.error = null;
+        },
+
+        /**
+         * @action Call auth API
+         * POST /api/auth/login
+         * @checkpoint api-called, réponse 200 reçue
+         */
+        async callAuthAPI(email, password) {
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password })
+            });
+            
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error || 'Échec de connexion');
+            }
+            
+            return await response.json();
+        },
+
+        /**
+         * @action Store auth data
+         * @checkpoint auth-stored, token dans $store.auth et localStorage
+         */
+        storeAuthData(token, user) {
+            Alpine.store('auth').token = token;
+            Alpine.store('auth').user = user;
+            Alpine.store('auth').isAuthenticated = true;
+            localStorage.setItem('token', token);
+        },
+
+        /**
+         * @action Redirect to dashboard
+         * @checkpoint redirect-executed, navigation vers /dashboard
+         */
+        redirectToDashboard() {
+            window.location.href = '/dashboard';
+        },
+
+        /**
+         * Main workflow execution
+         */
+        async execute(email, password) {
+            // 1. Validate
+            if (!this.validateForm()) return;
+            
+            // 2. Set loading
+            this.setLoading();
+            
+            try {
+                // 3. Call API
+                const data = await this.callAuthAPI(email, password);
+                
+                // 4. Store data
+                this.storeAuthData(data.token, data.user);
+                
+                // 5. Redirect
+                this.redirectToDashboard();
+                
+            } catch (error) {
+                this.error = error.message;
+                this.loading = false;
+            }
+        }
+    };
+}
+</script>

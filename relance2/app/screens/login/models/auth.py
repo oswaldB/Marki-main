@@ -1,8 +1,9 @@
 """Modèle d'authentification utilisateur - Pure sqlite3."""
 
 import sqlite3
+import uuid
+from datetime import datetime
 from flask import current_app
-from app.middleware.auth.jwt_utils import generate_token, validate_token
 
 
 class AuthError(Exception):
@@ -55,6 +56,28 @@ class AuthModel:
         return conn
     
     @classmethod
+    def init_db(cls):
+        """Initialise la base de données avec la table users."""
+        db = cls.get_db()
+        db.executescript('''
+            CREATE TABLE IF NOT EXISTS users (
+                id VARCHAR(36) PRIMARY KEY,
+                username VARCHAR(50) NOT NULL UNIQUE,
+                email VARCHAR(255) NOT NULL UNIQUE,
+                password VARCHAR(255) NOT NULL,
+                role VARCHAR(20) DEFAULT 'user',
+                is_active BOOLEAN DEFAULT 1,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+            );
+            
+            -- Utilisateur de test
+            INSERT OR IGNORE INTO users (id, username, email, password, role)
+            VALUES ('user-123', 'admin', 'admin@marki.fr', 'admin', 'admin');
+        ''')
+        db.commit()
+        db.close()
+    
+    @classmethod
     def find_by_username(cls, username):
         """Trouve un utilisateur par username."""
         db = cls.get_db()
@@ -104,16 +127,13 @@ class AuthModel:
         return stored['password'] == password
     
     @classmethod
-    def authenticate(cls, identifier, password):
+    def authenticate(cls, email, password):
         """
-        Authentifie un utilisateur par username ou email.
+        Authentifie un utilisateur par email.
         Retourne: {'user': User, 'token': str}
         Lève: AuthError si échec
         """
-        # Essayer par username d'abord, puis par email si contient @
-        user = cls.find_by_username(identifier)
-        if not user and '@' in identifier:
-            user = cls.find_by_email(identifier)
+        user = cls.find_by_email(email)
         
         if not user:
             raise AuthError("Utilisateur non trouvé")
@@ -121,6 +141,8 @@ class AuthModel:
         if not cls.verify_password(user, password):
             raise AuthError("Mot de passe incorrect")
         
+        # Import ici pour éviter les imports circulaires
+        from middleware.auth.jwt_utils import generate_token
         token = generate_token(user.id, user.username, user.role)
         
         return {'user': user, 'token': token}
@@ -131,6 +153,8 @@ class AuthModel:
         Vérifie un token JWT et retourne l'utilisateur.
         Lève: AuthError si token invalide
         """
+        from middleware.auth.jwt_utils import validate_token
+        
         try:
             payload = validate_token(token)
             user = cls.find_by_id(payload['id'])

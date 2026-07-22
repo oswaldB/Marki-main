@@ -1,18 +1,24 @@
-"""Routes pour la page de login."""
+"""Route principale pour la page de login."""
 
-from flask import Blueprint, render_template, redirect, url_for
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask import Blueprint, render_template
+from models.auth import AuthModel
 
-bp = Blueprint('login', __name__, url_prefix='/')
-
-
-@bp.route('/login', methods=['GET'])
-def login_page():
-    """Affiche la page de login."""
-    return render_template('login.html')
+bp = Blueprint('index', __name__)
 
 
-@bp.route('/dashboard', methods=['GET'])
+@bp.route('/')
+def index():
+    """Page d'accueil redirige vers login."""
+    return render_template('index.html')
+
+
+@bp.route('/login')
+def login():
+    """Page de login."""
+    return render_template('index.html')
+
+
+@bp.route('/dashboard')
 def dashboard():
-    """Redirige vers le dashboard (géré par auth côté client)."""
-    return render_template('login.html')
+    """Page dashboard (protégée, vérification côté frontend)."""
+    return render_template('dashboard.html')
