@@ -1,0 +1,45 @@
+/**
+ * @action Initialiser la page de login
+ * @checkpoint dom-ready, body avec x-data="loginPage()" présent
+ */
+async init() {
+    log.info('INIT', 'Login page initializing...');
+    
+    // Vérifier si un token existe déjà dans localStorage
+    const token = localStorage.getItem('token');
+    
+    if (token) {
+        log.info('INIT', 'Token found in localStorage, verifying...');
+        this.loading = true;
+        
+        try {
+            // Valider le token via l'API
+            const response = await fetch('/login/api/auth/me?token=' + encodeURIComponent(token), {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            
+            if (response.ok) {
+                const data = await response.json();
+                log.info('INIT', 'Token valid, redirecting to dashboard');
+                window.location.href = '/dashboard';
+                return;
+            } else {
+                log.warn('INIT', 'Token invalid or expired, clearing...');
+                localStorage.removeItem('token');
+            }
+        } catch (error) {
+            log.error('INIT', 'Error verifying token: ' + error.message);
+            localStorage.removeItem('token');
+        } finally {
+            this.loading = false;
+        }
+    }
+    
+    log.info('INIT', 'Login form ready');
+    // Focus sur le champ username
+    this.$nextTick(() => {
+        const usernameInput = document.querySelector('input[type="text"]');
+        if (usernameInput) usernameInput.focus();
+    });
+},

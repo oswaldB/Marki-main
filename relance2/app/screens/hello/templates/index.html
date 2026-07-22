@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Cell (Public)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="p-8 bg-gray-100" x-data="helloApp" x-init="init()">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow">
+        <h1 class="text-2xl font-bold mb-4">Hello <span x-text="prenom" class="text-blue-600"></span>! 👋</h1>
+        <p class="text-green-600 font-semibold">✅ Écran public (pas d'auth requise)</p>
+
+        <button @click="changerPrenom()"
+                class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition mt-4"
+                :disabled="loading">
+            <span x-show="!loading">Changer prénom</span>
+            <span x-show="loading">Chargement...</span>
+        </button>
+
+        <div x-show="message" x-text="message" class="mt-4 p-2 bg-green-100 text-green-800 rounded" x-transition></div>
+
+        <hr class="my-4">
+        <p class="text-gray-600 text-sm">Test: alerte → saisie → mise à jour → message confirmation</p>
+        <p class="mt-2"><a href="/hello-protected" class="text-blue-500 underline">Aller à Hello Protected →</a></p>
+    </div>
+    {% include 'alpinejs.html' %}
+</body>
+</html>

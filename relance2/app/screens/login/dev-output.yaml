@@ -1,0 +1,525 @@
+
+fichiers:
+  - chemin: app/screens/login/__init__.py
+    contenu: |
+      from flask import Blueprint
+
+      bp = Blueprint('login', __name__, template_folder='templates')
+
+      from .routes import index, wf_auth
+      from .models import auth
+  - chemin: app/screens/login/models/__init__.py
+    contenu: |
+      from .auth import User, AuthModel, AuthError
+  - chemin: app/screens/login/models/auth.py
+    contenu: |
+      import sqlite3
+      import uuid
+      from datetime import datetime, timedelta
+      from flask import current_app
+      from app.middleware.auth.jwt_utils import generate_token, validate_token
+
+
+      class AuthError(Exception):
+          """Exception pour les erreurs d'authentification."""
+          pass
+
+
+      class User:
+          """Dataclass utilisateur."""
+          
+          def __init__(self, user_id, username, email, role='user', is_active=True):
+              self.id = user_id
+              self.username = username
+              self.email = email
+              self.role = role
+              self.is_active = bool(is_active)
+          
+          def to_dict(self):
+              return {
+                  'id': self.id,
+                  'username': self.username,
+                  'email': self.email,
+                  'role': self.role
+              }
+
+
+      class AuthModel:
+          """Logique métier d'authentification."""
+          
+          @staticmethod
+          def get_db():
+              """Récupère une connexion à la base de données."""
+              db_path = current_app.config['DATABASE']
+              conn = sqlite3.connect(db_path)
+              conn.row_factory = sqlite3.Row
+              return conn
+          
+          @classmethod
+          def authenticate(cls, username_or_email, password):
+              """
+              Authentifie un utilisateur par username/email et mot de passe.
+              Retourne {'user': User, 'token': str} ou lève AuthError.
+              """
+              db = cls.get_db()
+              try:
+                  # Chercher par username OU email
+                  cursor = db.execute(
+                      """
+                      SELECT id, username, email, password_hash, role, is_active 
+                      FROM users 
+                      WHERE (username = ? OR email = ?) AND is_active = 1
+                      """,
+                      (username_or_email, username_or_email)
+                  )
+                  row = cursor.fetchone()
+                  
+                  if not row:
+                      raise AuthError("Identifiants invalides")
+                  
+                  # Vérification simple du mot de passe (en production utiliser bcrypt/werkzeug)
+                  # Ici on compare directement pour la démo - à remplacer par hash sécurisé
+                  if row['password_hash'] != password:
+                      raise AuthError("Identifiants invalides")
+                  
+                  # Créer l'objet utilisateur
+                  user = User(
+                      row['id'],
+                      row['username'],
+                      row['email'],
+                      row.get('role', 'user'),
+                      row.get('is_active', 1)
+                  )
+                  
+                  # Générer le token JWT
+                  token = generate_token(user.id, user.username, user.role)
+                  
+                  # Mettre à jour last_login et login_count
+                  db.execute(
+                      """
+                      UPDATE users 
+                      SET last_login = CURRENT_TIMESTAMP,
+                          login_count = login_count + 1,
+                          updated_at = CURRENT_TIMESTAMP
+                      WHERE id = ?
+                      """,
+                      (user.id,)
+                  )
+                  db.commit()
+                  
+                  # Créer une session
+                  session_id = str(uuid.uuid4())
+                  expires_at = (datetime.utcnow() + timedelta(days=1)).isoformat()
+                  db.execute(
+                      """
+                      INSERT INTO sessions (id, user_id, token, expires_at, created_at)
+                      VALUES (?, ?, ?, ?, CURRENT_TIMESTAMP)
+                      """,
+                      (session_id, user.id, token, expires_at)
+                  )
+                  db.commit()
+                  
+                  return {'user': user, 'token': token}
+                  
+              finally:
+                  db.close()
+          
+          @classmethod
+          def verify_token(cls, token):
+              """
+              Vérifie un token JWT et retourne les infos utilisateur.
+              """
+              try:
+                  payload = validate_token(token)
+                  
+                  # Vérifier que la session existe toujours en base
+                  db = cls.get_db()
+                  try:
+                      cursor = db.execute(
+                          """
+                          SELECT s.*, u.username, u.email, u.role, u.is_active
+                          FROM sessions s
+                          JOIN users u ON s.user_id = u.id
+                          WHERE s.token = ? AND s.expires_at > CURRENT_TIMESTAMP
+                          AND u.is_active = 1
+                          """,
+                          (token,)
+                      )
+                      row = cursor.fetchone()
+                      
+                      if not row:
+                          raise AuthError("Session invalide ou expirée")
+                      
+                      user = User(
+                          row['user_id'],
+                          row['username'],
+                          row['email'],
+                          row['role'],
+                          row['is_active']
+                      )
+                      
+                      return {'user': user, 'payload': payload}
+                      
+                  finally:
+                      db.close()
+                      
+              except Exception as e:
+                  raise AuthError(f"Token invalide: {str(e)}")
+          
+          @classmethod
+          def logout(cls, token):
+              """Révoque une session en supprimant le token."""
+              db = cls.get_db()
+              try:
+                  db.execute("DELETE FROM sessions WHERE token = ?", (token,))
+                  db.commit()
+                  return True
+              finally:
+                  db.close()
+  - chemin: app/screens/login/routes/__init__.py
+    contenu: |
+      from . import index, wf_auth
+  - chemin: app/screens/login/routes/index.py
+    contenu: |
+      from flask import render_template
+      from .. import bp
+
+
+      @bp.route('/')
+      def index():
+          """Affiche la page de login."""
+          return render_template('index.html')
+  - chemin: app/screens/login/routes/wf_auth.py
+    contenu: |
+      from flask import request, jsonify, g
+      from .. import bp
+      from ..models.auth import AuthModel, AuthError
+
+
+      @bp.route('/api/auth/login', methods=['POST'])
+      def api_login():
+          """
+          API d'authentification.
+          POST /api/auth/login
+          Body: {"username": "...", "password": "..."}
+          """
+          data = request.get_json()
+          
+          if not data:
+              return jsonify({'error': 'Données JSON requises'}), 400
+          
+          username = data.get('username') or data.get('email')
+          password = data.get('password')
+          
+          if not username or not password:
+              return jsonify({'error': 'Identifiant et mot de passe requis'}), 400
+          
+          try:
+              result = AuthModel.authenticate(username, password)
+              user_dict = result['user'].to_dict()
+              
+              return jsonify({
+                  'token': result['token'],
+                  'user': user_dict
+              }), 200
+              
+          except AuthError as e:
+              return jsonify({'error': str(e)}), 401
+          except Exception as e:
+              return jsonify({'error': 'Erreur serveur'}), 500
+
+
+      @bp.route('/api/auth/me', methods=['GET'])
+      def api_me():
+          """
+          API de vérification de session.
+          GET /api/auth/me
+          Header: Authorization: Bearer <token>
+          """
+          auth_header = request.headers.get('Authorization', '')
+          token = auth_header.replace('Bearer ', '') if auth_header.startswith('Bearer ') else auth_header
+          
+          if not token:
+              # Vérifier aussi le localStorage fallback via paramètre
+              token = request.args.get('token', '')
+          
+          if not token:
+              return jsonify({'error': 'Token manquant'}), 401
+          
+          try:
+              result = AuthModel.verify_token(token)
+              return jsonify({
+                  'user': result['user'].to_dict(),
+                  'valid': True
+              }), 200
+              
+          except AuthError as e:
+              return jsonify({'error': str(e), 'valid': False}), 401
+          except Exception as e:
+              return jsonify({'error': 'Token invalide'}), 401
+
+
+      @bp.route('/api/auth/logout', methods=['POST'])
+      def api_logout():
+          """
+          API de déconnexion.
+          POST /api/auth/logout
+          Header: Authorization: Bearer <token>
+          """
+          auth_header = request.headers.get('Authorization', '')
+          token = auth_header.replace('Bearer ', '') if auth_header.startswith('Bearer ') else auth_header
+          
+          if token:
+              AuthModel.logout(token)
+          
+          return jsonify({'success': True}), 200
+  - chemin: app/screens/login/templates/index.html
+    contenu: |
+      <!DOCTYPE html>
+      <html lang="fr">
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Connexion | Marki</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <style>
+          html { font-family: 'Inter', system-ui, sans-serif; }
+        </style>
+      </head>
+      <body class="min-h-screen bg-slate-50 flex items-center justify-center" x-data="loginPage()" x-init="init()">
+
+        <div class="w-full max-w-md px-4">
+          
+          <!-- Logo + Tagline -->
+          <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-xl mb-4 bg-sky-100 text-sky-600">
+              <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+              </svg>
+            </div>
+            <h1 class="text-2xl font-semibold text-slate-900">Marki</h1>
+            <p class="text-sm text-slate-500 mt-1">Marki : le meilleur ami des Diagnostiqueurs immobiliers. Simplifier, renforcer et développer votre marge.</p>
+          </div>
+
+          <!-- Card Connexion -->
+          <div class="bg-white rounded-2xl border border-slate-200 shadow-sm">
+            <!-- Header -->
+            <div class="px-6 py-4 border-b border-slate-100">
+              <h2 class="text-base font-semibold text-slate-900">Connexion</h2>
+            </div>
+
+            <!-- Form -->
+            <form class="p-6 space-y-4" @submit.prevent="handleLogin">
+              
+              <!-- Identifiant ou email -->
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1.5">Identifiant ou email</label>
+                <input 
+                  type="text" 
+                  x-model="form.username"
+                  placeholder="Votre identifiant ou email"
+                  autocomplete="username"
+                  required
+                  class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-lg text-sm text-slate-900
+                         placeholder:text-slate-400
+                         focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500
+                         transition-all"
+                >
+              </div>
+
+              <!-- Mot de passe -->
+              <div>
+                <label class="block text-sm font-medium text-slate-700 mb-1.5">Mot de passe</label>
+                <input 
+                  type="password" 
+                  x-model="form.password"
+                  placeholder="••••••••"
+                  autocomplete="current-password"
+                  required
+                  class="w-full px-3 py-2.5 bg-white border border-slate-200 rounded-lg text-sm text-slate-900
+                         placeholder:text-slate-400
+                         focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500
+                         transition-all"
+                >
+              </div>
+
+              <!-- Error Alert -->
+              <template x-if="error">
+                <div class="flex items-start gap-3 p-3 bg-red-50 border border-red-100 rounded-lg">
+                  <svg class="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                  </svg>
+                  <p class="text-sm text-red-700" x-text="error"></p>
+                </div>
+              </template>
+
+              <!-- Submit Button -->
+              <button 
+                type="submit"
+                :disabled="loading"
+                class="w-full flex items-center justify-center gap-2 mt-2 bg-sky-500 hover:bg-sky-600 disabled:bg-sky-300
+                       text-white py-2.5 px-4 rounded-lg text-sm font-medium transition-all"
+              >
+                <svg x-show="loading" class="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
+                  <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                  <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <span x-text="loading ? 'Connexion...' : 'Se connecter'"></span>
+              </button>
+
+            </form>
+          </div>
+
+          <!-- Footer -->
+          <p class="text-center text-xs text-slate-400 mt-6">
+            © 2024 Marki - Tous droits réservés
+          </p>
+
+        </div>
+
+        {% include 'alpinejs.html' %}
+      </body>
+      </html>
+  - chemin: app/screens/login/templates/alpinejs.html
+    contenu: |
+      <script>
+          // Logger global
+          const log = {
+              debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+              info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+              warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+              error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+          };
+
+          document.addEventListener("alpine:init", () => {
+              Alpine.data("loginPage", () => ({
+                  // =====================================================
+                  // 1. PROPS RÉACTIVES
+                  // =====================================================
+                  
+                  // UI State
+                  loading: false,
+                  error: null,
+                  
+                  // Data
+                  form: {
+                      username: '',
+                      password: ''
+                  },
+
+                  // =====================================================
+                  // 2. INIT (depuis workflow-init.html)
+                  // =====================================================
+                  {% include "workflows/workflow-init.html" %},
+
+                  // =====================================================
+                  // 3. WORKFLOWS MÉTIER
+                  // =====================================================
+                  {% include "workflows/auth-submit.html" %},
+              }));
+          });
+      </script>
+  - chemin: app/screens/login/templates/workflows/workflow-init.html
+    contenu: |
+      /**
+       * @action Initialiser la page de login
+       * @checkpoint dom-ready, body avec x-data="loginPage()" présent
+       */
+      async init() {
+          log.info('INIT', 'Login page initializing...');
+          
+          // Vérifier si un token existe déjà dans localStorage
+          const token = localStorage.getItem('token');
+          
+          if (token) {
+              log.info('INIT', 'Token found in localStorage, verifying...');
+              this.loading = true;
+              
+              try {
+                  // Valider le token via l'API
+                  const response = await fetch('/login/api/auth/me?token=' + encodeURIComponent(token), {
+                      method: 'GET',
+                      headers: { 'Content-Type': 'application/json' }
+                  });
+                  
+                  if (response.ok) {
+                      const data = await response.json();
+                      log.info('INIT', 'Token valid, redirecting to dashboard');
+                      window.location.href = '/dashboard';
+                      return;
+                  } else {
+                      log.warn('INIT', 'Token invalid or expired, clearing...');
+                      localStorage.removeItem('token');
+                  }
+              } catch (error) {
+                  log.error('INIT', 'Error verifying token: ' + error.message);
+                  localStorage.removeItem('token');
+              } finally {
+                  this.loading = false;
+              }
+          }
+          
+          log.info('INIT', 'Login form ready');
+          // Focus sur le champ username
+          this.$nextTick(() => {
+              const usernameInput = document.querySelector('input[type="text"]');
+              if (usernameInput) usernameInput.focus();
+          });
+      },
+  - chemin: app/screens/login/templates/workflows/auth-submit.html
+    contenu: |
+      /**
+       * @action Soumettre le formulaire de connexion
+       * @checkpoint form-submitted, appel API en cours
+       * @checkpoint auth-success, token stocké et redirection effectuée
+       * @checkpoint auth-error, message d'erreur affiché
+       */
+      async handleLogin() {
+          // 1. Validate form
+          if (!this.form.username || !this.form.password) {
+              this.error = 'Veuillez remplir tous les champs';
+              log.warn('AUTH', 'Form validation failed: empty fields');
+              return;
+          }
+          
+          // 2. Set loading
+          this.loading = true;
+          this.error = null;
+          
+          log.info('AUTH', 'Submitting login for: ' + this.form.username);
+          
+          try {
+              // 3. Call auth API
+              const response = await fetch('/login/api/auth/login', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                      username: this.form.username,
+                      password: this.form.password
+                  })
+              });
+              
+              const data = await response.json();
+              
+              if (!response.ok) {
+                  throw new Error(data.error || 'Échec de connexion');
+              }
+              
+              log.info('AUTH', 'Login successful for user: ' + data.user.username);
+              
+              // 4. Store auth data in localStorage
+              localStorage.setItem('token', data.token);
+              localStorage.setItem('user', JSON.stringify(data.user));
+              
+              // 5. Redirect to dashboard
+              log.info('AUTH', 'Redirecting to /dashboard');
+              window.location.href = '/dashboard';
+              
+          } catch (error) {
+              log.error('AUTH', 'Login failed: ' + error.message);
+              this.error = error.message || 'Identifiants invalides';
+          } finally {
+              this.loading = false;
+          }
+      },

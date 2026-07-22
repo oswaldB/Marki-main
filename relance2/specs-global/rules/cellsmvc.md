@@ -62,57 +62,35 @@ mkdir -p /home/ubuntu/marki/relance2/app/data
 mv /home/ubuntu/marki/relance2/specs/marki.db /home/ubuntu/marki/relance2/app/data/marki.db
 ```
 
-### Structure d'une Cell
+### Structure Globale
 
 ```
 app/
 ├── data/
 │   └── marki.db                    # Base de données unique
-├── <nom_cell>/                     # Blueprint Flask
-│   ├── __init__.py
-│   ├── routes/                     # Contrôleurs (C du MVC) - un fichier par route ET par workflow backend
-│   │   ├── __init__.py
-│   │   ├── index.py                # Route principale (GET /)
-│   │   ├── api_data.py             # Route API données (GET /api/data)
-│   │   ├── api_sync.py             # Route API sync (POST /api/sync)
-│   │   └── wf_sync_missions.py       # Workflow backend (même niveau que les routes)
-│   ├── models/                     # Modèles (M du MVC) - un fichier par modèle
-│   │   ├── __init__.py
-│   │   ├── impaye.py
-│   │   ├── mission.py
-│   │   └── contact.py
-│   ├── templates/                  # Templates Jinja2 (V du MVC) - PLAT, pas de sous-dossier
-│   │   ├── index.html
-│   │   ├── alpinejs.html
-│   │   └── workflows/
-│   │       ├── workflow-init.html
-│   │       └── initial-load.html
-│   ├── logs/                       # Logs de test et debug
-│   │   └── 2025-07-22_14-30-45/    # Dossier timestampé
-│   │       ├── backend.log
-│   │       ├── frontend.log
-│   │       └── report.json
-│   └── specs/                      # Spécifications de la cellule
-│       ├── valide.md               # Validation des specs (obligatoire pour dev)
-│       ├── A LIRE EN PREMIER/
-│       │   ├── schema.sql          # Schéma SQL du datamodel principal
-│       │   └── rules.md            # Règles spécifiques de développement
-│       ├── mockups/                # Maquettes HTML uniquement
-│       │   ├── etat-normal.html
-│       │   ├── etat-vide.html
-│       │   └── etat-erreur.html
-│       ├── wf-frontend/            # Workflows frontend (Markdown)
-│       │   ├── initial-load.md
-│       │   ├── save-data.md
-│       │   └── validation.md
-│       ├── wf-backend/             # Workflows backend (Markdown)
-│       │   └── sync-missions.md
-│       ├── models/                 # Spécifications des modèles
-│       │   └── impaye.md
-│       └── routes/                 # Spécifications des routes
-│           └── index.md
+├── screens/                        # Cells de type ÉCRAN (interfaces utilisateur)
+│   ├── <nom_cell>/
+│   └── ...
+├── backend-wf/                     # Cells de type WORKFLOW BACKEND (API sans UI)
+│   ├── <nom_cell>/
+│   └── ...
+├── cron/                           # Cells de type CRON (tâches planifiées)
+│   ├── <nom_cell>/
+│   └── ...
 └── __init__.py
 ```
+
+### Organisation par Type de Cell
+
+| Type | Dossier | Description |
+|------|---------|-------------|
+| **Écran** | `app/screens/<nom>/` | Pages web avec interface utilisateur (templates/, mockups/, wf-frontend/) |
+| **Workflow Backend** | `app/backend-wf/<nom>/` | API endpoints, workflows server-side (pas de templates/) |
+| **Cron** | `app/cron/<nom>/` | Tâches planifiées, jobs automatisés (cron.py, pas de templates/) |
+
+### Structure Interne d'une Cell (inchangée)
+
+Quel que soit le dossier parent (`screens/`, `backend-wf/`, `cron/`), la structure interne reste identique :
 
 ---
 
@@ -314,8 +292,10 @@ def create_app():
 | Frontend JS | Alpine.js 3.x | React, Vue, Angular, Vanilla JS |
 | Templating | Jinja2 | React JSX, Vue SFC |
 | Styling | Tailwind CSS | Bootstrap, Material UI |
-| Database | SQLite3 | PostgreSQL, MySQL (pour l'instant) |
+| Database | SQLite3 (stdlib) | PostgreSQL, MySQL (pour l'instant), **SQLAlchemy**, **Tout ORM** |
 | HTTP Client | Fetch API | Axios, jQuery |
+
+**RÈGLE D'OR :** Pas d'ORM. Utiliser uniquement `sqlite3` du standard library Python avec des requêtes SQL brutes.
 
 ---
 
@@ -341,21 +321,29 @@ def create_app():
 
 ## Checklist de Création d'une Nouvelle Cell
 
-- [ ] Créer le blueprint dans `app/<nom_cell>/`
-- [ ] Créer `__init__.py`, `routes/` (un fichier par route ET workflow backend), `models/` (un fichier par modèle)
-- [ ] Créer la structure templates PLATE dans `templates/`
-- [ ] Créer le dossier `specs/` avec :
-  - [ ] `valide.md` (obligatoire pour passer au dev)
-  - [ ] `A LIRE EN PREMIER/schema.sql`
-  - [ ] `A LIRE EN PREMIER/rules.md`
-  - [ ] `mockups/` (HTML uniquement)
-  - [ ] `wf-frontend/` (Markdown)
-  - [ ] `wf-backend/` (Markdown, si cell backend)
-  - [ ] `models/` (spécifications des modèles)
-  - [ ] `routes/` (spécifications des routes)
-- [ ] Enregistrer le blueprint dans `app/__init__.py`
-- [ ] Vérifier que la DB est accessible via `get_db()`
-- [ ] Tester l'endpoint racine du blueprint
+1. **Déterminer le type** de la cell :
+   - **Écran** → créer dans `app/screens/<nom_cell>/`
+   - **Workflow Backend** → créer dans `app/backend-wf/<nom_cell>/`
+   - **Cron** → créer dans `app/cron/<nom_cell>/`
+
+2. **Créer la structure** dans le bon dossier :
+   - [ ] `__init__.py`, `routes/` (un fichier par route ET workflow backend)
+   - [ ] `models/` (un fichier par modèle)
+   - [ ] `logs/` (dossier pour les logs de test)
+   - [ ] Pour les **écrans uniquement** : `templates/` (structure PLATE)
+
+3. **Créer le dossier `specs/`** avec :
+   - [ ] `valide.md` (obligatoire pour passer au dev)
+   - [ ] `LIRE_EN_PREMIER/schema.sql`
+   - [ ] `LIRE_EN_PREMIER/rules.md`
+   - [ ] `wf-backend/` (Markdown - pour tous les types)
+   - [ ] `models/` (spécifications des modèles)
+   - [ ] `routes/` (spécifications des routes)
+   - [ ] Pour les **écrans uniquement** : `mockups/` (HTML) + `wf-frontend/` (Markdown)
+
+4. **Enregistrer le blueprint** dans `app/__init__.py`
+5. **Vérifier** que la DB est accessible via `get_db()`
+6. **Tester** l'endpoint racine du blueprint
 
 ---
 
@@ -367,7 +355,8 @@ Exemple basé sur un écran de détail d'impayé avec missions sync, drawer PDF,
 app/
 ├── data/
 │   └── marki.db
-├── impayes_detail/                 # Blueprint Flask
+├── screens/
+│   └── impayes_detail/             # Blueprint Flask ÉCRAN
 │   ├── __init__.py
 │   ├── routes/                     # Routes ET workflows backend
 │   │   ├── __init__.py
@@ -510,7 +499,8 @@ Cellule sans interface - uniquement une API pour synchroniser des données.
 app/
 ├── data/
 │   └── marki.db
-├── sync_missions/                  # Blueprint Backend
+├── backend-wf/
+│   └── sync_missions/              # Blueprint Backend
 │   ├── __init__.py
 │   ├── routes/                     # Une seule route API
 │   │   ├── __init__.py
@@ -543,7 +533,8 @@ Cellule exécutée périodiquement par un cron.
 app/
 ├── data/
 │   └── marki.db
-├── cron_cleanup_impayes/           # Blueprint Cron
+├── cron/
+│   └── cleanup_impayes/              # Blueprint Cron
 │   ├── __init__.py
 │   ├── routes/                     # Endpoint pour déclenchement manuel
 │   │   ├── __init__.py
@@ -567,7 +558,7 @@ app/
 ```
 
 ```python
-# app/cron_cleanup_impayes/cron.py
+# app/cron/cleanup_impayes/cron.py
 #!/usr/bin/env python3
 """Point d'entrée pour l'exécution cron."""
 
@@ -615,7 +606,7 @@ def create_app():
 ```
 
 ```python
-# app/cron_cleanup_impayes/__init__.py
+# app/cron/cleanup_impayes/__init__.py
 from flask import Blueprint
 from app import scheduler
 
@@ -633,7 +624,7 @@ def scheduled_cleanup():
 ```
 
 ```python
-# app/cron_cleanup_impayes/cron.py
+# app/cron/cleanup_impayes/cron.py
 from .models.impaye import Impaye
 
 def cleanup_task():

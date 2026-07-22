@@ -1,0 +1,38 @@
+<script>
+document.addEventListener('alpine:init', () => {
+    Alpine.data('helloApp', () => ({
+        prenom: '{{ prenom }}',
+        loading: false,
+        message: '',
+
+        init() {
+            console.log('[INIT] Hello app (public) démarrée');
+        },
+
+        async changerPrenom() {
+            const nouveauPrenom = prompt('Entrez votre prénom:');
+            if (!nouveauPrenom) return;
+
+            this.loading = true;
+            try {
+                const response = await fetch('/hello/api/prenom', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({prenom: nouveauPrenom})
+                });
+                const data = await response.json();
+                if (response.ok) {
+                    this.prenom = data.prenom;
+                    this.message = `Prénom mis à jour: ${data.prenom}`;
+                    console.log('[SUCCESS] Prénom changé:', data.prenom);
+                }
+            } catch (error) {
+                console.error('[ERROR]', error);
+                this.message = 'Erreur: ' + error.message;
+            } finally {
+                this.loading = false;
+            }
+        }
+    }));
+});
+</script>

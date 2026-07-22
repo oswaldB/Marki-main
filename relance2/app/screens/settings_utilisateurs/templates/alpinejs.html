@@ -1,0 +1,46 @@
+<!-- templates/settings_utilisateurs/alpinejs.html -->
+<script>
+    // Logger global
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener("alpine:init", () => {
+        Alpine.data("settings_utilisateurs", () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES - À PERSONNALISER SELON LA CELL
+            // =====================================================
+
+            // UI State (conserver ces 3)
+            loading: false,
+            saving: false,
+            error: null,
+
+            // Data - REMPLACER PAR VOS DONNÉES MÉTIER
+            // Exemple: items: [], selected: null, filters: {}
+            data: [],
+            selected: null,
+
+            // Helpers - AJOUTER VOS FORMATTERS
+            formatDate(dateStr) {
+                if (!dateStr) return "-";
+                return new Date(dateStr).toLocaleDateString("fr-FR");
+            },
+
+            // =====================================================
+            // 2. INIT (depuis workflow-init.html - NE PAS MODIFIER ICI)
+            // =====================================================
+            {% include "settings_utilisateurs/workflows/workflow-init.html" %},
+
+            // =====================================================
+            // 3. WORKFLOWS MÉTIER - AJOUTER VOS {% include %} ICI
+            // =====================================================
+            // Exemple: {% include "settings_utilisateurs/workflows/load-data.html" %},
+            //          {% include "settings_utilisateurs/workflows/save-data.html" %},
+
+        }));
+    });
+</script>

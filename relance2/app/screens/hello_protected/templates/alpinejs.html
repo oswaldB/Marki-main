@@ -1,0 +1,26 @@
+<script>
+document.addEventListener('alpine:init', () => {
+    Alpine.data('protectedApp', () => ({
+        apiData: '',
+
+        init() {
+            console.log('[INIT] Hello Protected app démarrée');
+            console.log('[AUTH] Route protégée chargée');
+        },
+
+        async fetchUser() {
+            try {
+                // Le token est automatiquement envoyé par Playwright
+                // ou doit être ajouté ici pour les tests manuels
+                const response = await fetch('/hello-protected/api/user');
+                const data = await response.json();
+                this.apiData = JSON.stringify(data, null, 2);
+                console.log('[API] User data:', data);
+            } catch (error) {
+                console.error('[ERROR]', error);
+                this.apiData = 'Erreur: ' + error.message;
+            }
+        }
+    }));
+});
+</script>

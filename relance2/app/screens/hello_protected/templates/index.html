@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello Protected (Privé)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="p-8 bg-gray-100" x-data="protectedApp" x-init="init()">
+    <div class="max-w-md mx-auto bg-white p-6 rounded-lg shadow">
+        <h1 class="text-2xl font-bold mb-4">🔒 Hello Protected</h1>
+        <p class="text-red-600 font-semibold">✅ Écran privé (auth requise)</p>
+
+        <div class="mt-4 p-4 bg-gray-50 rounded">
+            <p><strong>Utilisateur:</strong> {{ user.username }}</p>
+            <p><strong>Role:</strong> {{ user.role }}</p>
+            <p><strong>ID:</strong> {{ user.id }}</p>
+        </div>
+
+        <button @click="fetchUser()" class="mt-4 bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+            Rafraîchir (API protégée)
+        </button>
+
+        <div x-show="apiData" x-text="apiData" class="mt-4 p-2 bg-blue-100 text-blue-800 rounded"></div>
+
+        <hr class="my-4">
+        <p class="text-gray-600 text-sm">Ce contenu est protégé par JWT</p>
+        <p class="mt-2"><a href="/hello" class="text-blue-500 underline">← Retour à Hello public</a></p>
+    </div>
+    {% include 'alpinejs.html' %}
+</body>
+</html>

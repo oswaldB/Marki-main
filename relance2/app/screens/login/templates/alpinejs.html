@@ -1,0 +1,37 @@
+<script>
+    // Logger global
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener("alpine:init", () => {
+        Alpine.data("loginPage", () => ({
+            // =====================================================
+            // 1. PROPS RÉACTIVES
+            // =====================================================
+            
+            // UI State
+            loading: false,
+            error: null,
+            
+            // Data
+            form: {
+                username: '',
+                password: ''
+            },
+
+            // =====================================================
+            // 2. INIT (depuis workflow-init.html)
+            // =====================================================
+            {% include "workflows/workflow-init.html" %},
+
+            // =====================================================
+            // 3. WORKFLOWS MÉTIER
+            // =====================================================
+            {% include "workflows/auth-submit.html" %},
+        }));
+    });
+</script>
