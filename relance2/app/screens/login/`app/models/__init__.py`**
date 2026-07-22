@@ -1,0 +1,5 @@
+"""Package models - Exporte AuthModel, AuthError, User."""
+
+from .auth import AuthModel, AuthError, User
+
+__all__ = ['AuthModel', 'AuthError', 'User']

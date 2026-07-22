@@ -1,0 +1,55 @@
+"""Application Flask - Cellsmvc Login."""
+
+import os
+import sqlite3
+from flask import Flask
+
+
+def create_app(config_name=None):
+    """Crée et configure l'application Flask."""
+    app = Flask(__name__, 
+                template_folder='templates',
+                static_folder='static')
+    
+    # Configuration
+    app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'dev-secret-key-change-in-production')
+    app.config['JWT_SECRET_KEY'] = os.environ.get('JWT_SECRET_KEY', 'jwt-secret-key-change-in-production')
+    app.config['DATABASE'] = os.environ.get('DATABASE', 'app.db')
+    
+    # Enregistrement des blueprints
+    from app.routes import register_blueprints
+    register_blueprints(app)
+    
+    return app
+
+
+def init_db():
+    """Initialise la base de données avec le schéma et les fixtures."""
+    db_path = os.environ.get('DATABASE', 'app.db')
+    
+    conn = sqlite3.connect(db_path)
+    cursor = conn.cursor()
+    
+    # Création table users
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS users (
+            id VARCHAR(36) PRIMARY KEY,
+            username VARCHAR(50) NOT NULL UNIQUE,
+            email VARCHAR(255) NOT NULL UNIQUE,
+            password VARCHAR(255) NOT NULL,
+            role VARCHAR(20) DEFAULT 'user',
+            is_active BOOLEAN DEFAULT 1,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    
+    # Utilisateur de test
+    cursor.execute('''
+        INSERT OR IGNORE INTO users (id, username, email, password, role)
+        VALUES ('user-123', 'admin', 'admin@marki.fr', 'admin', 'admin')
+    ''')
+    
+    conn.commit()
+    conn.close()
+    
+    print(f"Base de données initialisée: {db_path}")
