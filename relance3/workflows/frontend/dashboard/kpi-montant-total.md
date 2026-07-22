@@ -2,25 +2,41 @@
 id: dashboard-kpi-montant-total
 type: frontend
 folder: specs/workflows/frontend/dashboard/
-description: Calculer et afficher le montant HT total des factures en attente
+description: Calculer et afficher le montant HT total des factures en attente via PouchDB
 depends_on: [auth-check]
 screen: dashboard
 global: false
 mockup_entry: specs/mockups/dashboard.html
 ---
 
-# KPI Montant Total (HT)
+# KPI Montant Total (HT) - PouchDB
 
 ## Description
 
-Calculer le montant HT total de toutes les factures ayant un reste à payer supérieur à 0 et afficher la valeur formatée dans la card KPI.
+Calculer le montant HT total de toutes les factures ayant un reste à payer supérieur à 0 depuis **PouchDB local** et afficher la valeur formatée dans la card KPI.
 
 ## Étapes
 
 ```javascript
 /**
- * @action Récupérer les factures via GET /api/factures?reste_a_payer_gt=0&include=montant_ht
- * @checkpoint factures-fetched, réponse 200 avec montants HT
+ * @action Configurer le listener PouchDB pour les changements
+ * @checkpoint changes-listener-active, écoute temps réel activée
+ * 
+ * Code:
+ * db.changes({ since: 'now', live: true, include_docs: true })
+ *   .on('change', (change) => { recalculer si facture modifiée });
+ */
+
+/**
+ * @action Récupérer les factures depuis PouchDB
+ * @checkpoint factures-fetched, données locales chargées
+ * 
+ * Query:
+ * const result = await db.allDocs({
+ *   startkey: 'facture:',
+ *   endkey: 'facture:\ufff0',
+ *   include_docs: true
+ * });
  */
 
 /**
@@ -28,9 +44,11 @@ Calculer le montant HT total de toutes les factures ayant un reste à payer sup�
  * @checkpoint montants-extracted, tableau des montants HT
  * 
  * Calcul:
- * const montantsHT = factures
- *   .filter(f => f.reste_a_payer > 0)
- *   .map(f => f.montant_ht || f.montant_total);
+ * const factures = result.rows
+ *   .map(row => row.doc)
+ *   .filter(f => f.reste_a_payer > 0);
+ * 
+ * const montantsHT = factures.map(f => f.montant_ht || f.montant_total);
  */
 
 /**
@@ -63,54 +81,111 @@ Calculer le montant HT total de toutes les factures ayant un reste à payer sup�
  */
 ```
 
-## Requête API
+## PouchDB Operations
 
-```
-GET /api/factures?reste_a_payer_gt=0&fields=id,montant_ht,montant_total,reste_a_payer
-```
+### Récupérer et calculer le montant total
 
-### Réponse (200)
-```json
-{
-  "data": [
-    {
-      "id": "uuid-1",
-      "montant_ht": 1250.00,
-      "montant_total": 1500.00,
-      "reste_a_payer": 1500.00
-    },
-    {
-      "id": "uuid-2",
-      "montant_ht": 2667.08,
-      "montant_total": 3200.50,
-      "reste_a_payer": 3200.50
-    }
-  ],
-  "meta": {
-    "sum_montant_ht": 128500.00
-  }
+```javascript
+async calculateMontantTotal() {
+  const result = await db.allDocs({
+    startkey: 'facture:',
+    endkey: 'facture:\ufff0',
+    include_docs: true
+  });
+  
+  // Filtrer les factures avec reste à payer et calculer le total
+  const totalHT = result.rows
+    .map(row => row.doc)
+    .filter(f => f.reste_a_payer > 0)
+    .reduce((sum, f) => {
+      // Priorité au montant HT, fallback sur montant_total
+      const montant = f.montant_ht || f.montant_total || 0;
+      return sum + montant;
+    }, 0);
+  
+  // Mettre à jour le KPI
+  this.kpis.montantTotal = totalHT;
 }
+```
+
+### Live Sync (mise à jour temps réel)
+
+```javascript
+// Recalculer automatiquement sur changements
+db.changes({
+  since: 'now',
+  live: true,
+  include_docs: true
+}).on('change', (change) => {
+  if (change.doc.type === 'facture') {
+    // Vérifier si le montant ou reste_a_payer a changé
+    const montantChanged = change.doc.montant_ht || change.doc.montant_total;
+    const resteChanged = change.doc.reste_a_payer;
+    
+    if (montantChanged || resteChanged) {
+      // Recalculer le KPI
+      this.calculateMontantTotal();
+    }
+  }
+});
+```
+
+### Option: Mango Query avec pouchdb-find
+
+```javascript
+// Alternative avec pouchdb-find (nécessite index)
+const result = await db.find({
+  selector: {
+    type: { $eq: 'facture' },
+    reste_a_payer: { $gt: 0 }
+  },
+  fields: ['montant_ht', 'montant_total', 'reste_a_payer']
+});
+
+const totalHT = result.docs.reduce((sum, f) => {
+  const montant = f.montant_ht || f.montant_total || 0;
+  return sum + montant;
+}, 0);
+
+this.kpis.montantTotal = totalHT;
 ```
 
 ## Calcul Frontend
 
 ```javascript
-// Récupération des données
-const response = await fetch('/api/factures?reste_a_payer_gt=0&fields=montant_ht,montant_total,reste_a_payer');
-const { data, meta } = await response.json();
+// Récupération des données depuis PouchDB
+const result = await db.allDocs({
+  startkey: 'facture:',
+  endkey: 'facture:\ufff0',
+  include_docs: true
+});
 
 // Calcul du montant HT total
-const totalHT = data.reduce((sum, f) => {
-  // Priorité au montant HT, fallback sur montant_total
-  const montant = f.montant_ht || f.montant_total || 0;
-  return sum + montant;
-}, 0);
-
-// Alternative si l'API retourne directement la somme
-// const totalHT = meta.sum_montant_ht || 0;
+const totalHT = result.rows
+  .map(row => row.doc)
+  .filter(f => f.reste_a_payer > 0)
+  .reduce((sum, f) => {
+    const montant = f.montant_ht || f.montant_total || 0;
+    return sum + montant;
+  }, 0);
 
 // Mise à jour du KPI
 this.kpis.montantTotal = totalHT;
+```
+
+## Structure des documents PouchDB (facture)
+
+```javascript
+{
+  "_id": "facture:550e8400-...",
+  "_rev": "1-abc123...",
+  "type": "facture",
+  "id": "F123",
+  "montant_ht": 1250.00,
+  "montant_total": 1500.00,
+  "reste_a_payer": 1500.00,
+  "contact_id": "contact:..."
+}
 ```
 
 ## Formatage
@@ -136,7 +211,19 @@ formatMoney(amount) {
 
 ## Error Handling
 
-| Code | Comportement |
-|------|--------------|
-| 401 | Redirection vers login |
-| 500 | Afficher "—" ou message d'erreur |
+| Cas | Comportement |
+|-----|--------------|
+| PouchDB non disponible | Afficher "—" ou message d'erreur |
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Source données | `GET /api/factures?reste_a_payer_gt=0` | PouchDB local |
+| Réponse | `{ data: [...], meta: { sum_montant_ht: N } }` | `reduce()` côté client |
+| Somme | Calculée par backend | Calculée par frontend |
+| Mise à jour | Rechargement manuel | Temps réel via `db.changes()` |
+| Latence | ~100-300ms | ~5-20ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |

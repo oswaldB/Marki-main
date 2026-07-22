@@ -1,4 +1,4 @@
-# Workflow : Filtrer tout
+# Workflow : Filtrer tout (PouchDB)
 
 ## Écran
 `relances-validation.html`
@@ -7,12 +7,13 @@
 Bouton avec `@click="filterType = 'all'; filterToday = false"`
 
 ## Action
-Afficher toutes les relances à valider
+Afficher toutes les relances à valider (données PouchDB)
 
 ## Description
 - Réinitialise les filtres
 - Affiche email et courrier
 - Désactive le filtre "aujourd'hui"
+- Filtrage côté client sur données PouchDB
 
 ## Data Model
 **Page Function:** `relancesValidationPage()`
@@ -20,10 +21,12 @@ Afficher toutes les relances à valider
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `relancesAValider`
+**Données (depuis PouchDB):**
+- `relancesAValider` - relances depuis PouchDB
 - `selectedRelances`
 - `selectAll`
+- `filterType` ← `'all'`
+- `filterToday` ← `false`
 
 **États UI:**
 - `loading`
@@ -35,15 +38,19 @@ Afficher toutes les relances à valider
 ## State Changes
 
 **Modifications:**
-- `page` modifié
-- `searchQuery` modifié
-- `filter*` modifié
+- `filterType` ← `'all'`
+- `filterToday` ← `false`
+- `filteredRelances` ← toutes les relances
+
+## PouchDB Operations
+
+**Aucun appel direct** - Ce workflow filtre les données déjà chargées depuis PouchDB.
+
+Les données sont chargées par `initial-load` puis filtrées côté client.
 
 ## API Calls
 
-**Pas d'appel API** - Action côté client uniquement
-
-
+**Pas d'appel API** - Filtrage côté client uniquement
 
 ## Organisation des fichiers
 
@@ -60,7 +67,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/relances-validation/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/relances-validation/js/filter-all.js`
@@ -69,36 +76,61 @@ frontend/
 ```javascript
 // frontend/app/relances-validation/js/filter-all.js
 export function filterAll() {
-  // Implementation du workflow
+  // Implementation avec PouchDB (filtrage côté client)
 }
 ```
 
 ## Implementation
 
 ```javascript
-// Filter properties are bound to inputs via x-model
-// Computed property handles filtering:
+filterAll() {
+  this.filterType = 'all';
+  this.filterToday = false;
+  // Le computed property filteredRelances se met à jour automatiquement
+}
 
-get filteredData() {
-  let result = this.data;
+// Computed property pour filtrer
+get filteredRelances() {
+  let result = [...this.relancesAValider]; // Données depuis PouchDB
   
-  // 1. Search filter
+  // Filtre par type
+  if (this.filterType !== 'all') {
+    result = result.filter(r => r.type === this.filterType);
+  }
+  
+  // Filtre par date (aujourd'hui)
+  if (this.filterToday) {
+    const today = new Date().toISOString().split('T')[0];
+    result = result.filter(r => r.date_envoi_programmee?.startsWith(today));
+  }
+  
+  // Filtre de recherche
   if (this.searchQuery) {
     const query = this.searchQuery.toLowerCase();
-    result = result.filter(item => 
-      item.name.toLowerCase().includes(query) ||
-      item.email.toLowerCase().includes(query)
+    result = result.filter(r => 
+      r.objet?.toLowerCase().includes(query) ||
+      r.payeur_nom?.toLowerCase().includes(query)
     );
   }
   
-  // 2. Status filter
-  if (this.filterStatut) {
-    result = result.filter(item => item.statut === this.filterStatut);
-  }
-  
-  // 3. Sort
-  result = this.sortData(result);
-  
   return result;
 }
-``
+```
+
+## Notes
+
+- **Filtrage côté client** : Les données proviennent de PouchDB (chargées par `initial-load`)
+- **Instantané** : Le filtrage est immédiat
+- **Pas de requête** : Aucun appel PouchDB supplémentaire
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Action | Côté client | **Conservé** - Côté client |
+| Source données | Props/Store | PouchDB (déjà chargé) |
+| Filtrage | Côté client | Côté client sur données PouchDB |
+| Latence | Instantanée | Instantanée |
+| Offline | ✅ Oui | ✅ Oui |

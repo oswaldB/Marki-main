@@ -1,4 +1,4 @@
-# Workflow : Régler facture mission
+# Workflow : Régler facture mission (PouchDB)
 
 ## Écran
 `portail-mission.html`
@@ -7,22 +7,23 @@
 Bouton avec `@click="reglerFacture()"`
 
 ## Action
-Rediriger vers le lien de paiement externe (Stripe, PayPal, etc.)
+Rediriger vers le lien de paiement externe (Stripe, PayPal, etc.) avec les données PouchDB
 
 ## Description
-- Récupère le template de lien de paiement depuis la configuration (`payment_links`)
+- Récupère les données de l'impayé et du client depuis PouchDB
+- Récupère le template de lien de paiement depuis la configuration (PouchDB)
 - Remplace les variables `[[]]` par les valeurs réelles de la facture
 - Redirige l'utilisateur vers le lien de paiement complet
 - Affiche uniquement si la facture est impayée
-- Même mécanisme que `portail-client/regler-facture.md`
 
 ## Data Model
 **Page Function:** `portailMissionPage()`
 
-**Données:**
-- `impaye` - l'impayé/facture en cours de consultation
-- `client`
-- `paymentConfig` - Configuration des liens de paiement (récupérée depuis `/api/payment_links`)
+**Données (depuis PouchDB):**
+- `impaye` - l'impayé/facture en cours de consultation (depuis PouchDB)
+- `client` - données du client (depuis PouchDB)
+- `paymentConfig` - Configuration des liens de paiement (depuis PouchDB ou store)
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -34,13 +35,26 @@ Rediriger vers le lien de paiement externe (Stripe, PayPal, etc.)
 - `loading` → `true` → `false`
 - `error` ← message si échec de génération du lien
 
+## PouchDB Operations
+
+**Action:** Récupérer la configuration de paiement depuis PouchDB si nécessaire.
+
+**Méthodes utilisées:**
+- `db.get('config:payment')` - Récupérer la configuration de paiement (optionnel)
+
+**Note** : Ce workflow n'effectue pas d'écriture dans PouchDB. La redirection vers le paiement externe se fait côté client.
+
 ## API Calls
 
-**Pas d'appel API direct** - Traitement côté client
+**Pas d'appel API direct** - Traitement côté client uniquement avec données PouchDB
 
-**Configuration utilisée** (depuis `/backend/data/payment_links/`) :
+**Configuration utilisée** (depuis PouchDB) :
+
+Document PouchDB `config:payment` :
 ```javascript
 {
+  "_id": "config:payment",
+  "type": "config",
   "payment_link_template": "https://paiement.example.com/pay?amount=[[MONTANT]]&ref=[[REFERENCE]]&email=[[EMAIL]]",
   "variables": ["[[MONTANT]]", "[[REFERENCE]]", "[[EMAIL]]", "[[NOM_CLIENT]]"]
 }
@@ -52,6 +66,8 @@ Rediriger vers le lien de paiement externe (Stripe, PayPal, etc.)
 - `[[EMAIL]]` - Email du client
 - `[[NOM_CLIENT]]` - Nom complet du client
 - `[[ID_FACTURE]]` - ID interne de la facture
+
+## Organisation des fichiers
 
 ```
 frontend/
@@ -66,7 +82,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/portail-mission/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/portail-mission/js/regler-facture.js`
@@ -75,7 +91,7 @@ frontend/
 ```javascript
 // frontend/app/portail-mission/js/regler-facture.js
 export function reglerFacture() {
-  // Implementation du workflow
+  // Implementation avec données PouchDB
 }
 ```
 
@@ -84,13 +100,16 @@ export function reglerFacture() {
 ```javascript
 async reglerFacture() {
   try {
-    // 1. Get payment config (from store or API)
+    // 1. Get payment config (from store ou PouchDB)
+    // Option: Charger depuis PouchDB si besoin
+    // const configDoc = await db.get('config:payment');
     const config = Alpine.store('config').paymentLink;
+    
     if (!config?.template) {
       throw new Error('Configuration de paiement non disponible');
     }
     
-    // 2. Prepare replacement values
+    // 2. Prepare replacement values (données depuis PouchDB)
     const values = {
       '[[MONTANT]]': Math.round(this.impaye.montant_ttc * 100), // centimes
       '[[REFERENCE]]': encodeURIComponent(this.impaye.nfacture),
@@ -116,14 +135,42 @@ async reglerFacture() {
     window.location.href = paymentUrl;
     
   } catch (error) {
-    Alpine.store('ui').addToast(error.message, 'error');
+    this.toast(error.message, 'error');
+  }
+}
+
+// Option: Charger la config depuis PouchDB
+async loadPaymentConfig() {
+  try {
+    const config = await db.get('config:payment');
+    Alpine.store('config').paymentLink = {
+      template: config.payment_link_template,
+      variables: config.variables
+    };
+  } catch (error) {
+    console.warn('Config paiement non trouvée dans PouchDB:', error);
+    // Fallback: utiliser config par défaut ou message erreur
   }
 }
 ```
 
 ## Notes
 
-- **Configuration** : Utilise la table `payment_links` créée dans `/backend/data/`
+- **Données PouchDB** : Les données impayé, client et config proviennent de PouchDB (chargées par `initial-load`)
+- **Configuration paiement** : Peut être stockée dans PouchDB (`config:payment`) ou dans le store Alpine
 - **Sécurité** : Les variables sont encodées avec `encodeURIComponent` pour éviter les injections
 - **Montant** : Généralement envoyé en centimes (multiplié par 100) pour les passerelles de paiement
 - **Fallback** : Si pas de config, afficher un message invitant à contacter l'entreprise
+- **Pas d'écriture** : Ce workflow ne modifie pas PouchDB, il utilise uniquement les données en lecture
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Données impayé/client | Props/page params | PouchDB local |
+| Config paiement | `/backend/data/payment_links/` | PouchDB local (optionnel) |
+| Traitement | Côté client | **Conservé** - Côté client |
+| Latence | Instantanée | Instantanée (données déjà en mémoire) |
+| Offline | ❌ Impossible | ✅ Lien générable offline (mais paiement nécessite connexion) |

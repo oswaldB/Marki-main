@@ -2,7 +2,7 @@
 id: dashboard-events-manager
 type: frontend
 folder: specs/workflows/frontend/dashboard/
-description: Gérer les événements récents - récupération, synchronisation localStorage, états lu/non-lu
+description: Gérer les événements récents - récupération depuis PouchDB, synchronisation localStorage, états lu/non-lu
 depends_on: [auth-check]
 screen: dashboard
 global: false
@@ -13,9 +13,9 @@ mockup_entry: specs/mockups/dashboard.html
 
 ## Description
 
-Workflow complet pour la gestion des événements récents du dashboard :
-- Récupération des événements depuis l'API
-- Synchronisation bidirectionnelle avec localStorage
+Workflow complet pour la gestion des événements récents du dashboard via **PouchDB** :
+- Récupération des événements depuis la base PouchDB locale
+- Synchronisation bidirectionnelle avec localStorage (état lu/non-lu)
 - **Affichage de tous les événements** avec indicateur lu/non-lu (pastille)
 - Marquage individuel ou global comme lu
 
@@ -23,8 +23,8 @@ Workflow complet pour la gestion des événements récents du dashboard :
 
 ```
 ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
-│   API       │────▶│   Alpine.js  │◀───▶│ localStorage│
-│ /api/events │     │   State      │     │  readEvents │
+│  PouchDB    │────▶│   Alpine.js  │◀───▶│ localStorage│
+│   events    │     │   State      │     │  readEvents │
 └─────────────┘     └──────────────┘     └─────────────┘
                             │
                             ▼
@@ -40,23 +40,33 @@ Workflow complet pour la gestion des événements récents du dashboard :
 
 ```javascript
 /**
- * @action Initialiser le state events depuis localStorage
- * @checkpoint localstorage-loaded, événements lus restaurés
+ * @action Initialiser PouchDB et localStorage
+ * @checkpoint pouchdb-initialized, événements lus restaurés
  * 
  * Code:
+ * this.db = new PouchDB('marki-events');
  * const readEvents = JSON.parse(localStorage.getItem('marki_read_events') || '{}');
  * this.readEvents = readEvents;
  */
 
 /**
- * @action Récupérer les événements depuis l'API
- * @checkpoint events-fetched, réponse 200 avec derniers événements
+ * @action Configurer le sync temps réel depuis PouchDB
+ * @checkpoint changes-listener-active, sync activé
  * 
- * Requête: GET /api/events?limit=20&order=created_at.desc
+ * Code:
+ * this.db.changes({ since: 'now', live: true, include_docs: true })
+ *   .on('change', (change) => { this.handleEventChange(change.doc); });
  */
 
 /**
- * @action Transformer les événements API avec format dates
+ * @action Récupérer les événements depuis PouchDB
+ * @checkpoint events-fetched, données locales chargées
+ * 
+ * Requête: db.allDocs({ startkey: 'event:', endkey: 'event:\ufff0', limit: 20 })
+ */
+
+/**
+ * @action Transformer les événements avec format dates
  * @checkpoint events-formatted, dates relatives calculées
  * 
  * Format date relatif:
@@ -135,20 +145,90 @@ Workflow complet pour la gestion des événements récents du dashboard :
  */
 ```
 
+## PouchDB Operations
+
+### Initialisation
+
+```javascript
+// Créer la base PouchDB pour les événements
+const eventsDb = new PouchDB('marki-events');
+
+// Sync avec CouchDB distant (optionnel)
+eventsDb.sync('https://admin:admin@dev.markidiags.com/data/marki-events', {
+  live: true,
+  retry: true
+});
+```
+
+### Récupérer les événements
+
+```javascript
+// Charger les 20 derniers événements
+async loadEvents() {
+  try {
+    const result = await eventsDb.allDocs({
+      startkey: 'event:',
+      endkey: 'event:\ufff0',
+      include_docs: true,
+      limit: 20
+    });
+    
+    this.events = result.rows
+      .map(row => row.doc)
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+      .map(event => ({
+        ...event,
+        time: this.formatRelativeDate(event.created_at),
+        icon: this.getIconForType(event.type)
+      }));
+      
+  } catch (error) {
+    console.error('Failed to load events:', error);
+  }
+}
+```
+
+### Live Sync (temps réel)
+
+```javascript
+// Écouter les nouveaux événements
+eventsDb.changes({
+  since: 'now',
+  live: true,
+  include_docs: true
+}).on('change', (change) => {
+  if (change.doc.type === 'event') {
+    // Ajouter le nouvel événement en haut de la liste
+    const newEvent = {
+      ...change.doc,
+      time: "À l'instant",
+      icon: this.getIconForType(change.doc.type)
+    };
+    this.events.unshift(newEvent);
+    
+    // Notification sonore ou toast
+    this.showNotification(newEvent);
+  }
+});
+```
+
 ## Structure des données
 
-### Événement API (`/api/events`)
+### Événement PouchDB (type 'event')
 
 ```javascript
 {
-  id: string,           // UUID ou number
-  type: 'sync' | 'payment' | 'relance' | 'alert' | 'relance_cleaned' | 'contact_blacklisted' | 'payment_suspended',
-  title: string,
-  description: string,
-  created_at: string,   // ISO 8601
-  user_id: number | null,
-  user_username: string | null,
-  by_marki: boolean     // true si action par Marki, false si utilisateur
+  "_id": "event:550e8400-e29b-41d4-a716-446655440000",
+  "_rev": "1-abc123def456",
+  "type": "event",
+  "id": "evt-001",
+  "event_type": "relance",  // 'sync', 'payment', 'relance', 'alert', etc.
+  "title": "Relance R2 envoyée",
+  "description": "Relance niveau 2 envoyée à TechStart SARL...",
+  "created_at": "2024-01-15T10:30:00Z",
+  "user_id": null,
+  "user_username": null,
+  "by_marki": true
 }
 ```
 
@@ -156,16 +236,19 @@ Workflow complet pour la gestion des événements récents du dashboard :
 
 ```javascript
 {
-  id: string,
-  type: string,
-  icon: string,         // FontAwesome class
-  title: string,
-  description: string,
-  time: string,         // Format relatif: "Il y a 2 heures"
-  created_at: string,   // ISO original
-  user_id: number | null,
-  user_username: string | null,
-  by_marki: boolean
+  _id: "event:550e8400-...",
+  _rev: "1-abc...",
+  type: "event",
+  id: "evt-001",
+  event_type: "relance",
+  icon: "fa-paper-plane",  // FontAwesome class
+  title: "Relance R2 envoyée",
+  description: "Relance niveau 2 envoyée à TechStart SARL...",
+  time: "Il y a 2 heures",  // Format relatif
+  created_at: "2024-01-15T10:30:00Z",
+  user_id: null,
+  user_username: null,
+  by_marki: true
 }
 ```
 
@@ -173,36 +256,42 @@ Workflow complet pour la gestion des événements récents du dashboard :
 
 ```javascript
 {
-  "event-uuid-1": { read: true, readAt: "2024-01-15T10:30:00Z" },
-  "event-uuid-2": { read: true, readAt: "2024-01-15T11:15:00Z" }
+  "evt-001": { read: true, readAt: "2024-01-15T10:30:00Z" },
+  "evt-002": { read: true, readAt: "2024-01-15T11:15:00Z" }
 }
 ```
 
-## Requêtes API
+## PouchDB Queries
 
 ### Récupération des événements
 
-```
-GET /api/events?limit=20&order=created_at.desc
+```javascript
+// Option 1: allDocs (rapide)
+const result = await eventsDb.allDocs({
+  startkey: 'event:',
+  endkey: 'event:\ufff0',
+  include_docs: true,
+  limit: 20
+});
+
+// Option 2: Mango query avec pouchdb-find
+const result = await eventsDb.find({
+  selector: { type: { $eq: 'event' } },
+  sort: [{ created_at: 'desc' }],
+  limit: 20
+});
 ```
 
-**Réponse (200):**
-```json
-{
-  "data": [
-    {
-      "id": "evt-001",
-      "type": "relance",
-      "title": "Relance R2 envoyée",
-      "description": "Relance niveau 2 envoyée à TechStart SARL...",
-      "created_at": "2024-01-15T10:30:00Z",
-      "user_id": null,
-      "user_username": null,
-      "by_marki": true
-    }
-  ],
-  "meta": { "total": 45 }
-}
+### Créer l'index Mango (optionnel)
+
+```javascript
+// Créer un index pour optimiser les requêtes par date
+await eventsDb.createIndex({
+  index: {
+    fields: ['type', 'created_at']
+  },
+  name: 'idx-events-by-date'
+});
 ```
 
 ## Computed Properties
@@ -241,14 +330,21 @@ isEventRead(eventId) {
 ```javascript
 async loadEvents() {
   try {
-    const response = await fetch('/api/events?limit=20&order=created_at.desc');
-    const { data } = await response.json();
+    const result = await eventsDb.allDocs({
+      startkey: 'event:',
+      endkey: 'event:\ufff0',
+      include_docs: true,
+      limit: 20
+    });
     
-    this.events = data.map(event => ({
-      ...event,
-      time: this.formatRelativeDate(event.created_at),
-      icon: this.getIconForType(event.type)
-    }));
+    this.events = result.rows
+      .map(row => row.doc)
+      .sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+      .map(event => ({
+        ...event,
+        time: this.formatRelativeDate(event.created_at),
+        icon: this.getIconForType(event.type)
+      }));
   } catch (error) {
     console.error('Failed to load events:', error);
   }
@@ -472,6 +568,7 @@ getIconForType(type) {
   // Données
   events: [],           // Tous les événements récupérés (affichés tous)
   readEvents: {},      // Map des events lus (depuis localStorage)
+  db: null,            // Instance PouchDB
   
   // Computed
   get unreadCount() { 
@@ -484,6 +581,25 @@ getIconForType(type) {
   // Méthode utilitaire
   isEventRead(eventId) {
     return !!this.readEvents[eventId];
+  },
+  
+  // Initialisation
+  async init() {
+    this.db = new PouchDB('marki-events');
+    
+    // Sync avec CouchDB
+    this.db.sync('https://admin:admin@dev.markidiags.com/data/marki-events', {
+      live: true,
+      retry: true
+    });
+    
+    // Charger données
+    this.readEvents = JSON.parse(localStorage.getItem('marki_read_events') || '{}');
+    await this.loadEvents();
+    
+    // Écouter les changements temps réel
+    this.db.changes({ since: 'now', live: true, include_docs: true })
+      .on('change', (change) => this.handleEventChange(change.doc));
   }
 }
 ```
@@ -492,8 +608,10 @@ getIconForType(type) {
 
 ```
 1. Initialisation
+   ├── Créer PouchDB 'marki-events'
+   ├── Configurer sync avec CouchDB
    ├── Charger readEvents depuis localStorage
-   ├── Charger events depuis API
+   ├── Charger events depuis PouchDB
    └── Afficher tous les events avec pastille si non lus
 
 2. Affichage initial
@@ -514,43 +632,36 @@ getIconForType(type) {
    ├── Disparaître pastille de cet event uniquement
    └── Mettre à jour badge (count - 1)
 
-5. Nouvelle donnée
-   ├── Polling ou WebSocket reçu
+5. Nouveau événement (PouchDB changes)
+   ├── Change reçu de CouchDB
    ├── Ajouter event à events[] (en haut de la liste)
    ├── Afficher avec pastille "Non lu"
    └── Badge réapparaît (count + 1)
-```
-
-## Synchronisation temps réel (optionnel)
-
-```javascript
-// WebSocket pour nouveaux événements
-initWebSocket() {
-  const ws = new WebSocket('wss://api.marki.fr/events');
-  
-  ws.onmessage = (event) => {
-    const newEvent = JSON.parse(event.data);
-    this.events.unshift({
-      ...newEvent,
-      time: "À l'instant",
-      icon: this.getIconForType(newEvent.type)
-    });
-    // Notification sonore ou toast
-  };
-}
 ```
 
 ## Error Handling
 
 | Code | Comportement |
 |------|--------------|
-| 401 | Redirection login |
-| 500 | Afficher message "Impossible de charger les événements" |
+| PouchDB indisponible | Afficher message "Base de données non disponible" |
+| Pas d'événements | Afficher empty state |
 | localStorage indisponible | Fonctionner en mode "sans mémoire" (pas de persistance) |
 
 ## Notes
 
-- Les événements sont **toujours récupérés depuis l'API** (pas de cache)
+- Les événements sont **récupérés depuis PouchDB local** et synchronisés avec CouchDB
 - Seul l'état "lu/non-lu" est stocké en localStorage
 - Le localStorage peut être vidé sans impact fonctionnel (juste perte de l'historique de lecture)
 - L'utilisateur peut voir un event, le marquer comme lu, puis il réapparaîtra si un nouvel event du même type est créé
+- Les événements sont ajoutés en temps réel via le sync PouchDB
+
+---
+
+## Migration depuis l'ancienne API
+
+| Avant (API) | Après (PouchDB) |
+|-------------|-----------------|
+| `GET /api/events?limit=20` | `db.allDocs({ startkey: 'event:', endkey: 'event:\ufff0', limit: 20 })` |
+| Polling/WebSocket | `db.changes({ live: true })` |
+| Réponse JSON avec array `data` | `result.rows.map(r => r.doc)` |
+| Nouveaux events via API/WebSocket | Nouveaux events via sync PouchDB |

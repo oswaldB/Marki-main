@@ -1,4 +1,4 @@
-# Workflow : Valider une relance
+# Workflow : Valider une relance (PouchDB)
 
 ## Écran
 `relances-validation.html`
@@ -7,12 +7,13 @@
 Bouton avec `@click="validerRelance()"`
 
 ## Action
-Approuver l'envoi d'une relance
+Approuver l'envoi d'une relance via PouchDB
 
 ## Description
-- Marque la relance comme validée
+- Marque la relance comme validée dans PouchDB
 - Change le statut en `pret pour envoi`
 - Retire de la liste à valider
+- Synchronise avec CouchDB
 
 ## Data Model
 **Page Function:** `relancesValidationPage()`
@@ -20,10 +21,11 @@ Approuver l'envoi d'une relance
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `relancesAValider`
+**Données (depuis PouchDB):**
+- `relancesAValider` - relances depuis PouchDB
 - `selectedRelances`
 - `selectAll`
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -34,27 +36,20 @@ Approuver l'envoi d'une relance
 
 ## State Changes
 
-**Modifications:** États UI spécifiques selon implémentation
+**Modifications:**
+- Relance mise à jour dans PouchDB (valide = true)
+- `relancesAValider` ← filtrée (relance retirée)
 
-## API Calls
+## PouchDB Operations
 
-**POST /api/relances/:id/validate**
+**Action:** Mettre à jour la relance dans PouchDB pour la marquer comme validée.
 
-```javascript
-// Requête
-POST /api/relances/rel_xxx/validate
-Authorization: Bearer {token}
+**Méthodes utilisées:**
+1. `db.get('relance:' + id)` - Récupérer le document avec sa révision
+2. Mettre à jour `valide: true` et `statut: 'pret pour envoi'`
+3. `db.put(doc)` - Sauvegarder le document modifié
 
-// Réponse 200
-{
-  "message": "Relance validée",
-  "relance": {
-    "id": "rel_xxx",
-    "statut": "pret pour envoi",
-    "valide": 1
-  }
-}
-```
+**Sync:** La modification est automatiquement synchronisée avec CouchDB.
 
 ## Organisation des fichiers
 
@@ -71,43 +66,71 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/relances-validation/index.html`
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/relances-validation/js/valider-relance.js`
+- **Export** : Fonction utilisable dans `index.html`
 
 ```javascript
 // frontend/app/relances-validation/js/valider-relance.js
-export async function validerRelance(relanceId) {
-  const response = await fetch(`/api/relances/${relanceId}/validate`, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${Alpine.store('auth').token}`,
-      'Content-Type': 'application/json'
-    }
-  });
-  
-  return await response.json();
+export async function validerRelance() {
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
 async validerRelance(id) {
   this.loading = true;
   
   try {
-    const data = await validerRelance(id);
+    // 1. Récupérer le document depuis PouchDB avec sa révision
+    const doc = await db.get('relance:' + id);
     
-    // Remove from validation list
-    this.relancesAValider = this.relancesAValider.filter(item => item.id !== id);
+    // 2. Mettre à jour le statut
+    doc.valide = true;
+    doc.statut = 'pret pour envoi';
+    doc.validated_at = new Date().toISOString();
+    doc.validated_by = this.user?.id;
+    doc.updated_at = new Date().toISOString();
     
-    Alpine.store('ui').addToast('Relance validée', 'success');
+    // 3. Sauvegarder dans PouchDB
+    const response = await db.put(doc);
+    // response: { ok: true, id: 'relance:...', rev: '2-xxx...' }
+    
+    // 4. Remove from validation list (le changes listener mettra aussi à jour)
+    this.relancesAValider = this.relancesAValider.filter(
+      item => item._id !== 'relance:' + id
+    );
+    
+    // 5. Notify
+    this.toast('Relance validée', 'success');
     
   } catch (error) {
-    Alpine.store('ui').addToast(error.message, 'error');
+    if (error.status === 409) {
+      this.error = 'Conflit de version, veuillez réessayer';
+      this.toast('Conflit de version', 'error');
+    } else {
+      this.error = error.message;
+      this.toast(error.message, 'error');
+    }
   } finally {
     this.loading = false;
   }
 }
 ```
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Requête | `POST /api/relances/:id/validate` | `db.get()` puis `db.put()` |
+| Payload | Aucun | Modification directe du doc |
+| Réponse | `{ message, relance }` | `{ ok, id, rev }` |
+| Gestion conflits | Backend | Détection `_rev` côté client |
+| Latence | ~100-300ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline, sync reportée |

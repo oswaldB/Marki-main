@@ -1,10 +1,10 @@
-# Workflow : Activer attribution automatique
+# Workflow : Activer attribution automatique (PouchDB)
 
 ## Écran
 `sequences-relance-detail.html`
 
 ## Élément déclencheur
-Toggle avec `@click="sequence.attributionAuto = !sequence.attributionAuto"`
+Toggle avec `@click="toggleAttributionAuto()"`
 
 ## Action
 Basculer l'attribution automatique
@@ -12,6 +12,7 @@ Basculer l'attribution automatique
 ## Description
 - Si activé : assigne automatiquement les impayés
 - Basé sur les règles configurées
+- Modification UI uniquement, persistance via PouchDB au moment de la sauvegarde
 
 ## Data Model
 **Page Function:** `sequencesRelanceDetailPage()`
@@ -19,14 +20,15 @@ Basculer l'attribution automatique
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `sequence`
+**Données (depuis PouchDB):**
+- `sequence` - séquence depuis PouchDB
 - `etapes`
 - `modeles`
 - `activeTab`
 - `draggingEtape`
 - `editingEtape`
 - `editorInstance`
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -40,15 +42,16 @@ Basculer l'attribution automatique
 ## State Changes
 
 **Modifications:**
-- `showEtapeModal` modifié
-- `showModeleModal` modifié
-- `showDeleteEtapeModal` modifié
+- `sequence.attribution_auto` ← toggled
+- `hasChanges` ← `true` (modification non sauvegardée)
 
-## API Calls
+**Note** : Cette action modifie uniquement l'état UI local. La persistance dans PouchDB se fait via le workflow `sauvegarder`.
 
-**Pas d'appel API** - Action côté client uniquement
+## PouchDB Operations
 
+**Aucun** - Action UI uniquement.
 
+**Persistance** : Les modifications sont sauvegardées dans PouchDB lors de l'appel à `sauvegarder()` (workflow séparé).
 
 ## Organisation des fichiers
 
@@ -65,7 +68,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/sequences-relance-detail/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/sequences-relance-detail/js/toggle-attribution-auto.js`
@@ -74,22 +77,38 @@ frontend/
 ```javascript
 // frontend/app/sequences-relance-detail/js/toggle-attribution-auto.js
 export function toggleAttributionAuto() {
-  // Implementation du workflow
+  // Implementation avec PouchDB (action UI)
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
-toggleItem() {
+toggleAttributionAuto() {
   // 1. Toggle boolean state
-  this.showModal = !this.showModal;
-  // OR
-  this.isExpanded = !this.isExpanded;
+  this.sequence.attribution_auto = !this.sequence.attribution_auto;
   
-  // 2. If opening, prepare data
-  if (this.showModal) {
-    this.prepareModalData();
-  }
+  // 2. Marquer comme modifié
+  this.hasChanges = true;
+  
+  // 3. Les modifications seront persistées dans PouchDB
+  //    lors de l'appel à sauvegarder()
 }
-``
+```
+
+## Notes
+
+- **Action UI uniquement** : Ce workflow ne touche pas directement à PouchDB
+- **Persistance différée** : Les modifications sont sauvegardées via le workflow `sauvegarder`
+- **Gestion des états** : `hasChanges` permet d'indiquer qu'une sauvegarde est nécessaire
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Action | Côté client uniquement | **Conservé** - Côté client |
+| Persistance | API `PUT /api/sequences/:id` (via sauvegarder) | `db.put()` via workflow `sauvegarder` |
+| Latence | Instantanée UI | Instantanée UI |
+| Offline | ✅ Oui | ✅ Oui (sauvegarde différée) |

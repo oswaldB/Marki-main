@@ -1,4 +1,4 @@
-# Workflow Frontend : Demander Prénom
+# Workflow Frontend : Demander Prénom (PouchDB)
 
 ## Objectif
 Afficher une popup pour demander le prénom de l'utilisateur et afficher un message de bienvenue personnalisé.
@@ -132,9 +132,26 @@ Le message "Hello {prénom}" s'affiche uniquement si `prenom` est défini :
 
 ## Dépendances
 - Aucune API call
+- Aucune opération PouchDB (UI uniquement)
 - Utilise uniquement `prompt()` natif du navigateur
+
+## PouchDB Operations
+
+**Aucun** - Ce workflow est purement une interaction UI sans persistance.
 
 ## Anti-patterns à éviter
 - ❌ Ne pas appeler d'API externe pour ce workflow simple
 - ❌ Ne pas utiliser de modal custom (utiliser `prompt()`)
 - ❌ Ne pas stocker le prénom en localStorage (state éphémère)
+- ❌ Ne pas persister dans PouchDB (state temporaire uniquement)
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Action | Côté client uniquement | **Conservé** - Côté client |
+| Persistance | Non persistante | **Conservé** - Non persistante |
+| Latence | Instantanée | Instantanée |
+| Offline | ✅ Oui | ✅ Oui |

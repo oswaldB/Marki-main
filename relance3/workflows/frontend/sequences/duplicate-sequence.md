@@ -1,4 +1,4 @@
-# Workflow : Dupliquer une séquence
+# Workflow : Dupliquer une séquence (PouchDB)
 
 ## Écran
 `sequences.html`
@@ -7,19 +7,22 @@
 Bouton avec `@click="duplicateSequence(sequence)"`
 
 ## Action
-Créer une copie d'une séquence existante
+Créer une copie d'une séquence existante dans PouchDB
 
 ## Description
 - Duplique la séquence avec un nouveau nom
 - Copie tous les emails et leur configuration
 - La nouvelle séquence est inactive par défaut
+- Synchronise avec CouchDB
 - Redirige vers l'édition de la nouvelle séquence
 
 ## Data Model
 **Page Function:** `sequencesPage()`
 
-**Données:**
+**Données (depuis PouchDB):**
 - `sequence` - la séquence à dupliquer
+- `sequences` - liste des séquences
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -31,31 +34,14 @@ Créer une copie d'une séquence existante
 - `loading` → `true` → `false`
 - `sequences` ← nouvelle séquence ajoutée
 
-## API Calls
+## PouchDB Operations
 
-**`POST /api/sequences`** - Crée la copie de la séquence
+**Action:** Créer un nouveau document séquence dans PouchDB basé sur une séquence existante.
 
-**Payload:**
-```json
-{
-  "nom": "Copie de Séquence Relance Standard",
-  "type_sequence": "relances",
-  "actif": false,
-  "emails": [
-    {
-      "email_index": 1,
-      "delai": 7,
-      "objet": "Relance facture",
-      "corps": "..."
-    }
-  ],
-  "validation_obligatoire": false,
-  "created_at": "2026-07-12T10:00:00Z",
-  "updated_at": "2026-07-12T10:00:00Z"
-}
-```
+**Méthodes utilisées:**
+- `db.put(doc)` - Créer le document avec un nouvel ID
 
-**Response:** `ApiResponse<Sequence>`
+**Sync:** La création est automatiquement synchronisée avec CouchDB.
 
 ## Organisation des fichiers
 
@@ -72,7 +58,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/sequences/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/sequences/js/duplicate-sequence.js`
@@ -80,12 +66,12 @@ frontend/
 
 ```javascript
 // frontend/app/sequences/js/duplicate-sequence.js
-export function duplicateSequence() {
-  // Implementation du workflow
+export async function duplicateSequence() {
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
 async duplicateSequence(sequence) {
@@ -97,8 +83,10 @@ async duplicateSequence(sequence) {
   this.error = null;
   
   try {
-    // 3. Prepare payload (copy with new name)
-    const payload = {
+    // 3. Prepare document PouchDB (copy with new ID)
+    const newSequenceDoc = {
+      _id: 'sequence:' + this.generateUUID(),
+      type: 'sequence',
       nom: `Copie de ${sequence.nom}`,
       type_sequence: sequence.type_sequence,
       actif: false, // Inactive by default
@@ -108,34 +96,33 @@ async duplicateSequence(sequence) {
       updated_at: new Date().toISOString()
     };
     
-    // 4. Call API
-    const response = await fetch('/api/sequences', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    
-    const data = await response.json();
-    
-    if (!data.success) {
-      throw new Error(data.error?.message || 'Erreur lors de la duplication');
-    }
+    // 4. Create in PouchDB
+    const response = await db.put(newSequenceDoc);
+    // response: { ok: true, id: 'sequence:...', rev: '1-xxx...' }
     
     // 5. Update local array
-    this.sequences.unshift(data.data);
+    this.sequences.unshift({ ...newSequenceDoc, _rev: response.rev });
     
     // 6. Redirect to edit page
-    window.location.href = `/sequences-relance-detail.html?id=${data.data.id}`;
+    window.location.href = `/sequences-relance-detail.html?id=${newSequenceDoc._id}`;
     
     // 7. Notify
-    Alpine.store('ui').addToast('Séquence dupliquée', 'success');
+    this.toast('Séquence dupliquée', 'success');
     
   } catch (error) {
     this.error = error.message;
-    Alpine.store('ui').addToast(error.message, 'error');
+    this.toast(error.message, 'error');
   } finally {
     this.loading = false;
   }
+}
+
+generateUUID() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
 }
 ```
 
@@ -145,3 +132,16 @@ async duplicateSequence(sequence) {
 - L'utilisateur doit l'activer manuellement après modification
 - Tous les emails et leur configuration sont copiés
 - Le nom est préfixé par "Copie de "
+- L'ID est généré côté client avec UUID pour éviter les conflits
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Requête | `POST /api/sequences` | `db.put(doc)` |
+| ID génération | Backend | UUID côté client |
+| Réponse | `ApiResponse<Sequence>` | `{ ok, id, rev }` |
+| Latence | ~100-300ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline, sync reportée |

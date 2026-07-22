@@ -1,4 +1,4 @@
-# Workflow : Sauvegarder séquence suivi
+# Workflow : Sauvegarder séquence suivi (PouchDB)
 
 ## Écran
 `sequences-suivi-detail.html`
@@ -7,11 +7,11 @@
 Bouton avec `@click="sauvegarder()"`
 
 ## Action
-Enregistrer les modifications de la séquence de suivi
+Enregistrer les modifications de la séquence de suivi dans PouchDB
 
 ## Description
-- Persiste tous les changements
-- Envoie à l'API backend
+- Persiste tous les changements dans PouchDB
+- Synchronise avec CouchDB
 - Affiche confirmation
 
 ## Data Model
@@ -21,14 +21,15 @@ Enregistrer les modifications de la séquence de suivi
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `sequence`
-- `etapes`
-- `modeles`
+**Données (depuis PouchDB):**
+- `sequence` - séquence depuis PouchDB
+- `etapes` - étapes modifiées
+- `modeles` - modèles modifiés
 - `activeTab`
 - `draggingEtape`
 - `editingEtape`
 - `editorInstance`
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -47,38 +48,18 @@ Enregistrer les modifications de la séquence de suivi
 - Toast 'Séquence sauvegardée' (succès) ou message d'erreur
 - `saving` passe à `false` à la fin
 - `hasChanges` passe à `false` si succès
+- `sequence` ← mise à jour avec révision
 
-## API Calls
+## PouchDB Operations
 
-**Sauvegarde de la séquence** via `PUT /api/sequences/:id` :
+**Action:** Mettre à jour la séquence de suivi complète dans PouchDB.
 
-| Méthode | Endpoint | Body | Description |
-|---------|----------|------|-------------|
-| `PUT` | `/api/sequences/:id` | `{ nom, validationObligatoire, emails, type_suivi }` | Met à jour la séquence de suivi avec ses emails |
+**Méthodes utilisées:**
+1. `db.get('sequence:' + id)` - Récupérer le document avec sa révision
+2. Mettre à jour les champs modifiés
+3. `db.put(doc)` - Sauvegarder le document modifié
 
-**Données sauvegardées** (persistées via SQLite dans la table "suivi") :
-- `sequence.nom` : Nom de la séquence de suivi
-- `sequence.validationObligatoire` : Booléen
-- `sequence.type_suivi` : Type de suivi (formation, audit, etc.)
-- `sequence.emails[]` : Tableau des emails avec leurs scénarios
-  - `email_index` (number) : Position de l'email dans la séquence
-  - `delai` (number) : Délai en jours (négatif = avant échéance)
-  - `objet` (string) : Template d'objet avec variables
-  - `corps` (string) : Template HTML du corps
-  - `scenarios[]` (array) : Les scénarios de suivi
-    - `active` (boolean) : Scénario activé
-    - `format` (enum) : 'nouveau' | 'existant' | 'relance'
-    - `objet` (string|null) : Objet spécifique au scénario
-    - `corps` (string|null) : Corps spécifique au scénario
-    - `cc` (string) : Destinataires en copie
-    - `bcc` (string) : Destinataires en copie cachée
-    - `smtp_profile_id` (string|null) : Profil SMTP spécifique
-
-**Note** : Les liens de paiement ne sont pas applicables aux séquences de suivi (contrairement aux relances).
-
-**Réponse** : `{ success: boolean, sequence: object, message?: string }`
-
-
+**Sync:** La modification est automatiquement synchronisée avec CouchDB.
 
 ## Organisation des fichiers
 
@@ -95,7 +76,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/sequences-suivi-detail/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/sequences-suivi-detail/js/sauvegarder.js`
@@ -103,66 +84,79 @@ frontend/
 
 ```javascript
 // frontend/app/sequences-suivi-detail/js/sauvegarder.js
-export function sauvegarder() {
-  // Implementation du workflow
+export async function sauvegarder() {
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
-// Implémentation personnalisée requise
-// Page: sequences-suivi-detail
-// Entité: sequence
-
-async function sauvegarder() {
-  // 1. Set state
+async sauvegarder() {
   this.saving = true;
-  Alpine.store('ui').addToast('Sauvegarde en cours...', 'info');
+  this.error = null;
   
   try {
-    // 2. Call API - sauvegarde dans la table "suivi"
-    const response = await fetch(`/api/sequences/${this.sequence.id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        nom: this.sequence.nom,
-        validationObligatoire: this.sequence.validationObligatoire,
-        type_suivi: this.sequence.type_suivi,
-        emails: this.sequence.emails.map(email => ({
-          email_index: email.email_index,
-          delai: email.delai,
-          objet: email.objet,
-          corps: email.corps,
-          scenarios: email.scenarios.map(sc => ({
-            active: sc.active,
-            format: sc.format,
-            objet: sc.objet,
-            corps: sc.corps,
-            cc: sc.cc,
-            bcc: sc.bcc,
-            smtp_profile_id: sc.smtp_profile_id
-          }))
-        }))
-      })
-    });
+    // 1. Récupérer le document depuis PouchDB avec sa révision
+    const doc = await db.get('sequence:' + this.sequenceId);
     
-    const data = await response.json();
+    // 2. Mettre à jour les champs
+    doc.nom = this.sequence.nom;
+    doc.validation_obligatoire = this.sequence.validation_obligatoire;
+    doc.type_suivi = this.sequence.type_suivi;
+    doc.emails = this.etapes; // tableau des emails de suivi
+    doc.modeles_email = this.modeles;
+    doc.updated_at = new Date().toISOString();
     
-    // 3. Handle response
-    if (data.success) {
-      this.hasChanges = false;
-      Alpine.store('ui').addToast('Séquence de suivi sauvegardée', 'success');
-    } else {
-      throw new Error(data.message || 'Erreur lors de la sauvegarde');
-    }
+    // 3. Sauvegarder dans PouchDB
+    const response = await db.put(doc);
+    // response: { ok: true, id: 'sequence:...', rev: '2-xxx...' }
+    
+    // 4. Mettre à jour l'état local
+    this.sequence = { ...doc, _rev: response.rev };
+    this.hasChanges = false;
+    
+    // 5. Notify
+    this.toast('Séquence de suivi sauvegardée', 'success');
     
   } catch (error) {
-    // 4. Handle error
-    Alpine.store('ui').addToast(error.message, 'error');
+    if (error.status === 409) {
+      this.error = 'Conflit de version, veuillez réessayer';
+      this.toast('Conflit de version', 'error');
+    } else {
+      this.error = error.message;
+      this.toast(error.message, 'error');
+    }
   } finally {
-    // 5. Reset state
     this.saving = false;
   }
 }
 ```
+
+## Données sauvegardées dans PouchDB
+
+- `sequence.nom` : Nom de la séquence de suivi
+- `sequence.validation_obligatoire` : Booléen
+- `sequence.type_suivi` : Type de suivi (formation, audit, etc.)
+- `sequence.emails[]` : Tableau des emails avec leurs scénarios
+  - `email_index` (number) : Position de l'email dans la séquence
+  - `delai` (number) : Délai en jours
+  - `objet` (string) : Template d'objet
+  - `corps` (string) : Template HTML du corps
+  - `scenarios[]` (array) : Les scénarios de suivi
+- `sequence.modeles_email` : Modèles d'email
+
+**Note** : Les liens de paiement ne sont pas applicables aux séquences de suivi (contrairement aux relances).
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Requête | `PUT /api/sequences/:id` | `db.get()` puis `db.put()` |
+| Payload | `{ nom, validationObligatoire, emails, type_suivi }` | Modification directe du doc |
+| Réponse | `{ success, sequence, message }` | `{ ok, id, rev }` |
+| Gestion conflits | Backend | Détection `_rev` côté client |
+| Latence | ~200-500ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline, sync reportée |

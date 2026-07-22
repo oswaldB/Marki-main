@@ -1,63 +1,71 @@
-# Workflow Frontend : Chargement des Événements (Historique)
+# Workflow Frontend : Chargement des Événements (Historique) - PouchDB
 
 ## Description
-Charge l'historique des événements d'un impayé depuis la table `events`.
+Charge l'historique des événements d'un impayé depuis **PouchDB local**.
 
 ## Objectifs
 - Afficher tous les événements liés à l'impayé
-- Utiliser la table `events` au lieu de l'ancien système `historique`
+- Utiliser PouchDB avec filtrage sur `entity_type` et `entity_id`
 - Afficher le type d'événement avec une icône et une couleur appropriée
 
 ## Data Model
 
 ```javascript
-// Structure d'un événement
+// Structure d'un événement PouchDB
 {
-  id: "evt_uuid",
-  type: "relance" | "paiement" | "suspension" | "systeme" | "sync" | "note",
-  titre: "Relance R2 envoyée",
-  description: "Email envoyé à contact@acme.fr",
-  icon: "fa-paper-plane",
-  date: "15/03/2024",
-  metadata: "À: contact@acme.fr",  // Info supplémentaire
-  read: true
+  "_id": "event:550e8400-...",
+  "_rev": "1-abc123...",
+  "type": "event",
+  "id": "evt_uuid",
+  "event_type": "relance", // "relance" | "paiement" | "suspension" | "systeme" | "sync" | "note"
+  "entity_type": "impaye",
+  "entity_id": "F123",
+  "title": "Relance R2 envoyée",
+  "description": "Email envoyé à contact@acme.fr",
+  "icon": "fa-paper-plane",
+  "created_at": "2024-03-15T10:30:00Z",
+  "metadata": { "to": "contact@acme.fr" },
+  "read": true
 }
 ```
 
 ## Workflows
 
-### Workflow 1: Chargement des événements
+### Workflow 1: Chargement des événements depuis PouchDB
 
 ```javascript
 /**
  * @checkpoint LoadEvents
- * Charge les événements depuis la table events
+ * Charge les événements depuis PouchDB avec filtrage
  */
 loadEvents: async function(impayeId) {
-  const token = localStorage.getItem('marki_token');
-  const response = await fetch(`/api/events/by-entity?entity_type=impaye&entity_id=${impayeId}`, {
-    headers: { 'Authorization': `Bearer ${token}` }
-  });
-  
-  if (response.status === 401) {
-    window.location.href = '/login';
-    return;
-  }
-  
-  const data = await response.json();
-  
-  if (data.success) {
+  try {
+    // Requête Mango sur PouchDB
+    const result = await dbEvents.find({
+      selector: {
+        type: { $eq: 'event' },
+        entity_type: { $eq: 'impaye' },
+        entity_id: { $eq: impayeId }
+      },
+      sort: [{ created_at: 'desc' }]
+    });
+    
     // Transformer les événements pour l'affichage
-    this.evenements = data.data.events.map(event => ({
+    this.evenements = result.docs.map(event => ({
       id: event.id,
-      type: event.type,
-      titre: event.titre,
+      _id: event._id,
+      type: event.event_type,
+      titre: event.title,
       description: event.description,
-      icon: event.icon || this.getEventIcon(event.type),
+      icon: event.icon || this.getEventIcon(event.event_type),
       date: this.formatDate(event.created_at),
-      metadata: event.metadata ? JSON.parse(event.metadata) : null,
-      read: event.read
+      metadata: event.metadata ? JSON.stringify(event.metadata) : null,
+      read: this.isEventRead(event.id) // depuis localStorage
     }));
+    
+  } catch (error) {
+    console.error('Erreur chargement événements:', error);
+    this.error = error.message;
   }
 },
 
@@ -79,6 +87,40 @@ getEventIcon: function(type) {
 }
 ```
 
+### Workflow 2: Live Sync des événements
+
+```javascript
+/**
+ * @checkpoint SetupLiveSync
+ * Écoute les nouveaux événements en temps réel
+ */
+setupEventsListener: function(impayeId) {
+  dbEvents.changes({
+    since: 'now',
+    live: true,
+    include_docs: true
+  }).on('change', (change) => {
+    if (change.doc.type === 'event' && 
+        change.doc.entity_type === 'impaye' && 
+        change.doc.entity_id === impayeId) {
+      
+      // Ajouter ou mettre à jour l'événement
+      const existingIndex = this.evenements.findIndex(e => e.id === change.doc.id);
+      const transformed = this.transformEvent(change.doc);
+      
+      if (existingIndex >= 0) {
+        this.evenements[existingIndex] = transformed;
+      } else {
+        this.evenements.unshift(transformed);
+      }
+      
+      // Trier par date
+      this.evenements.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
+  });
+}
+```
+
 ## Template HTML
 
 ```html
@@ -93,7 +135,7 @@ getEventIcon: function(type) {
   
   <div class="p-6">
     <div class="space-y-6">
-      <template x-for="(event, index) in evenements || []" :key="event.id">
+      <template x-for="(event, index) in evenements || []" :key="event._id">
         <div class="relative pl-8">
           <!-- Timeline line -->
           <div x-show="index < (evenements?.length || 0) - 1" 
@@ -139,29 +181,12 @@ getEventIcon: function(type) {
 </div>
 ```
 
-## API Endpoints
+## PouchDB Operations
 
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
-| GET | `/api/events/by-entity?entity_type=impaye&entity_id={id}` | Événements de l'impayé |
-
-## Requête SQL Backend
-
-```sql
-SELECT 
-    e.id,
-    e.type,
-    e.titre,
-    e.description,
-    COALESCE(e.icon, 'fa-bell') as icon,
-    e.created_at,
-    e.metadata,
-    e.read
-FROM events e
-WHERE e.entity_type = 'impaye' 
-  AND e.entity_id = ?
-ORDER BY e.created_at DESC;
-```
+| Méthode | Description |
+|---------|-------------|
+| `dbEvents.find({ selector: { entity_type: 'impaye', entity_id: id } })` | Filtrer les événements liés |
+| `dbEvents.changes({ live: true })` | Écouter les nouveaux événements |
 
 ## Types d'événements et couleurs
 
@@ -175,9 +200,21 @@ ORDER BY e.created_at DESC;
 | note | fa-sticky-note | bg-blue-100 | text-blue-600 |
 | blacklist | fa-ban | bg-red-100 | text-red-600 |
 
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Source | `GET /api/events/by-entity?entity_type=impaye&entity_id={id}` | `dbEvents.find({ selector })` |
+| Temps réel | Polling | `dbEvents.changes({ live: true })` |
+| Filtrage | SQL WHERE | Mango Query selector |
+| Tri | SQL ORDER BY | `sort` option dans find |
+| Latence | ~200-500ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |
+
 ## Notes
 
 - Les événements sont triés par date de création décroissante
 - La ligne de timeline connecte les événements entre eux
 - Chaque type d'événement a sa propre couleur pour une identification rapide
 - Le champ `metadata` peut contenir des infos JSON additionnelles
+- Le `_id` PouchDB est utilisé comme `key` dans le template pour reactivité

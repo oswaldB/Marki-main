@@ -10,23 +10,25 @@ Bouton avec `@click="filterUnread()"` ou toggle `@click="showOnlyUnread = !showO
 Afficher uniquement les événements non lus de l'utilisateur courant
 
 ## Description
-- Filtre les events avec `read = false`
+- Filtre les events avec `read = false` (stocké dans localStorage)
 - Priorise les événements à traiter
 - Affiche le nombre de non lus dans le titre
+- **Filtrage côté client sur données PouchDB déjà chargées**
 
 ## Data Model
 
 **Page Function:** `evenementsPage()`
 
-**Données:**
-- `events` - tous les events de l'utilisateur
+**Données (depuis PouchDB):**
+- `events` - tous les events chargés depuis PouchDB
 - `filteredEvents` - events après filtrage (computed)
 - `showOnlyUnread` - boolean pour activer/désactiver le filtre
 - `unreadCount` - nombre total d'events non lus
+- `readEvents` - Map des events lus depuis localStorage
 
 **États UI:**
-- `loading`
-- `error`
+- `loading` - chargement depuis PouchDB
+- `error` - erreur PouchDB
 
 ## State Changes
 
@@ -34,21 +36,13 @@ Afficher uniquement les événements non lus de l'utilisateur courant
 - `showOnlyUnread` ← `true` ou `false`
 - `filteredEvents` ← recalculé selon le filtre
 
-## API Calls
+## PouchDB Calls
 
-**Option 1 - Filtrage Frontend (recommandé pour < 100 events):**
-Filtrage local sur `events` déjà chargés.
+**Aucun** - Ce workflow effectue un filtrage **côté client** sur les données déjà chargées depuis PouchDB par le workflow `events-manager`.
 
-**Option 2 - Filtrage Backend (pour pagination):**
+L'état "lu/non-lu" est stocké dans `localStorage` (clé `marki_read_events`), pas dans PouchDB.
 
-**Endpoint:** `GET /api/events?read=false&limit=50`
 
-**Query Params:**
-- `read=false` - filtre les events non lus
-- `limit=50` - pagination
-- `user_id` implicite (via token JWT)
-
-**Response:** `ApiResponse<Event[]>`
 
 ## Organisation des fichiers
 
@@ -66,21 +60,24 @@ frontend/
 
 ## Implementation
 
-### Option 1: Filtrage Frontend (Computed Property)
+### Filtrage Frontend (Computed Property)
 
 ```javascript
+// Les données proviennent de PouchDB (via events-manager)
+// L'état "lu" est stocké dans localStorage
+
 // Computed property
 get filteredEvents() {
-  let result = this.events;
+  let result = this.events; // From PouchDB
   
-  // Filtre non lus
+  // Filtre non lus (basé sur localStorage)
   if (this.showOnlyUnread) {
-    result = result.filter(event => !event.read);
+    result = result.filter(event => !this.isEventRead(event.id));
   }
   
   // Autres filtres...
-  if (this.filterType) {
-    result = result.filter(event => event.type === this.filterType);
+  if (this.filterType && this.filterType !== 'all') {
+    result = result.filter(event => event.event_type === this.filterType);
   }
   
   // Tri par date décroissante
@@ -91,47 +88,34 @@ get filteredEvents() {
   return result;
 }
 
+// Vérifier si un event est lu (depuis localStorage)
+isEventRead(eventId) {
+  return !!this.readEvents[eventId];
+}
+
 // Nombre de non lus (computed)
 get unreadCount() {
-  return this.events.filter(event => !event.read).length;
+  return this.events.filter(event => !this.isEventRead(event.id)).length;
+}
+
+// Charger l'état lu depuis localStorage
+loadReadStatus() {
+  this.readEvents = JSON.parse(localStorage.getItem('marki_read_events') || '{}');
 }
 ```
 
-### Option 2: Filtrage Backend (avec pagination)
+### Marquer comme lu (met à jour localStorage)
 
 ```javascript
-async loadEvents() {
-  this.loading = true;
+markEventAsRead(eventId) {
+  this.readEvents[eventId] = { 
+    read: true, 
+    readAt: new Date().toISOString() 
+  };
+  localStorage.setItem('marki_read_events', JSON.stringify(this.readEvents));
   
-  try {
-    const params = new URLSearchParams();
-    params.append('limit', '50');
-    
-    // Filtre non lus
-    if (this.showOnlyUnread) {
-      params.append('read', 'false');
-    }
-    
-    // Filtre type
-    if (this.filterType) {
-      params.append('type', this.filterType);
-    }
-    
-    const response = await fetch(`/api/events?${params.toString()}`);
-    const data = await response.json();
-    
-    if (!data.success) {
-      throw new Error(data.error?.message);
-    }
-    
-    this.events = data.data;
-    
-  } catch (error) {
-    console.error('Erreur chargement events:', error);
-    this.error = error.message;
-  } finally {
-    this.loading = false;
-  }
+  // Force recalcul pour mettre à jour la liste si filtre actif
+  this.events = [...this.events];
 }
 ```
 
@@ -153,14 +137,23 @@ async loadEvents() {
 
 | Action | Résultat |
 |--------|----------|
-| Toggle ON | Affiche uniquement `read = false` |
+| Toggle ON | Affiche uniquement events non lus (lu = localStorage) |
 | Toggle OFF | Affiche tous les events |
 | Mark as read sur un event | L'event disparaît si filtre ON |
 | Mark all as read | Liste vide si filtre ON |
 | Refresh | Garde le filtre actif |
 
-## Notes
+---
 
-- **Isolation:** Le filtre `read=false` retourne uniquement les events de l'utilisateur courant
-- **Realtime:** Après "mark as read", l'event disparaît immédiatement si le filtre est actif
-- **Compteur:** Le badge affiche toujours le nombre total de non lus, pas seulement ceux affichés
+## Migration PouchDB
+
+Ce workflow **ne nécessite pas de migration API** car il utilise déjà le filtrage côté client.
+
+| Aspect | Implémentation |
+|--------|----------------|
+| Source events | PouchDB (via `events-manager`) |
+| État "lu/non-lu" | localStorage (inchangé) |
+| Filtrage | Côté client (JavaScript array methods) |
+| Appels réseau | Aucun |
+| Offline | ✅ Fonctionne offline |
+| Performance | Instantané (filtrage mémoire) |

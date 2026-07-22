@@ -1,4 +1,4 @@
-# Workflow : Sauvegarder l'édition
+# Workflow : Sauvegarder l'édition (PouchDB)
 
 ## Écran
 `relances-calendrier.html`
@@ -7,11 +7,12 @@
 Bouton avec `@click="saveEdit()"`
 
 ## Action
-Enregistrer les modifications de la relance
+Enregistrer les modifications de la relance dans PouchDB
 
 ## Description
 - Valide les modifications
-- Met à jour la relance en base
+- Met à jour la relance dans PouchDB
+- Synchronise avec CouchDB
 - Rafraîchit le calendrier
 
 ## Data Model
@@ -20,41 +21,37 @@ Enregistrer les modifications de la relance
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `relancesProgrammees`
+**Données (depuis PouchDB):**
+- `relancesProgrammees` - relances depuis PouchDB
 - `currentDate`
 - `viewMode`
 - `selectedDate`
 - `relancesDuJour`
+- `editingItem` - relance en cours d'édition
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
 - `error`
+- `saving`
 
 ## State Changes
 
 **Modifications:**
-- `saving` modifié
+- `saving` ← `true` → `false`
 - `error` ← message si échec
+- `relancesProgrammees` ← mise à jour locale après sauvegarde
 
-## API Calls
+## PouchDB Operations
 
-**Endpoint:** `PUT /api/relances/:id`** - Met à jour la relance via l'API REST standard
+**Action:** Mettre à jour la relance dans PouchDB.
 
-**Payload:**
-```json
-{
-  "objet": "string",
-  "corps": "string",
-  "date_envoi": "2026-07-15T10:00:00Z",
-  "statut": "string",
-  "updated_at": "2026-07-12T10:00:00Z"
-}
-```
+**Méthodes utilisées:**
+1. `db.get('relance:' + id)` - Récupérer le document avec sa révision
+2. Mettre à jour les champs modifiés
+3. `db.put(doc)` - Sauvegarder le document modifié
 
-**Response:** `ApiResponse<Relance>`
-
-
+**Sync:** La modification est automatiquement synchronisée avec CouchDB.
 
 ## Organisation des fichiers
 
@@ -71,7 +68,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/relances-calendrier/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/relances-calendrier/js/save-edit.js`
@@ -79,58 +76,93 @@ frontend/
 
 ```javascript
 // frontend/app/relances-calendrier/js/save-edit.js
-export function saveEdit() {
-  // Implementation du workflow
+export async function saveEdit() {
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
-async saveItem() {
+async saveEdit() {
   // 1. Validate
   if (!this.validateForm()) return;
   
   // 2. Set saving state
-  this.loading = true;
+  this.saving = true;
   this.error = null;
   
   try {
-    // 3. Prepare data
-    const payload = this.editingItem;
-    const id = payload.id;
+    // 3. Récupérer le document depuis PouchDB avec sa révision
+    const doc = await db.get('relance:' + this.editingItem.id);
     
-    // 4. Call API
-    const response = await fetch(`/api/relances/${id}`, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+    // 4. Mettre à jour les champs
+    doc.objet = this.editingItem.objet;
+    doc.corps = this.editingItem.corps;
+    doc.date_envoi_programmee = this.editingItem.date_envoi;
+    doc.updated_at = new Date().toISOString();
     
-    const data = await response.json();
+    // 5. Sauvegarder dans PouchDB
+    const response = await db.put(doc);
+    // response: { ok: true, id: 'relance:...', rev: '2-xxx...' }
     
-    if (!data.success) {
-      throw new Error(data.error?.message);
-    }
-    
-    // 5. Update local array
-    const index = this.items.findIndex(item => item.id === id);
+    // 6. Mettre à jour le calendrier local
+    const index = this.relancesProgrammees.findIndex(
+      r => r._id === 'relance:' + this.editingItem.id
+    );
     if (index !== -1) {
-      this.items[index] = { ...this.items[index], ...data.data };
+      this.relancesProgrammees[index] = { ...doc, _rev: response.rev };
     }
     
-    // 6. Close modal
-    this.selectedRelance = false;
+    // 7. Regrouper par jour
+    this.groupRelancesByDay();
+    
+    // 8. Close modal
+    this.selectedRelance = null;
     this.editingItem = null;
     
-    // 7. Notify
-    Alpine.store('ui').addToast('Modifications sauvegardées', 'success');
+    // 9. Notify
+    this.toast('Modifications sauvegardées', 'success');
     
   } catch (error) {
-    this.error = error.message;
-    Alpine.store('ui').addToast(error.message, 'error');
+    if (error.status === 409) {
+      this.error = 'Conflit de version, veuillez réessayer';
+      this.toast('Conflit de version', 'error');
+    } else {
+      this.error = error.message;
+      this.toast(error.message, 'error');
+    }
   } finally {
-    this.loading = false;
+    this.saving = false;
   }
 }
-``
+
+validateForm() {
+  if (!this.editingItem.objet?.trim()) {
+    this.error = 'L\'objet est obligatoire';
+    return false;
+  }
+  if (!this.editingItem.corps?.trim()) {
+    this.error = 'Le corps est obligatoire';
+    return false;
+  }
+  if (!this.editingItem.date_envoi) {
+    this.error = 'La date d\'envoi est obligatoire';
+    return false;
+  }
+  return true;
+}
+```
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Requête | `PUT /api/relances/:id` | `db.get()` puis `db.put()` |
+| Payload | `{ objet, corps, date_envoi, statut, updated_at }` | Modification directe du doc |
+| Réponse | `ApiResponse<Relance>` | `{ ok, id, rev }` |
+| Gestion conflits | Backend | Détection `_rev` côté client |
+| Latence | ~100-300ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline, sync reportée |

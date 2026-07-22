@@ -1,4 +1,4 @@
-# Workflow : Aller à aujourd'hui
+# Workflow : Aller à aujourd'hui (PouchDB)
 
 ## Écran
 `relances-calendrier.html`
@@ -11,7 +11,8 @@ Retourner à la période actuelle
 
 ## Description
 - Réinitialise à la date du jour
-- Charge les relances du mois/semaine courant
+- Charge les relances du mois/semaine courant depuis PouchDB
+- Met à jour l'affichage calendrier
 
 ## Data Model
 **Page Function:** `relancesCalendrierPage()`
@@ -19,12 +20,13 @@ Retourner à la période actuelle
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `relancesProgrammees`
+**Données (depuis PouchDB):**
+- `relancesProgrammees` - relances depuis PouchDB
 - `currentDate`
 - `viewMode`
 - `selectedDate`
 - `relancesDuJour`
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -32,13 +34,21 @@ Retourner à la période actuelle
 
 ## State Changes
 
-**Modifications:** États UI spécifiques selon implémentation
+**Modifications:**
+- `currentDate` ← `new Date()`
+- `relancesProgrammees` ← rechargées depuis PouchDB pour la nouvelle période
+
+## PouchDB Operations
+
+**Action:** Charger les relances du mois/semaine courant depuis PouchDB.
+
+**Méthodes utilisées:**
+- `db.allDocs({ startkey: 'relance:', endkey: 'relance:\ufff0' })` - Récupérer les relances
+- Filtrage côté client par date
 
 ## API Calls
 
-**Pas d'appel API** - Action côté client uniquement
-
-
+**Pas d'appel API** - Navigation côté client avec rechargement depuis PouchDB
 
 ## Organisation des fichiers
 
@@ -55,7 +65,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/relances-calendrier/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/relances-calendrier/js/go-today.js`
@@ -63,16 +73,61 @@ frontend/
 
 ```javascript
 // frontend/app/relances-calendrier/js/go-today.js
-export function goToday() {
-  // Implementation du workflow
+export async function goToday() {
+  // Implementation avec PouchDB
 }
 ```
 
 ## Implementation
 
 ```javascript
-goToday() {
+async goToday() {
+  // 1. Reset to today
   this.currentDate = new Date();
-  this.loadDataForDate(this.currentDate);
+  
+  // 2. Reload relances from PouchDB for current month/week
+  await this.loadCalendarRelances();
+  
+  // 3. Update display
+  this.generateCalendarGrid();
+}
+
+// Chargement depuis PouchDB
+async loadCalendarRelances() {
+  const { start, end } = this.getDateRange();
+  
+  try {
+    const result = await db.allDocs({
+      startkey: 'relance:',
+      endkey: 'relance:\ufff0',
+      include_docs: true
+    });
+    
+    this.relancesProgrammees = result.rows
+      .map(r => r.doc)
+      .filter(r => r.statut === 'programmee')
+      .filter(r => {
+        const date = new Date(r.date_envoi_programmee);
+        return date >= start && date <= end;
+      });
+      
+    this.groupRelancesByDay();
+    
+  } catch (error) {
+    console.error('Erreur chargement:', error);
+    this.error = error.message;
+  }
 }
 ```
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Action | Côté client | **Conservé** - Côté client |
+| Chargement données | API `/api/relances` | `db.allDocs()` local |
+| Filtrage | Backend | Côté client |
+| Latence | ~200-500ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |

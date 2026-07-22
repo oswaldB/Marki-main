@@ -1,4 +1,4 @@
-# Workflow : Annuler une relance
+# Workflow : Annuler une relance (PouchDB)
 
 ## Écran
 `relances.html`
@@ -7,12 +7,13 @@
 Bouton avec `@click="cancelRelance(relance)"`
 
 ## Action
-Annuler une relance programmée
+Annuler une relance programmée via PouchDB
 
 ## Description
 - Demande confirmation
-- Supprime la relance de la file
+- Supprime la relance de PouchDB
 - Met à jour l'affichage
+- La suppression est synchronisée avec CouchDB
 
 ## Data Model
 **Page Function:** `relancesPage()`
@@ -20,7 +21,8 @@ Annuler une relance programmée
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
+**Données (depuis PouchDB):**
+- `relances` - liste des relances depuis PouchDB
 - `payeurs`
 - `stats`
 - `sequences`
@@ -28,6 +30,7 @@ Annuler une relance programmée
 - `filterStatut`
 - `editorContent`
 - `editorMode`
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -39,15 +42,20 @@ Annuler une relance programmée
 
 ## State Changes
 
-**Modifications:** États UI spécifiques selon implémentation
+**Modifications:**
+- `relances` ← filtrée (relance supprimée)
+- États UI spécifiques selon implémentation
 
-## API Calls
+## PouchDB Operations
 
-**`DELETE /api/relances/:id`** - Supprime la relance de la base
+**Action:** Supprimer le document relance de PouchDB.
 
-**Response:** `ApiResponse<{ deleted: true }>`
+**Méthodes utilisées:**
+1. `db.get('relance:' + id)` - Récupérer le document avec sa révision
+2. `db.remove(doc)` - Supprimer le document
 
-> La suppression est définitive (pas de soft-delete).
+**Sync:** La suppression est automatiquement synchronisée avec CouchDB.
+
 ## Organisation des fichiers
 
 ```
@@ -63,7 +71,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/relances/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/relances/js/cancel-relance.js`
@@ -71,12 +79,12 @@ frontend/
 
 ```javascript
 // frontend/app/relances/js/cancel-relance.js
-export function cancelRelance() {
-  // Implementation du workflow
+export async function cancelRelance() {
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
 async cancelRelance(id) {
@@ -87,27 +95,68 @@ async cancelRelance(id) {
   this.loading = true;
   
   try {
-    // 3. Call API
-    const response = await fetch(`/api/relances/${id}`, {
-      method: 'DELETE'
-    });
+    // 3. Récupérer le document depuis PouchDB avec sa révision
+    const doc = await db.get('relance:' + id);
     
-    const data = await response.json();
+    // 4. Supprimer le document de PouchDB
+    await db.remove(doc);
+    // response: { ok: true, id: 'relance:...', rev: '2-xxx...' }
     
-    if (!data.success) {
-      throw new Error(data.error?.message || 'Erreur lors de l\'annulation');
-    }
-    
-    // 4. Remove from local list
+    // 5. Remove from local list (le changes listener mettra aussi à jour)
     this.relances = this.relances.filter(item => item.id !== id);
     
-    // 5. Notify
-    Alpine.store('ui').addToast('Relance annulée', 'info');
+    // 6. Notify
+    this.toast('Relance annulée', 'info');
     
   } catch (error) {
-    Alpine.store('ui').addToast(error.message, 'error');
+    if (error.status === 409) {
+      // Conflit: recharger et réessayer
+      this.error = 'Conflit de version, veuillez réessayer';
+      this.toast('Conflit de version, veuillez réessayer', 'error');
+    } else if (error.status === 404) {
+      // Déjà supprimé
+      this.relances = this.relances.filter(item => item.id !== id);
+      this.toast('Relance déjà annulée', 'info');
+    } else {
+      this.error = error.message;
+      this.toast(error.message, 'error');
+    }
   } finally {
     this.loading = false;
   }
 }
+
+// Gestion des conflits avec retry
+async cancelRelanceWithRetry(id, maxRetries = 3) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const doc = await db.get('relance:' + id);
+      await db.remove(doc);
+      
+      this.relances = this.relances.filter(item => item.id !== id);
+      this.toast('Relance annulée', 'info');
+      return;
+      
+    } catch (error) {
+      if (error.status === 409 && attempt < maxRetries) {
+        await new Promise(r => setTimeout(r, 100 * attempt));
+        continue;
+      }
+      throw error;
+    }
+  }
+}
 ```
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Requête | `DELETE /api/relances/:id` | `db.get()` puis `db.remove()` |
+| Suppression | Backend SQLite | PouchDB local + sync |
+| Réponse | `{ success, data: { deleted: true } }` | `{ ok, id, rev }` |
+| Gestion conflits | Backend | Détection `_rev` côté client |
+| Latence | ~100-300ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Suppression locale, sync reportée |

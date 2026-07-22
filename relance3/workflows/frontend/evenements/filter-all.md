@@ -12,6 +12,7 @@ Afficher tous les événements
 ## Description
 - Sans filtre sur le type
 - Tous les événements
+- **Filtrage côté client sur données PouchDB déjà chargées**
 
 ## Data Model
 **Page Function:** `evenementsPage()`
@@ -19,8 +20,8 @@ Afficher tous les événements
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `evenements`
+**Données (depuis PouchDB):**
+- `evenements` - chargés depuis PouchDB via `events-manager`
 - `searchQuery`
 - `filterType`
 - `filterDateStart`
@@ -30,9 +31,9 @@ Afficher tous les événements
 - `perPage`
 
 **États UI:**
-- `loading`
+- `loading` - chargement depuis PouchDB
 - `loadingMore`
-- `error`
+- `error` - erreur PouchDB
 - `selectedEvent`
 - `showDetailModal`
 
@@ -43,9 +44,9 @@ Afficher tous les événements
 - `searchQuery` modifié
 - `filter*` modifié
 
-## API Calls
+## PouchDB Calls
 
-**Pas d'appel API** - Action côté client uniquement
+**Aucun** - Ce workflow effectue un filtrage **côté client** sur les données déjà chargées depuis PouchDB par le workflow `events-manager`.
 
 
 
@@ -64,7 +65,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/evenements/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/evenements/js/filter-all.js`
@@ -73,7 +74,7 @@ frontend/
 ```javascript
 // frontend/app/evenements/js/filter-all.js
 export function filterAll() {
-  // Implementation du workflow
+  // Implementation du workflow - filtrage côté client
 }
 ```
 
@@ -81,28 +82,55 @@ export function filterAll() {
 
 ```javascript
 // Filter properties are bound to inputs via x-model
-// Computed property handles filtering:
+// Computed property handles filtering on PouchDB data:
 
 get filteredData() {
-  let result = this.data;
+  // Les données proviennent déjà de PouchDB (via events-manager)
+  let result = this.evenements;
   
-  // 1. Search filter
+  // 1. Search filter (côté client)
   if (this.searchQuery) {
     const query = this.searchQuery.toLowerCase();
     result = result.filter(item => 
-      item.name.toLowerCase().includes(query) ||
-      item.email.toLowerCase().includes(query)
+      item.title?.toLowerCase().includes(query) ||
+      item.description?.toLowerCase().includes(query)
     );
   }
   
-  // 2. Status filter
-  if (this.filterStatut) {
-    result = result.filter(item => item.statut === this.filterStatut);
+  // 2. Type filter (côté client)
+  if (this.filterType && this.filterType !== 'all') {
+    result = result.filter(item => item.event_type === this.filterType);
   }
   
-  // 3. Sort
-  result = this.sortData(result);
+  // 3. Date range filter (côté client)
+  if (this.filterDateStart) {
+    const start = new Date(this.filterDateStart);
+    result = result.filter(item => new Date(item.created_at) >= start);
+  }
+  
+  if (this.filterDateEnd) {
+    const end = new Date(this.filterDateEnd);
+    result = result.filter(item => new Date(item.created_at) <= end);
+  }
+  
+  // 4. Sort
+  result = result.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
   
   return result;
 }
-``
+```
+
+---
+
+## Migration PouchDB
+
+Ce workflow **ne nécessite pas de migration** car il n'utilise pas d'appel API.
+Le filtrage est effectué **côté client** sur les données déjà chargées depuis PouchDB.
+
+| Aspect | Implémentation |
+|--------|----------------|
+| Source de données | PouchDB (via `events-manager`) |
+| Filtrage | Côté client (JavaScript array methods) |
+| Appels réseau | Aucun |
+| Offline | ✅ Fonctionne offline |
+| Performance | Instantané (filtrage mémoire) |

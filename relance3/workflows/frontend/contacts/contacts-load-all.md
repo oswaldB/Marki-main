@@ -2,7 +2,7 @@
 id: contacts-load-all
 type: frontend
 folder: specs/workflows/frontend/contacts/
-description: Charge tous les contacts (M et P) avec leurs relations pour affichage unifié
+description: Charge tous les contacts (M et P) depuis PouchDB local avec sync CouchDB
 depends_on: [auth-check]
 screen: contacts
 global: false
@@ -13,7 +13,25 @@ mockup_entry: specs/mockups/contacts.html
 
 ## Description
 
-Workflow qui charge tous les contacts en une seule requête API. Les données sont ensuite organisées côté client pour l'affichage en cards unifiées avec gestion des relations (entreprises ↔ personnes, personnes ↔ personnes).
+Workflow qui charge tous les contacts depuis **PouchDB local**. Les données sont synchronisées automatiquement avec CouchDB distant. L'affichage utilise des cards unifiées avec gestion des relations (entreprises ↔ personnes, personnes ↔ personnes).
+
+## Configuration PouchDB
+
+```javascript
+// Initialisation PouchDB
+const db = new PouchDB('marki-contacts');
+
+// Sync bidirectionnel avec CouchDB distant
+const remoteUrl = 'https://admin:admin@dev.markidiags.com/data/marki';
+const sync = db.sync(remoteUrl, {
+  live: true,
+  retry: true,
+  filter: function(doc) {
+    // Ne synchroniser que les documents de type 'contact'
+    return doc.type === 'contact';
+  }
+});
+```
 
 ## Flow du Workflow
 
@@ -22,25 +40,28 @@ Workflow qui charge tous les contacts en une seule requête API. Les données so
  * @action Initialiser le workflow
  * @checkpoint wf-load-init
  * State initial: { loading: true, contacts: [] }
+ * PouchDB ready: db = new PouchDB('marki-contacts')
  */
 
 /**
- * @action Construire l'URL avec paramètres
- * @checkpoint wf-load-url-built
- * Params: { limit: 1000 }
- * Exemple: '/api/contacts?limit=1000'
+ * @action Configurer le changement en temps réel
+ * @checkpoint wf-load-changes-listener
+ * db.changes({ since: 'now', live: true, include_docs: true })
+ * → Met à jour la liste automatiquement sur changements
  */
 
 /**
- * @action Fetch API GET /api/contacts
- * @checkpoint wf-load-api-called
- * Response: { contacts: [...], stats: {...} }
+ * @action Requête PouchDB - tous les contacts
+ * @checkpoint wf-load-db-called
+ * Query: db.allDocs({ include_docs: true }) 
+ * OU db.find({ selector: { type: 'contact' } })
  */
 
 /**
- * @action Normaliser les données reçues
+ * @action Transformer les documents PouchDB
  * @checkpoint wf-load-data-normalized
  * Transformations:
+ * - Extraction doc._id → contact.id
  * - Calcul des initiales pour les personnes
  * - Construction du nom complet
  * - Mapping entrepriseId pour les personnes physiques
@@ -52,7 +73,7 @@ Workflow qui charge tous les contacts en une seule requête API. Les données so
  * @action Résoudre les liens entre contacts
  * @checkpoint wf-load-related-linked
  * Pour chaque personne avec relationPersonne:
- * - Recherche du contact lié par nom
+ * - Recherche du contact lié par nom dans les docs PouchDB
  * - Injection dans contact.contactLie
  */
 
@@ -74,41 +95,66 @@ Workflow qui charge tous les contacts en une seule requête API. Les données so
  */
 ```
 
-## API
+## PouchDB Queries
 
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
-| GET | `/api/contacts?limit=1000` | Liste tous les contacts avec toutes les données |
-| GET | `/api/contacts/stats` | **Stats agrégées** (total, entreprises, personnes, impayés, blacklist, sansEmail) |
+### Récupérer tous les contacts
 
-## Paramètres
+```javascript
+// Option 1: allDocs (rapide, utilise les index)
+const result = await db.allDocs({
+  include_docs: true,
+  startkey: 'contact:',
+  endkey: 'contact:\ufff0'
+});
+const contacts = result.rows.map(row => row.doc);
 
-| Paramètre | Type | Défaut | Description |
-|-----------|------|--------|-------------|
-| `limit` | integer | 1000 | Limite résultats (charger tout) |
+// Option 2: find (Mango query, nécessite pouchdb-find plugin)
+const result = await db.find({
+  selector: { type: { $eq: 'contact' } },
+  limit: 1000
+});
+const contacts = result.docs;
+```
 
-## Response API - Stats
+### Calcul des stats localement
 
-L'endpoint `/api/contacts/stats` retourne les statistiques calculées par le backend :
+```javascript
+// Plus besoin d'appeler /api/contacts/stats
+// Calcul côté client depuis PouchDB:
+
+const stats = {
+  total: contacts.length,
+  entreprises: contacts.filter(c => c.typePersonne === 'M').length,
+  personnes: contacts.filter(c => c.typePersonne === 'P').length,
+  avecImpayes: contacts.filter(c => (c.impayesCount || 0) > 0).length,
+  blacklist: contacts.filter(c => c.statut === 'blacklist' || c.isBlacklisted === 1).length,
+  sansEmail: contacts.filter(c => !c.email || c.email === '').length
+};
+```
+
+## Response PouchDB - Exemple document
 
 ```javascript
 {
-  total: 156,        // Total contacts (M + P)
-  entreprises: 42,   // Nombre de personnes morales
-  personnes: 114,    // Nombre de personnes physiques
-  avecImpayes: 38,   // Contacts avec au moins 1 impayé
-  blacklist: 3,      // Contacts blacklistés
-  sansEmail: 5       // Contacts sans email renseigné
+  "_id": "contact:550e8400-e29b-41d4-a716-446655440000",
+  "_rev": "1-abc123def456",
+  "type": "contact",
+  "id": "M1",
+  "nomComplet": "ACME Corporation",
+  "typePersonne": "M",
+  "email": "contact@acme.fr",
+  "telephone": "01 23 45 67 89",
+  "impayesCount": 3,
+  "statut": "actif",
+  "isBlacklisted": 0
 }
 ```
 
-Ces stats sont affichées dans les cards de statistiques en haut de la page.
-
 ## Checkpoints attendus
 
-1. `wf-load-init` → Workflow démarré
-2. `wf-load-url-built` → URL construite
-3. `wf-load-api-called` → API appelée
+1. `wf-load-init` → Workflow démarré, PouchDB initialisé
+2. `wf-load-changes-listener` → Écoute des changements activée
+3. `wf-load-db-called` → Query PouchDB exécutée
 4. `wf-load-data-normalized` → Données normalisées
 5. `wf-load-related-linked` → Relations résolues (contacts liés)
 6. `wf-load-complete` → Workflow terminé (succès)
@@ -125,8 +171,8 @@ Ces stats sont affichées dans les cards de statistiques en haut de la page.
   email: "contact@acme.fr",
   telephone: "01 23 45 67 89",
   impayesCount: 3,
-  statut: "actif", // ou "blacklist"
-  isBlacklisted: 0, // ou 1
+  statut: "actif",
+  isBlacklisted: 0,
   personnes: [...] // Injecté côté client (collaborateurs)
 }
 ```
@@ -137,7 +183,7 @@ Ces stats sont affichées dans les cards de statistiques en haut de la page.
   id: "P1",
   nomComplet: "Jean Dupont",
   typePersonne: "P",
-  entrepriseId: "M1", // Liée à une entreprise
+  entrepriseId: "M1",
   societesLiees: "ACME Corporation",
   email: "jean.dupont@acme.fr",
   telephone: "06 12 34 56 78",
@@ -162,26 +208,10 @@ Ces stats sont affichées dans les cards de statistiques en haut de la page.
   impayesCount: 1,
   statut: "actif",
   isBlacklisted: 0,
-  // Relation vers un autre particulier
   relationPersonne: "Lucas Petit",
-  typeRelation: "tutelle", // ou "epoux", "conjoint"
+  typeRelation: "tutelle",
   descriptionRelation: "Sous tutelle de",
   contactLie: {...} // Injecté côté client
-}
-```
-
-### Personne blacklistée
-```javascript
-{
-  id: "P7",
-  nomComplet: "Thomas Robert",
-  typePersonne: "P",
-  email: "thomas.robert@email.com",
-  fonction: "Auto-entrepreneur",
-  initials: "TR",
-  impayesCount: 4,
-  statut: "blacklist",
-  isBlacklisted: 1 // Flag pour l'affichage
 }
 ```
 
@@ -252,18 +282,30 @@ get allContactsSorted() {
     entreprises: 42,
     personnes: 114,
     avecImpayes: 38,
-    blacklist: 3,    // ← Nouveau
-    sansEmail: 5     // ← Nouveau
+    blacklist: 3,
+    sansEmail: 5
   }
 }
 ```
 
 ## Dépendances
 
-- Auth check (token JWT dans localStorage)
+- PouchDB: `https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js`
+- PouchDB-Find: `https://cdn.jsdelivr.net/npm/pouchdb-find@8.0.1/dist/pouchdb.find.min.js` (optionnel, pour Mango queries)
 - Fonctions utilitaires: normalizeContact(), getInitials()
 
 ## Fichiers liés
 
 - Mockup: `specs/mockups/contacts.html`
 - Composant: `app/templates/contacts/workflows/initial-load.html`
+
+---
+
+## Migration depuis l'ancienne API
+
+| Avant (API) | Après (PouchDB) |
+|-------------|-----------------|
+| `fetch('/api/contacts?limit=1000')` | `db.allDocs({ startkey: 'contact:', endkey: 'contact:\ufff0', include_docs: true })` |
+| `fetch('/api/contacts/stats')` | Calcul côté client via `contacts.filter()` |
+| `Response.json()` | `result.rows.map(row => row.doc)` |
+| Rechargement manuel | Live sync automatique avec `db.changes()` |

@@ -2,25 +2,41 @@
 id: dashboard-kpi-relances-jour
 type: frontend
 folder: specs/workflows/frontend/dashboard/
-description: Calculer et afficher le nombre de relances envoyées aujourd'hui
+description: Calculer et afficher le nombre de relances envoyées aujourd'hui via PouchDB
 depends_on: [auth-check]
 screen: dashboard
 global: false
 mockup_entry: specs/mockups/dashboard.html
 ---
 
-# KPI Relances du Jour
+# KPI Relances du Jour - PouchDB
 
 ## Description
 
-Calculer le nombre de relances envoyées aujourd'hui et afficher la valeur dans la card KPI.
+Calculer le nombre de relances envoyées aujourd'hui depuis **PouchDB local** et afficher la valeur dans la card KPI.
 
 ## Étapes
 
 ```javascript
 /**
- * @action Récupérer les relances du jour via GET /api/relances?date_envoi=today
- * @checkpoint relances-fetched, réponse 200 avec relances du jour
+ * @action Configurer le listener PouchDB pour les changements
+ * @checkpoint changes-listener-active, écoute temps réel activée
+ * 
+ * Code:
+ * db.changes({ since: 'now', live: true, include_docs: true })
+ *   .on('change', (change) => { recalculer si relance modifiée });
+ */
+
+/**
+ * @action Récupérer les relances depuis PouchDB
+ * @checkpoint relances-fetched, données locales chargées
+ * 
+ * Query:
+ * const result = await db.allDocs({
+ *   startkey: 'relance:',
+ *   endkey: 'relance:\ufff0',
+ *   include_docs: true
+ * });
  */
 
 /**
@@ -29,10 +45,13 @@ Calculer le nombre de relances envoyées aujourd'hui et afficher la valeur dans 
  * 
  * Calcul:
  * const today = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
- * const relancesDuJour = relances.filter(r => {
- *   const dateEnvoi = r.date_envoi.split('T')[0];
- *   return dateEnvoi === today;
- * });
+ * const relancesDuJour = result.rows
+ *   .map(row => row.doc)
+ *   .filter(r => {
+ *     if (!r.date_envoi) return false;
+ *     const dateEnvoi = r.date_envoi.split('T')[0];
+ *     return dateEnvoi === today && r.statut === 'sent';
+ *   });
  */
 
 /**
@@ -61,65 +80,136 @@ Calculer le nombre de relances envoyées aujourd'hui et afficher la valeur dans 
  */
 ```
 
-## Requête API
+## PouchDB Operations
 
-```
-GET /api/relances?date_envoi=today&statut=sent
+### Récupérer et compter les relances du jour
+
+```javascript
+async calculateRelancesJour() {
+  const result = await db.allDocs({
+    startkey: 'relance:',
+    endkey: 'relance:\ufff0',
+    include_docs: true
+  });
+  
+  // Date du jour (YYYY-MM-DD)
+  const today = new Date().toISOString().split('T')[0];
+  
+  // Filtrer les relances envoyées aujourd'hui
+  const relancesDuJour = result.rows
+    .map(row => row.doc)
+    .filter(r => {
+      if (!r.date_envoi) return false;
+      const dateEnvoi = r.date_envoi.split('T')[0];
+      return dateEnvoi === today && r.statut === 'sent';
+    });
+  
+  // Mettre à jour le KPI
+  this.kpis.relancesJour = relancesDuJour.length;
+  
+  // Option: calculer la répartition par niveau
+  this.kpis.relancesRepartition = relancesDuJour.reduce((acc, r) => {
+    const niveau = r.niveau_relance || 'R1';
+    acc[niveau] = (acc[niveau] || 0) + 1;
+    return acc;
+  }, {});
+}
 ```
 
-Ou avec plage de dates :
-```
-GET /api/relances?date_envoi_gte=2024-01-15T00:00:00&date_envoi_lte=2024-01-15T23:59:59
-```
+### Live Sync (mise à jour temps réel)
 
-### Réponse (200)
-```json
-{
-  "data": [
-    {
-      "id": "uuid-1",
-      "contact_id": "uuid-contact-1",
-      "facture_id": "uuid-facture-1",
-      "niveau_relance": "R2",
-      "date_envoi": "2024-01-15T09:30:00",
-      "statut": "sent",
-      "canal": "email"
-    },
-    {
-      "id": "uuid-2",
-      "contact_id": "uuid-contact-2",
-      "facture_id": "uuid-facture-2",
-      "niveau_relance": "R1",
-      "date_envoi": "2024-01-15T10:15:00",
-      "statut": "sent",
-      "canal": "email"
-    }
-  ],
-  "meta": {
-    "total": 18,
-    "repartition": {
-      "R1": 10,
-      "R2": 6,
-      "R3": 2
+```javascript
+// Recalculer automatiquement sur changements
+db.changes({
+  since: 'now',
+  live: true,
+  include_docs: true
+}).on('change', (change) => {
+  if (change.doc.type === 'relance') {
+    // Vérifier si c'est une relance envoyée aujourd'hui
+    const today = new Date().toISOString().split('T')[0];
+    const dateEnvoi = change.doc.date_envoi?.split('T')[0];
+    
+    if (dateEnvoi === today && change.doc.statut === 'sent') {
+      // Recalculer le KPI
+      this.calculateRelancesJour();
     }
   }
-}
+});
+```
+
+### Option: Mango Query avec pouchdb-find
+
+```javascript
+// Alternative avec pouchdb-find (nécessite index)
+const today = new Date().toISOString().split('T')[0];
+const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+
+const result = await db.find({
+  selector: {
+    type: { $eq: 'relance' },
+    statut: { $eq: 'sent' },
+    date_envoi: {
+      $gte: today,
+      $lt: tomorrow
+    }
+  }
+});
+
+this.kpis.relancesJour = result.docs.length;
+```
+
+### Créer l'index Mango (optionnel)
+
+```javascript
+// Créer un index pour optimiser les requêtes
+await db.createIndex({
+  index: {
+    fields: ['type', 'statut', 'date_envoi']
+  },
+  name: 'idx-relances-jour'
+});
 ```
 
 ## Calcul Frontend
 
 ```javascript
-// Construction de la date du jour
-const today = new Date();
-const todayStart = new Date(today.setHours(0, 0, 0, 0)).toISOString();
-const todayEnd = new Date(today.setHours(23, 59, 59, 999)).toISOString();
+// Récupération des données depuis PouchDB
+const result = await db.allDocs({
+  startkey: 'relance:',
+  endkey: 'relance:\ufff0',
+  include_docs: true
+});
 
-// Récupération des données
-const response = await fetch(`/api/relances?date_envoi_gte=${todayStart}&date_envoi_lte=${todayEnd}&statut=sent`);
-const { data, meta } = await response.json();
+// Date du jour
+const today = new Date().toISOString().split('T')[0];
 
-// Mise à jour du KPI
-this.kpis.relancesJour = meta.total || data.length;
+// Filtrage et comptage
+this.kpis.relancesJour = result.rows
+  .map(row => row.doc)
+  .filter(r => {
+    if (!r.date_envoi) return false;
+    const dateEnvoi = r.date_envoi.split('T')[0];
+    return dateEnvoi === today && r.statut === 'sent';
+  })
+  .length;
+```
+
+## Structure des documents PouchDB (relance)
+
+```javascript
+{
+  "_id": "relance:550e8400-...",
+  "_rev": "1-abc123...",
+  "type": "relance",
+  "id": "R123",
+  "contact_id": "contact:...",
+  "facture_id": "facture:...",
+  "niveau_relance": "R2",
+  "date_envoi": "2024-01-15T09:30:00",
+  "statut": "sent",
+  "canal": "email"
+}
 ```
 
 ## Interface utilisateur
@@ -132,8 +222,20 @@ this.kpis.relancesJour = meta.total || data.length;
 
 ## Error Handling
 
-| Code | Comportement |
-|------|--------------|
-| 401 | Redirection vers login |
-| 500 | Afficher message d'erreur |
+| Cas | Comportement |
+|-----|--------------|
+| PouchDB non disponible | Afficher "—" ou message d'erreur |
 | Empty | Afficher "0" si aucune relance envoyée aujourd'hui |
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Source données | `GET /api/relances?date_envoi=today` | PouchDB local |
+| Filtrage date | Côté serveur | Côté client (string comparison) |
+| Réponse | `{ data: [...], meta: { total: N } }` | `filter(...).length` |
+| Mise à jour | Rechargement manuel | Temps réel via `db.changes()` |
+| Latence | ~100-300ms | ~5-20ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |

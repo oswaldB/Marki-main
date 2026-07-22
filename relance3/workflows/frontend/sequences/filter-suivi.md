@@ -1,4 +1,4 @@
-# Workflow : Filtrer séquences suivi
+# Workflow : Filtrer séquences suivi (PouchDB)
 
 ## Écran
 `sequences.html`
@@ -7,11 +7,12 @@
 Bouton avec `@click="filterType = 'suivi'"`
 
 ## Action
-Afficher uniquement les séquences de suivi
+Afficher uniquement les séquences de suivi (filtrage côté client sur données PouchDB)
 
 ## Description
 - Filtre sur type = suivi
 - Masque les séquences de relance
+- Filtrage côté client sur données PouchDB
 
 ## Data Model
 **Page Function:** `sequencesPage()`
@@ -19,10 +20,10 @@ Afficher uniquement les séquences de suivi
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `sequences`
+**Données (depuis PouchDB):**
+- `sequences` - séquences depuis PouchDB
 - `searchQuery`
-- `filterType`
+- `filterType` ← `'suivi'`
 - `newSequence`
 
 **États UI:**
@@ -37,15 +38,16 @@ Afficher uniquement les séquences de suivi
 ## State Changes
 
 **Modifications:**
-- `page` modifié
-- `searchQuery` modifié
-- `filter*` modifié
+- `filterType` ← `'suivi'`
+- `filteredSequences` ← séquences de type suivi
+
+## PouchDB Operations
+
+**Aucun appel direct** - Ce workflow filtre les données déjà chargées depuis PouchDB.
 
 ## API Calls
 
-**Pas d'appel API** - Action côté client uniquement
-
-
+**Pas d'appel API** - Filtrage côté client uniquement
 
 ## Organisation des fichiers
 
@@ -62,7 +64,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/sequences/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/sequences/js/filter-suivi.js`
@@ -71,36 +73,54 @@ frontend/
 ```javascript
 // frontend/app/sequences/js/filter-suivi.js
 export function filterSuivi() {
-  // Implementation du workflow
+  // Implementation avec PouchDB (filtrage côté client)
 }
 ```
 
 ## Implementation
 
 ```javascript
-// Filter properties are bound to inputs via x-model
-// Computed property handles filtering:
+filterSuivi() {
+  this.filterType = 'suivi';
+  // Le computed property filteredSequences se met à jour automatiquement
+}
 
-get filteredData() {
-  let result = this.data;
+// Computed property pour filtrer
+get filteredSequences() {
+  let result = [...this.sequences]; // Données depuis PouchDB
   
-  // 1. Search filter
+  // Filtre par type (suivi)
+  if (this.filterType === 'suivi') {
+    result = result.filter(s => s.type_sequence === 'suivi');
+  }
+  
+  // Filtre de recherche
   if (this.searchQuery) {
     const query = this.searchQuery.toLowerCase();
-    result = result.filter(item => 
-      item.name.toLowerCase().includes(query) ||
-      item.email.toLowerCase().includes(query)
+    result = result.filter(s => 
+      s.nom?.toLowerCase().includes(query) ||
+      s.description?.toLowerCase().includes(query)
     );
   }
   
-  // 2. Status filter
-  if (this.filterStatut) {
-    result = result.filter(item => item.statut === this.filterStatut);
-  }
-  
-  // 3. Sort
-  result = this.sortData(result);
-  
   return result;
 }
-``
+```
+
+## Notes
+
+- **Filtrage côté client** : Les données proviennent de PouchDB (chargées par `initial-load`)
+- **Instantané** : Le filtrage est immédiat
+- **Pas de requête** : Aucun appel PouchDB supplémentaire
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Action | Côté client | **Conservé** - Côté client |
+| Source données | Props/Store | PouchDB (déjà chargé) |
+| Filtrage | Côté client | Côté client sur données PouchDB |
+| Latence | Instantanée | Instantanée |
+| Offline | ✅ Oui | ✅ Oui |

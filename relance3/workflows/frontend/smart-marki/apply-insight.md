@@ -1,4 +1,4 @@
-# Workflow : Appliquer insight
+# Workflow : Appliquer insight (PouchDB)
 
 ## Écran
 `smart-marki.html`
@@ -10,9 +10,11 @@ Bouton avec `@click="applyInsight(selectedInsight)"`
 Appliquer la recommandation IA
 
 ## Description
+- Enregistre l'insight appliqué dans PouchDB
 - Exécute l'action suggérée
 - Modifie les paramètres
-- Crée la relance/séquence
+- Crée la relance/séquence si nécessaire
+- Synchronise avec CouchDB
 
 ## Data Model
 **Page Function:** `smartMarkiPage()`
@@ -20,13 +22,12 @@ Appliquer la recommandation IA
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `suggestions`
-- `historiqueActions`
-- `stats`
-- `features`
-- `chatMessages`
-- `chatInput`
+**Données (depuis PouchDB):**
+- `suggestions` - suggestions IA depuis PouchDB
+- `historiqueActions` - historique des actions
+- `stats` - statistiques
+- `features` - features activées
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -36,13 +37,22 @@ Appliquer la recommandation IA
 
 ## State Changes
 
-**Modifications:** États UI spécifiques selon implémentation
+**Modifications:**
+- `processing` ← true/false
+- `suggestions` ← sans l'insight appliqué
+- `historiqueActions` ← avec nouvelle action
+- Sauvegarde dans PouchDB
 
-## API Calls
+## PouchDB Operations
 
-**Pas d'appel API** - Action côté client uniquement
+**Action:** Enregistrer l'action appliquée dans PouchDB.
 
+**Méthodes utilisées:**
+1. Créer un document dans l'historique des actions
+2. Mettre à jour le statut de la suggestion
+3. `db.put()` pour sauvegarder
 
+**Sync:** La modification est automatiquement synchronisée avec CouchDB.
 
 ## Organisation des fichiers
 
@@ -59,7 +69,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/smart-marki/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/smart-marki/js/apply-insight.js`
@@ -67,40 +77,68 @@ frontend/
 
 ```javascript
 // frontend/app/smart-marki/js/apply-insight.js
-export function applyInsight() {
-  // Implementation du workflow
+export async function applyInsight() {
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
-async applySuggestion(id) {
+async applyInsight(insight) {
   // 1. Set processing
   this.processing = true;
   
   try {
-    // 2. Call API
-    const response = await fetch(`/api/smart-marki/apply/${id}`, {
-      method: 'POST'
-    });
+    // 2. Créer l'action dans l'historique
+    const actionDoc = {
+      _id: 'smart-action:' + Date.now(),
+      type: 'smart-action',
+      insight_id: insight._id,
+      action_type: insight.action_type,
+      status: 'applied',
+      applied_at: new Date().toISOString(),
+      user_id: this.currentUserId
+    };
     
-    const data = await response.json();
+    await db.put(actionDoc);
     
-    if (!data.success) {
-      throw new Error(data.error?.message);
-    }
+    // 3. Mettre à jour la suggestion (suppression logique)
+    const suggestionDoc = await db.get(insight._id);
+    suggestionDoc.applied = true;
+    suggestionDoc.applied_at = new Date().toISOString();
+    await db.put(suggestionDoc);
     
-    // 3. Remove from suggestions
-    this.suggestions = this.suggestions.filter(s => s.id !== id);
+    // 4. Remove from suggestions list
+    this.suggestions = this.suggestions.filter(s => s._id !== insight._id);
     
-    // 4. Notify
-    Alpine.store('ui').addToast('Suggestion appliquée', 'success');
+    // 5. Add to history
+    this.historiqueActions.unshift(actionDoc);
+    
+    // 6. Notify
+    this.toast('Suggestion appliquée', 'success');
     
   } catch (error) {
-    Alpine.store('ui').addToast(error.message, 'error');
+    this.toast(error.message, 'error');
   } finally {
     this.processing = false;
   }
 }
 ```
+
+## Notes
+
+- **Persistance** : L'action est enregistrée dans PouchDB pour historique
+- **Synchronisation** : Les changements sont synchronisés avec CouchDB
+- **Soft delete** : La suggestion est marquée comme appliquée, pas supprimée
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Requête | `POST /api/smart-marki/apply/:id` | `db.put()` pour historique + update suggestion |
+| Persistance | Backend SQLite | PouchDB local + sync |
+| Latence | ~200-500ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |

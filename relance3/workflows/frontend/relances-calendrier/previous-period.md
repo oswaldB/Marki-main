@@ -1,4 +1,4 @@
-# Workflow : Période précédente
+# Workflow : Période précédente (PouchDB)
 
 ## Écran
 `relances-calendrier.html`
@@ -11,7 +11,7 @@ Naviguer vers la période précédente
 
 ## Description
 - Recule d'un mois/semaine selon la vue
-- Charge les relances de la période
+- Charge les relances de la période depuis PouchDB
 - Met à jour l'affichage calendrier
 
 ## Data Model
@@ -20,12 +20,13 @@ Naviguer vers la période précédente
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `relancesProgrammees`
+**Données (depuis PouchDB):**
+- `relancesProgrammees` - relances depuis PouchDB
 - `currentDate`
 - `viewMode`
 - `selectedDate`
 - `relancesDuJour`
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -33,13 +34,21 @@ Naviguer vers la période précédente
 
 ## State Changes
 
-**Modifications:** États UI spécifiques selon implémentation
+**Modifications:**
+- `currentDate` ← recule d'un mois ou d'une semaine
+- `relancesProgrammees` ← rechargées depuis PouchDB pour la nouvelle période
+
+## PouchDB Operations
+
+**Action:** Charger les relances de la période précédente depuis PouchDB.
+
+**Méthodes utilisées:**
+- `db.allDocs({ startkey: 'relance:', endkey: 'relance:\ufff0' })` - Récupérer les relances
+- Filtrage côté client par date
 
 ## API Calls
 
-**Pas d'appel API** - Action côté client uniquement
-
-
+**Pas d'appel API** - Navigation côté client avec rechargement depuis PouchDB
 
 ## Organisation des fichiers
 
@@ -56,7 +65,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/relances-calendrier/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/relances-calendrier/js/previous-period.js`
@@ -64,15 +73,15 @@ frontend/
 
 ```javascript
 // frontend/app/relances-calendrier/js/previous-period.js
-export function previousPeriod() {
-  // Implementation du workflow
+export async function previousPeriod() {
+  // Implementation avec PouchDB
 }
 ```
 
 ## Implementation
 
 ```javascript
-previousPeriod() {
+async previousPeriod() {
   // 1. Decrement period
   if (this.viewMode === 'month') {
     this.currentDate = subMonths(this.currentDate, 1);
@@ -80,7 +89,35 @@ previousPeriod() {
     this.currentDate = subWeeks(this.currentDate, 1);
   }
   
-  // 2. Reload data
-  this.loadDataForDate(this.currentDate);
+  // 2. Reload data from PouchDB
+  await this.loadCalendarRelances();
+  
+  // 3. Update display
+  this.generateCalendarGrid();
+}
+
+// Helper functions
+subMonths(date, months) {
+  const result = new Date(date);
+  result.setMonth(result.getMonth() - months);
+  return result;
+}
+
+subWeeks(date, weeks) {
+  const result = new Date(date);
+  result.setDate(result.getDate() - weeks * 7);
+  return result;
 }
 ```
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Action | Côté client | **Conservé** - Côté client |
+| Chargement données | API `/api/relances` | `db.allDocs()` local |
+| Filtrage | Backend | Côté client |
+| Latence | ~200-500ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |

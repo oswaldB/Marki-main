@@ -2,18 +2,18 @@
 id: relances-liste-payeurs-impayes
 type: frontend
 folder: specs/workflows/frontend/relances/
-description: Lister tous les payeurs ayant des impayés avec leurs totaux
+description: Lister tous les payeurs ayant des impayés depuis PouchDB avec leurs totaux
 depends_on: [auth-check]
 screen: relances
 global: false
 mockup_entry: specs/mockups/relances.html
 ---
 
-# relances-liste-payeurs-impayes : Liste des payeurs avec impayés
+# relances-liste-payeurs-impayes : Liste des payeurs avec impayés (PouchDB)
 
 ## Description
 
-Afficher la liste de tous les payeurs qui ont au moins un impayé, avec leurs soldes débiteurs et options d'action rapide.
+Afficher la liste de tous les payeurs qui ont au moins un impayé, avec leurs soldes débiteurs et options d'action rapide. Les données sont chargées depuis PouchDB local.
 
 ## Étapes
 
@@ -29,17 +29,46 @@ Afficher la liste de tous les payeurs qui ont au moins un impayé, avec leurs so
  */
 
 /**
- * @action Récupérer les impayés via GET /api/impayes?facture_soldee=0
+ * @action Récupérer les impayés depuis PouchDB
  * @checkpoint impayes-fetched, données brutes reçues
- * @api GET /api/impayes?facture_soldee=0&limit=1000
- * @response { impayes: [...] }
+ * 
+ * **Query PouchDB** :
+ * const result = await db.allDocs({
+ *   startkey: 'facture:',
+ *   endkey: 'facture:\ufff0',
+ *   include_docs: true
+ * });
+ * const impayes = result.rows
+ *   .map(r => r.doc)
+ *   .filter(f => f.facture_soldee === 0);
  */
 
 /**
- * @action Récupérer les payeurs via GET /api/payers
+ * @action Récupérer les payeurs depuis PouchDB
  * @checkpoint payers-fetched, liste des payeurs reçue
- * @api GET /api/payers?limit=1000
- * @response { payers: [...] }
+ * 
+ * **Query PouchDB** :
+ * const result = await dbContacts.allDocs({
+ *   startkey: 'contact:',
+ *   endkey: 'contact:\ufff0',
+ *   include_docs: true
+ * });
+ * const payeurs = result.rows.map(r => r.doc);
+ */
+
+/**
+ * @action Récupérer les relances programmées depuis PouchDB
+ * @checkpoint relances-fetched, relances pour indicateurs
+ * 
+ * **Query PouchDB** :
+ * const result = await dbRelances.allDocs({
+ *   startkey: 'relance:',
+ *   endkey: 'relance:\ufff0',
+ *   include_docs: true
+ * });
+ * const relances = result.rows
+ *   .map(r => r.doc)
+ *   .filter(r => r.statut === 'programmee');
  */
 
 /**
@@ -87,19 +116,103 @@ Afficher la liste de tous les payeurs qui ont au moins un impayé, avec leurs so
  */
 ```
 
-## API Calls
+## PouchDB Operations
 
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
-| GET | `/api/impayes?facture_soldee=0` | Tous les impayés non soldés |
-| GET | `/api/payers` | Tous les payeurs |
-| GET | `/api/relances?statut=programmee` | Relances programmées (pour indicateur) |
+### Chargement et agrégation
+
+```javascript
+async loadPayeursAvecImpayes() {
+  this.loading = true;
+  
+  try {
+    // 1. Impayés
+    const impayesResult = await db.allDocs({
+      startkey: 'facture:',
+      endkey: 'facture:\ufff0',
+      include_docs: true
+    });
+    const impayes = impayesResult.rows
+      .map(r => r.doc)
+      .filter(f => f.facture_soldee === 0);
+    
+    // 2. Payeurs
+    const payeursResult = await dbContacts.allDocs({
+      startkey: 'contact:',
+      endkey: 'contact:\ufff0',
+      include_docs: true
+    });
+    const payeursMap = new Map(
+      payeursResult.rows.map(r => [r.doc._id, r.doc])
+    );
+    
+    // 3. Relances programmées
+    const relancesResult = await dbRelances.allDocs({
+      startkey: 'relance:',
+      endkey: 'relance:\ufff0',
+      include_docs: true
+    });
+    const relancesActives = relancesResult.rows
+      .map(r => r.doc)
+      .filter(r => ['programmee', 'a_valider'].includes(r.statut));
+    
+    // 4. Grouper par payeur
+    this.payeursAvecImpayes = this.aggregateByPayeur(
+      impayes, 
+      payeursMap, 
+      relancesActives
+    );
+    
+    // 5. Calculer stats
+    this.calculateStats();
+    
+  } catch (error) {
+    console.error('Erreur chargement:', error);
+    this.error = error.message;
+  } finally {
+    this.loading = false;
+  }
+}
+
+aggregateByPayeur(impayes, payeursMap, relancesActives) {
+  const groups = new Map();
+  
+  for (const impaye of impayes) {
+    const payeurId = impaye.contact_id;
+    if (!payeurId) continue;
+    
+    if (!groups.has(payeurId)) {
+      const payeur = payeursMap.get('contact:' + payeurId);
+      groups.set(payeurId, {
+        payeur_id: payeurId,
+        nom: payeur?.nom || 'Inconnu',
+        email: payeur?.email || '',
+        nombre_impayes: 0,
+        montant_total: 0,
+        date_derniere_facture: null,
+        relance_en_cours: relancesActives.some(r => r.contact_id === payeurId)
+      });
+    }
+    
+    const group = groups.get(payeurId);
+    group.nombre_impayes++;
+    group.montant_total += impaye.reste_a_payer || 0;
+    
+    const dateEcheance = new Date(impaye.date_echeance);
+    if (!group.date_derniere_facture || dateEcheance > new Date(group.date_derniere_facture)) {
+      group.date_derniere_facture = impaye.date_echeance;
+    }
+  }
+  
+  return Array.from(groups.values())
+    .sort((a, b) => b.montant_total - a.montant_total);
+}
+```
 
 ## Colonnes affichées
 
 | Colonne | Source | Triable |
 |---------|--------|---------|
-| Nom payeur | payers.nom | ✅ |
+| Nom payeur | payeurs.nom | ✅ |
 | N° impayés | agrégation | ✅ |
 | Montant total | agrégation | ✅ (défaut) |
 | Dernière échéance | max(impayes.date_echeance) | ✅ |
@@ -119,3 +232,18 @@ Afficher la liste de tous les payeurs qui ont au moins un impayé, avec leurs so
 ## Mockups de référence
 
 - `specs/mockups/relances.html` (vue liste payeurs impayés)
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Impayés | `GET /api/impayes?facture_soldee=0` | `db.allDocs()` + filtrage |
+| Payeurs | `GET /api/payers` | `dbContacts.allDocs()` |
+| Relances | `GET /api/relances?statut=programmee` | `dbRelances.allDocs()` + filtrage |
+| Agrégation | Backend SQL | Côté client avec `Map()` |
+| Tri | Paramètre API | `Array.sort()` côté client |
+| Pagination | Paramètres API | Côté client avec `slice()` |
+| Latence | ~500-1000ms | ~100-200ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |

@@ -1,4 +1,4 @@
-# Workflow : Créer profil SMTP
+# Workflow : Créer profil SMTP (PouchDB)
 
 ## Écran
 `settings-smtp.html`
@@ -7,11 +7,12 @@
 Bouton avec `@click="createProfil()"`
 
 ## Action
-Valider la création du profil
+Valider la création du profil dans PouchDB
 
 ## Description
 - Valide tous les champs
-- Crée le profil en base
+- Crée le profil dans PouchDB
+- Synchronise avec CouchDB
 - Ferme le formulaire
 
 ## Data Model
@@ -20,11 +21,10 @@ Valider la création du profil
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `profils`
-- `newProfil`
-- `testingProfil`
-- `testResult`
+**Données (depuis PouchDB):**
+- `profils` - profils SMTP depuis PouchDB
+- `newProfil` - nouveau profil à créer
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -36,29 +36,18 @@ Valider la création du profil
 
 **Modifications:**
 - `showNewProfilForm` passe à false
-- `profils` mis à jour
+- `profils` mis à jour avec le nouveau profil
 - `error` ← message si échec
 
-## API Calls
+## PouchDB Operations
 
-**Endpoint:** `POST /api/smtp-profiles`
+**Action:** Créer un nouveau profil SMTP dans PouchDB.
 
-**Payload:**
-```json
-{
-  "nom": string,
-  "email": string,
-  "host": string,
-  "port": number,
-  "secure": boolean,
-  "username": string,
-  "password": string,
-  "from_email": string,
-  "from_name": string
-}
-```
+**Méthodes utilisées:**
+1. Générer un ID unique
+2. `db.put({ _id: 'smtp-profile:' + uuid, ... })` - Créer le document
 
-**Response:** `ApiResponse<SmtpProfile>`
+**Sync:** La modification est automatiquement synchronisée avec CouchDB.
 
 ## Organisation des fichiers
 
@@ -75,7 +64,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/settings-smtp/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/settings-smtp/js/create-profil.js`
@@ -83,12 +72,12 @@ frontend/
 
 ```javascript
 // frontend/app/settings-smtp/js/create-profil.js
-export function createProfil() {
-  // Implementation du workflow
+export async function createProfil() {
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
 async createProfil() {
@@ -102,34 +91,63 @@ async createProfil() {
   this.error = null;
   
   try {
-    // 3. Call API
-    const response = await fetch('/api/smtp-profiles', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.newProfil)
-    });
+    // 3. Générer ID unique
+    const id = 'smtp-profile:' + Date.now();
     
-    const data = await response.json();
+    // 4. Créer le document dans PouchDB
+    const newDoc = {
+      _id: id,
+      type: 'smtp-profile',
+      nom: this.newProfil.nom,
+      email: this.newProfil.email,
+      host: this.newProfil.host,
+      port: this.newProfil.port,
+      secure: this.newProfil.secure,
+      username: this.newProfil.username,
+      password: this.newProfil.password,
+      from_email: this.newProfil.from_email,
+      from_name: this.newProfil.from_name,
+      actif: true,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    };
     
-    if (!data.success) {
-      throw new Error(data.error?.message);
-    }
+    const response = await db.put(newDoc);
+    // response: { ok: true, id: 'smtp-profile:...', rev: '1-xxx...' }
     
-    // 4. Update local data
-    this.profils.unshift(data.data);
+    // 5. Update local data
+    this.profils.unshift({ ...newDoc, _rev: response.rev });
     
-    // 5. Close form
+    // 6. Close form
     this.showNewProfilForm = false;
     this.resetNewProfil();
     
-    // 6. Notify success
-    Alpine.store('ui').addToast('Profil SMTP créé', 'success');
+    // 7. Notify success
+    this.toast('Profil SMTP créé', 'success');
     
   } catch (error) {
     this.error = error.message;
-    Alpine.store('ui').addToast(error.message, 'error');
+    this.toast(error.message, 'error');
   } finally {
     this.loading = false;
   }
 }
 ```
+
+## Notes
+
+- **ID unique** : Génération client-side avec `Date.now()` ou UUID
+- **Synchronisation** : Les changements sont synchronisés avec CouchDB
+- **Type** : `type: 'smtp-profile'` pour filtrage
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Requête | `POST /api/smtp-profiles` | `db.put({ _id: 'smtp-profile:' + uuid, ... })` |
+| Payload | `{ nom, email, host, port, ... }` | Document PouchDB avec `_id` et `type` |
+| Réponse | `ApiResponse<SmtpProfile>` | `{ ok, id, rev }` |
+| Latence | ~200-500ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |

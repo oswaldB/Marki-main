@@ -2,22 +2,31 @@
 id: relances-liste-smtp-profiles
 type: frontend
 folder: specs/workflows/frontend/relances/
-description: Afficher la liste des profils SMTP configurés pour l'envoi des relances
+description: Afficher la liste des profils SMTP configurés depuis PouchDB pour l'envoi des relances
 depends_on: [auth-check]
 screen: settings-smtp
 global: false
 mockup_entry: specs/mockups/settings-smtp.html
 ---
 
-# relances-liste-smtp-profiles : Liste des profils SMTP
+# relances-liste-smtp-profiles : Liste des profils SMTP (PouchDB)
 
 ## Description
 
-Afficher la liste des profils SMTP configurés pour l'envoi des relances, avec leur statut de connexion et options de test.
+Afficher la liste des profils SMTP configurés pour l'envoi des relances, avec leur statut de connexion et options de test. Les données sont chargées depuis PouchDB local.
 
 ## Étapes
 
 ```javascript
+/**
+ * @action Initialiser PouchDB et configurer le sync
+ * @checkpoint pouchdb-initialized, base configs prête
+ * 
+ * Code:
+ * this.dbConfigs = new PouchDB('marki-configs');
+ * this.dbConfigs.sync(remoteUrl, { live: true, retry: true });
+ */
+
 /**
  * @action Initialiser l'état de la page
  * @checkpoint state-initialized, filtres et pagination prêts
@@ -29,10 +38,25 @@ Afficher la liste des profils SMTP configurés pour l'envoi des relances, avec l
  */
 
 /**
- * @action Récupérer les profils SMTP via GET /api/settings/smtp
+ * @action Récupérer les profils SMTP depuis PouchDB
  * @checkpoint profiles-fetched, liste des profils reçue
- * @api GET /api/settings/smtp
- * @response { profiles: [{ id, nom, host, port, username, statut, par_defaut }] }
+ * 
+ * **Query PouchDB** :
+ * const result = await dbConfigs.allDocs({
+ *   startkey: 'smtp-profile:',
+ *   endkey: 'smtp-profile:\ufff0',
+ *   include_docs: true
+ * });
+ * const profiles = result.rows.map(r => r.doc);
+ */
+
+/**
+ * @action Configurer le listener pour les changements temps réel
+ * @checkpoint changes-listener-active, mises à jour automatiques
+ * 
+ * Code:
+ * dbConfigs.changes({ since: 'now', live: true, include_docs: true })
+ *   .on('change', (change) => { this.updateProfile(change.doc); });
  */
 
 /**
@@ -44,8 +68,10 @@ Afficher la liste des profils SMTP configurés pour l'envoi des relances, avec l
  * @action Calculer les statistiques d'utilisation
  * @checkpoint stats-calculated, nb relances envoyées par profil
  * 
- **Approche** : Si disponible, récupérer le nombre d'emails envoyés
- * par profil SMTP depuis les logs ou statistiques
+ * **Approche** : Récupérer depuis PouchDB les events d'envoi
+ * const events = await dbEvents.find({
+ *   selector: { type: 'event', event_type: 'email_sent' }
+ * });
  */
 
 /**
@@ -84,11 +110,79 @@ Afficher la liste des profils SMTP configurés pour l'envoi des relances, avec l
  */
 ```
 
-## API Calls
+## PouchDB Operations
 
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
-| GET | `/api/settings/smtp` | Liste des profils SMTP |
+### Chargement des profils SMTP
+
+```javascript
+async loadSmtpProfiles() {
+  this.loading = true;
+  
+  try {
+    // Récupérer les profils SMTP
+    const result = await dbConfigs.allDocs({
+      startkey: 'smtp-profile:',
+      endkey: 'smtp-profile:\ufff0',
+      include_docs: true
+    });
+    
+    this.smtpProfiles = result.rows.map(r => r.doc);
+    
+    // Masquer les mots de passe
+    this.smtpProfiles = this.smtpProfiles.map(p => ({
+      ...p,
+      password: p.password ? '********' : null
+    }));
+    
+  } catch (error) {
+    console.error('Erreur chargement profils SMTP:', error);
+    this.error = error.message;
+  } finally {
+    this.loading = false;
+  }
+}
+```
+
+### Live Sync (temps réel)
+
+```javascript
+// Écouter les changements sur les profils SMTP
+dbConfigs.changes({
+  since: 'now',
+  live: true,
+  include_docs: true
+}).on('change', (change) => {
+  if (change.doc.type === 'smtp-profile') {
+    const index = this.smtpProfiles.findIndex(p => p._id === change.doc._id);
+    if (index >= 0) {
+      this.smtpProfiles[index] = { ...change.doc, password: '********' };
+    } else {
+      this.smtpProfiles.push({ ...change.doc, password: '********' });
+    }
+  }
+}).on('error', (err) => {
+  console.error('Erreur sync profils SMTP:', err);
+});
+```
+
+## Structure du document PouchDB
+
+```javascript
+{
+  "_id": "smtp-profile:550e8400-e29b-41d4-a716-446655440000",
+  "_rev": "1-abc123...",
+  "type": "smtp-profile",
+  "nom": "Gmail principal",
+  "host": "smtp.gmail.com",
+  "port": 587,
+  "username": "contact@entreprise.fr",
+  "password": "encrypted_password",
+  "par_defaut": true,
+  "statut": "ok",
+  "date_dernier_test": "2026-07-21T10:00:00Z",
+  "created_at": "2026-01-01T00:00:00Z"
+}
+```
 
 ## Colonnes affichées
 
@@ -123,3 +217,15 @@ Afficher la liste des profils SMTP configurés pour l'envoi des relances, avec l
 ## Mockups de référence
 
 - `specs/mockups/settings-smtp.html` (liste des profils SMTP)
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Profils SMTP | `GET /api/settings/smtp` | `dbConfigs.allDocs()` avec préfixe |
+| Mises à jour temps réel | Polling | `dbConfigs.changes()` |
+| Sécurité | Backend | Mot de passe masqué côté client |
+| Latence | ~100-300ms | ~20-50ms (local) |
+| Offline | ❌ Impossible | ✅ Consultation possible offline |

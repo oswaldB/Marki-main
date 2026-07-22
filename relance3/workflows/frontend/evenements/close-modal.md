@@ -12,6 +12,7 @@ Fermer sans marquer comme lu
 ## Description
 - Ferme le modal
 - Garde le statut actuel
+- **Action UI pure - pas d'appel API ou PouchDB**
 
 ## Data Model
 **Page Function:** `evenementsPage()`
@@ -19,8 +20,8 @@ Fermer sans marquer comme lu
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `evenements`
+**Données (depuis PouchDB):**
+- `evenements` - chargés depuis PouchDB via `events-manager`
 - `searchQuery`
 - `filterType`
 - `filterDateStart`
@@ -40,10 +41,12 @@ Fermer sans marquer comme lu
 
 **Modifications:**
 - `selectedEvent` modifié
+- `showDetailModal` modifié
 
-## API Calls
+## PouchDB Calls
 
-**Pas d'appel API** - Action côté client uniquement
+**Aucun** - Ce workflow ne fait que changer l'état UI.
+Les données affichées proviennent déjà de PouchDB via les workflows parents.
 
 
 
@@ -62,7 +65,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/evenements/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/evenements/js/close-modal.js`
@@ -71,7 +74,7 @@ frontend/
 ```javascript
 // frontend/app/evenements/js/close-modal.js
 export function closeModal() {
-  // Implementation du workflow
+  // Implementation du workflow - action UI pure
 }
 ```
 
@@ -87,5 +90,21 @@ closeModal() {
   
   // 3. Clear validation errors
   this.error = null;
+  
+  // Note: les données (evenements) proviennent de PouchDB
+  // via les workflows parents, pas besoin de recharger
 }
-``
+```
+
+---
+
+## Migration PouchDB
+
+Ce workflow **ne nécessite pas de migration** car il n'utilise pas d'appel API.
+C'est une action purement UI.
+
+| Aspect | Implémentation |
+|--------|----------------|
+| Données affichées | PouchDB (via workflows parents) |
+| Appels réseau | Aucun |
+| Offline | ✅ Fonctionne offline |

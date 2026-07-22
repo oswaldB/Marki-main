@@ -1,4 +1,4 @@
-# Workflow : Créer utilisateur
+# Workflow : Créer utilisateur (PouchDB)
 
 ## Écran
 `settings-utilisateurs.html`
@@ -7,11 +7,12 @@
 Bouton avec `@click="createUser()"`
 
 ## Action
-Valider la création
+Valider la création dans PouchDB
 
 ## Description
 - Valide les champs
-- Crée l'utilisateur
+- Crée l'utilisateur dans PouchDB
+- Synchronise avec CouchDB
 - Ferme le modal
 
 ## Data Model
@@ -21,12 +22,11 @@ Valider la création
 - $store.ui
 - $store.auth
 
-**Données:**
-- `utilisateurs`
-- `roles`
-- `searchQuery`
-- `filterRole`
-- `userForm`
+**Données (depuis PouchDB):**
+- `utilisateurs` - utilisateurs depuis PouchDB
+- `roles` - rôles disponibles
+- `userForm` - données du formulaire
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -41,24 +41,18 @@ Valider la création
 
 **Modifications:**
 - `showUserModal` passe à false
-- `utilisateurs` mis à jour
+- `utilisateurs` mis à jour avec le nouvel utilisateur
 - `error` ← message si échec
 
-## API Calls
+## PouchDB Operations
 
-**Endpoint:** `POST /api/users`
+**Action:** Créer un utilisateur dans PouchDB.
 
-**Payload:**
-```json
-{
-  "nom": string,
-  "email": string,
-  "role": "admin" | "diagnostiqueur" | "assistant",
-  "actif": boolean
-}
-```
+**Méthodes utilisées:**
+1. Générer un ID unique
+2. `db.put({ _id: 'user:' + uuid, ... })` - Créer le document
 
-**Response:** `ApiResponse<User>`
+**Sync:** La modification est automatiquement synchronisée avec CouchDB.
 
 ## Organisation des fichiers
 
@@ -75,7 +69,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/settings-utilisateurs/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/settings-utilisateurs/js/create-user.js`
@@ -83,12 +77,12 @@ frontend/
 
 ```javascript
 // frontend/app/settings-utilisateurs/js/create-user.js
-export function createUser() {
-  // Implementation du workflow
+export async function createUser() {
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
 async createUser() {
@@ -102,34 +96,57 @@ async createUser() {
   this.error = null;
   
   try {
-    // 3. Call API
-    const response = await fetch('/api/users', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(this.userForm)
-    });
+    // 3. Générer ID unique
+    const id = 'user:' + Date.now();
     
-    const data = await response.json();
+    // 4. Créer le document dans PouchDB
+    const newDoc = {
+      _id: id,
+      type: 'user',
+      nom: this.userForm.nom,
+      email: this.userForm.email,
+      role: this.userForm.role,
+      actif: this.userForm.actif ?? true,
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
+    };
     
-    if (!data.success) {
-      throw new Error(data.error?.message);
-    }
+    const response = await db.put(newDoc);
+    // response: { ok: true, id: 'user:...', rev: '1-xxx...' }
     
-    // 4. Update local data
-    this.utilisateurs.unshift(data.data);
+    // 5. Update local data
+    this.utilisateurs.unshift({ ...newDoc, _rev: response.rev });
     
-    // 5. Close modal
+    // 6. Close modal
     this.showUserModal = false;
     this.resetUserForm();
     
-    // 6. Notify success
-    Alpine.store('ui').addToast('Utilisateur créé', 'success');
+    // 7. Notify success
+    this.toast('Utilisateur créé', 'success');
     
   } catch (error) {
     this.error = error.message;
-    Alpine.store('ui').addToast(error.message, 'error');
+    this.toast(error.message, 'error');
   } finally {
     this.loading = false;
   }
 }
 ```
+
+## Notes
+
+- **ID unique** : Génération client-side avec `Date.now()` ou UUID
+- **Synchronisation** : Les changements sont synchronisés avec CouchDB
+- **Type** : `type: 'user'` pour filtrage
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Requête | `POST /api/users` | `db.put({ _id: 'user:' + uuid, ... })` |
+| Payload | `{ nom, email, role, actif }` | Document PouchDB avec `_id` et `type` |
+| Réponse | `ApiResponse<User>` | `{ ok, id, rev }` |
+| Latence | ~200-500ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |

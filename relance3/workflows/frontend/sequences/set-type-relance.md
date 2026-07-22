@@ -1,4 +1,4 @@
-# Workflow : Sélectionner type Relance
+# Workflow : Sélectionner type Relance (PouchDB)
 
 ## Écran
 `sequences.html`
@@ -11,6 +11,7 @@ Définir le type de séquence à Relance
 
 ## Description
 - Prépare une séquence de relance d'impayés
+- Aucune opération PouchDB (action UI uniquement)
 
 ## Data Model
 **Page Function:** `sequencesPage()`
@@ -18,11 +19,11 @@ Définir le type de séquence à Relance
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `sequences`
+**Données (en mémoire):**
+- `sequences` - séquences depuis PouchDB
 - `searchQuery`
 - `filterType`
-- `newSequence`
+- `newSequence` - données du formulaire
 
 **États UI:**
 - `loading`
@@ -35,13 +36,16 @@ Définir le type de séquence à Relance
 
 ## State Changes
 
-**Modifications:** États UI spécifiques selon implémentation
+**Modifications:**
+- `newSequence.type_sequence` ← `'relances'`
+
+## PouchDB Operations
+
+**Aucun** - Ce workflow est une action UI. Il ne modifie pas PouchDB.
 
 ## API Calls
 
 **Pas d'appel API** - Action côté client uniquement
-
-
 
 ## Organisation des fichiers
 
@@ -58,7 +62,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/sequences/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/sequences/js/set-type-relance.js`
@@ -67,18 +71,37 @@ frontend/
 ```javascript
 // frontend/app/sequences/js/set-type-relance.js
 export function setTypeRelance() {
-  // Implementation du workflow
+  // Implementation avec PouchDB (pas d'opération DB)
 }
 ```
 
 ## Implementation
 
 ```javascript
-setSequence(value) {
-  // 1. Update state
-  this.currentSequence = value;
-  
-  // 2. Apply side effects
-  this.applySequenceChange();
+setTypeRelance() {
+  // Met à jour le type de la nouvelle séquence
+  this.newSequence.type_sequence = 'relances';
+}
+
+// Alternative avec paramètre
+setSequenceType(type) {
+  this.newSequence.type_sequence = type;
 }
 ```
+
+## Notes
+
+- **Action UI uniquement** : Ce workflow ne touche pas à PouchDB
+- **Préparation** : Prépare le formulaire avant création dans PouchDB
+- **Instantané** : La sélection est immédiate
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Action | Côté client | **Conservé** - Côté client |
+| Source données | Props/Store | PouchDB (déjà chargé) |
+| Latence | Instantanée | Instantanée |
+| Offline | ✅ Oui | ✅ Oui |

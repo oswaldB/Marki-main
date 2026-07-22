@@ -1,4 +1,4 @@
-# Workflow : Nouvelle séquence
+# Workflow : Nouvelle séquence (PouchDB)
 
 ## Écran
 `sequences.html`
@@ -13,6 +13,7 @@ Ouvrir le modal de création de séquence
 - Affiche le formulaire de nouvelle séquence
 - Demande le type (relance ou suivi)
 - Permet de nommer la séquence
+- Aucune opération PouchDB à ce stade
 
 ## Data Model
 **Page Function:** `sequencesPage()`
@@ -20,8 +21,8 @@ Ouvrir le modal de création de séquence
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `sequences`
+**Données (en mémoire):**
+- `sequences` - séquences depuis PouchDB
 - `searchQuery`
 - `filterType`
 - `newSequence`
@@ -37,13 +38,20 @@ Ouvrir le modal de création de séquence
 
 ## State Changes
 
-**Modifications:** États UI spécifiques selon implémentation
+**Modifications:**
+- `newSequence` ← initialisé avec valeurs par défaut
+- `showNewSequenceModal` ← `true`
+
+## PouchDB Operations
+
+**Aucun** - Ce workflow est une action UI qui prépare la création. La persistence est effectuée par `create-sequence.md`.
 
 ## API Calls
 
 **Pas d'appel API pour l'ouverture** - Le modal est purement côté client.
 
-> **Note** : Le bouton "Créer" déclenche un workflow séparé `create-sequence.md` qui fait un appel API `POST /api/sequences`.
+> **Note** : Le bouton "Créer" déclenche un workflow séparé `create-sequence.md` qui utilise PouchDB (`db.put()`).
+
 ## Organisation des fichiers
 
 ```
@@ -59,7 +67,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/sequences/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/sequences/js/new-sequence.js`
@@ -68,7 +76,7 @@ frontend/
 ```javascript
 // frontend/app/sequences/js/new-sequence.js
 export function newSequence() {
-  // Implementation du workflow
+  // Implementation avec PouchDB (pas d'opération DB)
 }
 ```
 
@@ -87,4 +95,29 @@ newSequence() {
     this.$refs.firstInput?.focus();
   });
 }
+
+getInitialState() {
+  return {
+    nom: '',
+    type_sequence: 'relances', // default
+    actif: true
+  };
+}
 ```
+
+## Notes
+
+- **Action UI uniquement** : Ce workflow prépare le formulaire mais ne crée pas encore dans PouchDB
+- **Création effective** : Voir workflow `create-sequence.md` pour la persistence dans PouchDB
+- **Instantané** : L'ouverture du modal est immédiate
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Action | Côté client | **Conservé** - Côté client |
+| Source données | Props/Store | PouchDB (déjà chargé) |
+| Latence | Instantanée | Instantanée |
+| Offline | ✅ Oui | ✅ Oui |

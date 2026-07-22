@@ -12,6 +12,7 @@ Fermer le panneau de détail du payeur
 ## Description
 - Masque le détail des factures du payeur
 - Retour à la liste compacte
+- **Action UI pure - les données proviennent de PouchDB**
 
 ## Data Model
 **Page Function:** `impayesPayeurPage()`
@@ -19,15 +20,15 @@ Fermer le panneau de détail du payeur
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `payeurs`
+**Données (depuis PouchDB):**
+- `payeurs` - chargés depuis PouchDB via `initial-load`
 - `searchQuery`
 - `filterStatut`
 - `sortBy`
 - `sortDirection`
 
 **États UI:**
-- `loading`
+- `loading` - chargement depuis PouchDB
 - `error`
 - `expandedPayeur` (ID du payeur dont le détail est ouvert)
 
@@ -36,9 +37,9 @@ Fermer le panneau de détail du payeur
 **Modifications:**
 - `expandedPayeur` passe à null
 
-## API Calls
+## PouchDB Calls
 
-**Pas d'appel API** - Action côté client uniquement
+**Aucun** - Ce workflow est une action **UI uniquement** qui ferme le panneau de détail. Les données affichées proviennent déjà de PouchDB via les workflows parents.
 
 ## Organisation des fichiers
 
@@ -55,7 +56,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/impayes-payeur/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/impayes-payeur/js/close-detail.js`
@@ -64,7 +65,7 @@ frontend/
 ```javascript
 // frontend/app/impayes-payeur/js/close-detail.js
 export function closeDetail() {
-  // Implementation du workflow
+  // Implementation du workflow - action UI pure
 }
 ```
 
@@ -77,5 +78,21 @@ closeDetail() {
   
   // 2. Clear validation errors
   this.error = null;
+  
+  // Note: les données (payeurs) proviennent de PouchDB
+  // via les workflows parents, pas besoin de recharger
 }
 ```
+
+---
+
+## Migration PouchDB
+
+Ce workflow **ne nécessite pas de migration** car il n'utilise pas d'appel API.
+C'est une action purement UI sur des données déjà chargées depuis PouchDB.
+
+| Aspect | Implémentation |
+|--------|----------------|
+| Données affichées | PouchDB (via workflows parents) |
+| Appels réseau | Aucun |
+| Offline | ✅ Fonctionne offline |

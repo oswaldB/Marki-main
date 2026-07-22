@@ -2,25 +2,41 @@
 id: dashboard-kpi-impayes-actifs
 type: frontend
 folder: specs/workflows/frontend/dashboard/
-description: Calculer et afficher le nombre de factures échues (date d'échéance dépassée)
+description: Calculer et afficher le nombre de factures échues (date d'échéance dépassée) via PouchDB
 depends_on: [auth-check]
 screen: dashboard
 global: false
 mockup_entry: specs/mockups/dashboard.html
 ---
 
-# KPI Impayés Actifs (Factures Échues)
+# KPI Impayés Actifs (Factures Échues) - PouchDB
 
 ## Description
 
-Calculer le nombre de factures dont la date d'échéance est dépassée (factures échues) et afficher la valeur dans la card KPI.
+Calculer le nombre de factures dont la date d'échéance est dépassée (factures échues) depuis **PouchDB local** et afficher la valeur dans la card KPI.
 
 ## Étapes
 
 ```javascript
 /**
- * @action Récupérer les factures échues via GET /api/factures?date_echeance_lt=now&reste_a_payer_gt=0
- * @checkpoint factures-echues-fetched, réponse 200 avec tableau des factures échues
+ * @action Configurer le listener PouchDB pour les changements
+ * @checkpoint changes-listener-active, écoute temps réel activée
+ * 
+ * Code:
+ * db.changes({ since: 'now', live: true, include_docs: true })
+ *   .on('change', (change) => { recalculer si facture modifiée });
+ */
+
+/**
+ * @action Récupérer les factures depuis PouchDB
+ * @checkpoint factures-fetched, données locales chargées
+ * 
+ * Query:
+ * const result = await db.allDocs({
+ *   startkey: 'facture:',
+ *   endkey: 'facture:\ufff0',
+ *   include_docs: true
+ * });
  */
 
 /**
@@ -29,10 +45,12 @@ Calculer le nombre de factures dont la date d'échéance est dépassée (facture
  * 
  * Calcul:
  * const now = new Date();
- * const facturesEchues = factures.filter(f => {
- *   const dateEcheance = new Date(f.date_echeance);
- *   return dateEcheance < now && f.reste_a_payer > 0;
- * });
+ * const facturesEchues = result.rows
+ *   .map(row => row.doc)
+ *   .filter(f => {
+ *     const dateEcheance = new Date(f.date_echeance);
+ *     return dateEcheance < now && f.reste_a_payer > 0;
+ *   });
  */
 
 /**
@@ -54,46 +72,127 @@ Calculer le nombre de factures dont la date d'échéance est dépassée (facture
  */
 ```
 
-## Requête API
+## PouchDB Operations
 
-```
-GET /api/factures?date_echeance_lt=now&reste_a_payer_gt=0&fields=id,nfacture,date_echeance,reste_a_payer
-```
+### Récupérer et compter les factures échues
 
-### Réponse (200)
-```json
-{
-  "data": [
-    {
-      "id": "uuid-1",
-      "nfacture": "F-2024-001",
-      "date_echeance": "2024-01-15",
-      "reste_a_payer": 1500.00,
-      "jours_echus": 45
-    }
-  ],
-  "meta": {
-    "total": 28
-  }
+```javascript
+async calculateImpayesActifs() {
+  const result = await db.allDocs({
+    startkey: 'facture:',
+    endkey: 'facture:\ufff0',
+    include_docs: true
+  });
+  
+  const now = new Date();
+  
+  // Filtrer les factures échues avec reste à payer
+  const facturesEchues = result.rows
+    .map(row => row.doc)
+    .filter(f => {
+      const dateEcheance = new Date(f.date_echeance);
+      return dateEcheance < now && f.reste_a_payer > 0;
+    });
+  
+  // Mettre à jour le KPI
+  this.kpis.impayesActifs = facturesEchues.length;
+  
+  // Option: stocker les détails pour affichage
+  this.facturesEchuesDetails = facturesEchues.map(f => ({
+    ...f,
+    jours_echus: Math.floor((now - new Date(f.date_echeance)) / (1000 * 60 * 60 * 24))
+  }));
 }
+```
+
+### Live Sync (mise à jour temps réel)
+
+```javascript
+// Recalculer automatiquement sur changements
+db.changes({
+  since: 'now',
+  live: true,
+  include_docs: true
+}).on('change', (change) => {
+  if (change.doc.type === 'facture') {
+    const now = new Date();
+    const dateEcheance = new Date(change.doc.date_echeance);
+    const isEchue = dateEcheance < now;
+    const isImpayee = change.doc.reste_a_payer > 0;
+    
+    if (isEchue && isImpayee) {
+      // Recalculer le KPI
+      this.calculateImpayesActifs();
+    }
+  }
+});
+```
+
+### Option: Mango Query avec pouchdb-find
+
+```javascript
+// Alternative avec pouchdb-find (nécessite index)
+const today = new Date().toISOString().substring(0, 10);
+
+const result = await db.find({
+  selector: {
+    type: { $eq: 'facture' },
+    reste_a_payer: { $gt: 0 },
+    date_echeance: { $lt: today }
+  }
+});
+
+this.kpis.impayesActifs = result.docs.length;
+```
+
+### Créer l'index Mango (optionnel)
+
+```javascript
+// Créer un index pour optimiser les requêtes
+await db.createIndex({
+  index: {
+    fields: ['type', 'reste_a_payer', 'date_echeance']
+  },
+  name: 'idx-factures-echues'
+});
 ```
 
 ## Calcul Frontend
 
 ```javascript
-// Récupération des données
-const now = new Date().toISOString();
-const response = await fetch(`/api/factures?date_echeance_lt=${now}&reste_a_payer_gt=0`);
-const { data, meta } = await response.json();
+// Récupération des données depuis PouchDB
+const result = await db.allDocs({
+  startkey: 'facture:',
+  endkey: 'facture:\ufff0',
+  include_docs: true
+});
 
-// Calcul des jours échus pour chaque facture
-const facturesAvecJours = data.map(f => ({
-  ...f,
-  jours_echus: Math.floor((new Date() - new Date(f.date_echeance)) / (1000 * 60 * 60 * 24))
-}));
+const now = new Date();
 
-// Mise à jour du KPI
-this.kpis.impayesActifs = meta.total || data.length;
+// Filtrage et comptage
+this.kpis.impayesActifs = result.rows
+  .map(row => row.doc)
+  .filter(f => {
+    const dateEcheance = new Date(f.date_echeance);
+    return dateEcheance < now && f.reste_a_payer > 0;
+  })
+  .length;
+```
+
+## Structure des documents PouchDB (facture)
+
+```javascript
+{
+  "_id": "facture:550e8400-...",
+  "_rev": "1-abc123...",
+  "type": "facture",
+  "id": "F123",
+  "nfacture": "F-2024-001",
+  "date_echeance": "2024-01-15",
+  "reste_a_payer": 1500.00,
+  "montant_total": 2500.00,
+  "contact_id": "contact:..."
+}
 ```
 
 ## Interface utilisateur
@@ -106,8 +205,20 @@ this.kpis.impayesActifs = meta.total || data.length;
 
 ## Error Handling
 
-| Code | Comportement |
-|------|--------------|
-| 401 | Redirection vers login |
-| 500 | Afficher message d'erreur |
+| Cas | Comportement |
+|-----|--------------|
+| PouchDB non disponible | Afficher "—" ou message d'erreur |
 | Empty | Afficher "0" si aucune facture échue |
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Source données | `GET /api/factures?date_echeance_lt=now&reste_a_payer_gt=0` | PouchDB local |
+| Filtrage | Côté serveur | Côté client (date + reste) |
+| Réponse | `{ data: [...], meta: { total: N } }` | `filter(...).length` |
+| Mise à jour | Rechargement manuel | Temps réel via `db.changes()` |
+| Latence | ~100-300ms | ~5-20ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |

@@ -1,4 +1,4 @@
-# Workflow : Ouvrir le PDF facture
+# Workflow : Ouvrir le PDF facture (PouchDB)
 
 ## Écran
 `impayes-detail.html`
@@ -10,38 +10,40 @@ Bouton avec `@click="openPdf()"`
 Ouvrir le PDF de la facture impayée
 
 ## Description
-- Appelle un workflow backend pour obtenir une URL sécurisée
+- Récupère l'URL PDF depuis le document PouchDB local (champ `url_pdf`)
 - Ouvre le PDF dans un nouvel onglet ou un viewer intégré
-- Le backend vérifie les permissions et génère un token temporaire si nécessaire
+- Si l'URL nécessite une authentification, utilise un token stocké dans PouchDB
 
 ## Data Model
 
 **Page Function:** `impayesDetailPage()`
 
-**Données:**
+**Données (depuis PouchDB):**
 - `impaye` - impayé en cours de visualisation (contient `url_pdf`)
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
 - `error`
 - `pdfViewerOpen`
-- `pdfUrl` - URL finale du PDF (avec token si nécessaire)
+- `pdfUrl` - URL finale du PDF
 
 ## State Changes
 
 **Modifications:**
-- `pdfUrl` ← URL sécurisée obtenue du backend
+- `pdfUrl` ← URL récupérée depuis PouchDB
 - `pdfViewerOpen` ← `true` (ou nouvel onglet)
 
-## API Calls
+## PouchDB Operations
 
-**Endpoint:** `GET /api/workflows/generate-pdf-url?impaye_id=:id`
+**Action:** Récupérer l'URL PDF depuis le document facture dans PouchDB.
 
-**Description:** Génère une URL temporaire sécurisée pour accéder au PDF
+**Méthodes utilisées:**
+- `db.get('facture:' + impayeId)` - Récupérer le document avec l'URL PDF
 
-**Table:** `impayes` (lecture du champ `url_pdf`)
+**Sync:** Les données sont déjà synchronisées avec CouchDB.
 
-**Response:** `ApiResponse<{ pdfUrl: string, token?: string, expiresAt?: string }>`
+
 
 ## Organisation des fichiers
 
@@ -60,41 +62,62 @@ frontend/
 ```javascript
 // frontend/app/impayes-detail/js/open-pdf.js
 export function openPdf() {
-  // Implementation du workflow
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
 async openPdf(impayeId) {
   this.loading = true;
   
   try {
-    // 1. Call backend to get secure PDF URL
-    const response = await fetch(`/api/workflows/generate-pdf-url?impaye_id=${impayeId}`);
-    const data = await response.json();
+    // 1. Récupérer le document depuis PouchDB
+    const doc = await db.get('facture:' + impayeId);
     
-    if (!data.success) {
-      throw new Error(data.error?.message || 'Erreur lors de la génération du lien PDF');
+    // 2. Vérifier que l'URL PDF existe
+    if (!doc.url_pdf) {
+      throw new Error('PDF non disponible pour cette facture');
     }
     
-    // 2. Open PDF in new tab
-    if (data.data?.pdfUrl) {
-      window.open(data.data.pdfUrl, '_blank');
-    } else {
-      throw new Error('URL PDF non disponible');
-    }
+    // 3. Construire l'URL finale (avec token si nécessaire)
+    // Option 1: URL directe depuis PouchDB
+    const pdfUrl = doc.url_pdf;
     
-    // Alternative: Open in integrated viewer
-    // this.pdfUrl = data.data.pdfUrl;
+    // Option 2: Si l'URL nécessite un token, le récupérer depuis PouchDB
+    // const token = await this.getPdfToken(impayeId);
+    // const pdfUrl = `${doc.url_pdf}?token=${token}`;
+    
+    // 4. Ouvrir le PDF dans un nouvel onglet
+    window.open(pdfUrl, '_blank');
+    
+    // Alternative: Ouvrir dans un viewer intégré
+    // this.pdfUrl = pdfUrl;
     // this.pdfViewerOpen = true;
     
   } catch (error) {
     console.error('Erreur ouverture PDF:', error);
-    Alpine.store('ui').addToast(error.message, 'error');
+    
+    if (error.status === 404) {
+      this.toast('Facture non trouvée dans PouchDB', 'error');
+    } else {
+      this.toast(error.message || 'Erreur lors de l\'ouverture du PDF', 'error');
+    }
   } finally {
     this.loading = false;
+  }
+}
+
+// Récupérer un token PDF depuis PouchDB (si stocké localement)
+async getPdfToken(impayeId) {
+  try {
+    // Option: récupérer un token stocké dans un document séparé
+    const tokenDoc = await dbTokens.get('pdf-token:' + impayeId);
+    return tokenDoc.token;
+  } catch (err) {
+    console.warn('Token PDF non trouvé, utilisation URL directe');
+    return null;
   }
 }
 
@@ -103,51 +126,128 @@ openPdfViewer(impayeId) {
   this.selectedImpayeId = impayeId;
   this.pdfViewerOpen = true;
   
-  // Charger l'URL dans un iframe
+  // Charger l'URL depuis PouchDB
   this.loadPdfUrl(impayeId);
 }
 
 async loadPdfUrl(impayeId) {
   try {
-    const response = await fetch(`/api/workflows/generate-pdf-url?impaye_id=${impayeId}`);
-    const data = await response.json();
+    const doc = await db.get('facture:' + impayeId);
     
-    if (data.success && data.data?.pdfUrl) {
-      this.pdfUrl = data.data.pdfUrl;
+    if (doc.url_pdf) {
+      this.pdfUrl = doc.url_pdf;
+    } else {
+      this.error = 'PDF non disponible';
     }
   } catch (error) {
     console.error('Erreur chargement PDF:', error);
+    this.error = 'Erreur lors du chargement du PDF';
   }
 }
 ```
 
-## Backend (workflow)
-
-Le workflow backend doit :
-1. Vérifier que l'utilisateur a accès à l'impayé
-2. Lire `url_pdf` depuis la table `impayes`
-3. Générer un token temporaire si nécessaire (pour les URLs protégées)
-4. Retourner l'URL finale
+## Structure du document PouchDB (facture avec URL PDF)
 
 ```javascript
-// Exemple backend
-async generatePdfUrl(impayeId, userContext) {
-  // Vérifier accès
-  const impaye = await db.readSecure('impayes', impayeId, userContext);
-  
-  if (!impaye.url_pdf) {
-    throw new Error('PDF non disponible');
-  }
-  
-  // Optionnel: générer une URL signée avec expiration
-  const signedUrl = generateSignedUrl(impaye.url_pdf, { expiresIn: '1h' });
-  
-  return { pdfUrl: signedUrl };
+{
+  "_id": "facture:550e8400-...",
+  "_rev": "1-abc123...",
+  "type": "facture",
+  "id": "F123",
+  "nfacture": "F-2024-001",
+  "url_pdf": "https://storage.marki.com/factures/F-2024-001.pdf",
+  "url_pdf_signed": "https://storage.marki.com/factures/F-2024-001.pdf?token=abc123&expires=...",
+  "reste_a_payer": 1500.00,
+  "statut": "impaye",
+  "contact_id": "contact:..."
 }
 ```
+
+## Gestion des URLs signées (optionnel)
+
+Si les PDFs nécessitent des URLs signées avec expiration :
+
+```javascript
+// Stocker le token dans PouchDB lors de la sync
+async storePdfToken(impayeId, signedUrl) {
+  const tokenDoc = {
+    _id: `pdf-token:${impayeId}`,
+    type: 'pdf-token',
+    impaye_id: impayeId,
+    url: signedUrl,
+    expires_at: new Date(Date.now() + 3600000).toISOString(), // 1h
+    created_at: new Date().toISOString()
+  };
+  
+  await dbTokens.put(tokenDoc);
+}
+
+// Vérifier et rafraîchir le token si nécessaire
+async getOrRefreshPdfToken(impayeId) {
+  try {
+    const tokenDoc = await dbTokens.get(`pdf-token:${impayeId}`);
+    
+    // Vérifier expiration
+    if (new Date(tokenDoc.expires_at) < new Date()) {
+      // Token expiré, demander un nouveau (via sync CouchDB ou API)
+      await this.refreshPdfTokenFromCouchDB(impayeId);
+      const refreshedDoc = await dbTokens.get(`pdf-token:${impayeId}`);
+      return refreshedDoc.url;
+    }
+    
+    return tokenDoc.url;
+  } catch (err) {
+    // Token non trouvé, utiliser URL directe
+    const doc = await db.get('facture:' + impayeId);
+    return doc.url_pdf;
+  }
+}
+```
+
+## Template HTML (viewer intégré optionnel)
+
+```html
+<!-- Viewer PDF intégré -->
+<div x-show="pdfViewerOpen" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-slate-900/75" @click="pdfViewerOpen = false"></div>
+  
+  <div class="relative bg-white rounded-xl shadow-2xl w-full max-w-4xl h-[80vh] flex flex-col">
+    <!-- Header -->
+    <div class="flex items-center justify-between p-4 border-b">
+      <h3 class="font-semibold text-slate-900">Facture PDF</h3>
+      <button @click="pdfViewerOpen = false" class="text-slate-400 hover:text-slate-600">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <!-- PDF Viewer -->
+    <div class="flex-1 bg-slate-100">
+      <iframe x-show="pdfUrl" :src="pdfUrl" class="w-full h-full" frameborder="0"></iframe>
+      
+      <!-- Loading -->
+      <div x-show="!pdfUrl" class="flex items-center justify-center h-full">
+        <i class="fas fa-spinner fa-spin text-slate-400 text-2xl"></i>
+      </div>
+    </div>
+  </div>
+</div>
+```
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Source URL | `GET /api/workflows/generate-pdf-url` | `db.get('facture:' + id).url_pdf` |
+| Vérification permissions | Backend | Déjà faite lors du chargement du doc |
+| Token sécurisé | Généré par backend | Stocké dans PouchDB lors de la sync |
+| Latence | ~100-300ms | ~5-20ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne si PDF déjà sync |
 
 ## Notes
 
-- L'appel backend permet de vérifier les permissions avant d'exposer l'URL
-- L'URL peut être signée avec une expiration (sécurité)
-- Le PDF peut s'ouvrir dans un nouvel onglet ou dans un viewer intégré (iframe)
+- L'URL PDF est stockée dans le document facture dans PouchDB
+- Si une URL signée avec expiration est nécessaire, elle peut être stockée dans un document séparé
+- Le sync PouchDB met à jour automatiquement l'URL si elle change côté serveur
+- Pour les PDFs protégés, considérer le stockage du token avec expiration dans PouchDB

@@ -2,22 +2,31 @@
 id: dashboard-kpi-taux-recouvrement
 type: frontend
 folder: specs/workflows/frontend/dashboard/
-description: Calculer et afficher le taux de recouvrement sur les 90 derniers jours glissants
+description: Calculer et afficher le taux de recouvrement sur les 90 derniers jours glissants via PouchDB
 depends_on: [auth-check]
 screen: dashboard
 global: false
 mockup_entry: specs/mockups/dashboard.html
 ---
 
-# KPI Taux de Recouvrement (90 jours glissants)
+# KPI Taux de Recouvrement (90 jours glissants) - PouchDB
 
 ## Description
 
-Calculer le taux de recouvrement sur une période glissante de 90 jours et afficher le pourcentage dans la card KPI.
+Calculer le taux de recouvrement sur une période glissante de 90 jours depuis **PouchDB local** et afficher le pourcentage dans la card KPI.
 
 ## Étapes
 
 ```javascript
+/**
+ * @action Configurer le listener PouchDB pour les changements
+ * @checkpoint changes-listener-active, écoute temps réel activée
+ * 
+ * Code:
+ * db.changes({ since: 'now', live: true, include_docs: true })
+ *   .on('change', (change) => { recalculer si facture modifiée });
+ */
+
 /**
  * @action Définir la période de calcul (90 jours glissants)
  * @checkpoint period-defined, dates de début et fin définies
@@ -29,8 +38,19 @@ Calculer le taux de recouvrement sur une période glissante de 90 jours et affic
  */
 
 /**
- * @action Récupérer les factures de la période via GET /api/factures?date_echeance_gte=START&date_echeance_lte=END
- * @checkpoint factures-fetched, réponse 200 avec factures de la période
+ * @action Récupérer les factures de la période via PouchDB
+ * @checkpoint factures-fetched, données locales chargées
+ * 
+ * Query:
+ * const result = await db.allDocs({
+ *   startkey: 'facture:',
+ *   endkey: 'facture:\ufff0',
+ *   include_docs: true
+ * });
+ * const factures = result.rows
+ *   .map(row => row.doc)
+ *   .filter(f => new Date(f.date_echeance) >= startDate && 
+ *               new Date(f.date_echeance) <= endDate);
  */
 
 /**
@@ -39,8 +59,7 @@ Calculer le taux de recouvrement sur une période glissante de 90 jours et affic
  * 
  * Calcul:
  * const montantTotalEchu = factures
- *   .filter(f => f.date_echeance >= startDate && f.date_echeance <= endDate)
- *   .reduce((sum, f) => sum + f.montant_total, 0);
+ *   .reduce((sum, f) => sum + (f.montant_total || 0), 0);
  */
 
 /**
@@ -48,16 +67,10 @@ Calculer le taux de recouvrement sur une période glissante de 90 jours et affic
  * @checkpoint montant-recouvre-calculated, somme des paiements reçus
  * 
  * Calcul:
- * // Option 1: Via montant_paye sur les factures
  * const montantRecouvre = factures.reduce((sum, f) => {
- *   const paye = f.montant_total - f.reste_a_payer;
+ *   const paye = (f.montant_total || 0) - (f.reste_a_payer || 0);
  *   return sum + paye;
  * }, 0);
- * 
- * // Option 2: Via table paiements
- * const montantRecouvre = paiements
- *   .filter(p => p.date_paiement >= startDate && p.date_paiement <= endDate)
- *   .reduce((sum, p) => sum + p.montant, 0);
  */
 
 /**
@@ -95,35 +108,95 @@ Calculer le taux de recouvrement sur une période glissante de 90 jours et affic
  */
 ```
 
-## Requête API
+## PouchDB Operations
 
-```
-GET /api/factures?date_echeance_gte=2023-10-15T00:00:00&date_echeance_lte=2024-01-15T23:59:59&fields=id,montant_total,reste_a_payer,date_echeance
+### Calculer le taux de recouvrement
+
+```javascript
+async calculateTauxRecouvrement() {
+  // Définir la période de 90 jours
+  const endDate = new Date();
+  const startDate = new Date();
+  startDate.setDate(startDate.getDate() - 90);
+  
+  // Récupérer les factures depuis PouchDB
+  const result = await db.allDocs({
+    startkey: 'facture:',
+    endkey: 'facture:\ufff0',
+    include_docs: true
+  });
+  
+  // Filtrer par période
+  const factures = result.rows
+    .map(row => row.doc)
+    .filter(f => {
+      const dateEcheance = new Date(f.date_echeance);
+      return dateEcheance >= startDate && dateEcheance <= endDate;
+    });
+  
+  // Calculer les montants
+  const montantTotalEchu = factures.reduce((sum, f) => sum + (f.montant_total || 0), 0);
+  const montantRecouvre = factures.reduce((sum, f) => {
+    const paye = (f.montant_total || 0) - (f.reste_a_payer || 0);
+    return sum + paye;
+  }, 0);
+  
+  // Calculer le taux
+  const tauxRecouvrement = montantTotalEchu > 0 
+    ? Math.round((montantRecouvre / montantTotalEchu) * 100)
+    : 0;
+  
+  // Mettre à jour le KPI
+  this.kpis.tauxRecouvrement = tauxRecouvrement;
+  this.kpis.montantTotalEchu = montantTotalEchu;
+  this.kpis.montantRecouvre = montantRecouvre;
+}
 ```
 
-Ou endpoint dédié :
-```
-GET /api/stats/taux-recouvrement?periode=90j&date_fin=2024-01-15
-```
+### Live Sync (mise à jour temps réel)
 
-### Réponse (200)
-```json
-{
-  "data": {
-    "taux_recouvrement": 68,
-    "montant_total_echeances": 150000.00,
-    "montant_recouvre": 102000.00,
-    "periode": {
-      "debut": "2023-10-15",
-      "fin": "2024-01-15",
-      "jours": 90
-    },
-    "periode_precedente": {
-      "taux_recouvrement": 63,
-      "variation": 5
+```javascript
+// Recalculer automatiquement sur changements
+db.changes({
+  since: 'now',
+  live: true,
+  include_docs: true
+}).on('change', (change) => {
+  if (change.doc.type === 'facture') {
+    const dateEcheance = new Date(change.doc.date_echeance);
+    const now = new Date();
+    const startDate = new Date(now.setDate(now.getDate() - 90));
+    
+    // Vérifier si la facture est dans la période de 90 jours
+    if (dateEcheance >= startDate) {
+      // Recalculer le KPI
+      this.calculateTauxRecouvrement();
     }
   }
-}
+});
+```
+
+### Option: Mango Query avec pouchdb-find
+
+```javascript
+// Alternative avec pouchdb-find (nécessite index)
+const endDate = new Date();
+const startDate = new Date();
+startDate.setDate(startDate.getDate() - 90);
+
+const result = await db.find({
+  selector: {
+    type: { $eq: 'facture' },
+    date_echeance: {
+      $gte: startDate.toISOString().substring(0, 10),
+      $lte: endDate.toISOString().substring(0, 10)
+    }
+  },
+  fields: ['montant_total', 'reste_a_payer']
+});
+
+const factures = result.docs;
+// ...même calcul que ci-dessus
 ```
 
 ## Calcul Frontend (détaillé)
@@ -131,18 +204,29 @@ GET /api/stats/taux-recouvrement?periode=90j&date_fin=2024-01-15
 ```javascript
 // Définition des périodes
 const now = new Date();
-const endDate = now.toISOString();
-const startDate = new Date(now.setDate(now.getDate() - 90)).toISOString();
+const endDate = new Date();
+const startDate = new Date(now.setDate(now.getDate() - 90));
 
-// Récupération des factures
-const response = await fetch(`/api/factures?date_echeance_gte=${startDate}&date_echeance_lte=${endDate}`);
-const { data } = await response.json();
+// Récupération des factures depuis PouchDB
+const result = await db.allDocs({
+  startkey: 'facture:',
+  endkey: 'facture:\ufff0',
+  include_docs: true
+});
+
+// Filtrage par période
+const factures = result.rows
+  .map(row => row.doc)
+  .filter(f => {
+    const dateEcheance = new Date(f.date_echeance);
+    return dateEcheance >= startDate && dateEcheance <= endDate;
+  });
 
 // Calcul du montant total échu
-const montantTotalEchu = data.reduce((sum, f) => sum + (f.montant_total || 0), 0);
+const montantTotalEchu = factures.reduce((sum, f) => sum + (f.montant_total || 0), 0);
 
-// Calcul du montant recouvré (montant_total - reste_a_payer)
-const montantRecouvre = data.reduce((sum, f) => {
+// Calcul du montant recouvré
+const montantRecouvre = factures.reduce((sum, f) => {
   const paye = (f.montant_total || 0) - (f.reste_a_payer || 0);
   return sum + paye;
 }, 0);
@@ -154,6 +238,21 @@ const tauxRecouvrement = montantTotalEchu > 0
 
 // Mise à jour du KPI
 this.kpis.tauxRecouvrement = tauxRecouvrement;
+```
+
+## Structure des documents PouchDB (facture)
+
+```javascript
+{
+  "_id": "facture:550e8400-...",
+  "_rev": "1-abc123...",
+  "type": "facture",
+  "id": "F123",
+  "date_echeance": "2024-01-15",
+  "montant_total": 2500.00,
+  "reste_a_payer": 1500.00,
+  "contact_id": "contact:..."
+}
 ```
 
 ## Interface utilisateur
@@ -174,8 +273,20 @@ this.kpis.tauxRecouvrement = tauxRecouvrement;
 
 ## Error Handling
 
-| Code | Comportement |
-|------|--------------|
-| 401 | Redirection vers login |
-| 500 | Afficher "—" ou message d'erreur |
+| Cas | Comportement |
+|-----|--------------|
+| PouchDB non disponible | Afficher "—" ou message d'erreur |
 | Division par zéro | Afficher "0%" si aucune échéance |
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Source données | `GET /api/factures?date_echeance_gte=...` | PouchDB local |
+| Filtrage | Côté serveur | Côté client (date) |
+| Réponse | `{ data: { taux_recouvrement: N } }` | Calcul côté client |
+| Mise à jour | Rechargement manuel | Temps réel via `db.changes()` |
+| Latence | ~200-500ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |

@@ -1,4 +1,4 @@
-# Workflow : Télécharger facture mission
+# Workflow : Télécharger facture mission (PouchDB)
 
 ## Écran
 `portail-mission.html`
@@ -10,16 +10,17 @@ Bouton avec `@click="downloadFacture()"`
 Télécharger le PDF de la facture de l'impayé
 
 ## Description
-- Génère un lien signé HMAC pour accéder au PDF
+- Récupère les données de l'impayé depuis PouchDB
+- Génère un lien signé HMAC via Cloud Function pour accéder au PDF
 - Lance le téléchargement du PDF
-- Même mécanisme que `portail-client/download-facture.md`
 
 ## Data Model
 **Page Function:** `portailMissionPage()`
 
-**Données:**
-- `impaye` - l'impayé/facture en cours de consultation
-- `mission`
+**Données (depuis PouchDB):**
+- `impaye` - l'impayé/facture en cours de consultation (depuis PouchDB)
+- `mission` - mission liée (depuis PouchDB)
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -30,6 +31,16 @@ Télécharger le PDF de la facture de l'impayé
 **Modifications:**
 - `loading` → `true` → `false`
 - `error` ← message si échec
+
+## PouchDB Operations
+
+**Action:** Les données de l'impayé et de la mission sont récupérées depuis PouchDB.
+
+**Méthodes utilisées:**
+- `db.get('facture:' + impayeId)` - Récupérer les détails de l'impayé
+- `db.get('mission:' + missionId)` - Récupérer les détails de la mission (optionnel)
+
+**Note importante :** Les fichiers PDF binaires ne sont pas stockés dans PouchDB. Seules les métadonnées JSON le sont. Le téléchargement PDF passe toujours par la Cloud Function.
 
 ## API Calls
 
@@ -67,7 +78,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/portail-mission/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/portail-mission/js/download-facture.js`
@@ -76,7 +87,7 @@ frontend/
 ```javascript
 // frontend/app/portail-mission/js/download-facture.js
 export function downloadFacture() {
-  // Implementation du workflow
+  // Implementation avec données PouchDB
 }
 ```
 
@@ -89,7 +100,12 @@ async downloadFacture() {
   this.error = null;
   
   try {
-    // 2. Call Cloud Function to generate signed link
+    // 2. Optionnel: Récupérer/récupérer les données depuis PouchDB
+    // const impayeDoc = await db.get('facture:' + this.impaye.id);
+    // const impayeData = impayeDoc;
+    
+    // 3. Call Cloud Function to generate signed link
+    // Note: Cet appel API est conservé car les PDFs ne sont pas stockés dans PouchDB
     const response = await fetch('/functions/generatePdfLink', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -102,17 +118,17 @@ async downloadFacture() {
       throw new Error(data.error?.message || 'Impossible de générer le lien de téléchargement');
     }
     
-    // 3. Open PDF in new tab or trigger download
+    // 4. Open PDF in new tab or trigger download
     window.open(data.data.url, '_blank');
     
-    // 4. Notify success
-    Alpine.store('ui').addToast('Téléchargement du PDF...', 'success');
+    // 5. Notify success
+    this.toast('Téléchargement du PDF...', 'success');
     
   } catch (error) {
     this.error = error.message;
-    Alpine.store('ui').addToast(error.message, 'error');
+    this.toast(error.message, 'error');
   } finally {
-    // 5. Reset loading
+    // 6. Reset loading
     this.loading = false;
   }
 }
@@ -120,7 +136,20 @@ async downloadFacture() {
 
 ## Notes
 
+- **Données JSON** : Les métadonnées de l'impayé/mission sont stockées dans PouchDB
+- **Fichiers PDF** : Les PDFs binaires restent sur le backend et sont générés à la demande via Cloud Function
 - Le lien PDF est signé avec HMAC-SHA256 et expire après 24h
 - Le secret utilisé est `PDF_SIGNING_SECRET` (côté backend)
-- Le lien pointe vers `/api/pdf/{impayeId}?sig=xxx&expires=xxx`
 - Si le lien est expiré, le serveur retourne une erreur 403
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Données impayé/mission | API backend | PouchDB local |
+| Téléchargement PDF | Cloud Function | **Conservé** - Cloud Function |
+| Affichage métadonnées | API `/api/impayes/{id}` | Données PouchDB déjà chargées |
+| Latence affichage | ~200-500ms | ~10-50ms |
+| Offline | ❌ Impossible | ✅ Métadonnées consultables offline, PDF nécessite connexion |

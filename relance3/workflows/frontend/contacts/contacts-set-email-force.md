@@ -2,7 +2,7 @@
 id: contacts-set-email-force
 type: frontend
 folder: specs/workflows/frontend/contacts/
-description: Définit un email forcé pour un contact via modale avec recherche parmi les contacts existants
+description: Définit un email forcé pour un contact via PouchDB avec recherche parmi les contacts existants
 depends_on: [contacts-load-all]
 screen: contacts
 global: false
@@ -18,7 +18,7 @@ L'utilisateur peut :
 1. Saisir manuellement un email
 2. Chercher et sélectionner un autre contact existant pour hériter de son email
 
-L'email forcé remplace l'email principal lors de l'envoi des relances.
+La modification est sauvegardée **localement dans PouchDB** puis synchronisée avec CouchDB.
 
 ## Élément déclencheur
 
@@ -51,6 +51,7 @@ Bouton "Email forcé" dans :
  *   - Type M (entreprises) ou P sans entreprise
  *   - Non blacklistés
  *   - Exclut le contact courant
+ * Source: PouchDB local (contacts déjà chargés en mémoire)
  * Output: emailForceEntreprises[] + emailForcePersonnes[]
  */
 
@@ -67,21 +68,85 @@ Bouton "Email forcé" dans :
 /**
  * @action Sauvegarder l'email forcé
  * @checkpoint email-force-saved
- * API: PUT /api/contacts/{id} 
- * Payload: { email_force: emailForceValue }
+ * 
+ * PouchDB:
+ * 1. Récupérer le document: db.get('contact:{id}')
+ * 2. Modifier: doc.emailForce = emailForceValue
+ * 3. Sauvegarder: db.put(doc)
+ * 
+ * Auto-sync: Le changement est poussé vers CouchDB
+ * 
  * Success: 
- *   - Met à jour le contact localement
+ *   - Met à jour le contact localement (via changes listener)
  *   - Ferme la modale
  *   - Toast success
- * Error: Toast error, garde modale ouverte
+ * Error: Toast error (conflit de révision), garde modale ouverte
  */
 ```
 
-## API
+## PouchDB Operations
 
-| Méthode | Endpoint | Payload | Response |
-|---------|----------|---------|----------|
-| PUT | `/api/contacts/{id}` | `{ email_force: string }` | `ApiResponse<Contact>` |
+### Sauvegarder l'email forcé
+
+```javascript
+// Validation email
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+// Sauvegarder via PouchDB
+async saveEmailForce() {
+  if (!this.selectedContact || !this.emailForceValue) return;
+  
+  if (!isValidEmail(this.emailForceValue)) {
+    this.toast('Email invalide', 'error');
+    return;
+  }
+  
+  try {
+    // Récupérer le document avec sa révision
+    const doc = await db.get('contact:' + this.selectedContact.id);
+    
+    // Modifier l'email forcé
+    doc.emailForce = this.emailForceValue;
+    doc.emailForceUpdatedAt = new Date().toISOString();
+    
+    // Sauvegarder localement
+    const response = await db.put(doc);
+    // response: { ok: true, id: 'contact:...', rev: '2-xxx...' }
+    
+    // Succès - l'UI se met à jour automatiquement via changes listener
+    this.showEmailForceModal = false;
+    this.selectedContact = null;
+    this.emailForceValue = '';
+    this.toast('Email forcé enregistré');
+    
+  } catch (err) {
+    if (err.status === 409) {
+      // Conflit: recharger et réessayer
+      this.toast('Conflit de version, veuillez réessayer', 'error');
+    } else {
+      this.toast('Erreur: ' + err.message, 'error');
+    }
+  }
+}
+```
+
+### Supprimer l'email forcé
+
+```javascript
+async removeEmailForce(contactId) {
+  try {
+    const doc = await db.get('contact:' + contactId);
+    delete doc.emailForce;
+    delete doc.emailForceUpdatedAt;
+    await db.put(doc);
+    this.toast('Email forcé supprimé');
+  } catch (err) {
+    this.toast('Erreur: ' + err.message, 'error');
+  }
+}
+```
 
 ## State
 
@@ -94,22 +159,38 @@ openSetEmailForce(contact) {
   this.emailForceSearch = '';
 }
 
-// Sauvegarder
-saveEmailForce() {
-  if (this.selectedContact && this.emailForceValue) {
-    this.selectedContact.emailForce = this.emailForceValue;
-    // API call...
+// Sauvegarder (PouchDB version)
+async saveEmailForce() {
+  if (!this.selectedContact || !this.emailForceValue) return;
+  
+  // Validation
+  if (!isValidEmail(this.emailForceValue)) {
+    this.toast('Email invalide', 'error');
+    return;
+  }
+  
+  try {
+    const doc = await db.get('contact:' + this.selectedContact.id);
+    doc.emailForce = this.emailForceValue;
+    await db.put(doc);
+    
+    // Réinitialiser
     this.showEmailForceModal = false;
     this.selectedContact = null;
     this.emailForceValue = '';
+    this.toast('Email forcé enregistré');
+    
+  } catch (err) {
+    this.toast('Erreur: ' + err.message, 'error');
   }
 }
 ```
 
-## Computed Properties - Recherche
+## Computed Properties - Recherche (locale)
 
 ```javascript
 // Entreprises disponibles pour l'email forcé
+// Source: contacts déjà en mémoire (chargés par contacts-load-all)
 get emailForceEntreprises() {
   if (!this.emailForceSearch) {
     return this.contacts
@@ -196,9 +277,9 @@ get emailForcePersonnes() {
 ## Checkpoints attendus
 
 1. `email-force-modal-opened` → Modale ouverte avec contact
-2. `email-force-search` → Recherche lancée
+2. `email-force-search` → Recherche lancée (filtrage local)
 3. `email-force-contact-selected` → Contact sélectionné dans la liste
-4. `email-force-saved` → Email forcé enregistré
+4. `email-force-saved` → Email forcé sauvegardé dans PouchDB
 
 ## Validation
 
@@ -207,7 +288,45 @@ get emailForcePersonnes() {
 | emailForceValue | Format email valide | "Email invalide" |
 | emailForceValue | Requis | "L'email est requis" |
 
+## Exemple de données avant/après
+
+```javascript
+// Avant (dans PouchDB)
+{
+  "_id": "contact:550e8400-...",
+  "_rev": "1-abc123...",
+  "type": "contact",
+  "id": "M3",
+  "nomComplet": "ACME Corporation",
+  "email": "contact@acme.fr",
+  "emailForce": null
+}
+
+// Après sauvegarde (dans PouchDB, puis sync CouchDB)
+{
+  "_id": "contact:550e8400-...",
+  "_rev": "2-def456...",  // ← Nouvelle révision
+  "type": "contact",
+  "id": "M3",
+  "nomComplet": "ACME Corporation",
+  "email": "contact@acme.fr",
+  "emailForce": "finance@acme.fr",
+  "emailForceUpdatedAt": "2026-07-21T14:30:00.000Z"
+}
+```
+
 ## Fichiers liés
 
 - Mockup: `specs/mockups/contacts.html`
 - Composant: `app/templates/contacts/workflows/set-email-force.html`
+
+---
+
+## Migration depuis l'ancienne API
+
+| Avant (API) | Après (PouchDB) |
+|-------------|-----------------|
+| `PUT /api/contacts/{id}` avec `email_force` | `db.get('contact:{id}')` puis `db.put(doc)` |
+| Recherche contacts via API | Recherche locale sur `this.contacts` déjà en mémoire |
+| Pas de révision | Gestion `_rev` obligatoire |
+| Mise à jour UI via response | UI mise à jour via `changes` event PouchDB |

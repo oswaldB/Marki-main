@@ -2,7 +2,7 @@
 id: dashboard-initial-load
 type: frontend
 folder: specs/workflows/frontend/dashboard/
-description: Orchestrateur du chargement initial - coordonne tous les workflows KPI, graphique et événements
+description: Orchestrateur du chargement initial via PouchDB - coordonne tous les workflows KPI, graphique et événements
 depends_on: [
   dashboard-kpi-factures-en-attente,
   dashboard-kpi-impayes-actifs,
@@ -18,15 +18,33 @@ global: false
 mockup_entry: specs/mockups/dashboard.html
 ---
 
-# dashboard-initial-load : Orchestrateur Dashboard
+# dashboard-initial-load : Orchestrateur Dashboard (PouchDB)
 
 ## Description
 
-Workflow orchestrateur qui coordonne le chargement initial du dashboard. Déclenche tous les workflows KPI et le graphique en parallèle, puis affiche le résultat.
+Workflow orchestrateur qui coordonne le chargement initial du dashboard depuis **PouchDB local**.
+Déclenche tous les workflows KPI et le graphique en parallèle, puis affiche le résultat.
+
+Toutes les données proviennent de PouchDB (pas d'appels API backend).
 
 ## Workflow Orchestrateur
 
 ```javascript
+/**
+ * @action Initialiser PouchDB et vérifier le sync
+ * @checkpoint pouchdb-initialized, bases locales prêtes
+ * 
+ * Code:
+ * this.dbFactures = new PouchDB('marki-factures');
+ * this.dbContacts = new PouchDB('marki-contacts');
+ * this.dbEvents = new PouchDB('marki-events');
+ * 
+ * // Configurer le sync avec CouchDB
+ * this.dbFactures.sync('https://admin:admin@dev.markidiags.com/data/marki', {
+ *   live: true, retry: true
+ * });
+ */
+
 /**
  * @action Afficher le spinner de chargement global
  * @checkpoint loading-shown, état loading=true visible
@@ -36,7 +54,7 @@ Workflow orchestrateur qui coordonne le chargement initial du dashboard. Déclen
  * @action Déclencher tous les workflows KPI en parallèle
  * @checkpoint kpis-workflows-triggered, tous les workflows KPI lancés
  * 
- * Workflows déclenchés:
+ * Workflows déclenchés (tous utilisent PouchDB):
  * - dashboard-kpi-factures-en-attente
  * - dashboard-kpi-impayes-actifs
  * - dashboard-kpi-montant-total
@@ -51,16 +69,21 @@ Workflow orchestrateur qui coordonne le chargement initial du dashboard. Déclen
  */
 
 /**
+ * @action Déclencher le workflow events-manager
+ * @checkpoint events-workflow-triggered, événements chargés depuis PouchDB
+ */
+
+/**
  * @action Attendre la complétion de tous les workflows
  * @checkpoint all-workflows-completed, tous les KPI et graphique prêts
  */
 
 /**
- * @action Calculer le top débiteurs côté frontend
+ * @action Calculer le top débiteurs depuis PouchDB
  * @checkpoint top-debiteurs-calculated, tri par montant décroissant
  * 
- * Note: Le top débiteurs est calculé ici car il dépend des données
- * déjà chargées par les workflows KPI (factures).
+ * Note: Le top débiteurs est calculé ici en agrégeant les données
+ * des factures impayées depuis PouchDB.
  */
 
 /**
@@ -71,54 +94,150 @@ Workflow orchestrateur qui coordonne le chargement initial du dashboard. Déclen
 
 ## Dépendances
 
-| Workflow | Description | Output dans state |
+| Workflow | Description | Source de données |
 |----------|-------------|-------------------|
-| dashboard-kpi-factures-en-attente | Calcule `kpis.facturesEnAttente` | `kpis.facturesEnAttente` |
-| dashboard-kpi-impayes-actifs | Calcule `kpis.impayesActifs` | `kpis.impayesActifs` |
-| dashboard-kpi-montant-total | Calcule `kpis.montantTotal` | `kpis.montantTotal` |
-| dashboard-kpi-relances-jour | Calcule `kpis.relancesJour` | `kpis.relancesJour` |
-| dashboard-kpi-taux-recouvrement | Calcule `kpis.tauxRecouvrement` | `kpis.tauxRecouvrement` |
-| dashboard-kpi-anciennete-tranches | Calcule `kpis.anciennete.*` | `kpis.anciennete` |
-| dashboard-chart-evolution-impayes | Initialise Chart.js | `chart`, `chartData` |
+| dashboard-kpi-factures-en-attente | Calcule `kpis.facturesEnAttente` | PouchDB `facture:` |
+| dashboard-kpi-impayes-actifs | Calcule `kpis.impayesActifs` | PouchDB `facture:` |
+| dashboard-kpi-montant-total | Calcule `kpis.montantTotal` | PouchDB `facture:` |
+| dashboard-kpi-relances-jour | Calcule `kpis.relancesJour` | PouchDB `relance:` |
+| dashboard-kpi-taux-recouvrement | Calcule `kpis.tauxRecouvrement` | PouchDB `facture:` |
+| dashboard-kpi-anciennete-tranches | Calcule `kpis.anciennete.*` | PouchDB `facture:` |
+| dashboard-chart-evolution-impayes | Initialise Chart.js | PouchDB `facture:` |
+| dashboard-events-manager | Charge les événements | PouchDB `event:` |
 
-## API Calls (appelés par les workflows enfants)
-
-| Endpoint | Utilisé par |
-|----------|-------------|
-| `GET /api/factures?reste_a_payer_gt=0` | kpi-factures-en-attente, kpi-montant-total |
-| `GET /api/factures?date_echeance_lt=now&reste_a_payer_gt=0` | kpi-impayes-actifs, kpi-anciennete-tranches |
-| `GET /api/relances?date_envoi=today` | kpi-relances-jour |
-| `GET /api/factures?date_echeance_gte=START&date_echeance_lte=END` | kpi-taux-recouvrement |
-| `GET /api/factures?date_facture_gte=START&date_facture_lte=END` | chart-evolution-impayes |
-| `GET /api/events?limit=10` | initial-load (événements) |
-| `GET /api/events?type=sync&limit=1` | initial-load (dernière synchro) |
-
-## Top Débiteurs (calculé ici)
+## PouchDB Initialization
 
 ```javascript
-// Calcul du top débiteurs après chargement des factures
-const topDebtors = factures
-  .filter(f => f.reste_a_payer > 0)
-  .reduce((acc, f) => {
-    const existing = acc.find(d => d.payer_id === f.payer_id);
-    if (existing) {
-      existing.montant += f.reste_a_payer;
-      existing.impayesCount++;
-      existing.jours = Math.max(existing.jours, calculateJours(f.date_echeance));
-    } else {
-      acc.push({
-        id: f.payer_id,
-        name: f.payer_name,
-        initials: getInitials(f.payer_name),
-        jours: calculateJours(f.date_echeance),
-        montant: f.reste_a_payer,
-        impayesCount: 1
-      });
+async initPouchDB() {
+  // Initialiser les bases
+  this.dbFactures = new PouchDB('marki-factures');
+  this.dbContacts = new PouchDB('marki-contacts');
+  this.dbRelances = new PouchDB('marki-relances');
+  this.dbEvents = new PouchDB('marki-events');
+  
+  // Configurer le sync avec CouchDB distant
+  const remoteUrl = 'https://admin:admin@dev.markidiags.com/data';
+  
+  this.dbFactures.sync(remoteUrl + '/marki', { live: true, retry: true });
+  this.dbContacts.sync(remoteUrl + '/marki', { live: true, retry: true });
+  this.dbRelances.sync(remoteUrl + '/marki', { live: true, retry: true });
+  this.dbEvents.sync(remoteUrl + '/marki-events', { live: true, retry: true });
+  
+  // Vérifier si données locales existent
+  const facturesInfo = await this.dbFactures.info();
+  this.hasLocalData = facturesInfo.doc_count > 0;
+}
+```
+
+## Top Débiteurs (calculé depuis PouchDB)
+
+```javascript
+// Calcul du top débiteurs après chargement des factures depuis PouchDB
+async calculateTopDebtors() {
+  // Récupérer toutes les factures impayées depuis PouchDB
+  const result = await this.dbFactures.allDocs({
+    startkey: 'facture:',
+    endkey: 'facture:\ufff0',
+    include_docs: true
+  });
+  
+  const factures = result.rows
+    .map(row => row.doc)
+    .filter(f => f.reste_a_payer > 0);
+  
+  // Agréger par contact
+  const debtorsMap = factures.reduce((acc, f) => {
+    const payerId = f.contact_id || f.payer_id;
+    const payerName = f.payer_name || f.nom_contact;
+    
+    if (!acc[payerId]) {
+      acc[payerId] = {
+        id: payerId,
+        name: payerName,
+        initials: this.getInitials(payerName),
+        montant: 0,
+        impayesCount: 0,
+        jours: 0
+      };
     }
+    
+    acc[payerId].montant += f.reste_a_payer;
+    acc[payerId].impayesCount++;
+    acc[payerId].jours = Math.max(
+      acc[payerId].jours,
+      this.calculateJours(f.date_echeance)
+    );
+    
     return acc;
-  }, [])
-  .sort((a, b) => b.montant - a.montant)
-  .slice(0, 10);
+  }, {});
+  
+  // Trier et limiter
+  this.topDebtors = Object.values(debtorsMap)
+    .sort((a, b) => b.montant - a.montant)
+    .slice(0, 10);
+}
+
+// Utilitaire
+getInitials(name) {
+  if (!name) return '?';
+  return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+}
+
+calculateJours(dateEcheance) {
+  if (!dateEcheance) return 0;
+  const echeance = new Date(dateEcheance);
+  const now = new Date();
+  return Math.max(0, Math.floor((now - echeance) / (1000 * 60 * 60 * 24)));
+}
+```
+
+## Sync Status (optionnel)
+
+```javascript
+// Afficher le statut de synchronisation
+showSyncStatus() {
+  this.dbFactures.sync(remoteUrl + '/marki', { live: true, retry: true })
+    .on('change', () => { this.syncStatus = 'syncing'; })
+    .on('paused', () => { this.syncStatus = 'idle'; })
+    .on('active', () => { this.syncStatus = 'syncing'; })
+    .on('denied', (err) => { 
+      this.syncStatus = 'error';
+      console.error('Sync denied:', err);
+    })
+    .on('error', (err) => { 
+      this.syncStatus = 'error';
+      console.error('Sync error:', err);
+    });
+}
+```
+
+## Flow complet
+
+```javascript
+async initDashboard() {
+  this.loading = true;
+  
+  try {
+    // 1. Initialiser PouchDB
+    await this.initPouchDB();
+    
+    // 2. Déclencher tous les workflows en parallèle
+    await Promise.all([
+      this.loadKPIs(),
+      this.initChart(),
+      this.loadEvents(),
+      this.calculateTopDebtors()
+    ]);
+    
+    // 3. Afficher le dashboard
+    this.loading = false;
+    
+  } catch (err) {
+    console.error('Erreur chargement dashboard:', err);
+    this.error = err.message;
+    this.loading = false;
+  }
+}
 ```
 
 ## Mockups de référence
@@ -129,5 +248,18 @@ const topDebtors = factures
 
 - Ce workflow est un **orchestrateur**, il ne fait pas de calculs métier directement
 - Les calculs métier sont délégués aux workflows KPI dédiés
-- Le top débiteurs est exceptionnellement calculé ici car il nécessite 
-  les données déjà chargées par les workflows KPI
+- Le top débiteurs est calculé ici en agrégeant les données PouchDB
+- **Toutes les données proviennent de PouchDB local**, pas d'appels API
+- Le sync avec CouchDB se fait en arrière-plan
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Source données | `GET /api/factures`, `/api/relances`, etc. | PouchDB local avec sync |
+| Latence initiale | ~1-2s (plusieurs appels API) | ~100-500ms (lecture locale) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |
+| Mise à jour temps réel | Polling/WebSocket | `db.changes()` automatique |
+| Top débiteurs | Calcul backend | Calcul frontend depuis PouchDB |

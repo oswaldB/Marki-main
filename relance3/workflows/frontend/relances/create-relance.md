@@ -1,4 +1,4 @@
-# Workflow : Créer une relance
+# Workflow : Créer une relance (PouchDB)
 
 ## Écran
 `relances.html`
@@ -7,19 +7,22 @@
 Bouton avec `@click="createRelance()"` dans le modal de nouvelle relance
 
 ## Action
-Créer une nouvelle relance en base de données
+Créer une nouvelle relance dans PouchDB
 
 ## Description
 - Valide les données du formulaire
-- Crée la relance via API
+- Crée le document relance dans PouchDB
+- La relance est synchronisée automatiquement avec CouchDB
 - Rafraîchit la liste des relances
 - Ferme le modal
 
 ## Data Model
 **Page Function:** `relancesPage()`
 
-**Données:**
+**Données (depuis PouchDB):**
 - `newRelance` - données du formulaire (contact_id, sequence_id, impayes_ids, etc.)
+- `relances` - liste des relances existantes
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -30,19 +33,25 @@ Créer une nouvelle relance en base de données
 
 **Modifications:**
 - `loading` → `true` → `false`
-- `relances` ← nouvelle relance ajoutée
+- `relances` ← nouvelle relance ajoutée (le changes listener mettra aussi à jour)
 - `showNewRelanceModal` → `false`
 
-## API Calls
+## PouchDB Operations
 
-**`POST /api/relances`** - Crée une nouvelle relance
+**Action:** Créer un nouveau document relance dans PouchDB.
 
-**Payload:**
-```json
+**Méthodes utilisées:**
+- `db.post(doc)` - Créer le document avec un ID auto-généré
+- OU `db.put(doc)` si on génère l'ID manuellement
+
+**Structure du document:**
+```javascript
 {
-  "contact_id": "cont_abc123",
-  "sequence_id": "seq_def456",
-  "impaye_ids": ["imp_001", "imp_002"],
+  "_id": "relance:550e8400-e29b-41d4-a716-446655440000",
+  "type": "relance",
+  "contact_id": "contact:abc123",
+  "sequence_id": "sequence:def456",
+  "impaye_ids": ["facture:imp_001", "facture:imp_002"],
   "statut": "brouillon",
   "objet": "Relance factures impayées",
   "corps": "Contenu de l'email...",
@@ -50,7 +59,7 @@ Créer une nouvelle relance en base de données
 }
 ```
 
-**Response:** `ApiResponse<Relance>`
+**Sync:** La création est automatiquement synchronisée avec CouchDB.
 
 ## Organisation des fichiers
 
@@ -67,7 +76,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/relances/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/relances/js/create-relance.js`
@@ -75,18 +84,18 @@ frontend/
 
 ```javascript
 // frontend/app/relances/js/create-relance.js
-export function createRelance() {
-  // Implementation du workflow
+export async function createRelance() {
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
 async createRelance() {
   // 1. Validate form
   if (!this.newRelance.contact_id || !this.newRelance.sequence_id) {
-    Alpine.store('ui').addToast('Veuillez remplir tous les champs obligatoires', 'error');
+    this.toast('Veuillez remplir tous les champs obligatoires', 'error');
     return;
   }
   
@@ -95,42 +104,76 @@ async createRelance() {
   this.error = null;
   
   try {
-    // 3. Prepare payload
-    const payload = {
-      ...this.newRelance,
+    // 3. Préparer le document PouchDB
+    const newRelanceDoc = {
+      _id: 'relance:' + this.generateUUID(),
+      type: 'relance',
+      contact_id: this.newRelance.contact_id,
+      sequence_id: this.newRelance.sequence_id,
+      impaye_ids: this.newRelance.impaye_ids || [],
       statut: 'brouillon',
-      created_at: new Date().toISOString()
+      objet: this.newRelance.objet || '',
+      corps: this.newRelance.corps || '',
+      created_at: new Date().toISOString(),
+      updated_at: new Date().toISOString()
     };
     
-    // 4. Call API
-    const response = await fetch('/api/relances', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
+    // 4. Créer dans PouchDB
+    const response = await db.put(newRelanceDoc);
+    // response: { ok: true, id: 'relance:...', rev: '1-xxx...' }
     
-    const data = await response.json();
-    
-    if (!data.success) {
-      throw new Error(data.error?.message || 'Erreur lors de la création');
-    }
-    
-    // 5. Update local array
-    this.relances.unshift(data.data);
+    // 5. Mettre à jour l'UI (le changes listener mettra aussi à jour)
+    this.relances.unshift({ ...newRelanceDoc, _rev: response.rev });
     
     // 6. Close modal
     this.showNewRelanceModal = false;
     this.newRelance = this.getInitialState();
     
     // 7. Notify
-    Alpine.store('ui').addToast('Relance créée avec succès', 'success');
+    this.toast('Relance créée avec succès', 'success');
     
   } catch (error) {
     this.error = error.message;
-    Alpine.store('ui').addToast(error.message, 'error');
+    this.toast(error.message, 'error');
   } finally {
     this.loading = false;
   }
+}
+
+generateUUID() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
+getInitialState() {
+  return {
+    contact_id: null,
+    sequence_id: null,
+    impaye_ids: [],
+    objet: '',
+    corps: ''
+  };
+}
+```
+
+## Structure du document PouchDB créé
+
+```javascript
+{
+  "_id": "relance:550e8400-e29b-41d4-a716-446655440000",
+  "_rev": "1-abc123...",
+  "type": "relance",
+  "contact_id": "contact:abc123",
+  "sequence_id": "sequence:def456",
+  "impaye_ids": ["facture:imp_001", "facture:imp_002"],
+  "statut": "brouillon",
+  "objet": "Relance factures impayées",
+  "corps": "Madame, Monsieur,\n\nNous vous rappelons...",
+  "created_at": "2026-07-12T10:00:00Z",
+  "updated_at": "2026-07-12T10:00:00Z"
 }
 ```
 
@@ -139,3 +182,16 @@ async createRelance() {
 - La relance est créée avec le statut `brouillon` par défaut
 - L'utilisateur peut ensuite l'éditer avant envoi
 - Voir workflow `send-relance.md` pour l'envoi effectif
+- L'ID est généré côté client avec UUID pour éviter les conflits
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Requête | `POST /api/relances` | `db.put(doc)` |
+| ID génération | Backend auto-incrément | UUID côté client |
+| Réponse | `ApiResponse<Relance>` | `{ ok, id, rev }` |
+| Latence | ~100-300ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Création offline, sync reportée |

@@ -2,18 +2,18 @@
 id: relances-supprimer
 type: frontend
 folder: specs/workflows/frontend/relances/
-description: Supprimer une relance en brouillon ou à valider
+description: Supprimer une relance en brouillon ou à valider depuis PouchDB
 depends_on: [relances-details]
 screen: relances
 global: false
 mockup_entry: specs/mockups/relances.html
 ---
 
-# relances-supprimer : Supprimer une relance
+# relances-supprimer : Supprimer une relance (PouchDB)
 
 ## Description
 
-Permettre la suppression définitive d'une relance en statut "brouillon" ou "à valider", avec confirmation et vérification des impacts.
+Permettre la suppression définitive d'une relance en statut "brouillon" ou "à valider" depuis PouchDB, avec confirmation et vérification des impacts.
 
 ## Étapes
 
@@ -36,8 +36,18 @@ Permettre la suppression définitive d'une relance en statut "brouillon" ou "à 
  */
 
 /**
- * @action Vérifier s'il y a des dépendances (impayés liés uniquement à cette relance)
+ * @action Vérifier s'il y a des dépendances dans PouchDB (impayés liés uniquement à cette relance)
  * @checkpoint dependencies-checked, vérification effectuée
+ * 
+ * **Query PouchDB** :
+ * const impayesLie = await db.allDocs({
+ *   startkey: 'facture:',
+ *   endkey: 'facture:\ufff0',
+ *   include_docs: true
+ * });
+ * const dependants = impayesLie.rows
+ *   .map(r => r.doc)
+ *   .filter(f => f.relance_id === relanceId);
  * 
  * Si des impayés sont liés uniquement à cette relance :
  * - Afficher un avertissement
@@ -61,10 +71,23 @@ Permettre la suppression définitive d'une relance en statut "brouillon" ou "à 
  */
 
 /**
- * @action Appeler DELETE /api/relances/:id
- * @checkpoint api-called, requête de suppression envoyée
- * @api DELETE /api/relances/:id
- * @response { success: true, deleted_id: "..." }
+ * @action Supprimer la relance de PouchDB
+ * @checkpoint pouchdb-deleted, suppression locale effectuée
+ * 
+ * **Code** :
+ * const doc = await db.get('relance:' + id);
+ * await db.remove(doc);
+ */
+
+/**
+ * @action Mettre à jour les impayés liés (détacher la relance)
+ * @checkpoint impayes-updated, relance_id retiré des factures
+ * 
+ * **Code** :
+ * for (const impaye of dependants) {
+ *   delete impaye.relance_id;
+ *   await db.put(impaye);
+ * }
  */
 
 /**
@@ -83,17 +106,86 @@ Permettre la suppression définitive d'une relance en statut "brouillon" ou "à 
  */
 
 /**
- * @action Logger la suppression dans l'historique système
- * @checkpoint deletion-logged, entrée d'audit créée
+ * @action Créer un event dans PouchDB pour l'historique
+ * @checkpoint event-created, entrée d'audit créée
+ * 
+ * **Code** :
+ * await dbEvents.put({
+ *   _id: 'event:' + generateUUID(),
+ *   type: 'event',
+ *   event_type: 'relance_deleted',
+ *   title: 'Relance supprimée',
+ *   description: `Relance ${relanceId} supprimée`,
+ *   created_at: new Date().toISOString(),
+ *   metadata: { relance_id: relanceId }
+ * });
  */
 ```
 
-## API Calls
+## PouchDB Operations
 
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
-| DELETE | `/api/relances/:id` | Suppression de la relance |
-| GET | `/api/impayes?relance_id=:id` | Vérification des dépendances |
+### Suppression de la relance
+
+```javascript
+async supprimerRelance(id) {
+  try {
+    // 1. Récupérer le document avec sa révision
+    const doc = await db.get('relance:' + id);
+    
+    // 2. Vérifier le statut
+    if (!['brouillon', 'a_valider'].includes(doc.statut)) {
+      throw new Error('Cette relance ne peut pas être supprimée');
+    }
+    
+    // 3. Récupérer les impayés liés
+    const result = await db.allDocs({
+      startkey: 'facture:',
+      endkey: 'facture:\ufff0',
+      include_docs: true
+    });
+    
+    const dependants = result.rows
+      .map(r => r.doc)
+      .filter(f => f.relance_id === id);
+    
+    // 4. Supprimer la relance
+    await db.remove(doc);
+    
+    // 5. Détacher les impayés
+    for (const impaye of dependants) {
+      delete impaye.relance_id;
+      impaye.updated_at = new Date().toISOString();
+      await db.put(impaye);
+    }
+    
+    // 6. Créer un event d'historique
+    await dbEvents.put({
+      _id: 'event:' + this.generateUUID(),
+      type: 'event',
+      event_type: 'relance_deleted',
+      title: 'Relance supprimée',
+      description: `Relance ${doc.objet || id} supprimée`,
+      created_at: new Date().toISOString(),
+      by_marki: false,
+      metadata: { 
+        relance_id: id,
+        impayes_detached: dependants.length
+      }
+    });
+    
+    // 7. Mettre à jour l'UI
+    this.relances = this.relances.filter(r => r._id !== 'relance:' + id);
+    
+    return { success: true };
+    
+  } catch (error) {
+    if (error.status === 409) {
+      throw new Error('Conflit de version, veuillez réessayer');
+    }
+    throw error;
+  }
+}
+```
 
 ## Conditions de suppression
 
@@ -128,10 +220,24 @@ mais conservés dans le système.
 ## Impact sur les impayés liés
 
 Lors de la suppression :
-- Les impayés liés perdent leur association à cette relance
+- Les impayés liés perdent leur association à cette relance (`relance_id` supprimé)
 - Ils redeviennent disponibles pour une nouvelle relance
 - Leur statut revient à "non relancé"
+- Les modifications sont synchronisées avec CouchDB
 
 ## Mockups de référence
 
 - `specs/mockups/relances.html` (modal suppression)
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Suppression relance | `DELETE /api/relances/:id` | `db.get()` + `db.remove()` |
+| Vérification dépendances | `GET /api/impayes?relance_id=:id` | `db.allDocs()` + filtrage côté client |
+| Mise à jour impayés | Backend automatique | `db.put()` pour chaque impayé |
+| Historique | Backend automatique | `dbEvents.put()` côté client |
+| Latence | ~200-500ms | ~50-100ms (local + bulk updates) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline, sync reportée |

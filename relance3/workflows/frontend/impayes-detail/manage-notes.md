@@ -1,9 +1,11 @@
-# Workflow Frontend: Gestion des Notes (Impayé + Contact)
+# Workflow Frontend: Gestion des Notes (Impayé + Contact) - PouchDB
 
 ## Description
-Gestion des deux blocs de notes sur la page impayes-detail :
-- **Notes Facture** : Spécifiques à l'impayé (colonne `impayes.notes_json`)
-- **Notes Contact** : Générales au payeur (colonne `contacts.notes`)
+Gestion des deux blocs de notes sur la page impayes-detail via **PouchDB local** :
+- **Notes Facture** : Spécifiques à l'impayé (stockées dans le document `facture`)
+- **Notes Contact** : Générales au payeur (stockées dans le document `contact`)
+
+Les données sont synchronisées automatiquement avec CouchDB.
 
 ## UI/UX
 
@@ -49,7 +51,7 @@ Gestion des deux blocs de notes sur la page impayes-detail :
 
 3. **Compteur de notes** :
    - Badge avec le nombre de notes sur chaque onglet
-   - Mis à jour en temps réel
+   - Mis à jour en temps réel via PouchDB changes
 
 4. **Saisie rapide** :
    - Textarea en bas du panneau
@@ -65,10 +67,14 @@ Gestion des deux blocs de notes sur la page impayes-detail :
 return {
   // ... autres propriétés ...
   
-  // Notes
+  // Notes depuis PouchDB
   activeNotesTab: 'impaye',      // 'impaye' | 'contact'
-  notesImpaye: [],               // Note[]
-  notesContact: [],              // Note[]
+  notesImpaye: [],               // Notes extraites du document facture
+  notesContact: [],              // Notes extraites du document contact
+  
+  // PouchDB
+  db: null,                      // Instance PouchDB (factures)
+  dbContacts: null,              // Instance PouchDB (contacts)
   
   // UI Notes
   newNoteContent: '',            // Texte en cours de saisie
@@ -94,64 +100,74 @@ return {
   // Computed
   get currentNotes() {
     return this.activeNotesTab === 'impaye' ? this.notesImpaye : this.notesContact;
+  },
+  get notesCount() {
+    return {
+      impaye: this.notesImpaye.length,
+      contact: this.notesContact.length
+    };
   }
 };
 ```
 
 ---
 
-## Workflows
+## Workflows PouchDB
 
-### Workflow 1: Chargement Initial des Notes
+### Workflow 1: Chargement Initial des Notes depuis PouchDB
 
 ```javascript
 /**
  * @checkpoint LoadImpayeNotes
- * Charge les notes de l'impayé
+ * Charge les notes depuis le document facture PouchDB
  */
 loadImpayeNotes: async function(impayeId) {
-  const token = localStorage.getItem('marki_token');
-  const response = await fetch(`/api/impayes/${impayeId}/notes`, {
-    headers: { 'Authorization': `Bearer ${token}` }
-  });
-  
-  if (response.status === 401) {
-    window.location.href = '/login';
-    return;
+  try {
+    // Récupérer le document facture depuis PouchDB
+    const doc = await db.get('facture:' + impayeId);
+    
+    // Les notes sont stockées dans le champ notes_json ou notes
+    this.notesImpaye = doc.notes || doc.notes_json || [];
+    
+    // Trier par date décroissante
+    this.notesImpaye.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    
+  } catch (error) {
+    console.error('Erreur chargement notes impayé:', error);
+    this.notesImpaye = [];
   }
-  
-  const data = await response.json();
-  this.notesImpaye = data.data?.notes || [];
 }
 
 /**
  * @checkpoint LoadContactNotes
- * Charge les notes du contact
+ * Charge les notes depuis le document contact PouchDB
  */
 loadContactNotes: async function(contactId) {
-  const token = localStorage.getItem('marki_token');
-  const response = await fetch(`/api/contacts/${contactId}/notes`, {
-    headers: { 'Authorization': `Bearer ${token}` }
-  });
-  
-  if (response.status === 401) {
-    window.location.href = '/login';
-    return;
+  try {
+    // Récupérer le document contact depuis PouchDB
+    const doc = await dbContacts.get(contactId);
+    
+    // Les notes sont stockées dans le champ notes
+    this.notesContact = doc.notes || [];
+    
+    // Trier par date décroissante
+    this.notesContact.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+    
+  } catch (error) {
+    console.error('Erreur chargement notes contact:', error);
+    this.notesContact = [];
   }
-  
-  const data = await response.json();
-  this.notesContact = data.data?.notes || [];
 }
 ```
 
 ---
 
-### Workflow 2: Ajouter une Note
+### Workflow 2: Ajouter une Note dans PouchDB
 
 ```javascript
 /**
  * @checkpoint SaveNote
- * Sauvegarde une nouvelle note
+ * Sauvegarde une nouvelle note dans le document PouchDB
  * @param {string} type - 'impaye' ou 'contact'
  */
 saveNote: async function(type) {
@@ -160,38 +176,56 @@ saveNote: async function(type) {
   this.savingNote = true;
   
   try {
-    const token = localStorage.getItem('marki_token');
-    const id = type === 'impaye' ? this.impaye.id : this.contact.id;
-    const endpoint = type === 'impaye' 
-      ? `/api/impayes/${id}/notes`
-      : `/api/contacts/${id}/notes`;
+    const now = new Date().toISOString();
+    const newNote = {
+      id: `note_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`,
+      content: this.newNoteContent.trim(),
+      created_by: this.user?.id,
+      created_by_name: this.user?.name || 'Moi',
+      created_at: now,
+      updated_at: now
+    };
     
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify({ content: this.newNoteContent.trim() })
-    });
-    
-    if (response.status === 401) {
-      window.location.href = '/login';
-      return;
+    if (type === 'impaye') {
+      // 1. Récupérer le document facture
+      const doc = await db.get('facture:' + this.impaye.id);
+      
+      // 2. Ajouter la note
+      if (!doc.notes) doc.notes = [];
+      doc.notes.unshift(newNote);
+      doc.updated_at = now;
+      
+      // 3. Sauvegarder dans PouchDB
+      await db.put(doc);
+      
+      // 4. Mettre à jour l'UI
+      this.notesImpaye.unshift(newNote);
+      
+    } else {
+      // 1. Récupérer le document contact
+      const doc = await dbContacts.get(this.contact.id);
+      
+      // 2. Ajouter la note
+      if (!doc.notes) doc.notes = [];
+      doc.notes.unshift(newNote);
+      doc.updated_at = now;
+      
+      // 3. Sauvegarder dans PouchDB
+      await dbContacts.put(doc);
+      
+      // 4. Mettre à jour l'UI
+      this.notesContact.unshift(newNote);
     }
     
-    const data = await response.json();
+    // 5. Reset le formulaire
+    this.newNoteContent = '';
+    this.showToast('Note ajoutée', 'success');
     
-    if (data.success) {
-      // Ajouter à la liste locale
-      if (type === 'impaye') {
-        this.notesImpaye.unshift(data.data.note);
-      } else {
-        this.notesContact.unshift(data.data.note);
-      }
-      
-      this.newNoteContent = '';
-      this.showToast('Note ajoutée', 'success');
+  } catch (error) {
+    if (error.status === 409) {
+      this.showToast('Conflit de version, veuillez réessayer', 'error');
+    } else {
+      this.showToast('Erreur lors de l\'ajout', 'error');
     }
   } finally {
     this.savingNote = false;
@@ -201,54 +235,63 @@ saveNote: async function(type) {
 
 ---
 
-### Workflow 3: Supprimer une Note
+### Workflow 3: Supprimer une Note dans PouchDB
 
 ```javascript
 /**
  * @checkpoint DeleteNote
- * Supprime une note après confirmation
+ * Supprime une note du document PouchDB après confirmation
  */
 deleteNote: async function(type, noteId) {
   if (!confirm('Supprimer cette note ?')) return;
   
   try {
-    const token = localStorage.getItem('marki_token');
-    const id = type === 'impaye' ? this.impaye.id : this.contact.id;
-    const endpoint = type === 'impaye'
-      ? `/api/impayes/${id}/notes/${noteId}`
-      : `/api/contacts/${id}/notes/${noteId}`;
+    const now = new Date().toISOString();
     
-    const response = await fetch(endpoint, {
-      method: 'DELETE',
-      headers: { 'Authorization': `Bearer ${token}` }
-    });
-    
-    if (response.status === 401) {
-      window.location.href = '/login';
-      return;
-    }
-    
-    const data = await response.json();
-    
-    if (data.success) {
-      // Supprimer de la liste locale
-      if (type === 'impaye') {
-        this.notesImpaye = this.notesImpaye.filter(n => n.id !== noteId);
-      } else {
-        this.notesContact = this.notesContact.filter(n => n.id !== noteId);
-      }
+    if (type === 'impaye') {
+      // 1. Récupérer le document facture
+      const doc = await db.get('facture:' + this.impaye.id);
       
-      this.showToast('Note supprimée', 'success');
+      // 2. Filtrer la note à supprimer
+      doc.notes = (doc.notes || []).filter(n => n.id !== noteId);
+      doc.updated_at = now;
+      
+      // 3. Sauvegarder dans PouchDB
+      await db.put(doc);
+      
+      // 4. Mettre à jour l'UI
+      this.notesImpaye = this.notesImpaye.filter(n => n.id !== noteId);
+      
+    } else {
+      // 1. Récupérer le document contact
+      const doc = await dbContacts.get(this.contact.id);
+      
+      // 2. Filtrer la note à supprimer
+      doc.notes = (doc.notes || []).filter(n => n.id !== noteId);
+      doc.updated_at = now;
+      
+      // 3. Sauvegarder dans PouchDB
+      await dbContacts.put(doc);
+      
+      // 4. Mettre à jour l'UI
+      this.notesContact = this.notesContact.filter(n => n.id !== noteId);
     }
+    
+    this.showToast('Note supprimée', 'success');
+    
   } catch (error) {
-    this.showToast('Erreur lors de la suppression', 'error');
+    if (error.status === 409) {
+      this.showToast('Conflit de version, veuillez réessayer', 'error');
+    } else {
+      this.showToast('Erreur lors de la suppression', 'error');
+    }
   }
 }
 ```
 
 ---
 
-### Workflow 4: Modifier une Note
+### Workflow 4: Modifier une Note dans PouchDB
 
 ```javascript
 /**
@@ -259,8 +302,8 @@ openEditNote: function(type, note) {
   this.editNoteForm = { 
     id: note.id, 
     content: note.content, 
-    author: note.author, 
-    date: note.date,
+    author: note.created_by_name, 
+    date: this.formatDate(note.created_at),
     type: type
   };
   this.showEditNoteModal = true;
@@ -268,7 +311,7 @@ openEditNote: function(type, note) {
 
 /**
  * @checkpoint ConfirmEditNote
- * Sauvegarde les modifications de la note
+ * Sauvegarde les modifications de la note dans PouchDB
  */
 confirmEditNote: async function() {
   const { type, id, content } = this.editNoteForm;
@@ -276,44 +319,101 @@ confirmEditNote: async function() {
   if (!content.trim()) return;
   
   try {
-    const token = localStorage.getItem('marki_token');
-    const entityId = type === 'impaye' ? this.impaye.id : this.contact.id;
-    const endpoint = type === 'impaye'
-      ? `/api/impayes/${entityId}/notes/${id}`
-      : `/api/contacts/${entityId}/notes/${id}`;
+    const now = new Date().toISOString();
     
-    const response = await fetch(endpoint, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
-      },
-      body: JSON.stringify({ content: content.trim() })
-    });
-    
-    if (response.status === 401) {
-      window.location.href = '/login';
-      return;
-    }
-    
-    const data = await response.json();
-    
-    if (data.success) {
-      // Mettre à jour la liste locale
-      if (type === 'impaye') {
-        const note = this.notesImpaye.find(n => n.id === id);
-        if (note) note.content = content;
-      } else {
-        const note = this.notesContact.find(n => n.id === id);
-        if (note) note.content = content;
+    if (type === 'impaye') {
+      // 1. Récupérer le document facture
+      const doc = await db.get('facture:' + this.impaye.id);
+      
+      // 2. Mettre à jour la note
+      const note = doc.notes.find(n => n.id === id);
+      if (note) {
+        note.content = content.trim();
+        note.updated_at = now;
+      }
+      doc.updated_at = now;
+      
+      // 3. Sauvegarder dans PouchDB
+      await db.put(doc);
+      
+      // 4. Mettre à jour l'UI
+      const localNote = this.notesImpaye.find(n => n.id === id);
+      if (localNote) {
+        localNote.content = content.trim();
+        localNote.updated_at = now;
       }
       
-      this.showEditNoteModal = false;
-      this.showToast('Note modifiée', 'success');
+    } else {
+      // 1. Récupérer le document contact
+      const doc = await dbContacts.get(this.contact.id);
+      
+      // 2. Mettre à jour la note
+      const note = doc.notes.find(n => n.id === id);
+      if (note) {
+        note.content = content.trim();
+        note.updated_at = now;
+      }
+      doc.updated_at = now;
+      
+      // 3. Sauvegarder dans PouchDB
+      await dbContacts.put(doc);
+      
+      // 4. Mettre à jour l'UI
+      const localNote = this.notesContact.find(n => n.id === id);
+      if (localNote) {
+        localNote.content = content.trim();
+        localNote.updated_at = now;
+      }
     }
+    
+    this.showEditNoteModal = false;
+    this.showToast('Note modifiée', 'success');
+    
   } catch (error) {
-    this.showToast('Erreur lors de la modification', 'error');
+    if (error.status === 409) {
+      this.showToast('Conflit de version, veuillez réessayer', 'error');
+    } else {
+      this.showToast('Erreur lors de la modification', 'error');
+    }
   }
+}
+```
+
+---
+
+## Live Sync avec PouchDB
+
+```javascript
+/**
+ * @checkpoint SetupNotesListeners
+ * Configure les listeners pour les changements temps réel
+ */
+setupNotesListeners: function() {
+  // Listener sur les factures (notes impayé)
+  db.changes({
+    since: 'now',
+    live: true,
+    include_docs: true
+  }).on('change', (change) => {
+    if (change.doc._id === 'facture:' + this.impaye.id && change.doc.notes) {
+      this.notesImpaye = change.doc.notes.sort((a, b) => 
+        new Date(b.created_at) - new Date(a.created_at)
+      );
+    }
+  });
+  
+  // Listener sur les contacts (notes contact)
+  dbContacts.changes({
+    since: 'now',
+    live: true,
+    include_docs: true
+  }).on('change', (change) => {
+    if (change.doc._id === this.contact.id && change.doc.notes) {
+      this.notesContact = change.doc.notes.sort((a, b) => 
+        new Date(b.created_at) - new Date(a.created_at)
+      );
+    }
+  });
 }
 ```
 
@@ -380,14 +480,14 @@ confirmEditNote: async function() {
             <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
               <!-- Bouton édition visible si isAuthor -->
               <button @click="openEditNote(activeNotesTab, note)"
-                      x-show="note.isAuthor"
+                      x-show="note.created_by === user?.id"
                       class="text-sky-500 hover:text-sky-700"
                       title="Modifier">
                 <i class="fas fa-edit"></i>
               </button>
               <!-- Bouton suppression visible si isAuthor -->
               <button @click="deleteNote(activeNotesTab, note.id)"
-                      x-show="note.isAuthor"
+                      x-show="note.created_by === user?.id"
                       class="text-red-500 hover:text-red-700"
                       title="Supprimer">
                 <i class="fas fa-trash"></i>
@@ -427,18 +527,36 @@ confirmEditNote: async function() {
 
 ---
 
-## API Endpoints Résumé
+## Structure du document PouchDB (exemple)
 
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
-| GET | `/api/impayes/:id/notes` | Notes de l'impayé |
-| POST | `/api/impayes/:id/notes` | Ajouter note impayé |
-| PUT | `/api/impayes/:id/notes/:noteId` | Modifier note impayé |
-| DELETE | `/api/impayes/:id/notes/:noteId` | Supprimer note impayé |
-| GET | `/api/contacts/:id/notes` | Notes du contact |
-| POST | `/api/contacts/:id/notes` | Ajouter note contact |
-| PUT | `/api/contacts/:id/notes/:noteId` | Modifier note contact |
-| DELETE | `/api/contacts/:id/notes/:noteId` | Supprimer note contact |
+```javascript
+// Document facture avec notes
+{
+  "_id": "facture:550e8400-...",
+  "_rev": "3-abc123...",
+  "type": "facture",
+  "id": "F123",
+  "notes": [
+    {
+      "id": "note_1690123456789_abc123",
+      "content": "Client contacté par téléphone",
+      "created_by": "user_001",
+      "created_by_name": "Marie Martin",
+      "created_at": "2026-07-21T10:00:00Z",
+      "updated_at": "2026-07-21T10:00:00Z"
+    },
+    {
+      "id": "note_1690123678901_def456",
+      "content": "Relance email envoyée",
+      "created_by": "user_002",
+      "created_by_name": "Jean Dupont",
+      "created_at": "2026-07-21T14:30:00Z",
+      "updated_at": "2026-07-21T14:30:00Z"
+    }
+  ],
+  "updated_at": "2026-07-21T14:30:00Z"
+}
+```
 
 ---
 
@@ -481,12 +599,25 @@ confirmEditNote: async function() {
 
 ---
 
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Chargement | `GET /api/impayes/:id/notes` | `db.get('facture:' + id)` |
+| Création | `POST /api/impayes/:id/notes` | Modification doc puis `db.put()` |
+| Modification | `PUT /api/impayes/:id/notes/:noteId` | Modification doc puis `db.put()` |
+| Suppression | `DELETE /api/impayes/:id/notes/:noteId` | `filter()` puis `db.put()` |
+| Stockage | Table SQL séparée | Champ `notes` dans le document |
+| Temps réel | Polling | `db.changes()` |
+| Latence | ~100-300ms par opération | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |
+
+---
+
 ## Gestion des Erreurs
 
 | Code | Message | Action |
 |------|---------|--------|
-| 401 | Token expiré | Redirection /login |
-| 404 | Contact/Impayé non trouvé | Toast erreur |
-| 404 | Note non trouvée | Toast erreur |
-| 400 | Contenu requis | Toast validation |
-| 500 | Erreur serveur | Toast erreur + log |
+| 409 | "Conflit de version, veuillez réessayer" | Retry avec nouvelle révision |
+| PouchDB error | "Base de données locale non disponible" | Alert |
+| Document not found | "Document introuvable dans PouchDB" | Alert |

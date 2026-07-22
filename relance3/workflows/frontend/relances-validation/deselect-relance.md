@@ -1,4 +1,4 @@
-# Workflow : Désélectionner
+# Workflow : Désélectionner (PouchDB)
 
 ## Écran
 `relances-validation.html`
@@ -12,6 +12,7 @@ Désélectionner la relance active
 ## Description
 - Efface la sélection
 - Masque le panneau d'action
+- Aucune opération PouchDB (action UI uniquement)
 
 ## Data Model
 **Page Function:** `relancesValidationPage()`
@@ -19,8 +20,8 @@ Désélectionner la relance active
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `relancesAValider`
+**Données (en mémoire, depuis PouchDB):**
+- `relancesAValider` - relances depuis PouchDB
 - `selectedRelances`
 - `selectAll`
 
@@ -33,13 +34,17 @@ Désélectionner la relance active
 
 ## State Changes
 
-**Modifications:** États UI spécifiques selon implémentation
+**Modifications:**
+- `selectedRelances` ← vide ou null
+- `selectAll` ← false
+
+## PouchDB Operations
+
+**Aucun** - Ce workflow est purement une action UI. Il ne modifie pas PouchDB.
 
 ## API Calls
 
 **Pas d'appel API** - Action côté client uniquement
-
-
 
 ## Organisation des fichiers
 
@@ -56,7 +61,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/relances-validation/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/relances-validation/js/deselect-relance.js`
@@ -65,33 +70,58 @@ frontend/
 ```javascript
 // frontend/app/relances-validation/js/deselect-relance.js
 export function deselectRelance() {
-  // Implementation du workflow
+  // Implementation avec PouchDB (pas d'opération DB)
 }
 ```
 
 ## Implementation
 
 ```javascript
-// Single select
-selectItem(item) {
-  this.selectedItem = item;
+// Single deselect
+deselectRelance() {
+  this.selectedRelance = null;
+  this.previewMode = false;
 }
 
-// Multi-select
+// Multi-deselect
+clearSelection() {
+  this.selectedRelances = [];
+  this.selectAll = false;
+}
+
+// Toggle selection
 toggleSelection(id) {
-  const index = this.selectedItems.indexOf(id);
+  const index = this.selectedRelances.indexOf(id);
   if (index === -1) {
-    this.selectedItems.push(id);
+    this.selectedRelances.push(id);
   } else {
-    this.selectedItems.splice(index, 1);
+    this.selectedRelances.splice(index, 1);
   }
 }
 
 selectAll(checked) {
   if (checked) {
-    this.selectedItems = this.filteredData.map(item => item.id);
+    // Sélectionner toutes les relances visibles (filtrées depuis PouchDB)
+    this.selectedRelances = this.filteredRelances.map(item => item._id);
   } else {
-    this.selectedItems = [];
+    this.selectedRelances = [];
   }
 }
-``
+```
+
+## Notes
+
+- **Action UI uniquement** : Ce workflow ne touche pas à PouchDB
+- **Données PouchDB** : Les relances sont chargées depuis PouchDB (par `initial-load`)
+- **Instantané** : La désélection est immédiate
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Action | Côté client | **Conservé** - Côté client |
+| Source données | Props/Store | PouchDB (déjà chargé) |
+| Latence | Instantanée | Instantanée |
+| Offline | ✅ Oui | ✅ Oui |

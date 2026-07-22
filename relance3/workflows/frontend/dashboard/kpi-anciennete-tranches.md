@@ -2,18 +2,18 @@
 id: dashboard-kpi-anciennete-tranches
 type: frontend
 folder: specs/workflows/frontend/dashboard/
-description: Calculer et afficher la répartition des factures par tranche d'ancienneté (5 tranches)
+description: Calculer et afficher la répartition des factures par tranche d'ancienneté (5 tranches) via PouchDB
 depends_on: [auth-check]
 screen: dashboard
 global: false
 mockup_entry: specs/mockups/dashboard.html
 ---
 
-# KPI Ancienneté (5 Tranches)
+# KPI Ancienneté (5 Tranches) - PouchDB
 
 ## Description
 
-Calculer la répartition des factures en attente par tranche d'ancienneté (jours échus) et afficher les 5 cards correspondantes.
+Calculer la répartition des factures en attente par tranche d'ancienneté (jours échus) depuis **PouchDB local** et afficher les 5 cards correspondantes.
 
 ## Tranches
 
@@ -27,8 +27,27 @@ Calculer la répartition des factures en attente par tranche d'ancienneté (jour
 
 ```javascript
 /**
- * @action Récupérer les factures échues via GET /api/factures?date_echeance_lt=now&reste_a_payer_gt=0
- * @checkpoint factures-fetched, réponse 200 avec toutes les factures échues
+ * @action Configurer le listener PouchDB pour les changements
+ * @checkpoint changes-listener-active, écoute temps réel activée
+ * 
+ * Code:
+ * db.changes({ since: 'now', live: true, include_docs: true })
+ *   .on('change', (change) => { recalculer si facture modifiée });
+ */
+
+/**
+ * @action Récupérer les factures échues via PouchDB
+ * @checkpoint factures-fetched, données locales chargées
+ * 
+ * Query:
+ * const result = await db.allDocs({
+ *   startkey: 'facture:',
+ *   endkey: 'facture:\ufff0',
+ *   include_docs: true
+ * });
+ * const factures = result.rows
+ *   .map(row => row.doc)
+ *   .filter(f => new Date(f.date_echeance) < new Date() && f.reste_a_payer > 0);
  */
 
 /**
@@ -83,40 +102,77 @@ Calculer la répartition des factures en attente par tranche d'ancienneté (jour
  */
 ```
 
-## Requête API
+## PouchDB Operations
 
-```
-GET /api/factures?date_echeance_lt=now&reste_a_payer_gt=0&fields=id,date_echeance,reste_a_payer
-```
+### Récupérer les factures échues
 
-### Réponse (200)
-```json
-{
-  "data": [
-    {
-      "id": "uuid-1",
-      "date_echeance": "2024-01-10",
-      "reste_a_payer": 1500.00,
-      "jours_echus": 6
-    },
-    {
-      "id": "uuid-2",
-      "date_echeance": "2023-12-15",
-      "reste_a_payer": 3200.50,
-      "jours_echus": 37
-    }
-  ]
+```javascript
+async loadFacturesEchues() {
+  const result = await db.allDocs({
+    startkey: 'facture:',
+    endkey: 'facture:\ufff0',
+    include_docs: true
+  });
+  
+  const today = new Date();
+  
+  return result.rows
+    .map(row => row.doc)
+    .filter(f => {
+      const dateEcheance = new Date(f.date_echeance);
+      return dateEcheance < today && f.reste_a_payer > 0;
+    });
 }
+```
+
+### Live Sync (mise à jour temps réel)
+
+```javascript
+// Recalculer automatiquement sur changements
+db.changes({
+  since: 'now',
+  live: true,
+  include_docs: true
+}).on('change', (change) => {
+  if (change.doc.type === 'facture') {
+    // Vérifier si la facture affecte les tranches d'ancienneté
+    const isEchue = new Date(change.doc.date_echeance) < new Date();
+    const isImpayee = change.doc.reste_a_payer > 0;
+    
+    if (isEchue && isImpayee) {
+      // Recalculer les KPIs
+      this.calculateAncienneteTranches();
+    }
+  }
+});
+```
+
+### Option: Mango Query avec pouchdb-find
+
+```javascript
+// Alternative avec pouchdb-find (nécessite index)
+const result = await db.find({
+  selector: {
+    type: { $eq: 'facture' },
+    reste_a_payer: { $gt: 0 },
+    date_echeance: { $lt: new Date().toISOString().substring(0, 10) }
+  },
+  fields: ['date_echeance', 'reste_a_payer']
+});
+
+const factures = result.docs;
 ```
 
 ## Calcul Frontend (détaillé)
 
 ```javascript
-// Récupération des factures échues
-const response = await fetch('/api/factures?date_echeance_lt=now&reste_a_payer_gt=0');
-const { data } = await response.json();
+// Récupération des factures échues depuis PouchDB
+const result = await db.allDocs({
+  startkey: 'facture:',
+  endkey: 'facture:\ufff0',
+  include_docs: true
+});
 
-// Date de référence (aujourd'hui)
 const today = new Date();
 
 // Calcul des jours échus et répartition par tranche
@@ -128,8 +184,13 @@ const tranches = {
   plus120j: []
 };
 
-data.forEach(f => {
+result.rows.forEach(row => {
+  const f = row.doc;
   const dateEcheance = new Date(f.date_echeance);
+  
+  // Vérifier si échue et impayée
+  if (dateEcheance >= today || f.reste_a_payer <= 0) return;
+  
   const joursEchus = Math.floor((today - dateEcheance) / (1000 * 60 * 60 * 24));
   
   const facture = { ...f, jours_echus: joursEchus };
@@ -162,6 +223,22 @@ this.kpis.anciennete = {
 };
 ```
 
+## Structure des documents PouchDB (facture)
+
+```javascript
+{
+  "_id": "facture:550e8400-...",
+  "_rev": "1-abc123...",
+  "type": "facture",
+  "id": "F123",
+  "date_echeance": "2024-01-10",
+  "reste_a_payer": 1500.00,
+  "montant_total": 2500.00,
+  "contact_id": "contact:...",
+  "statut": "impayee"
+}
+```
+
 ## Interface utilisateur
 
 | Tranche | Sélecteur | Affichage |
@@ -184,8 +261,18 @@ this.kpis.anciennete = {
 
 ## Error Handling
 
-| Code | Comportement |
-|------|--------------|
-| 401 | Redirection vers login |
-| 500 | Afficher "—" pour toutes les tranches |
-| Empty | Afficher "0" et "0,00 €" pour chaque tranche |
+| Cas | Comportement |
+|-----|--------------|
+| PouchDB non disponible | Afficher "—" pour toutes les tranches |
+| Pas de factures | Afficher "0" et "0,00 €" pour chaque tranche |
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Source données | `GET /api/factures?date_echeance_lt=now` | PouchDB local |
+| Filtrage | Côté serveur | Côté client (`filter`) |
+| Mise à jour | Rechargement manuel | Temps réel via `db.changes()` |
+| Latence | ~200-500ms | ~10-50ms (local) |

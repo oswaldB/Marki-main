@@ -7,21 +7,23 @@
 Bouton avec `@click="markAllAsRead()"`
 
 ## Action
-Marquer tous les événements de l'utilisateur comme lus
+Marquer tous les événements affichés comme lus
 
 ## Description
-- Met à jour le statut `read: true` pour tous les events de l'utilisateur courant
+- Met à jour le statut `read: true` dans **localStorage** pour tous les events affichés
 - Réinitialise le compteur de notifications à 0
 - Les events restent visibles mais sans badge "Nouveau"
+- **Pas d'appel API** - tout est géré localement
 
 ## Data Model
 
 **Page Function:** `evenementsPage()`
 
-**Données:**
-- `events` - liste des events
-- `unreadCount` - nombre d'events non lus
+**Données (depuis PouchDB):**
+- `events` - liste des events chargés depuis PouchDB
+- `unreadCount` - nombre d'events non lus (computed depuis localStorage)
 - `hasUnread` - boolean (computed)
+- `readEvents` - Map des events lus depuis localStorage
 
 **États UI:**
 - `loading`
@@ -29,19 +31,19 @@ Marquer tous les événements de l'utilisateur comme lus
 ## State Changes
 
 **Modifications:**
-- `events` ← tous les events passent à `read: true`
-- `unreadCount` ← 0
-- `hasUnread` ← false
+- `readEvents` ← tous les events passent à `{ read: true, readAt: now }`
+- `unreadCount` ← 0 (recalculé automatiquement)
+- `hasUnread` ← false (recalculé automatiquement)
 
-## API Calls
+## PouchDB Calls
 
-**Endpoint:** `POST /api/events/mark-read`
+**Aucun** - Le statut "lu/non-lu" est stocké dans **localStorage**.
 
-**Payload:** Aucun (utilise l'utilisateur courant depuis le token)
+Les events eux-mêmes proviennent de PouchDB, mais leur statut de lecture est local à chaque navigateur.
 
-**Response:** `ApiResponse<{ updated: number }>`
+**Optionnel:** Pour synchroniser le statut "lu" entre appareils, utiliser une base PouchDB dédiée (`marki-preferences`).
 
-**Note:** L'API ne modifie que les events où `user_id = current_user` et `read = false`.
+
 
 ## Organisation des fichiers
 
@@ -60,65 +62,124 @@ frontend/
 ```javascript
 // frontend/app/evenements/js/mark-all-read.js
 export function markAllRead() {
-  // Implementation du workflow
+  // Implementation avec localStorage
 }
 ```
 
-## Implementation
+## Implementation (localStorage)
 
 ```javascript
-async markAllAsRead() {
+markAllAsRead() {
   // 1. Sauvegarder l'état précédent pour rollback
-  const previousEvents = [...this.events];
+  const previousReadEvents = { ...this.readEvents };
   const previousUnreadCount = this.unreadCount;
   
-  // 2. Optimistic update
-  this.events = this.events.map(event => ({
-    ...event,
-    read: true
-  }));
-  this.unreadCount = 0;
-  Alpine.store('ui').setUnreadCount(0);
+  // 2. Marquer tous les events actuels comme lus
+  const now = new Date().toISOString();
+  this.events.forEach(event => {
+    this.readEvents[event.id] = { read: true, readAt: now };
+  });
+  
+  // 3. Sauvegarder dans localStorage
+  localStorage.setItem('marki_read_events', JSON.stringify(this.readEvents));
+  
+  // 4. Forcer recalcul (met à jour unreadCount, hasUnread, badges)
+  this.events = [...this.events];
+  
+  // 5. Toast de confirmation
+  this.toast(`${this.events.length} événement(s) marqué(s) comme lu(s)`, 'success');
+  
+  // Note: Pas d'appel API, pas de gestion d'erreur réseau
+  // Si erreur localStorage, le try/catch ci-dessous gère le rollback
+}
+
+// Avec gestion d'erreur et rollback
+markAllAsReadWithRollback() {
+  const previousReadEvents = JSON.parse(localStorage.getItem('marki_read_events') || '{}');
   
   try {
-    // 3. Call API
-    const response = await fetch('/api/events/mark-read', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+    // Marquer comme lus
+    const now = new Date().toISOString();
+    this.events.forEach(event => {
+      this.readEvents[event.id] = { read: true, readAt: now };
     });
     
-    const data = await response.json();
+    // Sauvegarder
+    localStorage.setItem('marki_read_events', JSON.stringify(this.readEvents));
     
-    if (!data.success) {
-      throw new Error(data.error?.message);
-    }
+    // Forcer recalcul
+    this.events = [...this.events];
     
-    // 4. Toast de confirmation
-    const updatedCount = data.data?.updated || previousUnreadCount;
-    Alpine.store('ui').addToast(`${updatedCount} événement(s) marqué(s) comme lu(s)`, 'success');
+    this.toast('Tous les événements sont marqués comme lus', 'success');
     
   } catch (error) {
-    console.error('Erreur mark all as read:', error);
+    // Rollback
+    this.readEvents = previousReadEvents;
+    localStorage.setItem('marki_read_events', JSON.stringify(previousReadEvents));
     
-    // 5. Rollback
-    this.events = previousEvents;
-    this.unreadCount = previousUnreadCount;
-    Alpine.store('ui').setUnreadCount(previousUnreadCount);
-    
-    Alpine.store('ui').addToast('Erreur lors de la mise à jour', 'error');
+    this.toast('Erreur lors de la mise à jour', 'error');
   }
+}
+```
+
+## Option: Synchronisation via PouchDB
+
+Pour synchroniser le statut "lu" entre appareils :
+
+```javascript
+// Utiliser une base PouchDB dédiée pour les préférences
+const prefsDb = new PouchDB('marki-preferences');
+
+// Sync avec CouchDB
+prefsDb.sync('https://admin:admin@dev.markidiags.com/data/marki-preferences', {
+  live: true, retry: true
+});
+
+async markAllAsReadPouch() {
+  const now = new Date().toISOString();
+  
+  // Créer un document par event lu
+  const docs = this.events.map(event => ({
+    _id: `read:${event.id}`,
+    type: 'read_status',
+    eventId: event.id,
+    read: true,
+    readAt: now
+  }));
+  
+  // Bulk insert
+  await prefsDb.bulkDocs(docs);
+  
+  // Mettre à jour l'UI
+  this.events.forEach(event => {
+    this.readEvents[event.id] = { read: true, readAt: now };
+  });
+  
+  this.events = [...this.events];
 }
 ```
 
 ## Différence avec clear-events (dashboard)
 
-| Workflow | Usage | Visuel |
-|----------|-------|--------|
-| `clear-events` (dashboard) | Bouton rapide sur le widget dashboard | Cache les notifications |
-| `mark-all-read` (evenements) | Bouton dans la page événements | Garde les events visibles mais lus |
+| Workflow | Usage | Visuel | Stockage |
+|----------|-------|--------|----------|
+| `clear-events` (dashboard) | Bouton rapide sur le widget dashboard | Cache les notifications | localStorage |
+| `mark-all-read` (evenements) | Bouton dans la page événements | Garde les events visibles mais lus | localStorage |
+
+## Différence avec l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB/localStorage) |
+|--------|-------------|------------------------------|
+| Requête | `POST /api/events/mark-read` | `localStorage.setItem()` |
+| Persistence | Base de données serveur | localStorage (par navigateur) |
+| Sync multi-appareils | ✅ Oui | ❌ Non (sauf avec PouchDB prefs) |
+| Latence | ~100-500ms | ~0-1ms (instantané) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |
+| Rollback | Complexe (API déjà modifiée) | Facile (restaurer localStorage) |
 
 ## Notes
 
-- **Isolation:** Seuls les events de l'utilisateur courant sont modifiés
-- **Batch update:** Une seule requête pour tous les events
-- **Persistence:** Le statut est sauvegardé en base via `user_id` + `read`
+- **Isolation:** Seuls les events affichés sont marqués comme lus
+- **Persistence:** Le statut est sauvegardé dans localStorage uniquement
+- **Pas de sync:** Par défaut, le statut n'est pas synchronisé entre appareils
+- **Option sync:** Utiliser PouchDB `marki-preferences` si sync nécessaire

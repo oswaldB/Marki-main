@@ -1,4 +1,4 @@
-# Workflow : Synchronisation des données impayés
+# Workflow : Synchronisation des données impayés (PouchDB)
 
 ## Écran
 `impayes.html`
@@ -7,20 +7,21 @@
 Bouton avec `@click="syncData()"`
 
 ## Action
-Synchroniser les données impayés depuis la source externe (ADTI)
+Synchroniser les données impayés depuis CouchDB
 
 ## Description
-- Appelle le workflow backend `import-invoices` +> et ensuite verify-paid-invoices.
-- Importe les nouvelles factures dans la table `impayes`
+- Déclenche une synchronisation manuelle **PouchDB → CouchDB**
+- Importe les nouvelles factures depuis CouchDB vers PouchDB local
 - Met à jour les factures existantes si modification
-- Crée un event de type 'sync' après synchronisation
+- Crée un **event local** dans PouchDB marquant la synchronisation
+- **Ne nécessite plus de backend workflows** - le sync est automatique avec PouchDB
 
 ## Data Model
 
 **Page Function:** `impayesPage()`
 
-**Données:**
-- `impayes` - liste des impayés
+**Données (depuis PouchDB):**
+- `impayes` - liste des impayés (PouchDB)
 - `syncing` - état de synchronisation
 - `lastSyncTime` - dernière date de sync
 
@@ -35,20 +36,18 @@ Synchroniser les données impayés depuis la source externe (ADTI)
 **Modifications:**
 - `syncing` ← `true` → `false`
 - `syncProgress` ← 0 → 100
-- `impayes` ← rechargé après sync
+- `impayes` ← rechargé depuis PouchDB après sync
 - `lastSyncTime` ← date actuelle
 
-## API Calls
+## PouchDB Operations
 
-**Endpoint:** `POST /api/import/invoices`
+**Action:** Forcer une synchronisation bidirectionnelle avec CouchDB.
 
-**Description:** Déclenche le workflow backend d'import des factures
+**Méthodes utilisées:**
+- `db.sync(remoteUrl, { live: false, retry: true })` - Sync manuelle complète
+- `dbEvents.put(doc)` - Créer un event de synchronisation
 
-**Tables impactées:**
-- `impayes` - création/mise à jour des factures
-- `events` - création d'un event de sync
 
-**Response:** `ApiResponse<{ imported: number, updated: number }>`
 
 ## Organisation des fichiers
 
@@ -66,12 +65,12 @@ frontend/
 
 ```javascript
 // frontend/app/impayes/js/sync-data.js
-export function syncData() {
-  // Implementation du workflow
+export async function syncData() {
+  // Implementation avec PouchDB sync
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
 async syncData() {
@@ -84,51 +83,126 @@ async syncData() {
   this.error = null;
   
   try {
-    // 3. Call sync workflow API
-    const response = await fetch('/api/workflows/import-invoices', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' }
+    // 3. Configuration CouchDB
+    const remoteUrl = 'https://admin:admin@dev.markidiags.com/data/marki';
+    
+    // 4. Forcer une sync bidirectionnelle
+    this.syncProgress = 25;
+    const syncResult = await db.sync(remoteUrl, {
+      live: false,  // Sync unique, pas continu
+      retry: true   // Réessayer en cas d'erreur
     });
     
-    const data = await response.json();
+    // 5. Progress
+    this.syncProgress = 50;
     
-    if (!data.success) {
-      throw new Error(data.error?.message);
-    }
+    // 6. Créer un event de synchronisation dans PouchDB
+    const eventDoc = {
+      _id: `event:${this.generateUUID()}`,
+      type: 'event',
+      event_type: 'sync',
+      title: 'Synchronisation impayés',
+      description: `${syncResult.pull?.docs_written || 0} factures importées`,
+      created_at: new Date().toISOString(),
+      by_marki: false,
+      user_id: this.user?.id,
+      metadata: {
+        synced_at: new Date().toISOString(),
+        pull_docs: syncResult.pull?.docs_written || 0,
+        push_docs: syncResult.push?.docs_written || 0
+      }
+    };
     
-    // 4. Update progress
-    this.syncProgress = 100;
-    this.lastSyncTime = new Date().toISOString();
+    await dbEvents.put(eventDoc);
+    this.syncProgress = 75;
     
-    // 5. Reload impayes
+    // 7. Reload impayes depuis PouchDB local
     await this.loadImpayes();
+    this.syncProgress = 100;
     
-    // 6. Notify
-    const imported = data.data?.imported || 0;
-    const updated = data.data?.updated || 0;
-    Alpine.store('ui').addToast(
-      `${imported} facture(s) importée(s), ${updated} mise(s) à jour`, 
+    // 8. Update timestamp
+    this.lastSyncTime = new Date().toISOString();
+    localStorage.setItem('marki_last_sync', this.lastSyncTime);
+    
+    // 9. Notify
+    const imported = syncResult.pull?.docs_written || 0;
+    this.toast(
+      `${imported} facture(s) synchronisée(s)`,
       'success'
     );
     
   } catch (error) {
     this.error = error.message;
-    Alpine.store('ui').addToast(error.message, 'error');
+    this.toast(`Erreur de synchronisation: ${error.message}`, 'error');
   } finally {
     this.syncing = false;
-    setTimeout(() => { this.syncProgress = 0; }, 500);
+    setTimeout(() => { this.syncProgress = 0; }, 1000);
+  }
+}
+
+generateUUID() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+```
+
+## Sync temps réel (déjà configuré)
+
+```javascript
+// Dans l'initialisation de l'application
+initSync() {
+  const remoteUrl = 'https://admin:admin@dev.markidiags.com/data/marki';
+  
+  // Sync automatique en temps réel
+  db.sync(remoteUrl, {
+    live: true,
+    retry: true
+  }).on('change', (info) => {
+    console.log('Sync change:', info);
+  }).on('paused', () => {
+    console.log('Sync paused');
+  }).on('active', () => {
+    console.log('Sync active');
+  }).on('error', (err) => {
+    console.error('Sync error:', err);
+  });
+}
+```
+
+## Structure de l'event PouchDB
+
+```javascript
+{
+  "_id": "event:550e8400-...",
+  "_rev": "1-abc123...",
+  "type": "event",
+  "event_type": "sync",
+  "title": "Synchronisation impayés",
+  "description": "15 factures importées",
+  "created_at": "2026-07-21T14:30:00.000Z",
+  "by_marki": false,
+  "user_id": "user-123",
+  "metadata": {
+    "synced_at": "2026-07-21T14:30:00.000Z",
+    "pull_docs": 15,
+    "push_docs": 0
   }
 }
 ```
 
-## Dépendances backend
+---
 
-- Workflow `import-invoices` doit exister côté backend
-- Table `impayes` pour stocker les factures importées
-- Table `events` pour loguer la synchronisation
+## Migration depuis l'ancienne API
 
-## Notes
-
-- C'est une opération **asynchrone** longue (peut prendre plusieurs secondes)
-- La progression peut être affichée via `syncProgress`
-- Voir workflow backend `import-invoices` pour les détails
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Orchestration | `POST /api/workflows/import-invoices` | `db.sync()` directement |
+| Étapes backend | import-invoices → verify-paid | **Plus nécessaire** - CouchDB gère tout |
+| Event creation | Backend automatique | `dbEvents.put()` local |
+| Progression | Réponse API | Events PouchDB `active`, `paused`, `complete` |
+| Tables impactées | `impayes`, `events` | PouchDB `factures`, `events` |
+| Latence | ~5-30s | ~1-10s |
+| Offline | ❌ Bloquant | ✅ Fonctionne offline, sync reportée |

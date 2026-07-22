@@ -1,4 +1,4 @@
-# Workflow : Supprimer profil SMTP (affichage confirmation)
+# Workflow : Supprimer profil SMTP - affichage confirmation (PouchDB)
 
 ## Écran
 `settings-smtp.html`
@@ -12,7 +12,7 @@ Afficher la modale de confirmation de suppression
 ## Description
 - Stocke le profil à supprimer
 - Affiche la modale de confirmation
-- Le workflow `confirm-delete.md` s'occupe de la suppression effective
+- Le workflow `confirm-delete.md` s'occupe de la suppression effective dans PouchDB
 
 ## Data Model
 **Page Function:** `settingsSmtpPage()`
@@ -20,22 +20,24 @@ Afficher la modale de confirmation de suppression
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
+**Données (en mémoire):**
 - `deletingProfil` (profil en cours de suppression)
+- `profils` - profils SMTP depuis PouchDB
 
 **États UI:**
-- `showDeleteModal` ou modal global via $store.ui
+- `showDeleteModal`
 
 ## State Changes
 
 **Modifications:**
 - `deletingProfil` ← profil à supprimer
+- `showDeleteModal` ← true
 
-## API Calls
+## PouchDB Operations
 
-**Pas d'appel API** - Affichage de la modale uniquement.
+**Aucun** - Action UI uniquement (affichage de modale).
 
-> **Note** : La suppression effective est gérée par `confirm-delete.md`.
+**Note** : La suppression effective est gérée par `confirm-delete.md` avec PouchDB.
 
 ## Organisation des fichiers
 
@@ -52,7 +54,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/settings-smtp/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/settings-smtp/js/delete-profil.js`
@@ -60,29 +62,39 @@ frontend/
 
 ```javascript
 // frontend/app/settings-smtp/js/delete-profil.js
-export function confirmDeleteProfil() {
-  // Implementation du workflow
+export function confirmDeleteProfil(profil) {
+  // Implementation avec PouchDB (action UI)
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
 confirmDeleteProfil(profil) {
   // 1. Stocker le profil à supprimer
   this.deletingProfil = profil;
   
-  // 2. Afficher modal confirmation global
-  Alpine.store('ui').modals.confirmation = {
-    show: true,
-    title: 'Supprimer le profil SMTP',
-    message: `Confirmer la suppression de "${profil.nom}" ?`,
-    onConfirm: () => this.deleteProfil() // Appelle le workflow confirm-delete.md
-  };
+  // 2. Afficher modal confirmation
+  this.showDeleteModal = true;
+  
+  // 3. Pas de modification PouchDB (action UI uniquement)
+  // La suppression effective est gérée par confirmDeleteProfil() (confirm-delete.md)
 }
 ```
 
 ## Notes
 
 - Ce workflow ne fait que préparer et afficher la modale
-- Le bouton "Confirmer" dans la modale déclenche `confirm-delete.md`
+- Le bouton "Confirmer" dans la modale déclenche `confirmDeleteProfil()` (confirm-delete.md)
+- La suppression effective se fait dans PouchDB
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Action | Côté client uniquement | **Conservé** - Côté client |
+| Persistance | Non persistante | **Conservé** - Non persistante (affichage modale) |
+| Latence | Instantanée | Instantanée |
+| Offline | ✅ Oui | ✅ Oui |

@@ -1,4 +1,4 @@
-# Workflow : Créer une séquence
+# Workflow : Créer une séquence (PouchDB)
 
 ## Écran
 `sequences.html`
@@ -7,11 +7,12 @@
 Bouton avec `@click="createSequence()"` dans le modal de nouvelle séquence
 
 ## Action
-Créer une nouvelle séquence en base de données
+Créer une nouvelle séquence dans PouchDB
 
 ## Description
 - Valide les données du formulaire (nom, type_sequence)
-- Crée la séquence via API avec emails vides par défaut
+- Crée la séquence dans PouchDB avec emails vides par défaut
+- Synchronise avec CouchDB
 - Rafraîchit la liste des séquences
 - Ferme le modal
 - Redirige vers l'édition pour configurer les emails
@@ -19,8 +20,10 @@ Créer une nouvelle séquence en base de données
 ## Data Model
 **Page Function:** `sequencesPage()`
 
-**Données:**
+**Données (depuis PouchDB):**
 - `newSequence` - données du formulaire (nom, type_sequence, actif)
+- `sequences` - liste des séquences
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -34,24 +37,14 @@ Créer une nouvelle séquence en base de données
 - `sequences` ← nouvelle séquence ajoutée
 - `showNewSequenceModal` → `false`
 
-## API Calls
+## PouchDB Operations
 
-**`POST /api/sequences`** - Crée une nouvelle séquence
+**Action:** Créer un nouveau document séquence dans PouchDB.
 
-**Payload:**
-```json
-{
-  "nom": "Séquence Relance Standard",
-  "type_sequence": "relances",
-  "actif": true,
-  "emails": [],
-  "validation_obligatoire": false,
-  "created_at": "2026-07-12T10:00:00Z",
-  "updated_at": "2026-07-12T10:00:00Z"
-}
-```
+**Méthodes utilisées:**
+- `db.put(doc)` - Créer le document avec un ID généré
 
-**Response:** `ApiResponse<Sequence>`
+**Sync:** La création est automatiquement synchronisée avec CouchDB.
 
 ## Organisation des fichiers
 
@@ -68,7 +61,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/sequences/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/sequences/js/create-sequence.js`
@@ -76,18 +69,18 @@ frontend/
 
 ```javascript
 // frontend/app/sequences/js/create-sequence.js
-export function createSequence() {
-  // Implementation du workflow
+export async function createSequence() {
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
 async createSequence() {
   // 1. Validate form
   if (!this.newSequence.nom || !this.newSequence.type_sequence) {
-    Alpine.store('ui').addToast('Veuillez remplir tous les champs obligatoires', 'error');
+    this.toast('Veuillez remplir tous les champs obligatoires', 'error');
     return;
   }
   
@@ -96,9 +89,12 @@ async createSequence() {
   this.error = null;
   
   try {
-    // 3. Prepare payload
-    const payload = {
-      ...this.newSequence,
+    // 3. Prepare document PouchDB
+    const sequenceDoc = {
+      _id: 'sequence:' + this.generateUUID(),
+      type: 'sequence',
+      nom: this.newSequence.nom,
+      type_sequence: this.newSequence.type_sequence,
       actif: true,
       emails: [],
       validation_obligatoire: false,
@@ -106,43 +102,55 @@ async createSequence() {
       updated_at: new Date().toISOString()
     };
     
-    // 4. Call API
-    const response = await fetch('/api/sequences', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-    
-    const data = await response.json();
-    
-    if (!data.success) {
-      throw new Error(data.error?.message || 'Erreur lors de la création');
-    }
+    // 4. Create in PouchDB
+    const response = await db.put(sequenceDoc);
+    // response: { ok: true, id: 'sequence:...', rev: '1-xxx...' }
     
     // 5. Update local array
-    this.sequences.unshift(data.data);
+    this.sequences.unshift({ ...sequenceDoc, _rev: response.rev });
     
     // 6. Close modal
     this.showNewSequenceModal = false;
     this.newSequence = this.getInitialState();
     
-    // 7. Redirect to edit page to configure emails
-    window.location.href = `/sequences-relance-detail.html?id=${data.data.id}`;
+    // 7. Redirect to edit page
+    window.location.href = `/sequences-relance-detail.html?id=${sequenceDoc._id}`;
     
     // 8. Notify
-    Alpine.store('ui').addToast('Séquence créée', 'success');
+    this.toast('Séquence créée', 'success');
     
   } catch (error) {
     this.error = error.message;
-    Alpine.store('ui').addToast(error.message, 'error');
+    this.toast(error.message, 'error');
   } finally {
     this.loading = false;
   }
+}
+
+generateUUID() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
 }
 ```
 
 ## Notes
 
 - La séquence est créée avec un tableau `emails` vide
-- L'utilisateur est redirigé vers la page d'édition pour configurer les emails de la séquence
+- L'utilisateur est redirigé vers la page d'édition pour configurer les emails
 - `type_sequence` peut être `relances` ou `suivi`
+- L'ID est généré côté client avec UUID pour éviter les conflits
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Requête | `POST /api/sequences` | `db.put(doc)` |
+| ID génération | Backend auto-incrément | UUID côté client |
+| Réponse | `ApiResponse<Sequence>` | `{ ok, id, rev }` |
+| Latence | ~100-300ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Création offline, sync reportée |

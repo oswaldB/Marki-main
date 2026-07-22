@@ -1,4 +1,4 @@
-# Workflow : Générer par IA (open-ia-modal)
+# Workflow : Générer par IA (open-ia-modal) - PouchDB
 
 ## Écran
 `sequences-suivi-detail.html`
@@ -30,8 +30,9 @@ Génère l'email sélectionné (celui à l'index `idx`) avec ses scénarios comp
    - Vérification de la structure (email avec email_index, delai, objet, corps, scenarios[])
    - Vérification des formats de scénarios
 
-4. **Étape "apply"** : Application de l'email généré
+4. **Étape "apply"** : Application de l'email généré dans PouchDB
    - Si validation OK : remplacer l'email courant avec les scénarios générés
+   - Sauvegarder dans PouchDB
    - Si erreurs : afficher les erreurs et permettre correction
 
 **Note** : Ne PAS appeler d'API ChatGPT directement. Le LLM est utilisé côté utilisateur uniquement.
@@ -43,8 +44,8 @@ Génère l'email sélectionné (celui à l'index `idx`) avec ses scénarios comp
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `sequence`
+**Données (depuis/en mémoire PouchDB):**
+- `sequence` - séquence depuis PouchDB
 - `currentEmailIndex` (index de l'email à générer)
 - `promptTemplate` (string, le prompt à copier)
 - `yamlInput` (string, la réponse YAML collée par l'utilisateur)
@@ -52,6 +53,7 @@ Génère l'email sélectionné (celui à l'index `idx`) avec ses scénarios comp
 - `validationErrors` (string[], erreurs de validation structurelle)
 - `showIaModal` (boolean, état de la modale)
 - `iaStep` ('prompt' | 'paste' | 'validate' | 'apply')
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -70,8 +72,20 @@ Génère l'email sélectionné (celui à l'index `idx`) avec ses scénarios comp
 - `iaStep` = 'paste' : affiche instructions + textarea pour coller YAML + bouton "Valider"
 - `iaStep` = 'validate' : spinner de validation + parsing YAML
 - `iaStep` = 'apply' : preview de l'email avec ses scénarios + boutons "Appliquer" / "Annuler" (ou erreurs)
-- Toast erreur si YAML invalide ou structure incorrecte
-- Toast succès si application réussie
+- **PouchDB** : `sequence.emails[idx]` ← email généré
+- **PouchDB** : `db.put(sequence)` pour sauvegarder
+
+## PouchDB Operations
+
+**Action:** Mettre à jour un seul email de la séquence de suivi dans PouchDB.
+
+**Méthodes utilisées:**
+1. Validation YAML côté client (pas d'appel API)
+2. `db.get('sequence:' + id)` - Récupérer le document avec sa révision
+3. Mettre à jour `sequence.emails[idx]` avec l'email généré
+4. `db.put(doc)` - Sauvegarder le document modifié
+
+**Sync:** La modification est automatiquement synchronisée avec CouchDB.
 
 ## Prompt Template
 
@@ -140,6 +154,8 @@ CONSIGNES:
 - Parsing YAML via bibliothèque (js-yaml)
 - Validation de structure contre le schéma `sequence.emails[]`
 
+**Sauvegarde dans PouchDB** via `db.put()`
+
 ## Organisation des fichiers
 
 ```
@@ -152,7 +168,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/sequences-suivi-detail/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/sequences-suivi-detail/js/open-ia-modal.js`
@@ -173,14 +189,15 @@ export async function validateYaml(yamlString) {
   // 4. Retourner { valid: boolean, data?: object, errors?: string[] }
 }
 
-export function applyGeneratedEmail(emailData, sequence, idx) {
-  // 1. Remplacer sequence.emails[idx] par l'email généré
-  // 2. Mettre à jour hasChanges
-  // 3. Retourner succès
+export async function applyGeneratedEmail(emailData, sequenceId, idx) {
+  // 1. Récupérer le document depuis PouchDB avec sa révision
+  // 2. Remplacer sequence.emails[idx] par l'email généré
+  // 3. Sauvegarder dans PouchDB avec db.put()
+  // 4. Retourner succès
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
 // Dans le component Alpine.js
@@ -252,14 +269,14 @@ CONSIGNES:
 // Étape 1 → 2: Copier le prompt et passer à l'étape suivante
 async copyPromptAndContinue() {
   await navigator.clipboard.writeText(this.promptTemplate);
-  Alpine.store('ui').addToast('Prompt copié ! Collez-le dans ChatGPT', 'success');
+  this.toast('Prompt copié ! Collez-le dans ChatGPT', 'success');
   this.iaStep = 'paste';
 },
 
 // Étape 2 → 3: Valider le YAML collé
 goToValidation() {
   if (!this.yamlInput.trim()) {
-    Alpine.store('ui').addToast('Veuillez coller la réponse YAML', 'error');
+    this.toast('Veuillez coller la réponse YAML', 'error');
     return;
   }
   this.iaStep = 'validate';
@@ -290,33 +307,62 @@ validateYamlResponse() {
   }
 },
 
-// Étape 4: Appliquer l'email généré (remplace seulement l'email courant)
-applyGeneratedEmail() {
+// Étape 4: Appliquer l'email généré (remplace seulement l'email courant) dans PouchDB
+async applyGeneratedEmail() {
   if (!this.parsedYaml?.email) return;
   
-  const newEmail = this.parsedYaml.email;
-  const idx = this.currentEmailIndex;
+  this.loading = true;
   
-  this.sequence.emails[idx] = {
-    email_index: newEmail.email_index || this.sequence.emails[idx].email_index,
-    delai: newEmail.delai ?? this.sequence.emails[idx].delai,
-    objet: newEmail.objet || '',
-    corps: newEmail.corps || '',
-    scenarios: newEmail.scenarios.map(sc => ({
-      active: sc.active ?? true,
-      format: sc.format,
-      objet: sc.objet || newEmail.objet,
-      corps: sc.corps || newEmail.corps,
-      cc: sc.cc || '',
-      bcc: sc.bcc || '',
-      smtp_profile_id: sc.smtp_profile_id || null
-    })),
-    activeScenario: 0
-  };
-  
-  this.hasChanges = true;
-  this.showIaModal = false;
-  Alpine.store('ui').addToast('Email généré avec ses scénarios', 'success');
+  try {
+    // 1. Récupérer le document depuis PouchDB avec sa révision
+    const doc = await db.get('sequence:' + this.sequenceId);
+    
+    // 2. Préparer l'email
+    const newEmail = this.parsedYaml.email;
+    const idx = this.currentEmailIndex;
+    
+    // 3. Mettre à jour l'email dans le tableau
+    doc.emails[idx] = {
+      email_index: newEmail.email_index || doc.emails[idx].email_index,
+      delai: newEmail.delai ?? doc.emails[idx].delai,
+      objet: newEmail.objet || '',
+      corps: newEmail.corps || '',
+      scenarios: newEmail.scenarios.map(sc => ({
+        active: sc.active ?? true,
+        format: sc.format,
+        objet: sc.objet || newEmail.objet,
+        corps: sc.corps || newEmail.corps,
+        cc: sc.cc || '',
+        bcc: sc.bcc || '',
+        smtp_profile_id: sc.smtp_profile_id || null
+      })),
+      activeScenario: 0
+    };
+    
+    doc.updated_at = new Date().toISOString();
+    
+    // 4. Sauvegarder dans PouchDB
+    const response = await db.put(doc);
+    
+    // 5. Mettre à jour l'UI
+    this.sequence = { ...doc, _rev: response.rev };
+    this.etapes = [...doc.emails];
+    this.hasChanges = false;
+    this.showIaModal = false;
+    
+    this.toast('Email généré avec ses scénarios', 'success');
+    
+  } catch (error) {
+    if (error.status === 409) {
+      this.error = 'Conflit de version, veuillez réessayer';
+      this.toast('Conflit de version', 'error');
+    } else {
+      this.error = error.message;
+      this.toast(error.message, 'error');
+    }
+  } finally {
+    this.loading = false;
+  }
 }
 
 // Fonction de validation structurelle
@@ -361,3 +407,24 @@ function validateEmailStructure(parsed) {
   return { valid: errors.length === 0, errors };
 }
 ```
+
+## Notes
+
+- **Pas d'API ChatGPT directe** : L'utilisateur copie-colle manuellement
+- **Validation YAML** : Côté client uniquement avec js-yaml
+- **Persistence PouchDB** : L'email est sauvegardé dans PouchDB après validation
+- **Gestion des conflits** : Détection `_rev` côté client si modification concurrente
+- **Sync automatique** : Les changements sont synchronisés avec CouchDB
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Génération ChatGPT | Copier-coller manuel (inchangé) | **Conservé** - Copier-coller |
+| Validation YAML | Côté client (js-yaml) | **Conservé** - Côté client |
+| Persistence | API `PUT /api/sequences/:id` | `db.get()` + `db.put()` |
+| Sauvegarde email | Backend SQLite | PouchDB local + sync |
+| Latence sauvegarde | ~200-500ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ⚠️ Génération offline possible, sauvegarde différée |

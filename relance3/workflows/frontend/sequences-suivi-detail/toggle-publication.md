@@ -1,4 +1,4 @@
-# Workflow : Publier/Dépublier séquence suivi
+# Workflow : Publier/Dépublier séquence suivi (PouchDB)
 
 ## Écran
 `sequences-suivi-detail.html`
@@ -7,11 +7,13 @@
 Bouton avec `@click="togglePublication()"`
 
 ## Action
-Basculer le statut de publication
+Basculer le statut de publication de la séquence de suivi
 
 ## Description
-- Active/désactive la séquence de suivi
-- Publie ou met en brouillon
+- Publie ou dépublie la séquence
+- Une séquence publiée est active
+- Une séquence dépubliée est en brouillon
+- Sauvegarde immédiate dans PouchDB
 
 ## Data Model
 **Page Function:** `sequencesSuiviDetailPage()`
@@ -19,26 +21,35 @@ Basculer le statut de publication
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `sequence`
+**Données (depuis PouchDB):**
+- `sequence` - séquence depuis PouchDB
 - `etapes`
 - `typeRelanceOptions`
 - `selectedType`
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
 - `error`
 - `saving`
+- `hasChanges`
 
 ## State Changes
 
-**Modifications:** États UI spécifiques selon implémentation
+**Modifications:**
+- `sequence.publiee` ← toggled
+- Sauvegarde immédiate dans PouchDB
 
-## API Calls
+## PouchDB Operations
 
-**Pas d'appel API** - Action côté client uniquement
+**Action:** Basculer le statut de publication de la séquence dans PouchDB.
 
+**Méthodes utilisées:**
+1. `db.get('sequence:' + id)` - Récupérer le document avec sa révision
+2. Toggle `publiee`
+3. `db.put(doc)` - Sauvegarder le document modifié
 
+**Sync:** La modification est automatiquement synchronisée avec CouchDB.
 
 ## Organisation des fichiers
 
@@ -55,7 +66,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/sequences-suivi-detail/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/sequences-suivi-detail/js/toggle-publication.js`
@@ -63,23 +74,63 @@ frontend/
 
 ```javascript
 // frontend/app/sequences-suivi-detail/js/toggle-publication.js
-export function togglePublication() {
-  // Implementation du workflow
+export async function togglePublication() {
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
-toggleItem() {
-  // 1. Toggle boolean state
-  this.showModal = !this.showModal;
-  // OR
-  this.isExpanded = !this.isExpanded;
+async togglePublication() {
+  this.loading = true;
   
-  // 2. If opening, prepare data
-  if (this.showModal) {
-    this.prepareModalData();
+  try {
+    // 1. Récupérer le document depuis PouchDB avec sa révision
+    const doc = await db.get('sequence:' + this.sequenceId);
+    
+    // 2. Toggle le statut de publication
+    doc.publiee = !doc.publiee;
+    doc.updated_at = new Date().toISOString();
+    
+    // 3. Sauvegarder dans PouchDB
+    const response = await db.put(doc);
+    
+    // 4. Mettre à jour l'UI
+    this.sequence = { ...doc, _rev: response.rev };
+    
+    this.toast(
+      doc.publiee ? 'Séquence de suivi publiée' : 'Séquence de suivi dépubliée',
+      'success'
+    );
+    
+  } catch (error) {
+    if (error.status === 409) {
+      this.error = 'Conflit de version, veuillez réessayer';
+      this.toast('Conflit de version', 'error');
+    } else {
+      this.error = error.message;
+      this.toast(error.message, 'error');
+    }
+  } finally {
+    this.loading = false;
   }
 }
-``
+```
+
+## Notes
+
+- **Sauvegarde immédiate** : Le statut est persisté dans PouchDB immédiatement
+- **Synchronisation** : Les changements sont synchronisés avec CouchDB
+- **Feedback utilisateur** : Toast de confirmation avec le nouvel état
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Action | Côté client uniquement | `db.get()` + `db.put()` |
+| Persistance | Non persistante | Persistante dans PouchDB |
+| Latence | Instantanée | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline |

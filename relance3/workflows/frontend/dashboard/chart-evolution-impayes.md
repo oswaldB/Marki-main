@@ -2,7 +2,7 @@
 id: dashboard-chart-evolution-impayes
 type: frontend
 folder: specs/workflows/frontend/dashboard/
-description: Initialiser et afficher le graphique d'évolution des impayés sur 12 mois glissants avec Chart.js
+description: Initialiser et afficher le graphique d'évolution des impayés sur 12 mois glissants avec Chart.js via PouchDB
 depends_on: [auth-check]
 screen: dashboard
 global: false
@@ -14,6 +14,8 @@ mockup_entry: specs/mockups/dashboard.html
 ## Description
 
 Initialiser le graphique Chart.js affichant l'évolution des impayés sur 12 mois glissants : montants payés vs restes à payer, avec le nombre de factures impayées en ligne.
+
+Les données sont récupérées depuis **PouchDB local** (collection `facture`) puis agrégées côté client.
 
 ## Étapes
 
@@ -38,8 +40,26 @@ Initialiser le graphique Chart.js affichant l'évolution des impayés sur 12 moi
  */
 
 /**
- * @action Récupérer les factures sur 12 mois via GET /api/factures?date_facture_gte=START&date_facture_lte=END
- * @checkpoint factures-fetched, réponse 200 avec factures de la période
+ * @action Configurer le changement en temps réel
+ * @checkpoint changes-listener-configured
+ * db.changes({ since: 'now', live: true, include_docs: true })
+ * → Recalcule automatiquement le graphique sur changements
+ */
+
+/**
+ * @action Récupérer les factures depuis PouchDB sur 12 mois
+ * @checkpoint factures-fetched
+ * 
+ * Query:
+ * const result = await db.allDocs({
+ *   startkey: 'facture:',
+ *   endkey: 'facture:\ufff0',
+ *   include_docs: true
+ * });
+ * const factures = result.rows.map(r => r.doc).filter(f => {
+ *   const date = new Date(f.date_facture);
+ *   return date >= startDate && date <= endDate;
+ * });
  */
 
 /**
@@ -130,29 +150,66 @@ Initialiser le graphique Chart.js affichant l'évolution des impayés sur 12 moi
  */
 ```
 
-## Requête API
+## PouchDB Operations
 
-```
-GET /api/factures?date_facture_gte=2023-01-01&date_facture_lte=2024-01-15&fields=id,date_facture,montant_total,reste_a_payer
+### Récupérer les factures sur 12 mois
+
+```javascript
+// Période de 12 mois
+const endDate = new Date();
+const startDate = new Date();
+startDate.setMonth(startDate.getMonth() - 12);
+
+// Récupérer depuis PouchDB
+const result = await db.allDocs({
+  startkey: 'facture:',
+  endkey: 'facture:\ufff0',
+  include_docs: true
+});
+
+// Filtrer par date côté client
+const factures = result.rows
+  .map(row => row.doc)
+  .filter(doc => {
+    if (!doc.date_facture) return false;
+    const date = new Date(doc.date_facture);
+    return date >= startDate && date <= endDate;
+  });
 ```
 
-Ou endpoint dédié pour les stats :
-```
-GET /api/stats/evolution?periode=12mois&group_by=month
-```
+### Live Sync (mise à jour temps réel)
 
-### Réponse (200)
-```json
-{
-  "data": {
-    "labels": ["Avant", "Jan", "Fév", "Mar", "Avr", "Mai", "Juin", "Juil", "Août", "Sept", "Oct", "Nov", "Déc"],
-    "datasets": {
-      "montantsPayes": [45000, 52000, 48000, 61000, 55000, 58000, 62000, 59000, 65000, 70000, 68000, 72000, 75000],
-      "restesAPayer": [28000, 32000, 35000, 42000, 38000, 41000, 39000, 43000, 47000, 52000, 48000, 51000, 49000],
-      "facturesImpayees": [12, 15, 18, 22, 19, 21, 20, 23, 25, 28, 26, 27, 24]
-    }
+```javascript
+// Mettre à jour le graphique automatiquement sur changements
+db.changes({
+  since: 'now',
+  live: true,
+  include_docs: true
+}).on('change', (change) => {
+  if (change.doc.type === 'facture') {
+    // Recalculer et mettre à jour le graphique
+    recalculateChartData();
+    this.chart.update();
   }
-}
+});
+```
+
+### Option: Mango Query avec pouchdb-find
+
+```javascript
+// Alternative avec pouchdb-find (plus précis)
+const result = await db.find({
+  selector: {
+    type: { $eq: 'facture' },
+    date_facture: {
+      $gte: startDate.toISOString().substring(0, 10),
+      $lte: endDate.toISOString().substring(0, 10)
+    }
+  },
+  fields: ['date_facture', 'montant_total', 'reste_a_payer']
+});
+
+const factures = result.docs;
 ```
 
 ## Calcul Frontend (détaillé)
@@ -174,15 +231,23 @@ const generateMonths = () => {
   return { months, monthKeys };
 };
 
-// Récupération des factures
+// Récupération des factures depuis PouchDB
 const startDate = new Date();
 startDate.setMonth(startDate.getMonth() - 12);
 const endDate = new Date();
 
-const response = await fetch(
-  `/api/factures?date_facture_gte=${startDate.toISOString()}&date_facture_lte=${endDate.toISOString()}`
-);
-const { data: factures } = await response.json();
+const result = await db.allDocs({
+  startkey: 'facture:',
+  endkey: 'facture:\ufff0',
+  include_docs: true
+});
+
+const factures = result.rows
+  .map(row => row.doc)
+  .filter(f => {
+    const date = new Date(f.date_facture);
+    return date >= startDate && date <= endDate;
+  });
 
 // Grouper par mois
 const groupedByMonth = factures.reduce((acc, f) => {
@@ -358,17 +423,45 @@ initChart() {
 | Montant payé | Bar (stacked) | Y gauche (€) | 52 k€ |
 | Nb factures impayées | Line | Y droite (nb) | 15 fa. |
 
+## Structure des documents PouchDB (facture)
+
+```javascript
+{
+  "_id": "facture:550e8400-...",
+  "_rev": "1-abc123...",
+  "type": "facture",
+  "id": "F123",
+  "date_facture": "2026-06-15",
+  "montant_total": 12500.00,
+  "reste_a_payer": 8500.00,
+  "contact_id": "contact:...",
+  "statut": "impayee"
+}
+```
+
 ## Error Handling
 
-| Code | Comportement |
-|------|--------------|
-| 401 | Redirection vers login |
-| 500 | Afficher message "Impossible de charger le graphique" |
+| Cas | Comportement |
+|-----|--------------|
+| PouchDB non disponible | Afficher message "Base de données non disponible" |
+| Pas de factures | Afficher graphique vide avec axes uniquement |
 | Canvas introuvable | Log error, ne pas bloquer le dashboard |
-| Données vides | Afficher graphique vide avec axes uniquement |
+| Données incomplètes | Ignorer les factures sans date_facture ou montant_total |
 
 ## Optimisations
 
 - Ne pas recréer le graphique à chaque update (utiliser `chart.update()`)
 - Debounce les mises à jour si les données changent fréquemment
 - Lazy loading : initialiser le graphique uniquement quand visible (IntersectionObserver)
+- Index Mango sur `date_facture` si utilisation fréquente de `db.find()`
+
+---
+
+## Migration depuis l'ancienne API
+
+| Avant (API) | Après (PouchDB) |
+|-------------|-----------------|
+| `GET /api/factures?date_facture_gte=...&date_facture_lte=...` | `db.allDocs({ startkey: 'facture:', endkey: 'facture:\ufff0' })` |
+| Filtrage date côté serveur | Filtrage date côté client |
+| Réponse JSON avec array `data` | `result.rows.map(r => r.doc)` |
+| Mise à jour manuelle | Mise à jour temps réel via `db.changes()` |

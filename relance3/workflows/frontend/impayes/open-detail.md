@@ -11,7 +11,7 @@ Ouvrir le panneau de détail d'un impayé
 
 ## Description
 - Affiche le panneau latéral (slideover) avec les détails complets
-- Charge les informations de l'impayé sélectionné
+- Charge les informations de l'impayé sélectionné (depuis PouchDB)
 - Affiche l'historique des notes et les actions possibles
 - **Gère aussi l'ouverture du modal de suspension si l'impayé est suspendu**
 
@@ -30,8 +30,8 @@ Quand on ouvre le détail d'un impayé **actif** (`is_suspended: false`) :
 
 **Page Function:** `impayesPage()`
 
-**Données:**
-- `impayes` - liste des impayés
+**Données (depuis PouchDB):**
+- `impayes` - liste des impayés chargés depuis PouchDB
 - `selectedImpaye` - impayé sélectionné pour affichage
 - `showDetailPanel` - affichage du slideover
 
@@ -44,16 +44,25 @@ Quand on ouvre le détail d'un impayé **actif** (`is_suspended: false`) :
 ## State Changes
 
 **Modifications:**
-- `selectedImpaye` ← impayé cliqué
+- `selectedImpaye` ← impayé cliqué (depuis les données PouchDB)
 - `showDetailPanel` ← `true`
 
-## API Calls
+## PouchDB Calls
 
-**Pas d'appel API supplémentaire** - Les données sont déjà chargées dans `impayes[]`
+**Aucun appel direct** - Les données sont déjà chargées dans `impayes[]` depuis PouchDB via `initial-load`.
 
-**Note:** Si besoin de données complémentaires (historique complet, relances liées), appeler :
-- `GET /api/impayes?facture_soldee=0&statut=impaye
-- `GET /api/relancesimpaye_ids=:id` - Relances liées
+**Optionnel:** Si besoin de données complémentaires (historique complet, relances liées) :
+```javascript
+// Charger les relances liées depuis PouchDB
+const relances = await dbRelances.find({
+  selector: {
+    type: { $eq: 'relance' },
+    facture_id: { $eq: selectedFactureId }
+  }
+});
+```
+
+
 
 ## Organisation des fichiers
 
@@ -80,7 +89,7 @@ export function openDetail() {
 
 ```javascript
 openDetail(impaye) {
-  // 1. Set selected item
+  // 1. Set selected item (déjà chargé depuis PouchDB)
   this.selectedImpaye = impaye;
   
   // 2. Show detail panel (slideover)
@@ -92,12 +101,34 @@ openDetail(impaye) {
     // avec le motif : impaye.suspension_motif
     // et la date : impaye.suspension_date
   }
+  
+  // 4. Optionnel: charger données complémentaires depuis PouchDB
+  if (this.needsRelatedData) {
+    this.loadRelatedDataFromPouchDB(impaye.id);
+  }
 }
 
 // Fermer le panneau
 closeDetail() {
   this.showDetailPanel = false;
   this.selectedImpaye = null;
+}
+
+// Charger données liées depuis PouchDB si nécessaire
+async loadRelatedDataFromPouchDB(factureId) {
+  try {
+    // Charger les relances liées
+    const relancesResult = await dbRelances.find({
+      selector: {
+        type: { $eq: 'relance' },
+        facture_id: { $eq: factureId }
+      }
+    });
+    this.selectedImpaye.relances = relancesResult.docs;
+    
+  } catch (err) {
+    console.error('Erreur chargement données liées:', err);
+  }
 }
 ```
 
@@ -150,8 +181,15 @@ closeDetail() {
 - **Fermeture** : Bouton X, clic sur overlay, ou touche Escape
 - **Actions liées** : Voir `suspend-facture.md` et `unsuspend-facture.md`
 
-## Notes
+---
 
-- Le panneau de détail est un **slideover** (pas un modal) qui s'ouvre depuis la droite
-- La suspension est affichée comme un **avertissement** dans le détail, pas comme un écran bloquant
-- Les actions Suspendre/Réactiver sont accessibles depuis ce panneau
+## Migration PouchDB
+
+Ce workflow **ne nécessite pas de migration** car il utilise les données déjà chargées depuis PouchDB.
+
+| Aspect | Implémentation |
+|--------|----------------|
+| Données affichées | PouchDB (via `initial-load`) |
+| Données complémentaires | PouchDB (optionnel avec `db.find()`) |
+| Appels réseau | Aucun |
+| Offline | ✅ Fonctionne offline |

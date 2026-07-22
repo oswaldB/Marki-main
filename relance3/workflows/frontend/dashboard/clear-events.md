@@ -2,7 +2,7 @@
 id: dashboard-clear-events
 type: frontend
 folder: specs/workflows/frontend/dashboard/
-description: Marquer tous les événements comme lus (via localStorage)
+description: Marquer tous les événements comme lus (localStorage ou PouchDB local)
 depends_on: [auth-check]
 screen: dashboard
 global: false
@@ -18,13 +18,14 @@ mockup_entry: specs/mockups/dashboard.html
 Bouton avec `@click="markAllAsRead()"`
 
 ## Action
-Marquer tous les événements affichés comme lus dans localStorage
+Marquer tous les événements affichés comme lus dans **localStorage** (option: PouchDB pour sync)
 
 ## Description
 - Marque tous les events comme `read: true` dans localStorage
 - Met à jour le compteur de notifications (unread count passe à 0)
 - **Ne supprime PAS les events de la liste** - ils restent visibles mais sans la pastille "Non lu"
 - Les pastilles "Non lu" disparaissent pour tous les events
+- **Pas d'appel API** - tout est géré localement
 
 ## Data Model
 
@@ -44,7 +45,7 @@ Marquer tous les événements affichés comme lus dans localStorage
 - `hasUnreadEvents` ← false (recalculé automatiquement)
 - Pastilles "Non lu" ← disparaissent pour tous les events
 
-## localStorage
+## Stockage (localStorage)
 
 **Clé:** `marki_read_events`
 
@@ -59,7 +60,7 @@ Marquer tous les événements affichés comme lus dans localStorage
 }
 ```
 
-## Implementation
+## Implementation (localStorage)
 
 ```javascript
 markAllAsRead() {
@@ -77,6 +78,61 @@ markAllAsRead() {
   
   // Forcer le recalcul pour mettre à jour les pastilles
   this.events = [...this.events];
+}
+```
+
+## Alternative: Stockage dans PouchDB (optionnel)
+
+Pour synchroniser le statut "lu" entre appareils (si plusieurs devices utilisent CouchDB):
+
+```javascript
+// Créer une base PouchDB pour les préférences utilisateur
+const prefsDb = new PouchDB('marki-preferences');
+
+// Sync avec CouchDB (optionnel)
+prefsDb.sync('https://admin:admin@dev.markidiags.com/data/marki-preferences', {
+  live: true,
+  retry: true
+});
+
+// Marquer comme lu dans PouchDB
+async markAllAsReadPouch() {
+  const now = new Date().toISOString();
+  
+  for (const event of this.events) {
+    try {
+      const doc = await prefsDb.get(`read:${event.id}`);
+      doc.read = true;
+      doc.readAt = now;
+      await prefsDb.put(doc);
+    } catch (err) {
+      // Document n'existe pas, le créer
+      await prefsDb.put({
+        _id: `read:${event.id}`,
+        type: 'read_status',
+        eventId: event.id,
+        read: true,
+        readAt: now
+      });
+    }
+  }
+  
+  // Forcer le recalcul
+  this.events = [...this.events];
+}
+
+// Charger les statuts depuis PouchDB
+async loadReadStatus() {
+  const result = await prefsDb.allDocs({
+    startkey: 'read:',
+    endkey: 'read:\ufff0',
+    include_docs: true
+  });
+  
+  this.readEvents = result.rows.reduce((acc, row) => {
+    acc[row.doc.eventId] = { read: row.doc.read, readAt: row.doc.readAt };
+    return acc;
+  }, {});
 }
 ```
 
@@ -102,7 +158,16 @@ markAllAsRead() {
 
 ## Notes importantes
 
-- **Persistence:** Le statut `read` est stocké uniquement dans localStorage (pas d'appel API)
+- **Persistence:** Par défaut, le statut `read` est stocké uniquement dans localStorage (pas d'appel API)
 - **Local uniquement:** Chaque navigateur/appareil a son propre historique de lecture
 - **Events conservés:** Contrairement à l'ancienne version, les events ne sont pas filtrés - ils restent tous visibles
 - **Clear possible:** L'utilisateur peut vider son localStorage pour revoir toutes les pastilles "Non lu"
+- **Pas d'API:** Ce workflow ne fait aucun appel `/api/` - il est déjà compatible architecture PouchDB
+
+---
+
+## Migration PouchDB
+
+Ce workflow ne nécessite pas de migration vers PouchDB car il n'utilise pas de backend API. 
+
+**Optionnel:** Pour synchroniser le statut "lu" entre appareils, remplacer localStorage par une base PouchDB dédiée (`marki-preferences`) avec sync vers CouchDB.

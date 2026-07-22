@@ -1,10 +1,10 @@
-# Workflow : Fermer insight
+# Workflow : Fermer insight (PouchDB)
 
 ## Écran
 `smart-marki.html`
 
 ## Élément déclencheur
-Bouton avec `@click="selectedInsight = null"`
+Bouton avec `@click="closeInsight()"`
 
 ## Action
 Fermer le panneau détail insight
@@ -12,6 +12,7 @@ Fermer le panneau détail insight
 ## Description
 - Masque l'insight sélectionné
 - Retour à la liste des suggestions
+- Action UI uniquement (pas de modification PouchDB)
 
 ## Data Model
 **Page Function:** `smartMarkiPage()`
@@ -19,14 +20,9 @@ Fermer le panneau détail insight
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `suggestions`
-- `historiqueActions`
-- `stats`
-- `features`
-- `chatMessages`
-- `chatInput`
-- `selectedInsight` (suggestion actuellement affichée)
+**Données (en mémoire):**
+- `suggestions` - suggestions IA depuis PouchDB
+- `selectedInsight` - suggestion actuellement affichée
 
 **États UI:**
 - `loading`
@@ -38,10 +34,11 @@ Fermer le panneau détail insight
 
 **Modifications:**
 - `selectedInsight` passe à null
+- Panneau de détail fermé
 
-## API Calls
+## PouchDB Operations
 
-**Pas d'appel API** - Action côté client uniquement
+**Aucun** - Action UI uniquement (fermeture de panneau).
 
 ## Organisation des fichiers
 
@@ -58,7 +55,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/smart-marki/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/smart-marki/js/close-insight.js`
@@ -67,11 +64,11 @@ frontend/
 ```javascript
 // frontend/app/smart-marki/js/close-insight.js
 export function closeInsight() {
-  // Implementation du workflow
+  // Implementation avec PouchDB (action UI)
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
 closeInsight() {
@@ -80,5 +77,24 @@ closeInsight() {
   
   // 2. Clear any errors
   this.error = null;
+  
+  // 3. Pas de modification PouchDB (action UI uniquement)
 }
 ```
+
+## Notes
+
+- **Action UI uniquement** : Ce workflow ne touche pas à PouchDB
+- **Pas de persistance** : La fermeture du panneau est une action temporaire
+- **Offline** : ✅ Fonctionne offline
+
+---
+
+## Migration depuis l'ancienne architecture
+
+| Aspect | Avant | Après (PouchDB) |
+|--------|-------|-----------------|
+| Action | Côté client uniquement | **Conservé** - Côté client |
+| Persistance | Non persistante | **Conservé** - Non persistante |
+| Latence | Instantanée | Instantanée |
+| Offline | ✅ Oui | ✅ Oui |

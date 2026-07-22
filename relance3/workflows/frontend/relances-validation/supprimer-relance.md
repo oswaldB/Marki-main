@@ -1,4 +1,4 @@
-# Workflow : Supprimer une relance
+# Workflow : Supprimer une relance (PouchDB)
 
 ## Écran
 `relances-validation.html`
@@ -7,12 +7,13 @@
 Bouton avec `@click="supprimerRelance()"`
 
 ## Action
-Supprimer une relance
+Supprimer une relance de PouchDB
 
 ## Description
 - Demande confirmation
-- Supprime définitivement
+- Supprime définitivement de PouchDB
 - Retire de la liste
+- Synchronise avec CouchDB
 
 ## Data Model
 **Page Function:** `relancesValidationPage()`
@@ -20,10 +21,11 @@ Supprimer une relance
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `relancesAValider`
+**Données (depuis PouchDB):**
+- `relancesAValider` - relances depuis PouchDB
 - `selectedRelances`
 - `selectAll`
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -34,13 +36,20 @@ Supprimer une relance
 
 ## State Changes
 
-**Modifications:** États UI spécifiques selon implémentation
+**Modifications:**
+- Relance supprimée de PouchDB
+- `relancesAValider` ← filtrée (relance retirée)
 
-## API Calls
+## PouchDB Operations
 
-**Endpoint:** `DELETE /api/relances/:id` - Supprime la relance définitivement
+**Action:** Supprimer le document relance de PouchDB.
 
-**Response:** `ApiResponse<{ deleted: true }>`
+**Méthodes utilisées:**
+1. `db.get('relance:' + id)` - Récupérer le document avec sa révision
+2. `db.remove(doc)` - Supprimer le document
+
+**Sync:** La suppression est automatiquement synchronisée avec CouchDB.
+
 ## Organisation des fichiers
 
 ```
@@ -56,7 +65,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/relances-validation/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/relances-validation/js/supprimer-relance.js`
@@ -64,12 +73,12 @@ frontend/
 
 ```javascript
 // frontend/app/relances-validation/js/supprimer-relance.js
-export function supprimerRelance() {
-  // Implementation du workflow
+export async function supprimerRelance() {
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
 async supprimerRelance(id) {
@@ -80,27 +89,49 @@ async supprimerRelance(id) {
   this.loading = true;
   
   try {
-    // 3. Call API
-    const response = await fetch(`/api/relances/${id}`, {
-      method: 'DELETE'
-    });
+    // 3. Récupérer le document depuis PouchDB avec sa révision
+    const doc = await db.get('relance:' + id);
     
-    const data = await response.json();
+    // 4. Supprimer de PouchDB
+    await db.remove(doc);
+    // response: { ok: true, id: 'relance:...', rev: '2-xxx...' }
     
-    if (!data.success) {
-      throw new Error(data.error?.message || 'Erreur lors de la suppression');
-    }
+    // 5. Remove from local array
+    this.relancesAValider = this.relancesAValider.filter(
+      item => item._id !== 'relance:' + id
+    );
     
-    // 4. Remove from local array
-    this.relancesAValider = this.relancesAValider.filter(item => item.id !== id);
-    
-    // 5. Notify
-    Alpine.store('ui').addToast('Relance supprimée', 'success');
+    // 6. Notify
+    this.toast('Relance supprimée', 'success');
     
   } catch (error) {
-    Alpine.store('ui').addToast(error.message, 'error');
+    if (error.status === 409) {
+      this.error = 'Conflit de version, veuillez réessayer';
+      this.toast('Conflit de version', 'error');
+    } else if (error.status === 404) {
+      // Déjà supprimé
+      this.relancesAValider = this.relancesAValider.filter(
+        item => item._id !== 'relance:' + id
+      );
+      this.toast('Relance déjà supprimée', 'info');
+    } else {
+      this.error = error.message;
+      this.toast(error.message, 'error');
+    }
   } finally {
     this.loading = false;
   }
 }
 ```
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Requête | `DELETE /api/relances/:id` | `db.get()` puis `db.remove()` |
+| Réponse | `ApiResponse<{ deleted: true }>` | `{ ok, id, rev }` |
+| Gestion conflits | Backend | Détection `_rev` côté client |
+| Latence | ~100-300ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline, sync reportée |

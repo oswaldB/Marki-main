@@ -1,4 +1,4 @@
-# Workflow : Suspendre via validation
+# Workflow : Suspendre via validation (PouchDB)
 
 ## Écran
 `relances-validation.html`
@@ -7,12 +7,13 @@
 Bouton avec `@click="suspendreRelance()"`
 
 ## Action
-Suspendre la relance
+Suspendre la relance via PouchDB
 
 ## Description
-- Met la relance en attente
+- Met la relance en attente dans PouchDB
 - Garde en file pour plus tard
 - Ne supprime pas
+- Synchronise avec CouchDB
 
 ## Data Model
 **Page Function:** `relancesValidationPage()`
@@ -20,10 +21,11 @@ Suspendre la relance
 **Stores Alpine.js:**
 - $store.ui
 
-**Données:**
-- `relancesAValider`
+**Données (depuis PouchDB):**
+- `relancesAValider` - relances depuis PouchDB
 - `selectedRelances`
 - `selectAll`
+- `db` - instance PouchDB
 
 **États UI:**
 - `loading`
@@ -34,25 +36,21 @@ Suspendre la relance
 
 ## State Changes
 
-**Modifications:** États UI spécifiques selon implémentation
+**Modifications:**
+- Relance mise à jour dans PouchDB (statut = 'suspendue')
+- `relancesAValider` ← filtrée (relance retirée)
 
-## API Calls
+## PouchDB Operations
 
-**`POST /api/relances/:id/suspend`** - Appelle le workflow backend pour suspendre la relance
+**Action:** Mettre à jour la relance dans PouchDB pour la suspendre.
 
-**Payload:** Aucun (l'ID est dans l'URL)
+**Méthodes utilisées:**
+1. `db.get('relance:' + id)` - Récupérer le document avec sa révision
+2. Mettre à jour `statut: 'suspendue'` et `is_suspended: true`
+3. `db.put(doc)` - Sauvegarder le document modifié
 
-**Response:**
-```json
-{
-  "success": true,
-  "data": {
-    "id": "rel_abc123",
-    "statut": "suspendue",
-    "is_suspended": true
-  }
-}
-```
+**Sync:** La modification est automatiquement synchronisée avec CouchDB.
+
 ## Organisation des fichiers
 
 ```
@@ -68,7 +66,7 @@ frontend/
 
 ### Fichier principal
 - **HTML** : `frontend/app/relances-validation/index.html`
-- **Point d'entrée** : Initialise la page Alpine.js
+- **Point d'entrée** : Initialise la page Alpine.js avec PouchDB
 
 ### Fichier workflow
 - **JS** : `frontend/app/relances-validation/js/suspendre-relance.js`
@@ -76,43 +74,66 @@ frontend/
 
 ```javascript
 // frontend/app/relances-validation/js/suspendre-relance.js
-export function suspendreRelance() {
-  // Implementation du workflow
+export async function suspendreRelance() {
+  // Implementation avec PouchDB
 }
 ```
 
-## Implementation
+## Implementation (PouchDB)
 
 ```javascript
-async suspendRelance(id) {
+async suspendreRelance(id) {
   // 1. Set loading
   this.loading = true;
   
   try {
-    // 2. Call API
-    const response = await fetch(`/api/relances/${id}/suspend`, {
-      method: 'POST'
-    });
+    // 2. Récupérer le document depuis PouchDB avec sa révision
+    const doc = await db.get('relance:' + id);
     
-    const data = await response.json();
+    // 3. Mettre à jour le statut
+    doc.statut = 'suspendue';
+    doc.is_suspended = true;
+    doc.suspended_at = new Date().toISOString();
+    doc.updated_at = new Date().toISOString();
     
-    if (!data.success) {
-      throw new Error(data.error?.message);
-    }
+    // 4. Sauvegarder dans PouchDB
+    const response = await db.put(doc);
+    // response: { ok: true, id: 'relance:...', rev: '2-xxx...' }
     
-    // 3. Update local
-    const index = this.relances.findIndex(item => item.id === id);
+    // 5. Update local
+    const index = this.relancesAValider.findIndex(
+      item => item._id === 'relance:' + id
+    );
     if (index !== -1) {
-      this.relances[index].statut = 'suspendue';
+      this.relancesAValider.splice(index, 1);
     }
     
-    // 4. Notify
-    Alpine.store('ui').addToast('Facture suspendue', 'success');
+    // 6. Notify
+    this.toast('Relance suspendue', 'success');
     
   } catch (error) {
-    Alpine.store('ui').addToast(error.message, 'error');
+    if (error.status === 409) {
+      this.error = 'Conflit de version, veuillez réessayer';
+      this.toast('Conflit de version', 'error');
+    } else {
+      this.error = error.message;
+      this.toast(error.message, 'error');
+    }
   } finally {
     this.loading = false;
   }
 }
 ```
+
+---
+
+## Migration depuis l'ancienne API
+
+| Aspect | Avant (API) | Après (PouchDB) |
+|--------|-------------|-----------------|
+| Requête | `POST /api/relances/:id/suspend` | `db.get()` puis `db.put()` |
+| Payload | Aucun | Modification directe du doc |
+| Réponse | `{ success, data: { id, statut, is_suspended } }` | `{ ok, id, rev }` |
+| Gestion conflits | Backend | Détection `_rev` côté client |
+| Latence | ~100-300ms | ~10-50ms (local) |
+| Offline | ❌ Impossible | ✅ Fonctionne offline, sync reportée |
