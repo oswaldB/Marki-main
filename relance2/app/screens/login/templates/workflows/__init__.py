@@ -1,1 +1,0 @@
-# Workflows templates package initialization

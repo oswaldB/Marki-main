@@ -324,8 +324,20 @@ def dev(project_dir: str | None, cell_name: str | None, skip_tests: bool,
                     console.print("[blue]🔨 Tentative de correction automatique...")
                     if _auto_fix_cell(cell, project, yaml_path, test_errors):
                         console.print(f"[green]✅ {cell.name}: CORRECTION OK")
-                        test_failed -= 1
-                        test_passed += 1
+                        # Redémarrer le serveur pour prendre en compte les changements
+                        console.print("  [blue]🔄 Redémarrage du serveur...")
+                        restart_ok, restart_err = _restart_server(project_dir)
+                        if restart_ok:
+                            console.print("  [green]✅ Serveur redémarré")
+                            test_failed -= 1
+                            test_passed += 1
+                        else:
+                            console.print("  [red]❌ Échec redémarrage serveur")
+                            failed_cells.append({
+                                "cell": cell,
+                                "errors": test_errors + restart_err,
+                                "yaml_path": yaml_path
+                            })
                     else:
                         console.print(f"[red]❌ {cell.name}: Correction échouée")
                         failed_cells.append({
@@ -340,8 +352,20 @@ def dev(project_dir: str | None, cell_name: str | None, skip_tests: bool,
                         console.print("[blue]🔨 Tentative de correction...")
                         if _auto_fix_cell(cell, project, yaml_path, test_errors):
                             console.print(f"[green]✅ {cell.name}: CORRECTION OK")
-                            test_failed -= 1
-                            test_passed += 1
+                            # Redémarrer le serveur pour prendre en compte les changements
+                            console.print("  [blue]🔄 Redémarrage du serveur...")
+                            restart_ok, restart_err = _restart_server(project_dir)
+                            if restart_ok:
+                                console.print("  [green]✅ Serveur redémarré")
+                                test_failed -= 1
+                                test_passed += 1
+                            else:
+                                console.print("  [red]❌ Échec redémarrage serveur")
+                                failed_cells.append({
+                                    "cell": cell,
+                                    "errors": test_errors + restart_err,
+                                    "yaml_path": yaml_path
+                                })
                         else:
                             console.print(f"[red]❌ {cell.name}: Correction échouée")
                             failed_cells.append({
@@ -387,8 +411,15 @@ def dev(project_dir: str | None, cell_name: str | None, skip_tests: bool,
                 console.print(f"[cyan]🔧 Correction de: {cell.name}[/cyan]")
                 if _auto_fix_cell(cell, project, item["yaml_path"], item["errors"]):
                     console.print(f"[green]✅ {cell.name}: CORRECTION OK")
-                    test_failed -= 1
-                    test_passed += 1
+                    # Redémarrer le serveur pour prendre en compte les changements
+                    console.print("  [blue]🔄 Redémarrage du serveur...")
+                    restart_ok, restart_err = _restart_server(project_dir)
+                    if restart_ok:
+                        console.print("  [green]✅ Serveur redémarré")
+                        test_failed -= 1
+                        test_passed += 1
+                    else:
+                        console.print("  [red]❌ Échec redémarrage serveur")
                 else:
                     console.print(f"[red]❌ {cell.name}: Correction échouée")
 
@@ -411,6 +442,25 @@ def _check_pi() -> bool:
         return True
     except FileNotFoundError:
         return False
+
+
+def _restart_server(project_dir: Path) -> tuple[bool, list[str]]:
+    """Redémarre le serveur Flask (kill + start).
+    
+    Retourne (succès, liste_d_erreurs).
+    """
+    # Tuer le processus existant
+    try:
+        subprocess.run(
+            ["pkill", "-f", "flask"],
+            capture_output=True, check=False
+        )
+        time.sleep(1)
+    except:
+        pass
+    
+    # Redémarrer
+    return _start_server(project_dir)
 
 
 def _check_server() -> bool:

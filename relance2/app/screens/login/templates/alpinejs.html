@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Login{% endblock %}</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Configuration Alpine.js -->
+    <script>
+        document.addEventListener('alpine:init', () => {
+            // Store d'authentification
+            Alpine.store('auth', {
+                token: localStorage.getItem('token') || null,
+                user: null,
+                isAuthenticated: false,
+                
+                init() {
+                    if (this.token) {
+                        this.isAuthenticated = true;
+                    }
+                },
+                
+                setAuth(token, user) {
+                    this.token = token;
+                    this.user = user;
+                    this.isAuthenticated = true;
+                    localStorage.setItem('token', token);
+                },
+                
+                clearAuth() {
+                    this.token = null;
+                    this.user = null;
+                    this.isAuthenticated = false;
+                    localStorage.removeItem('token');
+                }
+            });
+            
+            // Store UI
+            Alpine.store('ui', {
+                loading: false,
+                error: null,
+                success: null,
+                
+                setLoading(value) {
+                    this.loading = value;
+                },
+                
+                setError(message) {
+                    this.error = message;
+                    setTimeout(() => this.error = null, 5000);
+                },
+                
+                setSuccess(message) {
+                    this.success = message;
+                    setTimeout(() => this.success = null, 3000);
+                },
+                
+                clearMessages() {
+                    this.error = null;
+                    this.success = null;
+                }
+            });
+        });
+    </script>
+    {% block head %}{% endblock %}
+</head>
+<body class="bg-gray-50 min-h-screen">
+    {% block content %}{% endblock %}
+</body>
+</html>
