@@ -1,0 +1,230 @@
+fichier:
+  chemin: templates/workflows/initial-load.html
+  contenu: |
+    {# 
+      Workflow: initial-load
+      Écran: login
+      Description: Chargement initial de la page login, vérification de session existante
+    #}
+    
+    <script>
+    (function() {
+        'use strict';
+        
+        // Logger pour le workflow
+        const LOGGER = {
+            prefix: '[initial-load]',
+            log: (msg, data) => console.log(`${LOGGER.prefix} ${msg}`, data || ''),
+            error: (msg, err) => console.error(`${LOGGER.prefix} ${msg}`, err || '')
+        };
+        
+        // WORKFLOW_START: initial-load
+        LOGGER.log('WORKFLOW_START', { 
+            workflow: 'initial-load',
+            timestamp: Date.now(),
+            page: window.location.pathname
+        });
+        
+        /**
+         * Vérifie la validité du token via l'API
+         * @param {string} token - JWT token à vérifier
+         * @returns {Promise<Object>} - Données utilisateur si token valide
+         */
+        async function verifyToken(token) {
+            LOGGER.log('API_CALL_START: GET /api/auth/me');
+            
+            const response = await fetch('/api/auth/me', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            });
+            
+            if (!response.ok) {
+                const error = await response.json();
+                LOGGER.error('API_CALL_ERROR', error);
+                throw new Error(error.error || 'Token invalide');
+            }
+            
+            const data = await response.json();
+            LOGGER.log('API_CALL_SUCCESS', { userId: data.user?.id });
+            return data;
+        }
+        
+        /**
+         * Redirige vers le dashboard
+         */
+        function redirectToDashboard() {
+            LOGGER.log('REDIRECT_START', { target: '/dashboard' });
+            window.location.href = '/dashboard';
+        }
+        
+        // Expose la fonction globalement pour Alpine.js
+        window.initialLoadWorkflow = {
+            /**
+             * Vérifie si une session existe et est valide
+             * @returns {Promise<boolean>} - true si session valide, false sinon
+             */
+            async checkSession() {
+                // CHECKPOINT: dom-ready - body avec x-data="loginPage()" présent
+                LOGGER.log('CHECKPOINT: dom-ready', { 
+                    bodyExists: !!document.body,
+                    alpineDataPresent: document.body.hasAttribute('x-data') 
+                });
+                
+                // CHECKPOINT: token-checked - vérifier présence token dans localStorage
+                LOGGER.log('CHECKPOINT: token-checked');
+                
+                const token = localStorage.getItem('marki_token') || localStorage.getItem('token');
+                
+                if (!token) {
+                    LOGGER.log('TOKEN_ABSENT', { 
+                        marki_token: localStorage.getItem('marki_token'),
+                        token: localStorage.getItem('token')
+                    });
+                    
+                    // CHECKPOINT: form-ready - afficher le formulaire
+                    LOGGER.log('CHECKPOINT: form-ready', { 
+                        tokenPresent: false,
+                        formVisible: true 
+                    });
+                    
+                    LOGGER.log('WORKFLOW_END', { 
+                        workflow: 'initial-load',
+                        result: 'no_session',
+                        timestamp: Date.now()
+                    });
+                    
+                    return false;
+                }
+                
+                LOGGER.log('TOKEN_PRESENT', { tokenLength: token.length });
+                
+                // CHECKPOINT: session-verified - valider via API
+                LOGGER.log('CHECKPOINT: session-verified');
+                
+                try {
+                    const userData = await verifyToken(token);
+                    
+                    LOGGER.log('SESSION_VALID', { 
+                        userId: userData.user?.id,
+                        email: userData.user?.email 
+                    });
+                    
+                    // Stocker les données utilisateur si pas déjà fait
+                    if (userData.user) {
+                        localStorage.setItem('user', JSON.stringify(userData.user));
+                    }
+                    
+                    // CHECKPOINT: redirect-executed - rediriger vers dashboard
+                    LOGGER.log('CHECKPOINT: redirect-executed');
+                    
+                    LOGGER.log('WORKFLOW_END', { 
+                        workflow: 'initial-load',
+                        result: 'session_valid_redirect',
+                        timestamp: Date.now()
+                    });
+                    
+                    redirectToDashboard();
+                    return true;
+                    
+                } catch (error) {
+                    LOGGER.error('SESSION_INVALID', { error: error.message });
+                    
+                    // Token invalide, le supprimer
+                    localStorage.removeItem('marki_token');
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    
+                    LOGGER.log('TOKEN_CLEARED');
+                    
+                    // CHECKPOINT: form-ready - afficher le formulaire avec erreur silencieuse nettoyée
+                    LOGGER.log('CHECKPOINT: form-ready', { 
+                        tokenPresent: false,
+                        formVisible: true,
+                        previousTokenCleared: true
+                    });
+                    
+                    LOGGER.log('WORKFLOW_END', { 
+                        workflow: 'initial-load',
+                        result: 'invalid_session_cleared',
+                        timestamp: Date.now()
+                    });
+                    
+                    return false;
+                }
+            },
+            
+            /**
+             * Initialise le workflow sur le component Alpine.js
+             * @param {Object} component - Référence au component Alpine
+             */
+            init(component) {
+                LOGGER.log('HANDLER_INIT');
+                
+                // Ajoute l'état de vérification de session
+                component.checkingSession = true;
+                
+                // Lance la vérification de session au montage
+                this.checkSession().then((hasSession) => {
+                    component.checkingSession = false;
+                    component.sessionChecked = true;
+                    
+                    if (!hasSession) {
+                        // Focus sur le premier champ si pas de session
+                        setTimeout(() => {
+                            const firstInput = document.querySelector('input[type="text"]');
+                            if (firstInput) {
+                                firstInput.focus();
+                                LOGGER.log('FORM_READY_FOCUS', { element: 'username' });
+                            }
+                        }, 100);
+                    }
+                    
+                    LOGGER.log('HANDLER_READY', { hasSession });
+                });
+            }
+        };
+        
+        // Auto-initialisation si Alpine est déjà chargé
+        if (typeof Alpine !== 'undefined') {
+            document.addEventListener('alpine:init', () => {
+                LOGGER.log('ALPINE_INIT_DETECTED');
+            });
+        }
+        
+        // WORKFLOW_END: initial-load (initialisation terminée)
+        LOGGER.log('WORKFLOW_END', { 
+            workflow: 'initial-load',
+            status: 'initialized',
+            timestamp: Date.now()
+        });
+        
+    })();
+    </script>
+    
+    {# 
+      Utilisation dans login.html:
+      
+      <div x-data="{
+          form: { username: '', password: '' },
+          loading: false,
+          error: null,
+          checkingSession: false,
+          sessionChecked: false,
+          init() {
+              initialLoadWorkflow.init(this);
+          }
+      }">
+          <!-- Loading state pendant la vérification -->
+          <template x-if="checkingSession">
+              <div class="loading-spinner">Vérification de session...</div>
+          </template>
+          
+          <!-- Form caché pendant la vérif -->
+          <form x-show="sessionChecked" @submit.prevent="handleLogin">
+              <!-- ... -->
+          </form>
+      </div>
+    #}

@@ -1,0 +1,50 @@
+// =====================================================
+// WORKFLOW INIT - Initialisation de la page
+// =====================================================
+
+/**
+ * @workflow init
+ * @description Initialise l'état de la page et lance les chargements initiaux
+ * @checkpoint workflow-init-started
+ */
+init: function() {
+    log.info('WORKFLOW_START', { 
+        workflow: 'init',
+        timestamp: Date.now(),
+        page: window.location.pathname
+    });
+
+    // 1. Vérifier authentification
+    const token = localStorage.getItem('marki_token');
+    if (!token) {
+        log.warn('AUTH_MISSING', { redirecting: '/login' });
+        window.location.href = '/login';
+        return;
+    }
+    log.info('AUTH_VERIFIED', { token_present: true });
+
+    // 2. Initialiser l'état par défaut
+    this.loading = false;
+    this.error = null;
+    this.data = [];
+    this.selected = null;
+    
+    log.debug('STATE_INIT', { 
+        loading: this.loading,
+        error: this.error,
+        data_length: this.data.length
+    });
+
+    // 3. Charger les données initiales si une méthode loadData existe
+    if (typeof this.loadData === 'function') {
+        log.info('LOAD_DATA_TRIGGERED');
+        this.loadData();
+    } else {
+        log.debug('NO_LOAD_DATA_METHOD');
+    }
+
+    log.info('WORKFLOW_END', { 
+        workflow: 'init',
+        timestamp: Date.now()
+    });
+}

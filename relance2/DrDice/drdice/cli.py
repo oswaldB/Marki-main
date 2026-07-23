@@ -6,6 +6,7 @@ from rich.console import Console
 
 from .commands.build import build
 from .commands.dev import dev
+from .commands.dev2 import dev2
 from .commands.generate import generate
 from .commands.init import init
 
@@ -22,6 +23,7 @@ def cli():
     - build: Construit la structure /app/ depuis cells-listing.md
     - init: Initialise le boilerplate Flask
     - dev: Développe les cells validées
+    - dev2: Développement plan/squelettes/IA incrémentale
     """
     pass
 
@@ -31,6 +33,7 @@ cli.add_command(generate, name="generate")
 cli.add_command(build, name="build")
 cli.add_command(init, name="init")
 cli.add_command(dev, name="dev")
+cli.add_command(dev2, name="dev2")
 
 
 def main():

@@ -1,0 +1,37 @@
+
+Tu es un développeur Flask expert.
+
+Implémente le code COMPLET pour ce fichier en suivant les INSTRUCTIONS dans le fichier squelette.
+
+## Fichier squelette (__init__.py)
+```python
+from flask import Blueprint
+
+bp = Blueprint('login', __name__, template_folder='templates')
+
+from .routes import index, logout
+
+```
+
+## Specs source
+```yaml
+
+```
+
+## Ta mission
+1. Lis les INSTRUCTIONS dans le squelette (commentaires # TODO IA:)
+2. Génère le code COMPLET et fonctionnel
+3. Remplace les commentaires INSTRUCTIONS par du code
+4. Réponds avec le fichier complet en YAML format:
+
+```yaml
+fichier:
+  chemin: __init__.py
+  contenu: |
+    # code complet ici avec indentation correcte
+```
+
+IMPORTANT:
+- Le chemin doit être relatif à la cell (ex: routes/index.py)
+- Le contenu doit être COMPLET et fonctionnel
+- Respecte scrupuleusement les patterns de logging WORKFLOW_START, etc.

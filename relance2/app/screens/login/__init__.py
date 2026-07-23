@@ -1,0 +1,14 @@
+from flask import Blueprint
+import logging
+
+logger = logging.getLogger(__name__)
+
+# WORKFLOW_START: Initialisation du blueprint d'authentification
+logger.debug("WORKFLOW_START: Initialisation du blueprint 'login'")
+
+bp = Blueprint('login', __name__, template_folder='templates')
+
+# Import des routes après création du blueprint pour éviter les imports circulaires
+from .routes import index, logout
+
+logger.debug("WORKFLOW_SUCCESS: Blueprint 'login' initialisé avec les routes: index, logout")

@@ -1,0 +1,26 @@
+cell: login
+files:
+  __init__.py:
+    status: done
+    type: blueprint
+  routes/__init__.py:
+    status: done
+    type: routes_init
+  templates/alpinejs.html:
+    status: done
+    type: template_alpine
+  templates/index.html:
+    status: done
+    type: template_main
+  templates/workflows/auth-submit.html:
+    status: done
+    type: workflow_frontend
+  templates/workflows/initial-load.html:
+    status: done
+    type: workflow_frontend
+  templates/workflows/workflow-init.html:
+    status: done
+    type: workflow_init
+started_at: '2026-07-23T09:11:30.447997'
+status: in_progress
+type: screens

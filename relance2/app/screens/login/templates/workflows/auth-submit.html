@@ -1,0 +1,190 @@
+{# 
+  Workflow: auth-submit
+  Écran: login.html
+  Description: Soumission des identifiants utilisateur pour authentification
+#}
+
+<script>
+(function() {
+    'use strict';
+    
+    // Logger pour le workflow
+    const LOGGER = {
+        prefix: '[auth-submit]',
+        log: (msg, data) => console.log(`${LOGGER.prefix} ${msg}`, data || ''),
+        error: (msg, err) => console.error(`${LOGGER.prefix} ${msg}`, err || '')
+    };
+    
+    // WORKFLOW_START: auth-submit
+    LOGGER.log('WORKFLOW_START: auth-submit');
+    
+    /**
+     * Appelle l'API d'authentification
+     * @param {string} email - Email utilisateur
+     * @param {string} password - Mot de passe
+     * @returns {Promise<Object>} - Données d'authentification
+     */
+    async function authSubmit(email, password) {
+        LOGGER.log('API_CALL_START: POST /api/auth/login', { email });
+        
+        const response = await fetch('/api/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+        
+        if (!response.ok) {
+            const error = await response.json();
+            LOGGER.error('API_CALL_ERROR', error);
+            throw new Error(error.error || 'Identifiants invalides');
+        }
+        
+        const data = await response.json();
+        LOGGER.log('API_CALL_SUCCESS', { userId: data.user?.id });
+        return data;
+    }
+    
+    // Expose la fonction globalement pour Alpine.js
+    window.authSubmit = authSubmit;
+    
+    /**
+     * Gestionnaire de connexion Alpine.js
+     * À intégrer dans le component x-data de la page login
+     */
+    window.authSubmitHandler = {
+        /**
+         * Initialise le handler de soumission
+         * @param {Object} component - Référence au component Alpine
+         */
+        init(component) {
+            LOGGER.log('HANDLER_INIT');
+            
+            /**
+             * Gère la soumission du formulaire de connexion
+             */
+            component.handleLogin = async function() {
+                LOGGER.log('CHECKPOINT_1: Validation formulaire');
+                
+                // 1. Validate form
+                if (!this.form || !this.form.email || !this.form.password) {
+                    this.error = 'Veuillez remplir tous les champs';
+                    LOGGER.log('CHECKPOINT_FAIL: Champs manquants');
+                    return;
+                }
+                
+                // Validate email format
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(this.form.email)) {
+                    this.error = 'Veuillez entrer un email valide';
+                    LOGGER.log('CHECKPOINT_FAIL: Format email invalide');
+                    return;
+                }
+                
+                LOGGER.log('CHECKPOINT_2: Formulaire valide', { 
+                    email: this.form.email 
+                });
+                
+                // 2. Set loading state
+                this.loading = true;
+                this.error = null;
+                
+                // Update UI store if available
+                if (Alpine.store('ui')) {
+                    Alpine.store('ui').loading = true;
+                }
+                
+                LOGGER.log('CHECKPOINT_3: Appel API authentification');
+                
+                try {
+                    // 3. Call auth API
+                    const data = await authSubmit(this.form.email, this.form.password);
+                    
+                    LOGGER.log('CHECKPOINT_4: Authentification réussie', { 
+                        userId: data.user?.id,
+                        role: data.user?.role 
+                    });
+                    
+                    // 4. Store auth data in Alpine store
+                    if (Alpine.store('auth')) {
+                        Alpine.store('auth').token = data.token;
+                        Alpine.store('auth').user = data.user;
+                        Alpine.store('auth').isAuthenticated = true;
+                        LOGGER.log('CHECKPOINT_5: Stores Alpine.js mis à jour');
+                    } else {
+                        LOGGER.log('CHECKPOINT_WARN: Store auth non disponible');
+                    }
+                    
+                    // 5. Persist token in localStorage
+                    localStorage.setItem('token', data.token);
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    LOGGER.log('CHECKPOINT_6: Token persisté dans localStorage');
+                    
+                    // 6. Redirect to dashboard
+                    LOGGER.log('CHECKPOINT_7: Redirection vers /dashboard');
+                    window.location.href = '/dashboard';
+                    
+                } catch (error) {
+                    LOGGER.error('CHECKPOINT_ERROR: Échec authentification', error.message);
+                    
+                    // Set error message
+                    this.error = error.message || 'Identifiants invalides';
+                    this.loading = false;
+                    
+                    // Update UI store
+                    if (Alpine.store('ui')) {
+                        Alpine.store('ui').loading = false;
+                    }
+                    
+                    // WORKFLOW_ERROR: auth-submit
+                    LOGGER.log('WORKFLOW_ERROR: auth-submit', { error: error.message });
+                    
+                } finally {
+                    if (this.loading) {
+                        // Only reset loading if no redirect happened
+                        this.loading = false;
+                        if (Alpine.store('ui')) {
+                            Alpine.store('ui').loading = false;
+                        }
+                    }
+                }
+            };
+            
+            LOGGER.log('HANDLER_READY');
+        }
+    };
+    
+    // Auto-initialisation si Alpine est déjà chargé
+    if (typeof Alpine !== 'undefined') {
+        document.addEventListener('alpine:init', () => {
+            LOGGER.log('ALPINE_INIT_DETECTED');
+        });
+    }
+    
+    // WORKFLOW_END: auth-submit (initialisation terminée)
+    LOGGER.log('WORKFLOW_END: auth-submit (initialisé)');
+    
+})();
+</script>
+
+{# 
+  Utilisation dans login.html:
+  
+  <div x-data="{
+      form: { email: '', password: '' },
+      loading: false,
+      error: null,
+      init() {
+          authSubmitHandler.init(this);
+      }
+  }">
+      <form @submit.prevent="handleLogin">
+          <input type="email" x-model="form.email" placeholder="Email">
+          <input type="password" x-model="form.password" placeholder="Mot de passe">
+          <button type="submit" :disabled="loading">
+              <span x-show="!loading">Se connecter</span>
+              <span x-show="loading">Connexion...</span>
+          </button>
+          <div x-show="error" x-text="error" class="error-message"></div>
+      </form>
+  </div>
+#}
