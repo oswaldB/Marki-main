@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{cell_name}</title>
+
+    <!-- TailwindCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <!-- PouchDB -->
+    <script src="https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></script>
+
+    <!-- Configuration PouchDB Mango -->
+    <script src="https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.find.min.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!--
+    TODO IA:
+    - Implémenter le contenu depuis specs/mockups/*.html
+    - Utiliser les workflows pour les interactions (runWorkflow)
+    - Le bouton logout est optionnel (montré ici comme exemple)
+    -->
+
+    <div id="app" x-data="app()" x-init="init()" class="container mx-auto p-4">
+        <!-- Header -->
+        <header class="bg-blue-600 text-white p-4 rounded-lg mb-6 flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold">{cell_name}</h1>
+                <p class="text-blue-100 text-sm" x-text="currentUser?.username || 'Non connecté'"></p>
+            </div>
+            <!-- TODO IA: Afficher seulement si connecté -->
+            <button 
+                x-show="isAuthenticated"
+                @click="logout()"
+                class="bg-blue-700 hover:bg-blue-800 px-3 py-1 rounded text-sm transition"
+            >
+                Déconnexion
+            </button>
+        </header>
+
+        <!-- Messages d'erreur -->
+        <div x-show="error" class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4" role="alert">
+            <p x-text="error"></p>
+            <button @click="error = null" class="text-sm underline">Fermer</button>
+        </div>
+
+        <!-- Loading -->
+        <div x-show="isLoading" class="flex justify-center items-center p-8">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        </div>
+
+        <!-- Contenu principal -->
+        <main x-show="!isLoading" class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-semibold mb-4">Contenu de la page</h2>
+            <p class="text-gray-600 mb-4">
+                Page {cell_name} en cours de développement.
+                Ce squelette sera enrichi par l'IA dans l'étape suivante.
+            </p>
+
+            <!-- TODO IA: Implémenter le contenu depuis specs/mockups/*.html -->
+
+            <div class="space-y-4">
+                <button
+                    @click="runWorkflow('init')"
+                    class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
+                >
+                    Exécuter Workflow Init
+                </button>
+            </div>
+
+            <!-- Affichage des données -->
+            <div x-show="data && Object.keys(data).length > 0" class="mt-6">
+                <h3 class="font-semibold mb-2">Données</h3>
+                <pre class="bg-gray-100 p-4 rounded overflow-auto" x-text="JSON.stringify(data, null, 2)"></pre>
+            </div>
+        </main>
+
+        <!-- Logs -->
+        <div x-show="logs.length > 0" class="mt-6 bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm">
+            <h3 class="text-white mb-2">Logs</h3>
+            <template x-for="log in logs.slice(-10)" :key="log.timestamp">
+                <div x-text="`[${log.timestamp}] [${log.level}] ${log.event}`"></div>
+            </template>
+        </div>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

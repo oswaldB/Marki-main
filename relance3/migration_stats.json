@@ -1,0 +1,23 @@
+{
+  "tables": {
+    "users": {
+      "ok": true,
+      "table": "users",
+      "total": 1,
+      "inserted": 1,
+      "errors": 0
+    },
+    "sessions": {
+      "ok": true,
+      "table": "sessions",
+      "total": 1,
+      "inserted": 1,
+      "errors": 0
+    }
+  },
+  "total_docs": 2,
+  "total_inserted": 2,
+  "total_errors": 0,
+  "start_time": "2026-07-24T04:21:37.440551+00:00",
+  "end_time": "2026-07-24T04:21:37.485355+00:00"
+}
