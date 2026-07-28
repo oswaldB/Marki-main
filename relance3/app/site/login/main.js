@@ -28,11 +28,12 @@
 // ═══════════════════════════════════════════════════════════════
 import { execute as initial_loadExecute } from './workflows/initial-load.js';
 import { execute as auth_submitExecute } from './workflows/auth-submit.js';
+import { execute as sync_loadingExecute } from './workflows/sync-loading.js';
 
 // ═══════════════════════════════════════════════════════════════
 // IMPORT ALPINE.JS (ESM via CDN)
 // ═══════════════════════════════════════════════════════════════
-import Alpine from 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/module.esm.js';
+import Alpine from 'https://cdn.jsdelivr.net/npm/alpinejs@3/dist/module.esm.js';
 
 console.log('main.js loaded');
 
@@ -41,11 +42,11 @@ console.log('main.js loaded');
 // ═══════════════════════════════════════════════════════════════
 window.workflows = {
     'initial-load': { execute: initial_loadExecute },
-    'auth-submit': { execute: auth_submitExecute }
+    'auth-submit': { execute: auth_submitExecute },
+    'sync-loading': { execute: sync_loadingExecute }
 };
 
-console.log('initial-load.js loaded');
-console.log('auth-submit.js loaded');
+console.log('workflows registered:', Object.keys(window.workflows || {}));
 
 // ═══════════════════════════════════════════════════════════════
 // INITIALISATION POUCHDB (si non initialisée avant)

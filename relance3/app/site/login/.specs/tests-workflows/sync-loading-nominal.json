@@ -1,0 +1,30 @@
+{
+  "scenario": "sync-loading - cas nominal",
+  "feature": "Sync Loading",
+  "given": "Conditions initiales standards",
+  "workflow": "sync-loading",
+  "inputJson": {
+    "session": "{",
+    "name": "john_doe",
+    "roles": [],
+    "fromLogin": true
+  },
+  "mockData": {},
+  "consoleLogsExpected": [
+    "sync-loading.js loaded",
+    "sync-loading: démarrage synchronisation",
+    "sync-loading: connexion à CouchDB établie",
+    "sync-loading: documents reçus: 50",
+    "sync-loading: documents reçus: 150",
+    "sync-loading: sync initial terminé",
+    "sync-loading: redirection vers application",
+    "sync-loading: erreur de sync: connection_lost",
+    "sync-loading: mode hors-ligne activé",
+    "sync-loading: annulé par l'utilisateur"
+  ],
+  "outputJson": {
+    "success": true,
+    "data": {},
+    "error": null
+  }
+}

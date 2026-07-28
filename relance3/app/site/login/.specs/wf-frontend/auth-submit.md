@@ -139,18 +139,36 @@ const sessionCheck = await fetch(`${COUCHDB_URL}_session`, {
 const sessionData = await sessionCheck.json();
 // sessionData.userCtx.name, sessionData.userCtx.roles
 
-// Démarrer sync live avec le cookie de session
-const sync = localDb.sync(`${COUCHDB_URL}${DB_NAME}`, {
-  live: true,
-  retry: true,
-  ajax: { credentials: 'include' }
+// Démarrer sync initial (one-shot) puis live
+const remoteDb = new PouchDB(`${COUCHDB_URL}${DB_NAME}`, {
+  fetch: (url, opts) => {
+    opts.credentials = 'include';
+    return fetch(url, opts);
+  }
 });
 
-// Écouter les événements
-sync.on('change', (info) => console.log('Sync change:', info));
-sync.on('paused', (err) => console.log('Sync paused'));
-sync.on('active', () => console.log('Sync active'));
-sync.on('error', (err) => console.error('Sync error:', err));
+// Sync initial avec suivi de progression
+const sync = localDb.sync(remoteDb, {
+  live: false,    // false pour le premier sync (one-shot)
+  retry: true
+});
+
+// Écouter la progression
+sync.on('change', (info) => {
+  console.log('Sync change:', info);
+  updateLoadingUI(info);
+});
+
+sync.on('complete', (info) => {
+  console.log('Sync initial terminé:', info);
+  // Redirection vers /dashboard
+  window.location.href = '/dashboard';
+});
+
+sync.on('error', (err) => {
+  console.error('Sync error:', err);
+  showSyncError(err);
+});
 ```
 
 ### 4. Stockage session (localStorage)
@@ -186,7 +204,9 @@ curl -X POST https://dev.markidiags.com/data/_users/org.couchdb.user:test@marki.
 ## Side Effects
 - Crée un cookie `AuthSession` (HttpOnly, géré par CouchDB)
 - Écrit dans localStorage (5 clés)
-- Démarre la synchronisation PouchDB ↔ CouchDB en mode live
+- Démarre la synchronisation PouchDB ↔ CouchDB (sync initial one-shot)
+- Affiche l'écran de loading de sync (voir `sync-loading.md`)
+- Redirige vers `/dashboard` après sync initial réussi
 - Supprime `auth_username` du localStorage si rememberMe=false
 
 ## Dépendances
@@ -212,9 +232,24 @@ auth-submit: tentative connexion pour: john_doe
 auth-submit: identifiants invalides (401)
 auth-submit: authentification réussie pour: john_doe
 auth-submit: session CouchDB validée
-auth-submit: sync PouchDB démarré (live: true)
+auth-submit: sync PouchDB démarré (one-shot)
+auth-submit: documents reçus: 50
+auth-submit: documents reçus: 150
+auth-submit: sync initial terminé
+auth-submit: redirection vers /dashboard
 auth-submit: erreur sync: ...
 ```
+
+## Navigation
+
+Après authentification réussie :
+1. **Afficher l'écran de sync** (masquer le formulaire login)
+2. **Sync initial** : Télécharger les données PouchDB (voir `sync-loading.md`)
+3. **Redirection** : `window.location.href = '/dashboard'`
+
+Si le sync échoue, proposer :
+- **Réessayer** : Relancer le sync initial
+- **Mode hors-ligne** : Rediriger quand même vers `/dashboard` (les données seront sync plus tard)
 
 ## Déconnexion
 ```javascript

@@ -1,0 +1,29 @@
+{
+  "scenario": "initial-load - cas nominal",
+  "feature": "Initial Load",
+  "given": "Conditions initiales standards",
+  "workflow": "initial-load",
+  "inputJson": {},
+  "mockData": {
+    "localStorage": {
+      "auth_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.mock",
+      "auth_user": "{\"id\":\"user_123\",\"email\":\"test@example.com\"}"
+    }
+  },
+  "consoleLogsExpected": [
+    "initial-load.js loaded",
+    "initial-load: démarrage vérification session",
+    "initial-load: vérification cookie AuthSession",
+    "initial-load: cookie AuthSession absent ou invalide",
+    "initial-load: session CouchDB active pour: john_doe",
+    "initial-load: PouchDB local: 1247 documents",
+    "initial-load: PouchDB à jour → redirection vers /dashboard",
+    "initial-load: sync initial requis → affichage loading screen",
+    "initial-load: sync terminé → redirection vers /dashboard"
+  ],
+  "outputJson": {
+    "success": true,
+    "data": {},
+    "error": null
+  }
+}

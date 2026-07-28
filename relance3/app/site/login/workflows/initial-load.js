@@ -21,109 +21,118 @@ PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
 console.log('initial-load.js loaded');
 
 /**
- * Décode un JWT et retourne le payload
- * @param {string} token - JWT token
- * @returns {Object|null} Payload décodé ou null
- */
-function decodeJWT(token) {
-    try {
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const jsonPayload = decodeURIComponent(
-            atob(base64)
-                .split('')
-                .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-                .join('')
-        );
-        return JSON.parse(jsonPayload);
-    } catch (err) {
-        console.error('initial-load: erreur décodage JWT:', err);
-        return null;
-    }
-}
-
-/**
  * Workflow initial-load
- * @param {Object} context - Contexte avec localDB, remoteDB
- * @param {Object} params - Paramètres du workflow
+ * Vérifie si l'utilisateur possède une session active au chargement de la page login.
+ * @param {Object} context - Contexte avec localDB, remoteDB, couchDbUrl
+ * @param {Object} params - Paramètres du workflow (aucun requis)
  * @returns {Promise<Object>} Résultat { success, data, error }
  */
 export async function execute(context, params = {}) {
     console.log('initial-load: démarrage vérification session');
     
     try {
-        // Lire localStorage
-        const token = localStorage.getItem('auth_token');
-        const userJson = localStorage.getItem('auth_user');
-        const savedEmail = localStorage.getItem('saved_email');
+        const { localDB, couchDbUrl } = context;
         
-        // Aucun token trouvé
-        if (!token) {
-            console.log('initial-load: aucun token trouvé');
+        // Vérifier le cookie de session CouchDB (AuthSession)
+        console.log('initial-load: vérification cookie AuthSession');
+        
+        const sessionResponse = await fetch(`${couchDbUrl}_session`, {
+            credentials: 'include'
+        });
+        
+        if (!sessionResponse.ok) {
+            throw new Error(`Erreur HTTP ${sessionResponse.status} lors de la vérification de session`);
+        }
+        
+        const sessionData = await sessionResponse.json();
+        const userName = sessionData.userCtx?.name;
+        const userRoles = sessionData.userCtx?.roles || [];
+        
+        // Pas de session active
+        if (!userName) {
+            console.log('initial-load: cookie AuthSession absent ou invalide');
             return { 
                 success: true, 
                 data: { 
-                    hasSession: false,
-                    savedEmail: savedEmail || null
+                    hasSession: false, 
+                    reason: "no_session_cookie" 
                 },
                 error: null
             };
         }
         
-        // Vérifier expiration JWT
-        const payload = decodeJWT(token);
-        if (!payload || !payload.exp) {
-            console.log('initial-load: token invalide');
-            localStorage.removeItem('auth_token');
-            localStorage.removeItem('auth_user');
+        console.log(`initial-load: session CouchDB active pour: ${userName}`);
+        
+        // Vérifier PouchDB local
+        const pouchInfo = await localDB.info();
+        const docCount = pouchInfo.doc_count || 0;
+        console.log(`initial-load: PouchDB local: ${docCount} documents`);
+        
+        // Récupérer rememberMe depuis localStorage
+        const rememberMe = localStorage.getItem('auth_remember_me') === 'true';
+        
+        const session = {
+            name: userName,
+            roles: userRoles
+        };
+        
+        // PouchDB est déjà à jour (a des documents)
+        if (docCount > 0) {
+            console.log('initial-load: PouchDB à jour → redirection vers /dashboard');
+            
+            // Redirection immédiate
+            window.location.href = '/dashboard';
+            
             return { 
                 success: true, 
-                data: { 
-                    hasSession: false,
-                    reason: 'token_invalid',
-                    savedEmail: savedEmail || null
+                data: {
+                    hasSession: true,
+                    session: session,
+                    pouchDbStatus: {
+                        docCount: docCount,
+                        lastSync: new Date().toISOString(),
+                        needsSync: false
+                    },
+                    rememberMe: rememberMe,
+                    redirectTo: "/dashboard"
                 },
                 error: null
             };
         }
         
-        const now = Math.floor(Date.now() / 1000);
-        if (payload.exp < now) {
-            console.log('initial-load: token expiré');
-            localStorage.removeItem('auth_token');
-            localStorage.removeItem('auth_user');
-            return { 
-                success: true, 
-                data: { 
-                    hasSession: false,
-                    reason: 'token_expired',
-                    savedEmail: savedEmail || null
-                },
-                error: null
-            };
-        }
+        // PouchDB vide - besoin de sync initial
+        console.log('initial-load: sync initial requis → affichage loading screen');
         
-        // Session active - parser l'utilisateur
-        let user = null;
-        try {
-            user = userJson ? JSON.parse(userJson) : null;
-        } catch (e) {
-            console.error('initial-load: erreur parsing user:', e);
-        }
+        // Démarrer sync initial (one-shot)
+        const sync = localDB.sync(`${couchDbUrl}marki`, {
+            live: false,
+            retry: true
+        });
         
-        if (user) {
-            console.log('initial-load: utilisateur récupéré:', user.email);
-        }
-        console.log('initial-load: session active trouvée');
+        // Écouter les événements de sync
+        sync.on('complete', () => {
+            console.log('initial-load: sync terminé → redirection vers /dashboard');
+            window.location.href = '/dashboard';
+        });
         
+        sync.on('error', (err) => {
+            console.error('initial-load: erreur de sync', err);
+            // Option: rediriger quand même en mode hors-ligne
+            // window.location.href = '/dashboard';
+        });
+        
+        // Retourner l'état de sync en cours
         return { 
             success: true, 
-            data: { 
+            data: {
                 hasSession: true,
-                token: token,
-                user: user,
-                rememberMe: !!savedEmail,
-                savedEmail: savedEmail || null
+                session: session,
+                pouchDbStatus: {
+                    docCount: 0,
+                    needsSync: true,
+                    syncing: true
+                },
+                rememberMe: rememberMe
             },
             error: null
         };
@@ -133,7 +142,7 @@ export async function execute(context, params = {}) {
         return { 
             success: false, 
             data: null,
-            error: `Erreur lors de la vérification de session: ${err.message}` 
+            error: `Erreur lors de la vérification de session: ${err.message}`
         };
     }
 }
