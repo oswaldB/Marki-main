@@ -21,33 +21,34 @@ PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
 console.log('initial-load.js loaded');
 
 /**
- * Décode un token JWT et retourne le payload
- * @param {string} token - Token JWT
- * @returns {Object|null} Payload décodé ou null
+ * Décode le payload JWT (base64)
+ * @param {string} token - JWT token
+ * @returns {Object|null} Payload décodé
  */
 function decodeJWT(token) {
     try {
         const base64Payload = token.split('.')[1];
-        const jsonPayload = atob(base64Payload.replace(/-/g, '+').replace(/_/g, '/'));
-        return JSON.parse(jsonPayload);
-    } catch {
+        const payload = atob(base64Payload);
+        return JSON.parse(payload);
+    } catch (err) {
+        console.error('initial-load: erreur décodage JWT:', err);
         return null;
     }
 }
 
 /**
- * Vérifie si un token JWT est expiré
- * @param {Object} payload - Payload décodé du JWT
+ * Vérifie si le token JWT est expiré
+ * @param {Object} payload - Payload JWT décodé
  * @returns {boolean} true si expiré
  */
 function isTokenExpired(payload) {
-    if (!payload?.exp) return true;
-    return payload.exp * 1000 < Date.now();
+    if (!payload || !payload.exp) return true;
+    const currentTime = Math.floor(Date.now() / 1000);
+    return payload.exp < currentTime;
 }
 
 /**
  * Workflow initial-load
- * Vérifie si l'utilisateur possède une session active au chargement de la page
  * @param {Object} context - Contexte avec localDB, remoteDB
  * @param {Object} params - Paramètres du workflow
  * @returns {Promise<Object>} Résultat { success, data, error }
@@ -56,7 +57,7 @@ export async function execute(context, params = {}) {
     console.log('initial-load: démarrage vérification session');
     
     try {
-        // Lire localStorage
+        // 1. Lire localStorage
         const token = localStorage.getItem('auth_token');
         const userJson = localStorage.getItem('auth_user');
         const savedEmail = localStorage.getItem('saved_email');
@@ -74,12 +75,13 @@ export async function execute(context, params = {}) {
             };
         }
         
-        // Décoder et vérifier expiration
+        // 2. Vérifier expiration JWT
         const payload = decodeJWT(token);
         
         if (!payload || isTokenExpired(payload)) {
             console.log('initial-load: token expiré');
-            // Nettoyer le localStorage
+            
+            // 3. Nettoyer si expiré
             localStorage.removeItem('auth_token');
             localStorage.removeItem('auth_user');
             
@@ -87,26 +89,26 @@ export async function execute(context, params = {}) {
                 success: true, 
                 data: { 
                     hasSession: false,
-                    reason: 'token_expired',
+                    reason: "token_expired",
                     ...(savedEmail && { savedEmail })
                 },
                 error: null
             };
         }
         
-        // Token valide - récupérer les données utilisateur
+        // Token valide - vérifier si user existe
         let user = null;
+        let rememberMe = false;
+        
         if (userJson) {
             try {
                 user = JSON.parse(userJson);
-                console.log('initial-load: utilisateur récupéré:', user.email || 'unknown');
-            } catch {
-                // Ignorer erreur parsing
+                rememberMe = !!savedEmail;
+                console.log('initial-load: utilisateur récupéré:', user.email || user.id);
+            } catch (err) {
+                console.error('initial-load: erreur parsing user:', err);
             }
         }
-        
-        // Vérifier rememberMe (stocké dans le token ou localStorage)
-        const rememberMe = localStorage.getItem('remember_me') === 'true';
         
         console.log('initial-load: session active trouvée');
         
@@ -114,14 +116,9 @@ export async function execute(context, params = {}) {
             success: true, 
             data: { 
                 hasSession: true,
-                token,
-                user: user || {
-                    id: payload.sub || payload.userId || 'unknown',
-                    email: payload.email || user?.email || '',
-                    name: payload.name || user?.name || '',
-                    role: payload.role || user?.role || 'user'
-                },
-                rememberMe,
+                token: token,
+                user: user,
+                rememberMe: rememberMe,
                 ...(savedEmail && { savedEmail })
             },
             error: null
@@ -132,7 +129,7 @@ export async function execute(context, params = {}) {
         return { 
             success: false, 
             data: null,
-            error: `Erreur lors de la vérification de session: ${err.message}`
+            error: err.message 
         };
     }
 }
