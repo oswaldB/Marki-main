@@ -21,40 +21,33 @@ PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
 console.log('initial-load.js loaded');
 
 /**
- * Décode un JWT payload (base64)
- * @param {string} token - JWT token
- * @returns {Object|null} Payload décodé
+ * Décode un token JWT et retourne le payload
+ * @param {string} token - Token JWT
+ * @returns {Object|null} Payload décodé ou null
  */
 function decodeJWT(token) {
     try {
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const jsonPayload = decodeURIComponent(
-            atob(base64)
-                .split('')
-                .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-                .join('')
-        );
+        const base64Payload = token.split('.')[1];
+        const jsonPayload = atob(base64Payload.replace(/-/g, '+').replace(/_/g, '/'));
         return JSON.parse(jsonPayload);
-    } catch (err) {
+    } catch {
         return null;
     }
 }
 
 /**
  * Vérifie si un token JWT est expiré
- * @param {Object} payload - JWT payload
- * @returns {boolean}
+ * @param {Object} payload - Payload décodé du JWT
+ * @returns {boolean} true si expiré
  */
 function isTokenExpired(payload) {
-    if (!payload || !payload.exp) return true;
-    const now = Math.floor(Date.now() / 1000);
-    return payload.exp < now;
+    if (!payload?.exp) return true;
+    return payload.exp * 1000 < Date.now();
 }
 
 /**
  * Workflow initial-load
- * Vérifie si l'utilisateur possède une session active
+ * Vérifie si l'utilisateur possède une session active au chargement de la page
  * @param {Object} context - Contexte avec localDB, remoteDB
  * @param {Object} params - Paramètres du workflow
  * @returns {Promise<Object>} Résultat { success, data, error }
@@ -64,80 +57,72 @@ export async function execute(context, params = {}) {
     
     try {
         // Lire localStorage
-        const authToken = localStorage.getItem('auth_token');
-        const authUser = localStorage.getItem('auth_user');
+        const token = localStorage.getItem('auth_token');
+        const userJson = localStorage.getItem('auth_user');
         const savedEmail = localStorage.getItem('saved_email');
-        const rememberMe = localStorage.getItem('remember_me') === 'true';
-
-        // Aucun token trouvé
-        if (!authToken) {
-            console.log('initial-load: aucun token trouvé');
-            return {
-                success: true,
-                data: {
-                    hasSession: false,
-                    savedEmail: savedEmail || null
-                },
-                error: null
-            };
-        }
-
-        // Vérifier expiration JWT
-        const payload = decodeJWT(authToken);
         
-        if (!payload) {
-            console.log('initial-load: token invalide');
-            // Nettoyer localStorage
-            localStorage.removeItem('auth_token');
-            localStorage.removeItem('auth_user');
-            return {
-                success: true,
-                data: {
+        // Aucun token trouvé
+        if (!token) {
+            console.log('initial-load: aucun token trouvé');
+            return { 
+                success: true, 
+                data: { 
                     hasSession: false,
-                    reason: 'token_invalid',
-                    savedEmail: savedEmail || null
+                    ...(savedEmail && { savedEmail })
                 },
                 error: null
             };
         }
-
-        if (isTokenExpired(payload)) {
+        
+        // Décoder et vérifier expiration
+        const payload = decodeJWT(token);
+        
+        if (!payload || isTokenExpired(payload)) {
             console.log('initial-load: token expiré');
-            // Nettoyer localStorage
+            // Nettoyer le localStorage
             localStorage.removeItem('auth_token');
             localStorage.removeItem('auth_user');
-            return {
-                success: true,
-                data: {
+            
+            return { 
+                success: true, 
+                data: { 
                     hasSession: false,
                     reason: 'token_expired',
-                    savedEmail: savedEmail || null
+                    ...(savedEmail && { savedEmail })
                 },
                 error: null
             };
         }
-
-        // Token valide - session active
+        
+        // Token valide - récupérer les données utilisateur
         let user = null;
-        try {
-            user = authUser ? JSON.parse(authUser) : null;
-        } catch (e) {
-            user = null;
+        if (userJson) {
+            try {
+                user = JSON.parse(userJson);
+                console.log('initial-load: utilisateur récupéré:', user.email || 'unknown');
+            } catch {
+                // Ignorer erreur parsing
+            }
         }
-
-        if (user) {
-            console.log('initial-load: utilisateur récupéré:', user.email);
-        }
+        
+        // Vérifier rememberMe (stocké dans le token ou localStorage)
+        const rememberMe = localStorage.getItem('remember_me') === 'true';
+        
         console.log('initial-load: session active trouvée');
-
-        return {
-            success: true,
-            data: {
+        
+        return { 
+            success: true, 
+            data: { 
                 hasSession: true,
-                token: authToken,
-                user: user,
-                rememberMe: rememberMe,
-                savedEmail: savedEmail || null
+                token,
+                user: user || {
+                    id: payload.sub || payload.userId || 'unknown',
+                    email: payload.email || user?.email || '',
+                    name: payload.name || user?.name || '',
+                    role: payload.role || user?.role || 'user'
+                },
+                rememberMe,
+                ...(savedEmail && { savedEmail })
             },
             error: null
         };
@@ -147,7 +132,7 @@ export async function execute(context, params = {}) {
         return { 
             success: false, 
             data: null,
-            error: `Erreur lors de la vérification de session: ${err.message}` 
+            error: `Erreur lors de la vérification de session: ${err.message}`
         };
     }
 }
