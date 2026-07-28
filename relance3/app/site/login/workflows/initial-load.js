@@ -20,30 +20,30 @@ PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
 
 console.log('initial-load.js loaded');
 
+// Configuration CouchDB
+const COUCHDB_URL = window.COUCHDB_URL || 'http://localhost:5984/';
+
 /**
  * Workflow initial-load
- * Vérifie si l'utilisateur possède une session active et l'état de PouchDB
+ * Vérifie si l'utilisateur possède une session active au chargement de la page login
  * @param {Object} context - Contexte avec localDB, remoteDB
  * @param {Object} params - Paramètres du workflow
  * @returns {Promise<Object>} Résultat { success, data, error }
  */
 export async function execute(context, params = {}) {
-    console.log('initial-load workflow executing', params);
     console.log('initial-load: démarrage vérification session');
     
     try {
-        // Configuration CouchDB
-        const COUCHDB_URL = context.couchdbUrl || 'http://localhost:5984/';
-        
-        // Étape 1: Vérifier le cookie de session CouchDB (AuthSession)
+        // 1. Vérifier le cookie de session CouchDB (AuthSession)
         console.log('initial-load: vérification cookie AuthSession');
         
         let sessionData = null;
         try {
             const response = await fetch(`${COUCHDB_URL}_session`, {
-                credentials: 'include'
+                credentials: 'include'  // Envoie le cookie AuthSession
             });
             
+            // Vérifier Content-Type avant parsing JSON
             const contentType = response.headers.get('content-type');
             if (!contentType || !contentType.includes('application/json')) {
                 throw new Error(`Réponse non-JSON: ${contentType}`);
@@ -57,102 +57,105 @@ export async function execute(context, params = {}) {
             sessionData = { ok: true, userCtx: { name: null, roles: [] } };
         }
         
-        const hasSession = sessionData?.userCtx?.name !== null && 
-                           sessionData?.userCtx?.name !== undefined;
-        
-        if (!hasSession) {
+        // Pas de session active
+        if (!sessionData.userCtx.name) {
             console.log('initial-load: cookie AuthSession absent ou invalide');
             
-            // Vérifier si token expiré (pas de session mais données locales)
-            const localDb = context.localDB || new PouchDB('marki');
-            const info = await localDb.info();
-            
-            if (info.doc_count > 0) {
-                console.log('initial-load: données locales présentes mais session expirée');
-                return {
-                    success: true,
-                    data: {
-                        hasSession: false,
-                        reason: 'token_expired'
-                    },
-                    error: null
-                };
-            }
+            // Restaurer rememberMe même sans session
+            const rememberMe = localStorage.getItem('auth_remember_me') === 'true';
             
             return {
                 success: true,
                 data: {
                     hasSession: false,
-                    reason: 'no_session_cookie'
+                    reason: 'no_session_cookie',
+                    rememberMe
                 },
                 error: null
             };
         }
         
-        console.log('initial-load: session CouchDB active pour:', sessionData.userCtx.name);
+        // Session active détectée
+        const userName = sessionData.userCtx.name;
+        const userRoles = sessionData.userCtx.roles || [];
+        console.log('initial-load: session CouchDB active pour:', userName);
         
-        // Étape 2: Vérifier PouchDB local
-        const localDb = context.localDB || new PouchDB('marki');
-        const info = await localDb.info();
-        console.log('initial-load: PouchDB local:', info.doc_count, 'documents');
+        // 2. Vérifier PouchDB local
+        const localDb = new PouchDB('marki');
+        const dbInfo = await localDb.info();
+        const docCount = dbInfo.doc_count || 0;
+        console.log('initial-load: PouchDB local:', docCount, 'documents');
         
-        // Étape 3: Vérifier le statut de sync
-        const lastSync = localStorage.getItem('marki_last_sync');
-        const needsSync = info.doc_count === 0 || !lastSync;
-        
-        // Étape 4: Récupérer rememberMe
+        // 3. Vérifier rememberMe
         const rememberMe = localStorage.getItem('auth_remember_me') === 'true';
         
-        // Construire la réponse
-        const pouchDbStatus = {
-            docCount: info.doc_count,
-            lastSync: lastSync,
-            needsSync: needsSync,
-            syncing: needsSync
-        };
+        // Déterminer si sync est nécessaire
+        const needsSync = docCount === 0;
         
-        // Étape 5: Gérer la redirection ou le sync
+        // Session active avec PouchDB à jour → redirection immédiate
         if (!needsSync) {
             console.log('initial-load: PouchDB à jour → redirection vers /dashboard');
+            
+            // Redirection différée pour permettre le retour de la réponse
+            setTimeout(() => {
+                window.location.href = '/dashboard';
+            }, 100);
+            
             return {
                 success: true,
                 data: {
                     hasSession: true,
                     session: {
-                        name: sessionData.userCtx.name,
-                        roles: sessionData.userCtx.roles || []
+                        name: userName,
+                        roles: userRoles
                     },
-                    pouchDbStatus: pouchDbStatus,
-                    rememberMe: rememberMe,
+                    pouchDbStatus: {
+                        docCount: docCount,
+                        needsSync: false
+                    },
+                    rememberMe,
                     redirectTo: '/dashboard'
                 },
                 error: null
             };
         }
         
-        // Session active mais sync nécessaire
+        // Session active mais PouchDB vide → sync initial requis
         console.log('initial-load: sync initial requis → affichage loading screen');
+        
+        // Démarrer sync initial (one-shot)
+        const sync = localDb.sync(`${COUCHDB_URL}marki`, {
+            live: false,    // Sync initial one-shot
+            retry: true
+        });
+        
+        // Retourner en mode sync en cours
         return {
             success: true,
             data: {
                 hasSession: true,
                 session: {
-                    name: sessionData.userCtx.name,
-                    roles: sessionData.userCtx.roles || []
+                    name: userName,
+                    roles: userRoles
                 },
-                pouchDbStatus: pouchDbStatus,
-                rememberMe: rememberMe
+                pouchDbStatus: {
+                    docCount: 0,
+                    needsSync: true,
+                    syncing: true
+                },
+                rememberMe
             },
-            error: null
+            error: null,
+            // Exposer le sync pour que l'UI puisse écouter les événements
+            _sync: sync
         };
         
     } catch (err) {
         console.error('initial-load error:', err);
-        console.log('initial-load: erreur réseau → mode hors-ligne (pas de session)');
-        return {
-            success: false,
+        return { 
+            success: false, 
             data: null,
-            error: `Erreur lors de la vérification de session: ${err.message}`
+            error: `Erreur lors de la vérification de session: ${err.message}` 
         };
     }
 }

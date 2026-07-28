@@ -1,3 +1,30 @@
+/*
+ * INSTRUCTIONS IA - À APPLIQUER (À LIRE EN PREMIER):
+ * =================================================
+ * PRIORITÉ ABSOLUE: LIRE .specs/page-specs.md AVANT TOUTE MODIFICATION
+ *
+ * 1. FONCTION PRINCIPALE OBLIGATOIRE:
+ *    - Utiliser UNIQUEMENT: Alpine.data('loginPage', () => ({...}))
+ *    - NE PAS utiliser: function loginPage() ou window.loginPage
+ *    - Alpine.data() enregistre le composant dans le registre interne d'Alpine
+ *    - Dans index.html: x-data="loginPage" (SANS parenthèses)
+ *
+ * 2. WORKFLOWS:
+ *    - Les workflows sont déjà importés et stockés dans window.workflows
+ *    - NE PAS modifier la structure window.workflows = { 'nom': { execute: fn } }
+ *    - Chaque workflow exporte: execute(context, params) => { success, data, error }
+ *
+ * 3. POUCHDB: window.localDB et window.remoteDB sont initialisés ci-dessous
+ *    - NE PAS supprimer ou déplacer ce code
+ *
+ * 4. CONSOLE: Maintenir les console.log('... loaded') pour debug
+ *
+ * 5. DÉMARRAGE: Garder Alpine.start() à la fin du fichier
+ *    - NE PAS modifier l'ordre d'exécution
+ *
+ * Aucune route en localhost.
+ */
+
 // ═══════════════════════════════════════════════════════════════
 // IMPORTS DES WORKFLOWS (modules ES)
 // ═══════════════════════════════════════════════════════════════
@@ -34,7 +61,7 @@ if (typeof PouchDB !== 'undefined') {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// FONCTION PRINCIPALE - ENREGISTREMENT ALPINE
+// FONCTION PRINCIPALE - ENREGISTREMENT ALPINE (NE PAS MODIFIER CETTE STRUCTURE)
 // Utilise Alpine.data() - PAS de fonction globale, PAS d'exposition sur window
 // Dans HTML: x-data="loginPage" (sans parenthèses)
 // ═══════════════════════════════════════════════════════════════
@@ -44,11 +71,16 @@ Alpine.data('loginPage', () => ({
     // ───────────────────────────────────────────────────────
     isLoading: false,
     error: null,
-    data: {
+    data: {},
+    
+    // ───────────────────────────────────────────────────────
+    // FORMULAIRE DE CONNEXION
+    // ───────────────────────────────────────────────────────
+    form: {
         username: '',
         password: ''
     },
-    
+
     // ───────────────────────────────────────────────────────
     // INITIALISATION (appelée automatiquement par Alpine)
     // ───────────────────────────────────────────────────────
