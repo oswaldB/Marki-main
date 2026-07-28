@@ -71,10 +71,6 @@ Alpine.data('loginPage', () => ({
     isLoading: false,
     error: null,
     data: {},
-    
-    // ───────────────────────────────────────────────────────
-    // FORMULAIRE DE CONNEXION
-    // ───────────────────────────────────────────────────────
     form: {
         username: '',
         password: ''
@@ -96,11 +92,21 @@ Alpine.data('loginPage', () => ({
      * Charge les données initiales via le workflow initial-load
      */
     async loadInitialData() {
-        const result = await this.runWorkflow('initial-load');
-        if (result.success) {
-            this.data = result.data || {};
-        } else {
-            this.error = result.error || 'Erreur lors du chargement initial';
+        this.isLoading = true;
+        this.error = null;
+
+        try {
+            const result = await this.runWorkflow('initial-load');
+            if (result.success) {
+                this.data = result.data || {};
+            } else {
+                this.error = result.error || 'Erreur lors du chargement initial';
+            }
+        } catch (err) {
+            console.error('Erreur init:', err);
+            this.error = err.message;
+        } finally {
+            this.isLoading = false;
         }
     },
 
@@ -140,21 +146,6 @@ Alpine.data('loginPage', () => ({
             return { success: false, error: err.message };
         } finally {
             this.isLoading = false;
-        }
-    },
-
-    /**
-     * Soumet le formulaire de connexion
-     */
-    async submitForm() {
-        const result = await this.runWorkflow('auth-submit', {
-            username: this.form.username,
-            password: this.form.password
-        });
-        
-        if (result.success) {
-            // Redirection ou mise à jour de l'état après connexion réussie
-            console.log('Auth successful:', result.data);
         }
     },
 

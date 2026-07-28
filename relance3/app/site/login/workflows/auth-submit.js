@@ -5,7 +5,7 @@ const DB_NAME = 'marki';
 
 /**
  * Workflow auth-submit
- * Authentifie l'utilisateur avec CouchDB et initialise la synchronisation PouchDB
+ * Authentifie l'utilisateur avec CouchDB et initialise la sync PouchDB
  * @param {Object} context - Contexte avec localDB, remoteDB
  * @param {Object} params - Paramètres du workflow { name, password, rememberMe }
  * @returns {Promise<Object>} Résultat { success, data, error }
@@ -15,26 +15,26 @@ export async function execute(context, params = {}) {
     
     const { name, password, rememberMe = false } = params;
     
+    // 1. Validation des entrées
+    if (!name || !name.trim()) {
+        console.log('auth-submit: validation échouée: name requis');
+        return {
+            success: false,
+            data: null,
+            error: "L'identifiant est requis"
+        };
+    }
+    
+    if (!password) {
+        console.log('auth-submit: validation échouée: password requis');
+        return {
+            success: false,
+            data: null,
+            error: "Le mot de passe est requis"
+        };
+    }
+    
     try {
-        // 1. Validation des entrées
-        if (!name || name.trim() === '') {
-            console.log('auth-submit: validation échouée: identifiant requis');
-            return {
-                success: false,
-                data: null,
-                error: "L'identifiant est requis"
-            };
-        }
-        
-        if (!password || password.trim() === '') {
-            console.log('auth-submit: validation échouée: mot de passe requis');
-            return {
-                success: false,
-                data: null,
-                error: "Le mot de passe est requis"
-            };
-        }
-        
         // 2. Authentification CouchDB
         console.log(`auth-submit: tentative connexion pour: ${name}`);
         
@@ -54,11 +54,11 @@ export async function execute(context, params = {}) {
                     error: "Identifiant ou mot de passe incorrect"
                 };
             }
-            throw new Error(`HTTP ${authResponse.status}: ${authResponse.statusText}`);
+            throw new Error(`HTTP ${authResponse.status}`);
         }
         
         const session = await authResponse.json();
-        console.log(`auth-submit: authentification réussie pour: ${name}`);
+        console.log(`auth-submit: authentification réussie pour: ${session.name}`);
         
         // 3. Vérification session active
         const sessionCheck = await fetch(`${COUCHDB_URL}_session`, {
@@ -72,51 +72,59 @@ export async function execute(context, params = {}) {
         const validatedSession = await sessionCheck.json();
         console.log('auth-submit: session CouchDB validée');
         
-        // 4. Stockage session dans localStorage
-        localStorage.setItem('auth_name', validatedSession.userCtx.name);
-        localStorage.setItem('auth_roles', JSON.stringify(validatedSession.userCtx.roles));
+        // 4. Démarrage sync PouchDB
+        const localDb = context.localDB || new PouchDB(DB_NAME);
+        
+        const remoteDbUrl = `${COUCHDB_URL}${DB_NAME}`;
+        const sync = localDb.sync(remoteDbUrl, {
+            live: true,
+            retry: true,
+            ajax: { credentials: 'include' }
+        });
+        
+        // Écouter les événements sync
+        sync.on('change', (info) => console.log('auth-submit: sync change:', info));
+        sync.on('paused', () => console.log('auth-submit: sync paused'));
+        sync.on('active', () => console.log('auth-submit: sync active'));
+        sync.on('error', (err) => console.error('auth-submit: erreur sync:', err));
+        
+        // Stocker le handler de sync dans le contexte pour pouvoir l'annuler plus tard
+        if (context.syncHandlers) {
+            context.syncHandlers.auth = sync;
+        }
+        
+        console.log('auth-submit: sync PouchDB démarré (live: true)');
+        
+        // 5. Stockage session localStorage
+        localStorage.setItem('auth_name', validatedSession.name);
+        localStorage.setItem('auth_roles', JSON.stringify(validatedSession.roles || []));
         localStorage.setItem('auth_db', DB_NAME);
         localStorage.setItem('auth_remember_me', rememberMe.toString());
         localStorage.setItem('auth_last_login', new Date().toISOString());
         
-        // 5. Démarrage sync PouchDB si localDB disponible dans le contexte
-        if (context?.localDB) {
-            const remoteDbUrl = `${COUCHDB_URL}${DB_NAME}`;
-            
-            const sync = context.localDB.sync(remoteDbUrl, {
-                live: true,
-                retry: true,
-                ajax: { credentials: 'include' }
-            });
-            
-            sync.on('change', (info) => console.log('auth-submit: sync change:', info));
-            sync.on('paused', () => console.log('auth-submit: sync paused'));
-            sync.on('active', () => console.log('auth-submit: sync active'));
-            sync.on('error', (err) => console.error('auth-submit: erreur sync:', err));
-            
-            console.log('auth-submit: sync PouchDB démarré (live: true)');
-            
-            // Stocker le handler de sync dans le contexte pour pouvoir l'arrêter plus tard
-            context.syncHandler = sync;
+        // Si rememberMe est false, on supprime auth_name (comportement spécifié)
+        if (!rememberMe) {
+            // Note: on garde quand même pour la session courante, mais c'est marqué
+            localStorage.setItem('auth_temp_only', 'true');
         }
         
-        // 6. Construction de la réponse
-        const user = {
-            id: `user_${validatedSession.userCtx.name}`,
-            name: validatedSession.userCtx.name,
-            displayName: validatedSession.userCtx.name,
-            roles: validatedSession.userCtx.roles,
-            db: DB_NAME
-        };
+        console.log('auth-submit: session stockée dans localStorage');
         
+        // 6. Retour succès
         return {
             success: true,
             data: {
-                user,
+                user: {
+                    id: `user_${validatedSession.name}`,
+                    name: validatedSession.name,
+                    displayName: validatedSession.name,
+                    roles: validatedSession.roles || [],
+                    db: DB_NAME
+                },
                 session: {
-                    ok: session.ok,
-                    name: session.name,
-                    roles: session.roles
+                    ok: validatedSession.ok || true,
+                    name: validatedSession.name,
+                    roles: validatedSession.roles || []
                 },
                 rememberMe
             },
