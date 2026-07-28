@@ -152,9 +152,10 @@ Si le serveur retourne HTML (erreur 404/500/502) ou si le réseau est indisponib
 
 ### 2. Vérifier PouchDB local (fallback)
 
-Si le cookie est présent mais que PouchDB n'a pas encore de données locales:
+**IMPORTANT**: PouchDB est chargé globalement via CDN. Utiliser `PouchDB` sans import.
 
 ```javascript
+// PouchDB est disponible globalement
 const localDb = new PouchDB('marki');
 const info = await localDb.info();
 // info.doc_count > 0 signifie des données locales existent

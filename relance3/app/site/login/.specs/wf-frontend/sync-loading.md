@@ -69,7 +69,10 @@ Appelé automatiquement après succès de `auth-submit` lorsque `pouchDbStatus.n
 
 ### 2. Démarrer la synchronisation PouchDB
 
+**IMPORTANT**: PouchDB est chargé globalement via CDN. Utiliser `PouchDB` sans import.
+
 ```javascript
+// PouchDB est disponible globalement (window.PouchDB)
 const localDb = new PouchDB('marki');
 const remoteDb = new PouchDB(`${COUCHDB_URL}marki`, {
   fetch: (url, opts) => {
@@ -232,7 +235,7 @@ function handleSyncError(err) {
 - Nettoyage du handler de sync à la fin
 
 ## Dépendances
-- PouchDB (sync API)
+- PouchDB (sync API) - variable globale, chargée via CDN
 - Fetch API avec `credentials: 'include'`
 - Alpine.js pour le binding de l'UI
 - Mockup: `/mockups/sync-loading.html`

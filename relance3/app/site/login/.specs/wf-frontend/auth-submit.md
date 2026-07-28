@@ -6,16 +6,21 @@ Authentifier l'utilisateur avec CouchDB via l'endpoint `_session` et initialiser
 ## Configuration CouchDB/PouchDB
 
 ```javascript
+// PouchDB est chargé globalement via CDN dans index.html
+// NE PAS utiliser: import PouchDB from 'pouchdb' → ERREUR module
+// Utiliser: window.PouchDB ou PouchDB (global)
+
 const COUCHDB_URL = 'https://dev.markidiags.com/data/';
 const DB_NAME = 'marki';
 
-// PouchDB instance locale
+// PouchDB instance locale - utiliser la variable globale
 const localDb = new PouchDB(DB_NAME);
 
 // Sync configuration (activé après auth réussie)
 let syncHandler = null;
 
 function startSync() {
+  // PouchDB est disponible globalement
   const remoteDb = new PouchDB(`${COUCHDB_URL}${DB_NAME}`, {
     fetch: (url, opts) => {
       opts.credentials = 'include';  // Important: envoie le cookie de session
@@ -129,7 +134,11 @@ const response = await fetch(`${COUCHDB_URL}_session`, {
 **Cookie de session:** CouchDB définit un cookie `AuthSession` automatiquement.
 
 ### 3. Vérification et démarrage du sync PouchDB
-Après authentification réussie, vérifier la session et démarrer le sync:
+Après authentification réussie, vérifier la session et démarrer le sync.
+
+**IMPORTANT**: PouchDB est chargé globalement via CDN dans `index.html`. 
+- ❌ NE PAS utiliser `import PouchDB from 'pouchdb'` → erreur module
+- ✅ Utiliser `PouchDB` (variable globale) ou `window.PouchDB`
 
 ```javascript
 // Vérifier session active (GET /_session)
@@ -139,7 +148,7 @@ const sessionCheck = await fetch(`${COUCHDB_URL}_session`, {
 const sessionData = await sessionCheck.json();
 // sessionData.userCtx.name, sessionData.userCtx.roles
 
-// Démarrer sync initial (one-shot) puis live
+// Démarrer sync initial - utiliser PouchDB global
 const remoteDb = new PouchDB(`${COUCHDB_URL}${DB_NAME}`, {
   fetch: (url, opts) => {
     opts.credentials = 'include';
@@ -210,9 +219,11 @@ curl -X POST https://dev.markidiags.com/data/_users/org.couchdb.user:test@marki.
 - Supprime `auth_username` du localStorage si rememberMe=false
 
 ## Dépendances
-- `pouchdb` : Database locale
+- `pouchdb` : Database locale (chargé via CDN global, PAS d'import ES6)
 - `fetch` API avec `credentials: 'include'`
 - CouchDB avec CORS configuré
+
+**Note sur PouchDB**: PouchDB est chargé via CDN dans `index.html` comme variable globale (`window.PouchDB`). Les workflows doivent utiliser `PouchDB` directement sans import.
 
 ## CORS Configuration requise
 ```ini

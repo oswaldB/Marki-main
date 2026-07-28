@@ -30,11 +30,6 @@ import { execute as initial_loadExecute } from './workflows/initial-load.js';
 import { execute as auth_submitExecute } from './workflows/auth-submit.js';
 import { execute as sync_loadingExecute } from './workflows/sync-loading.js';
 
-// ═══════════════════════════════════════════════════════════════
-// IMPORT ALPINE.JS (ESM via CDN)
-// ═══════════════════════════════════════════════════════════════
-import Alpine from 'https://cdn.jsdelivr.net/npm/alpinejs@3.14.3/dist/module.esm.js';
-
 console.log('main.js loaded');
 
 // ═══════════════════════════════════════════════════════════════
@@ -63,10 +58,11 @@ if (typeof PouchDB !== 'undefined') {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// FONCTION PRINCIPALE - ENREGISTREMENT ALPINE (NE PAS MODIFIER CETTE STRUCTURE)
+// FONCTION PRINCIPALE - ENREGISTREMENT ALPINE (window.Alpine via CDN)
 // Utilise Alpine.data() - PAS de fonction globale, PAS d'exposition sur window
 // Dans HTML: x-data="loginPage" (sans parenthèses)
 // ═══════════════════════════════════════════════════════════════
+document.addEventListener('alpine:init', () => {
 Alpine.data('loginPage', () => ({
     // ───────────────────────────────────────────────────────
     // ÉTAT DE LA PAGE
@@ -76,7 +72,7 @@ Alpine.data('loginPage', () => ({
     data: {},
     
     // ───────────────────────────────────────────────────────
-    // FORMULAIRE DE CONNEXION
+    // ÉTAT DU FORMULAIRE
     // ───────────────────────────────────────────────────────
     form: {
         username: '',
@@ -186,10 +182,28 @@ Alpine.data('loginPage', () => ({
      */
     clearError() {
         this.error = null;
-    }
-}));
+    },
 
-// ═══════════════════════════════════════════════════════════════
-// DÉMARRAGE D'ALPINE
-// ═══════════════════════════════════════════════════════════════
-Alpine.start();
+    /**
+     * Gère la soumission du formulaire de connexion
+     * Déclenche le workflow auth-submit avec les identifiants
+     */
+    async handleLogin() {
+        this.error = null;
+        
+        const result = await this.runWorkflow('auth-submit', {
+            username: this.form.username,
+            password: this.form.password
+        });
+
+        if (result.success) {
+            // Redirection ou mise à jour de l'interface après connexion
+            console.log('Login successful');
+            // window.location.href = '/dashboard';
+        }
+        // Les erreurs sont gérées automatiquement par runWorkflow
+    }
+    }));
+});
+
+// Avec le CDN Alpine, Alpine.start() est automatique - NE PAS l'appeler ici
