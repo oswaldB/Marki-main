@@ -44,13 +44,12 @@ window.workflows = {
     'auth-submit': { execute: auth_submitExecute }
 };
 
-console.log('initial-load.js loaded');
-console.log('auth-submit.js loaded');
+// Les logs des workflows sont déjà dans les fichiers de workflow
 
 // ═══════════════════════════════════════════════════════════════
 // INITIALISATION POUCHDB (si non initialisée avant)
 // ═══════════════════════════════════════════════════════════════
-if (typeof PouchDB !== 'undefined') {
+if (typeof window.PouchDB !== 'undefined') {
     if (!window.localDB) {
         window.localDB = new PouchDB('login-local');
     }
@@ -71,10 +70,6 @@ Alpine.data('loginPage', () => ({
     isLoading: false,
     error: null,
     data: {},
-    form: {
-        username: '',
-        password: ''
-    },
     
     // ───────────────────────────────────────────────────────
     // INITIALISATION (appelée automatiquement par Alpine)

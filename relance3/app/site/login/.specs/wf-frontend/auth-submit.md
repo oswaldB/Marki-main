@@ -102,7 +102,7 @@ Appelé lors de la soumission du formulaire de login.
 ## Logique métier
 
 ### 1. Validation des entrées
-- `name` requis (correspond au champ `name` CouchDB)
+- `name` requis (correspond au champ `name` CouchDB), +>ici c'est username
 - `password` requis
 - Pas de validation stricte du format
 

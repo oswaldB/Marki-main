@@ -12,8 +12,8 @@
 </head>
 <body class="min-h-screen bg-slate-50 flex items-center justify-center">
 
-    <div id="app" class="w-full max-w-md px-4" x-data="loginPage">
-
+    <div id="app" x-data="loginPage" class="w-full max-w-md px-4">
+        
         <!-- Logo + Tagline -->
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-xl mb-4 overflow-hidden">
@@ -31,15 +31,14 @@
             </div>
 
             <!-- Form -->
-            <form class="p-6 space-y-4" @submit.prevent="runWorkflow('auth-submit', form)">
-
+            <form class="p-6 space-y-4" @submit.prevent="runWorkflow('auth-submit', { username: data.username, password: data.password })">
+                
                 <!-- Identifiant ou email -->
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1.5">Identifiant ou email</label>
-                    <input
-                        id="input-username"
-                        type="text"
-                        x-model="form.username"
+                    <input 
+                        type="text" 
+                        x-model="data.username"
                         placeholder="Votre identifiant ou email"
                         autocomplete="username"
                         required
@@ -53,10 +52,9 @@
                 <!-- Mot de passe -->
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1.5">Mot de passe</label>
-                    <input
-                        id="input-password"
-                        type="password"
-                        x-model="form.password"
+                    <input 
+                        type="password" 
+                        x-model="data.password"
                         placeholder="••••••••"
                         autocomplete="current-password"
                         required
@@ -69,7 +67,7 @@
 
                 <!-- Error Alert -->
                 <template x-if="error">
-                    <div id="alert-error" class="flex items-start gap-3 p-3 bg-sky-50 border border-sky-100 rounded-lg">
+                    <div class="flex items-start gap-3 p-3 bg-sky-50 border border-sky-100 rounded-lg">
                         <svg class="w-5 h-5 text-sky-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
                         </svg>
@@ -78,7 +76,7 @@
                 </template>
 
                 <!-- Submit Button -->
-                <button
+                <button 
                     id="btn-submit"
                     type="submit"
                     :disabled="isLoading"
