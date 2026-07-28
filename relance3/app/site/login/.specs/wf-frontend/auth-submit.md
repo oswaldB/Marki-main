@@ -38,13 +38,11 @@ Appelé lors de la soumission du formulaire de login.
 ## Entrées
 ```javascript
 {
-    name: "john_doe",           // string, requis - correspond à name dans CouchDB
+    username: "john_doe",       // string, requis
     password: "password123",    // string, requis
     rememberMe: true            // boolean, optionnel (défaut: false)
 }
 ```
-
-> **Note:** CouchDB utilise `name` (pas `username`) pour l'authentification.
 
 ## Sorties
 
@@ -55,7 +53,7 @@ Appelé lors de la soumission du formulaire de login.
     data: {
         user: {
             id: "user_abc123",
-            name: "john_doe",           // name CouchDB
+            username: "john_doe",       // username
             displayName: "John Doe",    // nom affiché (from CouchDB user doc)
             roles: ["user"],            // rôles CouchDB
             db: "marki"                 // base de données
@@ -102,17 +100,23 @@ Appelé lors de la soumission du formulaire de login.
 ## Logique métier
 
 ### 1. Validation des entrées
-- `name` requis (correspond au champ `name` CouchDB), +>ici c'est username
+- `username` requis
 - `password` requis
 - Pas de validation stricte du format
 
-### 2. Authentification CouchDB
+### 2. Authentification CouchDB (Basic Auth)
+
 ```javascript
+const encodedCredentials = btoa(`${username}:${password}`);
+
 const response = await fetch(`${COUCHDB_URL}_session`, {
   method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  credentials: 'include',  // Important pour les cookies
-  body: JSON.stringify({ name, password })
+  headers: { 
+    'Content-Type': 'application/json',
+    'Authorization': `Basic ${encodedCredentials}`
+  },
+  credentials: 'include',
+  body: JSON.stringify({ name: username, password })
 });
 ```
 
@@ -152,7 +156,7 @@ sync.on('error', (err) => console.error('Sync error:', err));
 
 ### 4. Stockage session (localStorage)
 ```javascript
-localStorage.setItem('auth_name', session.name);
+localStorage.setItem('auth_username', session.name);
 localStorage.setItem('auth_roles', JSON.stringify(session.roles));
 localStorage.setItem('auth_db', DB_NAME);
 localStorage.setItem('auth_remember_me', rememberMe.toString());
@@ -228,7 +232,7 @@ async function logout() {
   });
   
   // Cleanup localStorage
-  localStorage.removeItem('auth_name');
+  localStorage.removeItem('auth_username');
   localStorage.removeItem('auth_roles');
   localStorage.removeItem('auth_db');
 }

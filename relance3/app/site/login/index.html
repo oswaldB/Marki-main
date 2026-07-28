@@ -10,10 +10,8 @@
         html { font-family: 'Inter', system-ui, sans-serif; }
     </style>
 </head>
-<body class="min-h-screen bg-slate-50 flex items-center justify-center">
-
-    <div id="app" x-data="loginPage" class="w-full max-w-md px-4">
-        
+<body class="min-h-screen bg-slate-50 flex items-center justify-center" x-data="loginPage">
+    <div class="w-full max-w-md px-4">
         <!-- Logo + Tagline -->
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-xl mb-4 overflow-hidden">
@@ -31,14 +29,14 @@
             </div>
 
             <!-- Form -->
-            <form class="p-6 space-y-4" @submit.prevent="runWorkflow('auth-submit', { username: data.username, password: data.password })">
+            <form class="p-6 space-y-4" @submit.prevent="runWorkflow('auth-submit', form)">
                 
                 <!-- Identifiant ou email -->
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1.5">Identifiant ou email</label>
                     <input 
                         type="text" 
-                        x-model="data.username"
+                        x-model="form.username"
                         placeholder="Votre identifiant ou email"
                         autocomplete="username"
                         required
@@ -54,7 +52,7 @@
                     <label class="block text-sm font-medium text-slate-700 mb-1.5">Mot de passe</label>
                     <input 
                         type="password" 
-                        x-model="data.password"
+                        x-model="form.password"
                         placeholder="••••••••"
                         autocomplete="current-password"
                         required
@@ -77,8 +75,8 @@
 
                 <!-- Submit Button -->
                 <button 
-                    id="btn-submit"
                     type="submit"
+                    id="btn-submit"
                     :disabled="isLoading"
                     class="w-full flex items-center justify-center gap-2 mt-2 bg-sky-500 hover:bg-sky-600 disabled:bg-sky-300
                            text-white py-2.5 px-4 rounded-lg text-sm font-medium transition-all"
@@ -97,7 +95,6 @@
         <p class="text-center text-xs text-slate-400 mt-6">
             © 2024 Marki - Tous droits réservés
         </p>
-
     </div>
 
     <script type="module" src="./main.js"></script>

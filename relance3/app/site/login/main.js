@@ -44,12 +44,13 @@ window.workflows = {
     'auth-submit': { execute: auth_submitExecute }
 };
 
-// Les logs des workflows sont déjà dans les fichiers de workflow
+console.log('initial-load.js loaded');
+console.log('auth-submit.js loaded');
 
 // ═══════════════════════════════════════════════════════════════
 // INITIALISATION POUCHDB (si non initialisée avant)
 // ═══════════════════════════════════════════════════════════════
-if (typeof window.PouchDB !== 'undefined') {
+if (typeof PouchDB !== 'undefined') {
     if (!window.localDB) {
         window.localDB = new PouchDB('login-local');
     }
@@ -70,6 +71,11 @@ Alpine.data('loginPage', () => ({
     isLoading: false,
     error: null,
     data: {},
+    form: {
+        username: '',
+        password: '',
+        rememberMe: false
+    },
     
     // ───────────────────────────────────────────────────────
     // INITIALISATION (appelée automatiquement par Alpine)
@@ -174,6 +180,55 @@ Alpine.data('loginPage', () => ({
      */
     clearError() {
         this.error = null;
+    },
+
+    /**
+     * Soumet le formulaire de login
+     * Déclenche le workflow auth-submit
+     */
+    async submitLogin() {
+        this.clearError();
+        
+        const result = await this.runWorkflow('auth-submit', {
+            username: this.form.username,
+            password: this.form.password,
+            rememberMe: this.form.rememberMe || false
+        });
+
+        if (result.success) {
+            // Redirection après login réussi (paramètre redirect dans l'URL)
+            const redirect = this.getUrlParam('redirect') || '/';
+            window.location.href = redirect;
+        }
+        // L'erreur est déjà gérée par runWorkflow
+    },
+
+    /**
+     * Déconnecte l'utilisateur
+     */
+    async logout() {
+        try {
+            const COUCHDB_URL = 'https://dev.markidiags.com/data/';
+            
+            // Déconnexion CouchDB
+            await fetch(`${COUCHDB_URL}_session`, {
+                method: 'DELETE',
+                credentials: 'include'
+            });
+            
+            // Cleanup localStorage
+            localStorage.removeItem('auth_username');
+            localStorage.removeItem('auth_roles');
+            localStorage.removeItem('auth_db');
+            localStorage.removeItem('auth_remember_me');
+            localStorage.removeItem('auth_last_login');
+            
+            // Recharger la page
+            window.location.reload();
+        } catch (err) {
+            console.error('Erreur logout:', err);
+            this.error = 'Erreur lors de la déconnexion';
+        }
     }
 }));
 
