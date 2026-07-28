@@ -104,18 +104,15 @@ Appelé lors de la soumission du formulaire de login.
 - `password` requis
 - Pas de validation stricte du format
 
-### 2. Authentification CouchDB (Basic Auth)
+### 2. Authentification CouchDB (Cookie Authentication)
+
+CouchDB utilise la Cookie Authentication (RFC 2109). Le client envoie les credentials à `/_session`, CouchDB retourne un cookie `AuthSession` valable 10 minutes (configurable).
 
 ```javascript
-const encodedCredentials = btoa(`${username}:${password}`);
-
-const response = await fetch(`${COUCHDB_URL}`, {
-  method: 'GET',
-  headers: { 
-    'Content-Type': 'application/json',
-    'Authorization': `Basic ${encodedCredentials}`
-  },
-  credentials: 'include',
+const response = await fetch(`${COUCHDB_URL}_session`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  credentials: 'include',  // Important: reçoit le cookie AuthSession
   body: JSON.stringify({ name: username, password })
 });
 ```
@@ -131,16 +128,18 @@ const response = await fetch(`${COUCHDB_URL}`, {
 
 **Cookie de session:** CouchDB définit un cookie `AuthSession` automatiquement.
 
-### 3. Démarrage du sync PouchDB
-Après authentification réussie:
+### 3. Vérification et démarrage du sync PouchDB
+Après authentification réussie, vérifier la session et démarrer le sync:
+
 ```javascript
-// Vérifier session active
+// Vérifier session active (GET /_session)
 const sessionCheck = await fetch(`${COUCHDB_URL}_session`, {
   credentials: 'include'
 });
-const session = await sessionCheck.json();
+const sessionData = await sessionCheck.json();
+// sessionData.userCtx.name, sessionData.userCtx.roles
 
-// Démarrer sync live
+// Démarrer sync live avec le cookie de session
 const sync = localDb.sync(`${COUCHDB_URL}${DB_NAME}`, {
   live: true,
   retry: true,
@@ -156,12 +155,12 @@ sync.on('error', (err) => console.error('Sync error:', err));
 
 ### 4. Stockage session (localStorage)
 ```javascript
-localStorage.setItem('auth_username', session.name);
-localStorage.setItem('auth_roles', JSON.stringify(session.roles));
+localStorage.setItem('auth_username', sessionData.userCtx.name);
+localStorage.setItem('auth_roles', JSON.stringify(sessionData.userCtx.roles));
 localStorage.setItem('auth_db', DB_NAME);
 localStorage.setItem('auth_remember_me', rememberMe.toString());
 localStorage.setItem('auth_last_login', new Date().toISOString());
-// Le token est géré via cookie HttpOnly par CouchDB
+// Le cookie AuthSession est géré automatiquement par le navigateur (HttpOnly)
 ```
 
 ### Credentials de test (DEV)
@@ -188,7 +187,7 @@ curl -X POST https://dev.markidiags.com/data/_users/org.couchdb.user:test@marki.
 - Crée un cookie `AuthSession` (HttpOnly, géré par CouchDB)
 - Écrit dans localStorage (5 clés)
 - Démarre la synchronisation PouchDB ↔ CouchDB en mode live
-- Supprime `auth_name` du localStorage si rememberMe=false
+- Supprime `auth_username` du localStorage si rememberMe=false
 
 ## Dépendances
 - `pouchdb` : Database locale

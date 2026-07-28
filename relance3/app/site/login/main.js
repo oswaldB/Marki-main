@@ -94,7 +94,6 @@ Alpine.data('loginPage', () => ({
 
     /**
      * Charge les données initiales via le workflow initial-load
-     * Pré-remplit le formulaire avec savedEmail si présent
      */
     async loadInitialData() {
         this.isLoading = true;
@@ -104,19 +103,6 @@ Alpine.data('loginPage', () => ({
             const result = await this.runWorkflow('initial-load');
             if (result.success) {
                 this.data = result.data || {};
-                
-                // Pré-remplir le formulaire avec l'email sauvegardé
-                if (this.data.savedEmail) {
-                    this.form.username = this.data.savedEmail;
-                    console.log('loginPage: email pré-rempli:', this.data.savedEmail);
-                }
-                
-                // Redirection si session active
-                if (this.data.hasSession && this.data.user) {
-                    console.log('loginPage: session active détectée');
-                    // TODO: Rediriger vers la page d'accueil
-                    // window.location.href = '/dashboard';
-                }
             } else {
                 this.error = result.error || 'Erreur lors du chargement initial';
             }
