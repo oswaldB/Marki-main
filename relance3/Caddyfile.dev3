@@ -1,0 +1,11 @@
+# Caddyfile de développement pour dev3
+dev.markidiags.com {
+    handle /api/* {
+        reverse_proxy localhost:5001
+    }
+    handle {
+        root * /home/ubuntu/marki/relance3/app/site
+        file_server
+        try_files {path} {path}/ /index.html
+    }
+}

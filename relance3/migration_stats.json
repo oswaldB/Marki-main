@@ -1,0 +1,93 @@
+{
+  "tables": {
+    "relance_impayes": {
+      "ok": true,
+      "table": "relance_impayes",
+      "total": 404,
+      "inserted": 0,
+      "errors": 0
+    },
+    "suivi_impayes": {
+      "ok": true,
+      "table": "suivi_impayes",
+      "total": 22,
+      "inserted": 0,
+      "errors": 0
+    },
+    "lien_paiements": {
+      "ok": true,
+      "table": "lien_paiements",
+      "total": 1,
+      "inserted": 1,
+      "errors": 0
+    },
+    "options_dynamiques": {
+      "ok": true,
+      "table": "options_dynamiques",
+      "total": 21,
+      "inserted": 21,
+      "errors": 0
+    },
+    "users": {
+      "ok": true,
+      "table": "users",
+      "total": 3,
+      "inserted": 3,
+      "errors": 0
+    },
+    "contacts": {
+      "ok": true,
+      "table": "contacts",
+      "total": 6860,
+      "inserted": 6860,
+      "errors": 0
+    },
+    "sequences": {
+      "ok": true,
+      "table": "sequences",
+      "total": 2,
+      "inserted": 2,
+      "errors": 0
+    },
+    "smtp_profiles": {
+      "ok": true,
+      "table": "smtp_profiles",
+      "total": 1,
+      "inserted": 1,
+      "errors": 0
+    },
+    "impayes": {
+      "ok": true,
+      "table": "impayes",
+      "total": 7785,
+      "inserted": 7785,
+      "errors": 0
+    },
+    "relances": {
+      "ok": true,
+      "table": "relances",
+      "total": 302,
+      "inserted": 302,
+      "errors": 0
+    },
+    "suivis": {
+      "ok": true,
+      "table": "suivis",
+      "total": 4,
+      "inserted": 4,
+      "errors": 0
+    },
+    "events": {
+      "ok": true,
+      "table": "events",
+      "total": 8488,
+      "inserted": 8488,
+      "errors": 0
+    }
+  },
+  "total_docs": 23893,
+  "total_inserted": 23467,
+  "total_errors": 0,
+  "start_time": "2026-07-24T14:36:42.518914+00:00",
+  "end_time": "2026-07-24T14:36:58.492759+00:00"
+}

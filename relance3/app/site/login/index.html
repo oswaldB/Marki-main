@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!--
+    INSTRUCTIONS IA - À APPLIQUER:
+    =============================
+    
+    PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
+    
+    1. PIXEL PERFECT: Implémenter le design EXACTEMENT depuis:
+       - .specs/mockups/*.html
+       Attention ne parle ici que du look and feel. Les actions doivent etre mise à jour pour fonctionner avec les workflows frontend et le main.js.
+
+    2. ALPINE.JS: Utiliser x-data="loginPage" (défini dans main.js via Alpine.data)
+       - PAS de store global
+       - PAS de JavaScript dans ce fichier HTML
+       - PAS de x-init="init()", init() est appelé automatiquement par Alpine
+
+    3. TAILWINDCSS: Utiliser pour le styling en respect du mockup.
+
+    4. POUCHDB: Assurer la compatibilité pour la persistance
+
+    5. **IDs des Boutons** : Chaque bouton DOIT avoir un ID unique au format `btn-{action}`
+       - Exemple : `id="btn-submit"`, `id="btn-cancel"`, `id="btn-refresh"`
+       - Jamais d'ID vide ou dupliqué
+       - Format obligatoire : commence toujours par `btn-`
+    -->
+
+    <div id="app" x-data="loginPage" class="container mx-auto p-4">
+        <header class="bg-blue-600 text-white p-4 rounded-lg mb-6">
+            <h1>login - pret pour dev</h1>
+        </header>
+
+        <main class="bg-white rounded-lg shadow-md p-6">
+            <p class="text-gray-600 mb-4">Page en cours de développement.</p>
+
+            <!-- EXEMPLE: Bouton avec ID obligatoire btn- (pas pour init qui se charge automatiquement) -->
+            <button id="btn-submit" @click="runWorkflow('submit')" class="bg-blue-600 text-white px-4 py-2 rounded">
+                Soumettre
+            </button>
+        </main>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "_id": "_design/demandes",
+  "views": {
+    "par_statut": {
+      "map": "function(doc) { if (doc.type === 'demande' && doc.statut) { emit(doc.statut, doc._id); } }"
+    },
+    "par_client": {
+      "map": "function(doc) { if (doc.type === 'demande' && doc.client && doc.client.id) { emit(doc.client.id, { _id: doc._id, reference: doc.reference, date_creation: doc.date_creation }); } }"
+    },
+    "par_reference": {
+      "map": "function(doc) { if (doc.type === 'demande' && doc.reference) { emit(doc.reference, doc._id); } }"
+    },
+    "par_date_creation": {
+      "map": "function(doc) { if (doc.type === 'demande' && doc.date_creation) { emit(doc.date_creation, doc._id); } }"
+    },
+    "par_apporteur": {
+      "map": "function(doc) { if (doc.type === 'demande' && doc.apporteur && doc.apporteur.id) { emit(doc.apporteur.id, doc._id); } }"
+    },
+    "montant_total": {
+      "map": "function(doc) { if (doc.type === 'demande' && doc.stats && doc.stats.montant_total_du) { emit(doc._id, doc.stats.montant_total_du); } }",
+      "reduce": "_sum"
+    },
+    "nb_factures_impayees": {
+      "map": "function(doc) { if (doc.type === 'demande' && doc.stats && doc.stats.nb_factures_impayees > 0) { emit(doc._id, doc.stats.nb_factures_impayees); } }"
+    }
+  },
+  "language": "javascript"
+}

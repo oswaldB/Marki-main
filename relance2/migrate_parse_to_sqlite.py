@@ -126,6 +126,281 @@ class MigrationRunner:
             self.conn.close()
             logging.info("SQLite connection closed")
 
+    def _create_base_tables(self) -> None:
+        """Crée les tables de base si elles n'existent pas."""
+        # Vérifier et corriger la table users si elle existe avec mauvais schéma
+        try:
+            cursor = self.conn.execute("PRAGMA table_info(users)")
+            columns = cursor.fetchall()
+            id_col = next((c for c in columns if c[1] == 'id'), None)
+            if id_col and id_col[2] == 'INTEGER':
+                logging.info("Recreating users table with TEXT id...")
+                # Sauvegarder les données existantes
+                try:
+                    existing = self.conn.execute("SELECT * FROM users").fetchall()
+                except:
+                    existing = []
+                
+                # Supprimer et recréer la table
+                self.conn.execute("DROP TABLE IF EXISTS users")
+                self.conn.execute("""
+                    CREATE TABLE users (
+                        id TEXT PRIMARY KEY,
+                        username TEXT UNIQUE NOT NULL,
+                        email TEXT UNIQUE NOT NULL,
+                        password_hash TEXT NOT NULL,
+                        role TEXT DEFAULT 'user',
+                        is_active INTEGER DEFAULT 1,
+                        last_login TEXT,
+                        login_count INTEGER DEFAULT 0,
+                        created_at TEXT,
+                        updated_at TEXT
+                    )
+                """)
+                logging.info("Users table recreated with TEXT id")
+        except sqlite3.OperationalError:
+            # Table n'existe pas, créer normalement
+            pass
+
+        tables_sql = {
+            "contacts": """
+                CREATE TABLE IF NOT EXISTS contacts (
+                    id TEXT PRIMARY KEY,
+                    nom TEXT NOT NULL DEFAULT 'Inconnu',
+                    prenom TEXT,
+                    email TEXT,
+                    telephone TEXT,
+                    type TEXT,
+                    type_personne TEXT DEFAULT 'P',
+                    statut TEXT DEFAULT 'actif',
+                    is_blacklisted INTEGER DEFAULT 0,
+                    blacklist_date TEXT,
+                    blacklist_motif TEXT,
+                    civilite TEXT,
+                    code TEXT,
+                    societe TEXT REFERENCES contacts(id),
+                    activite_societe TEXT,
+                    adresse_rue TEXT,
+                    adresse_ville TEXT,
+                    adresse_code_postal TEXT,
+                    adresse_pays TEXT DEFAULT 'France',
+                    notes TEXT,
+                    created_at TEXT,
+                    updated_at TEXT
+                )
+            """,
+            "sequences": """
+                CREATE TABLE IF NOT EXISTS sequences (
+                    id TEXT PRIMARY KEY,
+                    nom TEXT,
+                    type_sequence TEXT DEFAULT 'relances',
+                    niveau INTEGER DEFAULT 0,
+                    actif INTEGER DEFAULT 0,
+                    validation_obligatoire INTEGER DEFAULT 0,
+                    attribution_automatique INTEGER DEFAULT 0,
+                    lien_paiement TEXT,
+                    scenario TEXT,
+                    emails_json TEXT,
+                    regles_json TEXT,
+                    groupes_regles_json TEXT,
+                    created_at TEXT,
+                    updated_at TEXT
+                )
+            """,
+            "smtp_profiles": """
+                CREATE TABLE IF NOT EXISTS smtp_profiles (
+                    id TEXT PRIMARY KEY,
+                    nom TEXT,
+                    host TEXT,
+                    port INTEGER DEFAULT 587,
+                    secure INTEGER DEFAULT 0,
+                    username TEXT,
+                    password TEXT,
+                    from_email TEXT,
+                    from_name TEXT,
+                    signature_html TEXT,
+                    actif INTEGER DEFAULT 1,
+                    is_default INTEGER DEFAULT 0,
+                    created_at TEXT,
+                    updated_at TEXT
+                )
+            """,
+            "impayes": """
+                CREATE TABLE IF NOT EXISTS impayes (
+                    id TEXT PRIMARY KEY,
+                    payer_id TEXT REFERENCES contacts(id),
+                    contact_relance_id TEXT REFERENCES contacts(id),
+                    apporteur_id TEXT REFERENCES contacts(id),
+                    proprietaire_id TEXT REFERENCES contacts(id),
+                    donneur_ordre_id TEXT REFERENCES contacts(id),
+                    locataire_entrant_id TEXT REFERENCES contacts(id),
+                    locataire_sortant_id TEXT REFERENCES contacts(id),
+                    notaire_id TEXT REFERENCES contacts(id),
+                    syndic_id TEXT REFERENCES contacts(id),
+                    acquereur_id TEXT REFERENCES contacts(id),
+                    sequence_id TEXT REFERENCES sequences(id),
+                    nfacture TEXT,
+                    date_facture TEXT,
+                    date_echeance TEXT,
+                    date_piece TEXT,
+                    montant_ttc REAL DEFAULT 0,
+                    total_ht REAL DEFAULT 0,
+                    solde_du REAL DEFAULT 0,
+                    reste_a_payer REAL DEFAULT 0,
+                    statut TEXT,
+                    is_blacklisted INTEGER DEFAULT 0,
+                    blacklist_date TEXT,
+                    blacklist_motif TEXT,
+                    facture_soldee INTEGER DEFAULT 0,
+                    solde INTEGER DEFAULT 0,
+                    solde_le TEXT,
+                    id_dossier TEXT,
+                    numero_dossier TEXT,
+                    reference TEXT,
+                    reference_externe TEXT,
+                    statut_dossier TEXT,
+                    adresse_bien TEXT,
+                    code_postal TEXT,
+                    ville TEXT,
+                    etage TEXT,
+                    entree TEXT,
+                    escalier TEXT,
+                    porte TEXT,
+                    numero_lot TEXT,
+                    payeur_nom TEXT,
+                    payeur_prenom TEXT,
+                    payeur_email TEXT,
+                    payeur_telephone TEXT,
+                    payeur_civilite TEXT,
+                    payeur_type TEXT,
+                    payeur_type_personne TEXT,
+                    proprietaire_nom TEXT,
+                    proprietaire_prenom TEXT,
+                    proprietaire_email TEXT,
+                    proprietaire_telephone TEXT,
+                    proprietaire_civilite TEXT,
+                    proprietaire_type_personne TEXT,
+                    apporteur_nom TEXT,
+                    apporteur_prenom TEXT,
+                    apporteur_email TEXT,
+                    apporteur_telephone TEXT,
+                    apporteur_civilite TEXT,
+                    donneur_ordre_nom TEXT,
+                    donneur_ordre_prenom TEXT,
+                    donneur_ordre_email TEXT,
+                    donneur_ordre_telephone TEXT,
+                    donneur_ordre_civilite TEXT,
+                    syndic_nom TEXT,
+                    syndic_prenom TEXT,
+                    syndic_email TEXT,
+                    syndic_telephone TEXT,
+                    syndic_civilite TEXT,
+                    notaire_nom TEXT,
+                    notaire_prenom TEXT,
+                    notaire_email TEXT,
+                    notaire_telephone TEXT,
+                    notaire_civilite TEXT,
+                    locataire_entrant_nom TEXT,
+                    locataire_entrant_prenom TEXT,
+                    locataire_entrant_email TEXT,
+                    locataire_entrant_telephone TEXT,
+                    locataire_entrant_civilite TEXT,
+                    locataire_sortant_nom TEXT,
+                    locataire_sortant_prenom TEXT,
+                    locataire_sortant_email TEXT,
+                    locataire_sortant_telephone TEXT,
+                    locataire_sortant_civilite TEXT,
+                    acquereur_nom TEXT,
+                    acquereur_prenom TEXT,
+                    acquereur_email TEXT,
+                    acquereur_telephone TEXT,
+                    acquereur_civilite TEXT,
+                    employe_intervention TEXT,
+                    commentaire_dossier TEXT,
+                    commentaire_piece TEXT,
+                    cadre_mission TEXT,
+                    url_pdf TEXT,
+                    email_index INTEGER DEFAULT 0,
+                    created_at TEXT,
+                    updated_at TEXT
+                )
+            """,
+            "relances": """
+                CREATE TABLE IF NOT EXISTS relances (
+                    id TEXT PRIMARY KEY,
+                    contact_id TEXT NOT NULL REFERENCES contacts(id),
+                    sequence_id TEXT REFERENCES sequences(id),
+                    smtp_profile_id TEXT REFERENCES smtp_profiles(id),
+                    statut TEXT,
+                    date_envoi TEXT,
+                    date_programmation TEXT,
+                    sujet TEXT,
+                    corps TEXT,
+                    cc TEXT,
+                    scenario TEXT,
+                    email_index INTEGER,
+                    email_sent INTEGER DEFAULT 0,
+                    erreur_count INTEGER DEFAULT 0,
+                    last_error TEXT,
+                    valide INTEGER,
+                    manuelle INTEGER,
+                    created_at TEXT,
+                    updated_at TEXT
+                )
+            """,
+            "suivis": """
+                CREATE TABLE IF NOT EXISTS suivis (
+                    id TEXT PRIMARY KEY,
+                    contact_id TEXT REFERENCES contacts(id),
+                    sequence_id TEXT REFERENCES sequences(id),
+                    smtp_profile_id TEXT REFERENCES smtp_profiles(id),
+                    statut TEXT,
+                    date_envoi TEXT,
+                    date_programmation TEXT,
+                    sujet TEXT,
+                    corps TEXT,
+                    cc TEXT,
+                    scenario TEXT,
+                    format TEXT,
+                    email_index INTEGER,
+                    email_sent INTEGER DEFAULT 0,
+                    erreur_count INTEGER DEFAULT 0,
+                    last_error TEXT,
+                    valide INTEGER,
+                    manuelle INTEGER,
+                    created_at TEXT,
+                    updated_at TEXT
+                )
+            """,
+            "events": """
+                CREATE TABLE IF NOT EXISTS events (
+                    id TEXT PRIMARY KEY,
+                    type TEXT,
+                    titre TEXT,
+                    description TEXT,
+                    entity_type TEXT,
+                    entity_id TEXT,
+                    who_id TEXT REFERENCES contacts(id),
+                    by_marki INTEGER DEFAULT 0,
+                    metadata TEXT,
+                    read INTEGER DEFAULT 0,
+                    created_at TEXT
+                )
+            """,
+        }
+
+        for table_name, sql in tables_sql.items():
+            try:
+                self.conn.execute(sql)
+                logging.debug(f"Created table: {table_name}")
+            except sqlite3.OperationalError as e:
+                if "already exists" in str(e).lower():
+                    logging.debug(f"Table {table_name} already exists")
+                else:
+                    logging.warning(f"Could not create {table_name}: {e}")
+
+        self.conn.commit()
+
     def setup_schema(self) -> None:
         """Crée les tables et colonnes manquantes pour la migration."""
         if self.dry_run:
@@ -134,8 +409,15 @@ class MigrationRunner:
 
         logging.info("Setting up schema...")
 
+        # Création des tables de base si elles n'existent pas
+        self._create_base_tables()
+
         # Colonnes à ajouter aux tables existantes
         schema_updates = [
+            # Users - nouvelles colonnes
+            ("users", "is_active", "INTEGER DEFAULT 1"),
+            ("users", "last_login", "TEXT"),
+            ("users", "login_count", "INTEGER DEFAULT 0"),
             # Events
             ("events", "who_id", "TEXT REFERENCES contacts(id)"),
             ("events", "by_marki", "INTEGER DEFAULT 0"),
