@@ -109,8 +109,8 @@ Appelé lors de la soumission du formulaire de login.
 ```javascript
 const encodedCredentials = btoa(`${username}:${password}`);
 
-const response = await fetch(`${COUCHDB_URL}_session`, {
-  method: 'POST',
+const response = await fetch(`${COUCHDB_URL}`, {
+  method: 'GET',
   headers: { 
     'Content-Type': 'application/json',
     'Authorization': `Basic ${encodedCredentials}`

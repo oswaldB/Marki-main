@@ -22,21 +22,16 @@ console.log('initial-load.js loaded');
 
 /**
  * Décode un token JWT et retourne le payload
- * @param {string} token - Token JWT
- * @returns {Object|null} Payload décodé ou null
+ * @param {string} token - Le token JWT
+ * @returns {Object|null} Le payload décodé ou null
  */
-function decodeJwtPayload(token) {
+function decodeJWT(token) {
     try {
-        const base64Url = token.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const jsonPayload = decodeURIComponent(
-            atob(base64)
-                .split('')
-                .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
-                .join('')
-        );
-        return JSON.parse(jsonPayload);
+        const base64Payload = token.split('.')[1];
+        const payload = JSON.parse(atob(base64Payload));
+        return payload;
     } catch (err) {
+        console.error('initial-load: erreur décodage JWT:', err);
         return null;
     }
 }
@@ -52,83 +47,68 @@ export async function execute(context, params = {}) {
     console.log('initial-load: démarrage vérification session');
     
     try {
-        // 1. Lire localStorage
+        // Lire localStorage
         const token = localStorage.getItem('auth_token');
         const userJson = localStorage.getItem('auth_user');
         const savedEmail = localStorage.getItem('saved_email');
         
-        // 2. Aucun token trouvé
-        if (!token) {
-            console.log('initial-load: aucun token trouvé');
-            return {
-                success: true,
-                data: {
-                    hasSession: false,
-                    savedEmail: savedEmail || null
-                },
-                error: null
-            };
-        }
-        
-        // 3. Décoder et vérifier expiration JWT
-        const payload = decodeJwtPayload(token);
-        
-        if (!payload || !payload.exp) {
-            console.log('initial-load: token invalide');
-            localStorage.removeItem('auth_token');
-            localStorage.removeItem('auth_user');
-            return {
-                success: true,
-                data: {
-                    hasSession: false,
-                    savedEmail: savedEmail || null
-                },
-                error: null
-            };
-        }
-        
-        const now = Math.floor(Date.now() / 1000);
-        
-        // 4. Token expiré
-        if (payload.exp < now) {
-            console.log('initial-load: token expiré');
-            localStorage.removeItem('auth_token');
-            localStorage.removeItem('auth_user');
-            return {
-                success: true,
-                data: {
-                    hasSession: false,
-                    reason: 'token_expired',
-                    savedEmail: savedEmail || null
-                },
-                error: null
-            };
-        }
-        
-        // 5. Session active - récupérer les données utilisateur
-        const user = userJson ? JSON.parse(userJson) : null;
-        const rememberMe = localStorage.getItem('auth_remember_me') === 'true';
-        
-        console.log('initial-load: utilisateur récupéré:', user?.email || 'unknown');
-        console.log('initial-load: session active trouvée');
-        
-        return {
+        // Préparer la réponse avec savedEmail pour pré-remplissage
+        const response = {
             success: true,
-            data: {
-                hasSession: true,
-                token: token,
-                user: user,
-                rememberMe: rememberMe
-            },
+            data: {},
             error: null
         };
         
+        if (savedEmail) {
+            response.data.savedEmail = savedEmail;
+        }
+        
+        // Pas de token trouvé
+        if (!token) {
+            console.log('initial-load: aucun token trouvé');
+            response.data.hasSession = false;
+            return response;
+        }
+        
+        // Vérifier expiration JWT
+        const payload = decodeJWT(token);
+        if (!payload) {
+            console.log('initial-load: token invalide');
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('auth_user');
+            response.data.hasSession = false;
+            response.data.reason = 'token_invalid';
+            return response;
+        }
+        
+        const now = Math.floor(Date.now() / 1000);
+        if (payload.exp && payload.exp < now) {
+            console.log('initial-load: token expiré');
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('auth_user');
+            response.data.hasSession = false;
+            response.data.reason = 'token_expired';
+            return response;
+        }
+        
+        // Session active valide
+        const user = userJson ? JSON.parse(userJson) : null;
+        console.log('initial-load: utilisateur récupéré:', user?.email || 'inconnu');
+        console.log('initial-load: session active trouvée');
+        
+        response.data.hasSession = true;
+        response.data.token = token;
+        response.data.user = user;
+        response.data.rememberMe = !!savedEmail;
+        
+        return response;
+        
     } catch (err) {
         console.error('initial-load error:', err);
-        return {
-            success: false,
+        return { 
+            success: false, 
             data: null,
-            error: `Erreur lors de la vérification de session: ${err.message}`
+            error: `Erreur lors de la vérification de session: ${err.message}` 
         };
     }
 }

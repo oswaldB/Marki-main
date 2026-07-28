@@ -71,10 +71,13 @@ Alpine.data('loginPage', () => ({
     isLoading: false,
     error: null,
     data: {},
+    
+    // ───────────────────────────────────────────────────────
+    // FORMULAIRE DE CONNEXION
+    // ───────────────────────────────────────────────────────
     form: {
         username: '',
-        password: '',
-        rememberMe: false
+        password: ''
     },
     
     // ───────────────────────────────────────────────────────
@@ -91,6 +94,7 @@ Alpine.data('loginPage', () => ({
 
     /**
      * Charge les données initiales via le workflow initial-load
+     * Pré-remplit le formulaire avec savedEmail si présent
      */
     async loadInitialData() {
         this.isLoading = true;
@@ -100,6 +104,19 @@ Alpine.data('loginPage', () => ({
             const result = await this.runWorkflow('initial-load');
             if (result.success) {
                 this.data = result.data || {};
+                
+                // Pré-remplir le formulaire avec l'email sauvegardé
+                if (this.data.savedEmail) {
+                    this.form.username = this.data.savedEmail;
+                    console.log('loginPage: email pré-rempli:', this.data.savedEmail);
+                }
+                
+                // Redirection si session active
+                if (this.data.hasSession && this.data.user) {
+                    console.log('loginPage: session active détectée');
+                    // TODO: Rediriger vers la page d'accueil
+                    // window.location.href = '/dashboard';
+                }
             } else {
                 this.error = result.error || 'Erreur lors du chargement initial';
             }
@@ -180,55 +197,6 @@ Alpine.data('loginPage', () => ({
      */
     clearError() {
         this.error = null;
-    },
-
-    /**
-     * Soumet le formulaire de login
-     * Déclenche le workflow auth-submit
-     */
-    async submitLogin() {
-        this.clearError();
-        
-        const result = await this.runWorkflow('auth-submit', {
-            username: this.form.username,
-            password: this.form.password,
-            rememberMe: this.form.rememberMe || false
-        });
-
-        if (result.success) {
-            // Redirection après login réussi (paramètre redirect dans l'URL)
-            const redirect = this.getUrlParam('redirect') || '/';
-            window.location.href = redirect;
-        }
-        // L'erreur est déjà gérée par runWorkflow
-    },
-
-    /**
-     * Déconnecte l'utilisateur
-     */
-    async logout() {
-        try {
-            const COUCHDB_URL = 'https://dev.markidiags.com/data/';
-            
-            // Déconnexion CouchDB
-            await fetch(`${COUCHDB_URL}_session`, {
-                method: 'DELETE',
-                credentials: 'include'
-            });
-            
-            // Cleanup localStorage
-            localStorage.removeItem('auth_username');
-            localStorage.removeItem('auth_roles');
-            localStorage.removeItem('auth_db');
-            localStorage.removeItem('auth_remember_me');
-            localStorage.removeItem('auth_last_login');
-            
-            // Recharger la page
-            window.location.reload();
-        } catch (err) {
-            console.error('Erreur logout:', err);
-            this.error = 'Erreur lors de la déconnexion';
-        }
     }
 }));
 
