@@ -69,12 +69,12 @@ Alpine.data('loginPage', () => ({
     // ÉTAT DE LA PAGE
     // ───────────────────────────────────────────────────────
     isLoading: false,
-    loading: false,
     error: null,
     data: {},
     form: {
         username: '',
-        password: ''
+        password: '',
+        rememberMe: false
     },
     
     // ───────────────────────────────────────────────────────

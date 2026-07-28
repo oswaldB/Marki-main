@@ -1,100 +1,145 @@
+/*
+INSTRUCTIONS IA - À APPLIQUER:
+=============================
+
+PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
+
+1. NOM DU WORKFLOW: initial-load
+
+2. SPECS: Implémenter selon:
+   - .specs/wf-frontend/initial-load.md
+   - /home/ubuntu/marki/relance3/app/site/login/.specs/wf-frontend/initial-load.md
+
+3. FONCTION: Export nommé execute(context, params) qui:
+   - Prend context (avec localDB, remoteDB, etc.)
+   - Prend params (paramètres du workflow)
+   - Retourne { success: true/false, data: {}, error: string }
+
+4. CONSOLE: Logger 'initial-load.js loaded' au chargement
+*/
+
 console.log('initial-load.js loaded');
 
 /**
- * Décode un JWT sans vérification de signature
+ * Décode un JWT payload (base64)
  * @param {string} token - JWT token
- * @returns {Object|null} Payload décodé ou null
+ * @returns {Object|null} Payload décodé
  */
 function decodeJWT(token) {
     try {
-        const [, payload] = token.split('.');
-        if (!payload) return null;
-        const decoded = atob(payload.replace(/-/g, '+').replace(/_/g, '/'));
-        return JSON.parse(decoded);
-    } catch {
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const jsonPayload = decodeURIComponent(
+            atob(base64)
+                .split('')
+                .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+                .join('')
+        );
+        return JSON.parse(jsonPayload);
+    } catch (err) {
         return null;
     }
 }
 
 /**
+ * Vérifie si un token JWT est expiré
+ * @param {Object} payload - JWT payload
+ * @returns {boolean}
+ */
+function isTokenExpired(payload) {
+    if (!payload || !payload.exp) return true;
+    const now = Math.floor(Date.now() / 1000);
+    return payload.exp < now;
+}
+
+/**
  * Workflow initial-load
- * Vérifie si l'utilisateur possède une session active au chargement de la page.
- * 
- * @param {Object} context - Contexte avec localDB, remoteDB, etc.
- * @param {Object} params - Paramètres du workflow (aucun requis)
+ * Vérifie si l'utilisateur possède une session active
+ * @param {Object} context - Contexte avec localDB, remoteDB
+ * @param {Object} params - Paramètres du workflow
  * @returns {Promise<Object>} Résultat { success, data, error }
  */
 export async function execute(context, params = {}) {
     console.log('initial-load: démarrage vérification session');
     
     try {
-        // 1. Lire localStorage
-        const token = localStorage.getItem('auth_token');
-        const userJson = localStorage.getItem('auth_user');
+        // Lire localStorage
+        const authToken = localStorage.getItem('auth_token');
+        const authUser = localStorage.getItem('auth_user');
         const savedEmail = localStorage.getItem('saved_email');
-        
+        const rememberMe = localStorage.getItem('remember_me') === 'true';
+
         // Aucun token trouvé
-        if (!token) {
+        if (!authToken) {
             console.log('initial-load: aucun token trouvé');
-            return { 
-                success: true, 
-                data: { 
+            return {
+                success: true,
+                data: {
                     hasSession: false,
-                    ...(savedEmail && { savedEmail })
+                    savedEmail: savedEmail || null
                 },
-                error: null 
+                error: null
             };
         }
+
+        // Vérifier expiration JWT
+        const payload = decodeJWT(authToken);
         
-        // 2. Vérifier expiration JWT
-        const payload = decodeJWT(token);
-        const now = Math.floor(Date.now() / 1000);
-        
-        // Token invalide ou expiré
-        if (!payload || !payload.exp || payload.exp <= now) {
-            console.log('initial-load: token expiré');
-            
-            // 3. Nettoyer si expiré
+        if (!payload) {
+            console.log('initial-load: token invalide');
+            // Nettoyer localStorage
             localStorage.removeItem('auth_token');
             localStorage.removeItem('auth_user');
-            
-            return { 
-                success: true, 
-                data: { 
-                    hasSession: false, 
-                    reason: 'token_expired',
-                    ...(savedEmail && { savedEmail })
+            return {
+                success: true,
+                data: {
+                    hasSession: false,
+                    reason: 'token_invalid',
+                    savedEmail: savedEmail || null
                 },
-                error: null 
+                error: null
             };
         }
-        
-        // 4. Session active - parser les données utilisateur
+
+        if (isTokenExpired(payload)) {
+            console.log('initial-load: token expiré');
+            // Nettoyer localStorage
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('auth_user');
+            return {
+                success: true,
+                data: {
+                    hasSession: false,
+                    reason: 'token_expired',
+                    savedEmail: savedEmail || null
+                },
+                error: null
+            };
+        }
+
+        // Token valide - session active
         let user = null;
         try {
-            user = userJson ? JSON.parse(userJson) : null;
-        } catch {
+            user = authUser ? JSON.parse(authUser) : null;
+        } catch (e) {
             user = null;
         }
-        
-        if (user && user.email) {
+
+        if (user) {
             console.log('initial-load: utilisateur récupéré:', user.email);
         }
         console.log('initial-load: session active trouvée');
-        
-        // 5. Détecter rememberMe (email sauvegardé)
-        const rememberMe = !!savedEmail;
-        
-        return { 
-            success: true, 
-            data: { 
-                hasSession: true, 
-                token,
-                user: user || { id: payload.sub, email: payload.email },
-                rememberMe,
-                ...(savedEmail && { savedEmail })
+
+        return {
+            success: true,
+            data: {
+                hasSession: true,
+                token: authToken,
+                user: user,
+                rememberMe: rememberMe,
+                savedEmail: savedEmail || null
             },
-            error: null 
+            error: null
         };
         
     } catch (err) {

@@ -45,9 +45,9 @@ Feature: login Page
    - Les workflows sont dans `./workflows/*.js`
 
 3. **Structure Alpine.js** :
-   - Fonction principale dans `main.js` : `loginPage()`
-   - Dans `index.html` : `x-data="loginPage()"`
-   - Pas de store global, tout est dans la fonction de la page
+   - Fonction principale dans `main.js` : `Alpine.data('loginPage', () => ({...}))`
+   - Dans `index.html` : `x-data="loginPage"` (sans parenthèses)
+   - Pas de store global, tout est dans le composant de la page
 
 4. **Data et Persistence** :
    - Toutes les données sont dans PouchDB local
