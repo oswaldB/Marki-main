@@ -173,10 +173,28 @@ class SQLiteToCouchDBMigrator:
         
         return value
     
+    def generate_doc_id(self, row: sqlite3.Row, table_name: str) -> str:
+        """Génère un ID unique pour le document CouchDB"""
+        row_keys = row.keys()
+        
+        # Tables de liaison avec clés composites
+        if table_name == 'relance_impayes' and 'relance_id' in row_keys and 'impaye_id' in row_keys:
+            return f"{table_name}:{row['relance_id']}:{row['impaye_id']}"
+        
+        if table_name == 'suivi_impayes' and 'suivi_id' in row_keys and 'impaye_id' in row_keys:
+            return f"{table_name}:{row['suivi_id']}:{row['impaye_id']}"
+        
+        # Table avec colonne id standard
+        if 'id' in row_keys:
+            return f"{table_name}:{row['id']}"
+        
+        # Fallback: hash de la ligne
+        return f"{table_name}:{hash(str(tuple(row)))}"
+    
     def row_to_doc(self, row: sqlite3.Row, schema: List[Dict], table_name: str) -> Dict:
         """Convertit une ligne SQLite en document CouchDB"""
         doc = {
-            "_id": f"{table_name}:{row['id']}" if 'id' in row.keys() else f"{table_name}:{hash(str(row))}",
+            "_id": self.generate_doc_id(row, table_name),
             "table": table_name,
             "migrated_at": datetime.now(timezone.utc).isoformat(),
             "source": 'sqlite'

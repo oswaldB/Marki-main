@@ -1,25 +1,8 @@
 {
-  "name": "api-server",
+  "name": "dev3-server",
   "version": "1.0.0",
-  "description": "Serveur API sécurisé pour dev.markidiags.com",
-  "type": "module",
-  "main": "proxy.js",
-  "scripts": {
-    "start": "node proxy.js",
-    "dev": "nodemon proxy.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": ["api", "proxy", "couchdb", "jwt", "auth"],
-  "author": "",
-  "license": "ISC",
+  "main": "index.js",
   "dependencies": {
-    "express": "^4.18.2",
-    "nano": "^10.1.3",
-    "jsonwebtoken": "^9.0.2",
-    "bcryptjs": "^2.4.3",
-    "dotenv": "^16.3.1"
-  },
-  "devDependencies": {
-    "nodemon": "^3.0.2"
+    "express": "^4.18.0"
   }
 }

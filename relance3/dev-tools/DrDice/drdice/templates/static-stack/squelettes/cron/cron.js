@@ -1,4 +1,6 @@
 /**
+ * INSTRUCTIONS IA - PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
+ * 
  * TODO IA:
  * {instructions}
  */

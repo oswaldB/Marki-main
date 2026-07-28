@@ -1,56 +1,99 @@
----
-id: login-initial-load
-type: frontend
-folder: specs/workflows/frontend/login/
-description: Charger la page de login et vérifier l'état d'authentification existant
-depends_on: []
-screen: login
-global: false
-mockup_entry: specs/mockups/login.html
----
+# Workflow: initial-load
 
-# login-initial-load : Chargement initial Login
+## Objectif
+Vérifier si l'utilisateur possède une session active au chargement de la page login.
 
-## Description
+## Déclencheur
+Appelé automatiquement au `x-init` de la page Alpine.js.
 
-Initialiser la page de login, vérifier si une session existe déjà (token localStorage) et rediriger si nécessaire.
-
-## Étapes
-
+## Entrées
 ```javascript
-/**
- * @action Initialiser le DOM de la page login
- * @checkpoint dom-ready, body avec x-data="loginPage()" présent
- */
-
-/**
- * @action Vérifier la présence d'un token dans localStorage
- * @checkpoint token-checked, token présent ou absent déterminé
- */
-
-/**
- * @action Si token présent, valider via GET /api/auth/me (token dans header Authorization: Bearer)
- * @checkpoint session-verified, réponse API reçue
- * 
- * **Backend** : Utilise `AuthLocal.verifyToken(token)` pour valider le JWT
- */
-
-/**
- * @action Si session valide, rediriger vers /dashboard
- * @checkpoint redirect-executed, navigation vers dashboard
- */
-
-/**
- * @action Afficher le formulaire de login prêt à l'emploi
- * @checkpoint form-ready, champs username/password focusables
- */
+{
+    // Aucun paramètre requis
+}
 ```
 
-## Mockups de référence
+## Sorties
 
-- `specs/mockups/login.html`
+### Succès - Session active
+```javascript
+{
+    success: true,
+    data: {
+        hasSession: true,
+        token: "eyJhbGciOiJIUzI1NiIs...",
+        user: {
+            id: "user_abc123",
+            email: "user@example.com",
+            name: "John Doe",
+            role: "user"
+        },
+        rememberMe: true
+    },
+    error: null
+}
+```
 
-## API Calls
+### Succès - Pas de session
+```javascript
+{
+    success: true,
+    data: {
+        hasSession: false
+    },
+    error: null
+}
+```
 
-| Méthode | Endpoint | Description |
-|---------|----------|-------------|
+### Échec - Token expiré
+```javascript
+{
+    success: true,
+    data: {
+        hasSession: false,
+        reason: "token_expired"
+    },
+    error: null
+}
+```
+
+### Échec - Erreur technique
+```javascript
+{
+    success: false,
+    data: null,
+    error: "Erreur lors de la vérification de session: ..."
+}
+```
+
+## Logique métier
+
+1. **Lire localStorage**
+   - Clé: `auth_token`
+   - Clé: `auth_user`
+
+2. **Vérifier expiration JWT**
+   - Décoder le payload (base64)
+   - Comparer `exp` avec timestamp actuel
+
+3. **Nettoyer si expiré**
+   - Supprimer `auth_token`
+   - Supprimer `auth_user`
+
+4. **Restaurer email si rememberMe**
+   - Lire `saved_email`
+   - Pré-remplir le formulaire
+
+## Dépendances
+- PouchDB (initialisé dans main.js)
+- localStorage API
+
+## Console Logs
+```
+initial-load.js loaded
+initial-load: démarrage vérification session
+initial-load: aucun token trouvé
+initial-load: token expiré
+initial-load: utilisateur récupéré: user@example.com
+initial-load: session active trouvée
+```

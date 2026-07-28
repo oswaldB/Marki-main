@@ -1,143 +1,123 @@
-# Workflow : Soumission authentification
+# Workflow: auth-submit
 
-## Écran
-`login.html`
+## Objectif
+Authentifier l'utilisateur avec email/password et créer une session.
 
-## Élément déclencheur
-Formulaire de connexion (submit)
+## Déclencheur
+Appelé lors de la soumission du formulaire de login.
 
-## Action
-Soumettre les identifiants utilisateur pour authentification
-
-## Description
-- Récupère email et mot de passe saisis
-- Valide le format de l'email
-- Appelle l'API d'authentification SQLite
-- Redirige vers `/dashboard` en cas de succès
-- Affiche message d'erreur en cas d'échec
-
-## Data Model
-**Page Function:** `loginPage()`
-
-**Stores Alpine.js:**
-- $store.auth
-- $store.ui
-
-**Données:**
-- `form`
-
-**États UI:**
-- `loading`
-- `error`
-
-## State Changes
-
-**Modifications:**
-- `loading` → `true` → `false`
-- `error` ← message si échec
-
-## API Calls
-
-**POST /api/auth/login**
-
+## Entrées
 ```javascript
-// Requête
-POST /api/auth/login
-Content-Type: application/json
-
 {
-  "email": "admin@marki.fr",
-  "password": "votre-mot-de-passe"
-}
-
-// Réponse 200
-{
-  "token": "eyJhbGciOiJIUzI1NiIs...",
-  "user": {
-    "id": "user_xxx",
-    "username": "admin",
-    "email": "admin@marki.fr",
-    "role": "admin"
-  }
-}
-
-// Réponse 401
-{
-  "error": "Identifiants invalides"
+    email: "user@example.com",      // string, requis
+    password: "password123",        // string, requis
+    rememberMe: true                // boolean, optionnel (défaut: false)
 }
 ```
 
-## Organisation des fichiers
+## Sorties
 
-```
-frontend/
-└── app/
-    └── login/
-        ├── index.html
-        ├── components/
-        │   └── (composants partagés)
-        └── js/
-            └── auth-submit.js
-```
-
-### Fichier workflow
-- **JS** : `frontend/app/login/js/auth-submit.js`
-
+### Succès
 ```javascript
-// frontend/app/login/js/auth-submit.js
-export async function authSubmit(email, password) {
-  const response = await fetch('/api/auth/login', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, password })
-  });
-  
-  if (!response.ok) {
-    const error = await response.json();
-    throw new Error(error.error || 'Échec de connexion');
-  }
-  
-  return await response.json();
+{
+    success: true,
+    data: {
+        user: {
+            id: "user_abc123",
+            email: "user@example.com",
+            name: "John Doe",
+            role: "user" | "admin"
+        },
+        token: "eyJhbGciOiJIUzI1NiIs...",
+        rememberMe: true
+    },
+    error: null
 }
 ```
 
-## Implementation
-
+### Échec - Identifiants invalides
 ```javascript
-async handleLogin() {
-  // 1. Validate form
-  if (!this.form.email || !this.form.password) {
-    this.error = 'Veuillez remplir tous les champs';
-    return;
-  }
-  
-  // 2. Set loading
-  this.loading = true;
-  this.error = null;
-  
-  try {
-    // 3. Call auth API
-    const data = await authSubmit(this.form.email, this.form.password);
-    
-    // 4. Store auth data
-    Alpine.store('auth').token = data.token;
-    Alpine.store('auth').user = data.user;
-    Alpine.store('auth').isAuthenticated = true;
-    
-    // 5. Persist token
-    localStorage.setItem('token', data.token);
-    
-    // 6. Redirect
-    window.location.href = '/dashboard';
-    
-  } catch (error) {
-    this.error = error.message;
-  } finally {
-    this.loading = false;
-  }
+{
+    success: false,
+    data: null,
+    error: "Adresse email ou mot de passe incorrect"
 }
 ```
 
-## Navigation
-- **Cible** : `/dashboard`
-- **Condition** : Authentification réussie
+### Échec - Validation
+```javascript
+{
+    success: false,
+    data: null,
+    error: "L'adresse email est requise" | 
+            "Le mot de passe est requis" |
+            "Veuillez entrer une adresse email valide" |
+            "Le mot de passe doit contenir au moins 6 caractères"
+}
+```
+
+### Échec - Erreur technique
+```javascript
+{
+    success: false,
+    data: null,
+    error: "Erreur technique lors de la connexion. Veuillez réessayer."
+}
+```
+
+## Logique métier
+
+### 1. Validation des entrées
+- Email requis et format valide (regex)
+- Password requis, minimum 6 caractères
+
+### 2. Authentification
+- Mode développement: credentials de test en dur
+- Mode production: appel API vers backend
+
+### Credentials de test (DEV)
+| Email | Password | Name | Role |
+|-------|----------|------|------|
+| test@marki.fr | password123 | Test User | user |
+| admin@marki.fr | admin123 | Admin User | admin |
+| demo@example.com | demo123 | Demo User | user |
+
+### 3. Stockage session
+Si authentification réussie:
+
+**localStorage:**
+- `auth_token`: JWT token
+- `auth_user`: JSON stringifié de l'user
+- `auth_remember_me`: "true" | "false"
+- `saved_email`: email (si rememberMe=true)
+- `auth_last_login`: ISO timestamp
+
+### 4. Token JWT (Mock)
+Structure:
+```json
+{
+  "sub": "user@example.com",
+  "name": "John Doe",
+  "role": "user",
+  "iat": 1690000000,
+  "exp": 1690086400  // +24h
+}
+```
+
+## Side Effects
+- Écrit dans localStorage (5 clés)
+- Supprime `saved_email` si rememberMe=false
+
+## Dépendances
+- localStorage API
+- btoa/atob pour JWT
+
+## Console Logs
+```
+auth-submit.js loaded
+auth-submit: démarrage authentification
+auth-submit: validation échouée: ...
+auth-submit: tentative connexion pour: user@example.com
+auth-submit: identifiants invalides
+auth-submit: authentification réussie pour: user@example.com
+```

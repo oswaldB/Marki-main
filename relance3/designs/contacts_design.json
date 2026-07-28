@@ -1,0 +1,18 @@
+{
+  "_id": "_design/contacts",
+  "views": {
+    "par_type": {
+      "map": "function(doc) { if (doc.type === 'contact' && doc.type_contact) { emit(doc.type_contact, { _id: doc._id, nom: doc.nom, prenom: doc.prenom, email: doc.email }); } }"
+    },
+    "par_nom": {
+      "map": "function(doc) { if (doc.type === 'contact' && doc.nom) { emit(doc.nom.toLowerCase(), doc._id); } }"
+    },
+    "par_email": {
+      "map": "function(doc) { if (doc.type === 'contact' && doc.email) { emit(doc.email.toLowerCase(), doc._id); } }"
+    },
+    "avec_demandes_actives": {
+      "map": "function(doc) { if (doc.type === 'contact' && doc.nb_demandes_actives && doc.nb_demandes_actives > 0) { emit(doc._id, doc.nb_demandes_actives); } }"
+    }
+  },
+  "language": "javascript"
+}

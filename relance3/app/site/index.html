@@ -5,23 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dev.markidiags.com</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        html { font-family: 'Inter', system-ui, sans-serif; }
+    </style>
 </head>
-<body class="bg-gradient-to-br from-blue-500 to-purple-600 min-h-screen flex items-center justify-center">
-    <div class="bg-white rounded-lg shadow-2xl p-8 max-w-md text-center">
-        <h1 class="text-4xl font-bold text-gray-800 mb-4">Hello World! 👋</h1>
-        <p class="text-gray-600 mb-6">
-            Bienvenue sur <strong>dev.markidiags.com</strong>
+<body class="min-h-screen bg-slate-50 flex items-center justify-center p-4">
+    <div class="w-full max-w-md px-4">
+        <!-- Logo + Tagline -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-xl mb-4 overflow-hidden bg-white border border-slate-200">
+                <img src="./marki-logo.png" alt="Marki" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="hidden w-full h-full items-center justify-center bg-sky-500 text-white font-bold text-xl">M</div>
+            </div>
+            <h1 class="text-2xl font-semibold text-slate-900">Marki</h1>
+            <p class="text-sm text-slate-500 mt-1">Marki : le meilleur ami des Diagnostiqueurs immobiliers. Simplifier, renforcer et développer votre marge.</p>
+        </div>
+
+        <!-- Card -->
+        <div class="bg-white rounded-2xl border border-slate-200 shadow-sm">
+            <div class="px-6 py-4 border-b border-slate-100">
+                <h2 class="text-base font-semibold text-slate-900">Status</h2>
+            </div>
+            <div class="p-6 text-center">
+                <h1 class="text-4xl font-bold text-slate-900 mb-4">Hello World! 👋</h1>
+                <p class="text-slate-600 mb-6">
+                    Bienvenue sur <strong>dev.markidiags.com</strong>
+                </p>
+                <div class="space-y-2 text-sm text-slate-500 text-left">
+                    <p>✅ Static hosting: <span class="text-green-600 font-mono">/app</span></p>
+                    <p>✅ CouchDB proxy: <span class="text-green-600 font-mono">/data/*</span></p>
+                    <p>✅ Node.js API: <span class="text-green-600 font-mono">/api/*</span></p>
+                </div>
+                <div class="mt-6 pt-6 border-t border-slate-200">
+                    <a href="/api/health" class="text-sky-600 hover:text-sky-800 font-medium transition-colors">
+                        Vérifier l'API →
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <p class="text-center text-xs text-slate-400 mt-6">
+            © 2024 Marki - Tous droits réservés
         </p>
-        <div class="space-y-2 text-sm text-gray-500">
-            <p>✅ Static hosting: <span class="text-green-600 font-mono">/app</span></p>
-            <p>✅ CouchDB proxy: <span class="text-green-600 font-mono">/data/*</span></p>
-            <p>✅ Node.js API: <span class="text-green-600 font-mono">/api/*</span></p>
-        </div>
-        <div class="mt-6 pt-6 border-t border-gray-200">
-            <a href="/api/health" class="text-blue-600 hover:text-blue-800 underline">
-                Vérifier l'API →
-            </a>
-        </div>
     </div>
 </body>
 </html>

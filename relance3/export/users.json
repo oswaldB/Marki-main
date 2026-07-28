@@ -1,0 +1,16 @@
+[
+  {
+    "_id": "user:admin",
+    "type": "user",
+    "username": "admin",
+    "email": "admin@marki.local",
+    "password_hash": "[MIGRATION_REQUISE]",
+    "role": "admin",
+    "is_active": true,
+    "last_login": null,
+    "login_count": 0,
+    "created_at": "2026-07-28T09:17:08.368Z",
+    "updated_at": "2026-07-28T09:17:08.368Z",
+    "must_reset_password": true
+  }
+]
