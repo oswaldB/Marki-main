@@ -1,0 +1,45 @@
+{
+  "scenario": "Soumission formulaire avec succès",
+  "feature": "login Page",
+  "given": "L'utilisateur saisit des identifiants valides",
+  "when": "Il clique sur Se connecter",
+  "workflow": "auth-submit",
+  "inputJson": {
+    "username": "test@example.com",
+    "password": "Password123!",
+    "rememberMe": true
+  },
+  "mockData": {
+    "localStorage": {},
+    "pouchDb": {
+      "users": [
+        {
+          "_id": "user_test@example.com",
+          "email": "test@example.com",
+          "password_hash": "hashed_password",
+          "name": "Test User"
+        }
+      ]
+    }
+  },
+  "consoleLogsExpected": [
+    "auth-submit.js loaded",
+    "auth-submit: démarrage authentification",
+    "auth-submit: credentials reçus",
+    "auth-submit: authentification réussie",
+    "auth-submit: token généré",
+    "auth-submit: user stored in localStorage"
+  ],
+  "outputJson": {
+    "success": true,
+    "data": {
+      "authenticated": true,
+      "user": {
+        "email": "test@example.com",
+        "name": "Test User"
+      },
+      "redirectTo": "/dashboard"
+    },
+    "error": null
+  }
+}

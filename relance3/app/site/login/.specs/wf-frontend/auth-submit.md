@@ -1,7 +1,7 @@
 # Workflow: auth-submit
 
 ## Objectif
-Authentifier l'utilisateur avec email/password et créer une session.
+Authentifier l'utilisateur avec username/password et créer une session.
 
 ## Déclencheur
 Appelé lors de la soumission du formulaire de login.
@@ -9,7 +9,7 @@ Appelé lors de la soumission du formulaire de login.
 ## Entrées
 ```javascript
 {
-    email: "user@example.com",      // string, requis
+    username: "john_doe",           // string, requis - peut être email, pseudo, ID, etc.
     password: "password123",        // string, requis
     rememberMe: true                // boolean, optionnel (défaut: false)
 }
@@ -24,7 +24,7 @@ Appelé lors de la soumission du formulaire de login.
     data: {
         user: {
             id: "user_abc123",
-            email: "user@example.com",
+            username: "john_doe",
             name: "John Doe",
             role: "user" | "admin"
         },
@@ -40,7 +40,7 @@ Appelé lors de la soumission du formulaire de login.
 {
     success: false,
     data: null,
-    error: "Adresse email ou mot de passe incorrect"
+    error: "Identifiant ou mot de passe incorrect"
 }
 ```
 
@@ -49,10 +49,8 @@ Appelé lors de la soumission du formulaire de login.
 {
     success: false,
     data: null,
-    error: "L'adresse email est requise" | 
-            "Le mot de passe est requis" |
-            "Veuillez entrer une adresse email valide" |
-            "Le mot de passe doit contenir au moins 6 caractères"
+    error: "L'identifiant est requis" | 
+            "Le mot de passe est requis" 
 }
 ```
 
@@ -68,19 +66,21 @@ Appelé lors de la soumission du formulaire de login.
 ## Logique métier
 
 ### 1. Validation des entrées
-- Email requis et format valide (regex)
-- Password requis, minimum 6 caractères
+- Username requis (peut être n'importe quel format : email, pseudo, ID, téléphone...)
+- Password requis.
+- Pas de validation stricte du format de l'identifiant
 
 ### 2. Authentification
 - Mode développement: credentials de test en dur
 - Mode production: appel API vers backend
 
 ### Credentials de test (DEV)
-| Email | Password | Name | Role |
-|-------|----------|------|------|
+| Username | Password | Name | Role |
+|----------|----------|------|------|
 | test@marki.fr | password123 | Test User | user |
 | admin@marki.fr | admin123 | Admin User | admin |
 | demo@example.com | demo123 | Demo User | user |
+| john_doe | password123 | John Doe | user |
 
 ### 3. Stockage session
 Si authentification réussie:
@@ -89,14 +89,14 @@ Si authentification réussie:
 - `auth_token`: JWT token
 - `auth_user`: JSON stringifié de l'user
 - `auth_remember_me`: "true" | "false"
-- `saved_email`: email (si rememberMe=true)
+- `saved_username`: username (si rememberMe=true)
 - `auth_last_login`: ISO timestamp
 
 ### 4. Token JWT (Mock)
 Structure:
 ```json
 {
-  "sub": "user@example.com",
+  "sub": "john_doe",
   "name": "John Doe",
   "role": "user",
   "iat": 1690000000,
@@ -106,7 +106,7 @@ Structure:
 
 ## Side Effects
 - Écrit dans localStorage (5 clés)
-- Supprime `saved_email` si rememberMe=false
+- Supprime `saved_username` si rememberMe=false
 
 ## Dépendances
 - localStorage API
@@ -117,7 +117,7 @@ Structure:
 auth-submit.js loaded
 auth-submit: démarrage authentification
 auth-submit: validation échouée: ...
-auth-submit: tentative connexion pour: user@example.com
+auth-submit: tentative connexion pour: john_doe
 auth-submit: identifiants invalides
-auth-submit: authentification réussie pour: user@example.com
+auth-submit: authentification réussie pour: john_doe
 ```
