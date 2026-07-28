@@ -101,13 +101,25 @@ Le cookie `AuthSession` est défini par CouchDB lors de la connexion via `auth-s
 
 ```javascript
 // Vérifier session active via CouchDB
-const response = await fetch(`${COUCHDB_URL}_session`, {
-  credentials: 'include'  // Envoie le cookie AuthSession
-});
-
-const sessionData = await response.json();
-// sessionData.userCtx.name = nom d'utilisateur
-// sessionData.userCtx.roles = rôles
+// Gestion des erreurs réseau et réponses non-JSON
+let sessionData = null;
+try {
+  const response = await fetch(`${COUCHDB_URL}_session`, {
+    credentials: 'include'  // Envoie le cookie AuthSession
+  });
+  
+  // Vérifier Content-Type avant parsing JSON
+  const contentType = response.headers.get('content-type');
+  if (!contentType || !contentType.includes('application/json')) {
+    throw new Error(`Réponse non-JSON: ${contentType}`);
+  }
+  
+  sessionData = await response.json();
+} catch (error) {
+  console.error('initial-load: erreur récupération session:', error.message);
+  // Fallback: considérer qu'il n'y a pas de session
+  sessionData = { ok: true, userCtx: { name: null, roles: [] } };
+}
 ```
 
 **Réponse session active (200):**
@@ -134,6 +146,9 @@ const sessionData = await response.json();
   }
 }
 ```
+
+**Réponse erreur (fallback):**
+Si le serveur retourne HTML (erreur 404/500/502) ou si le réseau est indisponible, le workflow doit gérer l'erreur gracieusement et considérer qu'il n'y a pas de session active.
 
 ### 2. Vérifier PouchDB local (fallback)
 
@@ -217,4 +232,6 @@ initial-load: PouchDB local: 1247 documents
 initial-load: PouchDB à jour → redirection vers /dashboard
 initial-load: sync initial requis → affichage loading screen
 initial-load: sync terminé → redirection vers /dashboard
+initial-load: erreur récupération session (réponse non-JSON ou réseau)
+initial-load: erreur réseau → mode hors-ligne (pas de session)
 ```

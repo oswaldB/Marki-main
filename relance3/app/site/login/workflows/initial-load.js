@@ -20,113 +20,125 @@ PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
 
 console.log('initial-load.js loaded');
 
+// Configuration CouchDB
+const COUCHDB_URL = window.location.origin.replace(/:\d+/, ':5984') + '/';
+
 /**
  * Workflow initial-load
- * Vérifie si l'utilisateur possède une session active au chargement de la page login.
- * @param {Object} context - Contexte avec localDB, remoteDB, couchDbUrl
- * @param {Object} params - Paramètres du workflow (aucun requis)
+ * Vérifie si l'utilisateur possède une session active au chargement de la page login
+ * @param {Object} context - Contexte avec localDB, remoteDB
+ * @param {Object} params - Paramètres du workflow
  * @returns {Promise<Object>} Résultat { success, data, error }
  */
 export async function execute(context, params = {}) {
+    console.log('initial-load workflow executing', params);
     console.log('initial-load: démarrage vérification session');
     
     try {
-        const { localDB, couchDbUrl } = context;
+        // Récupérer les instances DB depuis le contexte
+        const localDB = context?.localDB;
         
-        // Vérifier le cookie de session CouchDB (AuthSession)
-        console.log('initial-load: vérification cookie AuthSession');
-        
-        const sessionResponse = await fetch(`${couchDbUrl}_session`, {
-            credentials: 'include'
-        });
-        
-        if (!sessionResponse.ok) {
-            throw new Error(`Erreur HTTP ${sessionResponse.status} lors de la vérification de session`);
+        if (!localDB) {
+            throw new Error('Contexte PouchDB local manquant');
         }
         
-        const sessionData = await sessionResponse.json();
-        const userName = sessionData.userCtx?.name;
-        const userRoles = sessionData.userCtx?.roles || [];
+        // 1. Vérifier le cookie de session CouchDB (AuthSession)
+        console.log('initial-load: vérification cookie AuthSession');
         
-        // Pas de session active
-        if (!userName) {
+        let sessionData = null;
+        try {
+            const response = await fetch(`${COUCHDB_URL}_session`, {
+                credentials: 'include'  // Envoie le cookie AuthSession
+            });
+            
+            // Vérifier Content-Type avant parsing JSON
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                throw new Error(`Réponse non-JSON: ${contentType}`);
+            }
+            
+            sessionData = await response.json();
+        } catch (error) {
+            console.error('initial-load: erreur récupération session:', error.message);
+            console.log('initial-load: erreur réseau → mode hors-ligne (pas de session)');
+            // Fallback: considérer qu'il n'y a pas de session
+            sessionData = { ok: true, userCtx: { name: null, roles: [] } };
+        }
+        
+        // Vérifier si session active
+        const hasSession = sessionData?.userCtx?.name !== null && sessionData?.userCtx?.name !== undefined;
+        
+        if (!hasSession) {
             console.log('initial-load: cookie AuthSession absent ou invalide');
-            return { 
-                success: true, 
-                data: { 
-                    hasSession: false, 
-                    reason: "no_session_cookie" 
+            
+            // Vérifier si token expiré (présence d'ancien cookie mais invalide)
+            // Note: Le navigateur gère ça automatiquement, on vérifie juste la réponse
+            const reason = sessionData?.info?.authentication_handlers 
+                ? 'token_expired' 
+                : 'no_session_cookie';
+            
+            return {
+                success: true,
+                data: {
+                    hasSession: false,
+                    reason: reason
                 },
                 error: null
             };
         }
         
-        console.log(`initial-load: session CouchDB active pour: ${userName}`);
+        // Session active détectée
+        const userName = sessionData.userCtx.name;
+        const userRoles = sessionData.userCtx.roles || [];
         
-        // Vérifier PouchDB local
+        console.log('initial-load: session CouchDB active pour:', userName);
+        
+        // 2. Vérifier PouchDB local
         const pouchInfo = await localDB.info();
         const docCount = pouchInfo.doc_count || 0;
-        console.log(`initial-load: PouchDB local: ${docCount} documents`);
         
-        // Récupérer rememberMe depuis localStorage
+        console.log('initial-load: PouchDB local:', docCount, 'documents');
+        
+        // 3. Récupérer rememberMe depuis localStorage
         const rememberMe = localStorage.getItem('auth_remember_me') === 'true';
         
-        const session = {
-            name: userName,
-            roles: userRoles
-        };
+        // 4. Vérifier si sync nécessaire
+        const needsSync = docCount === 0;
         
-        // PouchDB est déjà à jour (a des documents)
-        if (docCount > 0) {
+        if (!needsSync) {
             console.log('initial-load: PouchDB à jour → redirection vers /dashboard');
             
-            // Redirection immédiate
-            window.location.href = '/dashboard';
-            
-            return { 
-                success: true, 
+            return {
+                success: true,
                 data: {
                     hasSession: true,
-                    session: session,
+                    session: {
+                        name: userName,
+                        roles: userRoles
+                    },
                     pouchDbStatus: {
                         docCount: docCount,
                         lastSync: new Date().toISOString(),
                         needsSync: false
                     },
                     rememberMe: rememberMe,
-                    redirectTo: "/dashboard"
+                    redirectTo: '/dashboard'
                 },
                 error: null
             };
         }
         
-        // PouchDB vide - besoin de sync initial
+        // Sync initial requis
         console.log('initial-load: sync initial requis → affichage loading screen');
         
-        // Démarrer sync initial (one-shot)
-        const sync = localDB.sync(`${couchDbUrl}marki`, {
-            live: false,
-            retry: true
-        });
-        
-        // Écouter les événements de sync
-        sync.on('complete', () => {
-            console.log('initial-load: sync terminé → redirection vers /dashboard');
-            window.location.href = '/dashboard';
-        });
-        
-        sync.on('error', (err) => {
-            console.error('initial-load: erreur de sync', err);
-            // Option: rediriger quand même en mode hors-ligne
-            // window.location.href = '/dashboard';
-        });
-        
-        // Retourner l'état de sync en cours
-        return { 
-            success: true, 
+        return {
+            success: true,
             data: {
                 hasSession: true,
-                session: session,
+                session: {
+                    name: userName,
+                    roles: userRoles
+                },
                 pouchDbStatus: {
                     docCount: 0,
                     needsSync: true,
@@ -139,8 +151,9 @@ export async function execute(context, params = {}) {
         
     } catch (err) {
         console.error('initial-load error:', err);
-        return { 
-            success: false, 
+        console.error('initial-load: erreur récupération session (réponse non-JSON ou réseau)');
+        return {
+            success: false,
             data: null,
             error: `Erreur lors de la vérification de session: ${err.message}`
         };
