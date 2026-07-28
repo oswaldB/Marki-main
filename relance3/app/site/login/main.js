@@ -1,34 +1,14 @@
-/*
- * INSTRUCTIONS IA - À APPLIQUER (À LIRE EN PREMIER):
- * =================================================
- * PRIORITÉ ABSOLUE: LIRE .specs/page-specs.md AVANT TOUTE MODIFICATION
- *
- * 1. FONCTION PRINCIPALE OBLIGATOIRE: 
- *    - Utiliser UNIQUEMENT: Alpine.data('loginPage', () => ({...}))
- *    - NE PAS utiliser: function loginPage() ou window.loginPage
- *    - Alpine.data() enregistre le composant dans le registre interne d'Alpine
- *    - Dans index.html: x-data="loginPage" (SANS parenthèses)
- *
- * 2. WORKFLOWS: 
- *    - Les workflows sont déjà importés et stockés dans window.workflows
- *    - NE PAS modifier la structure window.workflows = { 'nom': { execute: fn } }
- *    - Chaque workflow exporte: execute(context, params) => { success, data, error }
- *
- * 3. POUCHDB: window.localDB et window.remoteDB sont initialisés ci-dessous
- *    - NE PAS supprimer ou déplacer ce code
- *
- * 4. CONSOLE: Maintenir les console.log('... loaded') pour debug
- *
- * 5. DÉMARRAGE: Garder Alpine.start() à la fin du fichier
- *    - NE PAS modifier l'ordre d'exécution
- */
-
 // ═══════════════════════════════════════════════════════════════
 // IMPORTS DES WORKFLOWS (modules ES)
 // ═══════════════════════════════════════════════════════════════
 import { execute as initial_loadExecute } from './workflows/initial-load.js';
 import { execute as auth_submitExecute } from './workflows/auth-submit.js';
 import { execute as sync_loadingExecute } from './workflows/sync-loading.js';
+
+// ═══════════════════════════════════════════════════════════════
+// IMPORT ALPINE.JS (ESM via CDN)
+// ═══════════════════════════════════════════════════════════════
+import Alpine from 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/module.esm.js';
 
 console.log('main.js loaded');
 
@@ -40,10 +20,6 @@ window.workflows = {
     'auth-submit': { execute: auth_submitExecute },
     'sync-loading': { execute: sync_loadingExecute }
 };
-
-console.log('initial-load.js loaded');
-console.log('auth-submit.js loaded');
-console.log('sync-loading.js loaded');
 
 // ═══════════════════════════════════════════════════════════════
 // INITIALISATION POUCHDB (si non initialisée avant)
@@ -58,23 +34,17 @@ if (typeof PouchDB !== 'undefined') {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// FONCTION PRINCIPALE - ENREGISTREMENT ALPINE (window.Alpine via CDN)
+// FONCTION PRINCIPALE - ENREGISTREMENT ALPINE
 // Utilise Alpine.data() - PAS de fonction globale, PAS d'exposition sur window
 // Dans HTML: x-data="loginPage" (sans parenthèses)
 // ═══════════════════════════════════════════════════════════════
-document.addEventListener('alpine:init', () => {
 Alpine.data('loginPage', () => ({
     // ───────────────────────────────────────────────────────
     // ÉTAT DE LA PAGE
     // ───────────────────────────────────────────────────────
     isLoading: false,
     error: null,
-    data: {},
-    
-    // ───────────────────────────────────────────────────────
-    // ÉTAT DU FORMULAIRE
-    // ───────────────────────────────────────────────────────
-    form: {
+    data: {
         username: '',
         password: ''
     },
@@ -182,28 +152,10 @@ Alpine.data('loginPage', () => ({
      */
     clearError() {
         this.error = null;
-    },
-
-    /**
-     * Gère la soumission du formulaire de connexion
-     * Déclenche le workflow auth-submit avec les identifiants
-     */
-    async handleLogin() {
-        this.error = null;
-        
-        const result = await this.runWorkflow('auth-submit', {
-            username: this.form.username,
-            password: this.form.password
-        });
-
-        if (result.success) {
-            // Redirection ou mise à jour de l'interface après connexion
-            console.log('Login successful');
-            // window.location.href = '/dashboard';
-        }
-        // Les erreurs sont gérées automatiquement par runWorkflow
     }
-    }));
-});
+}));
 
-// Avec le CDN Alpine, Alpine.start() est automatique - NE PAS l'appeler ici
+// ═══════════════════════════════════════════════════════════════
+// DÉMARRAGE D'ALPINE
+// ═══════════════════════════════════════════════════════════════
+Alpine.start();
