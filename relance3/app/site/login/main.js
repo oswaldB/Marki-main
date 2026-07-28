@@ -34,6 +34,11 @@ import { execute as auth_submitExecute } from './workflows/auth-submit.js';
 // ═══════════════════════════════════════════════════════════════
 import Alpine from 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/module.esm.js';
 
+// ═══════════════════════════════════════════════════════════════
+// IMPORT POUCHDB (ESM via CDN)
+// ═══════════════════════════════════════════════════════════════
+import PouchDB from 'https://cdn.jsdelivr.net/npm/pouchdb@8.x.x/dist/pouchdb.esm.js';
+
 console.log('main.js loaded');
 
 // ═══════════════════════════════════════════════════════════════
@@ -48,15 +53,13 @@ console.log('initial-load.js loaded');
 console.log('auth-submit.js loaded');
 
 // ═══════════════════════════════════════════════════════════════
-// INITIALISATION POUCHDB (si non initialisée avant)
+// INITIALISATION POUCHDB
 // ═══════════════════════════════════════════════════════════════
-if (typeof PouchDB !== 'undefined') {
-    if (!window.localDB) {
-        window.localDB = new PouchDB('login-local');
-    }
-    if (!window.remoteDB) {
-        window.remoteDB = null; // à configurer avec votre URL CouchDB
-    }
+if (!window.localDB) {
+    window.localDB = new PouchDB('login-local');
+}
+if (!window.remoteDB) {
+    window.remoteDB = null; // à configurer avec votre URL CouchDB
 }
 
 // ═══════════════════════════════════════════════════════════════
@@ -71,10 +74,6 @@ Alpine.data('loginPage', () => ({
     isLoading: false,
     error: null,
     data: {},
-    
-    // ───────────────────────────────────────────────────────
-    // FORMULAIRE DE CONNEXION
-    // ───────────────────────────────────────────────────────
     form: {
         username: '',
         password: ''
@@ -183,6 +182,24 @@ Alpine.data('loginPage', () => ({
      */
     clearError() {
         this.error = null;
+    },
+
+    /**
+     * Gère la soumission du formulaire de connexion
+     * Déclenche le workflow auth-submit avec les credentials
+     */
+    async handleLogin() {
+        this.error = null;
+        
+        const result = await this.runWorkflow('auth-submit', {
+            username: this.form.username,
+            password: this.form.password
+        });
+
+        if (result.success) {
+            // Redirection ou mise à jour de l'UI après connexion réussie
+            console.log('Login successful');
+        }
     }
 }));
 

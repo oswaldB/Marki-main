@@ -21,34 +21,23 @@ PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
 console.log('initial-load.js loaded');
 
 /**
- * Décode le payload JWT (base64)
+ * Décode un JWT payload (sans vérifier la signature)
  * @param {string} token - JWT token
- * @returns {Object|null} Payload décodé
+ * @returns {Object|null} Payload décodé ou null
  */
 function decodeJWT(token) {
     try {
         const base64Payload = token.split('.')[1];
-        const payload = atob(base64Payload);
+        const payload = atob(base64Payload.replace(/-/g, '+').replace(/_/g, '/'));
         return JSON.parse(payload);
     } catch (err) {
-        console.error('initial-load: erreur décodage JWT:', err);
         return null;
     }
 }
 
 /**
- * Vérifie si le token JWT est expiré
- * @param {Object} payload - Payload JWT décodé
- * @returns {boolean} true si expiré
- */
-function isTokenExpired(payload) {
-    if (!payload || !payload.exp) return true;
-    const currentTime = Math.floor(Date.now() / 1000);
-    return payload.exp < currentTime;
-}
-
-/**
  * Workflow initial-load
+ * Vérifie si l'utilisateur possède une session active au chargement de la page login.
  * @param {Object} context - Contexte avec localDB, remoteDB
  * @param {Object} params - Paramètres du workflow
  * @returns {Promise<Object>} Résultat { success, data, error }
@@ -59,29 +48,41 @@ export async function execute(context, params = {}) {
     try {
         // 1. Lire localStorage
         const token = localStorage.getItem('auth_token');
-        const userJson = localStorage.getItem('auth_user');
+        const userData = localStorage.getItem('auth_user');
         const savedEmail = localStorage.getItem('saved_email');
         
-        // Aucun token trouvé
+        // 2. Vérifier si un token existe
         if (!token) {
             console.log('initial-load: aucun token trouvé');
             return { 
                 success: true, 
                 data: { 
-                    hasSession: false,
-                    ...(savedEmail && { savedEmail })
-                },
-                error: null
+                    hasSession: false 
+                } 
             };
         }
         
-        // 2. Vérifier expiration JWT
+        // 3. Vérifier expiration JWT
         const payload = decodeJWT(token);
         
-        if (!payload || isTokenExpired(payload)) {
+        if (!payload || !payload.exp) {
+            console.log('initial-load: token invalide');
+            localStorage.removeItem('auth_token');
+            localStorage.removeItem('auth_user');
+            return { 
+                success: true, 
+                data: { 
+                    hasSession: false,
+                    reason: "invalid_token"
+                } 
+            };
+        }
+        
+        const now = Math.floor(Date.now() / 1000);
+        
+        if (payload.exp < now) {
             console.log('initial-load: token expiré');
-            
-            // 3. Nettoyer si expiré
+            // Nettoyer si expiré
             localStorage.removeItem('auth_token');
             localStorage.removeItem('auth_user');
             
@@ -89,26 +90,24 @@ export async function execute(context, params = {}) {
                 success: true, 
                 data: { 
                     hasSession: false,
-                    reason: "token_expired",
-                    ...(savedEmail && { savedEmail })
-                },
-                error: null
+                    reason: "token_expired"
+                } 
             };
         }
         
-        // Token valide - vérifier si user existe
+        // 4. Token valide - Récupérer les données utilisateur
         let user = null;
-        let rememberMe = false;
-        
-        if (userJson) {
+        if (userData) {
             try {
-                user = JSON.parse(userJson);
-                rememberMe = !!savedEmail;
+                user = JSON.parse(userData);
                 console.log('initial-load: utilisateur récupéré:', user.email || user.id);
             } catch (err) {
-                console.error('initial-load: erreur parsing user:', err);
+                console.warn('initial-load: erreur parsing user data', err);
             }
         }
+        
+        // Déterminer rememberMe (présence de saved_email)
+        const rememberMe = !!savedEmail;
         
         console.log('initial-load: session active trouvée');
         
@@ -119,17 +118,15 @@ export async function execute(context, params = {}) {
                 token: token,
                 user: user,
                 rememberMe: rememberMe,
-                ...(savedEmail && { savedEmail })
-            },
-            error: null
+                savedEmail: savedEmail || null
+            } 
         };
         
     } catch (err) {
         console.error('initial-load error:', err);
         return { 
             success: false, 
-            data: null,
-            error: err.message 
+            error: `Erreur lors de la vérification de session: ${err.message}` 
         };
     }
 }
