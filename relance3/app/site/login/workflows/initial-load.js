@@ -20,8 +20,7 @@ PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
 
 console.log('initial-load.js loaded');
 
-// Configuration CouchDB
-const COUCHDB_URL = window.COUCHDB_URL || 'http://localhost:5984/';
+const COUCHDB_URL = 'http://localhost:5984/';
 
 /**
  * Workflow initial-load
@@ -31,19 +30,19 @@ const COUCHDB_URL = window.COUCHDB_URL || 'http://localhost:5984/';
  * @returns {Promise<Object>} Résultat { success, data, error }
  */
 export async function execute(context, params = {}) {
+    console.log('initial-load workflow executing', params);
     console.log('initial-load: démarrage vérification session');
     
     try {
-        // 1. Vérifier le cookie de session CouchDB (AuthSession)
+        // Vérifier le cookie de session CouchDB (AuthSession)
         console.log('initial-load: vérification cookie AuthSession');
         
         let sessionData = null;
         try {
             const response = await fetch(`${COUCHDB_URL}_session`, {
-                credentials: 'include'  // Envoie le cookie AuthSession
+                credentials: 'include'
             });
             
-            // Vérifier Content-Type avant parsing JSON
             const contentType = response.headers.get('content-type');
             if (!contentType || !contentType.includes('application/json')) {
                 throw new Error(`Réponse non-JSON: ${contentType}`);
@@ -53,53 +52,48 @@ export async function execute(context, params = {}) {
         } catch (error) {
             console.error('initial-load: erreur récupération session:', error.message);
             console.log('initial-load: erreur réseau → mode hors-ligne (pas de session)');
-            // Fallback: considérer qu'il n'y a pas de session
             sessionData = { ok: true, userCtx: { name: null, roles: [] } };
         }
         
-        // Pas de session active
-        if (!sessionData.userCtx.name) {
+        // Vérifier si session active
+        const hasSession = sessionData?.userCtx?.name !== null;
+        
+        if (!hasSession) {
             console.log('initial-load: cookie AuthSession absent ou invalide');
-            
-            // Restaurer rememberMe même sans session
-            const rememberMe = localStorage.getItem('auth_remember_me') === 'true';
-            
             return {
                 success: true,
                 data: {
                     hasSession: false,
-                    reason: 'no_session_cookie',
-                    rememberMe
+                    reason: 'no_session_cookie'
                 },
                 error: null
             };
         }
         
-        // Session active détectée
+        // Session active - récupérer infos utilisateur
         const userName = sessionData.userCtx.name;
         const userRoles = sessionData.userCtx.roles || [];
-        console.log('initial-load: session CouchDB active pour:', userName);
         
-        // 2. Vérifier PouchDB local
+        console.log(`initial-load: session CouchDB active pour: ${userName}`);
+        
+        // Vérifier PouchDB local
         const localDb = new PouchDB('marki');
         const dbInfo = await localDb.info();
         const docCount = dbInfo.doc_count || 0;
-        console.log('initial-load: PouchDB local:', docCount, 'documents');
         
-        // 3. Vérifier rememberMe
+        console.log(`initial-load: PouchDB local: ${docCount} documents`);
+        
+        // Récupérer rememberMe
         const rememberMe = localStorage.getItem('auth_remember_me') === 'true';
         
-        // Déterminer si sync est nécessaire
+        // Vérifier si sync nécessaire
         const needsSync = docCount === 0;
         
-        // Session active avec PouchDB à jour → redirection immédiate
         if (!needsSync) {
             console.log('initial-load: PouchDB à jour → redirection vers /dashboard');
             
-            // Redirection différée pour permettre le retour de la réponse
-            setTimeout(() => {
-                window.location.href = '/dashboard';
-            }, 100);
+            // Redirection immédiate
+            window.location.href = '/dashboard';
             
             return {
                 success: true,
@@ -111,25 +105,41 @@ export async function execute(context, params = {}) {
                     },
                     pouchDbStatus: {
                         docCount: docCount,
+                        lastSync: new Date().toISOString(),
                         needsSync: false
                     },
-                    rememberMe,
+                    rememberMe: rememberMe,
                     redirectTo: '/dashboard'
                 },
                 error: null
             };
         }
         
-        // Session active mais PouchDB vide → sync initial requis
+        // Sync initial requis
         console.log('initial-load: sync initial requis → affichage loading screen');
         
         // Démarrer sync initial (one-shot)
         const sync = localDb.sync(`${COUCHDB_URL}marki`, {
-            live: false,    // Sync initial one-shot
+            live: false,
             retry: true
         });
         
-        // Retourner en mode sync en cours
+        // Attendre la fin du sync
+        await new Promise((resolve, reject) => {
+            sync.on('complete', (info) => {
+                console.log('initial-load: sync terminé → redirection vers /dashboard');
+                resolve(info);
+            });
+            
+            sync.on('error', (err) => {
+                console.error('initial-load: erreur sync', err);
+                reject(err);
+            });
+        });
+        
+        // Redirection après sync
+        window.location.href = '/dashboard';
+        
         return {
             success: true,
             data: {
@@ -139,23 +149,22 @@ export async function execute(context, params = {}) {
                     roles: userRoles
                 },
                 pouchDbStatus: {
-                    docCount: 0,
+                    docCount: docCount,
                     needsSync: true,
-                    syncing: true
+                    syncing: false
                 },
-                rememberMe
+                rememberMe: rememberMe
             },
-            error: null,
-            // Exposer le sync pour que l'UI puisse écouter les événements
-            _sync: sync
+            error: null
         };
         
     } catch (err) {
+        console.error('initial-load: erreur récupération session (réponse non-JSON ou réseau)');
         console.error('initial-load error:', err);
-        return { 
-            success: false, 
+        return {
+            success: false,
             data: null,
-            error: `Erreur lors de la vérification de session: ${err.message}` 
+            error: `Erreur lors de la vérification de session: ${err.message}`
         };
     }
 }

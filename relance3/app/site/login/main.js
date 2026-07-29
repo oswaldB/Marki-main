@@ -48,6 +48,10 @@ window.workflows = {
     'sync-loading': { execute: sync_loadingExecute }
 };
 
+console.log('initial-load.js loaded');
+console.log('auth-submit.js loaded');
+console.log('sync-loading.js loaded');
+
 // ═══════════════════════════════════════════════════════════════
 // INITIALISATION POUCHDB (si non initialisée avant)
 // ═══════════════════════════════════════════════════════════════
@@ -69,13 +73,9 @@ Alpine.data('loginPage', () => ({
     // ───────────────────────────────────────────────────────
     // ÉTAT DE LA PAGE
     // ───────────────────────────────────────────────────────
-    isLoading: false,
+    loading: false,
     error: null,
     data: {},
-    
-    // ───────────────────────────────────────────────────────
-    // FORMULAIRE DE CONNEXION
-    // ───────────────────────────────────────────────────────
     form: {
         username: '',
         password: ''
@@ -97,7 +97,7 @@ Alpine.data('loginPage', () => ({
      * Charge les données initiales via le workflow initial-load
      */
     async loadInitialData() {
-        this.isLoading = true;
+        this.loading = true;
         this.error = null;
 
         try {
@@ -111,7 +111,7 @@ Alpine.data('loginPage', () => ({
             console.error('Erreur init:', err);
             this.error = err.message;
         } finally {
-            this.isLoading = false;
+            this.loading = false;
         }
     },
 
@@ -123,7 +123,7 @@ Alpine.data('loginPage', () => ({
      */
     async runWorkflow(workflowName, params = {}) {
         console.log(`Running workflow: ${workflowName}`, params);
-        this.isLoading = true;
+        this.loading = true;
         this.error = null;
 
         try {
@@ -150,7 +150,7 @@ Alpine.data('loginPage', () => ({
             this.error = err.message;
             return { success: false, error: err.message };
         } finally {
-            this.isLoading = false;
+            this.loading = false;
         }
     },
 
