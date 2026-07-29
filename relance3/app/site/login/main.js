@@ -184,6 +184,16 @@ Alpine.data('loginPage', () => ({
      */
     clearError() {
         this.error = null;
+    },
+
+    /**
+     * Réinitialise le formulaire
+     */
+    resetForm() {
+        this.form = {
+            username: '',
+            password: ''
+        };
     }
 }));
 
