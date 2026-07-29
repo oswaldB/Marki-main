@@ -35,7 +35,7 @@ import { execute as sync_loadingExecute } from './workflows/sync-loading.js';
 // ═══════════════════════════════════════════════════════════════
 // IMPORT ALPINE.JS (ESM via CDN)
 // ═══════════════════════════════════════════════════════════════
-import Alpine from 'https://cdn.jsdelivr.net/npm/alpinejs@3/dist/module.esm.js';
+import Alpine from 'https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/module.esm.js';
 
 console.log('main.js loaded');
 
@@ -76,10 +76,21 @@ Alpine.data('loginPage', () => ({
     isLoading: false,
     error: null,
     data: {},
+    
+    // ───────────────────────────────────────────────────────
+    // ÉTAT DU FORMULAIRE
+    // ───────────────────────────────────────────────────────
     form: {
-        username: '',
+        email: '',
         password: ''
     },
+    
+    // ───────────────────────────────────────────────────────
+    // ÉTAT DE SYNCHRONISATION
+    // ───────────────────────────────────────────────────────
+    isSyncing: false,
+    syncProgress: 0,
+    syncStatus: 'Récupération de vos données',
 
     // ───────────────────────────────────────────────────────
     // INITIALISATION (appelée automatiquement par Alpine)
@@ -184,6 +195,81 @@ Alpine.data('loginPage', () => ({
      */
     clearError() {
         this.error = null;
+    },
+
+    /**
+     * Gère la soumission du formulaire de connexion
+     * Déclenche le workflow auth-submit puis sync-loading
+     */
+    async handleLogin() {
+        this.isLoading = true;
+        this.error = null;
+
+        try {
+            // Exécute le workflow auth-submit avec les credentials
+            const result = await this.runWorkflow('auth-submit', {
+                email: this.form.email,
+                password: this.form.password
+            });
+
+            if (result.success) {
+                // Passe à l'écran de synchronisation
+                this.isSyncing = true;
+                this.syncProgress = 0;
+                this.syncStatus = 'Connexion établie...';
+                
+                // Démarre le workflow de synchronisation
+                await this.runSyncWorkflow();
+            } else {
+                this.error = result.error || 'Identifiants incorrects';
+            }
+        } catch (err) {
+            console.error('Erreur login:', err);
+            this.error = err.message || 'Erreur de connexion';
+        } finally {
+            this.isLoading = false;
+        }
+    },
+
+    /**
+     * Exécute le workflow de synchronisation avec mise à jour de la progression
+     */
+    async runSyncWorkflow() {
+        this.syncStatus = 'Téléchargement de vos données...';
+        
+        // Simulation de progression (sera remplacé par le vrai workflow)
+        const progressInterval = setInterval(() => {
+            if (this.syncProgress < 90) {
+                this.syncProgress += Math.random() * 15;
+                if (this.syncProgress > 90) this.syncProgress = 90;
+            }
+        }, 500);
+
+        try {
+            const result = await this.runWorkflow('sync-loading');
+            
+            clearInterval(progressInterval);
+            
+            if (result.success) {
+                this.syncProgress = 100;
+                this.syncStatus = 'Synchronisation terminée !';
+                
+                // Redirection vers le dashboard après un court délai
+                setTimeout(() => {
+                    window.location.href = '/dashboard';
+                }, 500);
+            } else {
+                this.syncStatus = 'Erreur de synchronisation';
+                this.error = result.error || 'La synchronisation a échoué';
+                this.isSyncing = false;
+            }
+        } catch (err) {
+            clearInterval(progressInterval);
+            console.error('Erreur sync:', err);
+            this.syncStatus = 'Erreur de synchronisation';
+            this.error = err.message;
+            this.isSyncing = false;
+        }
     }
 }));
 

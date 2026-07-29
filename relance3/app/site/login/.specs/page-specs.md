@@ -26,7 +26,7 @@ Feature: login Page
     And je clique sur le bouton "Se connecter"
     Then le workflow "auth-submit" est déclenché
     And la session CouchDB est créée avec le cookie AuthSession
-    And l'écran de synchronisation s'affiche sans changement d'URL
+    And l'écran de synchronisation /home/ubuntu/marki/relance3/app/site/login/.specs/mockups/states/sync-loading.html s'affiche sans changement d'URL
     And le workflow "sync-loading" démarre pour synchroniser PouchDB
     And les données sont téléchargées depuis https://dev.markidiags.com/data/
     And l'utilisateur est redirigé vers "/dashboard"
