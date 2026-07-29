@@ -1,17 +1,16 @@
 /*
- * INSTRUCTIONS IA - À APPLIQUER (À LIRE EN PREMIER):
+ * SPECS DU PROJET - login/.specs/page-specs.md
  * =================================================
  * PRIORITÉ ABSOLUE: LIRE .specs/page-specs.md AVANT TOUTE MODIFICATION
  *
- * 1. FONCTION PRINCIPALE OBLIGATOIRE:
- *    - Utiliser UNIQUEMENT: Alpine.data('loginPage', () => ({...}))
- *    - NE PAS utiliser: function loginPage() ou window.loginPage
- *    - Alpine.data() enregistre le composant dans le registre interne d'Alpine
- *    - Dans index.html: x-data="loginPage" (SANS parenthèses)
+ * 1. FONCTION PRINCIPALE (Règle Absolue #3):
+ *    - Utiliser: function loginPage() ou window.loginPage
+ *    - NE PAS utiliser: Alpine.data('loginPage', ...)
+ *    - Dans index.html: x-data="loginPage()" (AVEC parenthèses)
  *
  * 2. WORKFLOWS:
  *    - Les workflows sont déjà importés et stockés dans window.workflows
- *    - NE PAS modifier la structure window.workflows = { 'nom': { execute: fn } }
+ *    - Structure: window.workflows = { 'nom': { execute: fn } }
  *    - Chaque workflow exporte: execute(context, params) => { success, data, error }
  *
  * 3. POUCHDB: window.localDB et window.remoteDB sont initialisés ci-dessous
@@ -65,28 +64,28 @@ if (typeof PouchDB !== 'undefined') {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// FONCTION PRINCIPALE - ENREGISTREMENT ALPINE (NE PAS MODIFIER CETTE STRUCTURE)
-// Utilise Alpine.data() - PAS de fonction globale, PAS d'exposition sur window
-// Dans HTML: x-data="loginPage" (sans parenthèses)
+// FONCTION PRINCIPALE - Règle Absolue #3 des specs
+// Doit être une fonction globale pour utilisation avec x-data="loginPage()"
 // ═══════════════════════════════════════════════════════════════
-Alpine.data('loginPage', () => ({
+window.loginPage = function() {
+    return {
     // ───────────────────────────────────────────────────────
     // ÉTAT DE LA PAGE
     // ───────────────────────────────────────────────────────
     isLoading: false,
     error: null,
     data: {},
-    
+
     // ───────────────────────────────────────────────────────
-    // ÉTAT DU FORMULAIRE
+    // FORMULAIRE DE CONNEXION
     // ───────────────────────────────────────────────────────
     form: {
-        email: '',
+        username: '',
         password: ''
     },
-    
+
     // ───────────────────────────────────────────────────────
-    // ÉTAT DE SYNCHRONISATION
+    // ÉTAT SYNCHRONISATION
     // ───────────────────────────────────────────────────────
     isSyncing: false,
     syncProgress: 0,
@@ -206,18 +205,18 @@ Alpine.data('loginPage', () => ({
         this.error = null;
 
         try {
-            // Exécute le workflow auth-submit avec les credentials
+            // Exécute le workflow auth-submit avec les identifiants
             const result = await this.runWorkflow('auth-submit', {
-                email: this.form.email,
+                username: this.form.username,
                 password: this.form.password
             });
 
             if (result.success) {
-                // Passe à l'écran de synchronisation
+                // Transition vers l'écran de synchronisation
                 this.isSyncing = true;
                 this.syncProgress = 0;
                 this.syncStatus = 'Connexion établie...';
-                
+
                 // Démarre le workflow de synchronisation
                 await this.runSyncWorkflow();
             } else {
@@ -235,43 +234,32 @@ Alpine.data('loginPage', () => ({
      * Exécute le workflow de synchronisation avec mise à jour de la progression
      */
     async runSyncWorkflow() {
-        this.syncStatus = 'Téléchargement de vos données...';
-        
-        // Simulation de progression (sera remplacé par le vrai workflow)
-        const progressInterval = setInterval(() => {
-            if (this.syncProgress < 90) {
-                this.syncProgress += Math.random() * 15;
-                if (this.syncProgress > 90) this.syncProgress = 90;
-            }
-        }, 500);
+        this.syncProgress = 25;
+        this.syncStatus = 'Connexion à la base de données...';
 
         try {
             const result = await this.runWorkflow('sync-loading');
-            
-            clearInterval(progressInterval);
-            
+
             if (result.success) {
                 this.syncProgress = 100;
-                this.syncStatus = 'Synchronisation terminée !';
-                
+                this.syncStatus = 'Terminé !';
+
                 // Redirection vers le dashboard après un court délai
                 setTimeout(() => {
                     window.location.href = '/dashboard';
                 }, 500);
             } else {
-                this.syncStatus = 'Erreur de synchronisation';
-                this.error = result.error || 'La synchronisation a échoué';
+                this.error = result.error || 'Erreur lors de la synchronisation';
                 this.isSyncing = false;
             }
         } catch (err) {
-            clearInterval(progressInterval);
             console.error('Erreur sync:', err);
-            this.syncStatus = 'Erreur de synchronisation';
-            this.error = err.message;
+            this.error = err.message || 'Erreur de synchronisation';
             this.isSyncing = false;
         }
     }
-}));
+  };
+};
 
 // ═══════════════════════════════════════════════════════════════
 // DÉMARRAGE D'ALPINE
