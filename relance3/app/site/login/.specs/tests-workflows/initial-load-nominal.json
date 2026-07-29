@@ -19,7 +19,9 @@
     "initial-load: PouchDB local: 1247 documents",
     "initial-load: PouchDB à jour → redirection vers /dashboard",
     "initial-load: sync initial requis → affichage loading screen",
-    "initial-load: sync terminé → redirection vers /dashboard"
+    "initial-load: sync terminé → redirection vers /dashboard",
+    "initial-load: erreur récupération session (réponse non-JSON ou réseau)",
+    "initial-load: erreur réseau → mode hors-ligne (pas de session)"
   ],
   "outputJson": {
     "success": true,

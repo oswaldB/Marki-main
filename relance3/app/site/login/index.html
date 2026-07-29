@@ -10,10 +10,10 @@
         html { font-family: 'Inter', system-ui, sans-serif; }
     </style>
 </head>
-<body class="min-h-screen bg-slate-50 flex items-center justify-center">
+<body class="min-h-screen bg-slate-50 flex items-center justify-center" x-data="loginPage">
 
-    <div id="app" x-data="loginPage" class="w-full max-w-md px-4">
-
+    <div class="w-full max-w-md px-4">
+        
         <!-- Logo + Tagline -->
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center w-16 h-16 rounded-xl mb-4 overflow-hidden">
@@ -31,13 +31,13 @@
             </div>
 
             <!-- Form -->
-            <form class="p-6 space-y-4" @submit.prevent="runWorkflow('auth-submit')">
-
+            <form class="p-6 space-y-4" @submit.prevent="runWorkflow('auth-submit', form)">
+                
                 <!-- Identifiant ou email -->
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1.5">Identifiant ou email</label>
-                    <input
-                        type="text"
+                    <input 
+                        type="text" 
                         x-model="form.username"
                         placeholder="Votre identifiant ou email"
                         autocomplete="username"
@@ -53,8 +53,8 @@
                 <!-- Mot de passe -->
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1.5">Mot de passe</label>
-                    <input
-                        type="password"
+                    <input 
+                        type="password" 
                         x-model="form.password"
                         placeholder="••••••••"
                         autocomplete="current-password"
@@ -78,18 +78,18 @@
                 </template>
 
                 <!-- Submit Button -->
-                <button
+                <button 
                     type="submit"
                     id="btn-submit"
-                    :disabled="loading"
+                    :disabled="isLoading"
                     class="w-full flex items-center justify-center gap-2 mt-2 bg-sky-500 hover:bg-sky-600 disabled:bg-sky-300
                            text-white py-2.5 px-4 rounded-lg text-sm font-medium transition-all"
                 >
-                    <svg x-show="loading" class="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
+                    <svg x-show="isLoading" class="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
-                    <span x-text="loading ? 'Connexion...' : 'Se connecter'"></span>
+                    <span x-text="isLoading ? 'Connexion...' : 'Se connecter'"></span>
                 </button>
 
             </form>

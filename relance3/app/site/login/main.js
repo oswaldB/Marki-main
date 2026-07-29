@@ -73,7 +73,7 @@ Alpine.data('loginPage', () => ({
     // ───────────────────────────────────────────────────────
     // ÉTAT DE LA PAGE
     // ───────────────────────────────────────────────────────
-    loading: false,
+    isLoading: false,
     error: null,
     data: {},
     form: {
@@ -97,7 +97,7 @@ Alpine.data('loginPage', () => ({
      * Charge les données initiales via le workflow initial-load
      */
     async loadInitialData() {
-        this.loading = true;
+        this.isLoading = true;
         this.error = null;
 
         try {
@@ -111,7 +111,7 @@ Alpine.data('loginPage', () => ({
             console.error('Erreur init:', err);
             this.error = err.message;
         } finally {
-            this.loading = false;
+            this.isLoading = false;
         }
     },
 
@@ -123,7 +123,7 @@ Alpine.data('loginPage', () => ({
      */
     async runWorkflow(workflowName, params = {}) {
         console.log(`Running workflow: ${workflowName}`, params);
-        this.loading = true;
+        this.isLoading = true;
         this.error = null;
 
         try {
@@ -150,7 +150,7 @@ Alpine.data('loginPage', () => ({
             this.error = err.message;
             return { success: false, error: err.message };
         } finally {
-            this.loading = false;
+            this.isLoading = false;
         }
     },
 
