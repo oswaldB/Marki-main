@@ -68,7 +68,8 @@ Appelé lors de la soumission du formulaire de login.
             name: "john_doe",
             roles: ["user"]
         },
-        rememberMe: true
+        rememberMe: true,
+        needsSync: true               // indique que sync-loading doit être déclenché
     },
     error: null
 }
@@ -133,12 +134,8 @@ const response = await fetch(`${COUCHDB_URL}_session`, {
 
 **Cookie de session:** CouchDB définit un cookie `AuthSession` automatiquement.
 
-### 3. Vérification et démarrage du sync PouchDB
-Après authentification réussie, vérifier la session et démarrer le sync.
-
-**IMPORTANT**: PouchDB est chargé globalement via CDN dans `index.html`. 
-- ❌ NE PAS utiliser `import PouchDB from 'pouchdb'` → erreur module
-- ✅ Utiliser `PouchDB` (variable globale) ou `window.PouchDB`
+### 3. Vérification de session
+Après authentification réussie, vérifier la session CouchDB.
 
 ```javascript
 // Vérifier session active (GET /_session)
@@ -147,38 +144,9 @@ const sessionCheck = await fetch(`${COUCHDB_URL}_session`, {
 });
 const sessionData = await sessionCheck.json();
 // sessionData.userCtx.name, sessionData.userCtx.roles
-
-// Démarrer sync initial - utiliser PouchDB global
-const remoteDb = new PouchDB(`${COUCHDB_URL}${DB_NAME}`, {
-  fetch: (url, opts) => {
-    opts.credentials = 'include';
-    return fetch(url, opts);
-  }
-});
-
-// Sync initial avec suivi de progression
-const sync = localDb.sync(remoteDb, {
-  live: false,    // false pour le premier sync (one-shot)
-  retry: true
-});
-
-// Écouter la progression
-sync.on('change', (info) => {
-  console.log('Sync change:', info);
-  updateLoadingUI(info);
-});
-
-sync.on('complete', (info) => {
-  console.log('Sync initial terminé:', info);
-  // Redirection vers /dashboard
-  window.location.href = '/dashboard';
-});
-
-sync.on('error', (err) => {
-  console.error('Sync error:', err);
-  showSyncError(err);
-});
 ```
+
+**NOTE**: Le sync PouchDB n'est PAS géré par ce workflow. Voir `sync-loading.md`.
 
 ### 4. Stockage session (localStorage)
 ```javascript
@@ -213,9 +181,8 @@ curl -X POST https://dev.markidiags.com/data/_users/org.couchdb.user:test@marki.
 ## Side Effects
 - Crée un cookie `AuthSession` (HttpOnly, géré par CouchDB)
 - Écrit dans localStorage (5 clés)
-- Démarre la synchronisation PouchDB ↔ CouchDB (sync initial one-shot)
-- Affiche l'écran de loading de sync (voir `sync-loading.md`)
-- Redirige vers `/dashboard` après sync initial réussi
+- Ne démarre PAS le sync PouchDB (voir `sync-loading.md`)
+- Ne redirige PAS vers `/dashboard` (c'est `sync-loading` qui gère la navigation)
 - Supprime `auth_username` du localStorage si rememberMe=false
 
 ## Dépendances
@@ -243,24 +210,20 @@ auth-submit: tentative connexion pour: john_doe
 auth-submit: identifiants invalides (401)
 auth-submit: authentification réussie pour: john_doe
 auth-submit: session CouchDB validée
-auth-submit: sync PouchDB démarré (one-shot)
-auth-submit: documents reçus: 50
-auth-submit: documents reçus: 150
-auth-submit: sync initial terminé
-auth-submit: redirection vers /dashboard
-auth-submit: erreur sync: ...
+auth-submit: succès - prêt pour sync-loading
+auth-submit: erreur technique: ...
 ```
 
 ## Navigation
 
 Après authentification réussie :
-1. **Afficher l'écran de sync** (masquer le formulaire login)
-2. **Sync initial** : Télécharger les données PouchDB (voir `sync-loading.md`)
-3. **Redirection** : `window.location.href = '/dashboard'`
+1. **Retourner succès** avec les données utilisateur
+2. **Le caller (main.js)** doit alors :
+   - Masquer le formulaire de login
+   - Afficher l'écran de sync (voir `sync-loading.md`)
+   - Déclencher le workflow `sync-loading`
 
-Si le sync échoue, proposer :
-- **Réessayer** : Relancer le sync initial
-- **Mode hors-ligne** : Rediriger quand même vers `/dashboard` (les données seront sync plus tard)
+**IMPORTANT** : Ce workflow ne gère PAS le sync ni la redirection. Voir `sync-loading.md` pour la gestion complète.
 
 ## Déconnexion
 ```javascript

@@ -10,7 +10,12 @@ const COUCHDB_URL = 'https://dev.markidiags.com/data/';
 ```
 
 ## Déclencheur
-Appelé automatiquement après succès de `auth-submit` lorsque `pouchDbStatus.needsSync` est `true`.
+Appelé par le caller (main.js) après succès de `auth-submit`.
+
+Le workflow reçoit les données de session via les entrées et gère :
+- L'affichage de l'écran de synchronisation
+- La synchronisation PouchDB
+- La redirection finale vers `/dashboard`
 
 ## Entrées
 ```javascript
@@ -22,6 +27,8 @@ Appelé automatiquement après succès de `auth-submit` lorsque `pouchDbStatus.n
     fromLogin: true  // true si vient du login, false si reconnexion
 }
 ```
+
+**Source** : Ces entrées sont fournies par le caller (main.js) qui les reçoit du workflow `auth-submit`.
 
 ## Sorties
 
@@ -262,10 +269,11 @@ sync-loading: annulé par l'utilisateur
 
 ## Navigation post-sync
 
-Après succès du sync:
-1. Masquer l'écran de loading
-2. Rediriger vers l'application principale: `/#session=active`
-3. Ou afficher le dashboard si déjà dans l'app
+Ce workflow est responsable de la navigation finale :
+1. Après succès du sync, masquer l'écran de loading
+2. **Rediriger vers `/dashboard`** : `window.location.href = '/dashboard'`
+
+**Note** : C'est `sync-loading` (et non `auth-submit`) qui effectue la redirection finale après synchronisation des données.
 
 ## Référence Mockup
 - **Fichier**: `/mockups/sync-loading.html`

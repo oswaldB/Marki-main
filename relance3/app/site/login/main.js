@@ -1,16 +1,17 @@
 /*
- * SPECS DU PROJET - login/.specs/page-specs.md
+ * INSTRUCTIONS IA - À APPLIQUER (À LIRE EN PREMIER):
  * =================================================
  * PRIORITÉ ABSOLUE: LIRE .specs/page-specs.md AVANT TOUTE MODIFICATION
  *
- * 1. FONCTION PRINCIPALE (Règle Absolue #3):
- *    - Utiliser: function loginPage() ou window.loginPage
- *    - NE PAS utiliser: Alpine.data('loginPage', ...)
- *    - Dans index.html: x-data="loginPage()" (AVEC parenthèses)
+ * 1. FONCTION PRINCIPALE OBLIGATOIRE:
+ *    - Utiliser UNIQUEMENT: Alpine.data('loginPage', () => ({...}))
+ *    - NE PAS utiliser: function loginPage() ou window.loginPage
+ *    - Alpine.data() enregistre le composant dans le registre interne d'Alpine
+ *    - Dans index.html: x-data="loginPage" (SANS parenthèses)
  *
  * 2. WORKFLOWS:
  *    - Les workflows sont déjà importés et stockés dans window.workflows
- *    - Structure: window.workflows = { 'nom': { execute: fn } }
+ *    - NE PAS modifier la structure window.workflows = { 'nom': { execute: fn } }
  *    - Chaque workflow exporte: execute(context, params) => { success, data, error }
  *
  * 3. POUCHDB: window.localDB et window.remoteDB sont initialisés ci-dessous
@@ -47,9 +48,7 @@ window.workflows = {
     'sync-loading': { execute: sync_loadingExecute }
 };
 
-console.log('initial-load.js loaded');
-console.log('auth-submit.js loaded');
-console.log('sync-loading.js loaded');
+console.log('workflows loaded');
 
 // ═══════════════════════════════════════════════════════════════
 // INITIALISATION POUCHDB (si non initialisée avant)
@@ -64,11 +63,11 @@ if (typeof PouchDB !== 'undefined') {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// FONCTION PRINCIPALE - Règle Absolue #3 des specs
-// Doit être une fonction globale pour utilisation avec x-data="loginPage()"
+// FONCTION PRINCIPALE - ENREGISTREMENT ALPINE (NE PAS MODIFIER CETTE STRUCTURE)
+// Utilise Alpine.data() - PAS de fonction globale, PAS d'exposition sur window
+// Dans HTML: x-data="loginPage" (sans parenthèses)
 // ═══════════════════════════════════════════════════════════════
-window.loginPage = function() {
-    return {
+Alpine.data('loginPage', () => ({
     // ───────────────────────────────────────────────────────
     // ÉTAT DE LA PAGE
     // ───────────────────────────────────────────────────────
@@ -85,7 +84,7 @@ window.loginPage = function() {
     },
 
     // ───────────────────────────────────────────────────────
-    // ÉTAT SYNCHRONISATION
+    // ÉTAT DE SYNCHRONISATION
     // ───────────────────────────────────────────────────────
     isSyncing: false,
     syncProgress: 0,
@@ -133,7 +132,6 @@ window.loginPage = function() {
      */
     async runWorkflow(workflowName, params = {}) {
         console.log(`Running workflow: ${workflowName}`, params);
-        this.isLoading = true;
         this.error = null;
 
         try {
@@ -159,8 +157,6 @@ window.loginPage = function() {
             console.error(`Erreur workflow ${workflowName}:`, err);
             this.error = err.message;
             return { success: false, error: err.message };
-        } finally {
-            this.isLoading = false;
         }
     },
 
@@ -198,14 +194,13 @@ window.loginPage = function() {
 
     /**
      * Gère la soumission du formulaire de connexion
-     * Déclenche le workflow auth-submit puis sync-loading
+     * Déclenche le workflow 'auth-submit'
      */
     async handleLogin() {
         this.isLoading = true;
         this.error = null;
 
         try {
-            // Exécute le workflow auth-submit avec les identifiants
             const result = await this.runWorkflow('auth-submit', {
                 username: this.form.username,
                 password: this.form.password
@@ -213,53 +208,59 @@ window.loginPage = function() {
 
             if (result.success) {
                 // Transition vers l'écran de synchronisation
-                this.isSyncing = true;
-                this.syncProgress = 0;
-                this.syncStatus = 'Connexion établie...';
-
-                // Démarre le workflow de synchronisation
-                await this.runSyncWorkflow();
+                this.startSync();
             } else {
                 this.error = result.error || 'Identifiants incorrects';
             }
         } catch (err) {
             console.error('Erreur login:', err);
-            this.error = err.message || 'Erreur de connexion';
+            this.error = err.message;
         } finally {
             this.isLoading = false;
         }
     },
 
     /**
-     * Exécute le workflow de synchronisation avec mise à jour de la progression
+     * Démarre la synchronisation après connexion réussie
+     * Déclenche le workflow 'sync-loading'
      */
-    async runSyncWorkflow() {
-        this.syncProgress = 25;
-        this.syncStatus = 'Connexion à la base de données...';
+    async startSync() {
+        this.isSyncing = true;
+        this.syncProgress = 0;
+        this.syncStatus = 'Connexion...';
 
         try {
+            // Simuler la progression
+            const updateProgress = (progress, status) => {
+                this.syncProgress = progress;
+                if (status) this.syncStatus = status;
+            };
+
+            updateProgress(25, 'Connexion établie...');
+            await new Promise(r => setTimeout(r, 500));
+
+            updateProgress(60, 'Téléchargement des données...');
+            await new Promise(r => setTimeout(r, 500));
+
+            // Exécuter le workflow de synchronisation
             const result = await this.runWorkflow('sync-loading');
 
             if (result.success) {
-                this.syncProgress = 100;
-                this.syncStatus = 'Terminé !';
-
-                // Redirection vers le dashboard après un court délai
-                setTimeout(() => {
-                    window.location.href = '/dashboard';
-                }, 500);
+                updateProgress(100, 'Terminé !');
+                await new Promise(r => setTimeout(r, 300));
+                
+                // Redirection vers le dashboard
+                window.location.href = '/dashboard';
             } else {
-                this.error = result.error || 'Erreur lors de la synchronisation';
-                this.isSyncing = false;
+                throw new Error(result.error || 'Erreur lors de la synchronisation');
             }
         } catch (err) {
             console.error('Erreur sync:', err);
-            this.error = err.message || 'Erreur de synchronisation';
+            this.error = err.message;
             this.isSyncing = false;
         }
     }
-  };
-};
+}));
 
 // ═══════════════════════════════════════════════════════════════
 // DÉMARRAGE D'ALPINE
