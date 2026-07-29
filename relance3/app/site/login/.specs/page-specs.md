@@ -19,11 +19,25 @@ Feature: login Page
     Then les données initiales sont chargées via le workflow "initial-load"
     And l'interface est prête à l'emploi
 
-  Scenario: Interaction utilisateur +> refait cela en relisant les wf-frontend.
+  Scenario: Soumission du formulaire de connexion
     Given je suis sur la page login
-    When je clique sur un bouton d'action
-    Then le workflow correspondant est déclenché
-    And les données sont mises à jour via PouchDB
+    When je remplis l'identifiant "oswald"
+    And je remplis le mot de passe "coucou"
+    And je clique sur le bouton "Se connecter"
+    Then le workflow "auth-submit" est déclenché
+    And la session CouchDB est créée avec le cookie AuthSession
+    And l'écran de synchronisation s'affiche sans changement d'URL
+    And le workflow "sync-loading" démarre pour synchroniser PouchDB
+    And les données sont téléchargées depuis https://dev.markidiags.com/data/
+    And l'utilisateur est redirigé vers "/dashboard"
+
+  Scenario: Session active existante au chargement
+    Given je suis sur la page login
+    And un cookie AuthSession valide existe
+    When la page se charge
+    Then le workflow "initial-load" vérifie la session CouchDB
+    And si PouchDB est à jour, l'utilisateur est redirigé vers "/dashboard"
+    And si PouchDB nécessite une synchronisation, le workflow "sync-loading" démarre
 ```
 
 ## Partie 2 : Choix Techniques et Règles du Projet
@@ -92,3 +106,119 @@ Feature: login Page
 4. **Navigation** :
    - Pour passer des paramètres : modifier le hash avec `location.hash`
    - Lire les params avec `new URLSearchParams(location.hash.slice(1))`
+
+
+## Partie 4 : Scénarios de Test Détaillés
+
+> **Document de référence pour les tests automatisés**
+> 
+> Chaque workflow doit avoir un fichier scenario-{workflow}.md dans .specs/tests-workflows/
+
+### Scénario 1 : Initial Load
+
+**Workflow** : `initial-load`
+**Fichier de test** : `.specs/tests-workflows/scenario-initial-load.md`
+
+#### Préconditions (Mock Data)
+- localStorage:
+  - `auth_token`: "mock-jwt-token-1"
+- État initial PouchDB:
+  - Collection appropriée initialisée avec données de test
+
+#### Actions
+1. Charger la page `/{cell_name}`
+2. Attendre que le workflow s'exécute automatiquement (au init() Alpine)
+3. Vérifier que les données sont chargées depuis PouchDB
+
+#### Vérifications Attendues
+- [ ] Console contient : "initial-load started"
+- [ ] Console contient : "initial-load completed" ou "initial-load failed"
+- [ ] Pas d'erreur JS : "is not defined"
+- [ ] Alpine.data mis à jour correctement
+- [ ] PouchDB modifié comme attendu
+
+#### Cas d'Erreur à Tester
+- [ ] Token invalide/missing
+- [ ] Données manquantes
+- [ ] Erreur réseau (si applicable)
+- [ ] Permissions insuffisantes
+
+### Scénario 2 : Auth Submit
+
+**Workflow** : `auth-submit`
+**Fichier de test** : `.specs/tests-workflows/scenario-auth-submit.md`
+
+#### Préconditions (Mock Data)
+- localStorage:
+  - `auth_token`: "mock-jwt-token-2"
+- État initial PouchDB:
+  - Collection appropriée initialisée avec données de test
+
+#### Actions
+1. Remplir le formulaire avec données valides
+2. Cliquer sur le bouton `#btn-auth-submit`
+3. Vérifier que `auth-submit` est appelé avec les bon paramètres
+4. Vérifier la mise à jour PouchDB
+
+#### Vérifications Attendues
+- [ ] Console contient : "auth-submit started"
+- [ ] Console contient : "auth-submit completed" ou "auth-submit failed"
+- [ ] Pas d'erreur JS : "is not defined"
+- [ ] Alpine.data mis à jour correctement
+- [ ] PouchDB modifié comme attendu
+
+#### Cas d'Erreur à Tester
+- [ ] Token invalide/missing
+- [ ] Données manquantes
+- [ ] Erreur réseau (si applicable)
+- [ ] Permissions insuffisantes
+
+### Scénario 3 : Sync Loading
+
+**Workflow** : `sync-loading`
+**Fichier de test** : `.specs/tests-workflows/scenario-sync-loading.md`
+
+#### Préconditions (Mock Data)
+- localStorage:
+  - `auth_token`: "mock-jwt-token-3"
+- État initial PouchDB:
+  - Collection appropriée initialisée avec données de test
+
+#### Actions
+1. Déclencher l'action via le bouton approprié
+2. Vérifier que `sync-loading` est exécuté
+3. Vérifier le résultat dans PouchDB
+
+#### Vérifications Attendues
+- [ ] Console contient : "sync-loading started"
+- [ ] Console contient : "sync-loading completed" ou "sync-loading failed"
+- [ ] Pas d'erreur JS : "is not defined"
+- [ ] Alpine.data mis à jour correctement
+- [ ] PouchDB modifié comme attendu
+
+#### Cas d'Erreur à Tester
+- [ ] Token invalide/missing
+- [ ] Données manquantes
+- [ ] Erreur réseau (si applicable)
+- [ ] Permissions insuffisantes
+
+### Scénario Global : Navigation et Cycle de Vie
+
+**Objectif** : Vérifier le cycle complet de la page
+
+#### Test de Navigation
+1. Accéder à `/login`
+2. Vérifier que `initial-load` s'exécute
+3. Tester chaque bouton d'action
+4. Vérifier les transitions
+
+#### Test de Persistence
+1. Modifier des données
+2. Rafraîchir la page
+3. Vérifier que les données persistent (PouchDB)
+4. Vérifier le sync avec CouchDB
+
+#### Liste des Workflows (3 total)
+- `initial-load`
+- `auth-submit`
+- `sync-loading`

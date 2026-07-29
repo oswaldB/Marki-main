@@ -3,6 +3,12 @@
 ## Objectif
 Vérifier si l'utilisateur possède une session active au chargement de la page login.
 
+## Configuration CouchDB
+
+```javascript
+const COUCHDB_URL = 'https://dev.markidiags.com/data/';
+```
+
 ## Déclencheur
 Appelé automatiquement au `x-init` de la page Alpine.js.
 

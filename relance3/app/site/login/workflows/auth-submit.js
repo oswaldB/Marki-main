@@ -20,24 +20,26 @@ PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
 
 console.log('auth-submit.js loaded');
 
+// Configuration
 const COUCHDB_URL = 'https://dev.markidiags.com/data/';
 const DB_NAME = 'marki';
 
 /**
  * Workflow auth-submit
+ * Authentifie l'utilisateur avec CouchDB et démarre le sync PouchDB
  * @param {Object} context - Contexte avec localDB, remoteDB
- * @param {Object} params - Paramètres du workflow
+ * @param {Object} params - Paramètres du workflow { username, password, rememberMe }
  * @returns {Promise<Object>} Résultat { success, data, error }
  */
 export async function execute(context, params = {}) {
-    console.log('auth-submit: démarrage authentification');
+    console.log('auth-submit: démarrage authentification', params);
     
     const { username, password, rememberMe = false } = params;
     
     try {
         // 1. Validation des entrées
         if (!username || username.trim() === '') {
-            console.log('auth-submit: validation échouée: L\'identifiant est requis');
+            console.log('auth-submit: validation échouée: identifiant requis');
             return {
                 success: false,
                 data: null,
@@ -46,7 +48,7 @@ export async function execute(context, params = {}) {
         }
         
         if (!password || password.trim() === '') {
-            console.log('auth-submit: validation échouée: Le mot de passe est requis');
+            console.log('auth-submit: validation échouée: mot de passe requis');
             return {
                 success: false,
                 data: null,
@@ -54,14 +56,15 @@ export async function execute(context, params = {}) {
             };
         }
         
-        // 2. Authentification CouchDB (Cookie Authentication)
-        console.log('auth-submit: tentative connexion pour:', username);
+        const trimmedUsername = username.trim();
+        console.log('auth-submit: tentative connexion pour:', trimmedUsername);
         
+        // 2. Authentification CouchDB (Cookie Authentication)
         const authResponse = await fetch(`${COUCHDB_URL}_session`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            body: JSON.stringify({ name: username, password })
+            body: JSON.stringify({ name: trimmedUsername, password })
         });
         
         if (!authResponse.ok) {
@@ -83,27 +86,26 @@ export async function execute(context, params = {}) {
         const sessionCheck = await fetch(`${COUCHDB_URL}_session`, {
             credentials: 'include'
         });
-        
-        if (!sessionCheck.ok) {
-            throw new Error('Échec de la vérification de session');
-        }
-        
         const sessionData = await sessionCheck.json();
         console.log('auth-submit: session CouchDB validée');
         
-        // 4. Stockage session (localStorage)
+        // 4. Stockage session dans localStorage
         localStorage.setItem('auth_username', sessionData.userCtx.name);
         localStorage.setItem('auth_roles', JSON.stringify(sessionData.userCtx.roles));
         localStorage.setItem('auth_db', DB_NAME);
         localStorage.setItem('auth_remember_me', rememberMe.toString());
         localStorage.setItem('auth_last_login', new Date().toISOString());
         
-        // 5. Démarrage du sync PouchDB (initial one-shot)
+        if (!rememberMe) {
+            // Marquer pour suppression au prochain chargement
+            localStorage.setItem('auth_temp_session', 'true');
+        }
+        
+        // 5. Démarrer le sync PouchDB (one-shot initial)
         console.log('auth-submit: sync PouchDB démarré (one-shot)');
         
         // PouchDB est disponible globalement (chargé via CDN)
         const localDb = context.localDB || new PouchDB(DB_NAME);
-        
         const remoteDb = new PouchDB(`${COUCHDB_URL}${DB_NAME}`, {
             fetch: (url, opts) => {
                 opts.credentials = 'include';
@@ -111,56 +113,78 @@ export async function execute(context, params = {}) {
             }
         });
         
-        // Sync initial one-shot
-        const syncResult = await new Promise((resolve, reject) => {
+        // Sync initial avec suivi
+        return new Promise((resolve) => {
             const sync = localDb.sync(remoteDb, {
                 live: false,
                 retry: true
             });
             
             sync.on('change', (info) => {
-                const docsReceived = info.pull?.docs_read || 0;
-                console.log('auth-submit: documents reçus:', docsReceived);
+                console.log('auth-submit: documents reçus:', info.pull?.docs_read || 0);
             });
             
             sync.on('complete', (info) => {
-                console.log('auth-submit: sync initial terminé');
-                resolve(info);
+                console.log('auth-submit: sync initial terminé', info);
+                console.log('auth-submit: redirection vers /dashboard');
+                
+                // Redirection vers dashboard
+                window.location.href = '/dashboard';
+                
+                resolve({
+                    success: true,
+                    data: {
+                        user: {
+                            id: `user_${sessionData.userCtx.name}`,
+                            username: sessionData.userCtx.name,
+                            displayName: sessionData.userCtx.name,
+                            roles: sessionData.userCtx.roles,
+                            db: DB_NAME
+                        },
+                        session: {
+                            ok: true,
+                            name: sessionData.userCtx.name,
+                            roles: sessionData.userCtx.roles
+                        },
+                        rememberMe,
+                        syncInfo: info
+                    },
+                    error: null
+                });
             });
             
             sync.on('error', (err) => {
                 console.error('auth-submit: erreur sync:', err);
-                reject(err);
+                
+                // En cas d'erreur de sync, on redirige quand même (mode hors-ligne)
+                console.log('auth-submit: redirection vers /dashboard (mode hors-ligne)');
+                window.location.href = '/dashboard';
+                
+                resolve({
+                    success: true,
+                    data: {
+                        user: {
+                            id: `user_${sessionData.userCtx.name}`,
+                            username: sessionData.userCtx.name,
+                            displayName: sessionData.userCtx.name,
+                            roles: sessionData.userCtx.roles,
+                            db: DB_NAME
+                        },
+                        session: {
+                            ok: true,
+                            name: sessionData.userCtx.name,
+                            roles: sessionData.userCtx.roles
+                        },
+                        rememberMe,
+                        offline: true
+                    },
+                    error: null
+                });
             });
         });
         
-        console.log('auth-submit: redirection vers /dashboard');
-        
-        // Redirection vers le dashboard
-        window.location.href = '/dashboard';
-        
-        return {
-            success: true,
-            data: {
-                user: {
-                    id: `user_${sessionData.userCtx.name}`,
-                    username: sessionData.userCtx.name,
-                    displayName: sessionData.userCtx.name,
-                    roles: sessionData.userCtx.roles,
-                    db: DB_NAME
-                },
-                session: {
-                    ok: true,
-                    name: sessionData.userCtx.name,
-                    roles: sessionData.userCtx.roles
-                },
-                rememberMe: rememberMe
-            },
-            error: null
-        };
-        
     } catch (err) {
-        console.error('auth-submit error:', err);
+        console.error('auth-submit: erreur technique:', err);
         return {
             success: false,
             data: null,

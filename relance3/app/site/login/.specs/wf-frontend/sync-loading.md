@@ -3,6 +3,12 @@
 ## Objectif
 Afficher l'écran de synchronisation des données PouchDB après une connexion réussie et gérer le processus de sync initial.
 
+## Configuration CouchDB
+
+```javascript
+const COUCHDB_URL = 'https://dev.markidiags.com/data/';
+```
+
 ## Déclencheur
 Appelé automatiquement après succès de `auth-submit` lorsque `pouchDbStatus.needsSync` est `true`.
 
