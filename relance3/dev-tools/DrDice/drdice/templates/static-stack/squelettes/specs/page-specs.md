@@ -70,7 +70,7 @@ Feature: {cell_name} Page
    - Spacing et Layout : Reproduire pixel par pixel les marges, paddings, grids et flexbox des mockups
    - Responsive : Respecter les breakpoints et comportements responsive définis dans les mockups
    - Composants : Réutiliser les composants visuels (cards, modals, forms) exactement comme présentés
-
+    - les assets (images,...) sont dans le folder `app/site/assets/`
 ## Partie 3 : Implémentation des Specs Fonctionnelles
 
 ### Comment implémenter les specs en respectant les contraintes :
@@ -81,7 +81,7 @@ Feature: {cell_name} Page
    - Alpine met à jour son état avec le résultat
 
 2. **Actions Utilisateur** :
-   - Bouton avec `@click="runWorkflow('nom-workflow', params)"`
+   - Tous les boutons sans exception font un `@click="runWorkflow('nom-workflow', params)"`
    - Le workflow modifie PouchDB
    - Le live sync met à jour automatiquement l'UI
 

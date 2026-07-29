@@ -1,16 +1,28 @@
 /*
- * INSTRUCTIONS IA - À APPLIQUER:
- * =============================
- * PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
+ * INSTRUCTIONS IA - À APPLIQUER (À LIRE EN PREMIER):
+ * =================================================
+ * PRIORITÉ ABSOLUE: LIRE .specs/page-specs.md AVANT TOUTE MODIFICATION
  *
- * 1. FONCTION PRINCIPALE: Utiliser Alpine.data('{cell_name}Page', () => ({...}))
- *    pour enregistrer le composant.
- * 2. WORKFLOWS: Les workflows sont importés et stockés dans window.workflows
- *    - Chaque workflow exporte une fonction execute(context, params)
- *    - Les imports sont générés automatiquement (WORKFLOW_IMPORTS_PLACEHOLDER)
- * 3. SPECS: Consulter les workflows dans .specs/wf-frontend/*.md
- * 4. POUCHDB: window.localDB et window.remoteDB sont initialisés dans ce script
- * 5. CONSOLE LOGS: Maintenir les console.log('... loaded') pour les workflows
+ * 1. FONCTION PRINCIPALE OBLIGATOIRE:
+ *    - Utiliser UNIQUEMENT: Alpine.data('loginPage', () => ({...}))
+ *    - NE PAS utiliser: function loginPage() ou window.loginPage
+ *    - Alpine.data() enregistre le composant dans le registre interne d'Alpine
+ *    - Dans index.html: x-data="loginPage" (SANS parenthèses)
+ *
+ * 2. WORKFLOWS:
+ *    - Les workflows sont déjà importés et stockés dans window.workflows
+ *    - NE PAS modifier la structure window.workflows = { 'nom': { execute: fn } }
+ *    - Chaque workflow exporte: execute(context, params) => { success, data, error }
+ *
+ * 3. POUCHDB: window.localDB et window.remoteDB sont initialisés ci-dessous
+ *    - NE PAS supprimer ou déplacer ce code
+ *
+ * 4. CONSOLE: Maintenir les console.log('... loaded') pour debug
+ *
+ * 5. DÉMARRAGE: Garder Alpine.start() à la fin du fichier
+ *    - NE PAS modifier l'ordre d'exécution
+ *
+ * Aucune route en localhost.
  */
 
 // ═══════════════════════════════════════════════════════════════
@@ -18,6 +30,7 @@
 // ═══════════════════════════════════════════════════════════════
 import { execute as initial_loadExecute } from './workflows/initial-load.js';
 import { execute as auth_submitExecute } from './workflows/auth-submit.js';
+import { execute as sync_loadingExecute } from './workflows/sync-loading.js';
 
 // ═══════════════════════════════════════════════════════════════
 // IMPORT ALPINE.JS (ESM via CDN)
@@ -30,18 +43,19 @@ console.log('main.js loaded');
 // ENREGISTREMENT DES WORKFLOWS DANS window
 // ═══════════════════════════════════════════════════════════════
 window.workflows = {
-    // WORKFLOW_REGISTRATION_PLACEHOLDER
+    'initial-load': { execute: initial_loadExecute },
+    'auth-submit': { execute: auth_submitExecute },
+    'sync-loading': { execute: sync_loadingExecute }
 };
 
-console.log('initial-load.js loaded');
-console.log('auth-submit.js loaded');
+console.log('workflows loaded');
 
 // ═══════════════════════════════════════════════════════════════
 // INITIALISATION POUCHDB (si non initialisée avant)
 // ═══════════════════════════════════════════════════════════════
 if (typeof PouchDB !== 'undefined') {
     if (!window.localDB) {
-        window.localDB = new PouchDB('{cell_name}-local');
+        window.localDB = new PouchDB('login-local');
     }
     if (!window.remoteDB) {
         window.remoteDB = null; // à configurer avec votre URL CouchDB
@@ -49,21 +63,38 @@ if (typeof PouchDB !== 'undefined') {
 }
 
 // ═══════════════════════════════════════════════════════════════
-// FONCTION PRINCIPALE ALPINE.JS (Alpine.data)
+// FONCTION PRINCIPALE - ENREGISTREMENT ALPINE (NE PAS MODIFIER CETTE STRUCTURE)
+// Utilise Alpine.data() - PAS de fonction globale, PAS d'exposition sur window
+// Dans HTML: x-data="loginPage" (sans parenthèses)
 // ═══════════════════════════════════════════════════════════════
-Alpine.data('{cell_name}Page', () => ({
+Alpine.data('loginPage', () => ({
     // ───────────────────────────────────────────────────────
     // ÉTAT DE LA PAGE
     // ───────────────────────────────────────────────────────
     isLoading: false,
     error: null,
     data: {},
-    
+
+    // ───────────────────────────────────────────────────────
+    // FORMULAIRE DE CONNEXION
+    // ───────────────────────────────────────────────────────
+    form: {
+        username: '',
+        password: ''
+    },
+
+    // ───────────────────────────────────────────────────────
+    // ÉTAT DE SYNCHRONISATION
+    // ───────────────────────────────────────────────────────
+    isSyncing: false,
+    syncProgress: 0,
+    syncStatus: 'Récupération de vos données',
+
     // ───────────────────────────────────────────────────────
     // INITIALISATION (appelée automatiquement par Alpine)
     // ───────────────────────────────────────────────────────
     init() {
-        console.log('{cell_name}Page initialized');
+        console.log('loginPage initialized');
         this.loadInitialData();
     },
 
@@ -101,7 +132,6 @@ Alpine.data('{cell_name}Page', () => ({
      */
     async runWorkflow(workflowName, params = {}) {
         console.log(`Running workflow: ${workflowName}`, params);
-        this.isLoading = true;
         this.error = null;
 
         try {
@@ -127,8 +157,6 @@ Alpine.data('{cell_name}Page', () => ({
             console.error(`Erreur workflow ${workflowName}:`, err);
             this.error = err.message;
             return { success: false, error: err.message };
-        } finally {
-            this.isLoading = false;
         }
     },
 
@@ -162,6 +190,75 @@ Alpine.data('{cell_name}Page', () => ({
      */
     clearError() {
         this.error = null;
+    },
+
+    /**
+     * Gère la soumission du formulaire de connexion
+     * Déclenche le workflow 'auth-submit'
+     */
+    async handleLogin() {
+        this.isLoading = true;
+        this.error = null;
+
+        try {
+            const result = await this.runWorkflow('auth-submit', {
+                username: this.form.username,
+                password: this.form.password
+            });
+
+            if (result.success) {
+                // Transition vers l'écran de synchronisation
+                this.startSync();
+            } else {
+                this.error = result.error || 'Identifiants incorrects';
+            }
+        } catch (err) {
+            console.error('Erreur login:', err);
+            this.error = err.message;
+        } finally {
+            this.isLoading = false;
+        }
+    },
+
+    /**
+     * Démarre la synchronisation après connexion réussie
+     * Déclenche le workflow 'sync-loading'
+     */
+    async startSync() {
+        this.isSyncing = true;
+        this.syncProgress = 0;
+        this.syncStatus = 'Connexion...';
+
+        try {
+            // Simuler la progression
+            const updateProgress = (progress, status) => {
+                this.syncProgress = progress;
+                if (status) this.syncStatus = status;
+            };
+
+            updateProgress(25, 'Connexion établie...');
+            await new Promise(r => setTimeout(r, 500));
+
+            updateProgress(60, 'Téléchargement des données...');
+            await new Promise(r => setTimeout(r, 500));
+
+            // Exécuter le workflow de synchronisation
+            const result = await this.runWorkflow('sync-loading');
+
+            if (result.success) {
+                updateProgress(100, 'Terminé !');
+                await new Promise(r => setTimeout(r, 300));
+                
+                // Redirection vers le dashboard
+                window.location.href = '/dashboard';
+            } else {
+                throw new Error(result.error || 'Erreur lors de la synchronisation');
+            }
+        } catch (err) {
+            console.error('Erreur sync:', err);
+            this.error = err.message;
+            this.isSyncing = false;
+        }
     }
 }));
 

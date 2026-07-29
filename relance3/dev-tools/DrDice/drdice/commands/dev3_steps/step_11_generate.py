@@ -8,7 +8,7 @@ from rich.console import Console
 console = Console()
 
 
-def step_9_generate_ia(cell_path: Path, dev_plan: dict) -> tuple[bool, list[str]]:
+def step_11_generate_ia(cell_path: Path, dev_plan: dict) -> tuple[bool, list[str]]:
     """Génère le code final via IA pour chaque fichier."""
     console.print("[blue]🤖 Génération IA avec pi -p...")
 

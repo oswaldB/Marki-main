@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration CouchDB
-const COUCHDB_URL = 'http://oswald:Citron6-Mustang8@localhost:5984';
+const COUCHDB_URL = 'http://oswald:coucou@localhost:5984';
 const DB_NAME = 'marki2';
 
 // Chemins des fichiers

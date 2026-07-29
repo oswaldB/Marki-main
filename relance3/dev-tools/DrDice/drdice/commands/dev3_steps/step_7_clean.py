@@ -8,7 +8,7 @@ from rich.console import Console
 console = Console()
 
 
-def step_5_clean_cell(cell_path: Path) -> bool:
+def step_7_clean_cell(cell_path: Path) -> bool:
     """Nettoie la cell en supprimant tout sauf .specs/.
 
     Args:

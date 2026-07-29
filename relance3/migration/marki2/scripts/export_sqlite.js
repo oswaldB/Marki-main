@@ -3,7 +3,8 @@ const sqlite3 = require('sqlite3').verbose();
 const fs = require('fs');
 const path = require('path');
 
-const DB_PATH = path.join(__dirname, '..', 'marki.db');
+// Chemin vers la base de données (à la racine du projet relance3)
+const DB_PATH = path.join(__dirname, '..', '..', '..', 'marki.db');
 const OUTPUT_DIR = path.join(__dirname, '..', 'export');
 const OUTPUT_FILE = path.join(OUTPUT_DIR, 'marki_data.json');
 

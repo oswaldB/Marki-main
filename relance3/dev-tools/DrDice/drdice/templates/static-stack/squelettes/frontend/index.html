@@ -14,14 +14,16 @@
     
     PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
     
-    1. PIXEL PERFECT: Implémenter le design EXACTEMENT depuis:
+    1. ALPINE.JS x-data: Utiliser EXACTEMENT: x-data="{cell_name}Page"
+       - SANS parenthèses: x-data="{cell_name}Page" ✓
+       - PAS avec parenthèses: x-data="{cell_name}Page()" ✗
+       - PAS d'appel de fonction: x-data="{cell_name}Page()" ✗
+       - Le composant est enregistré via Alpine.data() dans main.js
+       - PAS de x-init="init()", init() est appelé automatiquement
+    
+    2. PIXEL PERFECT: Implémenter le design EXACTEMENT depuis:
        - .specs/mockups/*.html
        Attention ne parle ici que du look and feel. Les actions doivent etre mise à jour pour fonctionner avec les workflows frontend et le main.js.
-
-    2. ALPINE.JS: Utiliser x-data="{cell_name}Page" (défini dans main.js via Alpine.data)
-       - PAS de store global
-       - PAS de JavaScript dans ce fichier HTML
-       - PAS de x-init="init()", init() est appelé automatiquement par Alpine
 
     3. TAILWINDCSS: Utiliser pour le styling en respect du mockup.
 
