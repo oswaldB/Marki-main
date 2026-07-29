@@ -19,7 +19,7 @@ Feature: login Page
     Then les données initiales sont chargées via le workflow "initial-load"
     And l'interface est prête à l'emploi
 
-  Scenario: Interaction utilisateur
+  Scenario: Interaction utilisateur +> refait cela en relisant les wf-frontend.
     Given je suis sur la page login
     When je clique sur un bouton d'action
     Then le workflow correspondant est déclenché

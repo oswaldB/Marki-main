@@ -116,6 +116,39 @@ Alpine.data('loginPage', () => ({
     },
 
     /**
+     * Gère la soumission du formulaire de login
+     */
+    async handleLogin() {
+        this.error = null;
+        
+        if (!this.form.username || !this.form.password) {
+            this.error = 'Veuillez remplir tous les champs';
+            return;
+        }
+
+        try {
+            this.isLoading = true;
+            const result = await this.runWorkflow('auth-submit', {
+                username: this.form.username,
+                password: this.form.password
+            });
+
+            if (result.success) {
+                // Lancer la synchronisation après auth réussie
+                await this.runWorkflow('sync-loading');
+                // Redirection après sync
+                window.location.href = '/dashboard';
+            }
+            // Si !result.success, l'erreur est déjà définie par runWorkflow
+        } catch (err) {
+            console.error('Erreur login:', err);
+            this.error = err.message || 'Erreur de connexion';
+        } finally {
+            this.isLoading = false;
+        }
+    },
+
+    /**
      * Exécute un workflow avec les paramètres donnés
      * @param {string} workflowName - Nom du workflow
      * @param {Object} params - Paramètres à passer
@@ -123,7 +156,6 @@ Alpine.data('loginPage', () => ({
      */
     async runWorkflow(workflowName, params = {}) {
         console.log(`Running workflow: ${workflowName}`, params);
-        this.isLoading = true;
         this.error = null;
 
         try {
@@ -149,8 +181,6 @@ Alpine.data('loginPage', () => ({
             console.error(`Erreur workflow ${workflowName}:`, err);
             this.error = err.message;
             return { success: false, error: err.message };
-        } finally {
-            this.isLoading = false;
         }
     },
 
@@ -184,16 +214,6 @@ Alpine.data('loginPage', () => ({
      */
     clearError() {
         this.error = null;
-    },
-
-    /**
-     * Réinitialise le formulaire
-     */
-    resetForm() {
-        this.form = {
-            username: '',
-            password: ''
-        };
     }
 }));
 

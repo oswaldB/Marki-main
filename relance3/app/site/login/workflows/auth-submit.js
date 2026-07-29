@@ -18,19 +18,15 @@ PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
 4. CONSOLE: Logger 'auth-submit.js loaded' au chargement
 */
 
+console.log('auth-submit.js loaded');
+
 const COUCHDB_URL = 'https://dev.markidiags.com/data/';
 const DB_NAME = 'marki';
 
-console.log('auth-submit.js loaded');
-
 /**
  * Workflow auth-submit
- * Authentifie l'utilisateur avec CouchDB et démarre le sync PouchDB
  * @param {Object} context - Contexte avec localDB, remoteDB
  * @param {Object} params - Paramètres du workflow
- * @param {string} params.username - Identifiant
- * @param {string} params.password - Mot de passe
- * @param {boolean} params.rememberMe - Se souvenir de moi
  * @returns {Promise<Object>} Résultat { success, data, error }
  */
 export async function execute(context, params = {}) {
@@ -40,8 +36,8 @@ export async function execute(context, params = {}) {
     
     try {
         // 1. Validation des entrées
-        if (!username) {
-            console.log('auth-submit: validation échouée: identifiant requis');
+        if (!username || username.trim() === '') {
+            console.log('auth-submit: validation échouée: L\'identifiant est requis');
             return {
                 success: false,
                 data: null,
@@ -49,8 +45,8 @@ export async function execute(context, params = {}) {
             };
         }
         
-        if (!password) {
-            console.log('auth-submit: validation échouée: mot de passe requis');
+        if (!password || password.trim() === '') {
+            console.log('auth-submit: validation échouée: Le mot de passe est requis');
             return {
                 success: false,
                 data: null,
@@ -58,7 +54,7 @@ export async function execute(context, params = {}) {
             };
         }
         
-        // 2. Authentification CouchDB
+        // 2. Authentification CouchDB (Cookie Authentication)
         console.log('auth-submit: tentative connexion pour:', username);
         
         const authResponse = await fetch(`${COUCHDB_URL}_session`, {
@@ -68,53 +64,46 @@ export async function execute(context, params = {}) {
             body: JSON.stringify({ name: username, password })
         });
         
-        if (authResponse.status === 401) {
-            console.log('auth-submit: identifiants invalides (401)');
-            return {
-                success: false,
-                data: null,
-                error: "Identifiant ou mot de passe incorrect"
-            };
-        }
-        
         if (!authResponse.ok) {
-            throw new Error(`Erreur HTTP ${authResponse.status}`);
+            if (authResponse.status === 401) {
+                console.log('auth-submit: identifiants invalides (401)');
+                return {
+                    success: false,
+                    data: null,
+                    error: "Identifiant ou mot de passe incorrect"
+                };
+            }
+            throw new Error(`HTTP ${authResponse.status}: ${authResponse.statusText}`);
         }
         
-        const session = await authResponse.json();
-        console.log('auth-submit: authentification réussie pour:', session.name);
+        const sessionResult = await authResponse.json();
+        console.log('auth-submit: authentification réussie pour:', sessionResult.name);
         
-        // 3. Vérification de la session CouchDB
+        // 3. Vérification session CouchDB (GET /_session)
         const sessionCheck = await fetch(`${COUCHDB_URL}_session`, {
             credentials: 'include'
         });
         
         if (!sessionCheck.ok) {
-            throw new Error('Session validation failed');
+            throw new Error('Échec de la vérification de session');
         }
         
         const sessionData = await sessionCheck.json();
         console.log('auth-submit: session CouchDB validée');
         
-        const userCtx = sessionData.userCtx;
-        
-        // 4. Stockage session dans localStorage
-        localStorage.setItem('auth_username', userCtx.name);
-        localStorage.setItem('auth_roles', JSON.stringify(userCtx.roles));
+        // 4. Stockage session (localStorage)
+        localStorage.setItem('auth_username', sessionData.userCtx.name);
+        localStorage.setItem('auth_roles', JSON.stringify(sessionData.userCtx.roles));
         localStorage.setItem('auth_db', DB_NAME);
         localStorage.setItem('auth_remember_me', rememberMe.toString());
         localStorage.setItem('auth_last_login', new Date().toISOString());
         
-        // Supprimer auth_username si rememberMe=false
-        if (!rememberMe) {
-            localStorage.removeItem('auth_username');
-        }
-        
-        // 5. Démarrer le sync PouchDB initial (one-shot)
+        // 5. Démarrage du sync PouchDB (initial one-shot)
         console.log('auth-submit: sync PouchDB démarré (one-shot)');
         
         // PouchDB est disponible globalement (chargé via CDN)
-        const localDb = new PouchDB(DB_NAME);
+        const localDb = context.localDB || new PouchDB(DB_NAME);
+        
         const remoteDb = new PouchDB(`${COUCHDB_URL}${DB_NAME}`, {
             fetch: (url, opts) => {
                 opts.credentials = 'include';
@@ -122,33 +111,48 @@ export async function execute(context, params = {}) {
             }
         });
         
-        // Lancer le sync initial (one-shot)
-        const syncResult = await localDb.sync(remoteDb, {
-            live: false,
-            retry: true
+        // Sync initial one-shot
+        const syncResult = await new Promise((resolve, reject) => {
+            const sync = localDb.sync(remoteDb, {
+                live: false,
+                retry: true
+            });
+            
+            sync.on('change', (info) => {
+                const docsReceived = info.pull?.docs_read || 0;
+                console.log('auth-submit: documents reçus:', docsReceived);
+            });
+            
+            sync.on('complete', (info) => {
+                console.log('auth-submit: sync initial terminé');
+                resolve(info);
+            });
+            
+            sync.on('error', (err) => {
+                console.error('auth-submit: erreur sync:', err);
+                reject(err);
+            });
         });
         
-        console.log('auth-submit: documents reçus:', syncResult.pull?.docs_read || 0);
-        console.log('auth-submit: sync initial terminé');
-        
-        // 6. Redirection vers le dashboard
         console.log('auth-submit: redirection vers /dashboard');
+        
+        // Redirection vers le dashboard
         window.location.href = '/dashboard';
         
         return {
             success: true,
             data: {
                 user: {
-                    id: `user_${userCtx.name}`,
-                    username: userCtx.name,
-                    displayName: userCtx.name,
-                    roles: userCtx.roles,
+                    id: `user_${sessionData.userCtx.name}`,
+                    username: sessionData.userCtx.name,
+                    displayName: sessionData.userCtx.name,
+                    roles: sessionData.userCtx.roles,
                     db: DB_NAME
                 },
                 session: {
-                    ok: session.ok,
-                    name: session.name,
-                    roles: session.roles
+                    ok: true,
+                    name: sessionData.userCtx.name,
+                    roles: sessionData.userCtx.roles
                 },
                 rememberMe: rememberMe
             },
@@ -156,7 +160,7 @@ export async function execute(context, params = {}) {
         };
         
     } catch (err) {
-        console.error('auth-submit: erreur sync:', err.message);
+        console.error('auth-submit error:', err);
         return {
             success: false,
             data: null,

@@ -1,328 +1,297 @@
-/*
- * WORKFLOW: sync-loading
- * Description: Affiche l'écran de synchronisation et gère le processus de sync initial PouchDB
+/**
+ * Workflow sync-loading
+ * Affiche l'écran de synchronisation des données PouchDB après une connexion réussie
  * 
- * PRIORITÉ ABSOLUE: Implémenté selon .specs/wf-frontend/sync-loading.md
+ * PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
+ * SPECS: .specs/wf-frontend/sync-loading.md
+ * 
+ * @param {Object} context - Contexte avec localDB, remoteDB, etc.
+ * @param {Object} params - Paramètres du workflow (session, fromLogin)
+ * @returns {Promise<Object>} Résultat { success, data, error }
  */
 
 console.log('sync-loading.js loaded');
 
+// Configuration CouchDB
+const COUCHDB_URL = window.COUCHDB_URL || 'http://localhost:5984/';
+
+// Handler global pour permettre l'annulation externe
+let activeSyncHandler = null;
+let progressInterval = null;
+let syncStats = {
+    documentsReceived: 0,
+    bytesTransferred: 0,
+    startTime: null,
+    lastUpdate: null
+};
+
 /**
- * Workflow sync-loading
- * @param {Object} context - Contexte avec localDB, remoteDB
- * @param {Object} params - Paramètres du workflow { session, fromLogin }
- * @returns {Promise<Object>} Résultat { success, data, error }
+ * Met à jour la progression de la sync
  */
-export async function execute(context, params = {}) {
-    console.log('sync-loading: démarrage synchronisation', params);
-
-    const { localDB, remoteDB } = context;
-    const { session, fromLogin = true } = params;
-
-    // Validation des entrées
-    if (!localDB) {
-        console.error('sync-loading: localDB non disponible');
-        return {
-            success: false,
-            data: { synced: false },
-            error: 'Base de données locale non initialisée'
-        };
-    }
-
-    // URL CouchDB - peut être passée dans params ou dans window.COUCHDB_URL
-    const couchDbUrl = params.couchDbUrl || window.COUCHDB_URL || 'http://localhost:5984/';
-    const dbName = params.dbName || 'marki';
-
-    try {
-        // Créer la connexion à la base distante si non fournie
-        let remote = remoteDB;
-        if (!remote) {
-            console.log('sync-loading: connexion à CouchDB établie');
-            remote = new PouchDB(`${couchDbUrl}${dbName}`, {
-                fetch: (url, opts) => {
-                    opts.credentials = 'include';
-                    return fetch(url, opts);
-                }
-            });
-        }
-
-        // Variables pour le tracking de progression
-        let documentCount = 0;
-        let lastUpdate = Date.now();
-        let syncCompleted = false;
-        let syncError = null;
-        let startTime = Date.now();
-        let bytesTransferred = 0;
-
-        // Exposer l'état pour Alpine.js (si disponible)
-        window.syncLoadingState = {
-            percentage: 0,
-            documentsReceived: 0,
-            status: 'Connexion à la base de données...',
-            speed: 0,
-            isActive: true
-        };
-
-        // Démarrer la synchronisation
-        const syncHandler = localDB.sync(remote, {
-            live: true,
-            retry: true,
-            heartbeat: 10000,
-            timeout: 30000
-        });
-
-        // Exposer le handler pour permettre l'annulation
-        window.currentSyncHandler = syncHandler;
-
-        // Créer une promesse qui résout quand le sync est terminé ou échoue
-        const syncPromise = new Promise((resolve, reject) => {
-            // Détection timeout (pas de changement depuis 30s)
-            const progressInterval = setInterval(() => {
-                if (Date.now() - lastUpdate > 30000 && !syncCompleted && !syncError) {
-                    console.log('sync-loading: timeout détecté');
-                    clearInterval(progressInterval);
-                    syncHandler.cancel();
-                    reject({ type: 'timeout', message: 'Délai d\'attente dépassé' });
-                }
-            }, 5000);
-
-            // Gérer les changements
-            syncHandler.on('change', (info) => {
-                lastUpdate = Date.now();
-
-                // Mise à jour du compteur de documents
-                if (info.change && info.change.docs) {
-                    documentCount += info.change.docs.length;
-
-                    // Estimation des bytes transférés
-                    info.change.docs.forEach(doc => {
-                        bytesTransferred += JSON.stringify(doc).length;
-                    });
-
-                    console.log(`sync-loading: documents reçus: ${documentCount}`);
-
-                    // Calcul de la progression
-                    const progress = calculateProgress(documentCount, info.direction);
-                    window.syncLoadingState.percentage = progress.percentage;
-                    window.syncLoadingState.documentsReceived = documentCount;
-                    window.syncLoadingState.status = progress.status;
-                    window.syncLoadingState.speed = calculateSpeed(startTime, bytesTransferred);
-
-                    // Dispatcher un événement personnalisé pour Alpine
-                    window.dispatchEvent(new CustomEvent('sync-progress', {
-                        detail: window.syncLoadingState
-                    }));
-                }
-            });
-
-            // Sync mis en pause (terminé ou en attente)
-            syncHandler.on('paused', (err) => {
-                if (!err && !syncCompleted && !syncError) {
-                    // Sync initial terminé (pas d'erreur)
-                    console.log('sync-loading: sync initial terminé');
-                    clearInterval(progressInterval);
-                    syncCompleted = true;
-
-                    // Animation finale
-                    window.syncLoadingState.percentage = 100;
-                    window.syncLoadingState.status = 'Synchronisation terminée !';
-                    window.dispatchEvent(new CustomEvent('sync-progress', {
-                        detail: window.syncLoadingState
-                    }));
-
-                    // Attendre l'animation puis résoudre
-                    setTimeout(() => {
-                        syncHandler.cancel();
-                        resolve({
-                            synced: true,
-                            stats: {
-                                documentsReceived: documentCount,
-                                bytesTransferred: bytesTransferred,
-                                duration: Date.now() - startTime
-                            }
-                        });
-                    }, 800);
-                }
-            });
-
-            // Erreur de sync
-            syncHandler.on('error', (err) => {
-                console.log('sync-loading: erreur de sync:', err);
-                lastUpdate = Date.now();
-                clearInterval(progressInterval);
-                syncError = err;
-                syncHandler.cancel();
-                reject(err);
-            });
-        });
-
-        // Attendre la fin du sync ou une erreur
-        const result = await syncPromise;
-
-        console.log('sync-loading: redirection vers application');
-
-        return {
-            success: true,
-            data: result,
-            error: null
-        };
-
-    } catch (err) {
-        console.log('sync-loading: gestion erreur:', err.message || err);
-
-        const errorType = categorizeError(err);
-
-        switch (errorType) {
-            case 'auth_failed':
-                return {
-                    success: false,
-                    data: {
-                        synced: false,
-                        error: 'auth_failed',
-                        redirect: true
-                    },
-                    error: 'Session expirée. Veuillez vous reconnecter.'
-                };
-
-            case 'connection_lost':
-            case 'timeout':
-                console.log('sync-loading: mode hors-ligne activé');
-                return {
-                    success: true,
-                    data: {
-                        synced: false,
-                        offline: true,
-                        reason: 'connection_lost'
-                    },
-                    error: null
-                };
-
-            default:
-                console.log('sync-loading: mode hors-ligne activé (erreur inconnue)');
-                return {
-                    success: true,
-                    data: {
-                        synced: false,
-                        offline: true,
-                        reason: 'unknown_error'
-                    },
-                    error: null
-                };
-        }
-    } finally {
-        // Nettoyage
-        if (window.syncLoadingState) {
-            window.syncLoadingState.isActive = false;
-        }
-        window.currentSyncHandler = null;
-    }
+function updateProgress({ documents, direction }) {
+    const estimatedMaxDocs = 2000;
+    const baseProgress = direction === 'pull' ? 20 : 0;
+    const progressPercent = Math.min(
+        baseProgress + (documents / estimatedMaxDocs) * 60,
+        80
+    );
+    
+    console.log(`sync-loading: documents reçus: ${documents}`);
+    
+    return {
+        percentage: Math.round(progressPercent),
+        documentsReceived: documents,
+        status: `Téléchargement des documents...`,
+        direction
+    };
 }
 
 /**
- * Calcule la progression de la synchronisation
- * Stratégie: 0-20% connexion, 20-80% transfert, 80-100% finalisation
- * @param {number} documents - Nombre de documents reçus
- * @param {string} direction - 'push' ou 'pull'
- * @returns {Object} { percentage, status }
+ * Calcule la vitesse de transfert estimée
  */
-function calculateProgress(documents, direction) {
-    const estimatedMaxDocs = 2000; // Estimation pour la progression
-    let percentage;
-    let status;
-
-    if (direction === 'pull') {
-        // Téléchargement des documents
-        const progressPercent = Math.min(
-            20 + (documents / estimatedMaxDocs) * 60,
-            80
-        );
-        percentage = Math.round(progressPercent);
-        status = `Téléchargement des documents... (${documents} reçus)`;
-    } else if (direction === 'push') {
-        // Envoi des documents
-        const progressPercent = Math.min(
-            20 + (documents / estimatedMaxDocs) * 60,
-            80
-        );
-        percentage = Math.round(progressPercent);
-        status = `Envoi des documents... (${documents} envoyés)`;
-    } else {
-        // Sans direction connue, on est encore en connexion
-        percentage = Math.min(20, documents / 10);
-        status = 'Connexion et authentification...';
-    }
-
-    return { percentage, status };
+function calculateSpeed() {
+    if (!syncStats.startTime || syncStats.documentsReceived === 0) return 0;
+    const elapsed = (Date.now() - syncStats.startTime) / 1000;
+    return Math.round(syncStats.documentsReceived / elapsed);
 }
 
 /**
- * Calcule la vitesse de transfert
- * @param {number} startTime - Timestamp de début
- * @param {number} bytes - Bytes transférés
- * @returns {string} Vitesse formatée (ex: "125 KB/s")
- */
-function calculateSpeed(startTime, bytes) {
-    const duration = (Date.now() - startTime) / 1000; // en secondes
-    if (duration === 0) return '0 KB/s';
-
-    const bytesPerSecond = bytes / duration;
-
-    if (bytesPerSecond > 1024 * 1024) {
-        return `${(bytesPerSecond / (1024 * 1024)).toFixed(1)} MB/s`;
-    } else if (bytesPerSecond > 1024) {
-        return `${(bytesPerSecond / 1024).toFixed(1)} KB/s`;
-    } else {
-        return `${Math.round(bytesPerSecond)} B/s`;
-    }
-}
-
-/**
- * Catégorise une erreur PouchDB
- * @param {Error} err - L'erreur à catégoriser
- * @returns {string} Type d'erreur: 'auth_failed', 'connection_lost', 'timeout', 'unknown'
+ * Catégorise une erreur de sync
  */
 function categorizeError(err) {
-    const message = (err.message || err.status || '').toString().toLowerCase();
-
-    if (message.includes('unauthorized') ||
-        message.includes('forbidden') ||
-        message.includes('auth') ||
-        err.status === 401 ||
-        err.status === 403) {
-        return 'auth_failed';
-    }
-
-    if (message.includes('timeout') ||
-        message.includes('etimedout') ||
-        message.includes('econnaborted')) {
+    if (!err) return 'unknown';
+    
+    const message = err.message || err.toString();
+    
+    if (message.includes('timeout') || message.includes('ETIMEDOUT')) {
         return 'timeout';
     }
-
-    if (message.includes('network') ||
-        message.includes('connection') ||
-        message.includes('econnrefused') ||
-        message.includes('offline') ||
-        err.status === 0) {
+    if (message.includes('unauthorized') || message.includes('auth') || err.status === 401) {
+        return 'auth_failed';
+    }
+    if (message.includes('network') || message.includes('connection') || err.status === 0) {
         return 'connection_lost';
     }
-
     return 'unknown';
 }
 
 /**
  * Annule la synchronisation en cours
- * Peut être appelé depuis l'UI pour annuler le sync
  */
 export function cancelSync() {
     console.log('sync-loading: annulé par l\'utilisateur');
-    if (window.currentSyncHandler) {
-        window.currentSyncHandler.cancel();
-        window.currentSyncHandler = null;
+    
+    if (progressInterval) {
+        clearInterval(progressInterval);
+        progressInterval = null;
     }
-    if (window.syncLoadingState) {
-        window.syncLoadingState.isActive = false;
+    
+    if (activeSyncHandler) {
+        activeSyncHandler.cancel();
+        activeSyncHandler = null;
     }
+    
+    return {
+        success: true,
+        data: {
+            synced: false,
+            cancelled: true
+        },
+        error: null
+    };
 }
 
-// Exposer la fonction d'annulation globalement
-window.cancelSyncLoading = cancelSync;
+/**
+ * Fonction principale du workflow
+ */
+export async function execute(context = {}, params = {}) {
+    console.log('sync-loading workflow executing', params);
+    console.log('sync-loading: démarrage synchronisation');
+    
+    // Réinitialiser les stats
+    syncStats = {
+        documentsReceived: 0,
+        bytesTransferred: 0,
+        startTime: Date.now(),
+        lastUpdate: Date.now()
+    };
+    
+    const { session, fromLogin = false } = params;
+    const { localDB, remoteDB } = context;
+    
+    return new Promise((resolve) => {
+        try {
+            // Utiliser les DB du contexte ou en créer de nouvelles
+            const localDb = localDB || new PouchDB('marki');
+            const remoteDb = remoteDB || new PouchDB(`${COUCHDB_URL}marki`, {
+                fetch: (url, opts) => {
+                    opts.credentials = 'include';
+                    return fetch(url, opts);
+                }
+            });
+            
+            // Démarrer la synchronisation
+            console.log('sync-loading: connexion à CouchDB établie');
+            
+            const syncHandler = localDb.sync(remoteDb, {
+                live: true,
+                retry: true,
+                heartbeat: 10000,
+                timeout: 30000
+            });
+            
+            // Stocker le handler globalement pour annulation
+            activeSyncHandler = syncHandler;
+            window.currentSyncHandler = syncHandler;
+            
+            let isCompleted = false;
+            
+            // Gérer les événements de changement
+            syncHandler.on('change', (info) => {
+                syncStats.lastUpdate = Date.now();
+                
+                if (info.change && info.change.docs) {
+                    syncStats.documentsReceived += info.change.docs.length;
+                    const progress = updateProgress({
+                        documents: syncStats.documentsReceived,
+                        direction: info.direction
+                    });
+                    
+                    // Émettre un événement pour la UI
+                    window.dispatchEvent(new CustomEvent('sync-progress', {
+                        detail: progress
+                    }));
+                }
+            });
+            
+            // Gérer la pause (sync initial terminé)
+            syncHandler.on('paused', (err) => {
+                if (!err && !isCompleted) {
+                    isCompleted = true;
+                    completeSync(syncHandler, resolve);
+                }
+            });
+            
+            // Gérer les erreurs
+            syncHandler.on('error', (err) => {
+                if (!isCompleted) {
+                    isCompleted = true;
+                    handleSyncError(err, syncHandler, resolve);
+                }
+            });
+            
+            // Détection timeout (pas de changement depuis 30s)
+            progressInterval = setInterval(() => {
+                if (Date.now() - syncStats.lastUpdate > 30000 && !isCompleted) {
+                    isCompleted = true;
+                    handleSyncError({ message: 'timeout' }, syncHandler, resolve);
+                }
+            }, 5000);
+            
+        } catch (err) {
+            console.error('sync-loading error:', err);
+            resolve({
+                success: false,
+                data: {
+                    synced: false,
+                    error: categorizeError(err)
+                },
+                error: err.message || 'Erreur lors de la synchronisation'
+            });
+        }
+    });
+}
+
+/**
+ * Complète la synchronisation avec succès
+ */
+function completeSync(syncHandler, resolve) {
+    console.log('sync-loading: sync initial terminé');
+    
+    if (progressInterval) {
+        clearInterval(progressInterval);
+        progressInterval = null;
+    }
+    
+    // Calculer les stats finales
+    const duration = Date.now() - (syncStats.startTime || Date.now());
+    const stats = {
+        documentsReceived: syncStats.documentsReceived,
+        bytesTransferred: syncStats.bytesTransferred,
+        duration
+    };
+    
+    console.log('sync-loading: redirection vers application');
+    
+    // Notifier la UI
+    window.dispatchEvent(new CustomEvent('sync-complete', {
+        detail: { percentage: 100, status: 'Synchronisation terminée !' }
+    }));
+    
+    // Attendre l'animation puis résoudre
+    setTimeout(() => {
+        if (syncHandler) {
+            syncHandler.cancel();
+        }
+        activeSyncHandler = null;
+        window.currentSyncHandler = null;
+        
+        resolve({
+            success: true,
+            data: {
+                synced: true,
+                stats
+            },
+            error: null
+        });
+    }, 800);
+}
+
+/**
+ * Gère les erreurs de synchronisation
+ */
+function handleSyncError(err, syncHandler, resolve) {
+    const errorType = categorizeError(err);
+    console.log(`sync-loading: erreur de sync: ${errorType}`);
+    
+    if (progressInterval) {
+        clearInterval(progressInterval);
+        progressInterval = null;
+    }
+    
+    if (syncHandler) {
+        syncHandler.cancel();
+    }
+    activeSyncHandler = null;
+    window.currentSyncHandler = null;
+    
+    const errorMessages = {
+        auth_failed: 'Session expirée. Veuillez vous reconnecter.',
+        connection_lost: 'Connexion perdue. Vérifiez votre réseau.',
+        timeout: 'Délai d\'attente dépassé. Réessayez.',
+        unknown: 'Erreur lors de la synchronisation.'
+    };
+    
+    const errorMessage = errorMessages[errorType] || errorMessages.unknown;
+    
+    // Notifier la UI
+    window.dispatchEvent(new CustomEvent('sync-error', {
+        detail: { error: errorType, message: errorMessage }
+    }));
+    
+    // Pour auth_failed, indiquer qu'il faut rediriger
+    const data = {
+        synced: false,
+        error: errorType
+    };
+    
+    if (errorType === 'auth_failed') {
+        data.redirect = true;
+    }
+    
+    resolve({
+        success: false,
+        data,
+        error: errorMessage
+    });
+}
