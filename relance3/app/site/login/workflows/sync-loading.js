@@ -12,8 +12,8 @@ export async function execute(context, params = {}) {
     return new Promise((resolve) => {
         try {
             // PouchDB est disponible globalement (window.PouchDB)
-            const localDb = new PouchDB('marki');
-            const remoteDb = new PouchDB(`${COUCHDB_URL}marki`, {
+            const localDb = new PouchDB('marki2');
+            const remoteDb = new PouchDB(`${COUCHDB_URL}marki2`, {
                 fetch: (url, opts) => {
                     opts.credentials = 'include';
                     return fetch(url, opts);

@@ -10,7 +10,7 @@ from rich.prompt import Confirm
 console = Console()
 
 
-def step_7_update_caddyfile(cell_path: Path, cell_name: str) -> tuple[bool, dict]:
+def step_9_update_caddyfile(cell_path: Path, cell_name: str) -> tuple[bool, dict]:
     """Vérifie que les routes Caddy répondent pour la cell.
 
     Args:

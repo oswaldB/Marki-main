@@ -21,7 +21,7 @@ PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
 console.log('auth-submit.js loaded');
 
 const COUCHDB_URL = 'https://dev.markidiags.com/data/';
-const DB_NAME = 'marki';
+const DB_NAME = 'marki2';
 
 /**
  * Workflow auth-submit

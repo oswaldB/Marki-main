@@ -73,7 +73,7 @@ export async function execute(context, params = {}) {
         console.log('initial-load: session CouchDB active pour:', sessionData.userCtx.name);
         
         // Étape 3: Vérifier PouchDB local
-        const localDbName = context?.localDB?.name || 'marki';
+        const localDbName = context?.localDB?.name || 'marki2';
         let pouchDbStatus = {
             docCount: 0,
             lastSync: null,

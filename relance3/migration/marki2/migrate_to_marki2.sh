@@ -51,7 +51,7 @@ node scripts/transformer_users.js
 # Étape 3: Créer la base CouchDB marki2
 echo ""
 echo "🗃️  Étape 3: Création de la base CouchDB marki2..."
-curl -s -X PUT http://oswald:Citron6-Mustang8@localhost:5984/marki2 | grep -q '"ok":true' && \
+curl -s -X PUT http://oswald:coucou@localhost:5984/marki2 | grep -q '"ok":true' && \
     echo "✓ Base marki2 existe ou créée" || \
     echo "⚠️ Impossible de créer la base marki2"
 
@@ -61,7 +61,7 @@ echo "📄 Étape 4: Import des Design Documents..."
 for design_file in designs/*.json; do
     if [ -f "$design_file" ]; then
         echo "  Import de $(basename $design_file)..."
-        curl -s -X PUT http://oswald:Citron6-Mustang8@localhost:5984/marki2/_design/$(basename $design_file .json) \
+        curl -s -X PUT http://oswald:coucou@localhost:5984/marki2/_design/$(basename $design_file .json) \
             -H "Content-Type: application/json" \
             -d @"$design_file" | grep -q '"ok":true' && \
             echo "  ✓ Importé" || \
@@ -79,11 +79,11 @@ echo ""
 echo "✅ Migration terminée!"
 echo ""
 echo "📊 Statistiques de la base marki2:"
-curl -s http://oswald:Citron6-Mustang8@localhost:5984/marki2/_all_docs | python3 -c "import sys, json; data=json.load(sys.stdin); print(f'  Total documents: {data.get(\"total_rows\", 0)}')"
+curl -s http://oswald:coucou@localhost:5984/marki2/_all_docs | python3 -c "import sys, json; data=json.load(sys.stdin); print(f'  Total documents: {data.get(\"total_rows\", 0)}')"
 
 echo ""
 echo "🎯 Vous pouvez maintenant utiliser la base CouchDB marki2"
 echo "   URL: http://localhost:5984/marki2/_utils/"
 echo "   User: oswald"
-echo "   Password: Citron6-Mustang8"
+echo "   Password: coucou"
 echo ""

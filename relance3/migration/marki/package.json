@@ -1,0 +1,11 @@
+{
+  "name": "marki-migration-simple",
+  "version": "1.0.0",
+  "description": "Migration SQLite vers CouchDB (mode simple)",
+  "dependencies": {
+    "requests": "^2.31.0"
+  },
+  "scripts": {
+    "migrate": "python3 migrate_to_couchdb.py"
+  }
+}

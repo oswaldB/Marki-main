@@ -1,0 +1,5 @@
+
+# Fichiers de credentials (ne pas versionner)
+admin_user_couchdb.md
+*.credentials
+credentials*.json
