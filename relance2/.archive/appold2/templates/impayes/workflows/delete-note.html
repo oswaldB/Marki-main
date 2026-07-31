@@ -1,0 +1,84 @@
+async deleteNote(index) {
+  try {
+    const token = localStorage.getItem('marki_token');
+    if (!token) return;
+    
+    // Récupérer l'utilisateur courant
+    let currentUser = 'Utilisateur';
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      currentUser = payload.username || payload.email || 'Utilisateur';
+    } catch (e) {
+      console.warn('Impossible de décoder le token');
+    }
+    
+    // Parser les notes
+    let notes = [];
+    if (this.selectedFacture?.notes_json) {
+      try {
+        notes = JSON.parse(this.selectedFacture.notes_json);
+      } catch (e) {
+        console.error('Erreur parsing notes:', e);
+        return;
+      }
+    }
+    
+    // Vérifier si la note existe
+    if (!notes[index]) {
+      return;
+    }
+    
+    // Vérifier que l'utilisateur est l'auteur de la note
+    const noteAuthor = notes[index].author;
+    if (noteAuthor !== currentUser) {
+      if (Alpine.store('ui')?.addToast) {
+        Alpine.store('ui').addToast('Vous ne pouvez supprimer que vos propres notes', 'error');
+      } else {
+        alert('Vous ne pouvez supprimer que vos propres notes');
+      }
+      return;
+    }
+    
+    if (!confirm('Supprimer cette note ?')) return;
+    
+    // Supprimer la note
+    notes.splice(index, 1);
+    
+    // Sauvegarder
+    const response = await fetch(`/api/impayes/${this.selectedFacture.id}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        notes_json: JSON.stringify(notes),
+        updated_at: new Date().toISOString()
+      })
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Erreur ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    if (data.success) {
+      const factureIndex = this.factures.findIndex(f => f.id === this.selectedFacture.id);
+      if (factureIndex !== -1) {
+        this.factures[factureIndex].notes_json = JSON.stringify(notes);
+        this.selectedFacture.notes_json = JSON.stringify(notes);
+      }
+      
+      if (Alpine.store('ui')?.addToast) {
+        Alpine.store('ui').addToast('Note supprimée', 'success');
+      }
+    }
+    
+  } catch (err) {
+    console.error('Erreur suppression note:', err);
+    if (Alpine.store('ui')?.addToast) {
+      Alpine.store('ui').addToast('Erreur lors de la suppression', 'error');
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{{% extends "layouts/base.html" %}}
+
+{{% block page_title %}}{cell_name}{{% endblock %}}
+
+{{% block content %}}
+<div class="min-h-screen flex items-center justify-center p-4" 
+     x-data="{cell_name}Page()" 
+     x-init="init()">
+    <div class="bg-white p-8 rounded-xl shadow-lg text-center max-w-md w-full">
+        <h1 class="text-2xl font-bold text-blue-600 mb-4">{cell_name}</h1>
+        
+        <p class="text-gray-600 mb-4">Page {cell_name} en cours de développement</p>
+        
+        <div class="space-y-4">
+            <button @click="runWorkflow('hello')" 
+                    class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                Dire Hello
+            </button>
+        </div>
+        
+        <div class="text-sm text-gray-400 mt-4">
+            <p>Message: <span x-text="message"></span></p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{{% block scripts %}
+<!-- Workflow frontend chargé depuis workflows/ -->
+<script src="/{cell_name}/workflows/hello.js"></script>
+<script>
+function {cell_name}Page() {{
+    return {{
+        message: '',
+        
+        init() {{
+            console.log('[{cell_name}] ✓ Page initialisée');
+            
+            // Vérifier les paramètres URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const name = urlParams.get('name');
+            if (name) {{
+                console.log('[{cell_name}] Paramètre name:', name);
+                this.runWorkflow('hello', name);
+            }}
+        }},
+        
+        async runWorkflow(workflowName, params) {{
+            console.log('[{cell_name}] ✓ Workflow:', workflowName, params);
+            
+            if (typeof {cell_name}Workflow !== 'undefined') {{
+                const result = await {cell_name}Workflow(params || 'toto');
+                this.message = result;
+            }} else {{
+                console.error('[{cell_name}] Workflow non chargé');
+                this.message = 'Erreur: workflow non disponible';
+            }}
+        }}
+    }};
+}}
+</script>
+{% endblock %}

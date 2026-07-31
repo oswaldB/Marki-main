@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impayés | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body x-data="impayesPage()" x-init="init()">
+
+<sidebar-nav-dual page="impayes"></sidebar-nav-dual>
+
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <h1 class="text-base font-semibold text-slate-700">Impayés</h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500">Liste des factures impayées</span>
+    </div>
+    
+    <div class="flex items-center gap-3">
+      <a href="./impayes-payeur.html" class="flex items-center gap-2 px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium transition-all">
+        <i class="fas fa-users"></i>
+        <span>Vue par payeur</span>
+      </a>
+      <button 
+        @click="syncData()"
+        :disabled="syncing"
+        class="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-sky-400 text-white rounded-lg text-sm font-medium transition-all"
+      >
+        <i x-show="!syncing" class="fas fa-sync-alt"></i>
+        <i x-show="syncing" class="fas fa-circle-notch fa-spin"></i>
+        <span x-text="syncing ? 'Synchronisation...' : 'Synchroniser'"></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="p-6">
+    
+    <!-- Filtres -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 mb-6">
+      <div class="flex flex-wrap items-center gap-4">
+        
+        <div class="relative flex-1 min-w-[240px] max-w-md">
+          <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            x-model="searchQuery"
+            placeholder="Rechercher N° facture, N° dossier, payeur..."
+            class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all"
+          >
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <select x-model="filterStatut" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+            <option value="">Tous les statuts</option>
+            <option value="non-payee">Non payée</option>
+            <option value="en-relance">En relance</option>
+            <option value="suspendue">Suspendue</option>
+          </select>
+          
+          <select x-model="filterSequence" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+            <option value="">Toutes les séquences</option>
+            <option value="R1">R1 - Première relance</option>
+            <option value="R2">R2 - Deuxième relance</option>
+            <option value="R3">R3 - Troisième relance</option>
+            <option value="R4">R4 - Dernière relance</option>
+          </select>
+        </div>
+        
+        <div class="flex-1"></div>
+        
+        <a href="./impayes-reparer.html" class="flex items-center gap-2 px-3 py-2 text-sky-600 hover:bg-sky-50 rounded-lg text-sm font-medium transition-all">
+          <i class="fas fa-exclamation-triangle"></i>
+          <span>À réparer (<span x-text="stats.aReparer"></span>)</span>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Layout split screen -->
+    <div class="flex gap-6" style="min-height: calc(100vh - 220px);">
+      
+      <!-- Left: Table -->
+      <div class="flex-1" :class="showDetailPanel ? 'w-1/2' : 'w-full'">
+        
+        <!-- Vue par défaut / Liste -->
+        <template x-if="currentView === 'liste'">
+          <div>
+            <!-- Loading -->
+            <template x-if="loading">
+              <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+                <div class="divide-y divide-slate-100">
+                  <template x-for="i in 5" :key="i">
+                    <div class="px-6 py-4 animate-pulse flex items-center gap-4">
+                      <div class="w-24 h-4 bg-slate-200 rounded"></div>
+                      <div class="w-20 h-4 bg-slate-200 rounded"></div>
+                      <div class="flex-1">
+                        <div class="h-4 bg-slate-200 rounded w-1/4 mb-2"></div>
+                      </div>
+                      <div class="w-24 h-4 bg-slate-200 rounded"></div>
+                    </div>
+                  </template>
+                </div>
+              </div>
+            </template>
+            
+            <!-- Empty -->
+            <template x-if="!loading && filteredFactures.length === 0">
+              <div class="bg-white rounded-xl border border-slate-200 shadow-sm py-16">
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-inbox text-slate-400 text-2xl"></i>
+                  </div>
+                  <h3 class="text-lg font-medium text-slate-900 mb-1">Aucune facture trouvée</h3>
+                  <p class="text-sm text-slate-500">Modifiez vos filtres ou synchronisez de nouvelles factures</p>
+                </div>
+              </div>
+            </template>
+            
+            <!-- Table -->
+            <template x-if="!loading && filteredFactures.length > 0">
+              <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                <table class="w-full text-sm text-left">
+                  <thead class="bg-slate-50 text-slate-600 font-medium">
+                    <tr>
+                      <th @click="sortBy('numero')" class="px-6 py-3 cursor-pointer hover:bg-slate-100 select-none">
+                        <div class="flex items-center gap-1">
+                          N° Facture
+                          <i class="fas text-xs" :class="sortColumn === 'numero' ? (sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort text-slate-300'"></i>
+                        </div>
+                      </th>
+                      <th @click="sortBy('numeroDossier')" class="px-6 py-3 cursor-pointer hover:bg-slate-100 select-none">
+                        <div class="flex items-center gap-1">
+                          N° Dossier
+                          <i class="fas text-xs" :class="sortColumn === 'numeroDossier' ? (sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort text-slate-300'"></i>
+                        </div>
+                      </th>
+                      <th @click="sortBy('payeur.nom')" class="px-6 py-3 cursor-pointer hover:bg-slate-100 select-none">
+                        <div class="flex items-center gap-1">
+                          Payeur
+                          <i class="fas text-xs" :class="sortColumn === 'payeur.nom' ? (sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort text-slate-300'"></i>
+                        </div>
+                      </th>
+                      <th @click="sortBy('montant')" class="px-6 py-3 text-right cursor-pointer hover:bg-slate-100 select-none">
+                        <div class="flex items-center justify-end gap-1">
+                          Montant TTC
+                          <i class="fas text-xs" :class="sortColumn === 'montant' ? (sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort text-slate-300'"></i>
+                        </div>
+                      </th>
+                      <th @click="sortBy('resteAPayer')" class="px-6 py-3 text-right cursor-pointer hover:bg-slate-100 select-none">
+                        <div class="flex items-center justify-end gap-1">
+                          Reste à payer
+                          <i class="fas text-xs" :class="sortColumn === 'resteAPayer' ? (sortDirection === 'asc' ? 'fa-sort-up' : 'fa-sort-down') : 'fa-sort text-slate-300'"></i>
+                        </div>
+                      </th>
+                      <th class="px-6 py-3">Séquence</th>
+                      <th class="px-6 py-3">Statut</th>
+                      <th class="px-6 py-3 text-right">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-slate-100">
+                    <template x-for="facture in paginatedFactures" :key="facture.id">
+                      <tr class="hover:bg-slate-50/50 transition-colors cursor-pointer" @click="openDetail(facture)">
+                        <td class="px-6 py-4">
+                          <p class="font-medium text-slate-900" x-text="facture.numero"></p>
+                          <p class="text-xs text-slate-500" x-text="facture.dateFacture"></p>
+                        </td>
+                        <td class="px-6 py-4 font-mono text-slate-700" x-text="facture.numeroDossier || '-'" ></td>
+                        <td class="px-6 py-4">
+                          <div class="flex items-center gap-3">
+                            <div class="w-8 h-8 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-xs"
+                                 x-text="facture.payeur.initials">
+                            </div>
+                            <div>
+                              <p class="font-medium text-slate-900" x-text="facture.payeur.nom"></p>
+                              <p class="text-xs text-slate-500" x-text="facture.payeur.email"></p>
+                            </div>
+                          </div>
+                        </td>
+                        <td class="px-6 py-4 text-right font-medium text-slate-600" x-text="formatMoney(facture.montant)"></td>
+                        <td class="px-6 py-4 text-right">
+                          <span class="font-bold text-slate-900" x-text="formatMoney(facture.resteAPayer)"></span>
+                        </td>
+                        <td class="px-6 py-4">
+                          <span x-show="facture.sequence" class="px-2.5 py-1 text-xs font-medium rounded-full bg-sky-100 text-sky-700" x-text="facture.sequence"></span>
+                          <span x-show="!facture.sequence" class="text-slate-400 text-xs">-</span>
+                        </td>
+                        <td class="px-6 py-4">
+                          <span class="px-2.5 py-1 text-xs font-medium rounded-full"
+                                :class="{
+                                  'bg-slate-100 text-slate-700': facture.statut === 'non-payee',
+                                  'bg-sky-100 text-sky-700': facture.statut === 'en-relance',
+                                  'bg-sky-100 text-sky-700': facture.statut === 'suspendue',
+                                  'bg-sky-100 text-sky-700': facture.statut === 'a-reparer'
+                                }"
+                                x-text="getStatutLabel(facture.statut)">
+                          </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                          <div class="flex items-center justify-end gap-2" @click.stop>
+                            <a href="./impayes-detail.html" class="p-1.5 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all" title="Voir détail">
+                              <i class="fas fa-arrow-right"></i>
+                            </a>
+                            <button 
+                              x-show="facture.statut !== 'suspendue'"
+                              @click="openSuspendModal(facture)" 
+                              class="p-1.5 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all" 
+                              title="Suspendre"
+                            >
+                              <i class="fas fa-pause"></i>
+                            </button>
+                            <button 
+                              x-show="facture.statut === 'suspendue'"
+                              @click="openUnsuspendModal(facture)" 
+                              class="p-1.5 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all" 
+                              title="Désuspendre"
+                            >
+                              <i class="fas fa-play"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </template>
+                  </tbody>
+                </table>
+                
+                <!-- Pagination -->
+                <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-between">
+                  <p class="text-sm text-slate-500">
+                    Affichage de <span x-text="(currentPage - 1) * itemsPerPage + 1"></span> à <span x-text="Math.min(currentPage * itemsPerPage, filteredFactures.length)"></span> sur <span x-text="filteredFactures.length"></span> factures
+                  </p>
+                  <div class="flex items-center gap-2">
+                    <button @click="currentPage--" :disabled="currentPage === 1" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50 transition-all">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <template x-for="page in visiblePages" :key="page">
+                      <button @click="currentPage = page" class="px-3 py-1.5 rounded-lg text-sm font-medium transition-all" :class="currentPage === page ? 'bg-sky-500 text-white' : 'border border-slate-200 text-slate-600 hover:bg-slate-50'" x-text="page"></button>
+                    </template>
+                    <button @click="currentPage++" :disabled="currentPage === totalPages" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50 transition-all">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </template>
+          </div>
+        </template>
+        
+        <!-- Vue Par Payeur -->
+        <template x-if="currentView === 'payeur'">
+          <div>
+            <!-- Empty -->
+            <template x-if="groupedByPayeur.length === 0">
+              <div class="bg-white rounded-xl border border-slate-200 shadow-sm py-16">
+                <div class="text-center">
+                  <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-users text-slate-400 text-2xl"></i>
+                  </div>
+                  <h3 class="text-lg font-medium text-slate-900 mb-1">Aucun payeur trouvé</h3>
+                  <p class="text-sm text-slate-500">Modifiez vos filtres ou synchronisez de nouvelles factures</p>
+                </div>
+              </div>
+            </template>
+            
+            <!-- Liste par Payeur -->
+            <template x-if="groupedByPayeur.length > 0">
+              <div class="space-y-4">
+                <template x-for="groupe in groupedByPayeur" :key="groupe.payeur.id">
+                  <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <!-- Header Payeur -->
+                    <div class="px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+                      <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-sm" x-text="groupe.payeur.initials"></div>
+                        <div>
+                          <p class="font-semibold text-slate-900" x-text="groupe.payeur.nom"></p>
+                          <p class="text-xs text-slate-500" x-text="groupe.payeur.email"></p>
+                        </div>
+                      </div>
+                      <div class="flex items-center gap-4">
+                        <div class="text-right">
+                          <p class="text-xs text-slate-500">Total restant</p>
+                          <p class="font-bold text-slate-900" x-text="formatMoney(groupe.totalReste)"></p>
+                        </div>
+                        <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 text-slate-700" x-text="groupe.factures.length + ' facture(s)'"></span>
+                      </div>
+                    </div>
+                    <!-- Factures du payeur -->
+                    <div class="divide-y divide-slate-100">
+                      <template x-for="facture in groupe.factures" :key="facture.id">
+                        <div class="px-6 py-3 flex items-center justify-between hover:bg-slate-50/50 transition-colors">
+                          <div class="flex items-center gap-4">
+                            <span class="font-mono text-sm text-slate-600" x-text="facture.numero"></span>
+                            <span class="text-xs text-slate-400" x-text="facture.dateFacture"></span>
+                            <span class="text-xs text-slate-400">·</span>
+                            <span class="text-xs text-slate-500" x-text="facture.numeroDossier || '-'"></span>
+                          </div>
+                          <div class="flex items-center gap-3">
+                            <span class="font-medium text-slate-700" x-text="formatMoney(facture.resteAPayer)"></span>
+                            <span class="px-2 py-0.5 text-xs rounded-full" 
+                              :class="{
+                                'bg-sky-100 text-sky-700': facture.sequence,
+                                'bg-slate-100 text-slate-600': !facture.sequence
+                              }" 
+                              x-text="facture.sequence || '-'"></span>
+                          </div>
+                        </div>
+                      </template>
+                    </div>
+                    <div class="px-6 py-3 bg-slate-50 border-t border-slate-200">
+                      <a href="./impayes-detail.html" class="text-sm text-sky-600 hover:text-sky-700 font-medium">
+                        Voir tous les détails →
+                      </a>
+                    </div>
+                  </div>
+                </template>
+              </div>
+            </template>
+          </div>
+        </template>
+        
+        <!-- Vue À réparer -->
+        <template x-if="currentView === 'reparer'">
+          <div>
+            <div class="bg-sky-50 border border-sky-200 rounded-xl p-4 mb-6">
+              <div class="flex items-start gap-3">
+                <i class="fas fa-exclamation-triangle text-sky-500 mt-0.5"></i>
+                <div>
+                  <p class="font-medium text-sky-800">Factures à réparer</p>
+                  <p class="text-sm text-sky-600">Ces factures n'ont pas de payeur associé et nécessitent votre attention.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+              <table class="w-full text-sm text-left">
+                <thead class="bg-slate-50 text-slate-600 font-medium">
+                  <tr>
+                    <th class="px-6 py-3">N° Facture</th>
+                    <th class="px-6 py-3">N° Dossier</th>
+                    <th class="px-6 py-3">Nature du problème</th>
+                    <th class="px-6 py-3 text-right">Montant</th>
+                    <th class="px-6 py-3 text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-100">
+                  <template x-for="facture in facturesAReparer" :key="facture.id">
+                    <tr class="hover:bg-slate-50/50">
+                      <td class="px-6 py-4 font-medium text-slate-900" x-text="facture.numero"></td>
+                      <td class="px-6 py-4 font-mono text-slate-700" x-text="facture.numeroDossier || '-'"></td>
+                      <td class="px-6 py-4">
+                        <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-sky-100 text-sky-700">
+                          <i class="fas fa-user-slash mr-1"></i>Facture sans payeur
+                        </span>
+                      </td>
+                      <td class="px-6 py-4 text-right font-medium" x-text="formatMoney(facture.montant)"></td>
+                      <td class="px-6 py-4 text-right">
+                        <button @click="associerPayeur(facture)" class="text-sky-600 hover:text-sky-700 text-sm font-medium">
+                          Associer un payeur
+                        </button>
+                      </td>
+                    </tr>
+                  </template>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </template>
+      </div>
+      
+      <!-- Right: Detail Panel (x-if template) -->
+      <template x-if="showDetailPanel">
+        <div class="w-1/2 bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col" style="max-height: calc(100vh - 220px);">
+          <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+            <div class="flex items-center gap-3">
+              <button @click="showDetailPanel = false" class="text-slate-400 hover:text-slate-600 p-1 hover:bg-slate-200 rounded-lg">
+                <i class="fas fa-times"></i>
+              </button>
+              <div>
+                <h3 class="font-semibold text-slate-900" x-text="selectedFacture?.numero"></h3>
+                <p class="text-sm text-slate-500" x-text="selectedFacture?.payeur?.nom"></p>
+              </div>
+            </div>
+            <a href="./impayes-detail.html" class="text-sky-600 hover:text-sky-700 text-sm font-medium flex items-center gap-1">
+              Voir plus <i class="fas fa-arrow-right"></i>
+            </a>
+          </div>
+          
+          <div class="flex-1 overflow-y-auto p-6 space-y-6">
+            <!-- Informations facture -->
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-3">Informations facture</p>
+              <div class="grid grid-cols-2 gap-4 text-sm">
+                <div>
+                  <span class="text-slate-500">N° Facture:</span>
+                  <span class="font-medium ml-2" x-text="selectedFacture?.numero"></span>
+                </div>
+                <div>
+                  <span class="text-slate-500">N° Dossier:</span>
+                  <span class="font-medium ml-2" x-text="selectedFacture?.numeroDossier || '-'"></span>
+                </div>
+                <div>
+                  <span class="text-slate-500">Date:</span>
+                  <span class="ml-2" x-text="selectedFacture?.dateFacture"></span>
+                </div>
+                <div>
+                  <span class="text-slate-500">Échéance:</span>
+                  <span class="ml-2" x-text="selectedFacture?.echeance"></span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Montants -->
+            <div class="bg-slate-50 rounded-lg p-4">
+              <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-3">Montants</p>
+              <div class="space-y-2">
+                <div class="flex justify-between text-sm">
+                  <span class="text-slate-500">Montant TTC</span>
+                  <span x-text="formatMoney(selectedFacture?.montant)"></span>
+                </div>
+                <div class="flex justify-between text-sm font-bold">
+                  <span class="text-slate-700">Reste à payer</span>
+                  <span class="text-sky-600" x-text="formatMoney(selectedFacture?.resteAPayer)"></span>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Payeur -->
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-3">Payeur</p>
+              <div class="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
+                <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold" 
+                     x-text="selectedFacture?.payeur?.initials"></div>
+                <div>
+                  <p class="font-medium text-sm" x-text="selectedFacture?.payeur?.nom"></p>
+                  <p class="text-xs text-slate-500" x-text="selectedFacture?.payeur?.email"></p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Séquence -->
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-2">Relance</p>
+              <select x-model="selectedFacture.sequence" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                <option value="">Aucune séquence</option>
+                <option value="R1">R1 - Première relance</option>
+                <option value="R2">R2 - Deuxième relance</option>
+                <option value="R3">R3 - Troisième relance</option>
+                <option value="R4">R4 - Dernière relance</option>
+              </select>
+            </div>
+            
+            <!-- Note personnelle -->
+            <div>
+              <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-2">Note personnelle</p>
+              <textarea 
+                x-model="selectedFacture.note"
+                rows="3"
+                placeholder="Ajouter une note..."
+                class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+              ></textarea>
+              <button @click="saveNote()" class="mt-2 px-3 py-1.5 bg-sky-500 hover:bg-sky-600 text-white text-sm rounded-lg">
+                <i class="fas fa-save mr-1"></i>Enregistrer
+              </button>
+            </div>
+            
+            <!-- Actions rapides -->
+            <div class="pt-4 border-t border-slate-100">
+              <p class="text-xs text-slate-500 uppercase tracking-wider font-medium mb-3">Actions rapides</p>
+              <div class="flex gap-2">
+                <button 
+                  x-show="selectedFacture?.statut !== 'suspendue'"
+                  @click="openSuspendModal(selectedFacture)"
+                  class="flex items-center gap-2 px-3 py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 rounded-lg text-sm font-medium"
+                >
+                  <i class="fas fa-pause"></i> Suspendre
+                </button>
+                <button 
+                  x-show="selectedFacture?.statut === 'suspendue'"
+                  @click="openUnsuspendModal(selectedFacture)"
+                  class="flex items-center gap-2 px-3 py-2 bg-sky-50 text-sky-700 hover:bg-sky-100 rounded-lg text-sm font-medium"
+                >
+                  <i class="fas fa-play"></i> Réactiver
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+    
+    <!-- Suspend Modal (x-if) -->
+    <template x-if="showSuspendModal">
+      <div class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+        <div class="absolute inset-0 bg-slate-500/75" @click="showSuspendModal = false"></div>
+        <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+          <h3 class="text-lg font-semibold text-slate-900 mb-4">
+            <i class="fas fa-pause-circle text-sky-500 mr-2"></i>Suspendre la facture
+          </h3>
+          <p class="text-sm text-slate-600 mb-4">La suspension empêchera la génération de nouvelles relances pour cette facture.</p>
+          
+          <div class="space-y-4">
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1.5">Motif de suspension *</label>
+              <select x-model="suspendForm.motif" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                <option value="">Choisir un motif...</option>
+                <option value="litige">Litige en cours</option>
+                <option value="arrangement">Arrangement avec le client</option>
+                <option value="procedure">Procédure judiciaire</option>
+                <option value="cessation">Cessation d'activité</option>
+                <option value="autre">Autre</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-slate-700 mb-1.5">Détail (optionnel)</label>
+              <textarea x-model="suspendForm.detail" rows="3" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm" placeholder="Précisez si nécessaire..."></textarea>
+            </div>
+          </div>
+          
+          <div class="flex items-center justify-end gap-2 mt-6">
+            <button @click="showSuspendModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+            <button @click="confirmSuspend()" :disabled="!suspendForm.motif" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+              Confirmer la suspension
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+    
+    <!-- Unsuspend Confirmation (x-if) -->
+    <template x-if="showUnsuspendModal">
+      <div class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+        <div class="absolute inset-0 bg-slate-500/75" @click="showUnsuspendModal = false"></div>
+        <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+          <h3 class="text-lg font-semibold text-slate-900 mb-2">
+            <i class="fas fa-play-circle text-sky-500 mr-2"></i>Désuspendre la facture
+          </h3>
+          <p class="text-sm text-slate-600 mb-4">La facture sera à nouveau éligible aux relances automatiques. Confirmer ?</p>
+          
+          <div class="bg-slate-50 rounded-lg p-3 mb-4">
+            <p class="text-xs text-slate-500">Facture:</p>
+            <p class="font-medium" x-text="selectedFacture?.numero"></p>
+            <p class="text-xs text-slate-500 mt-1">Payeur:</p>
+            <p x-text="selectedFacture?.payeur?.nom"></p>
+          </div>
+          
+          <div class="flex items-center justify-end gap-2">
+            <button @click="showUnsuspendModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+            <button @click="confirmUnsuspend()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">
+              <i class="fas fa-check mr-1"></i>Confirmer
+            </button>
+          </div>
+        </div>
+      </div>
+    </template>
+    
+  </main>
+</div>
+
+<script>
+function impayesPage() {
+  return {
+    toast: { show: false, type: 'success', title: '', message: '' },
+    loading: false,
+    syncing: false,
+    searchQuery: '',
+    filterStatut: '',
+    filterSequence: '',
+    currentView: 'liste',
+    currentPage: 1,
+    itemsPerPage: 10,
+    showDetailPanel: false,
+    showSuspendModal: false,
+    showUnsuspendModal: false,
+    selectedFacture: null,
+    
+    suspendForm: { motif: '', detail: '' },
+    
+    sortColumn: '',
+    sortDirection: 'asc',
+    
+    stats: { total: 156, aReparer: 3 },
+    
+    factures: [
+      { id: 1, numero: 'FAC-2024-001', numeroDossier: 'D-2024-045', dateFacture: '15/01/2024', echeance: '15/02/2024', montant: 12500, resteAPayer: 12500, sequence: 'R1', statut: 'en-relance', note: '', payeur: { nom: 'ACME Corp', email: 'contact@acme.fr', initials: 'AC' }},
+      { id: 2, numero: 'FAC-2024-002', numeroDossier: 'D-2024-046', dateFacture: '10/01/2024', echeance: '10/02/2024', montant: 8750, resteAPayer: 8750, sequence: 'R2', statut: 'en-relance', note: '', payeur: { nom: 'TechStart SARL', email: 'finance@techstart.fr', initials: 'TS' }},
+      { id: 3, numero: 'FAC-2024-003', numeroDossier: 'D-2024-047', dateFacture: '08/01/2024', echeance: '08/02/2024', montant: 23400, resteAPayer: 5000, sequence: 'R3', statut: 'en-relance', note: 'Client a promis de payer la semaine prochaine', payeur: { nom: 'BuildPlus SA', email: 'compta@buildplus.fr', initials: 'BP' }},
+      { id: 4, numero: 'FAC-2024-004', numeroDossier: 'D-2024-048', dateFacture: '05/01/2024', echeance: '05/02/2024', montant: 5600, resteAPayer: 5600, sequence: '', statut: 'non-payee', note: '', payeur: { nom: 'Digital Agency', email: 'admin@digital.fr', initials: 'DA' }},
+      { id: 5, numero: 'FAC-2024-005', numeroDossier: 'D-2024-049', dateFacture: '01/01/2024', echeance: '01/02/2024', montant: 12000, resteAPayer: 12000, sequence: 'R2', statut: 'suspendue', note: 'Litige en cours', payeur: { nom: 'Consulting Pro', email: 'boss@consulting.fr', initials: 'CP' }},
+      { id: 6, numero: 'FAC-2024-006', numeroDossier: 'D-2024-050', dateFacture: '28/12/2023', echeance: '28/01/2024', montant: 8900, resteAPayer: 8900, sequence: 'R1', statut: 'en-relance', note: '', payeur: { nom: 'Startup XYZ', email: 'contact@xyz.fr', initials: 'SX' }},
+    ],
+    
+    facturesAReparer: [
+      { id: 101, numero: 'FAC-2024-099', numeroDossier: 'D-2024-123', montant: 4500 },
+      { id: 102, numero: 'FAC-2024-100', numeroDossier: 'D-2024-124', montant: 3200 },
+      { id: 103, numero: 'FAC-2024-101', numeroDossier: '', montant: 7800 },
+    ],
+    
+    get filteredFactures() {
+      let result = this.factures.filter(f => {
+        const matchesSearch = !this.searchQuery || 
+          f.numero.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          f.numeroDossier?.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          f.payeur.nom.toLowerCase().includes(this.searchQuery.toLowerCase());
+        
+        const matchesStatut = !this.filterStatut || f.statut === this.filterStatut;
+        const matchesSequence = !this.filterSequence || f.sequence === this.filterSequence;
+        
+        return matchesSearch && matchesStatut && matchesSequence;
+      });
+      
+      // Sort
+      if (this.sortColumn) {
+        result = result.sort((a, b) => {
+          let valA = this.sortColumn.includes('.') ? 
+            this.sortColumn.split('.').reduce((obj, key) => obj?.[key], a) : a[this.sortColumn];
+          let valB = this.sortColumn.includes('.') ? 
+            this.sortColumn.split('.').reduce((obj, key) => obj?.[key], b) : b[this.sortColumn];
+          
+          // Handle null/undefined
+          if (valA == null) valA = '';
+          if (valB == null) valB = '';
+          
+          // Compare
+          let comparison = 0;
+          if (typeof valA === 'number' && typeof valB === 'number') {
+            comparison = valA - valB;
+          } else {
+            valA = String(valA).toLowerCase();
+            valB = String(valB).toLowerCase();
+            comparison = valA.localeCompare(valB);
+          }
+          
+          return this.sortDirection === 'asc' ? comparison : -comparison;
+        });
+      }
+      
+      return result;
+    },
+    
+    get paginatedFactures() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      return this.filteredFactures.slice(start, start + this.itemsPerPage);
+    },
+    
+    get totalPages() {
+      return Math.ceil(this.filteredFactures.length / this.itemsPerPage);
+    },
+    
+    get visiblePages() {
+      const pages = [];
+      const maxVisible = 5;
+      let start = Math.max(1, this.currentPage - Math.floor(maxVisible / 2));
+      let end = Math.min(this.totalPages, start + maxVisible - 1);
+      if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
+      for (let i = start; i <= end; i++) pages.push(i);
+      return pages;
+    },
+    
+    get groupedByPayeur() {
+      // Grouper les factures filtrées par payeur
+      const groupes = {};
+      this.filteredFactures.forEach(f => {
+        const payeurId = f.payeur.email; // utilisant l'email comme ID unique
+        if (!groupes[payeurId]) {
+          groupes[payeurId] = {
+            payeur: f.payeur,
+            factures: [],
+            totalReste: 0
+          };
+        }
+        groupes[payeurId].factures.push(f);
+        groupes[payeurId].totalReste += f.resteAPayer;
+      });
+      // Convertir en tableau et trier par total décroissant
+      return Object.values(groupes).sort((a, b) => b.totalReste - a.totalReste);
+    },
+    
+    init() {
+      // Gestion de la vue via hash #reparer
+      if (window.location.hash === '#reparer') {
+        this.currentView = 'reparer';
+      }
+      this.loadData();
+    },
+    
+    sortBy(column) {
+      if (this.sortColumn === column) {
+        this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+      } else {
+        this.sortColumn = column;
+        this.sortDirection = 'asc';
+      }
+    },
+    
+    async loadData() {
+      this.loading = true;
+      await new Promise(r => setTimeout(r, 500));
+      this.loading = false;
+    },
+    
+    async syncData() {
+      this.syncing = true;
+      await new Promise(r => setTimeout(r, 1500));
+      this.syncing = false;
+      this.showToast('Succès', 'Synchronisation terminée !', 'success');
+    },
+    
+    openDetail(facture) {
+      this.selectedFacture = {...facture};
+      this.showDetailPanel = true;
+    },
+    
+    openSuspendModal(facture) {
+      this.selectedFacture = facture;
+      this.suspendForm = { motif: '', detail: '' };
+      this.showSuspendModal = true;
+    },
+    
+    confirmSuspend() {
+      this.selectedFacture.statut = 'suspendue';
+      this.selectedFacture.note = this.suspendForm.detail;
+      this.showSuspendModal = false;
+      this.showToast('Succès', 'Facture suspendue avec succès', 'success');
+    },
+    
+    openUnsuspendModal(facture) {
+      this.selectedFacture = facture;
+      this.showUnsuspendModal = true;
+    },
+    
+    confirmUnsuspend() {
+      this.selectedFacture.statut = 'en-relance';
+      this.showUnsuspendModal = false;
+      this.showToast('Succès', 'Facture réactivée avec succès', 'success');
+    },
+    
+    saveNote() {
+      const index = this.factures.findIndex(f => f.id === this.selectedFacture.id);
+      if (index !== -1) {
+        this.factures[index].note = this.selectedFacture.note;
+      }
+      this.showToast('Succès', 'Note enregistrée', 'success');
+    },
+    
+    associerPayeur(facture) {
+      this.showToast('Info', 'Ouverture du formulaire pour ' + facture.numero, 'success');
+    },
+    
+    getStatutLabel(statut) {
+      const labels = { 'non-payee': 'Non payée', 'en-relance': 'En relance', 'suspendue': 'Suspendue', 'a-reparer': 'À réparer' };
+      return labels[statut] || statut;
+    },
+    
+    formatMoney(amount) {
+      return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount);
+    },
+    
+    showToast(title, message, type = 'success') {
+      this.toast = { show: true, title, message, type };
+      setTimeout(() => this.toast.show = false, 3000);
+    }
+  }
+}
+</script>
+
+
+    <!-- Toast Notification -->
+    <div x-show="toast.show" x-transition class="fixed bottom-4 right-4 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50">
+      <i :class="toast.type === 'success' ? 'fa-check-circle text-green-400' : 'fa-exclamation-circle text-red-400'" class="fas"></i>
+      <div>
+        <p class="font-medium text-sm" x-text="toast.title"></p>
+        <p class="text-xs text-slate-300" x-text="toast.message"></p>
+      </div>
+    </div>
+</body>
+</html>

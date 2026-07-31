@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Check</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center p-4">
+
+<div id="app" class="bg-white p-8 rounded-xl shadow-lg text-center max-w-md w-full">
+    <h1 class="text-3xl font-bold text-blue-600 mb-4">System Health</h1>
+    
+    <div id="status" class="mb-4 p-4 rounded-lg">
+        <div class="text-2xl mb-2">✓ Tout est OK</div>
+        <p>Base de données connectée</p>
+    </div>
+    
+    <div id="hello-section" class="mb-4">
+        <h2 class="text-xl font-semibold mb-2">Message</h2>
+        <div class="p-4 bg-gray-100 rounded">
+            <p id="hello-message" class="text-gray-700">En attente...</p>
+        </div>
+    </div>
+    
+    <div class="text-sm text-gray-400 mt-4">
+        <p>URL: <span id="url-display"></span></p>
+    </div>
+</div>
+
+<!-- Charger main.js qui initialise tout -->
+<script src="/static/js/pages/main.js"></script>
+<script src="/healthy/workflows/wf-init.js"></script>
+
+<script>
+// Initialiser la page quand le DOM est prêt
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('[healthy] ✓ Page DOM chargé');
+    
+    // Afficher l'URL
+    document.getElementById('url-display').textContent = window.location.href;
+    
+    // Vérifier si on a un paramètre 'name' dans l'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get('name');
+    
+    if (name && typeof wf !== 'undefined') {
+        console.log('[healthy] Paramètre name détecté:', name);
+        
+        // Exécuter le workflow
+        wf.run('hello', { name: name })
+            .then(function(result) {
+                console.log('[healthy] Workflow result:', result);
+                document.getElementById('hello-message').textContent = result;
+            })
+            .catch(function(error) {
+                console.error('[healthy] Workflow error:', error);
+                document.getElementById('hello-message').textContent = 'Erreur: ' + error.message;
+            });
+    } else if (name) {
+        document.getElementById('hello-message').textContent = 'Erreur: wf non chargé';
+    } else {
+        document.getElementById('hello-message').textContent = 'Ajoutez ?name=coucou à l\'URL';
+    }
+});
+</script>
+
+</body>
+</html>

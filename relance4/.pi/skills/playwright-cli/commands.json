@@ -1,0 +1,77 @@
+{
+  "commands": [
+    {
+      "name": "run-tests",
+      "description": "Run Playwright tests",
+      "usage": "playwright test [options] [test-filter]",
+      "options": {
+        "--headed": "Run tests in headed browsers",
+        "--project": "Run tests for specific project",
+        "--grep": "Run tests matching regex pattern",
+        "--debug": "Run in debug mode with Playwright Inspector",
+        "--ui": "Run in interactive UI mode",
+        "--workers": "Number of concurrent workers",
+        "--reporter": "Specify reporter to use",
+        "--timeout": "Specify test timeout",
+        "--retries": "Maximum retry count for flaky tests",
+        "--trace": "Force tracing mode"
+      }
+    },
+    {
+      "name": "show-report",
+      "description": "Show HTML test report",
+      "usage": "playwright show-report [report] [options]",
+      "options": {
+        "--host": "Host to serve report on",
+        "--port": "Port to serve report on"
+      }
+    },
+    {
+      "name": "install-browsers",
+      "description": "Install browsers",
+      "usage": "playwright install [options] [browser...]",
+      "options": {
+        "--with-deps": "Install browser system dependencies",
+        "--force": "Force reinstall of stable browser channels",
+        "--dry-run": "Don't perform installation, just print information",
+        "--only-shell": "Only install chromium-headless-shell",
+        "--no-shell": "Don't install chromium-headless-shell"
+      }
+    },
+    {
+      "name": "codegen",
+      "description": "Generate test code",
+      "usage": "playwright codegen [options] [url]",
+      "options": {
+        "--browser": "Browser to use (chromium, firefox, webkit)",
+        "--output": "Output file for generated script",
+        "--target": "Language to use",
+        "--test-id-attribute": "Attribute to use for test IDs"
+      }
+    },
+    {
+      "name": "show-trace",
+      "description": "View test traces",
+      "usage": "playwright show-trace [options] [trace]",
+      "options": {
+        "--browser": "Browser to use (chromium, firefox, webkit)",
+        "--host": "Host to serve trace on",
+        "--port": "Port to serve trace on"
+      }
+    },
+    {
+      "name": "merge-reports",
+      "description": "Merge test reports",
+      "usage": "playwright merge-reports [options] <blob dir>",
+      "options": {
+        "--config": "Configuration file",
+        "--reporter": "Reporter to use"
+      }
+    },
+    {
+      "name": "clear-cache",
+      "description": "Clear all Playwright caches",
+      "usage": "playwright clear-cache"
+    }
+  ]
+}

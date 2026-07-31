@@ -1,0 +1,21 @@
+{% extends 'layouts/layout_app.html' %}
+
+{% block page_title %}Profils SMTP{% endblock %}
+{% block active_page %}settings{% endblock %}
+
+{% block header_left %}
+<div class="flex items-center gap-3">
+  <a href="{{ url_for('settings_page') }}" class="text-slate-500 hover:text-slate-700">
+    <i class="fas fa-arrow-left"></i>
+  </a>
+  <h1 class="text-base font-semibold text-slate-700">Profils SMTP</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="bg-white rounded-xl border border-slate-200 p-12 text-center">
+  <i class="fas fa-envelope text-sky-200 text-6xl mb-4"></i>
+  <h2 class="text-xl font-semibold text-slate-700 mb-2">Profils SMTP</h2>
+  <p class="text-slate-500">Cette page est en cours de développement.</p>
+</div>
+{% endblock %}

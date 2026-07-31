@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healthy Check</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: #0f172a;
+            color: #e2e8f0;
+        }
+        .card {
+            background: #1e293b;
+            padding: 2rem 3rem;
+            border-radius: 1rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            border: 1px solid #334155;
+        }
+        .status {
+            width: 16px;
+            height: 16px;
+            background: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 0.5rem;
+            box-shadow: 0 0 12px #22c55e;
+        }
+        h1 { margin: 0 0 0.5rem; font-size: 1.5rem; }
+        p { margin: 0; color: #94a3b8; }
+        .timestamp { margin-top: 1rem; font-size: 0.85rem; color: #64748b; font-family: monospace; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1><span class="status"></span>Service Healthy</h1>
+        <p>dev.markidiags.com is up and running.</p>
+        <p class="timestamp" id="ts"></p>
+    </div>
+    <script>
+        document.getElementById('ts').textContent = new Date().toISOString();
+    </script>
+</body>
+</html>

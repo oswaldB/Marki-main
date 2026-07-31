@@ -1,0 +1,219 @@
+<!-- Alpine.js Initialisation pour Impayes Detail -->
+<!-- Ordre OBLIGATOIRE: Props → Workflows → Init -->
+
+<script>
+    // Logger global pour la page
+    const log = {
+        debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+        info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+        warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+        error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+    };
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('impayeDetailPage', () => ({
+            // =====================================================
+            // 1. DÉFINIR D'ABORD TOUTES LES PROPS RÉACTIVES (STATE)
+            // =====================================================
+            
+            // Data principale
+            impaye: null,
+            relances: [],
+            events: [],
+            historique: [], // Fusion de relances + événements
+            sequences: [],
+            notes: [], // Notes JSON
+            
+            // UI State
+            loading: false,
+            error: null,
+            
+            // Séquence
+            selectedSequence: '',
+            savingSequence: false,
+            
+            // Suspension
+            showSuspendForm: false,
+            suspending: false,
+            suspendForm: { motif: '', detail: '' },
+            
+            // Désuspension
+            showUnsuspendConfirm: false,
+            unsuspending: false,
+            
+            // Blacklist
+            showBlacklistConfirm: false,
+            blacklisting: false,
+            blacklistMotif: '',
+            
+            // Changement de séquence
+            showSequenceSelector: false,
+            pendingSequenceId: null,
+            pendingSequenceName: null,
+            changingSequence: false,
+            
+            // Notes - deux types: impaye et contact
+            notesImpaye: [],      // Notes de la facture (impayes.notes_json)
+            notesContact: [],     // Notes du contact (contacts.notes)
+            activeNotesTab: 'impaye', // 'impaye' | 'contact'
+            newNoteImpaye: '',    // Texte nouvelle note impaye
+            newNoteContact: '',   // Texte nouvelle note contact
+            savingNote: false,
+            
+            // PDF
+            showPdfViewer: false,
+            pdfUrl: null,
+            
+            // Toast
+            toast: { show: false, type: 'success', title: '', message: '' },
+            
+            // =====================================================
+            // GETTERS CALCULÉS
+            // =====================================================
+            
+            get tauxPaye() {
+                if (!this.impaye?.montant_ttc) return 0;
+                const montant = parseFloat(this.impaye.montant_ttc);
+                const reste = parseFloat(this.impaye.reste_a_payer || 0);
+                if (montant === 0) return 0;
+                return Math.round(((montant - reste) / montant) * 100);
+            },
+            
+            get joursRetard() {
+                if (!this.impaye?.date_echeance) return 0;
+                const echeance = new Date(this.impaye.date_echeance);
+                const today = new Date();
+                const diff = Math.floor((today - echeance) / (1000 * 60 * 60 * 24));
+                return diff > 0 ? diff : 0;
+            },
+            
+            // =====================================================
+            // HELPERS
+            // =====================================================
+            
+            getInitials(name) {
+                if (!name) return '?';
+                return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+            },
+            
+            getStatutLabel(statut) {
+                const labels = {
+                    'impaye': 'Non payée',
+                    'en-relance': 'En relance',
+                    'suspendue': 'Suspendue',
+                    'payee': 'Payée',
+                    'non-payee': 'Non payée'
+                };
+                return labels[statut] || statut;
+            },
+            
+            getStatutClass(statut) {
+                const classes = {
+                    'impaye': 'bg-slate-100 text-slate-700',
+                    'en-relance': 'bg-sky-100 text-sky-700',
+                    'suspendue': 'bg-amber-100 text-amber-700',
+                    'payee': 'bg-emerald-100 text-emerald-700',
+                    'non-payee': 'bg-slate-100 text-slate-700'
+                };
+                return classes[statut] || 'bg-slate-100 text-slate-700';
+            },
+            
+            getHistoriqueIconClass(type) {
+                const classes = {
+                    'relance': 'bg-sky-100 text-sky-600',
+                    'envoyee': 'bg-emerald-100 text-emerald-600',
+                    'system': 'bg-slate-100 text-slate-600',
+                    'payment': 'bg-emerald-100 text-emerald-600',
+                    'suspension': 'bg-amber-100 text-amber-600',
+                    'note': 'bg-violet-100 text-violet-600'
+                };
+                return classes[type] || 'bg-slate-100 text-slate-600';
+            },
+            
+            getHistoriqueIcon(type, icon) {
+                if (icon) return icon;
+                const icons = {
+                    'relance': 'fa-paper-plane',
+                    'system': 'fa-cog',
+                    'payment': 'fa-euro-sign',
+                    'suspension': 'fa-pause',
+                    'note': 'fa-sticky-note'
+                };
+                return icons[type] || 'fa-bell';
+            },
+            
+            getRelanceIcon(statut) {
+                const icons = {
+                    'envoyee': 'fa-paper-plane',
+                    'planifiee': 'fa-clock',
+                    'brouillon': 'fa-edit',
+                    'annulee': 'fa-times'
+                };
+                return icons[statut] || 'fa-envelope';
+            },
+            
+            getRelanceIconClass(statut) {
+                const classes = {
+                    'envoyee': 'bg-emerald-100 text-emerald-600',
+                    'planifiee': 'bg-sky-100 text-sky-600',
+                    'brouillon': 'bg-slate-100 text-slate-600',
+                    'annulee': 'bg-red-100 text-red-600'
+                };
+                return classes[statut] || 'bg-slate-100 text-slate-600';
+            },
+            
+            formatDate(dateStr) {
+                if (!dateStr) return '-';
+                const date = new Date(dateStr);
+                if (isNaN(date.getTime())) return dateStr;
+                return date.toLocaleDateString('fr-FR');
+            },
+            
+            formatDateTime(dateStr) {
+                if (!dateStr) return '-';
+                const date = new Date(dateStr);
+                if (isNaN(date.getTime())) return dateStr;
+                return date.toLocaleDateString('fr-FR') + ' ' + date.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+            },
+            
+            formatMoney(amount) {
+                if (amount === null || amount === undefined) return '-';
+                const num = parseFloat(amount);
+                if (isNaN(num)) return '-';
+                return new Intl.NumberFormat('fr-FR', { 
+                    style: 'currency', 
+                    currency: 'EUR',
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2
+                }).format(num);
+            },
+            
+            isSuspended() {
+                return this.impaye?.statut === 'suspendue' || this.impaye?.is_blacklisted;
+            },
+            
+            // Note: openPdf() est défini comme workflow dans workflows/open-pdf.html
+            
+            showToast(title, message, type = 'success') {
+                this.toast = { show: true, title, message, type };
+                setTimeout(() => this.toast.show = false, 3000);
+            },
+            
+            // =====================================================
+            // 2. ENSUITE LES WORKFLOWS (ils utilisent les props ci-dessus)
+            // =====================================================
+            {% include 'impayes-detail/workflows/initial-load.html' %},
+            {% include 'impayes-detail/workflows/change-sequence.html' %},
+            {% include 'impayes-detail/workflows/suspend-facture.html' %},
+            {% include 'impayes-detail/workflows/unsuspend-facture.html' %},
+            {% include 'impayes-detail/workflows/blacklist-facture.html' %},
+            {% include 'impayes-detail/workflows/save-note.html' %},
+            {% include 'impayes-detail/workflows/open-pdf.html' %},
+            
+            // =====================================================
+            // 3. ENFIN WORKFLOW-INIT (init() dépend des props + workflows)
+            // =====================================================
+            {% include 'impayes-detail/workflows/workflow-init.html' %}
+        }));
+    });
+</script>

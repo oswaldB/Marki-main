@@ -1,0 +1,16 @@
+# Caddyfile pour Bun.js
+dev.markidiags.com {
+    tls internal
+    
+    # Route API - garde le chemin complet
+    handle /api/* {
+        reverse_proxy localhost:3001
+    }
+    
+    # Fichiers statiques
+    handle {
+        root * /home/ubuntu/marki/relance3/app/site
+        file_server
+        try_files {path} {path}/ /index.html
+    }
+}

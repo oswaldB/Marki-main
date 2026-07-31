@@ -1,0 +1,294 @@
+{% raw %}
+<script>
+document.addEventListener('alpine:init', () => {
+  Alpine.data('smtpPage', () => ({
+    // =====================================================
+    // STATE
+    // =====================================================
+    
+    // UI State
+    loading: true,
+    error: null,
+    saving: false,
+    deleting: false,
+    showNewForm: false,
+    showDeleteModal: false,
+    testingProfil: null,
+    
+    // Data
+    profils: [],
+    profilToDelete: null,
+    testResult: null,
+    
+    // New profil form
+    newProfil: {
+      nom: '',
+      email: '',
+      serveur: '',
+      port: 587,
+      securite: 'tls',
+      username: '',
+      password: '',
+      actif: true
+    },
+    
+    // =====================================================
+    // WORKFLOWS
+    // =====================================================
+    
+    /**
+     * @action Initialiser les états
+     * @checkpoint state-initialized
+     */
+    async init() {
+      await this.loadProfils();
+    },
+    
+    /**
+     * @action Charger la liste des profils SMTP
+     * @checkpoint profils-fetched
+     * @checkpoint data-stored
+     * @checkpoint loading-complete
+     */
+    async loadProfils() {
+      this.loading = true;
+      this.error = null;
+      
+      try {
+        const token = localStorage.getItem('marki_token');
+        if (!token) {
+          window.location.href = '/login';
+          return;
+        }
+        
+        const response = await fetch('/api/smtp-profiles', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) {
+          throw new Error('Erreur lors du chargement des profils SMTP');
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+          throw new Error(data.error?.message || 'Erreur de chargement');
+        }
+        
+        this.profils = data.profils || [];
+        
+      } catch (err) {
+        this.error = err.message;
+        console.error('[SMTP] Error:', err);
+      } finally {
+        this.loading = false;
+      }
+    },
+    
+    /**
+     * @action Ouvrir le formulaire de création
+     * @checkpoint new-form-opened
+     */
+    openNewProfil() {
+      this.newProfil = {
+        nom: '',
+        email: '',
+        serveur: '',
+        port: 587,
+        securite: 'tls',
+        username: '',
+        password: '',
+        actif: true
+      };
+      this.showNewForm = true;
+    },
+    
+    /**
+     * @action Fermer le formulaire de création
+     * @checkpoint new-form-closed
+     */
+    closeNewForm() {
+      this.showNewForm = false;
+    },
+    
+    /**
+     * @action Valider les champs du nouveau profil
+     * @checkpoint form-valid
+     */
+    isNewProfilValid() {
+      return this.newProfil.nom && 
+             this.newProfil.email && 
+             this.newProfil.serveur && 
+             this.newProfil.port;
+    },
+    
+    /**
+     * @action Créer un nouveau profil SMTP
+     * @checkpoint profil-created
+     * @checkpoint modal-closed
+     * @checkpoint list-updated
+     */
+    async createProfil() {
+      if (!this.isNewProfilValid()) return;
+      
+      this.saving = true;
+      
+      try {
+        const token = localStorage.getItem('marki_token');
+        
+        const response = await fetch('/api/smtp-profiles', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify(this.newProfil)
+        });
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+          throw new Error(data.error?.message || 'Erreur lors de la création');
+        }
+        
+        // @checkpoint profil-created
+        this.profils.unshift(data.data);
+        
+        // @checkpoint modal-closed
+        this.showNewForm = false;
+        this.newProfil = { nom: '', email: '', serveur: '', port: 587, securite: 'tls', username: '', password: '', actif: true };
+        
+        this.showTestResult('Profil créé avec succès', true);
+        
+      } catch (err) {
+        console.error('[SMTP] Create error:', err);
+        alert(err.message);
+      } finally {
+        this.saving = false;
+      }
+    },
+    
+    /**
+     * @action Préparer la suppression d'un profil
+     * @checkpoint delete-modal-opened
+     */
+    deleteProfil(profil) {
+      this.profilToDelete = profil;
+      this.showDeleteModal = true;
+    },
+    
+    /**
+     * @action Fermer le modal de suppression
+     * @checkpoint delete-modal-closed
+     */
+    closeDeleteModal() {
+      this.showDeleteModal = false;
+      this.profilToDelete = null;
+    },
+    
+    /**
+     * @action Confirmer et exécuter la suppression
+     * @checkpoint profil-deleted
+     * @checkpoint list-updated
+     */
+    async confirmDelete() {
+      if (!this.profilToDelete) return;
+      
+      this.deleting = true;
+      
+      try {
+        const token = localStorage.getItem('marki_token');
+        const id = this.profilToDelete.id;
+        
+        const response = await fetch(`/api/smtp-profiles/${id}`, {
+          method: 'DELETE',
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+          throw new Error(data.error?.message || 'Erreur lors de la suppression');
+        }
+        
+        // @checkpoint profil-deleted
+        this.profils = this.profils.filter(p => p.id !== id);
+        
+        // @checkpoint delete-modal-closed
+        this.showDeleteModal = false;
+        this.profilToDelete = null;
+        
+        this.showTestResult('Profil supprimé avec succès', true);
+        
+      } catch (err) {
+        console.error('[SMTP] Delete error:', err);
+        alert(err.message);
+      } finally {
+        this.deleting = false;
+      }
+    },
+    
+    /**
+     * @action Tester un profil SMTP
+     * @checkpoint test-started
+     * @checkpoint test-completed
+     */
+    async testerProfil(profil) {
+      this.testingProfil = profil.id;
+      this.testResult = null;
+      
+      try {
+        const token = localStorage.getItem('marki_token');
+        
+        const response = await fetch('/functions/testSmtpProfile', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ profileId: profil.id })
+        });
+        
+        const data = await response.json();
+        
+        this.testResult = {
+          success: data.success,
+          message: data.message || (data.success ? 'Connexion réussie' : 'Échec de la connexion'),
+          details: data.details
+        };
+        
+      } catch (err) {
+        this.testResult = {
+          success: false,
+          message: 'Erreur lors du test',
+          details: err.message
+        };
+      } finally {
+        this.testingProfil = null;
+        setTimeout(() => this.testResult = null, 5000);
+      }
+    },
+    
+    /**
+     * @action Rediriger vers la page d'édition
+     * @checkpoint navigation-to-detail
+     */
+    editProfil(profil) {
+      window.location.href = `/settings/smtp-detail/${profil.id}`;
+    },
+    
+    /**
+     * @action Afficher le résultat d'un test
+     * @checkpoint toast-shown
+     */
+    showTestResult(message, success) {
+      this.testResult = {
+        success: success,
+        message: message
+      };
+      setTimeout(() => this.testResult = null, 3000);
+    }
+  }));
+});
+</script>
+{% endraw %}

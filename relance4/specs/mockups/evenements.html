@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Événements | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body x-data="evenementsPage()" x-init="init()">
+
+<sidebar-nav-dual page="evenements"></sidebar-nav-dual>
+
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <h1 class="text-base font-semibold text-slate-700">Événements</h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500">Historique des activités</span>
+    </div>
+    
+    <div class="flex items-center gap-3">
+      <button 
+        @click="markAllAsRead()"
+        class="flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-slate-600 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-all"
+      >
+        <i class="fas fa-check-double"></i>
+        <span>Tout marquer comme lu</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="p-6">
+    
+    <!-- Filtres -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 mb-6">
+      <div class="flex flex-wrap items-center gap-4">
+        <div class="relative flex-1 min-w-[240px] max-w-md">
+          <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            x-model="searchQuery"
+            placeholder="Rechercher un événement..."
+            class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+          >
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <button 
+            @click="filterType = 'all'"
+            :class="filterType === 'all' ? 'bg-sky-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100'"
+            class="px-3 py-1.5 rounded-lg text-sm font-medium transition-all border border-slate-200"
+          >
+            Tous
+          </button>
+          <button 
+            @click="filterType = 'unread'"
+            :class="filterType === 'unread' ? 'bg-sky-500 text-white' : 'bg-white text-slate-600 hover:bg-slate-100'"
+            class="px-3 py-1.5 rounded-lg text-sm font-medium transition-all border border-slate-200 flex items-center gap-1"
+          >
+            <i class="fas fa-envelope"></i>
+            Non lus <span class="ml-1 px-1.5 py-0.5 bg-slate-100 text-slate-600 text-xs rounded-full" x-text="unreadCount"></span>
+          </button>
+        </div>
+        
+        <div class="flex-1"></div>
+        
+        <select x-model="filterCategory" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          <option value="">Toutes les catégories</option>
+          <option value="sync">Synchronisation</option>
+          <option value="payment">Paiement</option>
+          <option value="relance">Relance</option>
+          <option value="alert">Alerte</option>
+          <option value="import">Import</option>
+        </select>
+      </div>
+    </div>
+    
+    <!-- Liste des événements -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+      <div class="divide-y divide-slate-100">
+        <template x-for="event in filteredEvents" :key="event.id">
+          <div 
+            class="px-6 py-4 flex items-start gap-4 hover:bg-slate-50/50 transition-colors cursor-pointer"
+            :class="{ 'bg-sky-50/50': !event.read }"
+            @click="openEvent(event)"
+          >
+            <!-- Icon -->
+            <div class="mt-0.5">
+              <div 
+                class="w-10 h-10 rounded-full flex items-center justify-center"
+                :class="{
+                  'bg-sky-100 text-sky-600': event.type === 'sync',
+                  'bg-sky-200 text-sky-700': event.type === 'import',
+                  'bg-sky-300 text-sky-800': event.type === 'payment',
+                  'bg-sky-400 text-sky-900': event.type === 'relance',
+                  'bg-sky-500 text-white': event.type === 'alert'
+                }"
+              >
+                <i class="fas" :class="event.icon"></i>
+              </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-4">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <p class="font-medium text-slate-900" x-text="event.title"></p>
+                    <span 
+                      x-show="!event.read" 
+                      class="px-2 py-0.5 bg-sky-100 text-sky-700 text-xs font-medium rounded-full"
+                    >
+                      Nouveau
+                    </span>
+                  </div>
+                  <p class="text-sm text-slate-600 mt-0.5" x-text="event.description"></p>
+                  
+                  <!-- Métadonnées -->
+                  <div class="flex items-center gap-4 mt-2 text-xs text-slate-500">
+                    <span><i class="far fa-clock mr-1"></i><span x-text="event.time"></span></span>
+                    <span x-show="event.user"><i class="far fa-user mr-1"></i><span x-text="event.user"></span></span>
+                    <span 
+                      x-show="event.category"
+                      class="px-2 py-0.5 rounded-full"
+                      :class="{
+                        'bg-slate-100 text-slate-600': event.category === 'sync',
+                        'bg-sky-100 text-sky-600': event.category === 'payment',
+                        'bg-sky-100 text-sky-600': event.category === 'relance',
+                        'bg-sky-100 text-sky-600': event.category === 'alert'
+                      }"
+                      x-text="getCategoryLabel(event.category)"
+                    ></span>
+                  </div>
+                </div>
+                
+                <!-- Actions -->
+                <div class="flex items-center gap-2">
+                  <button 
+                    @click.stop="toggleRead(event)"
+                    class="p-2 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg transition-all"
+                    :title="event.read ? 'Marquer comme non lu' : 'Marquer comme lu'"
+                  >
+                    <i class="fas" :class="event.read ? 'fa-envelope-open' : 'fa-envelope'"></i>
+                  </button>
+                  
+                  <button 
+                    @click.stop="deleteEvent(event)"
+                    class="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-lg transition-all"
+                    title="Supprimer"
+                  >
+                    <i class="fas fa-trash"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+        
+        <!-- Empty state -->
+        <div x-show="filteredEvents.length === 0" class="px-6 py-16 text-center text-slate-400">
+          <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-inbox text-slate-400 text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-medium text-slate-900 mb-1">Aucun événement</h3>
+          <p class="text-sm text-slate-500" x-text="filterType === 'unread' ? 'Aucun événement non lu' : 'Aucun événement trouvé'"></p>
+        </div>
+      </div>
+    </div>
+    
+  </main>
+</div>
+
+<!-- Modal Détail Événement -->
+<div x-show="showModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+  <div class="absolute inset-0 bg-slate-500/75" @click="showModal = false"></div>
+  <div class="relative bg-white rounded-xl shadow-xl max-w-lg w-full" x-transition.scale>
+    
+    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+      <h3 class="text-lg font-semibold text-slate-900">Détail de l'événement</h3>
+      <button @click="showModal = false" class="text-slate-400 hover:text-slate-600">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div x-show="selectedEvent" class="px-6 py-6">
+      <div class="flex items-start gap-4">
+        <div 
+          class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0"
+          :class="{
+            'bg-sky-100 text-sky-600': selectedEvent?.type === 'sync',
+            'bg-sky-200 text-sky-700': selectedEvent?.type === 'import',
+            'bg-sky-300 text-sky-800': selectedEvent?.type === 'payment',
+            'bg-sky-400 text-sky-900': selectedEvent?.type === 'relance',
+            'bg-sky-500 text-white': selectedEvent?.type === 'alert'
+          }"
+        >
+          <i class="fas text-lg" :class="selectedEvent?.icon"></i>
+        </div>
+        
+        <div class="flex-1">
+          <h4 class="font-semibold text-slate-900" x-text="selectedEvent?.title"></h4>
+          <p class="text-sm text-slate-600 mt-1" x-text="selectedEvent?.description"></p>
+          
+          <div class="mt-4 space-y-2 text-sm">
+            <div class="flex items-center gap-2 text-slate-500">
+              <i class="far fa-clock w-4"></i>
+              <span x-text="selectedEvent?.time"></span>
+            </div>
+            <div x-show="selectedEvent?.user" class="flex items-center gap-2 text-slate-500">
+              <i class="far fa-user w-4"></i>
+              <span x-text="selectedEvent?.user"></span>
+            </div>
+            <div x-show="selectedEvent?.category" class="flex items-center gap-2">
+              <i class="fas fa-tag w-4 text-slate-400"></i>
+              <span 
+                class="px-2 py-0.5 rounded-full text-xs"
+                :class="{
+                  'bg-slate-100 text-slate-600': selectedEvent?.category === 'sync',
+                  'bg-sky-100 text-sky-600': selectedEvent?.category === 'payment',
+                  'bg-sky-100 text-sky-600': selectedEvent?.category === 'relance',
+                  'bg-sky-100 text-sky-600': selectedEvent?.category === 'alert'
+                }"
+                x-text="getCategoryLabel(selectedEvent?.category)"
+              ></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="px-6 py-4 border-t border-slate-100 bg-slate-50 flex items-center justify-end gap-2">
+      <button @click="showModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-200 rounded-lg text-sm font-medium">
+        Fermer
+      </button>
+      <button 
+        x-show="selectedEvent && !selectedEvent.read"
+        @click="markAsRead(selectedEvent); showModal = false"
+        class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium"
+      >
+        <i class="fas fa-check mr-1"></i>Marquer comme lu
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+function evenementsPage() {
+  return {
+    searchQuery: '',
+    filterType: 'all',
+    filterCategory: '',
+    showModal: false,
+    selectedEvent: null,
+    
+    events: [
+      { 
+        id: 1, 
+        type: 'alert', 
+        category: 'alert',
+        icon: 'fa-exclamation-circle',
+        title: 'Nouveau contact sans email', 
+        description: 'Le contact "Dupont SAS" n\'a pas d\'adresse email configurée',
+        time: 'Il y a 30 minutes',
+        user: 'Système',
+        read: false
+      },
+      { 
+        id: 2, 
+        type: 'sync', 
+        category: 'sync',
+        icon: 'fa-sync-alt',
+        title: 'Synchronisation effectuée', 
+        description: '3 nouvelles factures importées depuis ADTI',
+        time: 'Il y a 2 heures',
+        user: 'Admin',
+        read: false
+      },
+      { 
+        id: 3, 
+        type: 'payment', 
+        category: 'payment',
+        icon: 'fa-check-circle',
+        title: 'Paiement reçu', 
+        description: 'ACME Corp a réglé la facture F-2024-0123 (€4,230)',
+        time: 'Il y a 3 heures',
+        user: 'Système',
+        read: false
+      },
+      { 
+        id: 4, 
+        type: 'relance', 
+        category: 'relance',
+        icon: 'fa-paper-plane',
+        title: 'Relances envoyées', 
+        description: '12 relances R2 ont été envoyées automatiquement',
+        time: 'Hier à 18:30',
+        user: 'Système',
+        read: true
+      },
+      { 
+        id: 5, 
+        type: 'import', 
+        category: 'sync',
+        icon: 'fa-file-import',
+        title: 'Import de contacts', 
+        description: '15 nouveaux contacts ont été importés',
+        time: 'Il y a 2 jours',
+        user: 'Admin',
+        read: true
+      },
+      { 
+        id: 6, 
+        type: 'payment', 
+        category: 'payment',
+        icon: 'fa-check-circle',
+        title: 'Paiement partiel reçu', 
+        description: 'TechStart SARL a payé 50% de la facture F-2024-0156',
+        time: 'Il y a 3 jours',
+        user: 'Système',
+        read: true
+      }
+    ],
+    
+    init() {
+      // Initialize
+    },
+    
+    get unreadCount() {
+      return this.events.filter(e => !e.read).length;
+    },
+    
+    get filteredEvents() {
+      return this.events.filter(e => {
+        const matchesSearch = !this.searchQuery || 
+          e.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          e.description.toLowerCase().includes(this.searchQuery.toLowerCase());
+        
+        const matchesType = this.filterType === 'all' || 
+          (this.filterType === 'unread' && !e.read);
+        
+        const matchesCategory = !this.filterCategory || e.category === this.filterCategory;
+        
+        return matchesSearch && matchesType && matchesCategory;
+      });
+    },
+    
+    openEvent(event) {
+      this.selectedEvent = event;
+      this.showModal = true;
+      if (!event.read) {
+        event.read = true;
+      }
+    },
+    
+    toggleRead(event) {
+      event.read = !event.read;
+    },
+    
+    markAsRead(event) {
+      if (event) {
+        event.read = true;
+      }
+    },
+    
+    markAllAsRead() {
+      this.events.forEach(e => e.read = true);
+    },
+    
+    deleteEvent(event) {
+      if (confirm('Supprimer cet événement ?')) {
+        this.events = this.events.filter(e => e.id !== event.id);
+      }
+    },
+    
+    getCategoryLabel(category) {
+      const labels = {
+        'sync': 'Synchronisation',
+        'payment': 'Paiement',
+        'relance': 'Relance',
+        'alert': 'Alerte',
+        'import': 'Import'
+      };
+      return labels[category] || category;
+    }
+  }
+}
+</script>
+
+</body>
+</html>

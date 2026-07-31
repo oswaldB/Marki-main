@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paramètres SMTP | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body x-data="settingsSmtpPage()" x-init="init()">
+
+<sidebar-nav-dual page="settings-smtp"></sidebar-nav-dual>
+
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <h1 class="text-base font-semibold text-slate-700">Profils SMTP</h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500">Configuration des serveurs d'envoi</span>
+    </div>
+    
+    <button 
+      @click="showNewProfilForm = true"
+      class="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium transition-all"
+    >
+      <i class="fas fa-plus"></i>
+      Nouveau profil
+    </button>
+  </header>
+
+  <main class="p-6">
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      
+      <template x-for="profil in profils" :key="profil.id">
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
+          
+          <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-lg bg-sky-50 flex items-center justify-center">
+                <i class="fas fa-envelope text-sky-500"></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-slate-900" x-text="profil.nom"></h3>
+                <p class="text-xs text-slate-500" x-text="profil.email"></p>
+              </div>
+            </div>
+            <span 
+              class="px-2 py-1 text-xs font-medium rounded-full"
+              :class="profil.actif ? 'bg-sky-100 text-sky-700' : 'bg-slate-100 text-slate-600'"
+              x-text="profil.actif ? 'Actif' : 'Inactif'"
+            ></span>
+          </div>
+          
+          <div class="p-6 space-y-3">
+            <div class="flex items-center gap-3">
+              <i class="fas fa-server text-slate-400 w-5"></i>
+              <span class="text-sm text-slate-600" x-text="profil.serveur + ':' + profil.port"></span>
+            </div>
+            <div class="flex items-center gap-3">
+              <i class="fas fa-shield-alt text-slate-400 w-5"></i>
+              <span class="text-sm text-slate-600" x-text="profil.securite.toUpperCase()"></span>
+            </div>
+          </div>
+          
+          <div class="px-6 py-4 border-t border-slate-100 bg-slate-50 rounded-b-xl flex items-center justify-between">
+            <button @click="testerProfil(profil)" class="text-sm text-sky-600 hover:text-sky-700 font-medium">
+              <i class="fas fa-vial mr-1"></i>Tester
+            </button>
+            <div class="flex items-center gap-2">
+              <a :href="'./settings-smtp-detail.html?id=' + profil.id" class="p-2 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg" title="Voir détail">
+                <i class="fas fa-eye"></i>
+              </a>
+              <button @click="editProfil(profil)" class="p-2 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg">
+                <i class="fas fa-pen"></i>
+              </button>
+              <button @click="deleteProfil(profil)" class="p-2 text-slate-400 hover:text-sky-600 hover:bg-sky-50 rounded-lg">
+                <i class="fas fa-trash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+    
+    <!-- New Profil Form (x-if) -->
+    <template x-if="showNewProfilForm">
+      <div class="mt-6 bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+        <div class="flex items-center justify-between mb-6">
+          <h3 class="text-lg font-semibold text-slate-900">
+            <i class="fas fa-plus-circle text-sky-500 mr-2"></i>Nouveau profil SMTP
+          </h3>
+          <button @click="showNewProfilForm = false" class="text-slate-400 hover:text-slate-600">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Nom du profil *</label>
+            <input type="text" x-model="newProfil.nom" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Email d'envoi *</label>
+            <input type="email" x-model="newProfil.email" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Serveur SMTP *</label>
+            <input type="text" x-model="newProfil.serveur" placeholder="smtp.exemple.com" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Port *</label>
+            <input type="number" x-model="newProfil.port" placeholder="587" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Sécurité</label>
+            <select x-model="newProfil.securite" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+              <option value="tls">TLS</option>
+              <option value="ssl">SSL</option>
+              <option value="none">Aucune</option>
+            </select>
+          </div>
+          <div class="flex items-center">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" x-model="newProfil.actif" class="rounded border-slate-300 text-sky-500">
+              <span class="text-sm text-slate-700">Profil actif</span>
+            </label>
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Nom d'utilisateur</label>
+            <input type="text" x-model="newProfil.username" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+          <div class="md:col-span-2">
+            <label class="block text-sm font-medium text-slate-700 mb-1.5">Mot de passe</label>
+            <input type="password" x-model="newProfil.password" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          </div>
+        </div>
+        
+        <div class="mt-6 flex items-center justify-end gap-2">
+          <button @click="showNewProfilForm = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+          <button @click="createProfil()" :disabled="!newProfil.nom || !newProfil.email || !newProfil.serveur || !newProfil.port" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium">
+            <i class="fas fa-save mr-1"></i>Créer
+          </button>
+        </div>
+      </div>
+    </template>
+  </main>
+</div>
+
+<!-- Modal Confirmation Suppression -->
+<template x-if="showDeleteModal">
+  <div class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+    <div class="absolute inset-0 bg-slate-500/75" @click="showDeleteModal = false"></div>
+    <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full p-6" x-transition.scale>
+      <div class="text-center mb-4">
+        <div class="w-12 h-12 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-3">
+          <i class="fas fa-trash text-sky-500 text-xl"></i>
+        </div>
+        <h3 class="text-lg font-semibold text-slate-900">Confirmer la suppression</h3>
+        <p class="text-sm text-slate-500 mt-1">Êtes-vous sûr de vouloir supprimer le profil "<span x-text="profilToDelete?.nom"></span>" ?</p>
+      </div>
+      <div class="flex items-center justify-end gap-2">
+        <button @click="showDeleteModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+        <button @click="confirmDeleteProfil()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">Supprimer</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+    <!-- Toast Notification -->
+    <div x-show="toast.show" x-transition class="fixed bottom-4 right-4 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50">
+      <i :class="toast.type === 'success' ? 'fa-check-circle text-green-400' : 'fa-exclamation-circle text-red-400'" class="fas"></i>
+      <div>
+        <p class="font-medium text-sm" x-text="toast.title"></p>
+        <p class="text-xs text-slate-300" x-text="toast.message"></p>
+      </div>
+    </div>
+
+<script>
+function settingsSmtpPage() {
+  return {
+    showNewProfilForm: false,
+    showDeleteModal: false,
+    profilToDelete: null,
+    newProfil: { nom: '', email: '', serveur: '', port: '', securite: 'tls', username: '', password: '', actif: true },
+    toast: { show: false, type: 'success', title: '', message: '' },
+    toast: { show: false, type: 'success', title: '', message: '' },
+    
+    profils: [
+      { id: 1, nom: 'SMTP Principal', email: 'noreply@marki.fr', serveur: 'smtp.marki.fr', port: 587, securite: 'tls', actif: true },
+      { id: 2, nom: 'SMTP Secondaire', email: 'relances@marki.fr', serveur: 'smtp2.marki.fr', port: 587, securite: 'tls', actif: true },
+      { id: 3, nom: 'SMTP Backup', email: 'backup@marki.fr', serveur: 'backup.marki.fr', port: 465, securite: 'ssl', actif: false }
+    ],
+    
+    init() {},
+    
+    showToast(title, message, type = 'success') {
+      this.toast = { show: true, title, message, type };
+      setTimeout(() => this.toast.show = false, 3000);
+    },
+    
+    testerProfil(profil) {
+      this.showToast('Test SMTP', 'Connexion testée pour ' + profil.nom, 'success');
+    },
+    
+    editProfil(profil) {
+      window.location.href = './settings-smtp-detail.html?id=' + profil.id;
+    },
+    
+    deleteProfil(profil) {
+      this.profilToDelete = profil;
+      this.showDeleteModal = true;
+    },
+    confirmDeleteProfil() {
+      if (this.profilToDelete) {
+        this.profils = this.profils.filter(p => p.id !== this.profilToDelete.id);
+        this.showToast('Supprimé', 'Profil SMTP supprimé avec succès', 'success');
+        this.profilToDelete = null;
+        this.showDeleteModal = false;
+      }
+    },
+    
+    createProfil() {
+      const newId = Math.max(...this.profils.map(p => p.id)) + 1;
+      this.profils.push({
+        id: newId,
+        ...this.newProfil,
+        actif: false
+      });
+      this.newProfil = { nom: '', email: '', serveur: '', port: '', securite: 'tls', username: '', password: '', actif: true };
+      this.showNewProfilForm = false;
+      this.showToast('Créé', 'Profil SMTP créé avec succès', 'success');
+    }
+  }
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Synchronisation | Marki</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+      animation: spin-slow 2s linear infinite;
+    }
+    @keyframes progress-stripes {
+      from { background-position: 1rem 0; }
+      to { background-position: 0 0; }
+    }
+    .animate-stripes {
+      background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.25) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.25) 75%,
+        transparent 75%,
+        transparent
+      );
+      background-size: 1rem 1rem;
+      animation: progress-stripes 1s linear infinite;
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-slate-50 flex items-center justify-center">
+
+  <div class="w-full max-w-sm px-6 text-center">
+    
+    <!-- Logo -->
+    <div class="mb-8">
+      <div class="inline-flex items-center justify-center w-16 h-16 rounded-xl mb-4 overflow-hidden">
+        <img src="./marki-logo.png" alt="Marki" class="w-full h-full object-contain">
+      </div>
+      <h1 class="text-xl font-semibold text-slate-900 mb-1">Synchronisation...</h1>
+      <p class="text-sm text-slate-500" id="sync-status">Récupération de vos données</p>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="relative">
+      <div class="h-2 bg-slate-200 rounded-full overflow-hidden">
+        <div id="progress-bar" class="h-full bg-sky-500 rounded-full transition-all duration-300 ease-out animate-stripes" style="width: 45%"></div>
+      </div>
+      <div class="text-right mt-2">
+        <span class="text-xs font-medium text-sky-600" id="sync-percentage">45%</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Demo Controls -->
+  <div class="fixed bottom-4 right-4 flex gap-2">
+    <button onclick="updateProgress(25, 'Connexion...')" class="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs rounded-lg hover:bg-slate-50 shadow-sm">25%</button>
+    <button onclick="updateProgress(60, 'Téléchargement...')" class="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs rounded-lg hover:bg-slate-50 shadow-sm">60%</button>
+    <button onclick="updateProgress(100, 'Terminé !')" class="px-3 py-1.5 bg-white border border-slate-200 text-slate-600 text-xs rounded-lg hover:bg-slate-50 shadow-sm">100%</button>
+  </div>
+
+  <script>
+    function updateProgress(percent, status) {
+      document.getElementById('progress-bar').style.width = percent + '%';
+      document.getElementById('sync-percentage').textContent = percent + '%';
+      if (status) {
+        document.getElementById('sync-status').textContent = status;
+      }
+    }
+  </script>
+
+</body>
+</html>

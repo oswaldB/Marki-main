@@ -1,0 +1,208 @@
+{% raw %}
+<script>
+document.addEventListener('alpine:init', () => {
+  Alpine.data('smtpDetailPage', () => ({
+    // =====================================================
+    // STATE
+    // =====================================================
+    
+    // UI State
+    loading: true,
+    error: null,
+    saving: false,
+    testing: false,
+    showPassword: false,
+    
+    // Data
+    profil: null,
+    testResult: null,
+    profilId: null,
+    
+    // =====================================================
+    // WORKFLOWS
+    // =====================================================
+    
+    /**
+     * @action Extraire l'ID du profil depuis l'URL
+     * @checkpoint profil-id-extracted
+     */
+    init() {
+      // Extraire l'ID de l'URL /settings/smtp-detail/xxx
+      const pathParts = window.location.pathname.split('/');
+      this.profilId = pathParts[pathParts.length - 1];
+      
+      if (!this.profilId || this.profilId === 'smtp-detail') {
+        this.error = 'ID du profil manquant';
+        this.loading = false;
+        return;
+      }
+      
+      this.loadProfil();
+    },
+    
+    /**
+     * @action Charger les détails du profil SMTP
+     * @checkpoint profil-fetched
+     * @checkpoint data-stored
+     * @checkpoint loading-complete
+     */
+    async loadProfil() {
+      this.loading = true;
+      this.error = null;
+      
+      try {
+        const token = localStorage.getItem('marki_token');
+        if (!token) {
+          window.location.href = '/login';
+          return;
+        }
+        
+        const response = await fetch(`/api/smtp-profiles/${this.profilId}`, {
+          headers: { 'Authorization': `Bearer ${token}` }
+        });
+        
+        if (!response.ok) {
+          if (response.status === 404) {
+            throw new Error('Profil SMTP non trouvé');
+          }
+          throw new Error('Erreur lors du chargement du profil');
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+          throw new Error(data.error?.message || 'Erreur de chargement');
+        }
+        
+        this.profil = data.profil;
+        
+      } catch (err) {
+        this.error = err.message;
+        console.error('[SMTP DETAIL] Error:', err);
+      } finally {
+        this.loading = false;
+      }
+    },
+    
+    /**
+     * @action Basculer la visibilité du mot de passe
+     * @checkpoint password-toggled
+     */
+    togglePassword() {
+      this.showPassword = !this.showPassword;
+    },
+    
+    /**
+     * @action Sauvegarder les modifications du profil
+     * @checkpoint changes-saved
+     */
+    async saveChanges() {
+      if (!this.profil) return;
+      
+      // Validation
+      if (!this.profil.nom || !this.profil.email || !this.profil.serveur || !this.profil.port) {
+        alert('Veuillez remplir tous les champs obligatoires');
+        return;
+      }
+      
+      this.saving = true;
+      
+      try {
+        const token = localStorage.getItem('marki_token');
+        
+        const response = await fetch(`/api/smtp-profiles/${this.profilId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            nom: this.profil.nom,
+            email: this.profil.email,
+            serveur: this.profil.serveur,
+            port: parseInt(this.profil.port),
+            securite: this.profil.securite,
+            actif: this.profil.actif,
+            signature: this.profil.signature,
+            username: this.profil.username,
+            password: this.profil.password || undefined // Ne pas envoyer si vide
+          })
+        });
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+          throw new Error(data.error?.message || 'Erreur lors de la sauvegarde');
+        }
+        
+        // Mettre à jour le profil avec les données retournées
+        this.profil = { ...this.profil, ...data.data };
+        
+        // Vider le mot de passe après sauvegarde (pour sécurité)
+        this.profil.password = '';
+        
+        this.showNotification('Modifications enregistrées avec succès', true);
+        
+      } catch (err) {
+        console.error('[SMTP DETAIL] Save error:', err);
+        this.showNotification(err.message, false);
+      } finally {
+        this.saving = false;
+      }
+    },
+    
+    /**
+     * @action Tester la connexion SMTP
+     * @checkpoint test-started
+     * @checkpoint test-completed
+     */
+    async testerConnexion() {
+      this.testing = true;
+      this.testResult = null;
+      
+      try {
+        const token = localStorage.getItem('marki_token');
+        
+        const response = await fetch('/functions/testSmtpProfile', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ profileId: this.profilId })
+        });
+        
+        const data = await response.json();
+        
+        this.testResult = {
+          success: data.success,
+          message: data.message || (data.success ? 'Connexion réussie' : 'Échec de la connexion'),
+          details: data.details
+        };
+        
+      } catch (err) {
+        this.testResult = {
+          success: false,
+          message: 'Erreur lors du test',
+          details: err.message
+        };
+      } finally {
+        this.testing = false;
+      }
+    },
+    
+    /**
+     * @action Afficher une notification
+     * @checkpoint notification-shown
+     */
+    showNotification(message, success) {
+      this.testResult = {
+        success: success,
+        message: message
+      };
+      setTimeout(() => this.testResult = null, 3000);
+    }
+  }));
+});
+</script>
+{% endraw %}

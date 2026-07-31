@@ -1,0 +1,77 @@
+<!-- Workflow: Suspendre facture -->
+
+async confirmSuspend() {
+  // @checkpoint confirm-suspend-called
+  if (!this.suspendForm.motif) {
+    return;
+  }
+  
+  this.suspending = true;
+  
+  try {
+    const token = localStorage.getItem('marki_token');
+    if (!token) {
+      window.location.href = '/login';
+      return;
+    }
+    
+    // @action Appeler API suspend
+    // @checkpoint api-called
+    const response = await fetch(`/api/impayes/${this.selectedFacture.id}/suspend`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        motif: this.suspendForm.motif,
+        detail: this.suspendForm.detail
+      })
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Erreur ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    if (!data.success) {
+      throw new Error(data.error || 'Erreur de suspension');
+    }
+    
+    // @action Mettre à jour local
+    // @checkpoint local-updated
+    const index = this.allFactures.findIndex(f => f.id === this.selectedFacture.id);
+    if (index !== -1) {
+      this.allFactures[index].statut = 'suspendue';
+      this.selectedFacture.statut = 'suspendue';
+    }
+    
+    // @action Fermer modal
+    // @checkpoint modal-closed
+    this.showSuspendModal = false;
+    
+    // @action Notifier succès
+    const relancesAnnulees = data.relances_annulees || 0;
+    if (Alpine.store('ui')?.addToast) {
+      Alpine.store('ui').addToast(
+        `Facture suspendue. ${relancesAnnulees} relance(s) annulée(s).`,
+        'success'
+      );
+    }
+    
+    log.info('facture-suspended', { 
+      factureId: this.selectedFacture.id,
+      relancesAnnulees 
+    });
+    
+  } catch (err) {
+    log.error('suspend-error', err.message);
+    if (Alpine.store('ui')?.addToast) {
+      Alpine.store('ui').addToast(err.message, 'error');
+    }
+  } finally {
+    this.suspending = false;
+    this.suspendForm = { motif: '', detail: '' };
+  }
+}

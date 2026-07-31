@@ -1,0 +1,547 @@
+<script>
+// =====================================================
+// LOGGER GLOBAL - Génération exhaustive des logs
+// =====================================================
+const logBlacklist = {
+    debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+    info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+    warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+    error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+};
+
+// =====================================================
+// ALPINE.JS DATA - Pattern: Props → Workflows → Init
+// =====================================================
+document.addEventListener('alpine:init', () => {
+    Alpine.data('contactsBlacklistPage', () => ({
+        // =====================================================
+        // 1. PROPS RÉACTIVES (STATE) - Définies D'ABORD
+        // =====================================================
+        
+        // UI State
+        loading: false,
+        
+        // Search & Pagination
+        searchQuery: '',
+        currentPage: 1,
+        itemsPerPage: 12,
+        
+        // Data
+        contacts: [],
+        filteredContacts: [],
+        
+        // UI State - Modals
+        showRemoveModal: false,
+        showRemoveAllModal: false,
+        
+        // Selected
+        contactToRemove: null,
+        
+        // Actions en cours
+        removing: false,
+        removingAll: false,
+        
+        // Debounce timer
+        debounceTimer: null,
+
+        // =====================================================
+        // GETTERS CALCULÉS - Définis avec les props
+        // =====================================================
+        
+        // Computed: Contacts paginés
+        get paginatedContacts() {
+            const start = (this.currentPage - 1) * this.itemsPerPage;
+            return this.filteredContacts.slice(start, start + this.itemsPerPage);
+        },
+        
+        // Computed: Nombre total de pages
+        get totalPages() {
+            return Math.ceil(this.filteredContacts.length / this.itemsPerPage) || 1;
+        },
+        
+        // Computed: Pages visibles (max 5)
+        get visiblePages() {
+            const pages = [];
+            const maxVisible = 5;
+            let start = Math.max(1, this.currentPage - Math.floor(maxVisible / 2));
+            let end = Math.min(this.totalPages, start + maxVisible - 1);
+            if (end - start + 1 < maxVisible) {
+                start = Math.max(1, end - maxVisible + 1);
+            }
+            for (let i = start; i <= end; i++) {
+                pages.push(i);
+            }
+            return pages;
+        },
+
+        // =====================================================
+        // HELPERS - Méthodes utilitaires
+        // =====================================================
+        
+        formatDate(dateStr) {
+            if (!dateStr) return '-';
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('fr-FR');
+        },
+
+        // =====================================================
+        // 2. WORKFLOWS - Définis APRÈS les props
+        // =====================================================
+        
+        // -----------------------------------------------------
+        // WORKFLOW: contacts-blacklist-load
+        // Description: Charge les contacts blacklistés
+        // -----------------------------------------------------
+        
+        /**
+         * @action Initialiser le workflow
+         * @checkpoint wf-blacklist-init
+         * State: { loading: true, contacts: [] }
+         */
+        async loadContacts() {
+            const workflowId = crypto.randomUUID();
+            logBlacklist.info('WORKFLOW_START', { 
+                workflowId, 
+                workflow: 'contacts-blacklist-load' 
+            });
+            
+            this.loading = true;
+            logBlacklist.debug('wf-blacklist-init', { loading: true });
+            
+            try {
+                /**
+                 * @action Construire l'URL
+                 * @checkpoint wf-blacklist-url-built
+                 * Params: { is_blacklisted: '1', limit: 1000 }
+                 */
+                const url = '/api/contacts?is_blacklisted=1&limit=1000';
+                logBlacklist.debug('wf-blacklist-url-built', { url });
+                
+                /**
+                 * @action Fetch API
+                 * @checkpoint wf-blacklist-api-called
+                 */
+                const response = await fetch(url);
+                logBlacklist.debug('wf-blacklist-api-called', { status: response.status });
+                
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                /**
+                 * @action Normaliser les données
+                 * @checkpoint wf-blacklist-data-normalized
+                 * Transformations: standard contact normalization + date de blacklist
+                 */
+                this.contacts = (data.contacts || []).map(contact => ({
+                    id: contact.id,
+                    nomComplet: contact.nomComplet || contact.nom || 'Sans nom',
+                    typePersonne: contact.typePersonne || 'P',
+                    entreprise: contact.entreprise || null,
+                    email: contact.email || null,
+                    telephone: contact.telephone || '',
+                    impayesCount: contact.impayesCount || 0,
+                    dateBlacklist: null,  // Pas de date en base
+                    isBlacklisted: 1,
+                    statut: 'blacklist'
+                }));
+                
+                this.filteredContacts = [...this.contacts];
+                this.currentPage = 1;
+                
+                logBlacklist.debug('wf-blacklist-data-normalized', { 
+                    count: this.contacts.length 
+                });
+                
+                /**
+                 * @action Terminer
+                 * @checkpoint wf-blacklist-complete
+                 * State: { loading: false, contacts: [...] }
+                 */
+                logBlacklist.info('WORKFLOW_SUCCESS', { 
+                    workflowId, 
+                    workflow: 'contacts-blacklist-load',
+                    contactCount: this.contacts.length 
+                });
+                
+            } catch (error) {
+                /**
+                 * @action Erreur
+                 * @checkpoint wf-blacklist-error
+                 * State: { loading: false, contacts: [], error: message }
+                 */
+                logBlacklist.error('wf-blacklist-error', { 
+                    workflowId, 
+                    error: error.message 
+                });
+                this.contacts = [];
+                this.filteredContacts = [];
+            } finally {
+                this.loading = false;
+            }
+        },
+        
+        // -----------------------------------------------------
+        // WORKFLOW: contacts-blacklist-search
+        // Description: Recherche de contacts blacklistés (backend)
+        // -----------------------------------------------------
+        
+        /**
+         * @action Capturer l'input utilisateur
+         * @checkpoint wf-blacklist-search-input
+         * Event: @input sur le champ de recherche
+         * Debounce: 300ms
+         */
+        debouncedSearch() {
+            const workflowId = crypto.randomUUID();
+            logBlacklist.debug('wf-blacklist-search-input', { 
+                workflowId,
+                query: this.searchQuery 
+            });
+            
+            clearTimeout(this.debounceTimer);
+            
+            this.debounceTimer = setTimeout(() => {
+                this.searchContacts(workflowId);
+            }, 300);
+        },
+        
+        async searchContacts(workflowId) {
+            const query = this.searchQuery.trim();
+            
+            /**
+             * @action Vérifier la query
+             * @checkpoint wf-blacklist-search-validated
+             * Condition: searchQuery.trim().length >= 2 || searchQuery === ''
+             */
+            if (query.length > 0 && query.length < 2) {
+                logBlacklist.debug('wf-blacklist-search-validated', { 
+                    workflowId, 
+                    valid: false, 
+                    reason: 'query_too_short' 
+                });
+                return;
+            }
+            
+            logBlacklist.debug('wf-blacklist-search-validated', { 
+                workflowId, 
+                valid: true, 
+                query 
+            });
+            
+            this.loading = true;
+            
+            try {
+                /**
+                 * @action Construire l'URL de recherche
+                 * @checkpoint wf-blacklist-search-url-built
+                 * Params: { is_blacklisted: '1', search: query, limit: 1000 }
+                 */
+                let url = '/api/contacts?is_blacklisted=1&limit=1000';
+                if (query) {
+                    url += `&search=${encodeURIComponent(query)}`;
+                }
+                logBlacklist.debug('wf-blacklist-search-url-built', { workflowId, url });
+                
+                /**
+                 * @action Appeler l'API backend
+                 * @checkpoint wf-blacklist-search-api-called
+                 * Request: GET /api/contacts?is_blacklisted=1&search={query}
+                 * Loading: true
+                 */
+                const response = await fetch(url);
+                logBlacklist.debug('wf-blacklist-search-api-called', { 
+                    workflowId, 
+                    status: response.status 
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP ${response.status}`);
+                }
+                
+                /**
+                 * @action Traiter la réponse
+                 * @checkpoint wf-blacklist-search-response
+                 * Response: { contacts: [...], total: N }
+                 */
+                const data = await response.json();
+                
+                this.filteredContacts = (data.contacts || []).map(contact => ({
+                    id: contact.id,
+                    nomComplet: contact.nomComplet || contact.nom || 'Sans nom',
+                    typePersonne: contact.typePersonne || 'P',
+                    entreprise: contact.entreprise || null,
+                    email: contact.email || null,
+                    telephone: contact.telephone || '',
+                    impayesCount: contact.impayesCount || 0,
+                    dateBlacklist: null,
+                    isBlacklisted: 1
+                }));
+                
+                logBlacklist.debug('wf-blacklist-search-response', { 
+                    workflowId, 
+                    count: this.filteredContacts.length 
+                });
+                
+                /**
+                 * @action Mettre à jour l'état
+                 * @checkpoint wf-blacklist-search-complete
+                 * State: { loading: false, contacts: filteredResults, currentPage: 1 }
+                 */
+                this.currentPage = 1;
+                
+                logBlacklist.info('WORKFLOW_SUCCESS', { 
+                    workflowId, 
+                    workflow: 'contacts-blacklist-search',
+                    resultCount: this.filteredContacts.length 
+                });
+                
+            } catch (error) {
+                /**
+                 * @action Erreur réseau/API
+                 * @checkpoint wf-blacklist-search-error
+                 * State: { loading: false, error: 'Erreur de recherche' }
+                 */
+                logBlacklist.error('wf-blacklist-search-error', { 
+                    workflowId, 
+                    error: error.message 
+                });
+            } finally {
+                this.loading = false;
+            }
+        },
+        
+        // -----------------------------------------------------
+        // WORKFLOW: contacts-blacklist-remove
+        // Description: Retire un contact de la blacklist
+        // -----------------------------------------------------
+        
+        /**
+         * @action Confirmer l'action
+         * @checkpoint unblacklist-confirm
+         * Dialog: "Retirer [nom] de la blacklist ?"
+         */
+        openRemoveConfirm(contact) {
+            logBlacklist.debug('unblacklist-confirm', { 
+                contactId: contact.id, 
+                nomComplet: contact.nomComplet 
+            });
+            this.contactToRemove = contact;
+            this.showRemoveModal = true;
+        },
+        
+        async confirmRemove() {
+            const workflowId = crypto.randomUUID();
+            logBlacklist.info('WORKFLOW_START', { 
+                workflowId, 
+                workflow: 'contacts-blacklist-remove',
+                contactId: this.contactToRemove?.id 
+            });
+            
+            if (!this.contactToRemove) {
+                logBlacklist.warn('VALIDATION_ERROR', { 
+                    workflowId, 
+                    reason: 'no_contact_to_remove' 
+                });
+                return;
+            }
+            
+            this.removing = true;
+            
+            try {
+                /**
+                 * @action Appel API
+                 * @checkpoint unblacklist-api-called
+                 * API: PUT /api/contacts/{id} ou POST /api/contacts/{id}/blacklist
+                 * Payload: { is_blacklisted: 0 }
+                 */
+                const url = `/api/contacts/${this.contactToRemove.id}/blacklist`;
+                logBlacklist.debug('unblacklist-api-called', { 
+                    workflowId, 
+                    url, 
+                    method: 'POST' 
+                });
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ motif: null })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP ${response.status}`);
+                }
+                
+                const result = await response.json();
+                
+                /**
+                 * @action Mettre à jour l'UI
+                 * @checkpoint unblacklist-complete
+                 * - Toast: "[nom] a été retiré de la blacklist"
+                 * - Retirer le contact de la liste locale
+                 * - Mettre à jour le compteur
+                 */
+                const contactName = this.contactToRemove.nomComplet;
+                
+                // Retirer de la liste locale
+                this.contacts = this.contacts.filter(c => c.id !== this.contactToRemove.id);
+                this.filteredContacts = this.filteredContacts.filter(c => c.id !== this.contactToRemove.id);
+                
+                logBlacklist.debug('unblacklist-complete', { 
+                    workflowId, 
+                    contactId: this.contactToRemove.id,
+                    remainingCount: this.contacts.length 
+                });
+                
+                this.showRemoveModal = false;
+                this.contactToRemove = null;
+                
+                logBlacklist.info('WORKFLOW_SUCCESS', { 
+                    workflowId, 
+                    workflow: 'contacts-blacklist-remove',
+                    contactName 
+                });
+                
+                // Notification visuelle
+                this.$dispatch('toast', { 
+                    message: `${contactName} a été retiré de la blacklist`, 
+                    type: 'success' 
+                });
+                
+            } catch (error) {
+                /**
+                 * @action Erreur
+                 * @checkpoint unblacklist-error
+                 * Toast: "Erreur: [message]"
+                 */
+                logBlacklist.error('unblacklist-error', { 
+                    workflowId, 
+                    error: error.message 
+                });
+                
+                this.$dispatch('toast', { 
+                    message: `Erreur: ${error.message}`, 
+                    type: 'error' 
+                });
+            } finally {
+                this.removing = false;
+            }
+        },
+        
+        // -----------------------------------------------------
+        // WORKFLOW: contacts-blacklist-bulk-remove
+        // Description: Retire plusieurs contacts de la blacklist
+        // -----------------------------------------------------
+        
+        /**
+         * @action Confirmer l'action en masse
+         * @checkpoint bulk-unblacklist-confirm
+         * Dialog: "Retirer X contacts de la blacklist ?"
+         */
+        openRemoveAllConfirm() {
+            logBlacklist.debug('bulk-unblacklist-confirm', { 
+                count: this.contacts.length 
+            });
+            this.showRemoveAllModal = true;
+        },
+        
+        async confirmRemoveAll() {
+            const workflowId = crypto.randomUUID();
+            logBlacklist.info('WORKFLOW_START', { 
+                workflowId, 
+                workflow: 'contacts-blacklist-bulk-remove',
+                contactCount: this.contacts.length 
+            });
+            
+            if (this.contacts.length === 0) {
+                this.showRemoveAllModal = false;
+                return;
+            }
+            
+            this.removingAll = true;
+            
+            try {
+                const contactIds = this.contacts.map(c => c.id);
+                
+                /**
+                 * @action Appel API
+                 * @checkpoint bulk-unblacklist-api-called
+                 * API: POST /api/contacts/bulk-unblacklist
+                 * Payload: { contact_ids: [...] }
+                 */
+                const url = '/api/contacts/bulk-unblacklist';
+                logBlacklist.debug('bulk-unblacklist-api-called', { 
+                    workflowId, 
+                    url, 
+                    contactIdsCount: contactIds.length 
+                });
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ contact_ids: contactIds })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Erreur HTTP ${response.status}`);
+                }
+                
+                const result = await response.json();
+                
+                /**
+                 * @action Traiter la réponse
+                 * @checkpoint bulk-unblacklist-complete
+                 * Success: Mise à jour de la liste + toast
+                 */
+                const removedCount = result.updated || contactIds.length;
+                
+                this.contacts = [];
+                this.filteredContacts = [];
+                this.currentPage = 1;
+                
+                logBlacklist.debug('bulk-unblacklist-complete', { 
+                    workflowId, 
+                    removedCount 
+                });
+                
+                this.showRemoveAllModal = false;
+                
+                logBlacklist.info('WORKFLOW_SUCCESS', { 
+                    workflowId, 
+                    workflow: 'contacts-blacklist-bulk-remove',
+                    removedCount 
+                });
+                
+                this.$dispatch('toast', { 
+                    message: `${removedCount} contacts ont été retirés de la blacklist`, 
+                    type: 'success' 
+                });
+                
+            } catch (error) {
+                logBlacklist.error('bulk-unblacklist-error', { 
+                    workflowId, 
+                    error: error.message 
+                });
+                
+                this.$dispatch('toast', { 
+                    message: `Erreur: ${error.message}`, 
+                    type: 'error' 
+                });
+            } finally {
+                this.removingAll = false;
+            }
+        },
+
+        // =====================================================
+        // 3. INIT - En DERNIER (dépend des props et workflows)
+        // =====================================================
+        
+        init() {
+            logBlacklist.info('PAGE_INIT', { page: 'contacts-blacklist' });
+            this.loadContacts();
+        }
+    }));
+});
+</script>

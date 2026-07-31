@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts sans email | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+    .contact-card { transition: all 0.2s ease; }
+    .contact-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -4px rgba(0,0,0,0.1); }
+    .sans-email-card { border-left: 4px solid #f59e0b; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+  </style>
+</head>
+<body x-data="contactsSansEmailPage()" x-init="init()">
+
+<!-- Sidebar -->
+<div class="fixed left-0 top-0 h-full w-72 bg-slate-900 text-white z-50">
+  <div class="p-6 border-b border-slate-800">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-sky-500 rounded-lg flex items-center justify-center">
+        <i class="fas fa-bolt text-white text-xl"></i>
+      </div>
+      <span class="text-xl font-bold">Marki</span>
+    </div>
+  </div>
+  <nav class="p-4 space-y-1">
+    <a href="./dashboard.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white">
+      <i class="fas fa-home w-5"></i><span>Tableau de bord</span>
+    </a>
+    <a href="./contacts.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white">
+      <i class="fas fa-address-book w-5"></i><span>Contacts</span>
+    </a>
+    <a href="./contacts-blacklist.html" class="flex items-center gap-3 px-4 py-3 rounded-lg text-slate-400 hover:bg-slate-800 hover:text-white">
+      <i class="fas fa-ban w-5"></i><span>Blacklist</span>
+      <span class="ml-auto px-2 py-0.5 bg-red-500 text-xs rounded-full">3</span>
+    </a>
+    <a href="./contacts-sans-email.html" class="flex items-center gap-3 px-4 py-3 rounded-lg bg-amber-500 text-white">
+      <i class="fas fa-exclamation-triangle w-5"></i><span>Sans email</span>
+      <span class="ml-auto px-2 py-0.5 bg-amber-700 text-xs rounded-full">5</span>
+    </a>
+  </nav>
+</div>
+
+<!-- Main Content -->
+<div class="ml-72 min-h-screen bg-slate-50">
+  
+  <!-- Header -->
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 sticky top-0 z-40">
+    <div class="flex items-center gap-4">
+      <a href="./contacts.html" class="text-slate-400 hover:text-slate-600"><i class="fas fa-arrow-left"></i></a>
+      <div>
+        <h1 class="text-xl font-semibold text-slate-800">Contacts sans email</h1>
+        <p class="text-sm text-slate-500">Ces contacts ne peuvent pas recevoir de relances par email</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="p-8">
+    
+    <!-- Alert Banner -->
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-6 flex items-center gap-3">
+      <i class="fas fa-exclamation-triangle text-amber-500 text-xl"></i>
+      <div class="flex-1">
+        <p class="font-medium text-amber-800"><span x-text="contacts.length"></span> contacts sans email</p>
+        <p class="text-sm text-amber-600">Vous pouvez définir un email forcé pour ces contacts afin qu'ils reçoivent les relances.</p>
+      </div>
+    </div>
+    
+    <!-- Search & Filters -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 mb-6">
+      <div class="flex flex-wrap items-center gap-4">
+        <div class="relative flex-1 min-w-[300px] max-w-md">
+          <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input type="text" x-model="searchQuery" @input="filterContacts()"
+            placeholder="Rechercher un contact..."
+            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500">
+        </div>
+        <div class="flex items-center gap-2">
+          <button @click="selectAllWithEmailForce()" class="px-4 py-2 text-amber-700 bg-amber-50 hover:bg-amber-100 rounded-lg text-sm font-medium transition-all">
+            <i class="fas fa-envelope mr-1.5"></i>Définir email forcé en masse
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Loading -->
+    <template x-if="loading">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <template x-for="i in 6" :key="i">
+          <div class="bg-white rounded-xl border border-slate-200 p-4 animate-pulse">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-slate-200 rounded-full"></div>
+              <div class="flex-1">
+                <div class="h-4 bg-slate-200 rounded w-3/4 mb-2"></div>
+                <div class="h-3 bg-slate-200 rounded w-1/2"></div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+    
+    <!-- Empty -->
+    <template x-if="!loading && filteredContacts.length === 0">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm py-16">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-check text-green-500 text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-medium text-slate-900 mb-1">Tous les contacts ont un email</h3>
+          <p class="text-sm text-slate-500">Aucun contact sans email trouvé</p>
+        </div>
+      </div>
+    </template>
+    
+    <!-- Cards Grid -->
+    <template x-if="!loading && filteredContacts.length > 0">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <template x-for="contact in paginatedContacts" :key="contact.id">
+          <div class="sans-email-card contact-card bg-white rounded-xl border border-slate-200 shadow-sm p-5">
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center text-amber-700 font-bold">
+                  <i class="fas fa-user"></i>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900" x-text="contact.nomComplet"></p>
+                  <p class="text-sm text-slate-500" x-text="contact.entreprise || 'Personne physique'"></p>
+                </div>
+              </div>
+              <span class="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full font-medium">Sans email</span>
+            </div>
+            
+            <div class="space-y-2 mb-4">
+              <div class="flex items-center gap-2 text-sm">
+                <i class="fas fa-phone text-slate-400 w-4"></i>
+                <span x-text="contact.telephone || 'Téléphone non renseigné'" :class="contact.telephone ? 'text-slate-700' : 'text-slate-400 italic'"></span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <i class="fas fa-file-invoice-dollar text-slate-400 w-4"></i>
+                <span x-text="contact.impayesCount + ' impayé(s)'" :class="contact.impayesCount > 0 ? 'text-sky-600 font-medium' : 'text-slate-500'"></span>
+              </div>
+            </div>
+            
+            <div class="pt-4 border-t border-slate-100 flex items-center gap-2">
+              <button @click="openSetEmailForce(contact)" class="flex-1 px-3 py-2 text-sky-700 bg-sky-50 hover:bg-sky-100 border border-sky-200 rounded-lg text-sm font-medium transition-colors">
+                <i class="fas fa-envelope mr-1.5"></i>Définir email forcé
+              </button>
+              <button @click="viewContact(contact)" class="p-2 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-lg">
+                <i class="fas fa-eye"></i>
+              </button>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+    
+    <!-- Pagination -->
+    <div x-show="totalPages > 1" class="mt-6 flex items-center justify-center gap-2">
+      <button @click="currentPage--" :disabled="currentPage === 1" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <template x-for="page in visiblePages" :key="page">
+        <button @click="currentPage = page" class="px-3 py-1.5 rounded-lg text-sm font-medium transition-all" 
+                :class="currentPage === page ? 'bg-amber-500 text-white' : 'border border-slate-200 text-slate-600 hover:bg-slate-50'" 
+                x-text="page"></button>
+      </template>
+      <button @click="currentPage++" :disabled="currentPage === totalPages" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    
+  </main>
+</div>
+
+<!-- Set Email Force Modal -->
+<div x-show="showEmailForceModal" x-cloak class="fixed inset-0 z-50 overflow-y-auto" x-transition.opacity>
+  <div class="flex items-center justify-center min-h-screen p-4">
+    <div class="absolute inset-0 bg-slate-500/75" @click="showEmailForceModal = false"></div>
+    <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full" x-transition.scale>
+      <div class="p-6">
+        <div class="flex items-center justify-between mb-4">
+          <h3 class="text-lg font-semibold text-slate-900 flex items-center gap-2">
+            <i class="fas fa-envelope text-amber-500"></i>Définir un email forcé
+          </h3>
+          <button @click="showEmailForceModal = false" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="bg-amber-50 rounded-lg p-4 mb-4 border border-amber-100">
+          <p class="text-sm text-amber-800 font-medium" x-text="selectedContact?.nomComplet"></p>
+          <p class="text-sm text-amber-600" x-text="selectedContact?.entreprise"></p>
+        </div>
+        
+        <div class="space-y-3">
+          <label class="flex items-start gap-3 p-3 border rounded-lg cursor-pointer hover:bg-slate-50" :class="emailForceMode === 'select' ? 'border-amber-300 bg-amber-50' : 'border-slate-200'">
+            <input type="radio" x-model="emailForceMode" value="select" class="mt-1">
+            <div>
+              <p class="font-medium text-slate-900">Choisir un contact existant</p>
+              <div x-show="emailForceMode === 'select'" class="mt-2">
+                <input type="text" x-model="emailSearchQuery" @input="searchContacts()" placeholder="Rechercher..." class="w-full px-3 py-2 border border-slate-200 rounded-lg text-sm">
+              </div>
+            </div>
+          </label>
+          
+          <label class="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-slate-50" :class="emailForceMode === 'manual' ? 'border-amber-300 bg-amber-50' : 'border-slate-200'">
+            <input type="radio" x-model="emailForceMode" value="manual" class="mt-1">
+            <div class="flex-1">
+              <p class="font-medium text-slate-900">Saisir un email manuellement</p>
+              <input x-show="emailForceMode === 'manual'" x-model="manualEmail" type="email" placeholder="email@exemple.com" class="w-full mt-2 px-3 py-2 border border-slate-200 rounded-lg text-sm">
+            </div>
+          </label>
+        </div>
+      </div>
+      
+      <div class="border-t border-slate-100 px-6 py-4 flex justify-end gap-2">
+        <button @click="showEmailForceModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Annuler</button>
+        <button @click="saveEmailForce()" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-sm font-medium">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function contactsSansEmailPage() {
+  return {
+    loading: false,
+    searchQuery: '',
+    currentPage: 1,
+    itemsPerPage: 12,
+    contacts: [],
+    filteredContacts: [],
+    showEmailForceModal: false,
+    selectedContact: null,
+    emailForceMode: 'select',
+    emailSearchQuery: '',
+    manualEmail: '',
+    
+    init() {
+      this.loadContacts();
+    },
+    
+    async loadContacts() {
+      this.loading = true;
+      await new Promise(r => setTimeout(r, 500));
+      this.contacts = [
+        { id: 1, nomComplet: 'Sophie Bernard', entreprise: 'Digital Agency', telephone: '06 12 34 56 78', impayesCount: 0 },
+        { id: 2, nomComplet: 'Camille Roux', entreprise: 'Entreprise JKL', telephone: '01 56 78 90 12', impayesCount: 0 },
+        { id: 3, nomComplet: 'Nicolas Garcia', entreprise: 'Auto-entrepreneur', telephone: '', impayesCount: 2 },
+      ];
+      this.filteredContacts = this.contacts;
+      this.loading = false;
+    },
+    
+    filterContacts() {
+      if (!this.searchQuery) {
+        this.filteredContacts = this.contacts;
+      } else {
+        const q = this.searchQuery.toLowerCase();
+        this.filteredContacts = this.contacts.filter(c => 
+          c.nomComplet.toLowerCase().includes(q) ||
+          c.entreprise?.toLowerCase().includes(q)
+        );
+      }
+      this.currentPage = 1;
+    },
+    
+    get paginatedContacts() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      return this.filteredContacts.slice(start, start + this.itemsPerPage);
+    },
+    
+    get totalPages() {
+      return Math.ceil(this.filteredContacts.length / this.itemsPerPage) || 1;
+    },
+    
+    get visiblePages() {
+      const pages = [];
+      const maxVisible = 5;
+      let start = Math.max(1, this.currentPage - Math.floor(maxVisible / 2));
+      let end = Math.min(this.totalPages, start + maxVisible - 1);
+      if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
+      for (let i = start; i <= end; i++) pages.push(i);
+      return pages;
+    },
+    
+    openSetEmailForce(contact) {
+      this.selectedContact = contact;
+      this.emailForceMode = 'select';
+      this.emailSearchQuery = '';
+      this.manualEmail = '';
+      this.showEmailForceModal = true;
+    },
+    
+    saveEmailForce() {
+      alert('Email forcé enregistré pour ' + this.selectedContact.nomComplet);
+      this.showEmailForceModal = false;
+    },
+    
+    viewContact(contact) {
+      alert('Voir détail: ' + contact.nomComplet);
+    },
+    
+    selectAllWithEmailForce() {
+      alert('Sélection multiple pour définir email forcé');
+    },
+    
+    searchContacts() {
+      // Recherche des contacts pour email forcé
+    }
+  };
+}
+</script>
+
+</body>
+</html>

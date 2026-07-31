@@ -1,0 +1,91 @@
+// Workflow: Blacklist d'un contact (via la facture)
+// Bloque définitivement les relances pour ce contact
+
+blacklistImpaye: async function() {
+    const workflowId = crypto.randomUUID();
+    const startTime = Date.now();
+    
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'blacklistContact',
+        contactId: this.impaye?.payer_id,
+        motif: this.blacklistMotif
+    });
+    
+    if (!this.impaye || !this.impaye.payer_id) {
+        log.error('WORKFLOW_ERROR', { workflowId, error: 'No contact loaded' });
+        return;
+    }
+    
+    this.blacklisting = true;
+    
+    try {
+        const token = localStorage.getItem('marki_token');
+        
+        log.debug('API_CALL_START', { 
+            workflowId, 
+            endpoint: `/api/contacts/${this.impaye.payer_id}/blacklist`,
+            method: 'POST'
+        });
+        
+        const response = await fetch(`/api/contacts/${this.impaye.payer_id}/blacklist`, {
+            method: 'POST',
+            headers: { 
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                motif: this.blacklistMotif || 'Blacklist manuel'
+            })
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { workflowId, status: response.status });
+        
+        // Gestion token expiré
+        if (response.status === 401) {
+            log.warn('AUTH_TOKEN_EXPIRED', { workflowId });
+            localStorage.removeItem('marki_token');
+            localStorage.removeItem('marki_user');
+            window.location.href = '/login';
+            return;
+        }
+        
+        const data = await response.json();
+        
+        if (!data.success) {
+            throw new Error(data.error || 'Erreur lors du blacklist');
+        }
+        
+        // Update local state
+        this.impaye.is_blacklisted = data.contact.is_blacklisted;
+        this.impaye.blacklist_motif = data.contact.blacklist_motif;
+        this.impaye.blacklist_date = new Date().toISOString();
+        this.impaye.statut = 'suspendue';
+        
+        log.debug('STATE_UPDATE', { 
+            workflowId, 
+            props: ['is_blacklisted', 'statut'],
+            contactId: this.impaye.payer_id
+        });
+        
+        this.showBlacklistConfirm = false;
+        this.blacklistMotif = '';
+        this.showToast('Succès', `Contact ${data.action}. ${data.relances_annulees} relance(s) annulée(s).`, 'success');
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            action: data.action,
+            relances_annulees: data.relances_annulees,
+            duration: Date.now() - startTime
+        });
+        
+    } catch (error) {
+        this.showToast('Erreur', error.message, 'error');
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            error: error.message
+        });
+    } finally {
+        this.blacklisting = false;
+    }
+}

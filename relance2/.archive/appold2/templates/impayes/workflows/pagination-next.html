@@ -1,0 +1,15 @@
+<!-- Workflow: Page suivante -->
+
+async nextPage() {
+  // @checkpoint pagination-next-called
+  if (this.currentPage < this.totalPages) {
+    // @action Incrémenter page
+    // @checkpoint page-incremented
+    this.currentPage++;
+    
+    // Scroll en haut du tableau
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    
+    log.info('pagination-next', { page: this.currentPage });
+  }
+}

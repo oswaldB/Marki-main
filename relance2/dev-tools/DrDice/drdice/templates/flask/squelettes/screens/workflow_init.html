@@ -1,0 +1,24 @@
+<!--
+TODO IA:
++ Seulement la fonction init() et méthodes utilitaires
++ PAS DE PROPS ICI (elles sont dans alpinejs.html)
++ init() appelle les workflows nécessaires au démarrage
++ Vérifie auth (token localStorage) redirige vers /login si absent
+-->
+<script>
+// Workflow Init - Exécuté au démarrage
+// PAS DE PROPS ICI (elles sont dans alpinejs.html)
+
+Alpine.data('workflowInit', () => ({
+    // TODO IA: Méthode init() appelée automatiquement
+    init() {
+        // TODO IA: Vérification auth (token localStorage)
+        // Si absent: window.location.href = '/login'
+
+        // TODO IA: Appel des workflows nécessaires au démarrage
+        // Exemple: this.$dispatch('run-initial-load')
+    },
+
+    // TODO IA: Méthodes utilitaires si nécessaire
+}))
+</script>

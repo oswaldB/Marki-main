@@ -1,0 +1,22 @@
+// Workflow: Initialisation de la page
+// Dépend des props définies dans alpinejs.html et des workflows inclus avant
+
+init: function() {
+    log.info('PAGE_INIT', { 
+        page: 'impayeDetailPage',
+        timestamp: Date.now(),
+        url: window.location.pathname
+    });
+    
+    // Vérifier auth
+    const token = localStorage.getItem('marki_token');
+    if (!token) {
+        log.warn('AUTH_MISSING', { redirect: '/login' });
+        window.location.href = '/login';
+        return;
+    }
+    
+    // Lancer le chargement initial
+    this.loadData();
+    this.loadSequences();
+}
