@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mockup - Open ChatGPT | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body class="bg-slate-100 min-h-screen" x-data="gptModal()">
+
+<!-- Header minimal -->
+<header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6">
+  <div class="flex items-center gap-3">
+    <a href="./sequences-relance-detail.html" class="text-slate-400 hover:text-slate-600"><i class="fas fa-arrow-left"></i></a>
+    <h1 class="text-xl font-semibold text-slate-900">Détail Séquence Relance</h1>
+  </div>
+</header>
+
+<!-- Background flouté -->
+<main class="p-6 max-w-7xl mx-auto opacity-50 blur-sm">
+  <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
+    <h3 class="font-semibold text-slate-900 mb-4"><i class="fas fa-envelope text-sky-500 mr-2"></i>EMAILS DE RELANCE</h3>
+    <div class="space-y-4">
+      <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <span class="w-6 h-6 rounded-full bg-sky-500 text-white flex items-center justify-center text-xs font-bold">1</span>
+            <span class="font-medium text-slate-900">Email de relance</span>
+          </div>
+        </div>
+        <div class="text-sm text-slate-500">Contenu de l'email...</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- MODALE OPEN-CHATGPT - Wizard 4 étapes -->
+<div x-show="showModal" 
+     class="fixed inset-0 z-50 flex items-center justify-center p-4"
+     x-cloak>
+  
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-slate-900/75" @click="showModal = false"></div>
+  
+  <!-- Modal -->
+  <div class="relative bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-hidden flex flex-col">
+    
+    <!-- Header avec étapes -->
+    <div class="px-6 py-4 border-b border-slate-100 bg-gradient-to-r from-sky-500 to-sky-600">
+      <div class="flex items-center justify-between mb-3">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+            <i class="fas fa-robot text-white text-lg"></i>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold text-white">Générer avec ChatGPT</h3>
+            <p class="text-xs text-white/80" x-text="stepText()"></p>
+          </div>
+        </div>
+        <button @click="showModal = false" class="text-white/70 hover:text-white w-8 h-8 flex items-center justify-center rounded-full hover:bg-white/10">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      
+      <!-- Indicateur d'étapes -->
+      <div class="flex items-center gap-2 mt-2">
+        <div class="flex-1 flex items-center gap-2">
+          <div class="h-1.5 flex-1 rounded-full transition-colors" :class="step === 'prompt' ? 'bg-white' : 'bg-white/30'"></div>
+          <div class="h-1.5 flex-1 rounded-full transition-colors" :class="step === 'paste' ? 'bg-white' : step === 'validate' || step === 'apply' ? 'bg-white/50' : 'bg-white/30'"></div>
+          <div class="h-1.5 flex-1 rounded-full transition-colors" :class="step === 'validate' ? 'bg-white' : step === 'apply' ? 'bg-white/50' : 'bg-white/30'"></div>
+          <div class="h-1.5 flex-1 rounded-full transition-colors" :class="step === 'apply' ? 'bg-white' : 'bg-white/30'"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 1 : Prompt à copier -->
+    <div x-show="step === 'prompt'" class="flex-1 overflow-y-auto p-6 space-y-4">
+      
+      <div class="bg-blue-50 rounded-lg p-4 border border-blue-100 flex items-start gap-3">
+        <i class="fas fa-info-circle text-blue-500 mt-0.5"></i>
+        <div class="text-sm text-blue-800">
+          <p class="font-medium mb-1">Étape 1 : Copiez le prompt ci-dessous</p>
+          <p>Collez-le ensuite dans <strong>chat.openai.com</strong> pour générer votre séquence.</p>
+        </div>
+      </div>
+      
+      <div class="bg-slate-900 rounded-lg p-4 relative">
+        <pre class="text-xs text-slate-300 overflow-x-auto whitespace-pre-wrap font-mono" id="promptContent"></pre>
+        <button @click="copyPrompt()" 
+                class="absolute top-3 right-3 px-3 py-1.5 bg-sky-500 hover:bg-sky-600 text-white rounded text-xs font-medium flex items-center gap-1.5 transition-colors">
+          <i class="fas fa-copy"></i> Copier
+        </button>
+      </div>
+      
+      <div class="flex justify-end">
+        <button @click="step = 'paste'" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium flex items-center gap-2">
+          J'ai copié le prompt <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 2 : Coller YAML -->
+    <div x-show="step === 'paste'" class="flex-1 overflow-y-auto p-6 space-y-4">
+      
+      <div class="bg-amber-50 rounded-lg p-4 border border-amber-100">
+        <p class="text-sm text-amber-800 font-medium mb-2"><i class="fas fa-list-ol mr-2"></i>Instructions :</p>
+        <ol class="text-sm text-amber-800 space-y-1.5 list-decimal list-inside">
+          <li>Ouvrez <strong>chat.openai.com</strong> dans un nouvel onglet</li>
+          <li>Collez le prompt copié et envoyez-le</li>
+          <li>Copiez la réponse YAML de ChatGPT</li>
+          <li>Collez-la dans le champ ci-dessous</li>
+        </ol>
+      </div>
+      
+      <div class="space-y-2">
+        <label class="block text-sm font-medium text-slate-700">
+          Réponse YAML de ChatGPT
+        </label>
+        <textarea x-model="yamlInput" rows="10" 
+                  class="w-full px-4 py-3 border border-slate-200 rounded-lg text-sm font-mono focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 resize-y"
+                  placeholder="Collez ici la réponse YAML de ChatGPT..."></textarea>
+      </div>
+      
+      <div class="flex justify-between">
+        <button @click="step = 'prompt'" class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium flex items-center gap-2">
+          <i class="fas fa-arrow-left"></i> Retour
+        </button>
+        <button @click="validate()" 
+                :disabled="!yamlInput.trim()"
+                class="px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-slate-300 text-white rounded-lg text-sm font-medium flex items-center gap-2">
+          Valider <i class="fas fa-check"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 3 : Validation -->
+    <div x-show="step === 'validate'" class="flex-1 overflow-y-auto p-6">
+      <div class="text-center py-12">
+        <i class="fas fa-circle-notch fa-spin text-5xl text-sky-500 mb-4"></i>
+        <p class="text-slate-600 font-medium">Validation du YAML en cours...</p>
+        <p class="text-sm text-slate-400 mt-1">Vérification de la structure</p>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 4 : Résultat -->
+    <div x-show="step === 'apply'" class="flex-1 overflow-y-auto p-6 space-y-4">
+      
+      <!-- Erreurs -->
+      <template x-if="validationErrors.length > 0">
+        <div class="bg-red-50 rounded-lg p-4 border border-red-100">
+          <h4 class="text-red-800 font-medium mb-2 flex items-center gap-2">
+            <i class="fas fa-exclamation-triangle"></i> Erreurs de validation
+          </h4>
+          <ul class="text-sm text-red-700 space-y-1">
+            <template x-for="error in validationErrors" :key="error">
+              <li x-text="error"></li>
+            </template>
+          </ul>
+          <button @click="step = 'paste'; validationErrors = []" class="mt-3 px-3 py-1.5 bg-red-500 hover:bg-red-600 text-white rounded text-sm font-medium">
+            Corriger le YAML
+          </button>
+        </div>
+      </template>
+      
+      <!-- Succès -->
+      <template x-if="validationErrors.length === 0 && parsedYaml">
+        <div class="space-y-4">
+          <div class="bg-green-50 rounded-lg p-4 border border-green-100 flex items-start gap-3">
+            <i class="fas fa-check-circle text-green-500 mt-0.5"></i>
+            <div>
+              <h4 class="text-green-800 font-medium" x-text="parsedYaml.emails.length + ' emails validés'"></h4>
+              <p class="text-sm text-green-700 mt-1">La structure YAML est correcte. Vous pouvez maintenant appliquer ces emails à votre séquence.</p>
+            </div>
+          </div>
+          
+          <!-- Preview -->
+          <div class="border border-slate-200 rounded-lg overflow-hidden">
+            <div class="bg-slate-50 px-4 py-2 border-b border-slate-200 text-sm font-medium text-slate-700">
+              Aperçu des emails générés
+            </div>
+            <div class="max-h-48 overflow-y-auto p-4 space-y-2">
+              <template x-for="(email, idx) in parsedYaml.emails" :key="idx">
+                <div class="flex items-center gap-3 p-2 rounded bg-slate-50 border-l-4 border-sky-400">
+                  <span class="w-6 h-6 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center text-xs font-bold" x-text="email.email_index"></span>
+                  <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-slate-700 truncate" x-text="email.objet"></p>
+                    <p class="text-xs text-slate-500" x-text="'Délai: J' + (email.delai > 0 ? '+' : '') + email.delai + ' • ' + email.scenarios.length + ' scénarios'"></p>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <!-- Footer -->
+    <div class="px-6 py-4 border-t border-slate-100 bg-slate-50 flex items-center justify-between">
+      <button @click="goBack()" 
+              x-show="step !== 'prompt' && step !== 'validate'"
+              class="px-4 py-2 text-slate-600 hover:bg-slate-200 rounded-lg text-sm font-medium flex items-center gap-2">
+        <i class="fas fa-arrow-left"></i> Retour
+      </button>
+      <div class="flex-1"></div>
+      <div class="flex items-center gap-3">
+        <button @click="showModal = false" 
+                class="px-4 py-2 text-slate-700 hover:bg-slate-200 rounded-lg text-sm font-medium transition-colors">
+          Annuler
+        </button>
+        <button x-show="step === 'apply' && validationErrors.length === 0 && parsedYaml"
+                @click="apply()" 
+                class="flex items-center gap-2 px-6 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium transition-colors">
+          <i class="fas fa-check"></i>
+          <span x-text="'Appliquer ' + parsedYaml.emails.length + ' emails'"></span>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+function gptModal() {
+  return {
+    showModal: true,
+    step: 'prompt',
+    yamlInput: '',
+    validationErrors: [],
+    parsedYaml: null,
+    
+    stepText() {
+      const texts = {
+        prompt: 'Étape 1/4 : Copier le prompt',
+        paste: 'Étape 2/4 : Coller la réponse YAML',
+        validate: 'Étape 3/4 : Validation',
+        apply: 'Étape 4/4 : Confirmation'
+      };
+      return texts[this.step] || '';
+    },
+    
+    copyPrompt() {
+      const prompt = this.getPromptTemplate();
+      navigator.clipboard.writeText(prompt);
+      this.step = 'paste';
+    },
+    
+    getPromptTemplate() {
+      return `Tu es un expert en relance d'impayés. Génère 7 emails différents pour une séquence de relance.
+
+Pour CHAQUE email, fournis les 4 formats de scénario:
+- single : 1 impayé
+- multiple : plusieurs impayés
+- broker : apporteur d'affaire
+- both : impayés + apporteur
+
+Structure YAML exacte attendue:
+\&#96;\&#96;\&#96;yaml
+emails:
+  - email_index: 1
+    delai: -7
+    objet: "[[payeur_civilite]] [[payeur_nom]], relance facture [[nfacture]]"
+    corps: "<p>Bonjour...</p>"
+    scenarios:
+      - active: true
+        format: single
+        objet: "..."
+        corps: "..."
+        cc: ""
+        bcc: ""
+        smtp_profile_id: ""
+      - active: true
+        format: multiple
+        objet: "..."
+        corps: "<ul>[[loop impayes]]<li>[[nfacture]] - [[montant_total]]€</li>[[endloop]]</ul>"
+        cc: ""
+        bcc: ""
+        smtp_profile_id: ""
+      - active: true
+        format: broker
+        objet: "..."
+        corps: "..."
+        cc: ""
+        bcc: ""
+        smtp_profile_id: ""
+      - active: true
+        format: both
+        objet: "..."
+        corps: "..."
+        cc: ""
+        bcc: ""
+        smtp_profile_id: ""
+\&#96;\&#96;\&#96;
+
+VARIABLES: [[payeur_civilite]], [[payeur_nom]], [[payeur_prenom]], [[payeur_email]], [[proprietaire_nom]], [[proprietaire_prenom]], [[apporteur_nom]], [[apporteur_societe]], [[nfacture]], [[montant_total]], [[reste_a_payer]], [[date_echeance]], [[numero_dossier]], [[adresse_bien]], [[lien_pdf]], [[lien_espace]]
+
+CONSIGNES:
+- Génère EXACTEMENT 7 emails
+- Délai négatif = avant échéance, positif = après échéance
+- Ton progressif : cordial → ferme → mise en demeure`;
+    },
+    
+    validate() {
+      if (!this.yamlInput.trim()) return;
+      this.step = 'validate';
+      setTimeout(() => {
+        if (!this.yamlInput.includes('emails:')) {
+          this.validationErrors = ['Le document doit contenir une clé "emails"'];
+          this.parsedYaml = null;
+        } else {
+          this.validationErrors = [];
+          this.parsedYaml = {
+            emails: [
+              { email_index: 1, delai: -7, objet: 'Rappel amical avant échéance', scenarios: [
+                { format: 'single' }, { format: 'multiple' }, { format: 'broker' }, { format: 'both' }
+              ]},
+              { email_index: 2, delai: 7, objet: 'Relance facture impayée', scenarios: [
+                { format: 'single' }, { format: 'multiple' }
+              ]},
+              { email_index: 3, delai: 30, objet: 'Demande de règlement urgent', scenarios: [
+                { format: 'single' }
+              ]}
+            ]
+          };
+        }
+        this.step = 'apply';
+      }, 800);
+    },
+    
+    goBack() {
+      if (this.step === 'paste') this.step = 'prompt';
+      else if (this.step === 'apply' && this.validationErrors.length > 0) {
+        this.step = 'paste';
+        this.validationErrors = [];
+      }
+    },
+    
+    apply() {
+      this.showModal = false;
+      alert(this.parsedYaml.emails.length + ' emails générés et appliqués !');
+    },
+    
+    init() {
+      document.getElementById('promptContent').textContent = this.getPromptTemplate();
+    }
+  }
+}
+</script>
+
+</body>
+</html>

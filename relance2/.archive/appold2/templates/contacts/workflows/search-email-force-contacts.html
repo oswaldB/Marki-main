@@ -1,0 +1,76 @@
+// =====================================================
+// WORKFLOW: search-email-force-contacts - Recherche de contacts pour email forcé
+// =====================================================
+
+searchEmailForceContacts: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'searchEmailForceContacts',
+        search: this.emailForceSearch
+    });
+    
+    // Validation: Ne recherche que si au moins 2 caractères
+    if (!this.emailForceSearch || this.emailForceSearch.trim().length < 2) {
+        log.warn('VALIDATION_ERROR', {
+            workflowId,
+            reason: 'search_too_short',
+            length: this.emailForceSearch?.length || 0
+        });
+        this.emailForceSearchResults = [];
+        return;
+    }
+    
+    this.loadingEmailForceSearch = true;
+    
+    try {
+        const encodedSearch = encodeURIComponent(this.emailForceSearch.trim());
+        const endpoint = `/api/contacts?search=${encodedSearch}&limit=100`;
+        
+        log.debug('API_CALL_START', { 
+            workflowId,
+            endpoint,
+            method: 'GET'
+        });
+        
+        const response = await fetch(endpoint);
+        
+        log.debug('API_RESPONSE_RECEIVED', { 
+            workflowId,
+            status: response.status
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        log.debug('STATE_UPDATE', { 
+            workflowId,
+            oldCount: this.emailForceSearchResults.length,
+            newCount: (data.contacts || data).length
+        });
+        
+        // Stocker les résultats
+        this.emailForceSearchResults = data.contacts || data;
+        
+        log.info('WORKFLOW_SUCCESS', { 
+            workflowId,
+            workflow: 'searchEmailForceContacts',
+            count: this.emailForceSearchResults.length
+        });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            workflow: 'searchEmailForceContacts',
+            error: error.message
+        });
+        
+        this.emailForceSearchResults = [];
+    } finally {
+        this.loadingEmailForceSearch = false;
+        log.debug('STATE_UPDATE', { workflowId, loadingEmailForceSearch: false });
+    }
+}

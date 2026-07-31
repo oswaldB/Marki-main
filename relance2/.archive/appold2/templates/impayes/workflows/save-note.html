@@ -1,0 +1,95 @@
+async saveNote() {
+  // @checkpoint save-note-called
+  if (!this.noteContent.trim()) {
+    return;
+  }
+  
+  this.savingNote = true;
+  
+  try {
+    const token = localStorage.getItem('marki_token');
+    if (!token) {
+      window.location.href = '/login';
+      return;
+    }
+    
+    // Récupérer l'auteur depuis le token
+    let author = 'Utilisateur';
+    try {
+      const payload = JSON.parse(atob(token.split('.')[1]));
+      author = payload.username || payload.email || 'Utilisateur';
+    } catch (e) {
+      console.warn('Impossible de décoder le token');
+    }
+    
+    // Préparer les notes existantes
+    let notes = [];
+    if (this.selectedFacture?.notes_json) {
+      try {
+        notes = JSON.parse(this.selectedFacture.notes_json);
+        if (!Array.isArray(notes)) notes = [];
+      } catch (e) {
+        if (this.selectedFacture.note) {
+          notes = [{
+            content: this.selectedFacture.note,
+            author: this.selectedFacture.note_author || 'Inconnu',
+            date: this.selectedFacture.updated_at || new Date().toISOString()
+          }];
+        }
+      }
+    }
+    
+    // Ajouter la nouvelle note
+    notes.unshift({
+      content: this.noteContent.trim(),
+      author: author,
+      date: new Date().toISOString()
+    });
+    
+    // @checkpoint api-called
+    const response = await fetch(`/api/impayes/${this.selectedFacture.id}`, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        notes_json: JSON.stringify(notes),
+        updated_at: new Date().toISOString()
+      })
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Erreur ${response.status}`);
+    }
+    
+    const data = await response.json();
+    
+    if (!data.success) {
+      throw new Error(data.error?.message || 'Erreur de sauvegarde');
+    }
+    
+    // @checkpoint local-updated
+    const index = this.factures.findIndex(f => f.id === this.selectedFacture.id);
+    if (index !== -1) {
+      this.factures[index].notes_json = JSON.stringify(notes);
+      this.selectedFacture.notes_json = JSON.stringify(notes);
+    }
+    
+    this.noteContent = '';
+    
+    if (Alpine.store('ui')?.addToast) {
+      Alpine.store('ui').addToast('Note ajoutée', 'success');
+    }
+    
+    log.info('note-saved', { factureId: this.selectedFacture.id, notesCount: notes.length });
+    
+  } catch (err) {
+    log.error('save-note-error', err.message);
+    if (Alpine.store('ui')?.addToast) {
+      Alpine.store('ui').addToast(err.message, 'error');
+    }
+  } finally {
+    this.savingNote = false;
+  }
+}

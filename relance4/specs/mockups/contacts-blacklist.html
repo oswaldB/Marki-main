@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacts blacklistés | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+    .contact-card { transition: all 0.2s ease; }
+    .contact-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -4px rgba(0,0,0,0.1); }
+    .blacklist-card { border-left: 4px solid #0ea5e9; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+  </style>
+</head>
+<body x-data="contactsBlacklistPage()" x-init="init()">
+
+<!-- Sidebar -->
+<sidebar-nav-dual page="contacts-blacklist"></sidebar-nav-dual>
+
+<!-- Main Content -->
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  
+  <!-- Header -->
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-8 sticky top-0 z-40">
+    <div class="flex items-center gap-4">
+      <a href="./contacts.html" class="text-slate-400 hover:text-slate-600"><i class="fas fa-arrow-left"></i></a>
+      <div>
+        <h1 class="text-xl font-semibold text-slate-800">Contacts blacklistés</h1>
+        <p class="text-sm text-slate-500">Ces contacts ne reçoivent pas de relances</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Content -->
+  <main class="p-8">
+    
+    <!-- Alert Banner -->
+    <div class="bg-sky-50 border border-sky-200 rounded-xl p-4 mb-6 flex items-center gap-3">
+      <i class="fas fa-ban text-sky-500 text-xl"></i>
+      <div class="flex-1">
+        <p class="font-medium text-sky-800"><span x-text="contacts.length"></span> contacts blacklistés</p>
+        <p class="text-sm text-sky-600">Les contacts blacklistés ne reçoivent aucune relance automatique. Vous pouvez les retirer de la blacklist à tout moment.</p>
+      </div>
+    </div>
+    
+    <!-- Search & Filters -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 mb-6">
+      <div class="flex flex-wrap items-center gap-4">
+        <div class="relative flex-1 min-w-[300px] max-w-md">
+          <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input type="text" x-model="searchQuery" @input="filterContacts()"
+            placeholder="Rechercher un contact..."
+            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+        </div>
+        
+        <div class="flex items-center gap-2">
+          <button @click="removeAllFromBlacklist()" class="px-4 py-2 text-sky-700 bg-sky-50 hover:bg-sky-100 rounded-lg text-sm font-medium transition-all">
+            <i class="fas fa-check-circle mr-1.5"></i>Retirer tout de la blacklist
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Loading -->
+    <template x-if="loading">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <template x-for="i in 6" :key="i">
+          <div class="bg-white rounded-xl border border-slate-200 p-4 animate-pulse">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-slate-200 rounded-full"></div>
+              <div class="flex-1">
+                <div class="h-4 bg-slate-200 rounded w-3/4 mb-2"></div>
+                <div class="h-3 bg-slate-200 rounded w-1/2"></div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+    
+    <!-- Empty -->
+    <template x-if="!loading && filteredContacts.length === 0">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm py-16">
+        <div class="text-center">
+          <div class="w-16 h-16 bg-sky-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <i class="fas fa-check text-sky-500 text-2xl"></i>
+          </div>
+          <h3 class="text-lg font-medium text-slate-900 mb-1">Aucun contact blacklisté</h3>
+          <p class="text-sm text-slate-500">Tous vos contacts reçoivent les relances normalement</p>
+        </div>
+      </div>
+    </template>
+    
+    <!-- Cards Grid -->
+    <template x-if="!loading && filteredContacts.length > 0">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <template x-for="contact in paginatedContacts" :key="contact.id">
+          <div class="blacklist-card contact-card bg-white rounded-xl border border-slate-200 shadow-sm p-5">
+            
+            <div class="flex items-start justify-between mb-4">
+              <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-bold">
+                  <i class="fas fa-ban"></i>
+                </div>
+                <div>
+                  <p class="font-semibold text-slate-900" x-text="contact.nomComplet"></p>
+                  <p class="text-sm text-slate-500" x-text="contact.entreprise || 'Personne physique'"></p>
+                </div>
+              </div>
+              <span class="px-2 py-1 bg-sky-100 text-sky-700 text-xs rounded-full font-medium">Blacklist</span>
+            </div>
+            
+            <div class="space-y-2 mb-4">
+              <div class="flex items-center gap-2 text-sm">
+                <i class="fas fa-envelope text-slate-400 w-4"></i>
+                <span x-text="contact.email || 'Email non renseigné'" :class="contact.email ? 'text-slate-700' : 'text-slate-400 italic'"></span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <i class="fas fa-file-invoice-dollar text-slate-400 w-4"></i>
+                <span x-text="contact.impayesCount + ' impayé(s)'" :class="contact.impayesCount > 0 ? 'text-sky-600 font-medium' : 'text-slate-500'"></span>
+              </div>
+              <div class="flex items-center gap-2 text-sm">
+                <i class="fas fa-calendar text-slate-400 w-4"></i>
+                <span class="text-slate-500">Blacklisté le </span>
+                <span class="text-slate-700" x-text="contact.dateBlacklist || '-'"></span>
+              </div>
+            </div>
+            
+            <div class="pt-4 border-t border-slate-100">
+              <button @click="removeFromBlacklist(contact)" class="w-full px-3 py-2 text-sky-700 bg-sky-50 hover:bg-sky-100 rounded-lg text-sm font-medium transition-colors flex items-center justify-center gap-2">
+                <i class="fas fa-check-circle"></i>Retirer de la blacklist
+              </button>
+            </div>
+          </div>
+        </template>
+      </div>
+    </template>
+    
+    <!-- Pagination -->
+    <div x-show="totalPages > 1" class="mt-6 flex items-center justify-center gap-2">
+      <button @click="currentPage--" :disabled="currentPage === 1" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <template x-for="page in visiblePages" :key="page">
+        <button @click="currentPage = page" class="px-3 py-1.5 rounded-lg text-sm font-medium transition-all" 
+                :class="currentPage === page ? 'bg-sky-500 text-white' : 'border border-slate-200 text-slate-600 hover:bg-slate-50'" 
+                x-text="page"></button>
+      </template>
+      <button @click="currentPage++" :disabled="currentPage === totalPages" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+    
+  </main>
+</div>
+
+<script>
+function contactsBlacklistPage() {
+  return {
+    loading: false,
+    searchQuery: '',
+    currentPage: 1,
+    itemsPerPage: 12,
+    contacts: [],
+    filteredContacts: [],
+    
+    init() {
+      this.loadContacts();
+    },
+    
+    async loadContacts() {
+      this.loading = true;
+      await new Promise(r => setTimeout(r, 500));
+      this.contacts = [
+        { id: 1, nomComplet: 'Lucas Petit', entreprise: 'Consulting Pro', email: 'lucas@consultingpro.fr', telephone: '01 45 67 89 01', impayesCount: 1, dateBlacklist: '15/01/2024' },
+        { id: 2, nomComplet: 'Entreprise XYZ', entreprise: null, email: 'contact@xyz.fr', telephone: '', impayesCount: 3, dateBlacklist: '10/12/2023' },
+        { id: 3, nomComplet: 'Marie Durand', entreprise: 'Auto-entrepreneur', email: '', telephone: '06 23 45 67 89', impayesCount: 0, dateBlacklist: '05/11/2023' },
+      ];
+      this.filteredContacts = this.contacts;
+      this.loading = false;
+    },
+    
+    filterContacts() {
+      if (!this.searchQuery) {
+        this.filteredContacts = this.contacts;
+      } else {
+        const q = this.searchQuery.toLowerCase();
+        this.filteredContacts = this.contacts.filter(c => 
+          c.nomComplet.toLowerCase().includes(q) ||
+          c.entreprise?.toLowerCase().includes(q) ||
+          c.email?.toLowerCase().includes(q)
+        );
+      }
+      this.currentPage = 1;
+    },
+    
+    get paginatedContacts() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      return this.filteredContacts.slice(start, start + this.itemsPerPage);
+    },
+    
+    get totalPages() {
+      return Math.ceil(this.filteredContacts.length / this.itemsPerPage) || 1;
+    },
+    
+    get visiblePages() {
+      const pages = [];
+      const maxVisible = 5;
+      let start = Math.max(1, this.currentPage - Math.floor(maxVisible / 2));
+      let end = Math.min(this.totalPages, start + maxVisible - 1);
+      if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
+      for (let i = start; i <= end; i++) pages.push(i);
+      return pages;
+    },
+    
+    removeFromBlacklist(contact) {
+      if (confirm('Retirer ' + contact.nomComplet + ' de la blacklist ?')) {
+        this.contacts = this.contacts.filter(c => c.id !== contact.id);
+        this.filterContacts();
+        alert(contact.nomComplet + ' a été retiré de la blacklist');
+      }
+    },
+    
+    removeAllFromBlacklist() {
+      if (confirm('Retirer tous les contacts de la blacklist ?')) {
+        this.contacts = [];
+        this.filterContacts();
+        alert('Tous les contacts ont été retirés de la blacklist');
+      }
+    },
+    
+    viewContact(contact) {
+      alert('Voir détail: ' + contact.nomComplet);
+    }
+  };
+}
+</script>
+
+</body>
+</html>

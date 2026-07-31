@@ -1,0 +1,110 @@
+// Workflow: Chargement initial des événements
+
+/**
+ * @action Charger les événements depuis l'API et le localStorage
+ * @checkpoint events-loaded
+ */
+loadEvents: async function() {
+  const workflowId = crypto.randomUUID();
+  const startTime = Date.now();
+  
+  log.info('WORKFLOW_START', { 
+    workflowId,
+    workflow: 'initialLoad',
+    page: 'evenements'
+  });
+  
+  this.loading = true;
+  this.error = null;
+  
+  try {
+    // @checkpoint auth-check
+    const token = localStorage.getItem('marki_token');
+    if (!token) {
+      window.location.href = '/login';
+      return;
+    }
+    
+    // @action Charger depuis localStorage d'abord (pour affichage rapide)
+    // @checkpoint events-from-storage
+    const storedEvents = this.loadEventsFromStorage();
+    if (storedEvents.length > 0) {
+      // S'assurer que tous les events ont un statut read
+      this.events = storedEvents.map(e => ({
+        ...e,
+        read: e.read !== undefined ? e.read : false
+      }));
+      log.debug('EVENTS_FROM_STORAGE', { count: this.events.length });
+    }
+    
+    const headers = { 'Authorization': `Bearer ${token}` };
+    
+    // @action Récupérer les événements depuis l'API
+    // @checkpoint events-fetch
+    const response = await fetch(`/api/events?page=${this.page}&per_page=${this.perPage}`, { 
+      headers 
+    });
+    
+    log.debug('API_RESPONSE_RECEIVED', { status: response.status });
+    
+    if (!response.ok) {
+      throw new Error(`Erreur HTTP ${response.status}`);
+    }
+    
+    const data = await response.json();
+    const freshEvents = data.events || [];
+    this.hasMore = freshEvents.length === this.perPage;
+    
+    log.debug('EVENTS_FETCHED', { count: freshEvents.length, hasMore: this.hasMore });
+    
+    // @action Fusionner avec les events existants (mettre à jour + ajouter nouveaux)
+    // @checkpoint events-merged
+    const eventsMap = new Map(this.events.map(e => [e.id, e]));
+    let newEventsCount = 0;
+    
+    freshEvents.forEach(freshEvent => {
+      const existing = eventsMap.get(freshEvent.id);
+      if (existing) {
+        // Mettre à jour l'event existant avec les nouvelles données (sauf le statut read)
+        eventsMap.set(freshEvent.id, {
+          ...freshEvent,
+          read: existing.read !== undefined ? existing.read : false
+        });
+      } else {
+        // Nouvel event = non lu par défaut
+        eventsMap.set(freshEvent.id, { ...freshEvent, read: false });
+        newEventsCount++;
+      }
+    });
+    
+    // Convertir en array et trier par date
+    this.events = Array.from(eventsMap.values()).sort((a, b) => 
+      new Date(b.created_at) - new Date(a.created_at)
+    );
+    
+    log.debug('EVENTS_MERGED', { count: this.events.length, newEvents: newEventsCount });
+    
+    // @action Sauvegarder dans localStorage (max 100)
+    // @checkpoint events-saved
+    this.saveEventsToStorage();
+    
+    const duration = Date.now() - startTime;
+    log.info('WORKFLOW_SUCCESS', { 
+      workflowId,
+      duration,
+      totalEvents: this.events.length,
+      newEvents: newEventsCount
+    });
+    
+  } catch (error) {
+    this.error = error.message;
+    log.error('WORKFLOW_ERROR', {
+      workflowId,
+      error: error.message,
+      stack: error.stack
+    });
+  } finally {
+    this.loading = false;
+    log.debug('LOADING_COMPLETE', { workflowId });
+  }
+}

@@ -1,0 +1,131 @@
+// =====================================================
+// WORKFLOW: save-email-force - Sauvegarde/suppression email forcé
+// =====================================================
+
+saveEmailForce: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'saveEmailForce',
+        contactId: this.selectedContact?.id
+    });
+    
+    // Validation
+    if (!this.selectedContact || !this.emailForceValue) {
+        log.warn('VALIDATION_ERROR', {
+            workflowId,
+            hasContact: !!this.selectedContact,
+            hasEmailValue: !!this.emailForceValue
+        });
+        return;
+    }
+    
+    try {
+        log.debug('API_CALL_START', { 
+            workflowId,
+            endpoint: `/api/contacts/${this.selectedContact.id}`,
+            method: 'PUT',
+            payload: { email_force: this.emailForceValue }
+        });
+        
+        const response = await fetch(`/api/contacts/${this.selectedContact.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email_force: this.emailForceValue })
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { 
+            workflowId,
+            status: response.status
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP ${response.status}`);
+        }
+        
+        // Mise à jour locale
+        log.debug('STATE_UPDATE', { 
+            workflowId,
+            contactId: this.selectedContact.id,
+            oldEmailForce: this.selectedContact.emailForce,
+            newEmailForce: this.emailForceValue
+        });
+        
+        this.selectedContact.emailForce = this.emailForceValue;
+        
+        // Fermer modale
+        this.showEmailForceModal = false;
+        this.selectedContact = null;
+        this.emailForceValue = '';
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            workflow: 'saveEmailForce',
+            error: error.message
+        });
+        alert('Erreur lors de l\'enregistrement');
+    }
+},
+
+clearEmailForce: async function() {
+    const workflowId = crypto.randomUUID();
+    log.info('WORKFLOW_START', { 
+        workflowId,
+        workflow: 'clearEmailForce',
+        contactId: this.selectedContact?.id
+    });
+    
+    if (!this.selectedContact) {
+        log.warn('VALIDATION_ERROR', { workflowId, reason: 'no_selected_contact' });
+        return;
+    }
+    
+    try {
+        log.debug('API_CALL_START', { 
+            workflowId,
+            endpoint: `/api/contacts/${this.selectedContact.id}`,
+            method: 'PUT',
+            payload: { email_force: null }
+        });
+        
+        const response = await fetch(`/api/contacts/${this.selectedContact.id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email_force: null })
+        });
+        
+        log.debug('API_RESPONSE_RECEIVED', { 
+            workflowId,
+            status: response.status
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP ${response.status}`);
+        }
+        
+        // Mise à jour locale
+        log.debug('STATE_UPDATE', { 
+            workflowId,
+            contactId: this.selectedContact.id,
+            emailForce: null
+        });
+        
+        this.selectedContact.emailForce = null;
+        this.showEmailForceModal = false;
+        this.selectedContact = null;
+        this.emailForceValue = '';
+        
+        log.info('WORKFLOW_SUCCESS', { workflowId });
+        
+    } catch (error) {
+        log.error('WORKFLOW_ERROR', {
+            workflowId,
+            workflow: 'clearEmailForce',
+            error: error.message
+        });
+        alert('Erreur lors de la suppression');
+    }
+}

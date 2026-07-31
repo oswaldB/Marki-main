@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{cell_name}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!--
+    INSTRUCTIONS IA - À APPLIQUER:
+    =============================
+    
+    PRIORITÉ ABSOLUE: LIT EN PREMIER .specs/page-specs.md
+    
+    0. ALPINE.JS - NE PAS CHARGER LE CDN DANS CE FICHIER !
+       - Alpine.js est déjà importé via ESM dans main.js : `import Alpine from '...'`
+       - NE PAS ajouter : `<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>`
+       - Pourquoi : Si Alpine est chargé deux fois (CDN + ESM), cela cause :
+         `ReferenceError: {cell_name}Page is not defined` (cdn.min.js)
+         car le CDN démarre avant que `Alpine.data()` soit exécuté dans main.js
+       - Garder UNIQUEMENT le script type="module" à la fin : `<script type="module" src="./main.js"></script>`
+
+    1. ALPINE.JS x-data: Utiliser EXACTEMENT: x-data="{cell_name}Page"
+       - SANS parenthèses: x-data="{cell_name}Page" ✓
+       - PAS avec parenthèses: x-data="{cell_name}Page()" ✗
+       - PAS d'appel de fonction: x-data="{cell_name}Page()" ✗
+       - Le composant est enregistré via Alpine.data() dans main.js
+       - PAS de x-init="init()", init() est appelé automatiquement
+    
+    2. PIXEL PERFECT: Implémenter le design EXACTEMENT depuis:
+       - .specs/mockups/*.html
+       Attention ne parle ici que du look and feel. Les actions doivent etre mise à jour pour fonctionner avec les workflows frontend et le main.js.
+
+    3. TAILWINDCSS: Utiliser pour le styling en respect du mockup.
+
+    4. POUCHDB: Assurer la compatibilité pour la persistance
+       - PouchDB est chargé via CDN dans le <head> : <script src="https://cdn.jsdelivr.net/npm/pouchdb@8.0.1/dist/pouchdb.min.js"></script>
+       - NE PAS supprimer ce script ! Sinon : `ReferenceError: PouchDB is not defined`
+       - Si vous utilisez pouchdb-find, ajouter aussi son CDN après PouchDB principal
+       - main.js initialise `window.localDB = new PouchDB(...)` pour l'utiliser dans les workflows
+
+    5. **IDs des Boutons** : Chaque bouton DOIT avoir un ID unique au format `btn-{action}`
+       - Exemple : `id="btn-submit"`, `id="btn-cancel"`, `id="btn-refresh"`
+       - Jamais d'ID vide ou dupliqué
+       - Format obligatoire : commence toujours par `btn-`
+    -->
+
+    <div id="app" x-data="{cell_name}Page" class="container mx-auto p-4">
+        <header class="bg-blue-600 text-white p-4 rounded-lg mb-6">
+            <h1>{cell_name} - pret pour dev</h1>
+        </header>
+
+        <main class="bg-white rounded-lg shadow-md p-6">
+            <p class="text-gray-600 mb-4">Page en cours de développement.</p>
+
+            <!-- EXEMPLE: Bouton avec ID obligatoire btn- (pas pour init qui se charge automatiquement) -->
+            <button id="btn-submit" @click="runWorkflow('submit')" class="bg-blue-600 text-white px-4 py-2 rounded">
+                Soumettre
+            </button>
+        </main>
+    </div>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

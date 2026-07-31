@@ -1,0 +1,62 @@
+<!-- Workflow: Edit User -->
+
+/**
+ * @action Mettre à jour un utilisateur existant
+ * @checkpoint user-updated
+ */
+async updateUser() {
+  if (!this.editingUser) return;
+  
+  this.loading = true;
+  
+  try {
+    const token = localStorage.getItem('marki_token');
+    
+    const payload = {
+      prenom: this.editingUser.prenom,
+      nom: this.editingUser.nom,
+      email: this.editingUser.email,
+      role: this.editingUser.role,
+      actif: this.editingUser.actif
+    };
+    
+    if (this.editingUser.password) {
+      payload.password = this.editingUser.password;
+    }
+    
+    const response = await fetch(`/api/users/${this.editingUser.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(payload)
+    });
+    
+    const data = await response.json();
+    
+    if (!data.success) {
+      throw new Error(data.error?.message || 'Erreur lors de la mise à jour');
+    }
+    
+    // @checkpoint list-updated
+    const index = this.users.findIndex(u => u.id === this.editingUser.id);
+    if (index !== -1) {
+      this.users[index] = { 
+        ...this.editingUser,
+        initials: (this.editingUser.prenom[0] + this.editingUser.nom[0]).toUpperCase()
+      };
+    }
+    
+    // @checkpoint modal-closed
+    this.showEditForm = false;
+    this.editingUser = null;
+    
+  } catch (err) {
+    this.error = err.message;
+    console.error('[USERS] Update error:', err);
+    alert(err.message);
+  } finally {
+    this.loading = false;
+  }
+}

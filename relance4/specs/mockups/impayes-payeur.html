@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impayés par Payeur | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body x-data="impayesPayeurPage()" x-init="init()">
+
+<sidebar-nav-dual page="impayes-payeur"></sidebar-nav-dual>
+
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <h1 class="text-base font-semibold text-slate-700">Impayés</h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500">Vue par payeur</span>
+    </div>
+    
+    <div class="flex items-center gap-3">
+      <a href="./impayes.html" class="flex items-center gap-2 px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium transition-all">
+        <i class="fas fa-list"></i>
+        <span>Vue liste</span>
+      </a>
+      <button 
+        @click="syncData()"
+        :disabled="syncing"
+        class="flex items-center gap-2 px-4 py-2 bg-sky-500 hover:bg-sky-600 disabled:bg-sky-400 text-white rounded-lg text-sm font-medium transition-all"
+      >
+        <i x-show="!syncing" class="fas fa-sync-alt"></i>
+        <i x-show="syncing" class="fas fa-circle-notch fa-spin"></i>
+        <span x-text="syncing ? 'Synchronisation...' : 'Synchroniser'"></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="p-6">
+    
+    <!-- Filtres -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 mb-6">
+      <div class="flex flex-wrap items-center gap-4">
+        
+        <div class="relative flex-1 min-w-[240px] max-w-md">
+          <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            x-model="searchQuery"
+            placeholder="Rechercher un payeur..."
+            class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500 transition-all"
+          >
+        </div>
+        
+        <div class="flex items-center gap-3">
+          <select x-model="filterMinMontant" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+            <option value="">Montant total</option>
+            <option value="1000">> 1 000 €</option>
+            <option value="5000">> 5 000 €</option>
+            <option value="10000">> 10 000 €</option>
+            <option value="25000">> 25 000 €</option>
+          </select>
+          
+          <select x-model="sortBy" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500">
+            <option value="montant_desc">Montant ↓</option>
+            <option value="montant_asc">Montant ↑</option>
+            <option value="nom_asc">Nom A-Z</option>
+            <option value="factures_desc">Nb factures ↓</option>
+          </select>
+        </div>
+        
+        <div class="flex-1"></div>
+        
+        <div class="flex items-center gap-4 text-sm">
+          <div class="text-right">
+            <span class="text-slate-500">Total payeurs:</span>
+            <span class="font-semibold text-slate-900 ml-1" x-text="groupedByPayeur.length"></span>
+          </div>
+          <div class="text-right">
+            <span class="text-slate-500">Total impayés:</span>
+            <span class="font-semibold text-sky-600 ml-1" x-text="formatMoney(totalGlobal)"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Content -->
+    <div style="min-height: calc(100vh - 220px);">
+      
+      <!-- Loading -->
+      <template x-if="loading">
+        <div class="space-y-4">
+          <template x-for="i in 3" :key="i">
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6 animate-pulse">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 bg-slate-200 rounded-full"></div>
+                  <div class="w-48 h-4 bg-slate-200 rounded"></div>
+                </div>
+                <div class="w-24 h-4 bg-slate-200 rounded"></div>
+              </div>
+              <div class="space-y-2">
+                <div class="w-full h-3 bg-slate-200 rounded"></div>
+                <div class="w-full h-3 bg-slate-200 rounded"></div>
+              </div>
+            </div>
+          </template>
+        </div>
+      </template>
+      
+      <!-- Empty -->
+      <template x-if="!loading && groupedByPayeur.length === 0">
+        <div class="bg-white rounded-xl border border-slate-200 shadow-sm py-16">
+          <div class="text-center">
+            <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <i class="fas fa-users text-slate-400 text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-medium text-slate-900 mb-1">Aucun payeur trouvé</h3>
+            <p class="text-sm text-slate-500">Modifiez vos filtres ou synchronisez de nouvelles factures</p>
+          </div>
+        </div>
+      </template>
+      
+      <!-- Liste par Payeur -->
+      <template x-if="!loading && groupedByPayeur.length > 0">
+        <div class="space-y-4">
+          <template x-for="groupe in paginatedGroupes" :key="groupe.payeur.id">
+            <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+              <!-- Header Payeur -->
+              <div class="px-6 py-4 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 rounded-full bg-sky-100 flex items-center justify-center text-sky-700 font-semibold text-sm" x-text="groupe.payeur.initials"></div>
+                  <div>
+                    <p class="font-semibold text-slate-900" x-text="groupe.payeur.nom"></p>
+                    <p class="text-xs text-slate-500" x-text="groupe.payeur.email"></p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-4">
+                  <div class="text-right">
+                    <p class="text-xs text-slate-500">Total restant à payer</p>
+                    <p class="font-bold text-lg text-slate-900" x-text="formatMoney(groupe.totalReste)"></p>
+                  </div>
+                  <span class="px-2.5 py-1 text-xs font-medium rounded-full bg-slate-100 text-slate-700" x-text="groupe.factures.length + ' facture(s)'"></span>
+                </div>
+              </div>
+              
+              <!-- Factures du payeur -->
+              <div class="divide-y divide-slate-100">
+                <template x-for="facture in groupe.factures" :key="facture.id">
+                  <div class="px-6 py-3 flex items-center justify-between hover:bg-slate-50/50 transition-colors cursor-pointer" @click="openDetail(facture)">
+                    <div class="flex items-center gap-4">
+                      <span class="font-mono text-sm text-slate-600" x-text="facture.numero"></span>
+                      <span class="text-xs text-slate-400" x-text="facture.dateFacture"></span>
+                      <span class="text-xs text-slate-400">·</span>
+                      <span class="text-xs text-slate-500" x-text="facture.numeroDossier || '-'"></span>
+                      <span 
+                        class="px-2 py-0.5 text-xs rounded-full"
+                        :class="{
+                          'bg-slate-100 text-slate-700': facture.statut === 'non-payee',
+                          'bg-sky-100 text-sky-700': facture.statut === 'en-relance',
+                          'bg-amber-100 text-amber-700': facture.statut === 'suspendue'
+                        }"
+                        x-text="getStatutLabel(facture.statut)"
+                      ></span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <span class="font-medium text-slate-700" x-text="formatMoney(facture.resteAPayer)"></span>
+                      <span class="px-2 py-0.5 text-xs rounded-full bg-sky-50 text-sky-700" x-text="facture.sequence || '-'"></span>
+                      <i class="fas fa-chevron-right text-slate-300 text-xs"></i>
+                    </div>
+                  </div>
+                </template>
+              </div>
+              
+              <!-- Footer -->
+              <div class="px-6 py-3 bg-slate-50 border-t border-slate-200 flex items-center justify-between">
+                <div class="text-xs text-slate-500">
+                  <span x-text="groupe.factures.filter(f => f.statut === 'suspendue').length"></span> facture(s) suspendue(s)
+                </div>
+                <a href="./impayes-detail.html" class="text-sm text-sky-600 hover:text-sky-700 font-medium flex items-center gap-1">
+                  Voir tous les détails <i class="fas fa-arrow-right text-xs"></i>
+                </a>
+              </div>
+            </div>
+          </template>
+        </div>
+      </template>
+      
+      <!-- Pagination -->
+      <template x-if="!loading && totalPages > 1">
+        <div class="mt-6 bg-white rounded-xl border border-slate-200 shadow-sm px-6 py-4 flex items-center justify-between">
+          <p class="text-sm text-slate-500">
+            Affichage de <span x-text="(currentPage - 1) * itemsPerPage + 1"></span> à <span x-text="Math.min(currentPage * itemsPerPage, groupedByPayeur.length)"></span> sur <span x-text="groupedByPayeur.length"></span> payeurs
+          </p>
+          <div class="flex items-center gap-2">
+            <button @click="currentPage--" :disabled="currentPage === 1" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50 transition-all">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <template x-for="page in visiblePages" :key="page">
+              <button @click="currentPage = page" class="px-3 py-1.5 rounded-lg text-sm font-medium transition-all" :class="currentPage === page ? 'bg-sky-500 text-white' : 'border border-slate-200 text-slate-600 hover:bg-slate-50'" x-text="page"></button>
+            </template>
+            <button @click="currentPage++" :disabled="currentPage === totalPages" class="px-3 py-1.5 border border-slate-200 rounded-lg text-sm text-slate-600 hover:bg-slate-50 disabled:opacity-50 transition-all">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </template>
+      
+    </div>
+    
+    <!-- Detail Modal -->
+    <template x-if="showDetailModal">
+      <div class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+        <div class="absolute inset-0 bg-slate-500/75" @click="showDetailModal = false"></div>
+        <div class="relative bg-white rounded-xl shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto" x-transition.scale>
+          <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
+            <div>
+              <h3 class="font-semibold text-slate-900" x-text="selectedFacture?.numero"></h3>
+              <p class="text-sm text-slate-500" x-text="selectedFacture?.payeur?.nom"></p>
+            </div>
+            <button @click="showDetailModal = false" class="text-slate-400 hover:text-slate-600 p-2 hover:bg-slate-200 rounded-lg">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+          
+          <div class="p-6 space-y-6">
+            <!-- Informations facture -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-slate-50 rounded-lg p-4">
+                <p class="text-xs text-slate-500 mb-1">N° Facture</p>
+                <p class="font-medium text-slate-900" x-text="selectedFacture?.numero"></p>
+              </div>
+              <div class="bg-slate-50 rounded-lg p-4">
+                <p class="text-xs text-slate-500 mb-1">N° Dossier</p>
+                <p class="font-medium text-slate-900" x-text="selectedFacture?.numeroDossier || '-'"></p>
+              </div>
+              <div class="bg-slate-50 rounded-lg p-4">
+                <p class="text-xs text-slate-500 mb-1">Date facture</p>
+                <p class="font-medium text-slate-900" x-text="selectedFacture?.dateFacture"></p>
+              </div>
+              <div class="bg-slate-50 rounded-lg p-4">
+                <p class="text-xs text-slate-500 mb-1">Échéance</p>
+                <p class="font-medium text-slate-900" x-text="selectedFacture?.echeance"></p>
+              </div>
+            </div>
+            
+            <!-- Montants -->
+            <div class="bg-sky-50 rounded-lg p-4">
+              <div class="flex justify-between items-center">
+                <div>
+                  <p class="text-xs text-sky-600 mb-1">Montant TTC</p>
+                  <p class="font-medium text-slate-900" x-text="formatMoney(selectedFacture?.montant)"></p>
+                </div>
+                <div class="text-right">
+                  <p class="text-xs text-sky-600 mb-1">Reste à payer</p>
+                  <p class="text-2xl font-bold text-sky-600" x-text="formatMoney(selectedFacture?.resteAPayer)"></p>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Séquence & Statut -->
+            <div class="flex items-center gap-4">
+              <div class="flex-1">
+                <label class="block text-xs text-slate-500 mb-2">Séquence de relance</label>
+                <select x-model="selectedFacture.sequence" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+                  <option value="">Aucune séquence</option>
+                  <option value="R1">R1 - Première relance</option>
+                  <option value="R2">R2 - Deuxième relance</option>
+                  <option value="R3">R3 - Troisième relance</option>
+                  <option value="R4">R4 - Dernière relance</option>
+                </select>
+              </div>
+              <div class="flex-1">
+                <label class="block text-xs text-slate-500 mb-2">Statut</label>
+                <span class="inline-flex px-3 py-2 text-sm rounded-lg" 
+                  :class="{
+                    'bg-slate-100 text-slate-700': selectedFacture?.statut === 'non-payee',
+                    'bg-sky-100 text-sky-700': selectedFacture?.statut === 'en-relance',
+                    'bg-amber-100 text-amber-700': selectedFacture?.statut === 'suspendue'
+                  }"
+                  x-text="getStatutLabel(selectedFacture?.statut)"
+                ></span>
+              </div>
+            </div>
+            
+            <!-- Note -->
+            <div>
+              <label class="block text-xs text-slate-500 mb-2">Note personnelle</label>
+              <textarea 
+                x-model="selectedFacture.note"
+                rows="3"
+                placeholder="Ajouter une note..."
+                class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+              ></textarea>
+            </div>
+          </div>
+          
+          <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-between bg-slate-50">
+            <a href="./impayes-detail.html" class="text-sky-600 hover:text-sky-700 text-sm font-medium">
+              Voir la fiche complète →
+            </a>
+            <div class="flex items-center gap-2">
+              <button @click="showDetailModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-100 rounded-lg text-sm font-medium">Fermer</button>
+              <button @click="saveNote()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">
+                <i class="fas fa-save mr-1"></i>Enregistrer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+    
+  </main>
+</div>
+
+<script>
+function impayesPayeurPage() {
+  return {
+    toast: { show: false, type: 'success', title: '', message: '' },
+    loading: false,
+    syncing: false,
+    searchQuery: '',
+    filterMinMontant: '',
+    sortBy: 'montant_desc',
+    currentPage: 1,
+    itemsPerPage: 5,
+    showDetailModal: false,
+    selectedFacture: null,
+    
+    factures: [
+      { id: 1, numero: 'FAC-2024-001', numeroDossier: 'D-2024-045', dateFacture: '15/01/2024', echeance: '15/02/2024', montant: 12500, resteAPayer: 12500, sequence: 'R1', statut: 'en-relance', note: '', payeur: { id: 'acme', nom: 'ACME Corp', email: 'contact@acme.fr', initials: 'AC' }},
+      { id: 2, numero: 'FAC-2024-007', numeroDossier: 'D-2024-051', dateFacture: '12/01/2024', echeance: '12/02/2024', montant: 8300, resteAPayer: 8300, sequence: 'R2', statut: 'en-relance', note: '', payeur: { id: 'acme', nom: 'ACME Corp', email: 'contact@acme.fr', initials: 'AC' }},
+      { id: 3, numero: 'FAC-2024-002', numeroDossier: 'D-2024-046', dateFacture: '10/01/2024', echeance: '10/02/2024', montant: 8750, resteAPayer: 8750, sequence: 'R2', statut: 'en-relance', note: '', payeur: { id: 'techstart', nom: 'TechStart SARL', email: 'finance@techstart.fr', initials: 'TS' }},
+      { id: 4, numero: 'FAC-2024-003', numeroDossier: 'D-2024-047', dateFacture: '08/01/2024', echeance: '08/02/2024', montant: 23400, resteAPayer: 5000, sequence: 'R3', statut: 'en-relance', note: 'Client a promis de payer la semaine prochaine', payeur: { id: 'buildplus', nom: 'BuildPlus SA', email: 'compta@buildplus.fr', initials: 'BP' }},
+      { id: 5, numero: 'FAC-2024-008', numeroDossier: 'D-2024-052', dateFacture: '05/01/2024', echeance: '05/02/2024', montant: 15000, resteAPayer: 15000, sequence: '', statut: 'non-payee', note: '', payeur: { id: 'buildplus', nom: 'BuildPlus SA', email: 'compta@buildplus.fr', initials: 'BP' }},
+      { id: 6, numero: 'FAC-2024-009', numeroDossier: 'D-2024-053', dateFacture: '02/01/2024', echeance: '02/02/2024', montant: 8900, resteAPayer: 8900, sequence: 'R1', statut: 'suspendue', note: 'Litige en cours', payeur: { id: 'buildplus', nom: 'BuildPlus SA', email: 'compta@buildplus.fr', initials: 'BP' }},
+      { id: 7, numero: 'FAC-2024-004', numeroDossier: 'D-2024-048', dateFacture: '05/01/2024', echeance: '05/02/2024', montant: 5600, resteAPayer: 5600, sequence: '', statut: 'non-payee', note: '', payeur: { id: 'digital', nom: 'Digital Agency', email: 'admin@digital.fr', initials: 'DA' }},
+      { id: 8, numero: 'FAC-2024-005', numeroDossier: 'D-2024-049', dateFacture: '01/01/2024', echeance: '01/02/2024', montant: 12000, resteAPayer: 12000, sequence: 'R2', statut: 'suspendue', note: 'Litige en cours', payeur: { id: 'consulting', nom: 'Consulting Pro', email: 'boss@consulting.fr', initials: 'CP' }},
+      { id: 9, numero: 'FAC-2024-006', numeroDossier: 'D-2024-050', dateFacture: '28/12/2023', echeance: '28/01/2024', montant: 8900, resteAPayer: 8900, sequence: 'R1', statut: 'en-relance', note: '', payeur: { id: 'startup', nom: 'Startup XYZ', email: 'contact@xyz.fr', initials: 'SX' }},
+      { id: 10, numero: 'FAC-2024-010', numeroDossier: 'D-2024-054', dateFacture: '25/12/2023', echeance: '25/01/2024', montant: 4500, resteAPayer: 4500, sequence: '', statut: 'non-payee', note: '', payeur: { id: 'startup', nom: 'Startup XYZ', email: 'contact@xyz.fr', initials: 'SX' }},
+    ],
+    
+    get filteredFactures() {
+      return this.factures.filter(f => {
+        const matchesSearch = !this.searchQuery || 
+          f.payeur.nom.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+          f.payeur.email.toLowerCase().includes(this.searchQuery.toLowerCase());
+        return matchesSearch;
+      });
+    },
+    
+    get groupedByPayeur() {
+      // Grouper les factures filtrées par payeur
+      const groupes = {};
+      this.filteredFactures.forEach(f => {
+        const payeurId = f.payeur.id;
+        if (!groupes[payeurId]) {
+          groupes[payeurId] = {
+            payeur: f.payeur,
+            factures: [],
+            totalReste: 0
+          };
+        }
+        groupes[payeurId].factures.push(f);
+        groupes[payeurId].totalReste += f.resteAPayer;
+      });
+      
+      // Convertir en tableau
+      let result = Object.values(groupes);
+      
+      // Filtrer par montant minimum
+      if (this.filterMinMontant) {
+        result = result.filter(g => g.totalReste >= parseInt(this.filterMinMontant));
+      }
+      
+      // Trier
+      result.sort((a, b) => {
+        switch(this.sortBy) {
+          case 'montant_desc': return b.totalReste - a.totalReste;
+          case 'montant_asc': return a.totalReste - b.totalReste;
+          case 'nom_asc': return a.payeur.nom.localeCompare(b.payeur.nom);
+          case 'factures_desc': return b.factures.length - a.factures.length;
+          default: return 0;
+        }
+      });
+      
+      return result;
+    },
+    
+    get paginatedGroupes() {
+      const start = (this.currentPage - 1) * this.itemsPerPage;
+      return this.groupedByPayeur.slice(start, start + this.itemsPerPage);
+    },
+    
+    get totalPages() {
+      return Math.ceil(this.groupedByPayeur.length / this.itemsPerPage);
+    },
+    
+    get visiblePages() {
+      const pages = [];
+      const maxVisible = 5;
+      let start = Math.max(1, this.currentPage - Math.floor(maxVisible / 2));
+      let end = Math.min(this.totalPages, start + maxVisible - 1);
+      if (end - start + 1 < maxVisible) start = Math.max(1, end - maxVisible + 1);
+      for (let i = start; i <= end; i++) pages.push(i);
+      return pages;
+    },
+    
+    get totalGlobal() {
+      return this.groupedByPayeur.reduce((sum, g) => sum + g.totalReste, 0);
+    },
+    
+    init() {
+      this.loadData();
+    },
+    
+    async loadData() {
+      this.loading = true;
+      await new Promise(r => setTimeout(r, 500));
+      this.loading = false;
+    },
+    
+    async syncData() {
+      this.syncing = true;
+      await new Promise(r => setTimeout(r, 1500));
+      this.syncing = false;
+      this.showToast('Succès', 'Synchronisation terminée !', 'success');
+    },
+    
+    openDetail(facture) {
+      this.selectedFacture = {...facture};
+      this.showDetailModal = true;
+    },
+    
+    saveNote() {
+      const index = this.factures.findIndex(f => f.id === this.selectedFacture.id);
+      if (index !== -1) {
+        this.factures[index].note = this.selectedFacture.note;
+        this.factures[index].sequence = this.selectedFacture.sequence;
+      }
+      this.showDetailModal = false;
+      this.showToast('Succès', 'Modifications enregistrées', 'success');
+    },
+    
+    getStatutLabel(statut) {
+      const labels = { 'non-payee': 'Non payée', 'en-relance': 'En relance', 'suspendue': 'Suspendue' };
+      return labels[statut] || statut;
+    },
+    
+    formatMoney(amount) {
+      return new Intl.NumberFormat('fr-FR', { style: 'currency', currency: 'EUR', minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(amount);
+    },
+    
+    showToast(title, message, type = 'success') {
+      this.toast = { show: true, title, message, type };
+      setTimeout(() => this.toast.show = false, 3000);
+    }
+  }
+}
+</script>
+
+
+    <!-- Toast Notification -->
+    <div x-show="toast.show" x-transition class="fixed bottom-4 right-4 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50">
+      <i :class="toast.type === 'success' ? 'fa-check-circle text-green-400' : 'fa-exclamation-circle text-red-400'" class="fas"></i>
+      <div>
+        <p class="font-medium text-sm" x-text="toast.title"></p>
+        <p class="text-xs text-slate-300" x-text="toast.message"></p>
+      </div>
+    </div>
+</body>
+</html>

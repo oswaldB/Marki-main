@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calendrier Relances | Marki</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script src="./components/sidebar-nav-dual.js"></script>
+  <style>
+    html { font-family: 'Inter', system-ui, sans-serif; }
+    [x-cloak] { display: none !important; }
+    .calendar-grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+    .week-grid { display: grid; grid-template-columns: 80px repeat(7, 1fr); }
+    .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+    .scrollbar-thin::-webkit-scrollbar-track { background: #f1f5f9; }
+    .scrollbar-thin::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 3px; }
+    .scrollbar-thin::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+  </style>
+</head>
+<body x-data="calendrierPage()" x-init="init()">
+
+<sidebar-nav-dual page="relances-calendrier"></sidebar-nav-dual>
+
+<div class="md:ml-[284px] min-h-screen bg-slate-50">
+  
+  <header class="h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 sticky top-0 z-40">
+    <div class="flex items-center gap-3">
+      <h1 class="text-base font-semibold text-slate-700">Calendrier des Relances</h1>
+      <span class="text-slate-400">/</span>
+      <span class="text-sm text-slate-500" x-text="currentMonthLabel"></span>
+    </div>
+    
+    <div class="flex items-center gap-2">
+      <button @click="previousPeriod()" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button @click="goToToday()" class="px-3 py-1.5 text-sm font-medium text-slate-700 hover:bg-slate-100 rounded-lg border border-slate-200">
+        Aujourd'hui
+      </button>
+      <button @click="nextPeriod()" class="p-2 text-slate-600 hover:bg-slate-100 rounded-lg">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </div>
+  </header>
+
+  <main class="p-6">
+    
+    <!-- Toolbar -->
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4 mb-6">
+      <div class="flex flex-wrap items-center gap-4">
+        
+        <!-- Search -->
+        <div class="relative flex-1 min-w-[200px] max-w-sm">
+          <i class="fas fa-search text-slate-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+          <input 
+            type="text" 
+            x-model="searchQuery"
+            placeholder="Rechercher un payeur..."
+            class="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-sky-500/20 focus:border-sky-500"
+          >
+        </div>
+        
+        <!-- Filters -->
+        <select x-model="filterStatut" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          <option value="">Tous les statuts</option>
+          <option value="a-envoyer">À envoyer</option>
+          <option value="envoyee">Envoyées</option>
+        </select>
+        
+        <select x-model="filterType" class="px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+          <option value="">Tous les types</option>
+          <option value="email">Email</option>
+          <option value="courrier">Courrier</option>
+          <option value="telephone">Téléphone</option>
+        </select>
+        
+        <div class="flex-1"></div>
+        
+        <!-- View Switcher -->
+        <div class="flex items-center bg-slate-100 rounded-lg p-1">
+          <button 
+            @click="viewMode = 'month'"
+            :class="viewMode === 'month' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700'"
+            class="px-3 py-1.5 rounded-md text-sm font-medium transition-all flex items-center gap-1.5"
+          >
+            <i class="fas fa-calendar-alt"></i>
+            Mois
+          </button>
+          <button 
+            @click="viewMode = 'week'"
+            :class="viewMode === 'week' ? 'bg-white shadow-sm text-slate-900' : 'text-slate-500 hover:text-slate-700'"
+            class="px-3 py-1.5 rounded-md text-sm font-medium transition-all flex items-center gap-1.5"
+          >
+            <i class="fas fa-columns"></i>
+            Semaine
+          </button>
+        </div>
+      </div>
+      
+      <!-- Legend -->
+      <div class="mt-4 pt-4 border-t border-slate-100 flex items-center gap-6 text-xs">
+        <div class="flex items-center gap-2">
+          <div class="w-4 h-4 rounded border-2 border-dashed border-blue-500 bg-blue-50"></div>
+          <span class="text-slate-600">À envoyer</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-4 h-4 rounded border border-blue-500 bg-blue-50"></div>
+          <span class="text-slate-600">Envoyée</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <div class="w-4 h-4 rounded bg-sky-100 border border-sky-400"></div>
+          <span class="text-slate-600">Jour de règlement</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Vue Mois -->
+    <template x-if="viewMode === 'month'">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <!-- Days header -->
+        <div class="grid grid-cols-7 border-b border-slate-200">
+          <template x-for="day in ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim']">
+            <div class="py-2 text-center text-sm font-medium text-slate-500 border-r border-slate-100 last:border-r-0" x-text="day"></div>
+          </template>
+        </div>
+        
+        <!-- Calendar grid -->
+        <div class="calendar-grid">
+          <template x-for="(day, index) in calendarDays" :key="index">
+            <div 
+              class="min-h-[120px] border-r border-b border-slate-100 p-2 relative"
+              :class="{
+                'bg-slate-50': !day.currentMonth,
+                'bg-sky-50 border-sky-200': day.isPaymentDay,
+                'bg-sky-50 border-sky-200': day.isToday
+              }"
+            >
+              <span 
+                class="text-sm font-medium w-7 h-7 flex items-center justify-center rounded-full"
+                :class="{
+                  'text-slate-400': !day.currentMonth,
+                  'text-slate-900': day.currentMonth && !day.isToday,
+                  'bg-sky-500 text-white': day.isToday
+                }"
+                x-text="day.dayNumber"
+              ></span>
+              
+              <!-- Relances -->
+              <div class="mt-1 space-y-1 max-h-[80px] overflow-y-auto scrollbar-thin">
+                <template x-for="relance in day.relances" :key="relance.id">
+                  <button 
+                    @click="openEditRelance(relance)"
+                    class="w-full text-left px-2 py-1 text-xs rounded truncate transition-all hover:opacity-80"
+                    :class="{
+                      'bg-blue-50 border border-dashed border-blue-500 text-blue-700': relance.statut === 'a-envoyer',
+                      'bg-blue-50 border border-blue-500 text-blue-700': relance.statut === 'envoyee',
+                      'bg-sky-100 border border-sky-400 text-sky-700': relance.type === 'reglement'
+                    }"
+                    :title="relance.payeur + ' - ' + relance.objet"
+                  >
+                    <i class="fas mr-1" :class="{
+                      'fa-paper-plane': relance.type === 'email',
+                      'fa-envelope': relance.type === 'courrier',
+                      'fa-phone': relance.type === 'telephone',
+                      'fa-check': relance.type === 'reglement'
+                    }"></i>
+                    <span x-text="relance.payeur.substring(0, 15) + (relance.payeur.length > 15 ? '...' : '')"></span>
+                  </button>
+                </template>
+              </div>
+              
+              <!-- + more indicator -->
+              <div x-show="day.hasMore" class="text-xs text-slate-400 text-center mt-1">
+                +<span x-text="day.moreCount"></span>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </template>
+    
+    <!-- Vue Semaine -->
+    <template x-if="viewMode === 'week'">
+      <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+        <!-- Header -->
+        <div class="week-grid border-b border-slate-200">
+          <div class="py-2 px-2 text-sm font-medium text-slate-500 border-r border-slate-100"></div>
+          <template x-for="day in weekDays">
+            <div 
+              class="py-2 text-center text-sm font-medium border-r border-slate-100 last:border-r-0"
+              :class="day.isToday ? 'bg-sky-50 text-sky-600' : 'text-slate-500'"
+            >
+              <div x-text="day.shortName"></div>
+              <div x-text="day.dayNumber" class="text-lg"></div>
+            </div>
+          </template>
+        </div>
+        
+        <!-- Time slots -->
+        <div class="max-h-[600px] overflow-y-auto scrollbar-thin">
+          <div class="week-grid">
+            <div class="border-r border-slate-100">
+              <template x-for="hour in timeSlots">
+                <div class="h-16 border-b border-slate-100 px-2 py-1 text-xs text-slate-400" x-text="hour + ':00'"></div>
+              </template>
+            </div>
+            
+            <template x-for="(day, dayIndex) in weekDays">
+              <div class="border-r border-slate-100 last:border-r-0 relative" :class="day.isToday ? 'bg-sky-50/30' : ''">
+                <template x-for="hour in timeSlots">
+                  <div class="h-16 border-b border-slate-100"></div>
+                </template>
+                
+                <!-- Relances -->
+                <template x-for="relance in day.relances" :key="relance.id">
+                  <button 
+                    @click="openEditRelance(relance)"
+                    class="absolute left-1 right-1 px-2 py-1 text-xs rounded text-left overflow-hidden transition-all hover:opacity-80"
+                    :class="{
+                      'bg-blue-50 border border-dashed border-blue-500 text-blue-700': relance.statut === 'a-envoyer',
+                      'bg-blue-50 border border-blue-500 text-blue-700': relance.statut === 'envoyee'
+                    }"
+                    :style="`top: ${relance.top}px; height: ${relance.height}px;`"
+                  >
+                    <div class="font-medium truncate" x-text="relance.payeur"></div>
+                    <div class="truncate opacity-75" x-text="relance.objet"></div>
+                  </button>
+                </template>
+              </div>
+            </template>
+          </div>
+        </div>
+      </div>
+    </template>
+    
+  </main>
+</div>
+
+<!-- Modal Edit Relance -->
+<div x-show="showEditModal" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4" x-transition.opacity>
+  <div class="absolute inset-0 bg-slate-500/75" @click="showEditModal = false"></div>
+  <div class="relative bg-white rounded-xl shadow-xl max-w-md w-full" x-transition.scale>
+    <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+      <h3 class="text-lg font-semibold text-slate-900">Modifier la relance</h3>
+      <button @click="showEditModal = false" class="text-slate-400 hover:text-slate-600">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="px-6 py-6 space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5">Payeur</label>
+        <input type="text" :value="selectedRelance?.payeur" disabled class="w-full px-3 py-2 bg-slate-100 border border-slate-200 rounded-lg text-sm">
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5">Date d'envoi</label>
+        <input type="date" x-model="editForm.date" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5">Destinataire</label>
+        <input type="text" x-model="editForm.destinataire" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5">Objet</label>
+        <input type="text" x-model="editForm.objet" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm">
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-slate-700 mb-1.5">Corps</label>
+        <textarea x-model="editForm.corps" rows="3" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-lg text-sm"></textarea>
+      </div>
+    </div>
+    
+    <div class="px-6 py-4 border-t border-slate-100 bg-slate-50 flex items-center justify-end gap-2">
+      <button @click="showEditModal = false" class="px-4 py-2 text-slate-700 hover:bg-slate-200 rounded-lg text-sm font-medium">Annuler</button>
+      <button @click="saveEdit()" class="px-4 py-2 bg-sky-500 hover:bg-sky-600 text-white rounded-lg text-sm font-medium">
+        <i class="fas fa-save mr-1"></i>Enregistrer
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+function calendrierPage() {
+  return {
+    toast: { show: false, type: 'success', title: '', message: '' },
+    currentDate: new Date(),
+    viewMode: 'month',
+    searchQuery: '',
+    filterStatut: '',
+    filterType: '',
+    showEditModal: false,
+    selectedRelance: null,
+    editForm: { date: '', destinataire: '', objet: '', corps: '' },
+    
+    timeSlots: [8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+    
+    relances: [
+      { id: 1, payeur: 'ACME Corp', type: 'email', statut: 'a-envoyer', date: '2024-03-15', heure: 10, objet: 'Relance R1', destinataire: 'contact@acme.fr' },
+      { id: 2, payeur: 'TechStart', type: 'courrier', statut: 'envoyee', date: '2024-03-15', heure: 14, objet: 'Mise en demeure', destinataire: 'TechStart SARL' },
+      { id: 3, payeur: 'BuildPlus', type: 'telephone', statut: 'a-envoyer', date: '2024-03-18', heure: 11, objet: 'Rappel', destinataire: 'compta@buildplus.fr' },
+      { id: 4, payeur: 'Digital Agency', type: 'email', statut: 'envoyee', date: '2024-03-20', heure: 9, objet: 'Relance R2', destinataire: 'admin@digital.fr' },
+      { id: 5, payeur: 'Consulting Pro', type: 'reglement', statut: 'reglement', date: '2024-03-22', heure: 10, objet: 'Règlement prévu', destinataire: '' },
+      { id: 6, payeur: 'Startup XYZ', type: 'email', statut: 'a-envoyer', date: '2024-03-25', heure: 15, objet: 'Dernier rappel', destinataire: 'contact@xyz.fr' },
+    ],
+    
+    init() {
+      // Initialize
+    },
+    
+    get currentMonthLabel() {
+      const months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+      return months[this.currentDate.getMonth()] + ' ' + this.currentDate.getFullYear();
+    },
+    
+    get calendarDays() {
+      const year = this.currentDate.getFullYear();
+      const month = this.currentDate.getMonth();
+      
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+      const daysInMonth = lastDay.getDate();
+      const startDayOfWeek = firstDay.getDay() || 7;
+      
+      const days = [];
+      const today = new Date();
+      
+      // Previous month days
+      for (let i = 1; i < startDayOfWeek; i++) {
+        const prevDate = new Date(year, month, -startDayOfWeek + i + 1);
+        days.push({
+          date: prevDate,
+          dayNumber: prevDate.getDate(),
+          currentMonth: false,
+          isToday: false,
+          isPaymentDay: false,
+          relances: [],
+          hasMore: false
+        });
+      }
+      
+      // Current month days
+      for (let i = 1; i <= daysInMonth; i++) {
+        const date = new Date(year, month, i);
+        const dateStr = date.toISOString().split('T')[0];
+        const dayRelances = this.getRelancesForDate(dateStr);
+        
+        days.push({
+          date: date,
+          dayNumber: i,
+          currentMonth: true,
+          isToday: date.toDateString() === today.toDateString(),
+          isPaymentDay: dayRelances.some(r => r.type === 'reglement'),
+          relances: dayRelances.slice(0, 3),
+          hasMore: dayRelances.length > 3,
+          moreCount: Math.max(0, dayRelances.length - 3)
+        });
+      }
+      
+      // Next month days
+      const remainingCells = 42 - days.length;
+      for (let i = 1; i <= remainingCells; i++) {
+        const nextDate = new Date(year, month + 1, i);
+        days.push({
+          date: nextDate,
+          dayNumber: i,
+          currentMonth: false,
+          isToday: false,
+          isPaymentDay: false,
+          relances: [],
+          hasMore: false
+        });
+      }
+      
+      return days;
+    },
+    
+    get weekDays() {
+      const startOfWeek = new Date(this.currentDate);
+      const day = startOfWeek.getDay();
+      const diff = startOfWeek.getDate() - day + (day === 0 ? -6 : 1);
+      startOfWeek.setDate(diff);
+      
+      const days = [];
+      const today = new Date();
+      const dayNames = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+      
+      for (let i = 0; i < 7; i++) {
+        const date = new Date(startOfWeek);
+        date.setDate(startOfWeek.getDate() + i);
+        const dateStr = date.toISOString().split('T')[0];
+        
+        const dayRelances = this.getRelancesForDate(dateStr).map(r => ({
+          ...r,
+          top: (r.heure - 8) * 64,
+          height: 48
+        }));
+        
+        days.push({
+          date: date,
+          shortName: dayNames[i],
+          dayNumber: date.getDate(),
+          isToday: date.toDateString() === today.toDateString(),
+          relances: dayRelances
+        });
+      }
+      
+      return days;
+    },
+    
+    getRelancesForDate(dateStr) {
+      return this.relances.filter(r => {
+        if (r.date !== dateStr) return false;
+        
+        const matchesSearch = !this.searchQuery || r.payeur.toLowerCase().includes(this.searchQuery.toLowerCase());
+        const matchesStatut = !this.filterStatut || r.statut === this.filterStatut;
+        const matchesType = !this.filterType || r.type === this.filterType;
+        
+        return matchesSearch && matchesStatut && matchesType;
+      });
+    },
+    
+    previousPeriod() {
+      if (this.viewMode === 'month') {
+        this.currentDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() - 1, 1);
+      } else {
+        this.currentDate = new Date(this.currentDate.getTime() - 7 * 24 * 60 * 60 * 1000);
+      }
+    },
+    
+    nextPeriod() {
+      if (this.viewMode === 'month') {
+        this.currentDate = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth() + 1, 1);
+      } else {
+        this.currentDate = new Date(this.currentDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+      }
+    },
+    
+    goToToday() {
+      this.currentDate = new Date();
+    },
+    
+    openEditRelance(relance) {
+      this.selectedRelance = relance;
+      this.editForm = {
+        date: relance.date,
+        destinataire: relance.destinataire,
+        objet: relance.objet,
+        corps: 'Contenu de la relance...'
+      };
+      this.showEditModal = true;
+    },
+    
+    saveEdit() {
+      this.selectedRelance.date = this.editForm.date;
+      this.selectedRelance.destinataire = this.editForm.destinataire;
+      this.selectedRelance.objet = this.editForm.objet;
+      this.showEditModal = false;
+      this.showToast('Succès', 'Relance modifiée avec succès', 'success');
+    },
+    
+    showToast(title, message, type = 'success') {
+      this.toast = { show: true, title, message, type };
+      setTimeout(() => this.toast.show = false, 3000);
+    }
+  }
+}
+</script>
+
+
+    <!-- Toast Notification -->
+    <div x-show="toast.show" x-transition class="fixed bottom-4 right-4 bg-slate-800 text-white px-4 py-3 rounded-lg shadow-lg flex items-center gap-3 z-50">
+      <i :class="toast.type === 'success' ? 'fa-check-circle text-green-400' : 'fa-exclamation-circle text-red-400'" class="fas"></i>
+      <div>
+        <p class="font-medium text-sm" x-text="toast.title"></p>
+        <p class="text-xs text-slate-300" x-text="toast.message"></p>
+      </div>
+    </div>
+</body>
+</html>

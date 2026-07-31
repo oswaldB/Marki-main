@@ -1,0 +1,51 @@
+// Workflow: Marquer tous les événements comme lus
+
+/**
+ * @action Marquer tous les événements de l'utilisateur comme lus
+ * @checkpoint all-events-marked-read
+ */
+markAllAsRead: async function() {
+  const workflowId = crypto.randomUUID();
+  const startTime = Date.now();
+  
+  log.info('WORKFLOW_START', { 
+    workflowId,
+    workflow: 'markAllAsRead',
+    totalEvents: this.events.length,
+    unreadCount: this.unreadCount
+  });
+  
+  // @action Vérifier s'il y a des events non lus
+  if (this.unreadCount === 0) {
+    log.debug('NO_UNREAD_EVENTS', { workflowId });
+    return;
+  }
+  
+  // @action Sauvegarder l'état précédent pour rollback si besoin
+  const previousEvents = [...this.events];
+  const previousUnreadCount = this.unreadCount;
+  
+  // @action Mettre à jour tous les events (optimistic update)
+  // @checkpoint events-updated
+  this.events = this.events.map(event => ({
+    ...event,
+    read: true
+  }));
+  
+  log.debug('ALL_EVENTS_MARKED_READ', { 
+    workflowId,
+    previousUnread: previousUnreadCount,
+    currentUnread: this.unreadCount
+  });
+  
+  // @action Sauvegarder dans localStorage
+  this.saveEventsToStorage();
+  
+  const duration = Date.now() - startTime;
+  
+  log.info('WORKFLOW_SUCCESS', { 
+    workflowId,
+    duration,
+    markedAsRead: previousUnreadCount
+  });
+}

@@ -1,0 +1,196 @@
+<script>
+  // Logger global pour la page
+  const log = {
+    debug: (event, data) => console.log(`[DEBUG][${event}]`, JSON.stringify(data)),
+    info: (event, data) => console.log(`[INFO][${event}]`, JSON.stringify(data)),
+    warn: (event, data) => console.warn(`[WARN][${event}]`, JSON.stringify(data)),
+    error: (event, data) => console.error(`[ERROR][${event}]`, JSON.stringify(data))
+  };
+
+  document.addEventListener('alpine:init', () => {
+    Alpine.data('evenements', () => ({
+      // =====================================================
+      // 1. STATE - Props réactives
+      // =====================================================
+      
+      // UI State
+      loading: false,
+      error: null,
+      
+      // Data
+      events: [],
+      
+      // Filtres
+      searchQuery: '',
+      filterType: 'all',        // 'all' | 'unread'
+      filterCategory: '',       // '' | 'sync' | 'payment' | 'relance' | 'alert' | 'import'
+      
+      // Pagination
+      page: 1,
+      perPage: 50,
+      hasMore: false,
+      
+      // =====================================================
+      // 2. GETTERS - Computed properties
+      // =====================================================
+      
+      get unreadCount() {
+        return this.events.filter(e => !e.read).length;
+      },
+      
+      get filteredEvents() {
+        let result = this.events;
+        
+        // Filtre par recherche
+        if (this.searchQuery) {
+          const query = this.searchQuery.toLowerCase();
+          result = result.filter(e => 
+            (e.titre || e.title || '').toLowerCase().includes(query) ||
+            (e.description || '').toLowerCase().includes(query)
+          );
+        }
+        
+        // Filtre par type (lu/non lu)
+        if (this.filterType === 'unread') {
+          result = result.filter(e => !e.read);
+        }
+        
+        // Filtre par catégorie
+        if (this.filterCategory) {
+          result = result.filter(e => e.type === this.filterCategory);
+        }
+        
+        // Tri par date décroissante
+        result = result.sort((a, b) => 
+          new Date(b.created_at) - new Date(a.created_at)
+        );
+        
+        return result;
+      },
+      
+      // =====================================================
+      // 3. HELPERS - Méthodes utilitaires
+      // =====================================================
+      
+      getEventIconClass(type) {
+        const classes = {
+          'sync': 'bg-sky-100 text-sky-600',
+          'import': 'bg-sky-200 text-sky-700',
+          'payment': 'bg-sky-300 text-sky-800',
+          'relance': 'bg-sky-400 text-sky-900',
+          'alert': 'bg-sky-500 text-white'
+        };
+        return classes[type] || 'bg-slate-100 text-slate-600';
+      },
+      
+      getCategoryClass(type) {
+        const classes = {
+          'sync': 'bg-slate-100 text-slate-600',
+          'payment': 'bg-sky-100 text-sky-600',
+          'relance': 'bg-sky-100 text-sky-600',
+          'alert': 'bg-sky-100 text-sky-600',
+          'import': 'bg-slate-100 text-slate-600'
+        };
+        return classes[type] || 'bg-slate-100 text-slate-600';
+      },
+      
+      getCategoryLabel(type) {
+        const labels = {
+          'sync': 'Synchronisation',
+          'payment': 'Paiement',
+          'relance': 'Relance',
+          'alert': 'Alerte',
+          'import': 'Import'
+        };
+        return labels[type] || type;
+      },
+      
+      formatTimeAgo(dateStr) {
+        if (!dateStr) return '-';
+        const date = new Date(dateStr);
+        const now = new Date();
+        const diffMs = now - date;
+        const diffMins = Math.floor(diffMs / 60000);
+        const diffHours = Math.floor(diffMs / 3600000);
+        const diffDays = Math.floor(diffMs / 86400000);
+        
+        if (diffMins < 1) return 'À l\'instant';
+        if (diffMins < 60) return `Il y a ${diffMins} minute${diffMins > 1 ? 's' : ''}`;
+        if (diffHours < 24) return `Il y a ${diffHours} heure${diffHours > 1 ? 's' : ''}`;
+        if (diffDays < 2) return 'Hier';
+        if (diffDays < 7) return `Il y a ${diffDays} jours`;
+        
+        return date.toLocaleDateString('fr-FR', { 
+          day: '2-digit', 
+          month: 'short',
+          timeZone: 'Europe/Paris'
+        });
+      },
+      
+      formatDateTime(dateStr) {
+        if (!dateStr) return '-';
+        const date = new Date(dateStr);
+        return date.toLocaleString('fr-FR', { 
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit', 
+          minute: '2-digit',
+          timeZone: 'Europe/Paris'
+        });
+      },
+      
+      formatMoney(amount) {
+        if (amount === null || amount === undefined) return '-';
+        return new Intl.NumberFormat('fr-FR', {
+          style: 'currency',
+          currency: 'EUR'
+        }).format(amount);
+      },
+      
+      // =====================================================
+      // 4. PERSISTENCE - localStorage
+      // =====================================================
+      
+      saveEventsToStorage() {
+        try {
+          // Ne garder que les 100 derniers events
+          const eventsToSave = this.events.slice(0, 100);
+          localStorage.setItem('marki_events', JSON.stringify(eventsToSave));
+          log.debug('EVENTS_SAVED_TO_STORAGE', { count: eventsToSave.length });
+        } catch (e) {
+          log.error('EVENTS_SAVE_ERROR', { error: e.message });
+        }
+      },
+      
+      loadEventsFromStorage() {
+        try {
+          const stored = localStorage.getItem('marki_events');
+          if (stored) {
+            const events = JSON.parse(stored);
+            log.debug('EVENTS_LOADED_FROM_STORAGE', { count: events.length });
+            return events;
+          }
+        } catch (e) {
+          log.error('EVENTS_LOAD_ERROR', { error: e.message });
+        }
+        return [];
+      },
+      
+      // =====================================================
+      // 5. WORKFLOWS - Fonctions métier
+      // =====================================================
+      {% include 'events/workflows/initial-load.html' %},
+      {% include 'events/workflows/filter-all.html' %},
+      {% include 'events/workflows/filter-unread.html' %},
+      {% include 'events/workflows/mark-as-read.html' %},
+      {% include 'events/workflows/mark-all-read.html' %},
+      {% include 'events/workflows/clear-cache.html' %},
+      
+      // =====================================================
+      // 6. WORKFLOW-INIT - Initialisation (en dernier !)
+      // =====================================================
+      {% include 'events/workflows/workflow-init.html' %}
+    }));
+  });
+</script>
